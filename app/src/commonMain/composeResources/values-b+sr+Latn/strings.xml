@@ -467,7 +467,6 @@ Ako duž cele ulice nema znakova koji se odnose na istaknuti deo, primenjuju se 
     <string name="underground">pod zemljom</string>
     <string name="quest_sidewalk_value_yes">ima trotoar</string>
     <string name="quest_sidewalk_value_no">nema trotoar</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Da li je pešacima zabranjeno da hodaju ovim putem?</string>
     <string name="quest_buildingType_title">Kakva je ovo građevina?</string>
     <string name="pref_title_theme_select">Izaberite temu</string>
     <string name="theme_light">Svetla</string>
@@ -672,7 +671,6 @@ dani</string>
     <string name="at_housenumber">kućni broj %1$s</string>
     <string name="quest_openingHours_add_off_days">Dodajte neradne dane</string>
     <string name="quest_openingHours_off_day">Neradni dani</string>
-    <string name="quest_cycleway_resurvey_title">Da li ovo i dalje slučaj sa biciklističom stazom ovde?</string>
     <string name="pref_title_resurvey_intervals">Interval ponavljanja istraživanja</string>
     <string name="resurvey_intervals_less_often">Pitaj ređe</string>
     <string name="resurvey_intervals_default">Uobičajeno</string>
@@ -884,7 +882,6 @@ Ukoliko ste preopterećeni brojem zadataka, u postavkama uvek možete izmeniti k
     <string name="quest_access_yes">Bilo ko</string>
     <string name="quest_access_customers">Svako ko posećuje ovo mesto (npr. samo mušterije)</string>
     <string name="quest_access_private">Samo osobe sa dozvolom</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Da li su vremena prikupljanja ovog sandučeta i dalje ispravna?</string>
     <string name="quest_bicycle_barrier_type_title">Koja je vrsta ove biciklističke prepreke?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Dijagonalna u odnosu na stazu</string>
     <string name="quest_barrier_bicycle_type_tilted">Uski prolaz koji se sužava ka vrhu</string>
@@ -921,8 +918,6 @@ Ili, možete ostaviti napomenu (sa fotografijom)</string>
     <string name="quest_fireHydrant_position_sidewalk">Na trotoaru</string>
     <string name="quest_fireHydrant_position_parking_lot">Na parkingu</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Da (ostavi napomenu)</string>
-    <string name="quest_smoothness_square_title">Kakav je kvalitet podloge na ovom trgu?</string>
-    <string name="quest_smoothness_road_title">Kakav je kvalitet puta ovde?</string>
     <string name="quest_smoothness_title_excellent">Glatka i izravnata</string>
     <string name="quest_smoothness_title_good">Uglavnom izravnata</string>
     <string name="quest_smoothness_title_intermediate">Malo truckava</string>
@@ -975,7 +970,6 @@ Ili, možete ostaviti napomenu (sa fotografijom)</string>
     <string name="ar_core_tracking_error_camera_unavailable">Neka druga aplikacija koristi kameru</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Držač za korman</string>
     <string name="quest_bicycle_parking_access_title2">Ko ovde sme da parkira bicikl? Da li je sa ili bez naplate?</string>
-    <string name="quest_playground_access_title2">Ko sme da koristi ovo igralište?</string>
     <string name="ar_measure">Izmeri</string>
     <string name="ar_core_tracking_error_too_steep_angle">Previše strm ugao, odmaknite se</string>
     <string name="default_disabled_msg_no_ar">Za ovaj zadatak Vam treba metar pošto merenje uz pomoć kamere nije podržano na ovom uređaju.</string>
@@ -1031,7 +1025,6 @@ Ili, možete ostaviti napomenu (sa fotografijom)</string>
     <string name="quest_lit_title">Da li je ovde osvetljeno?</string>
     <string name="quest_openingHours_title">Koje je radno vreme ovde?</string>
     <string name="quest_openingHours_signed_title">Da li je ovde istaknuto radno vreme?</string>
-    <string name="quest_openingHours_resurvey_title">Da li je radno vreme još uvek tačno?</string>
     <string name="quest_placeName_title">Koji je naziv ovog mesta?</string>
     <string name="quest_shop_type_title2">Koja je ovo vrsta prodavnice?</string>
     <string name="quest_smoking_title2">Da li je ovde dozvoljeno pušenje?</string>
@@ -1303,8 +1296,6 @@ Informacije o donaciji možete pronaći na našoj web lokaciji ili stranici proj
     <string name="default_disabled_msg_visible_sign_moped">Ovaj zadatak je podraz. isključen jer pristup mopedima je naznačen specifičnim znakovima samo na početku i kraju bicikl. staze.</string>
     <string name="quest_arrow_tutorial">Na ilustraciji, strelice pokazuju pravac kretanja puta na karti u centralnoj tački čiode. Probajte da rotirate kartu i shvatićete.</string>
     <string name="info">Još informacija</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Zabranjeno je.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Dozvoljeno je.</string>
     <string name="quest_buildingLevels_hint">Za zgrade na padini, spratovi se broje od nivoa zemljišta, sa najniže strane.
 
 Spratom se smatra i kada su prozori u krovu. Stoga, krovovi bez sprata nisu nužno ravni, već jednostavno nisu dovoljno visoki da bi postojalo potkrovlje.</string>
@@ -1345,7 +1336,6 @@ Spratom se smatra i kada su prozori u krovu. Stoga, krovovi bez sprata nisu nuž
     <string name="action_messages">Prikaz poruka</string>
     <string name="action_create_new_poi">Pravljenje nove</string>
     <string name="auth_error">Greška tokom autorizacije. Pokušajte ponovno.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Zapravo, postoji trotoar.</string>
     <string name="quest_bicycle_repair_station_services_title">Koji tip opreme za bicikle se ovde nalazi?</string>
     <string name="quest_bicycle_repair_station_pump">Pumpa</string>
     <string name="quest_bicycle_repair_station_tools">Razni alati</string>
@@ -1428,7 +1418,6 @@ Spratom se smatra i kada su prozori u krovu. Stoga, krovovi bez sprata nisu nuž
     <string name="quest_bicycle_charging_station_capacity_title">Koliko bicikala se može puniti istovremeno?</string>
     <string name="quest_charging_station_bicycles_title">Da li se ovde mogu puniti i bicikli?</string>
     <string name="quest_charging_station_bicycles_hint">Adapteri za punjenje koriste obične kućne utičnice.</string>
-    <string name="quest_tower_access_title">Ko ima pristup ovom tornju? Bilo besplatno ili uz naplatu.</string>
     <string name="quest_recycling_type_pet_bottles">PET ambalaža</string>
     <string name="quest_maxweight_add_sign">Dodaj znak</string>
     <string name="quest_maxweight_remove_sign">Ukloni znak</string>

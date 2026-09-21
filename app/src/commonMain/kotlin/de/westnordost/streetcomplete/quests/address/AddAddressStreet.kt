@@ -79,8 +79,8 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName> {
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("""
             nodes, ways, relations with
-            (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
-            and !name and !brand and !operator and !ref
+              (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
+              and !name and !brand and !operator and !ref
         """)
 
     @Composable

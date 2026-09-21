@@ -18,13 +18,13 @@ class AddBusStopName : OsmFilterQuestType<List<LocalizedName>>() {
     // this filter needs to be kept somewhat in sync with the filter in AddBusStopNameForm https://github.com/streetcomplete/StreetComplete/issues/6390#issuecomment-3057235984
     override val elementFilter = """
         nodes, ways, relations with
-        (
-          public_transport = platform and bus = yes
-          or highway = bus_stop and public_transport != stop_position
-          or railway ~ halt|station|tram_stop
-        )
-        and access !~ no|private
-        and !name and noname != yes and name:signed != no
+          (
+            public_transport = platform and bus = yes
+            or highway = bus_stop and public_transport != stop_position
+            or railway ~ halt|station|tram_stop
+          )
+          and access !~ no|private
+          and !name and noname != yes and name:signed != no
     """
 
     override val enabledInCountries = AllCountriesExcept(

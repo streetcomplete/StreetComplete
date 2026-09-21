@@ -464,7 +464,6 @@
     <string name="underground">ഭൂമിക്കടിയിൽ</string>
     <string name="quest_sidewalk_value_yes">നടപ്പാത</string>
     <string name="quest_sidewalk_value_no">നടപ്പാതയില്ല</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">ഈ പാതയിൽ കാൽനടക്കാർക്ക് നിരോധനമുണ്ടോ?</string>
     <string name="quest_buildingType_title">എന്ത് തരം കെട്ടിടം ആണ് ഇത്?</string>
     <string name="pref_title_theme_select">തീം തിരഞ്ഞെടുക്കുക</string>
     <string name="theme_light">വെളിച്ചം</string>
@@ -667,7 +666,6 @@
     <string name="at_housenumber">വീട്ട് നമ്പർ %1$s</string>
     <string name="quest_openingHours_add_off_days">ഒഴിവുദിനങ്ങൾ ചേർക്കുക</string>
     <string name="quest_openingHours_off_day">ഒഴിവുദിനം</string>
-    <string name="quest_cycleway_resurvey_title">ഇവിടെ സൈക്കിൾ വഴിയുടെ അവസ്ഥ ഇപ്പോഴും ഇതാണോ?</string>
     <string name="pref_title_resurvey_intervals">റി സർവേ ഇടവേളകൾ</string>
     <string name="resurvey_intervals_less_often">കുറച്ച് തവണ ചോദിക്കുക</string>
     <string name="resurvey_intervals_default">സ്ഥിരമായത്</string>
@@ -879,7 +877,6 @@
     <string name="quest_access_yes">സാധാരണ പൊതുജനങ്ങളിൽ ഏത് അംഗവും</string>
     <string name="quest_access_customers">ഒരു പ്രത്യേക സ്ഥലത്തെ സന്ദർശിക്കുന്നവർ മാത്രം (ഉദാ: ഉപഭോക്താക്കൾ)</string>
     <string name="quest_access_private">അനുമതിയുള്ള വ്യക്തികൾ മാത്രം</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">ഈ ശേഖരണ ബോക്‌സിന്റെ പിക്കപ്പ് സമയങ്ങൾ ഇപ്പോഴും ശരിയാണോ?</string>
     <string name="quest_bicycle_barrier_type_title">ഇത് ഏത് തരത്തിലുള്ള സൈക്കിൾ തടസ്സമാണ്?</string>
     <string name="quest_barrier_bicycle_type_diagonal">പാതയോട് ചെരിവായി</string>
     <string name="quest_barrier_bicycle_type_tilted">ഇറുകിയ വഴിയിടം, മുകളിൽ ചെറുതാകുന്നു</string>
@@ -916,8 +913,6 @@
     <string name="quest_fireHydrant_position_sidewalk">നടപ്പാതയിൽ</string>
     <string name="quest_fireHydrant_position_parking_lot">പാർക്കിംഗ് സ്ഥലത്ത്</string>
     <string name="quest_generic_hasFeature_yes_leave_note">അതെ (കുറിപ്പ് വിടുക)</string>
-    <string name="quest_smoothness_square_title">ഈ ചത്വരത്തിന്റെ ഉപരിതല ഗുണമേന്മ എന്താണ്?</string>
-    <string name="quest_smoothness_road_title">ഇവിടെ ഈ റോഡിന്റെ ഉപരിതല ഗുണമേന്മ എന്താണ്?</string>
     <string name="quest_smoothness_title_excellent">മിനുസമുള്ളതും സമതലവുമാണ്</string>
     <string name="quest_smoothness_title_good">മിക്കവാറും സമതലമാണ്</string>
     <string name="quest_smoothness_title_intermediate">കുറച്ച് കുഴിവാരമുള്ളത്</string>
@@ -970,7 +965,6 @@
     <string name="ar_core_tracking_error_camera_unavailable">ക്യാമറ മറ്റൊരു ആപ്പ് ഉപയോഗിക്കുന്നു</string>
     <string name="quest_bicycle_parking_type_handlebarholder">ഹാൻഡിൽബാർ ഹോൾഡർ</string>
     <string name="quest_bicycle_parking_access_title2">ഇവിടെ സൈക്കിൾ പാർക്ക് ചെയ്യാൻ ആരെ അനുവദിക്കുന്നു? പാർക്കിംഗ് സൗജന്യമായോ പണമെടുത്തോ ആയിരിക്കാം.</string>
-    <string name="quest_playground_access_title2">ഈ കളിസ്ഥലം ഉപയോഗിക്കാൻ ആരെ അനുവദിക്കുന്നു?</string>
     <string name="ar_measure">അളവ് എടുക്കുക</string>
     <string name="ar_core_tracking_error_too_steep_angle">കോണം വളരെ കുത്തനെയാണ്, അല്പം പിന്നോട്ട് പോകുക</string>
     <string name="default_disabled_msg_no_ar">ഈ ഉപകരണത്തിൽ ക്യാമറ ഉപയോഗിച്ച് അളക്കൽ പിന്തുണയ്ക്കുന്നില്ല; അതിനാൽ ഈ ക്വസ്റ്റ് പൂർത്തിയാക്കാൻ ഒരു ടേപ്പ് മെഷർ ആവശ്യമാണ്.</string>
@@ -1026,7 +1020,6 @@
     <string name="quest_lit_title">ഇവിടെ ലൈറ്റ് ഉണ്ടോ?</string>
     <string name="quest_openingHours_title">ഇവിടെ തുറക്കുന്ന സമയങ്ങൾ എന്താണ്?</string>
     <string name="quest_openingHours_signed_title">ഇവിടെ തുറക്കുന്ന സമയങ്ങൾ ബോർഡിൽ കാണിക്കുന്നുണ്ടോ?</string>
-    <string name="quest_openingHours_resurvey_title">ഈ തുറക്കുന്ന സമയങ്ങൾ ഇപ്പോഴും ശരിയാണോ?</string>
     <string name="quest_placeName_title">ഈ സ്ഥലത്തിന്റെ പേര് എന്താണ്?</string>
     <string name="quest_shop_type_title2">ഇത് ഏത് തരത്തിലുള്ള കടയാണ്?</string>
     <string name="quest_smoking_title2">ഇവിടെ പുകവലി അനുവദിക്കുന്നുണ്ടോ?</string>
@@ -1292,8 +1285,6 @@
     <string name="default_disabled_msg_visible_sign_moped">മോപ്പെഡ് പ്രവേശനം സാധാരണയായി സൈക്കിൾപാതയുടെ ആരംഭത്തിലും അവസാനത്തും ഉള്ള പ്രത്യേക ബോർഡുകൾ വഴി മാത്രമേ സൂചിപ്പിക്കാറുള്ളൂ; അതിനാൽ ഈ ക്വസ്റ്റ് തരം ഡീഫോൾട്ടായി അപ്രാപ്തമാക്കിയിരിക്കുന്നു.</string>
     <string name="quest_arrow_tutorial">ചിത്രത്തിലെ അമ്പുകൾ മാപ്പിൽ കേന്ദ്ര പിനിലുള്ള വഴിയുടെ ദിശകളെ സൂചിപ്പിക്കുന്നു. മാപ്പ് തിരിച്ച് നോക്കുക, മനസ്സിലാകും.</string>
     <string name="info">കൂടുതൽ വിവരങ്ങൾ</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">ഇത് നിരോധിതമാണ്.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">ഇത് അനുവദനീയമാണ്.</string>
     <string name="quest_buildingLevels_hint">ഇറക്കം ഉള്ള സ്ഥലങ്ങളിൽ ഉള്ള കെട്ടിടങ്ങൾക്ക്, നിലകളുടെ എണ്ണം താഴ്ന്ന വശത്തെ നിലതലത്തിൽ നിന്ന് തുടങ്ങുന്നു.
 
 ജനാലകൾ മേൽക്കൂരയിൽ ഉള്ള നിലകൾ മേൽക്കൂര നിലയായി കണക്കാക്കുന്നു. അതിനാൽ മേൽക്കൂര നിലകൾ ഇല്ലാത്തത് നിർബന്ധമായും തട്ടി മേൽക്കൂരയെന്നല്ല; ഒരു മുഴുവൻ നിലയ്ക്കു മതിയായ ഉയരം ഇല്ലെന്നർത്ഥം മാത്രം.</string>
@@ -1334,7 +1325,6 @@
     <string name="action_messages">സന്ദേശങ്ങൾ കാണിക്കുക</string>
     <string name="action_create_new_poi">പുതിയത് സൃഷ്ടിക്കുക</string>
     <string name="auth_error">അധികാര പിശക്. വീണ്ടും ലോഗിൻ ചെയ്യാൻ ശ്രമിക്കുക.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">വാസ്തവത്തിൽ, ഇവിടെ ഒരു നടപ്പാത ഉണ്ട്.</string>
     <string name="quest_bicycle_repair_station_services_title">ഇവിടെ ഏത് സൈക്കിൾ ഉപകരണങ്ങളാണ് ലഭ്യമുള്ളത്?</string>
     <string name="quest_bicycle_repair_station_pump">പമ്പ്</string>
     <string name="quest_bicycle_repair_station_tools">വിവിധ ഉപകരണങ്ങൾ</string>
@@ -1418,7 +1408,6 @@
     <string name="quest_bicycle_charging_station_capacity_title">ഇവിടെ ഒരേസമയം എത്ര സൈക്കിളുകൾ ചാർജ് ചെയ്യാം?</string>
     <string name="quest_charging_station_bicycles_title">ഇവിടെ സൈക്കിളുകളും ചാർജ് ചെയ്യാനാകുമോ?</string>
     <string name="quest_charging_station_bicycles_hint">സൈക്കിൾ ചാർജർ പവർ അഡാപ്റ്ററുകൾ സാധാരണ ഗൃഹ സോക്കറ്റുകളിൽ 插് ചെയ്യാം.</string>
-    <string name="quest_tower_access_title">ഈ ടവറിലേക്ക് ആരെ പ്രവേശിപ്പിക്കുന്നു? സൗജന്യമായോ പണമെടുത്തോ ആയിരിക്കാം.</string>
     <string name="quest_recycling_type_pet_bottles">PET ബോട്ടിലുകൾ</string>
     <string name="quest_maxweight_add_sign">ബോർഡ് ചേർക്കുക</string>
     <string name="quest_maxweight_remove_sign">ബോർഡ് നീക്കം ചെയ്യുക</string>

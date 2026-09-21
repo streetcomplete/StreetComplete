@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
+import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -13,10 +13,9 @@ class OpenChangesetsDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: OpenChangesetsDao
 
     private val Q = "Hurzipurz"
-    private val P = "Brasliweks"
     private val SOURCE = "test"
 
-    @BeforeTest fun createDao() {
+    override fun onDatabaseInitialized(database: Database) {
         dao = OpenChangesetsDao(database)
     }
 
@@ -53,15 +52,5 @@ class OpenChangesetsDaoTest : StreetCompleteDatabaseTestCase() {
         assertEquals(LatLon(1.0, 2.0), dao.get(Q, SOURCE)!!.lastPosition)
         dao.put(OpenChangeset(Q, SOURCE, 12, LatLon(23.0, 12.0)))
         assertEquals(LatLon(23.0, 12.0), dao.get(Q, SOURCE)!!.lastPosition)
-    }
-
-    @Test fun getNone() {
-        assertTrue(dao.getAll().isEmpty())
-    }
-
-    @Test fun insertTwo() {
-        dao.put(OpenChangeset(Q, SOURCE, 1, LatLon(0.0, 0.0)))
-        dao.put(OpenChangeset(P, SOURCE, 2, LatLon(0.0, 0.0)))
-        assertEquals(2, dao.getAll().size)
     }
 }

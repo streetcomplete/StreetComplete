@@ -28,7 +28,7 @@ fun TimeSelectDialog(
     modifier: Modifier = Modifier,
     initialHour: Int = 0,
     initialMinutes: Int = 0,
-    locale: Locale = Locale.current,
+    locale: Locale? = null,
 ) {
     val timeFormatElements = remember(locale) { TimeFormatElements.of(locale) }
     val timePickerState = rememberTimePickerState(

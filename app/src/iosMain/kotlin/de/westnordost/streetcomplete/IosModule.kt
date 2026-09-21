@@ -4,16 +4,19 @@ import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import com.russhwolf.settings.NSUserDefaultsSettings
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.data.Cleaner
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.DatabaseImpl
+import de.westnordost.streetcomplete.data.IosPeriodicCleaner
+import de.westnordost.streetcomplete.data.PeriodicCleaner
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseConfigurator
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.connection.IosActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.IosDownloadController
 import de.westnordost.streetcomplete.data.initialize
-import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
-import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.IosChangesetAutoCloser
+import de.westnordost.streetcomplete.data.maptiles.IosMapTilesDownloader
+import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.upload.IosUploadController
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.screens.about.AppStoreInfo
@@ -34,6 +37,7 @@ import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import org.koin.dsl.onClose
 import org.maplibre.compose.location.IosLocationProvider
 import org.maplibre.compose.location.IosSystemSettingsLauncher
 import org.maplibre.compose.location.LocationProvider
@@ -85,7 +89,7 @@ val iosModule = module {
         val databaseFilePath = databaseUrl.path!!
         val databaseConnection = BundledSQLiteDriver().open(databaseFilePath)
         DatabaseImpl(databaseConnection).apply { initialize(StreetCompleteDatabaseConfigurator) }
-    }
+    } onClose { it?.close() }
 
     // avatars cache dir
 
@@ -128,9 +132,13 @@ val iosModule = module {
 
     // background jobs
 
-    single<UploadController> { IosUploadController() }
+    single<UploadController> { IosUploadController(get()) } onClose { (it as? IosUploadController)?.close() }
 
-    single<DownloadController> { IosDownloadController() }
+    single<DownloadController> { IosDownloadController(get()) } onClose { (it as? IosDownloadController)?.close() }
 
-    factory<ChangesetAutoCloser> { IosChangesetAutoCloser() }
+    single { IosPeriodicCleaner { get<Cleaner>().cleanOld() } } onClose { it?.close() }
+
+    single<PeriodicCleaner> { get<IosPeriodicCleaner>() }
+
+    factory<MapTilesDownloader> { IosMapTilesDownloader() }
 }

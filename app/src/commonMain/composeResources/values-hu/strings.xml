@@ -467,7 +467,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="underground">föld alatt</string>
     <string name="quest_sidewalk_value_yes">járda</string>
     <string name="quest_sidewalk_value_no">nincs járda</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Tilos gyalogosan közlekedni ezen az úton úgy, hogy nincsen járda?</string>
     <string name="quest_buildingType_title">Ez milyen épület?</string>
     <string name="pref_title_theme_select">Téma kiválasztása</string>
     <string name="theme_light">Világos</string>
@@ -672,7 +671,6 @@ szintje</string>
     <string name="at_housenumber">házszám: %1$s</string>
     <string name="quest_openingHours_add_off_days">Szabadnapok hozzáadása</string>
     <string name="quest_openingHours_off_day">Szabadnap</string>
-    <string name="quest_cycleway_resurvey_title">Itt még mindig ez a kerékpáros helyzet?</string>
     <string name="pref_title_resurvey_intervals">Újbóli felmérések intervalluma</string>
     <string name="resurvey_intervals_less_often">Kérdezzen rá ritkábban</string>
     <string name="resurvey_intervals_default">Alapértelmezett</string>
@@ -885,7 +883,6 @@ Ha a küldetések számát túl soknak találod, a beállításokban bármikor f
     <string name="quest_access_yes">Bárki</string>
     <string name="quest_access_customers">Ez adott hely látogatói (pl. ügyfelek részére)</string>
     <string name="quest_access_private">Kizárólag engedéllyel rendelkező személyek</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Még mindig pontos ennek a postaládának az ürítési ideje?</string>
     <string name="quest_bicycle_barrier_type_title">Ez milyen típusú kerékpáros akadály?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Az útirányra átlósan</string>
     <string name="quest_barrier_bicycle_type_tilted">Keskeny átjáró, fölfelé keskenyedik</string>
@@ -922,8 +919,6 @@ Másik megoldásként írhatsz egy jegyzetet (fényképpel).</string>
     <string name="quest_fireHydrant_position_sidewalk">Járdán</string>
     <string name="quest_fireHydrant_position_parking_lot">Parkolóhelyen</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Igen (leírom jegyzetben)</string>
-    <string name="quest_smoothness_square_title">Milyen minőségű a tér felülete?</string>
-    <string name="quest_smoothness_road_title">Milyen minőségű az út felülete?</string>
     <string name="quest_smoothness_title_excellent">Tükörsima</string>
     <string name="quest_smoothness_title_good">Jobbára sima</string>
     <string name="quest_smoothness_title_intermediate">Kicsit zötyögős</string>
@@ -976,7 +971,6 @@ Másik megoldásként írhatsz egy jegyzetet (fényképpel).</string>
     <string name="ar_core_tracking_error_camera_unavailable">A kamerát egy másik alkalmazás használja</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Kormánytartó</string>
     <string name="quest_bicycle_parking_access_title2">Ki parkolhat itt a kerékpárjával? A parkolás lehet ingyenes vagy fizetős.</string>
-    <string name="quest_playground_access_title2">Ki használhatja a játszóteret?</string>
     <string name="ar_measure">Mérés</string>
     <string name="ar_core_tracking_error_too_steep_angle">Túl meredek a szög, állj egy kicsit távolabb</string>
     <string name="default_disabled_msg_no_ar">A küldetés megoldásához mérőszalagra lesz szükséged, mert ez az eszköz nem támogatja a kamerás mérést.</string>
@@ -1032,7 +1026,6 @@ Másik megoldásként írhatsz egy jegyzetet (fényképpel).</string>
     <string name="quest_lit_title">Ki van világítva?</string>
     <string name="quest_openingHours_title">Mi a nyitvatartási ideje?</string>
     <string name="quest_openingHours_signed_title">Ki van írva a nyitvatartási idő?</string>
-    <string name="quest_openingHours_resurvey_title">Érvényes ez a nyitvatartási idő?</string>
     <string name="quest_placeName_title">Mi a neve a helynek?</string>
     <string name="quest_shop_type_title2">Milyen típusú üzlet?</string>
     <string name="quest_smoking_title2">Szabad itt dohányozni?</string>
@@ -1305,8 +1298,6 @@ Támogatással kapcsolatos információkat a honlapunkon vagy a projekt kezdőol
     <string name="default_disabled_msg_visible_sign_moped">Ez a küldetéstípus alapértelmezés szerint le van tiltva, mert a segédmotoros kerékpárok közlekedését csak a kerékpárút kezdeténél/végénél található jelzőtáblák jelzik.</string>
     <string name="quest_arrow_tutorial">Az ábrán látható nyilak a térképen lévő út irányát mutatják a jelölő pozíciójában. Próbáld meg elforgatni a térképet, és meg fogod érteni.</string>
     <string name="info">További információ</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Tiltott.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Engedélyezve van.</string>
     <string name="quest_buildingLevels_hint">Lejtőn álló épületeknél a szintszámlálás a legalacsonyabb oldal talajszintjétől kezdődik.
 
 Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla tetőszintű tetők nem feltétlenül laposak, csak nem elég magasak egy teljes szinthez.</string>
@@ -1347,7 +1338,6 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="action_messages">Üzenetek megjelenítése</string>
     <string name="action_create_new_poi">Új létrehozása</string>
     <string name="auth_error">Jogosultsági hiba. Próbálj újra bejelentkezni.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Valójában van egy járda.</string>
     <string name="quest_bicycle_repair_station_services_title">Milyen kerékpáros felszerelés érhető el itt?</string>
     <string name="quest_bicycle_repair_station_pump">Pumpa</string>
     <string name="quest_bicycle_repair_station_tools">Különféle szerszámok</string>
@@ -1431,7 +1421,6 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="quest_bicycle_charging_station_capacity_title">Hány kerékpárt lehet itt egyszerre tölteni?</string>
     <string name="quest_charging_station_bicycles_title">Kerékpárt is lehet itt tölteni?</string>
     <string name="quest_charging_station_bicycles_hint">A kerékpártöltő adapterek normál háztartási aljzatokba csatlakoztathatók.</string>
-    <string name="quest_tower_access_title">Ki férhet hozzá ehhez a toronyhoz? Lehet ingyenes vagy fizetős.</string>
     <string name="quest_recycling_type_pet_bottles">PET-palackok</string>
     <string name="quest_maxweight_add_sign">A tábla hozzáadása</string>
     <string name="quest_maxweight_remove_sign">A tábla eltávolítása</string>

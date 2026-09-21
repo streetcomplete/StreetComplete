@@ -49,12 +49,11 @@ fun DatesActiveTable(
     cellPadding: Dp = 2.dp,
     cellCornerRadius: Dp = 6.dp,
 ) {
-    val locale = Locale.current
-    val weekdays = remember(locale) {
-        DayOfWeek.entries.map { it.getDisplayName(DateTimeTextSymbolStyle.Narrow, locale) }
+    val weekdays = remember {
+        DayOfWeek.entries.map { it.getDisplayName(DateTimeTextSymbolStyle.Narrow) }
     }
-    val months = remember(locale) {
-        Month.entries.map { it.getDisplayName(DateTimeTextSymbolStyle.Short, locale) }
+    val months = remember {
+        Month.entries.map { it.getDisplayName(DateTimeTextSymbolStyle.Short) }
     }
 
     BoxWithConstraints(modifier) {

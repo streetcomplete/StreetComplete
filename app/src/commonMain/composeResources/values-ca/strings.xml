@@ -468,7 +468,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="underground">subterrani</string>
     <string name="quest_sidewalk_value_yes">amb vorera</string>
     <string name="quest_sidewalk_value_no">sense vorera</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Els vianants tenen prohibit caminar per aquesta via en aquest punt?</string>
     <string name="quest_buildingType_title">Quin tipus d'edifici és?</string>
     <string name="pref_title_theme_select">Seleccioneu un tema</string>
     <string name="theme_light">Clar</string>
@@ -671,7 +670,6 @@ d'acompliment</string>
     <string name="at_housenumber">número de casa %1$s</string>
     <string name="quest_openingHours_add_off_days">Afegeix els dies de descans</string>
     <string name="quest_openingHours_off_day">Dia de descans</string>
-    <string name="quest_cycleway_resurvey_title">Aquesta és encara la situació del carril bici aquí?</string>
     <string name="pref_title_resurvey_intervals">Intervals de reenquesta</string>
     <string name="resurvey_intervals_less_often">Demana-ho menys sovint</string>
     <string name="resurvey_intervals_default">Per defecte</string>
@@ -884,7 +882,6 @@ Si esteu aclaparats pel nombre de missions, sempre podeu ajustar quines missions
     <string name="quest_access_yes">Qualsevol persona del públic general</string>
     <string name="quest_access_customers">Qualsevol persona que visita un lloc en específic (ex. només clients)</string>
     <string name="quest_access_private">Només les persones autoritzades</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Encara són correctes els temps d'arreplega d'aquesta bústia?</string>
     <string name="quest_bicycle_barrier_type_title">Quin tipus de barrera per a bicicleta és aquesta?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Diagonal al camí</string>
     <string name="quest_barrier_bicycle_type_tilted">Pas estret, més petit a la part superior</string>
@@ -923,8 +920,6 @@ Alternativament, pots deixar una nota (amb foto).</string>
     <string name="quest_fireHydrant_position_sidewalk">A la vorera</string>
     <string name="quest_fireHydrant_position_parking_lot">En un aparcament</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Sí (deixa una nota)</string>
-    <string name="quest_smoothness_square_title">Quina és la qualitat de la superfície d’aquesta plaça?</string>
-    <string name="quest_smoothness_road_title">Quina és la qualitat de la superfície d’aquesta via?</string>
     <string name="quest_smoothness_title_excellent">Superfície plana i fàcil de creuar</string>
     <string name="quest_smoothness_title_good">Més o menys transitable</string>
     <string name="quest_smoothness_title_intermediate">Un poc irregular</string>
@@ -978,7 +973,6 @@ Alternativament, pots deixar una nota (amb foto).</string>
     <string name="ar_core_tracking_error_camera_unavailable">La càmera està sent usada per una altra app</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Suport de manillar</string>
     <string name="quest_bicycle_parking_access_title2">Qui pot aparcar la bicicleta aquí? L'aparcament pot ser gratuït o pagat.</string>
-    <string name="quest_playground_access_title2">Qui pot utilitzar aquest parc?</string>
     <string name="ar_measure">Mesura</string>
     <string name="ar_core_tracking_error_too_steep_angle">Massa inclinat, aparteu-vos una mica</string>
     <string name="default_disabled_msg_no_ar">Necesites una cinta mètrica per a resoldre aquesta missió perqué aquest dispositiu no suporta mesurar amb la càmera.</string>
@@ -1035,7 +1029,6 @@ Alternativament, pots deixar una nota (amb foto).</string>
     <string name="quest_lit_title">Ací hi ha il·luminació?</string>
     <string name="quest_openingHours_title">Quin és l'horari d'obertura?</string>
     <string name="quest_openingHours_signed_title">Hi ha un cartell amb els horaris d'obertura?</string>
-    <string name="quest_openingHours_resurvey_title">Continuen sent aquests els horaris d'obertura?</string>
     <string name="quest_placeName_title">Quin és el nom d'aquest lloc?</string>
     <string name="quest_shop_type_title2">Quin tipus de tenda és aquesta?</string>
     <string name="quest_smoking_title2">Està permés fumar ací?</string>
@@ -1313,8 +1306,6 @@ Podeu trobar informació sobre les donacions a la nostra web o al portal del pro
     <string name="default_disabled_msg_visible_sign_moped">Aquest grup de missions està desactivat per defecte perquè l'accés de ciclomotors sols s'especifica en senyals al principi o al final del carril bici.</string>
     <string name="quest_arrow_tutorial">Les fletxes de la il·lustració estan orientades cap a les dues direccions de la via sortint des del punt central de la missió. Prova de girar el mapa i ho entendràs millor.</string>
     <string name="info">Més informació</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Està prohibit.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Està permès.</string>
     <string name="quest_buildingLevels_hint">Per edificis en un pendent, el recompte de pisos comença des del nivell de terra en el costat més baix.
 
 Un pis compta com a teulada quan les seves finestres són a la teulada. En conseqüència, les teulades amb zero nivells de teulada no són necessàriament planes, simplement no són prou alts per un pis sencer.</string>
@@ -1355,7 +1346,6 @@ Un pis compta com a teulada quan les seves finestres són a la teulada. En conse
     <string name="action_messages">Mostra els missatges</string>
     <string name="action_create_new_poi">Crea'n un de nou</string>
     <string name="auth_error">Error en l'autorització. Inicieu sessió de nou.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Realment hi ha una vorera.</string>
     <string name="quest_bicycle_repair_station_services_title">Quin equipament de bicicletes hi ha aquí?</string>
     <string name="quest_bicycle_repair_station_pump">Manxa d'aire</string>
     <string name="quest_bicycle_repair_station_tools">Varies eines</string>
@@ -1438,7 +1428,6 @@ Un pis compta com a teulada quan les seves finestres són a la teulada. En conse
     <string name="quest_bicycle_charging_station_capacity_title">Quantes bicicletes es poden carregar aquí alhora?</string>
     <string name="quest_charging_station_bicycles_title">També es poden carregar bicicletes aquí?</string>
     <string name="quest_charging_station_bicycles_hint">Els adaptadors de carregador de bicicletes es connecten a endolls domèstics normals.</string>
-    <string name="quest_tower_access_title">Qui pot accedir a aquesta torre? Pot ser gratuït o de pagament.</string>
     <string name="quest_recycling_type_pet_bottles">Ampolles PET</string>
     <string name="quest_maxweight_add_sign">Afegiu signe</string>
     <string name="quest_maxweight_remove_sign">Elimineu signe</string>

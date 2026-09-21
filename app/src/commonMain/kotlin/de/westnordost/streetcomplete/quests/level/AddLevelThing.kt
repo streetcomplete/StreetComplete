@@ -28,11 +28,11 @@ class AddLevelThing : OsmElementQuestType<String> {
      * like small airport terminals, like Mo Chit 2 in Bangkok*/
     private val mallFilter by lazy { """
         ways, relations with
-         shop ~ department_store|mall
-         or aeroway = terminal
-         or railway = station
-         or amenity = bus_station
-         or public_transport = station
+          shop ~ department_store|mall
+          or aeroway = terminal
+          or railway = station
+          or amenity = bus_station
+          or public_transport = station
     """.toElementFilterExpression() }
 
     override val changesetComment = "Determine on which level things are in a building"

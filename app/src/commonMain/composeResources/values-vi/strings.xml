@@ -463,7 +463,6 @@ Một phần có nghĩa là một người đi xe lăn có thể vào và sử d
     <string name="underground">hầm</string>
     <string name="quest_sidewalk_value_yes">có vỉa hè</string>
     <string name="quest_sidewalk_value_no">không có vỉa hè</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Có cấm đi bộ trên đường này không?</string>
     <string name="quest_buildingType_title">Đây là tòa nhà loại gì?</string>
     <string name="pref_title_theme_select">Chọn giao diện</string>
     <string name="theme_light">Sáng</string>
@@ -668,7 +667,6 @@ thành tích</string>
     <string name="at_housenumber">số nhà %1$s</string>
     <string name="quest_openingHours_add_off_days">Thêm ngày nghỉ</string>
     <string name="quest_openingHours_off_day">Ngày nghỉ</string>
-    <string name="quest_cycleway_resurvey_title">Việc đi xe đạp vẫn còn ở đây không?</string>
     <string name="pref_title_resurvey_intervals">Tần suất khảo sát lại</string>
     <string name="resurvey_intervals_less_often">Hỏi ít thường xuyên hơn</string>
     <string name="resurvey_intervals_default">Mặc định</string>
@@ -873,7 +871,6 @@ Nếu bạn bị quá tải bởi số lượng nhiệm vụ, bạn có thể l�
     <string name="quest_access_yes">Bất kỳ người dân nào</string>
     <string name="quest_access_customers">Bất kỳ người nào đến thăm một địa điểm cụ thể (ví dụ: chỉ khách hàng)</string>
     <string name="quest_access_private">Chỉ (những) cá nhân có sự cho phép</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Thời gian lấy đồ tại thùng thu gom này có còn chính xác không?</string>
     <string name="quest_bicycle_barrier_type_title">Đây là loại rào chắn xe đạp nào?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Chéo với đường dẫn</string>
     <string name="quest_barrier_bicycle_type_tilted">Đường đi hẹp, nhỏ dần về phía trên</string>
@@ -910,8 +907,6 @@ Ngoài ra, bạn có thể để lại ghi chú (cùng với ảnh).</string>
     <string name="quest_fireHydrant_position_sidewalk">Trên vỉa hè</string>
     <string name="quest_fireHydrant_position_parking_lot">Ở chỗ đậu xe</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Có (để lại ghi chú)</string>
-    <string name="quest_smoothness_square_title">Chất lượng mặt đường quảng trường ở đây thế nào?</string>
-    <string name="quest_smoothness_road_title">Chất lượng mặt đường ở đây thế nào?</string>
     <string name="quest_smoothness_title_excellent">Mịn và đều</string>
     <string name="quest_smoothness_title_good">Hầu hết đều</string>
     <string name="quest_smoothness_title_intermediate">Mấp mô một chút</string>
@@ -963,7 +958,6 @@ Ngoài ra, bạn có thể để lại ghi chú (cùng với ảnh).</string>
     <string name="ar_core_tracking_error_camera_unavailable">Camera được sử dụng bởi một ứng dụng khác</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Giá đỡ tay lái</string>
     <string name="quest_bicycle_parking_access_title2">Ai được phép đỗ xe đạp ở đây? Có thể đỗ xe miễn phí hoặc trả phí.</string>
-    <string name="quest_playground_access_title2">Ai được phép sử dụng sân chơi này?</string>
     <string name="ar_measure">Đo đạc</string>
     <string name="ar_core_tracking_error_too_steep_angle">Góc quá dốc, hãy bước ra xa một chút</string>
     <string name="default_disabled_msg_no_ar">Bạn cần một chiếc thước dây để giải quyết nhiệm vụ này vì thiết bị này không hỗ trợ đo bằng camera.</string>
@@ -1019,7 +1013,6 @@ Ngoài ra, bạn có thể để lại ghi chú (cùng với ảnh).</string>
     <string name="quest_lit_title">Ở đây có đèn không?</string>
     <string name="quest_openingHours_title">Giờ mở cửa ở đây là mấy giờ?</string>
     <string name="quest_openingHours_signed_title">Giờ mở cửa ở đây có ghi rõ không?</string>
-    <string name="quest_openingHours_resurvey_title">Giờ mở cửa này có còn đúng không?</string>
     <string name="quest_placeName_title">Tên của nơi này là gì?</string>
     <string name="quest_shop_type_title2">Đây là loại cửa hàng gì?</string>
     <string name="quest_smoking_title2">Có được phép hút thuốc lá ở đây không?</string>
@@ -1212,8 +1205,6 @@ Dữ liệu bị thiếu luôn được hiển thị bằng màu đỏ.</string>
     <string name="quest_pedestrian_crossing_signals2">Có đèn tín hiệu báo khi nào được qua đường ở đây không?</string>
     <string name="quest_moped_access_allowed">Không có biển báo</string>
     <string name="info">Thông tin khác</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Bị cấm.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Được phép.</string>
     <string name="action_open_in_browser">Mở trong trình duyệt</string>
     <string name="about_category_contribute">Đóng góp</string>
     <string name="pref_title_language_select2">Ngôn ngữ</string>

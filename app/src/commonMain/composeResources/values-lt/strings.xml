@@ -468,7 +468,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="underground">po žeme</string>
     <string name="quest_sidewalk_value_yes">šaligatvis</string>
     <string name="quest_sidewalk_value_no">nėra šaligatvio</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Ar pėstiesiems draudžiama eiti šiuo keliu?</string>
     <string name="quest_buildingType_title">Kokio tipo šis pastatas?</string>
     <string name="pref_title_theme_select">Parinkite temą</string>
     <string name="theme_light">Šviesi</string>
@@ -671,7 +670,6 @@ dienų</string>
     <string name="at_housenumber">namo numeris %1$s</string>
     <string name="quest_openingHours_add_off_days">Pridėti nedarbo dienas</string>
     <string name="quest_openingHours_off_day">Nedarbo diena</string>
-    <string name="quest_cycleway_resurvey_title">Ar čia vis dar vyrauja tokia dviračių sporto situacija?</string>
     <string name="pref_title_resurvey_intervals">Tyrimų intervalai</string>
     <string name="resurvey_intervals_less_often">Klausti rečiau</string>
     <string name="resurvey_intervals_default">Numatytasis</string>
@@ -883,7 +881,6 @@ Jei esate priblokštas užduočių skaičiaus, visada galite nustatyti, kurios u
     <string name="quest_access_yes">Bet kuris plačiosios visuomenės narys</string>
     <string name="quest_access_customers">bet kuris asmuo, apsilankęs tam tikroje vietoje (pvz., tik klientai)</string>
     <string name="quest_access_private">Tik leidimą turintis (-ys) asmuo (-enys)</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Ar šios surinkimo dėžutės paėmimo laikas vis dar teisingas?</string>
     <string name="quest_bicycle_barrier_type_title">Kokio tipo dviračių užtvaras tai yra?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Įstrižainė į kelią</string>
     <string name="quest_barrier_bicycle_type_tilted">Siauras praėjimas, mažėja link viršaus</string>
@@ -920,8 +917,6 @@ Arba galite palikti pastabą (su nuotrauka).</string>
     <string name="quest_fireHydrant_position_sidewalk">Ant pėsčiųjų tako</string>
     <string name="quest_fireHydrant_position_parking_lot">Automobilių stovėjimo vietoje</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Taip (palikite pastabą)</string>
-    <string name="quest_smoothness_square_title">Kokia šio kvadrato paviršiaus kokybė?</string>
-    <string name="quest_smoothness_road_title">Kokia šio kelio dangos kokybė?</string>
     <string name="quest_smoothness_title_excellent">Lygus ir tolygus</string>
     <string name="quest_smoothness_title_good">Dažniausiai net</string>
     <string name="quest_smoothness_title_intermediate">Šiek tiek nelygus</string>
@@ -974,7 +969,6 @@ Arba galite palikti pastabą (su nuotrauka).</string>
     <string name="ar_core_tracking_error_camera_unavailable">Fotoaparatą naudoja kita programa</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Vairo laikiklis</string>
     <string name="quest_bicycle_parking_access_title2">Kas čia gali statyti dviračius? Automobilių stovėjimo aikštelė gali būti nemokama arba mokama.</string>
-    <string name="quest_playground_access_title2">Kam leidžiama naudotis šia žaidimų aikštele?</string>
     <string name="ar_measure">Priemonė</string>
     <string name="ar_core_tracking_error_too_steep_angle">Per daug stačiu kampu, šiek tiek atsitraukite</string>
     <string name="default_disabled_msg_no_ar">Šiai užduočiai išspręsti reikia matavimo juostos, nes šis prietaisas nepalaiko matavimo fotoaparatu.</string>
@@ -1030,7 +1024,6 @@ Arba galite palikti pastabą (su nuotrauka).</string>
     <string name="quest_lit_title">Ar jis čia apšviestas?</string>
     <string name="quest_openingHours_title">Kokios čia darbo valandos?</string>
     <string name="quest_openingHours_signed_title">Ar čia pasirašytos darbo valandos?</string>
-    <string name="quest_openingHours_resurvey_title">Ar šios darbo valandos vis dar teisingos?</string>
     <string name="quest_placeName_title">Kaip vadinasi ši vieta?</string>
     <string name="quest_shop_type_title2">Kokio tipo parduotuvė tai yra?</string>
     <string name="quest_smoking_title2">Ar čia leidžiama rūkyti?</string>

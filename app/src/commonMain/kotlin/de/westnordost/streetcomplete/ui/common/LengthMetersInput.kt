@@ -25,7 +25,7 @@ fun LengthMetersInput(
     onChange: (Length.Meters?) -> Unit,
     maxMeterDigits: Pair<Int, Int>,
     modifier: Modifier = Modifier,
-    locale: Locale = Locale.current,
+    locale: Locale? = null,
     style: TextFieldStyle = TextFieldStyle.Filled,
 ) {
     Row(

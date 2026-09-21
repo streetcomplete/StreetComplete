@@ -228,6 +228,8 @@ val commonModule = module {
 
     //region basic configuration
 
+    factory { ApplicationInitializer(get(), get(), get(), get(), get(), get(), get()) }
+
     single { HttpClient {
         defaultRequest {
             userAgent(ApplicationConstants.USER_AGENT)
@@ -360,12 +362,12 @@ val commonModule = module {
     factory { OpenChangesetsDao(get()) }
     factory { EditElementsDao(get()) }
 
-    single { OpenChangesetsManager(get(), get(), get(), get()) }
+    single { OpenChangesetsManager(get(), get()) }
 
     single { ElementEditsUploader(get(), get(), get(), get(), get(), get()) }
 
     single<ElementEditsSource> { get<ElementEditsController>() }
-    single<ElementEditsController> { ElementEditsControllerImpl(get(), get(), get(), get()) }
+    single<ElementEditsController> { ElementEditsControllerImpl(get(), get(), get()) }
     single<MapDataWithEditsSource> { MapDataWithEditsSourceImpl(get(), get(), get()) }
 
     factory { CreatedElementsDao(get()) }
@@ -592,7 +594,7 @@ val commonModule = module {
     viewModel<MainViewModel> {
         MainViewModelImpl(
             get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
-            get(), get(), get(), get(), get(), get(), get(), get(), get(),
+            get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
         )
     }
 

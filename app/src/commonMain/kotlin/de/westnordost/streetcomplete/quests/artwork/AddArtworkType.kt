@@ -18,7 +18,10 @@ import org.jetbrains.compose.resources.stringResource
 
 class AddArtworkType : OsmFilterQuestType<ArtworkType>() {
 
-    override val elementFilter = "nodes, ways with tourism = artwork and !artwork_type"
+    override val elementFilter = """
+        nodes, ways with
+          tourism = artwork and !artwork_type
+    """
     override val changesetComment = "Survey artwork type"
     override val wikiLink = "Key:artwork_type"
     override val icon = Res.drawable.quest_artwork

@@ -12,7 +12,8 @@ import de.westnordost.streetcomplete.util.ktx.allExceptFirstAndLast
 import de.westnordost.streetcomplete.util.ktx.firstAndLast
 
 private val footwaysFilter by lazy { """
-    ways with (
+    ways with
+      (
         highway ~ footway|path
         or highway = cycleway and foot ~ yes|designated
       )

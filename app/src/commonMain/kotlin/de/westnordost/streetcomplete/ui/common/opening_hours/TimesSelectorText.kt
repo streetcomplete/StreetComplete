@@ -40,7 +40,7 @@ fun TimesSelectorText(
     time: TimesSelector,
     onChange: (TimesSelector) -> Unit,
     modifier: Modifier = Modifier,
-    locale: Locale = Locale.current,
+    locale: Locale? = null,
     enabled: Boolean = true,
 ) {
     var showDialog by remember { mutableStateOf(false) }

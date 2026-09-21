@@ -35,8 +35,8 @@ fun AddOpeningHoursDialogCascade(
     onChange: (HierarchicOpeningHours) -> Unit,
     workweek: List<WeekdaysSelector>,
     timeMode: TimeMode,
-    locale: Locale = Locale.current,
-    userLocale: Locale = Locale.current,
+    countryLocale: Locale? = null,
+    userLocale: Locale? = null,
 ) {
     var step by remember(requestedData) { mutableStateOf(requestedData) }
     val data = remember { AddOpeningHoursData() }
@@ -99,8 +99,7 @@ fun AddOpeningHoursDialogCascade(
                     data.months = newMonthsSelectorList
                     step = SelectWeekdays
                 },
-
-                locale = locale,
+                countryLocale = countryLocale,
                 userLocale = userLocale,
             )
         }
@@ -131,7 +130,7 @@ fun AddOpeningHoursDialogCascade(
                     }
                 },
                 initialWeekdays = if (step == SelectWeekdays) initialWeekdays else emptyList(),
-                locale = locale,
+                countryLocale = countryLocale,
                 userLocale = userLocale,
             )
         }
@@ -164,7 +163,7 @@ fun AddOpeningHoursDialogCascade(
                     data.time = newTime
                     selectComplete()
                 },
-                locale = locale,
+                locale = countryLocale,
             )
         }
     }

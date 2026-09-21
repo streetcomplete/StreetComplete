@@ -81,7 +81,7 @@ private fun StringWithCursor.parseText(): String? {
         if (c != ' ' || chars.lastOrNull() != ' ') chars.add(c)
     }
     if (chars.isEmpty()) return null
-    return chars.toCharArray().concatToString().replaceHtmlEntities()
+    return chars.toCharArray().concatToString().unescapeHtmlEntities()
 }
 
 private fun StringWithCursor.parseAttributes(): Map<String, String> {
@@ -115,7 +115,7 @@ private fun StringWithCursor.parseAttribute(): Pair<String, String>? {
         if (value == null) fail("Expected alphanumeric attribute value")
     }
     if (value.any { it.isISOControl() }) fail("Attribute value contains control characters")
-    return name to value.replaceHtmlEntities()
+    return name to value.unescapeHtmlEntities()
 }
 
 private fun StringWithCursor.skipWhitespaces(): Int =
@@ -126,9 +126,6 @@ private fun StringWithCursor.fail(message: String): Nothing =
 
 private fun Char.isAlphanumeric(): Boolean =
     this in 'a'..'z' || this in 'A'..'Z' || this in '0'..'9'
-
-fun String.replaceHtmlEntities(): String =
-    replace(entityRegex) { entities[it.value]?.toString() ?: it.value }
 
 // https://developer.mozilla.org/en-US/docs/Glossary/Void_element
 private val voidTags = setOf(
@@ -148,11 +145,3 @@ private val ignoredElementsRegex by lazy {
         setOf(RegexOption.IGNORE_CASE)
     )
 }
-private val entityRegex by lazy { Regex("&[a-zA-Z0-9]+;") }
-
-private val entities = mapOf(
-    "&quot;" to '"',
-    "&amp;" to '&',
-    "&lt;" to '<',
-    "&gt;" to '>',
-)

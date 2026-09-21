@@ -36,9 +36,9 @@ class AddCrossingIsland : OsmElementQuestType<Boolean> {
           or highway and oneway and oneway != no
     """.toElementFilterExpression() }
 
-    private val excludedAdjacentWaysFilter by lazy { """
-        ways with footway = traffic_island
-    """.toElementFilterExpression() }
+    private val excludedAdjacentWaysFilter by lazy {
+        "ways with footway = traffic_island".toElementFilterExpression()
+    }
 
     override val changesetComment = "Specify whether pedestrian crossings have islands"
     override val wikiLink = "Key:crossing:island"

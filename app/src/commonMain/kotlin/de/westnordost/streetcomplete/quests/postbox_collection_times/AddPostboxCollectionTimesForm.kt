@@ -8,7 +8,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.text.intl.Locale
 import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -53,8 +52,7 @@ fun AddPostboxCollectionTimesForm(
             timeMode = timeMode,
             countryInfo = countryInfo,
             addButtonContent = { Text(stringResource(Res.string.quest_collectionTimes_add_times)) },
-            locale = countryInfo.userPreferredLocale,
-            userLocale = Locale.current,
+            countryLocale = countryInfo.userPreferredLocale,
             enabled = !isDisplayingPrevious,
         )
     }

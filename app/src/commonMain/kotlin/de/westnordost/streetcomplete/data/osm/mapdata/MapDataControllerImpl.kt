@@ -161,9 +161,9 @@ class MapDataControllerImpl constructor(
     override fun getElementCounts(bbox: BoundingBox): MapDataSource.ElementCounts {
         val data = getMapDataWithGeometry(bbox)
         return MapDataSource.ElementCounts(
-            data.count { it is Node },
-            data.count { it is Way },
-            data.count { it is Relation }
+            data.nodes.size,
+            data.ways.size,
+            data.relations.size
         )
     }
 

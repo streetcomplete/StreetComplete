@@ -96,7 +96,7 @@ fun QuestSelectionHintDialog(
                 },
                 buttonRow = {
                     TextButton(onClick = { onDismissRequest(); onClickOpenSettings() }) {
-                        Text(stringResource(Res.string.quest_streetName_cantType_open_settings))
+                        Text(stringResource(Res.string.quest_streetName_cantType_description2))
                     }
                     TextButton(onClick = onDismissRequest) {
                         Text(stringResource(Res.string.ok))

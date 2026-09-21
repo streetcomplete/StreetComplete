@@ -23,17 +23,18 @@ import org.jetbrains.compose.resources.stringResource
 class AddTactilePavingSteps : OsmFilterQuestType<TactilePavingStepsAnswer>() {
 
     override val elementFilter = """
-        ways with highway = steps
-         and surface ~ ${PAVED_SURFACES.joinToString("|")}
-         and !sac_scale
-         and (!conveying or conveying = no)
-         and access !~ private|no
-        and (
-          !tactile_paving
-          or tactile_paving = unknown
-          or tactile_paving ~ no|partial|incorrect and tactile_paving older today -8 years
-          or tactile_paving = yes and tactile_paving older today -12 years
-        )
+        ways with
+          highway = steps
+          and surface ~ ${PAVED_SURFACES.joinToString("|")}
+          and !sac_scale
+          and (!conveying or conveying = no)
+          and access !~ private|no
+          and (
+            !tactile_paving
+            or tactile_paving = unknown
+            or tactile_paving ~ no|partial|incorrect and tactile_paving older today -8 years
+            or tactile_paving = yes and tactile_paving older today -12 years
+          )
     """
 
     override val changesetComment = "Survey tactile paving on steps"

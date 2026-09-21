@@ -1,9 +1,10 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Otto, Nosto, Suomen Automatia Oy, Otto., Automatia Pankkiautomaatit Oy, Forex, Osuuspankki, OttoPlus, Loomis Automatia Oy, TalletusOtto, Automatia, Nordea, OTTO, Loomis, Bittimaatti, Otto-pankkiautomaatti, Nokas CMS Oy, atm, Otto-automaatti, Nosto-automaatti, Nokas, Aktia]
-chargingStationOperators: [Helen, VIRTA, K-Lataus, ABC-lataus, Recharge, ABC, Tesla, Lidl, Plugit, Ionity, Virta, eParking, St1, K-lataus, Neste, Asikkalan kunta, Recharge Finland Oy, Motonet, K Auto Oy, Korttelilataus, Faast Point Oy, KSSe, Fortum, AL-Lataus Oy, Kotkan energia, Väre, S-ryhmä, Recharge Infra, PlugIt, Neste Lataus, Fortum Charge&Drive, Fortum Charge & Drive, Virtapiste, Virta Global Charging Station, Tokmanni, STL, Plugit Finland Oy, Osuuskauppa Arina, McDonald's, Juustoportti, IKEA, Autoliitto, Alva, ABC latauspiste, ABC Lataus, ABB]
-chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
-clothesContainerOperators: [UFF, Suomen Pakkauskierrätys Rinki, Helsingin seudun ympäristöpalvelut, Fida, Suomen Pakkauskierrätys RINKI Oy, Recci, Rinki, Auringonnousu, Suomen Pakkauskierrätys Rinki Oy, Rosk'n roll, Rinkiin, Rinki-ekopiste, Pelastusarmeija, Emmy]
+atmOperators: [Otto, Nosto, Suomen Automatia Oy, Otto., Automatia Pankkiautomaatit Oy, Forex, Osuuspankki, OttoPlus, Nokas, Loomis Automatia Oy, TalletusOtto, Automatia, Nordea, OTTO, Loomis, Bittimaatti, Otto-pankkiautomaatti, Nokas CMS Oy, atm, Otto-automaatti, Nosto-automaatti, Aktia]
+chargingStationOperators: [Helen, VIRTA, K-Lataus, ABC-lataus, Recharge, Tesla, ABC, Lidl, Plugit, Ionity, Virta, eParking, St1, K-lataus, Neste, Asikkalan kunta, Recharge Finland Oy, Motonet, Korttelilataus, K Auto Oy, Faast Point Oy, KSSe, Sato Kodit Oy, Fortum, PlugIt, Kotkan energia, AL-Lataus Oy, Väre, S-ryhmä, Recharge Infra, Neste Lataus, Fortum Charge&Drive, Fortum Charge & Drive, Virtapiste, Virta Global Charging Station, Tokmanni, STL, Plugit Finland Oy, Osuuskauppa Arina, McDonald's, Juustoportti, IKEA, Autoliitto, Alva, ABC latauspiste, ABC Lataus, ABB]
+chargingStationSocketTypes: [type2_cable, type2, type2_combo]
+clothesContainerOperators: [UFF, Suomen Pakkauskierrätys Rinki, Helsingin seudun ympäristöpalvelut, Fida, Suomen Pakkauskierrätys RINKI Oy, Rinki, Recci, Auringonnousu, Suomen Pakkauskierrätys Rinki Oy, Rosk'n roll, Rinkiin, Rinki-ekopiste, Pelastusarmeija, Emmy]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typef, typec]
 exclusiveCycleLaneStyle: white dashes
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true
@@ -16,6 +17,6 @@ mobileCountryCode: 244
 noEntrySignStyle: yellow
 officialLanguages: [fi, sv]
 orchardProduces: [strawberry, apple, raspberry, blueberry, tomato, pear, chilli_pepper, sweet_pepper]
-parcelLockerBrand: [Posti, Budbee, Postin automaatti, Smartpost, Pakettipiste, PostNord, Matkahuolto, iBoxen, Smartmile, Prisma, Lähiboksi, DHL]
+parcelLockerBrand: [Posti, Budbee, Postin automaatti, Smartpost, PostNord, Pakettipiste, Matkahuolto, iBoxen, Prisma, Lähiboksi, DHL, Agora]
 popularSports: [soccer, tennis, basketball, beachvolleyball, shooting, ice_hockey]
 postboxesHaveCollectionTimes: true

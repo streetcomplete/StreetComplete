@@ -54,11 +54,11 @@ fun AddBusStopNameForm(
 // this filter needs to be kept somewhat in sync with the filter in AddBusStopName
 private val busStopsWithNamesFilter by lazy { """
     nodes, ways, relations with
-    (
-      public_transport = platform and bus = yes
-      or highway = bus_stop and public_transport != stop_position
-      or railway ~ halt|station|tram_stop
-    )
-    and name
+      (
+        public_transport = platform and bus = yes
+        or highway = bus_stop and public_transport != stop_position
+        or railway ~ halt|station|tram_stop
+      )
+      and name
     """.toElementFilterExpression()
 }

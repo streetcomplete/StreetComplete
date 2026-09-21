@@ -95,9 +95,6 @@
         "amenity/doctors": {
           "name": "Доктар"
         },
-        "amenity/embassy": {
-          "name": "Амбасада"
-        },
         "amenity/fast_food/hot_dog": {
           "terms": ["хот-доґ", "булачка з сасіскай"]
         },
@@ -264,9 +261,6 @@
         "barrier/wall": {
           "name": "Мур"
         },
-        "boundary": {
-          "name": "Мяжа"
-        },
         "building": {
           "name": "Будынак"
         },
@@ -339,9 +333,6 @@
         "building/warehouse": {
           "name": "Сховішча"
         },
-        "building_point": {
-          "name": "Будынак"
-        },
         "club": {
           "name": "Клюб"
         },
@@ -396,9 +387,6 @@
         "craft/joiner": {
           "name": "Сталяр"
         },
-        "craft/locksmith": {
-          "name": "Ключны майстар"
-        },
         "craft/metal_construction": {
           "name": "Мэталаапрацоўка"
         },
@@ -447,9 +435,6 @@
         "craft/stonemason": {
           "name": "Муляр"
         },
-        "craft/tailor": {
-          "name": "Кравец"
-        },
         "craft/tiler": {
           "name": "Кафляр"
         },
@@ -492,9 +477,6 @@
         "ford": {
           "name": "Брод"
         },
-        "ford_line": {
-          "name": "Брод"
-        },
         "golf/fairway": {
           "name": "Фэрўэй (кошаная трава)"
         },
@@ -518,9 +500,6 @@
         },
         "healthcare/optometrist": {
           "name": "Аптамэтрыст"
-        },
-        "healthcare/physiotherapist": {
-          "name": "Фізыятэрапэўт"
         },
         "healthcare/podiatrist": {
           "name": "Падаляґ"
@@ -645,9 +624,6 @@
         "landuse/aquaculture": {
           "name": "Аквакультура"
         },
-        "landuse/basin": {
-          "name": "Тэхнічны басэйн"
-        },
         "landuse/brownfield": {
           "name": "Закінута"
         },
@@ -657,9 +633,6 @@
         "landuse/churchyard": {
           "name": "Царкоўны пляц"
         },
-        "landuse/farm": {
-          "name": "Ральля"
-        },
         "landuse/farmland": {
           "name": "Ральля"
         },
@@ -668,9 +641,6 @@
         },
         "landuse/flowerbed": {
           "name": "Кветнік"
-        },
-        "landuse/garages": {
-          "name": "Ґаражны масіў"
         },
         "landuse/grass": {
           "name": "Трава"
@@ -699,14 +669,8 @@
         "landuse/orchard": {
           "name": "Прамысловы сад"
         },
-        "landuse/pond": {
-          "name": "Сажалка"
-        },
         "landuse/quarry": {
           "name": "Кар’ер"
-        },
-        "landuse/reservoir": {
-          "name": "Вадасховішча"
         },
         "landuse/vineyard": {
           "name": "Вінаграднік"
@@ -1240,6 +1204,66 @@
         },
         "waterway/weir": {
           "name": "Плаціна"
+        },
+        "boundary": {
+          "name": "Мяжа"
+        },
+        "building_point": {
+          "name": "Будынак"
+        },
+        "ford_line": {
+          "name": "Брод"
+        },
+        "landuse/basin": {
+          "name": "Тэхнічны басэйн"
+        },
+        "landuse/reservoir": {
+          "name": "Вадасховішча"
+        },
+        "craft/locksmith": {
+          "name": "Ключны майстар"
+        },
+        "craft/tailor": {
+          "name": "Кравец"
+        },
+        "building/glasshouse": {
+          "name": "Цяпліца"
+        },
+        "amenity/embassy": {
+          "name": "Амбасада"
+        },
+        "@templates/contact": {
+          "name": "Пункт"
+        },
+        "@templates/internet_access": {
+          "name": "Пункт"
+        },
+        "@templates/poi": {
+          "name": "Пункт"
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Пункт"
+        },
+        "@templates/crossing/defaults": {
+          "name": "Пункт"
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Пункт"
+        },
+        "@templates/crossing/markings": {
+          "name": "Пункт"
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Пункт"
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Пункт"
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Пункт"
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Пункт"
         }
       }
     }

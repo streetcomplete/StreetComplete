@@ -17,14 +17,14 @@ class AddBinStatusOnBusStop : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways, relations with
-        (
-          public_transport = platform
-          or (highway = bus_stop and public_transport != stop_position)
-          or highway = hitchhiking
-        )
-        and physically_present != no and naptan:BusStopType != HAR
-        and access !~ no|private
-        and (!bin or bin older today -4 years)
+          (
+            public_transport = platform
+            or (highway = bus_stop and public_transport != stop_position)
+            or highway = hitchhiking
+          )
+          and physically_present != no and naptan:BusStopType != HAR
+          and access !~ no|private
+          and (!bin or bin older today -4 years)
     """
     override val changesetComment = "Specify whether public transport stops have bins"
     override val wikiLink = "Key:bin"

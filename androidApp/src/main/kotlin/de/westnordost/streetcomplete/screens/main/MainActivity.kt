@@ -30,6 +30,7 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.FeedsUpdater
+import de.westnordost.streetcomplete.data.PeriodicCleaner
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -77,6 +78,7 @@ import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toOffset
 import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.util.ktx.updatesWithPermissionChanges
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
@@ -130,13 +132,11 @@ class MainActivity :
 
     override val scope: Scope by activityScope()
 
-    private val autoSyncer: AutoSyncer by inject()
     private val prefs: Preferences by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val notesSource: NotesWithEditsSource by inject()
     private val questsHiddenSource: QuestsHiddenSource by inject()
-    private val feedsUpdater: FeedsUpdater by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val locationProvider: LocationProvider by inject()
     private val systemSettingsLauncher: SystemSettingsLauncher by inject()
@@ -182,9 +182,6 @@ class MainActivity :
                 add(mapContainer, MainMapFragment(), TAG_MAP)
             }
         }
-
-        lifecycle.addObserver(autoSyncer)
-        feedsUpdater.updateAtMostDaily()
 
         compose.setContent { AppTheme {
             val mapAppLauncher = rememberMapAppLauncher()
@@ -339,15 +336,14 @@ class MainActivity :
                 mainBottomSheetViewModel.closeBottomSheet()
             }
         }
-        observe(locationProvider.updates(LocationRequest())) { locationEvent ->
+        observe(locationProvider.updatesWithPermissionChanges(LocationRequest())) { locationEvent ->
             viewModel.locationState.value = when (locationEvent) {
-                is LocationEvent.Fix -> LocationState.UPDATING
+                is LocationEvent.Update -> LocationState.UPDATING
                 is LocationEvent.Unavailable -> when (locationEvent.reason) {
                     LocationUnavailableReason.ServicesDisabled -> LocationState.ALLOWED
                     LocationUnavailableReason.TemporarilyUnavailable -> LocationState.SEARCHING
                     LocationUnavailableReason.PermissionDenied -> LocationState.DENIED
                     LocationUnavailableReason.Unsupported,
-                    LocationUnavailableReason.Misconfigured,
                     LocationUnavailableReason.UnexpectedFailure -> null
                 }
             }
@@ -481,7 +477,7 @@ class MainActivity :
 
     private fun getDisplayedPoint(): PointF? {
         val mapFragment = mapFragment ?: return null
-        val displayedPosition = mapFragment.displayedLocation?.position?.value?.toLatLon() ?: return null
+        val displayedPosition = mapFragment.displayedLocation?.position?.toLatLon() ?: return null
         return mapFragment.getPointOf(displayedPosition)
     }
 
@@ -579,7 +575,7 @@ class MainActivity :
         viewModel.isRecordingTracks.value = false
         val mapFragment = mapFragment ?: return
         mapFragment.stopPositionTrackRecording()
-        val pos = mapFragment.displayedLocation?.position?.value?.toLatLon() ?: return
+        val pos = mapFragment.displayedLocation?.position?.toLatLon() ?: return
         composeNote(pos, mapFragment.recordedTracks.takeIf { it.isNotEmpty() })
     }
 

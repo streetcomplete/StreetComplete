@@ -21,8 +21,8 @@ class AddRoadName : OsmFilterQuestType<List<LocalizedName>>() {
         ways with
           highway ~ primary|secondary|tertiary|unclassified|residential|living_street|pedestrian|busway
           and (
-             !name and !name:left and !name:right
-             or ~fixme|FIXME ~ name|name\?|Name|Name\?
+            !name and !name:left and !name:right
+            or ~fixme|FIXME ~ name|name\?|Name|Name\?
           )
           and !ref
           and noname != yes

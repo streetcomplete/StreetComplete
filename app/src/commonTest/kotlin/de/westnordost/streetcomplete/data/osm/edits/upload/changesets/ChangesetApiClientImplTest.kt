@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.user.UserAccessTokenSource
 import de.westnordost.streetcomplete.testutils.OsmDevApi
-import io.ktor.client.HttpClient
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
 import kotlin.test.assertFailsWith
@@ -39,7 +38,7 @@ class ChangesetApiClientImplTest {
 
     private fun client(token: String?) =
         ChangesetApiClientImpl(
-            httpClient = HttpClient(),
+            httpClient = OsmDevApi.httpClient(),
             baseUrl = OsmDevApi.URL,
             userAccessTokenSource = object : UserAccessTokenSource { override val accessToken = token.orEmpty() },
             serializer = ChangesetApiSerializer()

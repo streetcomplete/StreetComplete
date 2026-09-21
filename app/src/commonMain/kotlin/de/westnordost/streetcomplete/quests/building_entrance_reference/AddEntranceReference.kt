@@ -40,9 +40,11 @@ class AddEntranceReference : OsmElementQuestType<EntranceReferenceAnswer> {
           and !ref
     """.toElementFilterExpression() }
 
-    private val privateFootwaysFilter by lazy {
-        "ways with highway ~ footway|steps|pedestrian and access ~ private|no".toElementFilterExpression()
-    }
+    private val privateFootwaysFilter by lazy { """
+        ways with
+          highway ~ footway|steps|pedestrian
+          and access ~ private|no
+    """.toElementFilterExpression() }
 
     override val changesetComment = "Specify entrance identifications"
     override val wikiLink = "Key:ref"

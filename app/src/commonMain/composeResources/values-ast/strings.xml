@@ -466,7 +466,6 @@ Si nun hai señales na parte seleccionada va aplicase la velocidá máxima prede
     <string name="underground">soterraña</string>
     <string name="quest_sidewalk_value_yes">cera</string>
     <string name="quest_sidewalk_value_no">nun hai cera</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">¿Ta prohibío que los peatones circulen per esti tramu de carretera?</string>
     <string name="quest_buildingType_title">¿Qué tipu d'edificiu ye esti?</string>
     <string name="pref_title_theme_select">Tema de colores</string>
     <string name="theme_light">Claro</string>
@@ -667,7 +666,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="at_housenumber">númberu de la casa %1$s</string>
     <string name="quest_openingHours_add_off_days">Añader díes llibres</string>
     <string name="quest_openingHours_off_day">Día llibre</string>
-    <string name="quest_cycleway_resurvey_title">¿El carril bici sigue bien marcáu?</string>
     <string name="pref_title_resurvey_intervals">Repreguntar pa tener los datos al día</string>
     <string name="resurvey_intervals_less_often">Repreguntar menos veces</string>
     <string name="resurvey_intervals_default">Frecuencia normal</string>
@@ -879,7 +877,6 @@ si te paez qu'hai munches xeres siempre puedes axustar lo que se ve nel mapa y e
     <string name="quest_access_yes">Cualquier persona, ensin importar la función</string>
     <string name="quest_access_customers">Cualquier persona que tea de visita (por casu; solo pa veceros)</string>
     <string name="quest_access_private">Namás persones con permisu</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">¿Les hores de recoyida del corréu d'esti buzón siguen bien puestes?</string>
     <string name="quest_bicycle_barrier_type_title">¿Qué tipo de barrea pa bicis ye?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Diagonal na vía</string>
     <string name="quest_barrier_bicycle_type_tilted">Pasu estrechu, más pequeñu per arriba</string>
@@ -916,8 +913,6 @@ Tamién puedes dexar una nota (con foto).</string>
     <string name="quest_fireHydrant_position_sidewalk">Na cera</string>
     <string name="quest_fireHydrant_position_parking_lot">Nun aparcamientu</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Sí (dexar nota)</string>
-    <string name="quest_smoothness_square_title">¿Cómo ye la superficie d'esta plaza?</string>
-    <string name="quest_smoothness_road_title">¿Cómo ye la superficie d'esta vía?</string>
     <string name="quest_smoothness_title_excellent">Llana y fácil de cruzar</string>
     <string name="quest_smoothness_title_good">Más o menos fácil</string>
     <string name="quest_smoothness_title_intermediate">Con dalgún saltuchón</string>
@@ -970,7 +965,6 @@ Tamién puedes dexar una nota (con foto).</string>
     <string name="ar_core_tracking_error_camera_unavailable">Hai otra aplicación usando la cámara</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Soporte de la guía</string>
     <string name="quest_bicycle_parking_access_title2">¿Quién puede aparcar equí una bici? Puede ser gratis o non.</string>
-    <string name="quest_playground_access_title2">¿Quién puede usar esti parque infantil?</string>
     <string name="ar_measure">Midida</string>
     <string name="ar_core_tracking_error_too_steep_angle">Ángulu demasiáu pronunciáu, apártate un poco</string>
     <string name="default_disabled_msg_no_ar">Precises una cinta métrica pa resolver esta pregunta porque la midición cola cámara nun ye compatible con esti dispositivu.</string>
@@ -1026,7 +1020,6 @@ Tamién puedes dexar una nota (con foto).</string>
     <string name="quest_lit_title">¿Tien lluz?</string>
     <string name="quest_openingHours_title">¿A qué hora abre?</string>
     <string name="quest_openingHours_signed_title">¿Tien un lletreru col horariu d'apertura?</string>
-    <string name="quest_openingHours_resurvey_title">¿Siguen siendo correctos estos horarios d'apertura?</string>
     <string name="quest_placeName_title">¿Cómo se llama esti sitiu?</string>
     <string name="quest_shop_type_title2">¿Qué tipu de tienda ye esta?</string>
     <string name="quest_smoking_title2">¿Ta permitío fumar equí?</string>
@@ -1297,8 +1290,6 @@ Pa ello convidámoste a visitar la nuestra web, porque Google Play nun nos dexa 
     <string name="default_disabled_msg_visible_sign_moped">Esti tipu de xera nun ta activa porque l'accesu a ciclomotores indícase al principiu y al final de les víes.</string>
     <string name="quest_arrow_tutorial">Les fleches nel dibuxu espresen el sentíu de circulación alredor del puntu central, vas entendelo xirando'l mapa.</string>
     <string name="info">Más información</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Ta prohibío.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Ta permitío.</string>
     <string name="quest_buildingLevels_hint">Pa los edificios en pendiente los númberos de pisu empiecen a contar dende'l pisu más baxu que tenga salida a pie de cai.
 
 El pisu d'arriba cuenta como «teyáu» si tien ventanes. Si hai cero pisos d'esti tipu nun ye porque tea planu, sinón porque nun ye habitable.</string>
@@ -1339,7 +1330,6 @@ El pisu d'arriba cuenta como «teyáu» si tien ventanes. Si hai cero pisos d'es
     <string name="action_messages">Mostrar mensaxes</string>
     <string name="action_create_new_poi">Crear unu nuevu</string>
     <string name="auth_error">Hubo un error al tentar aniciar sesión, prueba otra vez.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Espera, sí que hai cera.</string>
     <string name="quest_bicycle_repair_station_services_title">¿Qué ferramientas hai equí pa les bicis?</string>
     <string name="quest_bicycle_repair_station_pump">Bomba d'aire</string>
     <string name="quest_bicycle_repair_station_tools">Delles ferramientes</string>

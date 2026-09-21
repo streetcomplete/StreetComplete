@@ -18,19 +18,20 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>() {
 
     override val elementFilter = """
-        ways with highway = steps
-         and (!indoor or indoor = no)
-         and access !~ private|no
-         and surface ~ ${PAVED_SURFACES.joinToString("|")}
-         and !sac_scale
-         and (!conveying or conveying = no)
-         and ramp != separate
-         and (
-           !ramp
-           or (ramp = yes and !ramp:stroller and !ramp:bicycle and !ramp:wheelchair)
-           or ramp = no and ramp older today -4 years
-           or ramp older today -8 years
-         )
+        ways with
+          highway = steps
+          and (!indoor or indoor = no)
+          and access !~ private|no
+          and surface ~ ${PAVED_SURFACES.joinToString("|")}
+          and !sac_scale
+          and (!conveying or conveying = no)
+          and ramp != separate
+          and (
+            !ramp
+            or (ramp = yes and !ramp:stroller and !ramp:bicycle and !ramp:wheelchair)
+            or ramp = no and ramp older today -4 years
+            or ramp older today -8 years
+          )
     """
     override val changesetComment = "Specify whether steps have a ramp"
     override val wikiLink = "Key:ramp"

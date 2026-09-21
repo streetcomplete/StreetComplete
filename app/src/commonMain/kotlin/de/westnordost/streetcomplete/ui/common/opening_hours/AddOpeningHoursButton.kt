@@ -27,8 +27,8 @@ fun AddOpeningHoursButton(
     timeMode: TimeMode,
     workweek: List<WeekdaysSelector>,
     modifier: Modifier = Modifier,
-    locale: Locale = Locale.current,
-    userLocale: Locale = Locale.current,
+    countryLocale: Locale? = null,
+    userLocale: Locale? = null,
     content: @Composable (RowScope.() -> Unit),
 ) {
     var showAddDropdown by remember { mutableStateOf(false) }
@@ -59,7 +59,7 @@ fun AddOpeningHoursButton(
             onChange = onChange,
             workweek = workweek,
             timeMode = timeMode,
-            locale = locale,
+            countryLocale = countryLocale,
             userLocale = userLocale,
         )
     }

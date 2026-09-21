@@ -23,7 +23,6 @@ import de.westnordost.osm_opening_hours.model.HolidaySelector
 import de.westnordost.osm_opening_hours.model.Weekday
 import de.westnordost.osm_opening_hours.model.WeekdayRange
 import de.westnordost.osm_opening_hours.model.WeekdaysSelector
-import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.locale.DateTimeTextSymbolStyle
 import org.jetbrains.compose.resources.stringResource
 
@@ -36,8 +35,8 @@ fun WeekdayAndHolidaySelectorsText(
     onChange: (weekdays: List<WeekdaysSelector>, holidays: List<HolidaySelector>) -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    locale: Locale = Locale.current,
-    userLocale: Locale = Locale.current,
+    countryLocale: Locale? = null,
+    userLocale: Locale? = null,
 ) {
     val layoutDirection = LocalLayoutDirection.current
     var showDialog by remember { mutableStateOf(false) }
@@ -50,7 +49,7 @@ fun WeekdayAndHolidaySelectorsText(
         contentAlignment = Alignment.CenterEnd
     ) {
         Text(
-            text = getWeekdaysAndHolidaysString(weekdays, holidays, locale, layoutDirection),
+            text = getWeekdaysAndHolidaysString(weekdays, holidays, countryLocale, layoutDirection),
             textAlign = TextAlign.End,
         )
     }
@@ -61,7 +60,7 @@ fun WeekdayAndHolidaySelectorsText(
             initialWeekdays = weekdays,
             initialHolidays = holidays,
             onSelected = onChange,
-            locale = locale,
+            countryLocale = countryLocale,
             userLocale = userLocale,
         )
     }
@@ -71,7 +70,7 @@ fun WeekdayAndHolidaySelectorsText(
 private fun getWeekdaysAndHolidaysString(
     weekdays: List<WeekdaysSelector>,
     holidays: List<HolidaySelector>,
-    locale: Locale,
+    locale: Locale?,
     layoutDirection: LayoutDirection,
 ): String {
     if (weekdays.isEmpty() && holidays.isEmpty()) return ""

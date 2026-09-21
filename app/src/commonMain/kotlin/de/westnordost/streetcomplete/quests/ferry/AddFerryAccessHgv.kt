@@ -23,10 +23,14 @@ import org.jetbrains.compose.resources.stringResource
 
 class AddFerryAccessHgv : OsmElementQuestType<FerryHgvAccess> {
 
-    private val filter by lazy {
-        "ways, relations with route = ferry and !hgv and !hgv:signed"
-            .toElementFilterExpression()
-    }
+    private val filter by lazy { """
+        ways, relations with
+          route = ferry
+          and !hgv
+          and !hgv:signed
+          and motor_vehicle != no
+    """.toElementFilterExpression() }
+
     override val changesetComment = "Specify ferry access for hgv"
     override val wikiLink = "Tag:route=ferry"
     override val icon = Res.drawable.quest_ferry_hgv

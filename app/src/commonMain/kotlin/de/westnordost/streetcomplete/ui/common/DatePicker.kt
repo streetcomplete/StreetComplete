@@ -156,10 +156,10 @@ private fun isLeapYear(year: Int): Boolean =
 @Composable
 @Preview
 private fun DatePickerPreview() {
-    val elements = DateFormatElements.of(Locale.current)
+    val elements = DateFormatElements.of(null)
     val state = rememberDatePickerState()
     Column {
-        DatePicker(state, elements, locale = Locale.current)
+        DatePicker(state, elements, locale = null)
         Text(state.date.toString())
     }
 }

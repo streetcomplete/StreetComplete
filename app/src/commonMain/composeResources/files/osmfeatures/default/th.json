@@ -246,9 +246,6 @@
           "name": "ร้านแลกเปลี่ยนเงินตราต่างประเทศ",
           "terms": ["ร้านรับแลกเงินตรา", "จุดแลกเปลี่ยนเงินตรา"]
         },
-        "amenity/bus_station": {
-          "name": "สถานี/ขนส่งรถประจำทาง"
-        },
         "amenity/cafe": {
           "name": "คาเฟ่",
           "terms": ["คาเฟ่"]
@@ -288,6 +285,10 @@
         "amenity/charging_station": {
           "name": "สถานีชาร์จ",
           "terms": ["สถานีชาร์จ"]
+        },
+        "amenity/charging_station/charging_station_bicycle": {
+          "name": "สถานีชาร์จรถจักรยาน",
+          "terms": ["สถานีชาร์จแบตรถจักรยาน"]
         },
         "amenity/childcare": {
           "name": "สถานรับเลี้ยงเด็ก",
@@ -336,14 +337,6 @@
         "amenity/community_centre/community_hall": {
           "name": "ศาลาประชาคม",
           "terms": ["ศาลาประชาคม"]
-        },
-        "amenity/community_centre/cultural_centre": {
-          "name": "ศูนย์วัฒนธรรม",
-          "terms": ["ศูนย์วัฒนธรรม"]
-        },
-        "amenity/community_centre/family_centre": {
-          "name": "ศูนย์ครอบครัว",
-          "terms": ["ศูนย์ครอบครัว"]
         },
         "amenity/community_centre/lgbtq": {
           "name": "ศูนย์ชุมชนกลุ่ม LGBTQ+",
@@ -525,9 +518,6 @@
           "name": "สนามฝึกอบรมพนักงานขับรถ",
           "terms": ["สนามฝึกอบรมพนักงานขับรถ"]
         },
-        "amenity/embassy": {
-          "name": "สถานฑูต"
-        },
         "amenity/events_venue": {
           "name": "สถานที่จัดงาน",
           "terms": ["สถานที่จัดงาน", "สถานที่จัดกิจกรรม"]
@@ -599,12 +589,13 @@
           "name": "ร้านแซนวิช",
           "terms": ["ร้านแซนวิช"]
         },
+        "amenity/fast_food/sushi": {
+          "name": "ร้านซูชิ",
+          "terms": ["ร้านข้าวปั้นญี่ปุ่น"]
+        },
         "amenity/fast_food/wings": {
           "name": "ร้านปีกไก่",
           "terms": ["ร้านปีกไก่"]
-        },
-        "amenity/ferry_terminal": {
-          "name": "สถานีเรือโดยสาร"
         },
         "amenity/fire_station": {
           "name": "สถานีดับเพลิง",
@@ -742,16 +733,9 @@
           "name": "สถานบันเทิง LGBTQ+",
           "terms": ["สถานบันเทิง lgbtq+", "สถานเที่ยวกลางคืน lgbtq+", "ไนต์คลับ lgbtq+"]
         },
-        "amenity/nursing_home": {
-          "name": "บ้านพักคนชรา"
-        },
         "amenity/parcel_locker": {
           "name": "ตู้ล็อกเกอร์รับฝากพัสดุ",
           "terms": ["ตู้ล็อกเกอร์รับฝากพัสดุ"]
-        },
-        "amenity/parking": {
-          "name": "ลานจอดรถ",
-          "terms": ["ลานจอดรถ"]
         },
         "amenity/parking/multi-storey": {
           "name": "โรงจอดรถหลายชั้น",
@@ -1198,6 +1182,10 @@
           "name": "ห้องของเล่น",
           "terms": ["ห้องของเล่น", "ห้องสมุดของเล่น"]
         },
+        "amenity/traffic_park": {
+          "name": "เมืองจราจรจำลอง",
+          "terms": ["สวนจราจร"]
+        },
         "amenity/trolley_bay": {
           "name": "ที่เก็บรถเข็น",
           "terms": ["ที่เก็บรถเข็น"]
@@ -1356,6 +1344,12 @@
         },
         "area": {
           "name": "พื้นที่",
+          "relation": {
+            "role_labels": {
+              "inner": "ภายใน",
+              "outer": "ภายนอก"
+            }
+          },
           "terms": ["พื้นที่"]
         },
         "area/footway": {
@@ -1563,10 +1557,6 @@
           "name": "ประตูกั้นปศุสัตว์",
           "terms": ["ประตูกั้นปศุสัตว์"]
         },
-        "barrier/lift_gate": {
-          "name": "แขนกั้นทาง",
-          "terms": ["แขนกั้นทาง"]
-        },
         "barrier/log": {
           "name": "ต้มไม้ล้มขวางทาง",
           "terms": ["ต้มไม้ล้มขวางทาง"]
@@ -1624,13 +1614,6 @@
         },
         "barrier/yes": {
           "name": "สิ่งกีดขวาง (ไม่ระบุประเภท)"
-        },
-        "boundary": {
-          "name": "แนวเขต"
-        },
-        "boundary/administrative": {
-          "name": "แนวเขตการปกครอง",
-          "terms": ["แนวเขตการปกครอง"]
         },
         "boundary/hazard": {
           "name": "พื้นที่อันตราย",
@@ -1722,9 +1705,6 @@
         "building/dormitory": {
           "name": "หอพัก",
           "terms": ["หอพัก"]
-        },
-        "building/entrance": {
-          "name": "ทางเข้า / ทางออก"
         },
         "building/farm": {
           "name": "บ้านไร่",
@@ -1900,9 +1880,6 @@
           "name": "ส่วนของอาคาร",
           "terms": ["ส่วนของอาคาร"]
         },
-        "building_point": {
-          "name": "อาคาร"
-        },
         "cemetery/grave": {
           "name": "หลุมฝังศพ",
           "terms": ["หลุมฝังศพ"]
@@ -1910,14 +1887,6 @@
         "cemetery/sector": {
           "name": "ส่วนย่อยสุสาน",
           "terms": ["ส่วนย่อยสุสาน"]
-        },
-        "climbing/crag": {
-          "name": "ปีนผา",
-          "terms": ["ปีนหน้าผา"]
-        },
-        "climbing/route": {
-          "name": "เส้นทางการปีนเขา",
-          "terms": ["เส้นทางการปีนเขา"]
         },
         "climbing/route_bottom": {
           "name": "จุดเริ่มต้นการปืนเขา",
@@ -2043,9 +2012,6 @@
           "name": "ตัดกุญแจ",
           "terms": ["ตัดกุญแจ"]
         },
-        "craft/locksmith": {
-          "name": "ช่างทำกุญแจ"
-        },
         "craft/metal_construction": {
           "name": "ช่างโลหะ",
           "terms": ["ช่างโลหะ"]
@@ -2117,9 +2083,6 @@
         "craft/stonemason": {
           "name": "ช่างหิน",
           "terms": ["ช่างหิน"]
-        },
-        "craft/tailor": {
-          "name": "ช่างตัดเสื้อ"
         },
         "craft/tiler": {
           "name": "ช่างปูกระเบื้อง",
@@ -2341,9 +2304,6 @@
           "name": "ฝายน้ำล้น",
           "terms": ["ฝายน้ำล้น เขื่อน เขื่อนน้ำไหล เขื่อนน้ำล้น"]
         },
-        "ford_line": {
-          "name": "ฝายน้ำล้น"
-        },
         "golf/bunker": {
           "name": "กับดักทราย",
           "terms": ["กับดักทราย"]
@@ -2436,14 +2396,6 @@
           "name": "ศูนย์คลอดกำเนิด",
           "terms": ["ศูนย์คลอดกำเนิด"]
         },
-        "healthcare/blood_donation": {
-          "name": "ศูนย์รับบริจาคโลหิต",
-          "terms": ["ศูนย์รับบริจาคโลหิต", "ศูนย์รับบริจาคเลือด", "บริจาคเลือด"]
-        },
-        "healthcare/counselling": {
-          "name": "ศูนย์ให้คำปรึกษา",
-          "terms": ["ศูนย์ให้คำปรึกษา"]
-        },
         "healthcare/dentist/orthodontics": {
           "name": "ทันตแพทย์จัดฟัน",
           "terms": ["ทันตแพทย์จัดฟัน"]
@@ -2470,7 +2422,7 @@
         },
         "healthcare/physiotherapist": {
           "name": "นักกายภาพบำบัด",
-          "terms": ["นักกายภาพบำบัด"]
+          "terms": ["แพทย์กายภาพบำบัด"]
         },
         "healthcare/podiatrist": {
           "name": "แพทย์เท้า",
@@ -2505,9 +2457,6 @@
         "highway/bus_guideway": {
           "name": "ทางรถสาธารณะชนิดบังคับล้อ",
           "terms": ["ทางรถสาธารณะชนิดบังคับล้อ", "ทางรางนำรถประจำทาง"]
-        },
-        "highway/bus_stop": {
-          "name": "ป้ายหยุดรถประจำทาง"
         },
         "highway/busway": {
           "name": "ช่องเดินรถประจำทาง",
@@ -2929,6 +2878,10 @@
           "name": "แผ่นทองเหลืองที่ละลึก",
           "terms": ["แผ่นทองเหลืองที่ละลึก"]
         },
+        "historic/millstone": {
+          "name": "หินโม่",
+          "terms": ["หินสำหรับการโม่"]
+        },
         "historic/monument": {
           "name": "อนุสาวรีย์",
           "terms": ["อนุสาวรีย์"]
@@ -2967,9 +2920,6 @@
         "indoor/corridor": {
           "name": "โถงในอาคาร",
           "terms": ["โถงในอาคาร"]
-        },
-        "indoor/corridor_line": {
-          "name": "โถงในอาคาร"
         },
         "indoor/door": {
           "name": "ประตูในอาคาร",
@@ -3014,9 +2964,6 @@
           "name": "ฟาร์มเพาะเลี้ยงปลา",
           "terms": ["ฟาร์มเลี้ยงปลา", "ฟาร์มเพาะเลี้ยงปลา", "บ่อเพาะปลา", "ศูนย์ฟักปลา", "ศูนย์เพาะฟักปลา", "ฟาร์มเพาะฟักปลา"]
         },
-        "landuse/basin": {
-          "name": "อ่างน้ำ"
-        },
         "landuse/brownfield": {
           "name": "ที่ดินถม",
           "terms": ["ที่ดินถม"]
@@ -3040,9 +2987,6 @@
           "name": "พื้นที่การศึกษา",
           "terms": ["พื้นที่ของการศึกษา"]
         },
-        "landuse/farm": {
-          "name": "ไร่นา"
-        },
         "landuse/farmland": {
           "name": "ไร่นา",
           "terms": ["ที่ดินเพาะปลูก", "นา", "แปลงนา", "ฟาร์ม", "ไร่นา"]
@@ -3060,8 +3004,8 @@
           "terms": ["ป่าปลูก"]
         },
         "landuse/garages": {
-          "name": "พื้นที่โรงรถ",
-          "terms": ["พื้นที่โรงรถ"]
+          "name": "การใช้พื้นที่ที่ดินโรงรถ",
+          "terms": ["การใช้พื้นที่โรงรถ"]
         },
         "landuse/grass": {
           "name": "สนามหญ้า",
@@ -3159,9 +3103,6 @@
           "name": "สถานเพาะชำพืช",
           "terms": ["สถานเพาะชำพืช"]
         },
-        "landuse/pond": {
-          "name": "บึง"
-        },
         "landuse/quarry": {
           "name": "เหมืองเปิด",
           "terms": ["เหมืองเปิด"]
@@ -3177,9 +3118,6 @@
         "landuse/religious": {
           "name": "พื้นที่ศาสนสถาน",
           "terms": ["พื้นที่ศาสนสถาน"]
-        },
-        "landuse/reservoir": {
-          "name": "อ่างเก็บน้ำ"
         },
         "landuse/residential": {
           "name": "พื้นที่อยู่อาศัย",
@@ -3607,6 +3545,10 @@
           "name": "ซาวน่า",
           "terms": ["ซาวน่า", "ที่อบตัว"]
         },
+        "leisure/schoolyard": {
+          "name": "สนามโรงเรียน",
+          "terms": ["ลานโรงเรียน"]
+        },
         "leisure/slipway": {
           "name": "ทางลาดสำหรับเรือ",
           "terms": ["ทางลาดสำหรับเรือ"]
@@ -3681,9 +3623,6 @@
         "leisure/track/athletics/pole_vault": {
           "name": "ทางวิ่งกระโดดค้ำถ่อ",
           "terms": ["ทางวิ่งกระโดดค้ำถ่อ"]
-        },
-        "leisure/track/athletics/running": {
-          "name": "ลู่วิ่ง"
         },
         "leisure/track/athletics/sprint": {
           "name": "ทางวิ่งเร็ว",
@@ -4162,10 +4101,6 @@
           "name": "ด่านตรวจทหาร",
           "terms": ["ด่านตรวจทหาร"]
         },
-        "military/nuclear_explosion_site": {
-          "name": "พื้นที่เกิดการระเบิดนิวเคลียร์",
-          "terms": ["พื้นที่เกิดการระเบิดนิวเคลียร์"]
-        },
         "military/office": {
           "name": "สำนักงานทหาร",
           "terms": ["สำนักงานทหาร"]
@@ -4578,9 +4513,6 @@
           "name": "สำนักงานกฎหมาย",
           "terms": ["สำนักงานกฎหมาย"]
         },
-        "office/lawyer/notary": {
-          "name": "สำนักงานรับรองเอกสาร"
-        },
         "office/moving_company": {
           "name": "สำนักงานบริษัทขนย้าย",
           "terms": ["สำนักงานบริษัทขนย้าย", "สำนักงานบริษัทย้ายบ้าน"]
@@ -4647,9 +4579,6 @@
         "office/translator": {
           "name": "สำนักงานแปลภาษา",
           "terms": ["สำนักงานแปลภาษา"]
-        },
-        "office/travel_agent": {
-          "name": "ตัวแทนท่องเที่ยว"
         },
         "office/union": {
           "name": "สำนักงานสหภาพแรงงาน",
@@ -4945,6 +4874,14 @@
           "name": "แผงโซลาร์ติดหลังคา",
           "terms": ["แผงโซลาร์ติดหลังคา"]
         },
+        "power/generator/method/solar_thermal_collector": {
+          "name": "แผงรับพลังงานความร้อนแสงอาทิตย์",
+          "terms": ["แผงรับความร้อนสุริยะ"]
+        },
+        "power/generator/method/solar_thermal_collector/location/roof": {
+          "name": "แผงรับพลังงานความร้อนแสงอาทิตย์บนหลังคา",
+          "terms": ["แผงรับความร้อนสุริยะบนหลังคา"]
+        },
         "power/generator/source/hydro": {
           "name": "กังหันน้ำ",
           "terms": ["กังหันน้ำ"]
@@ -5034,8 +4971,7 @@
           "terms": ["หม้อแปลงไฟฟ้า"]
         },
         "public_transport/platform": {
-          "name": "ชานชาลา",
-          "terms": ["ชานชาลา"]
+          "name": "ชานชาลา"
         },
         "public_transport/platform/aerialway": {
           "name": "ชานชาลากระเช้า",
@@ -5108,12 +5044,10 @@
           "terms": ["ป้ายหยุดรถประจำทางพ่วงไฟฟ้า"]
         },
         "public_transport/platform_point": {
-          "name": "ที่หยุด/ชานชาลาขนส่ง",
-          "terms": ["ที่หยุด/ชานชาลาขนส่ง"]
+          "name": "ที่หยุด/ชานชาลาขนส่ง"
         },
         "public_transport/station": {
-          "name": "สถานีขนส่ง",
-          "terms": ["สถานีขนส่ง"]
+          "name": "สถานีขนส่ง"
         },
         "public_transport/station_aerialway": {
           "name": "สถานีกระเช้า",
@@ -5160,8 +5094,7 @@
           "terms": ["พื้นที่หยุดขนส่ง"]
         },
         "public_transport/stop_position": {
-          "name": "ตำแหน่งการหยุดขนส่ง",
-          "terms": ["ตำแหน่งการหยุดขนส่ง"]
+          "name": "ตำแหน่งการหยุดขนส่ง"
         },
         "public_transport/stop_position_aerialway": {
           "name": "ตำแหน่งการหยุดกระเช้า",
@@ -5202,6 +5135,10 @@
         "railway": {
           "name": "คุณลักษณะทางราง"
         },
+        "railway/abandoned": {
+          "name": "ซากรางรถไฟที่มองเห็นได้",
+          "terms": ["รางรถไฟที่มองเห็นได้"]
+        },
         "railway/buffer_stop": {
           "name": "แป้นปะทะ",
           "terms": ["แป้นปะทะ"]
@@ -5225,9 +5162,6 @@
         "railway/funicular": {
           "name": "รางรถไฟไต่เขา",
           "terms": ["รางรถไฟไต่เขา"]
-        },
-        "railway/halt": {
-          "name": "สถานีรถไฟ (ที่หยุด / เรียกร้อง)"
         },
         "railway/level_crossing": {
           "name": "ทางข้ามทางรถไฟ-ถนน",
@@ -5257,9 +5191,6 @@
           "name": "ทางรถไฟรางแคบ",
           "terms": ["ทางรถไฟรางแคบ", "ทางรถไฟแนร์โรว์เกจ"]
         },
-        "railway/platform": {
-          "name": "ชานชาลารถไฟ"
-        },
         "railway/preserved": {
           "name": "ทางรถไฟสายมรดก",
           "terms": ["ทางรถไฟสายมรดก"]
@@ -5283,9 +5214,6 @@
         "railway/signal_box": {
           "name": "ตู้อาณัติสัญญาณ",
           "terms": ["ตู้ระบบอาณัติสัญญาณ"]
-        },
-        "railway/station": {
-          "name": "สถานีรถไฟ"
         },
         "railway/subway": {
           "name": "รางรถไฟฟ้า",
@@ -5341,10 +5269,6 @@
         "roller_coaster/track": {
           "name": "รางรถไฟเหาะ",
           "terms": ["รางรถไฟเหาะ"]
-        },
-        "route/ferry": {
-          "name": "เส้นทางเรือโดยสาร",
-          "terms": ["เส้นทางเรือโดยสาร"]
         },
         "seamark": {
           "name": "เครื่องหมายทางทะเล"
@@ -6371,6 +6295,14 @@
         },
         "type/boundary/administrative": {
           "name": "แนวเขตการปกครอง",
+          "relation": {
+            "role_labels": {
+              "admin_centre": "ศูนย์การปกครอง",
+              "inner": "ภายใน",
+              "label": "ป้ายชื่อ",
+              "outer": "ภายนอก"
+            }
+          },
           "terms": ["แนวเขตการปกครอง"]
         },
         "type/boundary/protected_area": {
@@ -6395,7 +6327,13 @@
         },
         "type/multipolygon": {
           "name": "รูปหลายเหลี่ยม",
-          "terms": ["รูปหลายเหลี่ยม"]
+          "terms": ["รูปหลายเหลี่ยม"],
+          "relation": {
+            "role_labels": {
+              "inner": "ภายใน",
+              "outer": "ภายนอก"
+            }
+          }
         },
         "type/public_transport/stop_area_group": {
           "name": "กลุ่มพื้นที่หยุดการขนส่ง",
@@ -6496,10 +6434,6 @@
         "type/route/piste": {
           "name": "เส้นทางสกี",
           "terms": ["เส้นทางเล่นสกี"]
-        },
-        "type/route/power": {
-          "name": "เส้นทางพลังงาน",
-          "terms": ["เส้นทางพลังงาน"]
         },
         "type/route/railway": {
           "name": "เส้นทางรถไฟ",
@@ -6627,6 +6561,299 @@
         "waterway/weir": {
           "name": "ฝาย",
           "terms": ["ประตูน้ำ", "ฝาย"]
+        },
+        "boundary": {
+          "name": "แนวเขต",
+          "terms": ["แนวเขต"]
+        },
+        "building_point": {
+          "name": "อาคาร",
+          "terms": ["ตึก", "อาคาร", "สิ่งปลูกสร้าง"]
+        },
+        "ford_line": {
+          "name": "ฝายน้ำล้น",
+          "terms": ["ฝายน้ำล้น เขื่อน เขื่อนน้ำไหล เขื่อนน้ำล้น"]
+        },
+        "traffic_sign/maxspeed-US-CA-LR": {
+          "name": "ป้ายเขตเมือง",
+          "terms": ["ป้ายเขตเมือง"]
+        },
+        "shop/ice_cream": {
+          "name": "ร้านไอศกรีม",
+          "terms": ["ร้านไอศกรีม"]
+        },
+        "route/ferry": {
+          "name": "เส้นทางเรือโดยสาร",
+          "terms": ["เส้นทางเรือโดยสาร"]
+        },
+        "railway/halt": {
+          "name": "สถานีรถไฟ (ที่หยุด / เรียกร้อง)",
+          "terms": ["สถานีรถไฟ (ที่หยุด / เรียกร้อง)"]
+        },
+        "railway/platform": {
+          "name": "ชานชาลารถไฟ",
+          "terms": ["ชานชาลารถไฟ"]
+        },
+        "railway/station": {
+          "name": "สถานีรถไฟ",
+          "terms": ["สถานีรถไฟ"]
+        },
+        "office/travel_agent": {
+          "name": "ตัวแทนท่องเที่ยว",
+          "terms": ["ตัวแทนท่องเที่ยว", "นายหน้าท่องเที่ยว"]
+        },
+        "office/lawyer/notary": {
+          "name": "สำนักงานรับรองเอกสาร",
+          "terms": ["สำนักงานรับรองเอกสาร"]
+        },
+        "natural/wood_point": {
+          "name": "ป่าไม้ธรรมชาติ",
+          "terms": ["ป่าไม้ธรรมชาติ"]
+        },
+        "man_made/geoglyph_multilinestring": {
+          "name": "ภาพสลักบนพื้นดิน",
+          "terms": ["จีโอกลิฟ", "จิโอกลิฟ", "geoglyph"]
+        },
+        "leisure/track/athletics/running": {
+          "name": "ลู่วิ่ง",
+          "terms": ["ทางวิ่ง", "ลู่วิ่ง"]
+        },
+        "landuse/basin": {
+          "name": "อ่าง",
+          "terms": ["อ่าง"]
+        },
+        "landuse/reservoir": {
+          "name": "อ่างเก็บน้ำ",
+          "terms": ["อ่างเก็บน้ำ", "บ่ออ่างเก็บน้ำ"]
+        },
+        "landuse/military/danger_area_point": {
+          "name": "ที่อันตรายทางทหาร",
+          "terms": ["ที่อันตรายทางทหาร"]
+        },
+        "landuse/industrial/brewery": {
+          "name": "อุตสาหกรรมโรงเบียร์",
+          "terms": ["อุตสาหกรรมโรงเบียร์"]
+        },
+        "landuse/industrial/industrial_point": {
+          "name": "พื้นที่อุตสาหกรรม",
+          "terms": ["พื้นที่อุตสาหกรรม"]
+        },
+        "indoor/corridor_line": {
+          "name": "โถงเดินในร่ม",
+          "terms": ["โถงเดินในร่ม"]
+        },
+        "highway/bus_stop": {
+          "name": "ป้ายหยุดรถประจำทาง",
+          "terms": ["ป้ายหยุดรถประจำทาง", "ป้ายหยุดรถเมล์"]
+        },
+        "highway/raceway_unspecific": {
+          "name": "เส้นทางรถแข่ง",
+          "terms": ["เส้นทางรถแข่ง"]
+        },
+        "highway/traffic_sign": {
+          "name": "ป้ายจราจร",
+          "terms": ["ป้ายจราจร"]
+        },
+        "highway/motorway_link-US-CA": {
+          "name": "ทางเชื่อมทางพิเศษ",
+          "terms": ["ทางเชื่อมทางหลวงพิเศษ"]
+        },
+        "highway/primary_link-US-CA": {
+          "name": "ทางเชื่อมถนนสายหลัก",
+          "terms": ["ทางเชื่อมทางหลวงแผ่นดินสายหลัก"]
+        },
+        "highway/trunk_link-US-CA": {
+          "name": "ทางเชื่อมทางหลวงสายประธาน",
+          "terms": ["ทางเชื่อมทางหลวงสายประธาน"]
+        },
+        "highway/path/bicycle_foot": {
+          "name": "ทางจักรยานกับทางเท้า",
+          "terms": ["ทางจักรยานกับทางเท้า"]
+        },
+        "highway/path/traffic_island_shared": {
+          "name": "เกาะข้ามคนเดินและจักรยาน",
+          "terms": ["เกาะข้ามคนเดินและจักรยาน"]
+        },
+        "highway/path/crossing/informal": {
+          "name": "ทางตัดแบบไม่เป็นทางการ"
+        },
+        "highway/path/crossing/marked": {
+          "name": "ทางตัดทางเท้าทางจักรยานที่หมายสัญลักษณ์"
+        },
+        "highway/path/crossing/bicycle_foot": {
+          "name": "ทางข้ามจักรยานกับทางเท้า",
+          "terms": ["ทางข้ามจักรยานกับทางเดิน"]
+        },
+        "highway/footway/crossing/informal": {
+          "name": "ทางตัดแบบไม่เป็นทางการ"
+        },
+        "highway/footway/crossing/marked": {
+          "name": "ทางข้ามมีเครื่องหมายจราจร",
+          "terms": ["ทางข้ามมีเครื่องหมายจราจร"]
+        },
+        "highway/footway/crossing/zebra": {
+          "name": "ทางข้ามมีเครื่องหมายจราจร",
+          "terms": ["ทางข้ามมีเครื่องหมายจราจร"]
+        },
+        "highway/cycleway/crossing/marked": {
+          "name": "ทางข้ามจักรยานมีเครื่องหมายจราจร",
+          "terms": ["ทางข้ามจักรยานมีเครื่องหมายจราจร"]
+        },
+        "highway/crossing/marked": {
+          "name": "ทางข้ามมีเครื่องหมายจราจร",
+          "terms": ["ทางข้ามมีเครื่องหมายจราจร"]
+        },
+        "highway/crossing/zebra": {
+          "name": "ทางข้ามมีเครื่องหมายจราจร",
+          "terms": ["ทางข้ามมีเครื่องหมายจราจร"]
+        },
+        "craft/locksmith": {
+          "name": "ช่างทำกุญแจ",
+          "terms": ["ช่างทำกุญแจ", "ช่างกุญแจ"]
+        },
+        "craft/tailor": {
+          "name": "ช่างตัดเสื้อ",
+          "terms": ["ช่างตัดเสื้อ"]
+        },
+        "climbing/crag": {
+          "name": "ปีนผา",
+          "terms": ["ปีนหน้าผา"]
+        },
+        "climbing/route": {
+          "name": "เส้นทางปีนเขา",
+          "terms": ["เส้นทางการปีนเขา"]
+        },
+        "building/entrance": {
+          "name": "ทางเข้า / ทางออก",
+          "terms": ["ทางเข้า / ทางออก"]
+        },
+        "building/glasshouse": {
+          "name": "เรือนกระจก",
+          "terms": ["เรือนกระจก"]
+        },
+        "building/house/detached": {
+          "name": "บ้านเดี่ยว",
+          "terms": ["บ้านเดี่ยว"]
+        },
+        "building/house/semi-detached": {
+          "name": "บ้านแฝด",
+          "terms": ["บ้านแฝด", "บ้านคู่"]
+        },
+        "building/house/terrace": {
+          "name": "แถวของตึกแถว",
+          "terms": ["แถวของบ้านแถว"]
+        },
+        "boundary/administrative": {
+          "name": "แนวเขตการปกครอง",
+          "terms": ["แนวเขตการปกครอง"]
+        },
+        "amenity/bus_station": {
+          "name": "สถานี/ขนส่งรถประจำทาง",
+          "terms": ["สถานี/ขนส่งรถประจำทาง"]
+        },
+        "amenity/college": {
+          "name": "พื้นที่วิทยาลัย",
+          "terms": ["พื้นที่วิทยาลัย"]
+        },
+        "amenity/coworking_space": {
+          "name": "พื้นที่ทำงานร่วมกันกับผู้อื่น",
+          "terms": ["พื้นที่ทำงานร่วมกันกับผู้อื่น", "โคเวิร์คกิ้งสเปซ์", "coworking space"]
+        },
+        "amenity/dancing_school": {
+          "name": "โรงเรียนสอนเต้น",
+          "terms": ["โรงเรียนเต้น", "โรงเรียนแดนซ์", "โรงเรียนแด๊นซ์"]
+        },
+        "amenity/driving_school": {
+          "name": "โรงเรียนสอนขับรถ",
+          "terms": ["โรงเรียนสอนขับรถ", "โรงเรียนขับรถ", "โรงเรียนฝึกขับรถ"]
+        },
+        "amenity/embassy": {
+          "name": "สถานฑูต",
+          "terms": ["สถานฑูต", "สถานเอกอัครราชทูต", "สถานราชทูต"]
+        },
+        "amenity/ferry_terminal": {
+          "name": "อาคารโดยสารเรือโดยสาร",
+          "terms": ["สถานีเรือโดยสาร"]
+        },
+        "amenity/kindergarten": {
+          "name": "โรงเรียนอนุบาล",
+          "terms": ["โรงเรียนอนุบาล", "อนุบาล", "เตรียมอนุบาล"]
+        },
+        "amenity/language_school": {
+          "name": "โรงเรียนสอนภาษา",
+          "terms": ["โรงเรียนภาษา", "โรงเรียนติวภาษา"]
+        },
+        "amenity/music_school": {
+          "name": "โรงเรียนสอนดนตรี",
+          "terms": ["โรงเรียนดนตรี"]
+        },
+        "amenity/nursing_home": {
+          "name": "บ้านพักคนชรา",
+          "terms": ["บ้านพักคนชรา"]
+        },
+        "amenity/prep_school": {
+          "name": "โรงเรียนกวดวิชา",
+          "terms": ["โรงเรียนกวดวิชา", "โรงเรียนสอนพิเศษ", "เรียนพิเศษ", "สอนพิเศษ", "ที่เรียนพิเศษ", "ที่ติว", "ติว", "ติวพิเศษ", "กวดวิชา"]
+        },
+        "amenity/school": {
+          "name": "พื้นที่โรงเรียน",
+          "terms": ["พื้นที่โรงเรียนประถม", "พื้นที่โรงเรียนมัธยม"]
+        },
+        "amenity/university": {
+          "name": "พื้นที่มหาวิทยาลัย",
+          "terms": ["พื้นที่มหาวิทยาลัย", "campus", "แคมปัส", "วิทยาเขต"]
+        },
+        "amenity/charging_station/charging_station_bicycle_designated": {
+          "name": "สถานีชาร์จรถจักรยาน",
+          "terms": ["สถานีชาร์จแบตรถจักรยาน"]
+        },
+        "aerialway/station": {
+          "name": "สถานีกระเช้า",
+          "terms": ["สถานีกระเช้า"]
+        },
+        "@templates/contact": {
+          "name": "จุด",
+          "terms": ["จุด", "โหนด"]
+        },
+        "@templates/internet_access": {
+          "name": "จุด",
+          "terms": ["จุด", "โหนด"]
+        },
+        "@templates/poi": {
+          "name": "จุด",
+          "terms": ["จุด", "โหนด"]
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "จุด",
+          "terms": ["จุด", "โหนด"]
+        },
+        "@templates/crossing/defaults": {
+          "name": "จุด",
+          "terms": ["จุด", "โหนด"]
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "จุด",
+          "terms": ["จุด", "โหนด"]
+        },
+        "@templates/crossing/markings": {
+          "name": "จุด",
+          "terms": ["จุด", "โหนด"]
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "จุด",
+          "terms": ["จุด", "โหนด"]
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "จุด",
+          "terms": ["จุด", "โหนด"]
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "จุด",
+          "terms": ["จุด", "โหนด"]
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "จุด",
+          "terms": ["จุด", "โหนด"]
         }
       }
     }

@@ -20,7 +20,11 @@ import org.jetbrains.compose.resources.stringResource
 
 class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierTypeAnswer>() {
 
-    override val elementFilter = "nodes with barrier = cycle_barrier and !cycle_barrier"
+    override val elementFilter = """
+        nodes with
+          barrier = cycle_barrier
+          and !cycle_barrier
+    """
     override val changesetComment = "Specify cycle barrier types"
     override val wikiLink = "Key:cycle_barrier"
     override val icon = Res.drawable.quest_no_bicycles

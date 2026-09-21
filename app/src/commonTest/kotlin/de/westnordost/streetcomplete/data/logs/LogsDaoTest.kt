@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.data.logs
 
+import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.data.logs.LogLevel.*
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
-import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -11,7 +11,7 @@ import kotlin.test.assertTrue
 class LogsDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: LogsDao
 
-    @BeforeTest fun createDao() {
+    override fun onDatabaseInitialized(database: Database) {
         dao = LogsDao(database)
     }
 

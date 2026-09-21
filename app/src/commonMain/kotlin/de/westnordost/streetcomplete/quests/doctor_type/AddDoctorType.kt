@@ -18,11 +18,9 @@ import de.westnordost.streetcomplete.resources.*
 class AddDoctorType() : OsmFilterQuestType<List<Feature>>() {
 
     override val elementFilter = """
-        nodes, ways with
-        (
-          amenity = doctors or healthcare = doctor
+        nodes, ways, relations with
+          (amenity = doctors or healthcare = doctor)
           and !healthcare:speciality
-        )
     """
     override val changesetComment = "Survey healthcare specialties"
     override val wikiLink = "Key:healthcare:speciality"
@@ -40,5 +38,8 @@ class AddDoctorType() : OsmFilterQuestType<List<Feature>>() {
     }
 
     override fun getHighlightedElements(element: Element,mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways with amenity=doctors or healthcare = doctor")
+        mapData.filter("""
+            nodes, ways with
+                amenity = doctors or healthcare = doctor
+        """)
 }

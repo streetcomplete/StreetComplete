@@ -1,10 +1,11 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 advisoryCycleLaneStyle: white dashes without pictogram
-atmOperators: [Danske Bank, Euronet, Nordea, AL Sydbank, Nokas, Jyske Bank, Sparekassen Danmark, Arbejdernes Landsbank, Sydbank, Spar Nord, Nordjyske Bank, Kontanten, Euronet Worldwide, Djurslands Bank, Sparekassen Thy, Middelfart Sparekasse, Lån & Spar Bank, Lån & Spar, Sparekassen Vendsyssel, Nykredit, Nokas Verdihåndtering AS, vestjysk bank, Vestjysk Bank, Sydjysk Sparekasse, SparekassenThy, Sparekassen Sjælland-Fyn, Sparekassen Sjælland, Sparekassen Kronjylland, SparNord, Skjern Bank, Ringkøbing Landbobank, Ringkjøbing Landbobank, Loomis, Lollands Bank, Handelsbanken, Fynske Bank, DKK, Andelskassen]
-chargingStationOperators: [Clever, OK, E.ON, Norlys, EWII, Circle K, Spirii, Monta, Tesla, Q8, Uno-X, Shell Recharge, Allego, Sperto, Eviny, Shell Recharge Solutions, Ionity, Lidl, Base2Charge, Shell, Ringkøbing-Skjern Kommune, PowerGo, Sønderborg Kommune, Ø Strøm, Vejle Kommune, Spirii Go, Fastned, ChargePoint, Électricité de France, ViggoEnergy, Recharge, Q8 Danmark, Merkur, drivee, Spar Nord, SEF, MoveAbout, Københavns Kommune, Drivee]
-chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
-clothesContainerOperators: [Dansk Røde Kors, Kredsløb, Frelsens Hær, Red Barnet, Københavns Kommune, Trasborg, Røde Kors, UFF, Folkekirkens Nødhjælp, Blå Kors Danmark, Red Cross, Kirkens Korshær, Blå Kors Genbrug, Blå Kors, UFF Humana, Kirkens Korshær Genbrug, Humana]
+atmOperators: [Danske Bank, Euronet, Nordea, Nokas, AL Sydbank, Jyske Bank, Sparekassen Danmark, Arbejdernes Landsbank, Sydbank, Spar Nord, Kontanten, Nordjyske Bank, Euronet Worldwide, Sparekassen Thy, Middelfart Sparekasse, Lån & Spar Bank, Lån & Spar, Djurslands Bank, Sparekassen Vendsyssel, Nykredit, Nokas Verdihåndtering AS, vestjysk bank, Vestjysk Bank, Sydjysk Sparekasse, SparekassenThy, Sparekassen Sjælland-Fyn, Sparekassen Sjælland, Sparekassen Kronjylland, SparNord, Skjern Bank, Ringkøbing Landbobank, Ringkjøbing Landbobank, Loomis, Lollands Bank, Handelsbanken, Fynske Bank, DKK, Andelskassen]
+chargingStationOperators: [Clever, OK, E.ON, Norlys, EWII, Circle K, Spirii, Monta, Tesla, Q8, Shell Recharge, Allego, Uno-X, Eviny, Sperto, Ionity, PowerGo, Base2Charge, Lidl, Shell Recharge Solutions, Sønderborg Kommune, Shell, Ringkøbing-Skjern Kommune, Ø Strøm, Électricité de France, Vejle Kommune, Spirii Go, Fastned, ChargePoint, Recharge, Q8 Danmark, Esbjerg Kommune, drivee, Zapp, ViggoEnergy, Spar Nord, SEF, Københavns Kommune, EVlink]
+chargingStationSocketTypes: [type2_cable, type2, type2_combo]
+clothesContainerOperators: [Dansk Røde Kors, Kredsløb, Frelsens Hær, Red Barnet, Københavns Kommune, Trasborg, UFF, Røde Kors, Folkekirkens Nødhjælp, Blå Kors, Kirkens Korshær, Blå Kors Danmark, Red Cross, Blå Kors Genbrug, UFF Humana, Humana]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typek, typef, typee, typec]
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: true
@@ -15,7 +16,7 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 238
 officialLanguages: [da]
 orchardProduces: [apple, strawberry, pear, cherry, blueberry, plum, raspberry, tomato]
-parcelLockerBrand: [Pakkeboksen, Homerunner, Instabox, Nærboks, PostNord, postnord, UPS]
+parcelLockerBrand: [Pakkeboksen, Homerunner, Instabox, PostNord, Nærboks, PostNord Nærboks, postnord, bring, UPS]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: Zone

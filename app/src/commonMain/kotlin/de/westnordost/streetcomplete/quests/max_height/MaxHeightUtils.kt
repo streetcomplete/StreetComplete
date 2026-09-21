@@ -33,7 +33,8 @@ val tunnelFilter: ElementFilterExpression by lazy { """
 """.toElementFilterExpression() }
 
 val bridgeFilter by lazy { """
-    ways with (
+    ways with
+      (
         (
           highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
           or railway ~ rail|light_rail|subway|narrow_gauge|tram|disused|preserved|funicular|monorail

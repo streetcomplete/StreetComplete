@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.data.user.achievements.achievements
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.user.DialogContentWithIconLayout
 import de.westnordost.streetcomplete.screens.user.links.LazyLinksColumn
+import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.theme.headlineSmall
 import de.westnordost.streetcomplete.ui.theme.titleMedium
@@ -78,8 +79,11 @@ private fun AchievementDetails(
     modifier: Modifier = Modifier,
     isLandscape: Boolean,
 ) {
+    val scrollState = rememberScrollState()
     Column(
-        modifier = modifier.verticalScroll(rememberScrollState()),
+        modifier = modifier
+            .fadingVerticalScrollEdges(scrollState, 32.dp)
+            .verticalScroll(scrollState),
         horizontalAlignment = if (isLandscape) Alignment.Start else Alignment.CenterHorizontally,
     ) {
         Text(

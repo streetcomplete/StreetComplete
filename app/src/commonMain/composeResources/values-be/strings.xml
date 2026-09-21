@@ -468,7 +468,6 @@
     <string name="underground">падземнае</string>
     <string name="quest_sidewalk_value_yes">тратуар</string>
     <string name="quest_sidewalk_value_no">няма тратуара</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Ці забараняецца пешаходам хадзіць па гэтай дарозе?</string>
     <string name="quest_buildingType_title">Якога тыпу гэты будынак?</string>
     <string name="pref_title_theme_select">Тэма</string>
     <string name="theme_light">Светлая</string>
@@ -674,7 +673,6 @@
     <string name="at_housenumber">нумар дома %1$s</string>
     <string name="quest_openingHours_add_off_days">Дадаць выходныя дні</string>
     <string name="quest_openingHours_off_day">Выхадны</string>
-    <string name="quest_cycleway_resurvey_title">Тут усё яшчэ ёсць веласіпедная дарожка?</string>
     <string name="pref_title_resurvey_intervals">Частата паўторнага абследавання</string>
     <string name="resurvey_intervals_less_often">Радзей</string>
     <string name="resurvey_intervals_default">Па змаўчанні</string>
@@ -887,7 +885,6 @@
     <string name="quest_access_yes">Любы прадстаўнік шырокай грамадскасці</string>
     <string name="quest_access_customers">Любая асоба, якая наведвае пэўнае месца (напрыклад, толькі кліенты)</string>
     <string name="quest_access_private">Толькі фізічная асоба (асобы) з дазволам</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Час збору гэтай паштовай скрыні па-ранейшаму правільны?</string>
     <string name="quest_bicycle_barrier_type_title">Што гэта за веласіпедная перашкода?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Па дыяганалі да дарожкі</string>
     <string name="quest_barrier_bicycle_type_tilted">Вузкі праход, які звужаецца да вяршыні</string>
@@ -924,8 +921,6 @@
     <string name="quest_fireHydrant_position_sidewalk">На тратуары</string>
     <string name="quest_fireHydrant_position_parking_lot">На стаяначным месцы</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Так (пакіньце нататку)</string>
-    <string name="quest_smoothness_square_title">Якая якасць пакрыцця гэтага квадрата?</string>
-    <string name="quest_smoothness_road_title">Якая якасць пакрыцця гэтай дарогі ў гэтым месцы?</string>
     <string name="quest_smoothness_title_excellent">Гладкі і роўны</string>
     <string name="quest_smoothness_title_good">Пераважна роўны</string>
     <string name="quest_smoothness_title_intermediate">Крыху грудкаватая</string>
@@ -978,7 +973,6 @@
     <string name="ar_core_tracking_error_camera_unavailable">Камера выкарыстоўваецца іншай праграмай</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Трымальнік руля</string>
     <string name="quest_bicycle_parking_access_title2">Хто можа пакiнуць тут свой ровар? Стаянка можа быць платнай ці бясплатнай.</string>
-    <string name="quest_playground_access_title2">Хто можа выкарыстоўваць гэтую гульнявую пляцоўку?</string>
     <string name="ar_measure">Зрабіць вымярэнні</string>
     <string name="ar_core_tracking_error_too_steep_angle">Занадта круты вугал, крыху адыдзіце</string>
     <string name="default_disabled_msg_no_ar">Неабходна ручное вымярэнне для таго каб выконваць гэтае заданне, бо вымярэнне з дапамогай камеры не падтрымліваецца на гэтай прыладзе.</string>
@@ -1035,7 +1029,6 @@
     <string name="quest_lit_title">Ці асветлена тут?</string>
     <string name="quest_openingHours_title">Якія тут гадзiны працы?</string>
     <string name="quest_openingHours_signed_title">Ці напісаны тут гадзіны працы?</string>
-    <string name="quest_openingHours_resurvey_title">Ці правільныя гэтыя гадзіны працы?</string>
     <string name="quest_placeName_title">Як называецца гэтае месца?</string>
     <string name="quest_shop_type_title2">Што гэта за тып крамы?</string>
     <string name="quest_smoking_title2">Ці дазволена тут палiць?</string>
@@ -1308,8 +1301,6 @@
     <string name="default_disabled_msg_visible_sign_moped">Гэты тып заданняў стандартна адключаны, бо доступ да мапеда пазначаецца толькі адмысловымі знакамі ў пачатку/канцы веладарожкі.</string>
     <string name="quest_arrow_tutorial">Стрэлкі на ілюстрацыі паказваюць напрамкі, у якіх праходзіць шлях на карце ў цэнтральнай кропцы. Паспрабуйце павярнуць карту, і ў вас атрымаецца гэта.</string>
     <string name="info">Больш...</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Гэта забаронена.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Гэта дазволена.</string>
     <string name="quest_buildingLevels_hint">Для будынкаў на схіле адлік узроўняў пачынаецца ад узроўню зямлі самага ніжняга паверху.
 
 Узровень лічыцца да даху, калі яго вокны знаходзяцца ў даху. У далейшым, дах з нулявым узроўнем не абавязкова плоскі, а проста недастаткова высокі для ўсяго ўзроўню.</string>
@@ -1350,7 +1341,6 @@
     <string name="action_messages">Паказаць паведамленні</string>
     <string name="action_create_new_poi">Стварыць POI</string>
     <string name="auth_error">Памылка аўтарызацыі. Паспрабуйце ўвайсці яшчэ раз.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Насамрэч, тут тратуар.</string>
     <string name="quest_bicycle_repair_station_services_title">Якое веласіпеднае абсталяванне тут даступна?</string>
     <string name="quest_bicycle_repair_station_pump">Насос</string>
     <string name="quest_bicycle_repair_station_tools">Розныя інструменты</string>
@@ -1433,7 +1423,6 @@
     <string name="quest_bicycle_charging_station_capacity_title">Колькі ровараў можна тут зараджаць адначасова?</string>
     <string name="quest_charging_station_bicycles_title">Ці можна тут зараджаць ровары?</string>
     <string name="quest_charging_station_bicycles_hint">Зарадныя прылады для ровара падключаюцца да звычайных бытавых разетак.</string>
-    <string name="quest_tower_access_title">Хто можа атрымаць доступ да гэтай вежы? Гэта можа быць бясплатна або платна.</string>
     <string name="quest_recycling_type_pet_bottles">Пластыкавыя бутэлькі</string>
     <string name="quest_maxweight_add_sign">Дадаць подпіс</string>
     <string name="quest_maxweight_remove_sign">Выдаліць подпіс</string>

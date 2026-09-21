@@ -128,7 +128,7 @@ class AddStileTypeTest {
     }
 
     @Test
-    fun `handle unmodified, well tagged stepover`() {
+    fun `handle unmodified well tagged stepover`() {
         assertEquals(
             setOf(
                 StringMapEntryAdd("check_date", nowAsCheckDateString()),

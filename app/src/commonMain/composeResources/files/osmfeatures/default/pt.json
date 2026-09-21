@@ -29,6 +29,10 @@
           "name": "Expositor publicitário",
           "terms": ["mupi", "publicidade", "propaganda", "anúncio", "mobiliário urbano para informação", "informação"]
         },
+        "advertising/sign": {
+          "name": "Placa publicitária",
+          "terms": ["advertising", "advertise", "propaganda", "anúncio", "placard", "billboard", "cartaz", "publicitário"]
+        },
         "advertising/totem": {
           "name": "Totem publicitário",
           "terms": ["publicidade", "propaganda", "informação", "informações", "preços"]
@@ -186,6 +190,10 @@
           "name": "Bar LGBTQ+",
           "terms": ["bar gay", "bar lésbico", "bar lgbt", "bar lgbtq", "bar lgb", "bar homosexual", "bar homossexual", "homossexuais", "lésbicas"]
         },
+        "amenity/bbq": {
+          "name": "Grelhador",
+          "terms": ["grelhador", "assador", "churrasqueira", "barbecue", "grill", "bbq"]
+        },
         "amenity/bench": {
           "name": "Banco",
           "terms": ["bench", "assento", "sentar", "lugar"]
@@ -238,9 +246,6 @@
           "name": "Agência de câmbio",
           "terms": ["currency exchange", "troca de dinheiro", "câmbio", "cambiar", "cambista", "dinheiro"]
         },
-        "amenity/bus_station": {
-          "name": "Estação / Terminal de autocarros"
-        },
         "amenity/cafe": {
           "name": "Café",
           "terms": ["chá", "café", "cafetaria", "cafeteria"]
@@ -281,6 +286,10 @@
           "name": "Posto de carregamento",
           "terms": ["charging station", "estação de recarga", "energia", "bateria", "recarregar", "recaregar", "recarregagem", "veículo elétrico", "veículos helétricos", "híbrido", "híbridos", "posto de recarga", "estação de carregamento"]
         },
+        "amenity/charging_station/charging_station_bicycle": {
+          "name": "Posto de carregamento de bicicletas",
+          "terms": ["carregar", "bicycle", "elétrico", "electric", "eléctrico", "bike", "regarregar", "recarregamento", "charger", "binas"]
+        },
         "amenity/childcare": {
           "name": "Berçário / Creche",
           "terms": ["nursery", "childcare", "cuidados infantis", "berçário", "jardim infantil", "infantil", "crianças", "children"]
@@ -317,10 +326,6 @@
           "name": "Centro comunitário",
           "terms": ["community center", "espaço social", "centro social"]
         },
-        "amenity/community_centre/cultural_centre": {
-          "name": "Centro cultural",
-          "terms": ["cultura", "centre", "center", "comunidade", "culturais", "atividades", "actividades", "comunitário"]
-        },
         "amenity/community_centre/lgbtq": {
           "name": "Centro comunitário LGBTQ+",
           "terms": ["gay", "lésbico", "lgbt", "lgbtq", "lgb", "homosexual", "homossexual"]
@@ -352,6 +357,10 @@
         "amenity/dentist": {
           "name": "Dentista",
           "terms": ["dentist", "dentes", "dente", "ortodontia", "estomatologista", "odontologista", "odontogeriatrista", "odontopediatrista", "implantodontista", "prática odontológica", "cirurgia dental", "clínica dentária", "cirurgião-dentista", "cirurgião-orofacia", "médico orofacial", "implantodontia", "odontologia", "odontopediatria", "odontogeriatria", "estomatologia", "médico", "médica"]
+        },
+        "amenity/device_charging_station": {
+          "name": "Ponto de carregamento de telemóveis",
+          "terms": ["carregar", "elétrico", "electric", "eléctrico", "regarregar", "recarregamento", "charger", "dispositivo", "celular", "celulares", "telemóvel", "charging"]
         },
         "amenity/dive_centre": {
           "name": "Centro de mergulho",
@@ -493,9 +502,6 @@
           "name": "Pista de aulas de condução",
           "terms": ["escola", "condução", "conduzir", "treino", "treinar"]
         },
-        "amenity/embassy": {
-          "name": "Embaixada"
-        },
         "amenity/events_venue": {
           "name": "Espaço para eventos",
           "terms": ["events venue", "espaço de eventos", "local de eventos", "centro de eventos", "parque de eventos"]
@@ -566,9 +572,6 @@
         "amenity/fast_food/wings": {
           "name": "Comida rápida asas de frango",
           "terms": ["galinha", "chicken", "comer", "lunch", "fast", "food"]
-        },
-        "amenity/ferry_terminal": {
-          "name": "Terminal de ferry"
         },
         "amenity/fire_station": {
           "name": "Quartel dos bombeiros",
@@ -702,16 +705,13 @@
           "name": "Discoteca LGBTQ+",
           "terms": ["gays", "lésbicas", "lgbt", "lgbtq", "lgb", "homossexual", "homossexuais", "disco", "dançar", "boate", "clube noturno", "clube nocturno"]
         },
-        "amenity/nursing_home": {
-          "name": "Centro Geriátrico"
-        },
         "amenity/parcel_locker": {
           "name": "Cacifo postal",
           "terms": ["encomendas", "correios", "cacifos", "automática", "mail", "apartado", "box", "postais", "entrega", "armário"]
         },
         "amenity/parking": {
-          "name": "Parque de estacionamento",
-          "terms": ["estacionamento", "parque", "carro", "lugar", "estacionar", "parquear"]
+          "name": "Estacionamento",
+          "terms": ["parque de estacionamento", "estacionar", "parquear", "parqueamento", "parking", "veículos", "carros", "camiões", "camião", "bicicletas", "motas", "moto", "motos", "rv", "autocaravanas", "automóvel", "automóveis"]
         },
         "amenity/parking/multi-storey": {
           "name": "Garagem de estacionamento multinível",
@@ -740,6 +740,10 @@
         "amenity/parking_space/disabled": {
           "name": "Portadores de necessidades especiais",
           "terms": ["portador de deficiência", "cadeira-de-rodas", "cadeira de rodas", "cadeirante", "deficientes", "necessidades especiais", "lugar reservado", "idosos", "grávidas"]
+        },
+        "amenity/parking_surface": {
+          "name": "Estacionamento de superfície",
+          "terms": ["parque de estacionamento", "estacionar", "at-grade", "surface"]
         },
         "amenity/payment_centre": {
           "name": "Balcão de pagamento",
@@ -1000,6 +1004,10 @@
           "name": "Abrigo",
           "terms": ["shelter", "gazebo", "telheiro", "alpendre"]
         },
+        "amenity/shelter/field_shelter": {
+          "name": "Abrigo de campo",
+          "terms": ["refúgio", "animais", "cavalos", "shelter", "barraco", "barracão"]
+        },
         "amenity/shelter/gazebo": {
           "name": "Gazebo",
           "terms": ["shelter", "gazebo", "telheiro", "alpendre"]
@@ -1144,6 +1152,10 @@
           "name": "Brinquedoteca",
           "terms": ["brinquedos", "brincar", "espaço para brincar", "espaço lúdico", "jogos", "trocas", "troca de jogos"]
         },
+        "amenity/traffic_park": {
+          "name": "Parque de condução infantil",
+          "terms": ["bicycle safety centre", "children''s traffic park", "learn to ride centre", "traffic garden", "traffic playground", "aprendizagem", "conduzir", "sinalização", "sinais", "trânsito"]
+        },
         "amenity/trolley_bay": {
           "name": "Parque de carrinhos de compras",
           "terms": ["abrigo", "shopping", "carrinhos", "trolley", "supermercado", "hipermercado", "compras", "transporte"]
@@ -1208,6 +1220,10 @@
           "name": "Máquina de venda de produtos de higiene feminina",
           "terms": ["higiene feminina"]
         },
+        "amenity/vending_machine/flowers": {
+          "name": "Máquina de venda de flores",
+          "terms": ["máquina", "venda automática", "flowers", "buquê", "bouquet"]
+        },
         "amenity/vending_machine/food": {
           "name": "Máquina de venda de comida",
           "terms": ["máquina", "venda automática", "comida", "alimentos"]
@@ -1252,6 +1268,10 @@
           "name": "Máquina de venda de doces",
           "terms": ["aparelho", "venda automática", "automático", "pastilhas", "gomas", "rebuçados", "chocolates"]
         },
+        "amenity/vending_machine/water": {
+          "name": "Máquina de venda de água",
+          "terms": ["drink vending machine", "máquina de venda de bebidas", "bebida", "água", "águas", "bebidas", "water"]
+        },
         "amenity/veterinary": {
           "name": "Veterinário",
           "terms": ["veterinary", "veterinária", "animais", "médico", "médicos", "médica", "médicas", "animais de companhia", "animais de estimação"]
@@ -1290,6 +1310,12 @@
         },
         "area": {
           "name": "Área",
+          "relation": {
+            "role_labels": {
+              "inner": "Interior",
+              "outer": "Exterior"
+            }
+          },
           "terms": ["espaço", "extensão", "zona", "polígono"]
         },
         "area/footway": {
@@ -1499,7 +1525,7 @@
         },
         "barrier/lift_gate": {
           "name": "Cancela elevatória",
-          "terms": ["boom gate", "lift", "barreita", "pivoted", "barra", "braço", "passagem", "passar"]
+          "terms": ["boom gate", "lift", "barreira", "pivoted", "barra", "braço", "passagem", "passar", "elevatório", "elevatória"]
         },
         "barrier/log": {
           "name": "Tronco",
@@ -1558,13 +1584,6 @@
         },
         "barrier/yes": {
           "name": "Tipo indeterminado"
-        },
-        "boundary": {
-          "name": "Fronteira"
-        },
-        "boundary/administrative": {
-          "name": "Fronteira administrativa",
-          "terms": ["fronteira administrativa", "concelho", "freguesia", "distrito", "região", "limite adminsitrativo"]
         },
         "boundary/hazard": {
           "name": "Área perigosa",
@@ -1655,9 +1674,6 @@
         "building/dormitory": {
           "name": "Dormitório",
           "terms": ["dormitory", "residência", "estudantes", "residência de estudantes", "edifício"]
-        },
-        "building/entrance": {
-          "name": "Entrada / Saída"
         },
         "building/farm": {
           "name": "Casa de quinta",
@@ -1808,6 +1824,10 @@
           "name": "Edifício de templo",
           "terms": ["edifício", "templo", "religioso", "oração", "religião"]
         },
+        "building/tent": {
+          "name": "Tenda permanente",
+          "terms": ["tent", "barraca"]
+        },
         "building/terrace": {
           "name": "Fileira de casas em banda",
           "terms": ["geminado", "geminada", "germinada", "linha de casas", "habitação", "house", "casa", "residência", "residence", "dwelling", "brownstone"]
@@ -1832,9 +1852,6 @@
           "name": "Parte de edifício",
           "terms": ["building part", "simple 3d", "parte de edifício", "telhado", "anexo", "divisão", "nível diferente"]
         },
-        "building_point": {
-          "name": "Edifício"
-        },
         "cemetery/grave": {
           "name": "Sepultura",
           "terms": ["mausoleum", "tomb", "mausoléu", "tumba", "túmulo", "jazigo", "sepulcro", "cemitério", "mortos", "defuntos"]
@@ -1842,14 +1859,6 @@
         "cemetery/sector": {
           "name": "Setor de cemitério",
           "terms": ["burial ground", "cemetary", "cemetery", "churchyard", "columbarium", "grave yard", "graveyard", "mausoleum", "tomb", "sector", "túmulo", "mausoléu", "sepultura", "gavetas", "jazigo"]
-        },
-        "climbing/crag": {
-          "name": "Escalada de rochedo escarpado",
-          "terms": ["crag", "rocha", "rochedo", "escalar", "subida", "cordas", "rapel", "rappel", "climb", "climbing"]
-        },
-        "climbing/route": {
-          "name": "Rota de escalada",
-          "terms": ["route", "percurso", "climbing", "escalar", "rappel", "rapel"]
         },
         "climbing/route_bottom": {
           "name": "Início da rota de escalada",
@@ -1975,9 +1984,6 @@
           "name": "Cópia de chaves",
           "terms": ["key cutter", "chave", "chaves", "duplicador", "cópia", "duplicação"]
         },
-        "craft/locksmith": {
-          "name": "Chaveiro"
-        },
         "craft/metal_construction": {
           "name": "Serralheiro",
           "terms": ["construção em metal", "serralheria", "gradeamentos", "ferro", "reparação", "metal", "serralheiro"]
@@ -2049,9 +2055,6 @@
         "craft/stonemason": {
           "name": "Pedreiro",
           "terms": ["stonemason", "rocha", "canteiro", "pedra", "pedras", "pedraria", "rochas"]
-        },
-        "craft/tailor": {
-          "name": "Alfaiate"
         },
         "craft/tiler": {
           "name": "Ladrilhador",
@@ -2270,9 +2273,6 @@
           "name": "Vau",
           "terms": ["baixio", "banco", "ponto de passagem", "rio", "ribeiro", "parcel", "almegue", "passagem", "pé"]
         },
-        "ford_line": {
-          "name": "Vau"
-        },
         "golf/bunker": {
           "name": "Banco de areia",
           "terms": ["sand trap", "areia", "caixa de areia"]
@@ -2366,12 +2366,8 @@
           "terms": ["nascer", "nascimento", "obstetra", "obstetrícia", "parteira", "parto"]
         },
         "healthcare/blood_donation": {
-          "name": "Banco de sangue",
-          "terms": ["centro de doação de sangue", "doação de sangue", "transfusão de sangue", "blood donor center"]
-        },
-        "healthcare/counselling": {
-          "name": "Centro de aconselhamento",
-          "terms": ["counselling center", "centro de aconselhamento", "aconselhamento", "acompanhamento", "orientação"]
+          "name": "Centro de doação de sangue",
+          "terms": ["blood", "dador", "dadores", "transfusão", "colheita", "recolha", "transfusões"]
         },
         "healthcare/dentist/orthodontics": {
           "name": "Ortodontista",
@@ -2399,7 +2395,7 @@
         },
         "healthcare/physiotherapist": {
           "name": "Fisioterapeuta",
-          "terms": ["physiotherapist", "fisioterapia", "fisoterapeuta", "fisoterapia", "recuperação"]
+          "terms": ["physiotherapist", "fisioterapia", "fisoterapeuta", "fisoterapia", "recuperação", "terapia", "físico"]
         },
         "healthcare/podiatrist": {
           "name": "Podologista",
@@ -2434,9 +2430,6 @@
         "highway/bus_guideway": {
           "name": "Autocarro guiado",
           "terms": ["autocarro guiado", "guia"]
-        },
-        "highway/bus_stop": {
-          "name": "Paragem de autocarro"
         },
         "highway/busway": {
           "name": "Estrada exclusiva p/autocarros",
@@ -2575,6 +2568,10 @@
           "name": "Sinal de cedência de passagem",
           "terms": ["perda de prioridade", "cedencia", "cedência", "prioridade", "triângulo"]
         },
+        "highway/hitchhiking": {
+          "name": "Local para boleias assinalado",
+          "terms": ["hitchhiking", "boleia", "carona", "thumbing"]
+        },
         "highway/ladder": {
           "name": "Escada",
           "terms": ["escadote", "ladder"]
@@ -2596,7 +2593,8 @@
           "terms": ["auto-estrada", "auto estrada"]
         },
         "highway/motorway_junction": {
-          "name": "Saída de autoestrada/via rápida"
+          "name": "Saída de autoestrada/via rápida",
+          "terms": ["junção", "saída", "autoestrada", "auto-estrada", "nó", "entrada", "sair", "mudança", "mudar", "estrada", "rodovia", "motorway"]
         },
         "highway/motorway_link": {
           "name": "Ligação a autoestrada",
@@ -2782,7 +2780,8 @@
           "terms": ["inversão de marcha", "ilha", "manobra", "beco", "sem saída", "sem-saída"]
         },
         "highway/unclassified": {
-          "name": "Estrada menor / sem classificação"
+          "name": "Estrada menor / sem classificação",
+          "terms": ["estrada não-classificada", "sem referência", "rua", "unclassified"]
         },
         "historic": {
           "name": "Local histórico",
@@ -2852,6 +2851,10 @@
           "name": "Placa memorial stolperstein",
           "terms": ["memorial", "stolperstein", "holocausto"]
         },
+        "historic/millstone": {
+          "name": "Mó",
+          "terms": ["pedra", "moinho", "grind", "moer", "cereais", "cereal"]
+        },
         "historic/monument": {
           "name": "Memorial monumental",
           "terms": ["monumento", "histórico", "história", "homenagem", "memorial", "marco", "arco", "obelisco", "monumental"]
@@ -2890,9 +2893,6 @@
         "indoor/corridor": {
           "name": "Corredor interior",
           "terms": ["passagem", "hall", "interno", "interna"]
-        },
-        "indoor/corridor_line": {
-          "name": "Corredor interior"
         },
         "indoor/door": {
           "name": "Porta interior",
@@ -2937,9 +2937,6 @@
           "name": "Viveiro de peixes",
           "terms": ["fish", "peixe", "piscicultura", "perca", "carpa", "salmão", "tilápia", "truta"]
         },
-        "landuse/basin": {
-          "name": "Bacia hidrográfica"
-        },
         "landuse/brownfield": {
           "name": "Baldio industrial",
           "terms": ["terreno", "industrial", "abandonado", "contaminado", "construção"]
@@ -2963,9 +2960,6 @@
           "name": "Complexo educativo",
           "terms": ["campus", "escolas", "educacional", "educação", "centro", "área"]
         },
-        "landuse/farm": {
-          "name": "Terreno agrícola"
-        },
         "landuse/farmland": {
           "name": "Terreno agrícola",
           "terms": ["pasto", "campo", "cultivo", "agricultora", "gado", "agricultura", "produção", "vegetais", "fruta", "peras", "maças", "trigo", "milho", "olveiras"]
@@ -2984,7 +2978,7 @@
         },
         "landuse/garages": {
           "name": "Área de garagens",
-          "terms": ["terreno", "uso do solo", "garagem", "garagens", "ocupação", "privadas"]
+          "terms": ["garage", "parking", "estacionamento", "veículos", "carros", "landuse", "land use", "ocupação", "estacionar"]
         },
         "landuse/grass": {
           "name": "Relva",
@@ -3082,9 +3076,6 @@
           "name": "Viveiro de plantas",
           "terms": ["plant nursery", "viveiros", "viveiro", "viveirista", "plantas", "venda de plantas", "árvores", "arbustos", "flores"]
         },
-        "landuse/pond": {
-          "name": "Lagoa"
-        },
         "landuse/quarry": {
           "name": "Área de extração",
           "terms": ["canteira", "pedreira", "quarry", "pedra", "zona", "extração", "extracção", "mármore", "areias", "calcário", "calcária", "granito", "minério"]
@@ -3100,9 +3091,6 @@
         "landuse/religious": {
           "name": "Área religiosa",
           "terms": ["zona", "espaço", "religião", "igreja", "cristão", "muçulmano", "judeu", "judaico", "judaísmo", "cristianismo", "islão", "oração", "adoração", "santuário", "capela", "mesquita", "sinagoga"]
-        },
-        "landuse/reservoir": {
-          "name": "Água represada"
         },
         "landuse/residential": {
           "name": "Área residencial",
@@ -3526,6 +3514,10 @@
           "name": "Sauna",
           "terms": ["banho finlandês", "banho turco", "banho de vapor", "água"]
         },
+        "leisure/schoolyard": {
+          "name": "Pátio de recreio escolar",
+          "terms": ["yard", "pátio", "playground", "escola", "infantário", "escolar", "área", "espaço"]
+        },
         "leisure/slipway": {
           "name": "Rampa para barcos",
           "terms": ["rampa", "cais", "varadouro", "rampa de varadouro"]
@@ -3539,7 +3531,7 @@
           "terms": ["centro desportivo", "complexo desportivo", "cidade desportiva", "centro de desporto", "centro de desportos", "desporto", "campos", "área", "exercício"]
         },
         "leisure/sports_centre/climbing": {
-          "name": "Local de escalada",
+          "name": "Local de escalada artificial",
           "terms": ["escalada artificial", "escalada", "parede de escalada", "boulder", "bouldering", "ginásio escalada", "cordas", "rappel", "rapel"]
         },
         "leisure/sports_centre/climbing_adventure": {
@@ -3570,6 +3562,10 @@
           "name": "Estádio",
           "terms": ["estádio", "arena", "campo de futebol", "bancadas", "desporto", "edifício"]
         },
+        "leisure/summer_camp": {
+          "name": "Colónia de férias",
+          "terms": ["verão", "summer", "camp", "campo", "vacations", "jovens", "crianças", "diversão", "adolescentes"]
+        },
         "leisure/swimming_area": {
           "name": "Área balnear natural",
           "terms": ["natural swimming area", "zona de banho", "área de banho", "área de natação", "área para nadar", "natação permitida", "permitido nadar", "rios", "mar", "lagoa", "lago", "lazer", "fluvial", "praia fluvial"]
@@ -3596,9 +3592,6 @@
         "leisure/track/athletics/pole_vault": {
           "name": "Pista de salto à vara",
           "terms": ["salto", "altura", "jump", "high", "pit", "atletismo", "atleta", "saltador", "saltadora", "saltar", "vara", "correr", "corrida"]
-        },
-        "leisure/track/athletics/running": {
-          "name": "Pista de corrida"
         },
         "leisure/track/athletics/sprint": {
           "name": "Pista de corrida de velocidade",
@@ -3766,6 +3759,10 @@
           "name": "Gasómetro",
           "terms": ["gasometer", "gasômetro", "gás", "gáz", "gas", "gaz", "depósito", "armazenamento", "estrutura", "edifício"]
         },
+        "man_made/geoglyph": {
+          "name": "Geóglifo",
+          "terms": ["earthwork", "hill figure", "land art", "geoglyph", "arte"]
+        },
         "man_made/goods_conveyor": {
           "name": "Correia transportadora",
           "terms": ["tapete rolante", "conveyor", "belt", "esteira"]
@@ -3897,6 +3894,10 @@
         "man_made/silo": {
           "name": "Silo",
           "terms": ["silo", "depósito", "armazenamento", "estrutura", "edifício", "cereais", "cereal", "trigo", "soja", "milho", "cevada", "canola", "centeio"]
+        },
+        "man_made/silo/crop": {
+          "name": "Silo de colheitas agrícolas",
+          "terms": ["crops", "crop", "agricultura", "lavoura", "produção agrícola", "legumes", "frutas", "fruto", "leguminosas", "cereais", "colheita", "produtos"]
         },
         "man_made/ski_jump": {
           "name": "Torre de saltos de esqui",
@@ -4072,10 +4073,6 @@
         "military/checkpoint": {
           "name": "Posto de controlo militar",
           "terms": ["checkpoint", "posto de controlo", "ponto de controlo", "controlo militar"]
-        },
-        "military/nuclear_explosion_site": {
-          "name": "Local de testes nucleares",
-          "terms": ["nuclear explosion site", "local de teste de arma nuclear", "teste nuclear", "testes nucleares", "bomba", "atómica"]
         },
         "military/office": {
           "name": "Escritório militar",
@@ -4473,9 +4470,6 @@
           "name": "Escritório de advocacia",
           "terms": ["law office", "agência de advocacia", "advogados", "advogado", "advogadas", "advogada", "advocacia", "defesa", "leis", "direito", "lawyer", "attorney", "procuradoria"]
         },
-        "office/lawyer/notary": {
-          "name": "Notário"
-        },
         "office/moving_company": {
           "name": "Empresa de mudanças",
           "terms": ["mudanças", "transportadora", "logística", "transportes"]
@@ -4542,9 +4536,6 @@
         "office/translator": {
           "name": "Escritório de tradução",
           "terms": ["tradutor", "tradutora", "tradutores", "transcrição", "localização", "agência", "gabinete", "translation", "traduções"]
-        },
-        "office/travel_agent": {
-          "name": "Agência de viagens"
         },
         "office/union": {
           "name": "Sindicato",
@@ -4878,6 +4869,10 @@
           "name": "Central solar",
           "terms": ["fotovoltaica", "painéis", "solares", "painel", "fotovoltaico", "estação de produção energética", "eletricidade", "elétrica", "parque", "energia"]
         },
+        "power/plant/source/solar/photovoltaic": {
+          "name": "Central solar fotovoltaica",
+          "terms": ["fotovoltaica", "painéis", "solares", "painel", "fotovoltaico", "estação de produção energética", "eletricidade", "elétrica", "parque", "energia", "photovoltaic", "panels"]
+        },
         "power/plant/source/waste": {
           "name": "Central de incineração de resíduos",
           "terms": ["incineradora", "resíduos sólidos", "lixo", "central incineradora", "energia", "energética", "eletricidade", "elétrica", "power", "valorização"]
@@ -4915,8 +4910,7 @@
           "terms": ["transformador", "energia", "eletricidade", "elétricos", "electricidade", "eléctrico"]
         },
         "public_transport/platform": {
-          "name": "Plataforma de transporte público",
-          "terms": ["plataforma", "transporte público", "transportes públicos"]
+          "name": "Plataforma de transporte público"
         },
         "public_transport/platform/aerialway": {
           "name": "Plataforma de transporte aéreo",
@@ -4989,12 +4983,10 @@
           "terms": ["paragem", "trolleybus", "tróleibus", "trólebus", "tróleicarro", "trólei"]
         },
         "public_transport/platform_point": {
-          "name": "Plataforma de transporte público",
-          "terms": ["plataforma", "paragem", "transporte público", "transportes públicos"]
+          "name": "Plataforma de transporte público"
         },
         "public_transport/station": {
-          "name": "Estação de transportes públicos",
-          "terms": ["transporte público", "autocarro", "comboio", "metro", "metropolitano", "terminal", "rodoviária", "aeroporto"]
+          "name": "Estação de transportes públicos"
         },
         "public_transport/station_aerialway": {
           "name": "Estação de teleférico",
@@ -5041,8 +5033,7 @@
           "terms": ["área", "paragem", "transportes públicos", "autocarros", "metros", "expressos", "bus", "comboios"]
         },
         "public_transport/stop_position": {
-          "name": "Local de paragem de transporte público",
-          "terms": ["paragem", "transportes públicos", "autocarro", "bus", "elétrico", "comboios"]
+          "name": "Local de paragem de transporte público"
         },
         "public_transport/stop_position_aerialway": {
           "name": "Local de paragem de transporte aéreo",
@@ -5083,6 +5074,10 @@
         "railway": {
           "name": "Ferrovia"
         },
+        "railway/abandoned": {
+          "name": "Vestígios visíveis de ferrovia",
+          "terms": ["carris abandonados", "linha férrea abandonada", "caminho de ferro", "caminho-de-ferro", "abandono", "abandoned", "railway", "ferrovia", "histórico", "carris antigos"]
+        },
         "railway/buffer_stop": {
           "name": "Tampão ferroviário",
           "terms": ["buffer stop", "pára-choques", "para-choque", "ferrovia", "ferroviária", "caminhos de ferro", "caminhos-de-ferro", "barreira", "travagem", "travão", "tampões", "choque", "tampão de choque", "tampões de choque"]
@@ -5106,9 +5101,6 @@
         "railway/funicular": {
           "name": "Funicular",
           "terms": ["cabos", "carris", "transportes públicos", "inclinação", "encosta", "ferrovia", "ferroviárias.ferroviários"]
-        },
-        "railway/halt": {
-          "name": "Apeadeiro ferroviário"
         },
         "railway/level_crossing": {
           "name": "Passagem de nível (veículos)",
@@ -5138,9 +5130,6 @@
           "name": "Ferrovia de bitola estreita",
           "terms": ["narrow gauge rail", "bitola estreita", "via métrica", "bitola métrica", "carris", "linha férrea", "minas", "caminhos-de-ferro", "caminho-de-ferro", "caminho de ferro"]
         },
-        "railway/platform": {
-          "name": "Plataforma ferroviária"
-        },
         "railway/preserved": {
           "name": "Ferrovia preservada",
           "terms": ["ferrovia", "caminho-de-ferro", "caminho de ferro", "linha férrea", "comboio histórico", "comboio turísitico"]
@@ -5161,8 +5150,9 @@
           "name": "Sinal ferroviário",
           "terms": ["railway signal", "semáforo ferroviário", "sinalização", "indicação", "placa", "caminhos-de-ferro", "caminhos de ferro", "ferroviários"]
         },
-        "railway/station": {
-          "name": "Estação ferroviária"
+        "railway/signal_box": {
+          "name": "Posto de sinalização",
+          "terms": ["ferrovia", "ferroviário", "ferroviária", "caminhos de ferro", "caminhos-de-ferro", "comboios", "interlock tower", "interlocking tower", "lever frame", "radio block center", "radio block centre", "signal cab", "signalling box", "signalling cab"]
         },
         "railway/subway": {
           "name": "Linha de metro",
@@ -5218,10 +5208,6 @@
         "roller_coaster/track": {
           "name": "Pista de montanha russa",
           "terms": ["roller coaster", "roller", "coaster", "diversões", "parque", "theme", "park", "ferrovia"]
-        },
-        "route/ferry": {
-          "name": "Rota de ferry",
-          "terms": ["ferry", "rota", "percurso", "viagem", "cacilheiro", "barca"]
         },
         "seamark": {
           "name": "Marcos marítimos"
@@ -5283,7 +5269,8 @@
           "terms": ["baby goods store", "loja de roupa", "carrinho", "brinquedos", "bébé", "bébe", "bebe", "bébés"]
         },
         "shop/bag": {
-          "name": "Loja de malas / bagagem"
+          "name": "Loja de malas / bagagem",
+          "terms": ["bag", "luggage", "mala", "malas", "bolsa", "bolsas", "handbag", "purse"]
         },
         "shop/bakery": {
           "name": "Padaria",
@@ -5794,6 +5781,10 @@
           "name": "Loja de fotografia",
           "terms": ["photography", "fotógrafo", "máquina fotográfica", "material fotográfico", "câmara", "vídeo", "fotografias", "vhs", "acessórios", "revelação"]
         },
+        "shop/piercing": {
+          "name": "Estúdio de piercing",
+          "terms": ["piercings", "loja", "studio"]
+        },
         "shop/pottery": {
           "name": "Loja de cerâmica",
           "terms": ["vasos", "potes", "porcelana", "cerâmica", "louça"]
@@ -6243,7 +6234,19 @@
         },
         "type/boundary/administrative": {
           "name": "Fronteira administrativa",
+          "relation": {
+            "role_labels": {
+              "admin_centre": "Centro administrativo",
+              "inner": "Interior",
+              "label": "Identificador",
+              "outer": "Exterior"
+            }
+          },
           "terms": ["fronteira legal", "limite país", "fronteira", "concelho", "freguesia", "distrito", "limite administrativo", "fronteira administrativa"]
+        },
+        "type/boundary/protected_area": {
+          "name": "Área protegida",
+          "terms": ["conservação", "conservation", "protection", "wilderness", "wildlife", "vida selvagem", "proteção"]
         },
         "type/connectivity": {
           "name": "Ligação de vias",
@@ -6263,7 +6266,13 @@
         },
         "type/multipolygon": {
           "name": "Multipolígono",
-          "terms": ["multipolygon", "multi-polígono", "multi polígono"]
+          "terms": ["multipolygon", "multi-polígono", "multi polígono"],
+          "relation": {
+            "role_labels": {
+              "inner": "Interior",
+              "outer": "Exterior"
+            }
+          }
         },
         "type/public_transport/stop_area_group": {
           "name": "Grupo de paragens de transportes públicos",
@@ -6364,10 +6373,6 @@
         "type/route/piste": {
           "name": "Rota / pista de esqui",
           "terms": ["esqui", "sky", "trilhos", "ski", "neve", "esquiar", "downhill", "route", "piste", "snow"]
-        },
-        "type/route/power": {
-          "name": "Rota de transmissão de energia",
-          "terms": ["linha de eletricidade", "linha de energia", "linha", "linhas", "eletricidade", "transmissão", "alta tensão", "cabos elétricos", "baixa tensão"]
         },
         "type/route/railway": {
           "name": "Rota ferroviária",
@@ -6495,6 +6500,299 @@
         "waterway/weir": {
           "name": "Represa",
           "terms": ["weir", "água", "rio", "ribeira", "retenção", "açude"]
+        },
+        "boundary": {
+          "name": "Fronteira",
+          "terms": ["limite", "orla", "divisão"]
+        },
+        "building_point": {
+          "name": "Edifício",
+          "terms": ["edifício", "prédio", "moradia", "residência", "casa", "habitação", "edificação", "edificado", "arranha céu", "arranha-céu"]
+        },
+        "ford_line": {
+          "name": "Vau",
+          "terms": ["baixio", "banco", "ponto de passagem", "rio", "ribeiro", "parcel", "almegue", "passagem", "pé"]
+        },
+        "traffic_sign/maxspeed-US-CA-LR": {
+          "name": "Sinal de limite de velocidade",
+          "terms": ["velocidade máxima", "limite de velocidade", "estrada", "rodoviária"]
+        },
+        "shop/ice_cream": {
+          "name": "Geladaria",
+          "terms": ["ice cream shop", "geladaria", "gelataria", "sorveteira", "sorveteria", "loja de sorvete", "sorvete", "gelado", "gelados"]
+        },
+        "route/ferry": {
+          "name": "Rota de ferry",
+          "terms": ["rota", "ferry", "barca", "cacilheiro", "transportes públicos"]
+        },
+        "railway/halt": {
+          "name": "Apeadeiro ferroviário",
+          "terms": ["apeadeiro", "paragem de comboio", "paragem", "estação ferroviária", "estação de comboios", "estação dos caminhos de ferro", "estação de caminhos de ferro", "estação de trem", "estação de trens", "estação férrea", "estação", "estações", "caminhos de ferro", "ferrovia", "comboio", "transportes"]
+        },
+        "railway/platform": {
+          "name": "Plataforma de comboios",
+          "terms": ["paragem de comboio", "plataforma de comboio", "comboio", "plataforma de embarque", "plataforma", "transporte público", "ferrovia", "locomotiva", "caminho de ferro", "ferroviárias", "ferroviários", "caminhos-de-ferro"]
+        },
+        "railway/station": {
+          "name": "Estação de comboios",
+          "terms": ["estação ferroviária", "estação de comboios", "estação dos caminhos de ferro", "estação de caminhos de ferro", "estação de trem", "estação de trens", "estação férrea", "estação", "estações", "caminhos de ferro", "ferrovia", "comboio", "gare ferroviária", "gare de comboios", "gare", "terminal ferroviário", "terminal dos caminhos de ferro", "terminal de comboios", "estação terminal", "caminhos-de-ferro", "transportes", "ferroviárias"]
+        },
+        "office/travel_agent": {
+          "name": "Agência de viagens",
+          "terms": ["agência", "viagens", "viajar", "turismo", "cruzeiros", "passagens aéreas", "hotéis", "hotel", "passeios", "excursões"]
+        },
+        "office/lawyer/notary": {
+          "name": "Notário",
+          "terms": ["notary office", "notariado", "contratos", "imóveis", "testamentos", "heranças"]
+        },
+        "natural/wood_point": {
+          "name": "Bosque",
+          "terms": ["madeira", "troncos", "árvores", "árvore", "florestal", "floresta"]
+        },
+        "man_made/geoglyph_multilinestring": {
+          "name": "Geóglifo",
+          "terms": ["earthwork", "hill figure", "land art", "geoglyph", "arte"]
+        },
+        "leisure/track/athletics/running": {
+          "name": "Pista de atletismo",
+          "terms": ["pista de atletismo", "pista de corridas", "pista de correr", "pista", "correr", "corridas", "atletismo", "decathlon", "decatlo", "maratona", "desporto", "atletas"]
+        },
+        "landuse/basin": {
+          "name": "Bacia artificial",
+          "terms": ["bacia artificial", "bacia", "bacia de infiltração", "bacia de detenção", "bacia de retardamento", "bacia de retenção", "bacia de drenagem", "reservatório", "lagoa artificial", "lago artificial", "lago feito pelo homem", "reservatório artificial"]
+        },
+        "landuse/reservoir": {
+          "name": "Reservatório hidrográfico",
+          "terms": ["artificial", "água", "acumulação", "depósito", "lago artificial"]
+        },
+        "landuse/military/danger_area_point": {
+          "name": "Área de perigo militar",
+          "terms": ["risco de vida", "morte", "perigoso", "explosão", "bombas", "explosões", "rebentamento", "força aérea", "exército", "marinha", "tropa", "guerra", "soldados"]
+        },
+        "landuse/industrial/brewery": {
+          "name": "Cervejaria industrial",
+          "terms": ["cerveja", "industrial", "indústria", "cervejaria", "bar", "cidra", "álcool", "alcool", "bebida"]
+        },
+        "landuse/industrial/industrial_point": {
+          "name": "Área industrial",
+          "terms": ["indústria", "fábricas", "produção", "zona industrial"]
+        },
+        "indoor/corridor_line": {
+          "name": "Corredor interior",
+          "terms": ["indoor corridor", "passagem", "interno", "galeria", "átrio"]
+        },
+        "highway/bus_stop": {
+          "name": "Paragem de autocarro",
+          "terms": ["paragem", "paragem de autocarro", "embarque", "autocarro", "machimbombo", "toca-toca", "otocarro", "microlete", "camionete", "camioneta", "carreira", "ônibus"]
+        },
+        "highway/raceway_unspecific": {
+          "name": "Pista de desportos motorizados",
+          "terms": ["corrida de carros", "circuito desportos motorizados", "corridas", "pista de corridas", "circuito", "fórmula", "corridas motorizados", "corrida de pista", "motas", "motociclismo"]
+        },
+        "highway/traffic_sign": {
+          "name": "Sinal de trânsito",
+          "terms": ["sinais de trânsito", "sinal de estrada", "sinalização", "sinal rodoviário"]
+        },
+        "highway/motorway_link-US-CA": {
+          "name": "Ligação a autoestrada",
+          "terms": ["ligação a autoestrada", "entrada de autoestrada", "saída de autoestrada", "saída", "acesso"]
+        },
+        "highway/primary_link-US-CA": {
+          "name": "Ligação a estrada primária",
+          "terms": ["primary link", "ligação estrada nacional", "ligação rodovia nacional", "ligação nacional", "ligação estrada principal", "entrada estrada nacional", "entrada rodovia nacional", "entrada nacional", "saída nacional", "saída rodovia nacional", "saída estrada nacional"]
+        },
+        "highway/trunk_link-US-CA": {
+          "name": "Ligação a via rápida",
+          "terms": ["ligação via rápida", "entrada via rápida", "saída via rápida", "ligação via reservada a automóveis e motociclos", "entrada via reservada a automóveis e motociclos", "saída via reservada a automóveis e motociclos", "ligação via expressa", "entrada expressa", "saída via expressa", "ligação via reservada", "entrada via reservada", "saída via reservada", "ip", "ic"]
+        },
+        "highway/path/bicycle_foot": {
+          "name": "Via para ciclistas e peões",
+          "terms": ["d7e", "d7f", "pista obrigatória para peões e velocípedes", "bicicleta", "ciclovia", "ciclista", "pedonal", "pedestre", "peões", "peão", "velocípede"]
+        },
+        "highway/path/traffic_island_shared": {
+          "name": "Travessia de refúgio p/ciclistas e peões",
+          "terms": ["island", "ilha", "rodoviária", "travessia", "bicicletas", "bicla", "ciclistas", "crossing", "parada", "bina", "bicycle", "peões", "caminho", "passeio", "ciclovia"]
+        },
+        "highway/path/crossing/informal": {
+          "name": "Travessia informal"
+        },
+        "highway/path/crossing/marked": {
+          "name": "Passadeira marcada p/ ciclistas e peões"
+        },
+        "highway/path/crossing/bicycle_foot": {
+          "name": "Passadeira p/ciclistas e peões",
+          "terms": ["passadeira", "faixa de segurança", "ciclovia", "ciclistas", "bicicletas", "travessia", "pedestres", "peões"]
+        },
+        "highway/footway/crossing/informal": {
+          "name": "Travessia informal"
+        },
+        "highway/footway/crossing/marked": {
+          "name": "Passadeira marcada sem semáforos",
+          "terms": ["passadeira", "peões", "pedestres", "estrada", "trânsito", "travessia", "faixa de segurança"]
+        },
+        "highway/footway/crossing/zebra": {
+          "name": "Passadeira marcada sem semáforos",
+          "terms": ["passadeira", "peões", "pedestres", "estrada", "trânsito", "travessia", "faixa de segurança"]
+        },
+        "highway/cycleway/crossing/marked": {
+          "name": "Travessia de ciclistas sem semáforos",
+          "terms": ["passadeira", "peões", "pedestres", "estrada", "trânsito", "travessia", "faixa de segurança", "bicicletas", "binas", "ciclistas", "ciclismo", "cicloturismo", "ciclovia"]
+        },
+        "highway/crossing/marked": {
+          "name": "Passadeira marcada sem semáforos",
+          "terms": ["passadeira", "peões", "pedestres", "estrada", "trânsito", "travessia", "faixa de segurança"]
+        },
+        "highway/crossing/zebra": {
+          "name": "Passadeira marcada sem semáforos",
+          "terms": ["passadeira", "peões", "pedestres", "estrada", "trânsito", "travessia", "faixa de segurança"]
+        },
+        "craft/locksmith": {
+          "name": "Chaveiro",
+          "terms": ["locksmith", "fechaduras", "fechadura", "chaves", "chave"]
+        },
+        "craft/tailor": {
+          "name": "Alfaiate",
+          "terms": ["tailor", "vestido", "fato", "roupa", "vestuário", "traje"]
+        },
+        "climbing/crag": {
+          "name": "Escalada de rochedo escarpado",
+          "terms": ["crag", "rocha", "rochedo", "escalar", "subida", "cordas", "rapel", "rappel", "climb", "climbing"]
+        },
+        "climbing/route": {
+          "name": "Rota de escalada",
+          "terms": ["route", "percurso", "climbing", "escalar", "rappel", "rapel"]
+        },
+        "building/entrance": {
+          "name": "Entrada / Saída",
+          "terms": ["entrance", "exit", "entrada", "acesso", "abertura", "porta", "pórtico", "portão"]
+        },
+        "building/glasshouse": {
+          "name": "Estufa",
+          "terms": ["greenhouse", "estufas", "viveiro", "plantas"]
+        },
+        "building/house/detached": {
+          "name": "Casa isolada",
+          "terms": ["edifício", "detached", "autónoma", "unifamiliar", "house", "moradia", "individual"]
+        },
+        "building/house/semi-detached": {
+          "name": "Casa geminada",
+          "terms": ["semi-detached house", "edifício", "casa", "habitação", "residência"]
+        },
+        "building/house/terrace": {
+          "name": "Fileira de casas em banda",
+          "terms": ["geminado", "geminada", "germinada", "linha de casas", "habitação", "house", "casa", "residência", "residence", "dwelling", "brownstone"]
+        },
+        "boundary/administrative": {
+          "name": "Fronteira administrativa",
+          "terms": ["fronteira legal", "limite país", "fronteira", "concelho", "freguesia", "distrito", "limite administrativo", "fronteira administrativa"]
+        },
+        "amenity/bus_station": {
+          "name": "Estação rodoviária",
+          "terms": ["terminal", "rodoviário", "rodoviária", "estação", "paragem", "autocarro", "carreira", "camionete", "camioneta", "ônibus", "machimbombo", "toca-toca", "otocarro", "microlete", "expresso", "transportes"]
+        },
+        "amenity/college": {
+          "name": "Instituto pós-secundário e não superior",
+          "terms": ["escola técnica", "formação profissional", "ensino", "escola", "instituto"]
+        },
+        "amenity/coworking_space": {
+          "name": "Coworking",
+          "terms": ["escritórios partilhados", "trabalho cooperativo", "coworking", "co-working", "espaço de trabalho compartilhado"]
+        },
+        "amenity/dancing_school": {
+          "name": "Escola de dança",
+          "terms": ["dança", "dançar", "bailado", "bailarina", "bailarino", "valsa", "tango", "salsa", "samba", "bailar", "balé", "ballet", "dance"]
+        },
+        "amenity/driving_school": {
+          "name": "Escola de condução",
+          "terms": ["escolas de condução", "autoescola", "centro de formação de condutores", "tirar a carta", "carta de condução", "escola", "condução", "carro", "conduzir", "veículo"]
+        },
+        "amenity/embassy": {
+          "name": "Embaixada",
+          "terms": ["embassy", "embaixada", "embaixador", "missão diplomática", "legação", "representação diplomática", "governo", "diplomacia"]
+        },
+        "amenity/ferry_terminal": {
+          "name": "Estação de ferry",
+          "terms": ["barco", "ferry", "transportes", "terminais", "terminal", "balsa", "cais"]
+        },
+        "amenity/kindergarten": {
+          "name": "Infantário / pré-escola",
+          "terms": ["preschool", "kindergarten", "grounds", "pré-escola", "pré escola", "creche", "jardim de infância", "jardim-de-infância", "jardim infantil", "pré-escolar", "infantário"]
+        },
+        "amenity/language_school": {
+          "name": "Escola de línguas",
+          "terms": ["escola", "idiomas", "línguas", "language", "idiom"]
+        },
+        "amenity/music_school": {
+          "name": "Escola de música",
+          "terms": ["conservatório", "música", "escola", "orfeão", "music"]
+        },
+        "amenity/nursing_home": {
+          "name": "Centro geriátrico",
+          "terms": ["lar de terceira idade", "terceira idade", "lar", "geriatria", "idosos", "seniores", "séniores"]
+        },
+        "amenity/prep_school": {
+          "name": "Centro de explicações",
+          "terms": ["exames", "tutoring", "escola", "escola de preparação", "matemática", "tpc", "trabalhos de casa", "leitura", "explicações", "testes", "ensino", "estudos", "estudo", "estudar"]
+        },
+        "amenity/school": {
+          "name": "Escola",
+          "terms": ["academia", "colégio", "departamento", "externato", "liceu", "seminário", "secundária", "primária", "ensino", "educação", "aluno", "aluna", "alunos"]
+        },
+        "amenity/university": {
+          "name": "Universidade",
+          "terms": ["university grounds", "faculdade", "escola superior", "centro universitário", "politécnico", "instituto politécnico", "instituto", "instituto universitário", "colégio", "academia", "escola"]
+        },
+        "amenity/charging_station/charging_station_bicycle_designated": {
+          "name": "Posto de carregamento de bicicletas",
+          "terms": ["carregar", "bicycle", "elétrico", "electric", "eléctrico", "bike", "regarregar", "recarregamento", "charger", "binas"]
+        },
+        "aerialway/station": {
+          "name": "Estação de teleférico",
+          "terms": ["estação de teleférico", "entrada do teleférico", "entrada para o teleférico", "paragem do teleférico", "teleférico", "telecabine", "telecadeira", "telesquis", "telesqui de barra", "telesqui de disco", "telesqui de corda", "carpete mágica", "tapete deslizante", "tirolesa", "tiroleza"]
+        },
+        "@templates/contact": {
+          "name": "Ponto",
+          "terms": ["nó", "poi", "vértice"]
+        },
+        "@templates/internet_access": {
+          "name": "Ponto",
+          "terms": ["nó", "poi", "vértice"]
+        },
+        "@templates/poi": {
+          "name": "Ponto",
+          "terms": ["nó", "poi", "vértice"]
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Ponto",
+          "terms": ["nó", "poi", "vértice"]
+        },
+        "@templates/crossing/defaults": {
+          "name": "Ponto",
+          "terms": ["nó", "poi", "vértice"]
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Ponto",
+          "terms": ["nó", "poi", "vértice"]
+        },
+        "@templates/crossing/markings": {
+          "name": "Ponto",
+          "terms": ["nó", "poi", "vértice"]
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Ponto",
+          "terms": ["nó", "poi", "vértice"]
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Ponto",
+          "terms": ["nó", "poi", "vértice"]
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Ponto",
+          "terms": ["nó", "poi", "vértice"]
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Ponto",
+          "terms": ["nó", "poi", "vértice"]
         }
       }
     }

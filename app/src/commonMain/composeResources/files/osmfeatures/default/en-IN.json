@@ -2,12 +2,560 @@
   "en-IN": {
     "presets": {
       "presets": {
+        "aeroway/aerodrome": {
+          "name": "Airport",
+          "terms": ["aeroway", "airplane", "jet", "plane", "aerodrome"]
+        },
+        "aeroway/helipad": {
+          "name": "Helipad",
+          "terms": ["helicopter", "heliport"]
+        },
+        "amenity": {
+          "name": "Amenity"
+        },
+        "amenity/arts_centre": {
+          "name": "Arts Centre",
+          "terms": ["community arts", "cultural center", "performance venue", "theater space", "theatre space", "arts center"]
+        },
+        "amenity/bank": {
+          "name": "Bank",
+          "terms": ["check", "deposit", "financial", "fund", "investment", "repository", "reserve", "safe", "savings", "stock", "treasury", "trust", "vault", "credit union"]
+        },
+        "amenity/bar": {
+          "name": "Bar",
+          "terms": ["beer", "bier", "booze", "cocktails", "dive", "drink", "pub", "tavern"]
+        },
+        "amenity/bench": {
+          "name": "Bench",
+          "terms": ["chair", "seat"]
+        },
+        "amenity/cafe": {
+          "name": "Cafe",
+          "terms": ["bistro", "coffee", "espresso", "latte", "tea"]
+        },
+        "amenity/cinema": {
+          "name": "Cinema",
+          "terms": ["drive-in", "film", "flick", "imax", "movie", "multiplex", "picture", "screen", "show", "theater"]
+        },
+        "amenity/clinic/dialysis": {
+          "name": "Dialysis Centre",
+          "terms": ["dialysis clinic", "kidney dialysis", "dialysis center"]
+        },
+        "amenity/community_centre": {
+          "name": "Community Centre",
+          "terms": ["event", "hall", "community center"]
+        },
+        "amenity/community_centre/lgbtq": {
+          "name": "LGBTQ+ Community Centre",
+          "terms": ["lgb event", "lgb hall", "lgbt event", "lgbt hall", "lgbtq event", "lgbtq hall", "lgbtq+ community center"]
+        },
+        "amenity/community_centre/youth_centre": {
+          "name": "Youth Centre",
+          "terms": ["youth club", "youth center"]
+        },
+        "amenity/conference_centre": {
+          "name": "Convention Centre",
+          "terms": ["auditorium", "exhibition", "exposition", "lecture", "conference center", "convention center"]
+        },
+        "amenity/courthouse": {
+          "name": "Courthouse",
+          "terms": ["judicial", "justice", "law court"]
+        },
+        "amenity/dive_centre": {
+          "name": "Dive Centre",
+          "terms": ["diving", "scuba", "dive center"]
+        },
+        "amenity/exhibition_centre": {
+          "name": "Exposition Centre",
+          "terms": ["convention center", "expo", "fair", "trade exhibition", "trade fair", "trade show", "tradeshow", "exhibition center", "exposition center"]
+        },
+        "amenity/fuel": {
+          "name": "Petrol Station",
+          "terms": ["biodiesel", "cng", "diesel", "fuel", "gasoline", "lng", "petrol", "propane", "gas station"]
+        },
+        "amenity/grave_yard": {
+          "name": "Graveyard",
+          "terms": ["burial ground", "cemetary", "cemetery", "churchyard", "columbarium", "grave yard", "mausoleum", "tomb"]
+        },
+        "amenity/library": {
+          "name": "Library",
+          "terms": ["book", "public library", "reading"]
+        },
+        "amenity/marketplace": {
+          "name": "Marketplace",
+          "terms": ["bazaar"]
+        },
+        "amenity/payment_centre": {
+          "name": "Payment Centre",
+          "terms": ["bill pay", "cash", "check", "currency", "finance", "money", "tax pay", "payment center"]
+        },
+        "amenity/police": {
+          "name": "Police",
+          "terms": ["badge", "constable", "constabulary", "cop", "detective", "enforcement", "fed", "law", "officer", "patrol"]
+        },
+        "amenity/pub": {
+          "name": "Pub",
+          "terms": ["alcohol", "bar", "beer", "bier", "booze", "dive", "drink", "tavern"]
+        },
+        "amenity/recycling_centre": {
+          "name": "Recycling Centre",
+          "terms": ["bottle", "can", "dump", "garbage", "glass", "recycle", "rubbish", "scrap", "trash", "recycling center"]
+        },
+        "amenity/restaurant": {
+          "name": "Restaurant",
+          "terms": ["bar", "brasserie", "breakfast", "cafe", "café", "canteen", "coffee", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "table"]
+        },
+        "amenity/social_centre": {
+          "name": "Social Centre",
+          "terms": ["community center", "community hall", "event", "fraternal", "fraternity", "hall", "organization", "professional", "society", "sorority", "union", "vetern", "social center"]
+        },
+        "amenity/social_facility/day_care": {
+          "name": "Social Services Day Care / Day Centre",
+          "terms": ["social services day care / day center"]
+        },
+        "amenity/telephone": {
+          "name": "Telephone",
+          "terms": ["pay phone", "payphone", "phone", "phone booth", "public phone", "public telephone"]
+        },
+        "amenity/theatre": {
+          "name": "Theatre",
+          "terms": ["musical", "performance", "play", "theater"]
+        },
         "amenity/theatre/type/amphi": {
-          "name": "Amphitheatre"
+          "name": "Amphitheatre",
+          "terms": ["ampi", "greek", "open air", "outdoor", "amphitheater"]
+        },
+        "amenity/toilets": {
+          "name": "Restroom",
+          "terms": ["head", "latrine", "outhouse", "privy", "public restroom", "public toilet", "w.c.", "water closet", "wc", "toilets", "bathroom", "lavatory"]
+        },
+        "barrier": {
+          "name": "Barrier"
+        },
+        "barrier/block": {
+          "name": "Block"
+        },
+        "barrier/bollard": {
+          "name": "Bollard"
+        },
+        "barrier/ditch": {
+          "name": "Trench",
+          "terms": ["ha-ha", "ditch"]
+        },
+        "barrier/entrance": {
+          "name": "Entrance"
+        },
+        "barrier/fence": {
+          "name": "Fence"
+        },
+        "barrier/gate": {
+          "name": "Gate"
+        },
+        "barrier/hedge": {
+          "name": "Hedge"
+        },
+        "barrier/stile": {
+          "name": "Stile"
+        },
+        "barrier/wall": {
+          "name": "Wall"
+        },
+        "building": {
+          "name": "Building",
+          "terms": ["structure"]
+        },
+        "building/transportation": {
+          "name": "Transport Building",
+          "terms": ["transportation building"]
+        },
+        "healthcare/birthing_center": {
+          "name": "Birthing Centre",
+          "terms": ["baby", "childbirth", "delivery", "labor", "labour", "midwive", "pregnancy", "pregnant", "birthing center"]
+        },
+        "healthcare/blood_donation": {
+          "name": "Blood Donation Centre",
+          "terms": ["apheresis", "blood bank", "blood donation", "blood transfusion", "plasmapheresis", "plateletpheresis", "stem cell donation", "blood donation center"]
+        },
+        "healthcare/counselling": {
+          "name": "Counselling Centre",
+          "terms": ["sex therapist", "counseling center"]
+        },
+        "healthcare/physiotherapist": {
+          "name": "Physiotherapist",
+          "terms": ["physical", "therapist", "therapy", "physical therapist"]
+        },
+        "highway/elevator": {
+          "name": "Lift",
+          "terms": ["elevator"]
+        },
+        "highway/elevator_line": {
+          "name": "Inclined Lift",
+          "terms": ["cable railway", "inclined elevator"]
+        },
+        "highway/emergency_access_point": {
+          "name": "Emergency Access Point",
+          "terms": ["elm", "emergency", "emergency marker", "rescue", "emergency location marker", "rescue point"]
+        },
+        "highway/footway": {
+          "name": "Walkway",
+          "terms": ["hike", "hiking", "promenade", "trackway", "trail", "walk", "foot path"]
+        },
+        "highway/footway/access_aisle": {
+          "name": "Access Aisle",
+          "terms": ["accessible van loading zone", "disabled parking access zone", "handicap parking access zone", "parking lot aisle", "striped zone", "tow zone", "tow-away zone", "towaway zone", "wheelchair aisle"]
+        },
+        "highway/footway/sidewalk": {
+          "name": "Footpath (alongside a road)",
+          "terms": ["pavement", "sidepath", "sidewalk"]
         },
         "highway/give_way": {
-          "name": "Give Way Sign"
-        }
+          "name": "Give Way Sign",
+          "terms": ["give way", "sign", "yield", "yield sign"]
+        },
+        "highway/motorway": {
+          "name": "Motorway",
+          "terms": ["autobahn", "expressway", "freeway", "highway", "interstate", "parkway", "road", "street", "thruway", "turnpike"]
+        },
+        "highway/path": {
+          "name": "Path",
+          "terms": ["hike", "hiking", "trackway", "trail", "walk"]
+        },
+        "highway/service/emergency_access": {
+          "name": "Emergency Access"
+        },
+        "highway/steps": {
+          "name": "Steps",
+          "terms": ["staircase", "stairs", "stairway"]
+        },
+        "highway/track": {
+          "name": "Track / Land-Access Road",
+          "terms": ["4wd", "4x4", "agricultural road", "atv", "carriage road", "dirt road", "double track", "farm road", "fire road", "forest road", "forestry road", "four wheel drive", "haul road", "haulage road", "high-clearance", "jeep", "logging road", "mining road", "off-road", "offroad", "overgrown", "primitive", "quad", "ranch road", "rut", "two track", "two-track", "unmaintained", "vehicular trail", "woods road", "land-access road", "track road"]
+        },
+        "historic/castle": {
+          "name": "Castle"
+        },
+        "historic/memorial": {
+          "name": "Memorial",
+          "terms": ["dedicatory", "epitaph", "memory", "monument", "remember", "remembrance", "stolperstein"]
+        },
+        "historic/monument": {
+          "name": "Monument"
+        },
+        "historic/ruins": {
+          "name": "Ruins"
+        },
+        "indoor/elevator": {
+          "name": "Indoor Lift Shaft",
+          "terms": ["elevator", "lift", "indoor elevator shaft"]
+        },
+        "landuse/cemetery": {
+          "name": "Cemetery",
+          "terms": ["burial ground", "cemetary", "churchyard", "columbarium", "grave yard", "graveyard", "mausoleum", "tomb"]
+        },
+        "landuse/farmyard": {
+          "name": "Farmyard",
+          "terms": ["barnyard", "cattleyard", "feeding", "feedlot", "feedyard", "livestock"]
+        },
+        "landuse/grass": {
+          "name": "Grass",
+          "terms": ["field", "green", "lawn", "managed grass", "mown grass", "turf"]
+        },
+        "landuse/meadow": {
+          "name": "Meadow",
+          "terms": ["grazing", "hay field", "pasture"]
+        },
+        "landuse/orchard": {
+          "name": "Orchard",
+          "terms": ["fruit"]
+        },
+        "landuse/quarry": {
+          "name": "Quarry",
+          "terms": ["aggregate quarry", "open pit mine", "sand mine", "sand pit", "sand quarry", "sandpit"]
+        },
+        "landuse/vineyard": {
+          "name": "Vineyard",
+          "terms": ["grape", "wine"]
+        },
+        "leisure/adult_gaming_centre": {
+          "name": "Adult Gaming Centre",
+          "terms": ["gambling", "slot machine", "adult gaming center"]
+        },
+        "leisure/fitness_centre": {
+          "name": "Gym / Fitness Centre",
+          "terms": ["gym", "health", "leisure", "pilates", "studio", "gym / fitness center"]
+        },
+        "leisure/garden": {
+          "name": "Garden",
+          "terms": ["flowers", "fruits", "herbs", "plants", "vegetables"]
+        },
+        "leisure/horse_riding": {
+          "name": "Horse Riding Centre",
+          "terms": ["equestrian center", "equestrian facility", "horse farm", "horse park", "horse ranch", "horse riding", "horse riding center", "horse riding facility", "riding facility", "riding stables", "stables", "horseback riding center"]
+        },
+        "leisure/indoor_play": {
+          "name": "Indoor Play Centre",
+          "terms": ["ball pit", "children's play center", "indoor playground", "indoor play center"]
+        },
+        "leisure/marina": {
+          "name": "Marina",
+          "terms": ["boats", "docks", "harbor", "harbour", "moorings", "yachts"]
+        },
+        "leisure/park": {
+          "name": "Park",
+          "terms": ["esplanade", "estate", "forest", "garden", "grass", "green", "grounds", "lawn", "lot", "meadow", "parkland", "place", "playground", "plaza", "pleasure garden", "recreation area", "square", "tract", "village green", "woodland"]
+        },
+        "leisure/playground": {
+          "name": "Playground",
+          "terms": ["jungle gym", "play area"]
+        },
+        "leisure/slipway": {
+          "name": "Slipway",
+          "terms": ["boat landing", "boat launch", "boat ramp"]
+        },
+        "leisure/sports_centre": {
+          "name": "Sports Centre / Complex",
+          "terms": ["athletic center", "athletic centre", "recreation center", "recreation centre", "sports centre", "sports complex", "sports center / complex"]
+        },
+        "leisure/stadium": {
+          "name": "Stadium"
+        },
+        "man_made/lighthouse": {
+          "name": "Lighthouse"
+        },
+        "man_made/pier": {
+          "name": "Pier",
+          "terms": ["berth", "dock", "jetty", "landing", "promenade", "wharf"]
+        },
+        "natural/bay": {
+          "name": "Bay",
+          "terms": ["bight", "cove", "estuary", "fjord", "gulf", "inlet", "sea", "sound"]
+        },
+        "natural/beach": {
+          "name": "Beach",
+          "terms": ["shore"]
+        },
+        "natural/cliff": {
+          "name": "Cliff",
+          "terms": ["crag", "escarpment", "rock face", "scarp"]
+        },
+        "natural/coastline": {
+          "name": "Coastline",
+          "terms": ["shore"]
+        },
+        "natural/glacier": {
+          "name": "Glacier",
+          "terms": ["ice", "snow"]
+        },
+        "natural/grassland": {
+          "name": "Grassland",
+          "terms": ["field", "prairie", "savanna"]
+        },
+        "natural/heath": {
+          "name": "Heath",
+          "terms": ["moor", "moorland", "shrubland"]
+        },
+        "natural/peak": {
+          "name": "Peak",
+          "terms": ["acme", "aiguille", "alp", "climax", "crest", "crown", "hill", "mount", "mountain", "pinnacle", "summit", "tip", "top"]
+        },
+        "natural/scrub": {
+          "name": "Scrub",
+          "terms": ["bush", "shrubs"]
+        },
+        "natural/spring": {
+          "name": "Spring",
+          "terms": ["aquifer", "hydro", "seep", "water source"]
+        },
+        "natural/tree": {
+          "name": "Tree",
+          "terms": ["bole", "trunk"]
+        },
+        "natural/water": {
+          "name": "Water"
+        },
+        "natural/water/lake": {
+          "name": "Lake",
+          "terms": ["lakelet", "loch", "mere"]
+        },
+        "natural/water/pond": {
+          "name": "Pond",
+          "terms": ["lakelet", "mere", "millpond", "pool", "tarn"]
+        },
+        "natural/water/reservoir": {
+          "name": "Reservoir",
+          "terms": ["dam"]
+        },
+        "natural/wetland": {
+          "name": "Wetland",
+          "terms": ["bog", "fen", "marsh", "mire", "moor", "muskeg", "peatland", "quagmire", "reedbed", "saltmarsh", "swamp", "tidalflat", "wet meadow"]
+        },
+        "office": {
+          "name": "Office",
+          "terms": ["administration"]
+        },
+        "place": {
+          "name": "Place"
+        },
+        "place/hamlet": {
+          "name": "Hamlet"
+        },
+        "place/island": {
+          "name": "Island",
+          "terms": ["archipelago", "atoll", "bar", "cay", "isle", "islet", "key", "reef"]
+        },
+        "place/locality": {
+          "name": "Locality"
+        },
+        "place/neighbourhood": {
+          "name": "Neighbourhood",
+          "terms": ["neighborhood"]
+        },
+        "place/village": {
+          "name": "Village"
+        },
+        "power/transformer": {
+          "name": "Transformer"
+        },
+        "public_transport/platform/subway": {
+          "name": "Metro Platform",
+          "terms": ["metro", "platform", "public transit", "public transportation", "rail", "subway", "track", "transit", "transportation", "underground", "subway platform"]
+        },
+        "public_transport/platform/subway_point": {
+          "name": "Metro Stop / Platform",
+          "terms": ["subway stop / platform"]
+        },
+        "public_transport/station_subway": {
+          "name": "Metro Station",
+          "terms": ["metro", "public transit", "public transportation", "rail", "station", "subway", "terminal", "track", "transit", "transportation", "underground", "subway station"]
+        },
+        "public_transport/stop_position_subway": {
+          "name": "Metro Train Stopping Location",
+          "terms": ["metro", "public transit", "public transportation", "rail", "subway", "track", "transit", "transportation", "underground", "subway stopping location"]
+        },
+        "railway/subway": {
+          "name": "Metro Track",
+          "terms": ["metro", "transit", "underground railway", "subway track"]
+        },
+        "railway/subway_entrance": {
+          "name": "Metro Entrance",
+          "terms": ["metro", "transit", "subway entrance"]
+        },
+        "shop/bakery": {
+          "name": "Bakery",
+          "terms": ["bakeshop", "bread", "cakes", "rolls"]
+        },
+        "shop/butcher": {
+          "name": "Butcher",
+          "terms": ["beef", "chicken", "lamb", "meat", "pork", "butcher shop", "pork store", "butchery"]
+        },
+        "shop/fashion_accessories": {
+          "name": "Fashion Accessories Store",
+          "terms": ["bag", "cologne", "fragrance", "hat", "jewelry", "perfume", "purse", "scarf", "sunglasses", "umbrella", "wallet", "watch"]
+        },
+        "shop/garden_centre": {
+          "name": "Garden Centre",
+          "terms": ["landscape", "mulch", "nursery", "plant nursery", "retail plant nursery", "shrub", "tree", "garden center"]
+        },
+        "shop/mall": {
+          "name": "Mall",
+          "terms": ["shopping", "shopping mall", "shopping center"]
+        },
+        "shop/supermarket": {
+          "name": "Supermarket",
+          "terms": ["food market", "grocery", "grocery store", "market", "shop", "store"]
+        },
+        "telecom/data_center": {
+          "name": "Data Centre",
+          "terms": ["computer systems storage", "information technology", "server farm", "telecommunications", "the cloud", "data center"]
+        },
+        "tourism/artwork": {
+          "name": "Artwork",
+          "terms": ["mural", "sculpture", "statue"]
+        },
+        "tourism/camp_site": {
+          "name": "Campground",
+          "terms": ["camp ground", "camp pitch", "camp site", "campers", "campsite", "caravans", "mobile homes", "recreational vehicles", "rv", "tenting"]
+        },
+        "tourism/hostel": {
+          "name": "Hostel",
+          "terms": ["backpacker", "bunk beds", "dormitories", "dorms", "lodging", "overnight accommodations", "youth hostel"]
+        },
+        "tourism/hotel": {
+          "name": "Hotel",
+          "terms": ["concierge", "inn", "lodge", "lodging", "overnight accommodations", "suite"]
+        },
+        "tourism/information": {
+          "name": "Information"
+        },
+        "tourism/information/visitor_centre": {
+          "name": "Visitor Centre",
+          "terms": ["visitors center", "visitors information center", "welcome center", "visitor center"]
+        },
+        "tourism/motel": {
+          "name": "Motel",
+          "terms": ["lodging", "motor hotel", "overnight accommodations"]
+        },
+        "tourism/museum": {
+          "name": "Museum",
+          "terms": ["archaeological", "archeological", "art", "art museum", "cultural", "excavation", "exhibition", "foundation", "gallery", "hall", "history", "institution", "nature", "painting", "photograph", "science", "sculpture", "technology"]
+        },
+        "tourism/viewpoint": {
+          "name": "Viewpoint",
+          "terms": ["lookout", "overlook", "scenery", "scenic", "vantage point", "vista"]
+        },
+        "tourism/zoo": {
+          "name": "Zoo",
+          "terms": ["animal"]
+        },
+        "type/boundary/administrative": {
+          "relation": {
+            "role_labels": {
+              "admin_centre": "Admin Centre"
+            }
+          }
+        },
+        "type/route/subway": {
+          "name": "Metro Route",
+          "terms": ["subway route"]
+        },
+        "waterway/access_point": {
+          "name": "Waterway Access Point",
+          "terms": ["boat", "canoe", "kayak", "launch", "paddleboard", "portage", "put-in", "rowboat", "take-out"]
+        },
+        "waterway/canal": {
+          "name": "Canal",
+          "terms": ["headrace", "irrigation", "spillway", "tailrace", "waterpower"]
+        },
+        "waterway/dam": {
+          "name": "Dam"
+        },
+        "waterway/ditch": {
+          "name": "Ditch"
+        },
+        "waterway/drain": {
+          "name": "Drain"
+        },
+        "waterway/river": {
+          "name": "River",
+          "terms": ["beck", "branch", "brook", "course", "creek", "estuary", "rill", "rivulet", "run", "runnel", "stream", "tributary", "watercourse"]
+        },
+        "waterway/stream": {
+          "name": "Stream",
+          "terms": ["beck", "branch", "brook", "burn", "course", "creek", "current", "drift", "flood", "flow", "freshet", "race", "rill", "rindle", "rivulet", "run", "runnel", "rush", "spate", "spritz", "surge", "tide", "torrent", "tributary", "watercourse"]
+        },
+        "waterway/weir": {
+          "name": "Weir",
+          "terms": ["low-head dam", "low-rise dam", "wier"]
+        },
+        "building_point": {
+          "name": "Building",
+          "terms": ["structure"]
+        },
+        "landuse/reservoir": {
+          "name": "Reservoir",
+          "terms": ["dam"]
+        },
+        "boundary/administrative": {}
       }
     }
   }

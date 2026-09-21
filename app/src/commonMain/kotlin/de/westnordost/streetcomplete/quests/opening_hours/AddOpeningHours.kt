@@ -117,8 +117,7 @@ mapOf(
 ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") + "\n" + """
     )
     and (!opening_hours or opening_hours older today -1 years)
-    and
-    (
+    and (
         name
         or brand
         or noname = yes
@@ -164,15 +163,15 @@ mapOf(
     )
     """
     private val filter by lazy { """
-        nodes, ways with
-        (
+        nodes, ways, relations with
+          (
             $namedFilterFragment
             or $unnamedFilterFragment
             or $updateFilterFragment
-        )
-        and access !~ private|no
-        and street_vendor != yes
-        and opening_hours:signed != no
+          )
+          and access !~ private|no
+          and street_vendor != yes
+          and opening_hours:signed != no
     """.toElementFilterExpression() }
 
     override val changesetComment = "Survey opening hours"

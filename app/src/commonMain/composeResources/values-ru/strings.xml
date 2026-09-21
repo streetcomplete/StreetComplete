@@ -468,7 +468,6 @@
     <string name="underground">подземное</string>
     <string name="quest_sidewalk_value_yes">тротуар</string>
     <string name="quest_sidewalk_value_no">нет тротуара</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Запрещается ли пешеходам ходить по этой дороге?</string>
     <string name="quest_buildingType_title">Какого типа это здание?</string>
     <string name="pref_title_theme_select">Выбор темы</string>
     <string name="theme_light">Светлая</string>
@@ -674,7 +673,6 @@
     <string name="at_housenumber">номер дома %1$s</string>
     <string name="quest_openingHours_add_off_days">Добавить выходные дни</string>
     <string name="quest_openingHours_off_day">Выходной</string>
-    <string name="quest_cycleway_resurvey_title">Здесь всё ещё есть велосипедная дорожка?</string>
     <string name="pref_title_resurvey_intervals">Интервалы повторного обследования</string>
     <string name="resurvey_intervals_less_often">Спрашивать реже</string>
     <string name="resurvey_intervals_default">По умолчанию</string>
@@ -886,7 +884,6 @@
     <string name="quest_access_yes">Любой представитель широкой общественности</string>
     <string name="quest_access_customers">Любое лицо, посещающее определённое место (например, только клиенты)</string>
     <string name="quest_access_private">Только физическое лицо (лица) с разрешением</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Время сбора этого почтового ящика по-прежнему правильное?</string>
     <string name="quest_bicycle_barrier_type_title">Что это за велосипедный барьер?</string>
     <string name="quest_barrier_bicycle_type_diagonal">По диагонали к дорожке</string>
     <string name="quest_barrier_bicycle_type_tilted">Узкий проход, уменьшающийся к вершине</string>
@@ -923,8 +920,6 @@
     <string name="quest_fireHydrant_position_sidewalk">На тротуаре</string>
     <string name="quest_fireHydrant_position_parking_lot">На парковочном месте</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Да (оставьте заметку)</string>
-    <string name="quest_smoothness_square_title">Каково качество покрытия этого квадрата?</string>
-    <string name="quest_smoothness_road_title">Каково качество покрытия этой дороги в этом месте?</string>
     <string name="quest_smoothness_title_excellent">Гладкая и ровная</string>
     <string name="quest_smoothness_title_good">В основном ровная</string>
     <string name="quest_smoothness_title_intermediate">Немного бугристая</string>
@@ -977,7 +972,6 @@
     <string name="ar_core_tracking_error_camera_unavailable">Камера используется другим приложением</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Держатель руля</string>
     <string name="quest_bicycle_parking_access_title2">Кто может парковать здесь свой велосипед? Парковка может быть платной или бесплатной.</string>
-    <string name="quest_playground_access_title2">Кто может использовать эту игровую площадку?</string>
     <string name="ar_measure">Измерить</string>
     <string name="ar_core_tracking_error_too_steep_angle">Слишком крутой угол, немного отойдите</string>
     <string name="default_disabled_msg_no_ar">Необходимо ручное измерение для того чтобы решить этот квест потому что измерение с помощью камеры не поддерживается на этом устройстве.</string>
@@ -1035,7 +1029,6 @@
     <string name="quest_lit_title">Освещено ли тут?</string>
     <string name="quest_openingHours_title">Какие здесь часы работы?</string>
     <string name="quest_openingHours_signed_title">Написаны ли тут часы работы?</string>
-    <string name="quest_openingHours_resurvey_title">Верны ли эти часы работы?</string>
     <string name="quest_placeName_title">Как называется это место?</string>
     <string name="quest_shop_type_title2">Что это за тип магазина?</string>
     <string name="quest_smoking_title2">Разрешено ли тут курить?</string>
@@ -1308,8 +1301,6 @@
     <string name="default_disabled_msg_visible_sign_moped">Этот тип квеста по умолчанию отключен, поскольку доступ к мопеду обозначается только специальными знаками в начале/конце велосипедной дорожки.</string>
     <string name="quest_arrow_tutorial">Стрелки на иллюстрации указывают направления, в которых проходит дорога на карте в ее центральной точке.  Попробуйте повернуть карту и у вас все получится.</string>
     <string name="info">Больше информации</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Это запрещено.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Это разрешено.</string>
     <string name="quest_buildingLevels_hint">Для зданий, расположенных на склоне, отсчет этажей начинается от уровня земли самой низкой стороны.
 
 Этаж в составе крыши считается этажом, если в нём находятся окна.  Следовательно, крыши с нулевым этажом крыши не обязательно плоские, просто недостаточно высокие для всего уровня.</string>
@@ -1350,7 +1341,6 @@
     <string name="action_messages">Показать сообщения</string>
     <string name="action_create_new_poi">Добавить новый объект</string>
     <string name="auth_error">Ошибка авторизации.  Попробуйте войти еще раз.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">На самом деле, здесь есть тротуар.</string>
     <string name="quest_bicycle_repair_station_services_title">Какие инструменты для обслуживания велосипеда здесь есть?</string>
     <string name="quest_bicycle_repair_station_pump">Насос</string>
     <string name="quest_bicycle_repair_station_tools">Различные инструменты</string>
@@ -1433,7 +1423,6 @@
     <string name="quest_bicycle_charging_station_capacity_title">Сколько велосипедов можно заряжать здесь одновременно?</string>
     <string name="quest_charging_station_bicycles_title">Можно ли здесь также заряжать велосипеды?</string>
     <string name="quest_charging_station_bicycles_hint">Адаптеры питания для велосипедных зарядных устройств подключаются к обычным бытовым розеткам.</string>
-    <string name="quest_tower_access_title">Кто может получить доступ к этой башне? Доступ может быть бесплатным или платным.</string>
     <string name="quest_recycling_type_pet_bottles">Пластиковые бутылки</string>
     <string name="quest_maxweight_add_sign">Добавить знак</string>
     <string name="quest_maxweight_remove_sign">Убрать знак</string>

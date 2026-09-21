@@ -14,12 +14,8 @@ class AddReligionToPlaceOfWorship : OsmFilterQuestType<Religion>() {
 
     override val elementFilter = """
         nodes, ways, relations with
-        (
-            amenity = place_of_worship
-            or
-            amenity = monastery
-        )
-        and !religion
+          amenity ~ place_of_worship|monastery
+          and !religion
     """
     override val changesetComment = "Specify religion for places of worship"
     override val wikiLink = "Key:religion"

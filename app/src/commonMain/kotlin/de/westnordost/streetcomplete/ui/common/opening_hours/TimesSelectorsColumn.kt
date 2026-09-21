@@ -22,7 +22,7 @@ fun TimesSelectorsColumn(
     times: List<TimesSelector>,
     onChange: (times: List<TimesSelector>) -> Unit,
     modifier: Modifier = Modifier,
-    locale: Locale = Locale.current,
+    locale: Locale? = null,
     enabled: Boolean = true,
 ) {
     Column(modifier) {

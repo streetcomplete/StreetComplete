@@ -15,13 +15,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import de.westnordost.streetcomplete.screens.about.ChangelogScreen
-import de.westnordost.streetcomplete.screens.about.CreditsScreen
-import de.westnordost.streetcomplete.screens.about.PrivacyStatementScreen
-import org.koin.compose.viewmodel.koinViewModel
+import de.westnordost.streetcomplete.screens.about.AboutNavHost
+import de.westnordost.streetcomplete.screens.settings.SettingsNavHost
+import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialScreen
+import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialScreen
+import de.westnordost.streetcomplete.screens.user.UserNavHost
 import platform.Foundation.NSUserDefaults
 
-private enum class Screen { Changelog, Credits, PrivacyStatement }
+private enum class Screen { About, Settings, User, IntroTutorial, OverlaysTutorial }
 
 /** Allows opening a screen directly for development, e.g.
  *  xcrun simctl launch booted <bundle id> -screen Changelog */
@@ -38,16 +39,23 @@ fun IosApp() {
     Surface(Modifier.fillMaxSize()) {
         when (screen) {
             null -> LauncherScreen(onClickScreen = { screen = it })
-            Screen.Changelog -> ChangelogScreen(
-                viewModel = koinViewModel(),
+            Screen.About -> AboutNavHost(
                 onClickBack = { screen = null },
             )
-            Screen.Credits -> CreditsScreen(
-                viewModel = koinViewModel(),
+            Screen.Settings -> SettingsNavHost(
                 onClickBack = { screen = null },
             )
-            Screen.PrivacyStatement -> PrivacyStatementScreen(
+            Screen.User -> UserNavHost(
+                launchAuth = false,
                 onClickBack = { screen = null },
+            )
+            Screen.IntroTutorial -> IntroTutorialScreen(
+                onDismissRequest = { screen = null },
+                onFinished = { screen = null }
+            )
+            Screen.OverlaysTutorial -> OverlaysTutorialScreen(
+                onDismissRequest = { screen = null },
+                onFinished = { screen = null }
             )
         }
     }

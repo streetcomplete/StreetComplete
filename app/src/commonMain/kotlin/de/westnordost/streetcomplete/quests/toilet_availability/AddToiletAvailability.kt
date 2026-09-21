@@ -17,15 +17,15 @@ class AddToiletAvailability : OsmFilterQuestType<Boolean>() {
     // only for malls, big stores and rest areas because users should not need to go inside a non-public
     // place to solve the quest. (Considering malls and department stores public enough)
     override val elementFilter = """
-        nodes, ways with
-        (
-          shop ~ mall|department_store
-          or highway ~ services|rest_area
-          or tourism ~ camp_site|caravan_site|wilderness_hut
-          or leisure ~ bathing_place|marina
-          or amenity = ranger_station
-        )
-        and !toilets
+        nodes, ways, relations with
+          (
+            shop ~ mall|department_store
+            or highway ~ services|rest_area|trailhead
+            or tourism ~ camp_site|caravan_site|wilderness_hut
+            or leisure ~ bathing_place|marina
+            or amenity = ranger_station
+          )
+          and !toilets
     """
     override val changesetComment = "Survey toilet availabilities"
     override val wikiLink = "Key:toilets"

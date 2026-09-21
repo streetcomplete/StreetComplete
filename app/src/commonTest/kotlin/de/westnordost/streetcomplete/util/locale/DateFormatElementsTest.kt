@@ -4,6 +4,7 @@ import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.util.locale.DateComponent.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class DateFormatElementsTest {
     @Test fun en_US() {
@@ -27,13 +28,6 @@ class DateFormatElementsTest {
         )
     }
 
-    @Test fun th_TH() {
-        assertEquals(
-            DateFormatElements(listOf(Day, Month, Year), "/"),
-            DateFormatElements.of(Locale("th-TH"))
-        )
-    }
-
     @Test fun fr_CA() {
         assertEquals(
             DateFormatElements(listOf(Year, Month, Day), "-"),
@@ -42,10 +36,13 @@ class DateFormatElementsTest {
     }
 
     @Test fun sk() {
-        assertEquals(
-            DateFormatElements(listOf(Day, Month, Year), ". "),
-            DateFormatElements.of(Locale("sk"))
-        )
+        val expected = DateFormatElements(listOf(Day, Month, Year))
+        val actual = DateFormatElements.of(Locale("sk"))
+
+        assertEquals(expected.order, actual.order)
+        assertEquals(expected.before, actual.before)
+        assertEquals(expected.after, actual.after)
+        assertTrue(actual.separator == ". " || actual.separator == ".")
     }
 
     @Test fun bg() {

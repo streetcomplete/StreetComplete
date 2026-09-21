@@ -2,14 +2,28 @@ package de.westnordost.streetcomplete.util.ktx
 
 import de.westnordost.streetcomplete.data.location.Location
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flatMapLatest
+import org.maplibre.compose.location.LocationEvent
+import org.maplibre.compose.location.LocationProvider
+import org.maplibre.compose.location.LocationRequest
 import org.maplibre.spatialk.units.International
+import kotlin.time.TimeSource
 
-fun org.maplibre.compose.location.Location.toLocation(): Location =
+private val locationTimeMark = TimeSource.Monotonic.markNow()
+
+fun LocationEvent.Update.toLocation(): Location =
     Location(
-        position = position.value.toLatLon(),
-        accuracy = position.accuracy?.toFloat(International.Meters) ?: 0f,
-        elapsedDuration = timestamp.elapsedNow(),
+        position = measurement.position.toLatLon(),
+        accuracy = measurement.horizontalAccuracy?.toFloat(International.Meters) ?: 0f,
+        elapsedDuration = locationTimeMark.elapsedNow() - measurementMark.elapsedNow(),
     )
 
 fun org.maplibre.spatialk.geojson.Position.toLatLon(): LatLon =
     LatLon(latitude, longitude)
+
+// TODO remove after upgrading to a version containing https://github.com/maplibre/maplibre-compose/pull/1393
+@OptIn(ExperimentalCoroutinesApi::class)
+fun LocationProvider.updatesWithPermissionChanges(request: LocationRequest): Flow<LocationEvent> =
+    permission.flatMapLatest { updates(request) }

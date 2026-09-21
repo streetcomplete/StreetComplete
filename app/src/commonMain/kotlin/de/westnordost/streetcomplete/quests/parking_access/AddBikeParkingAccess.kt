@@ -18,9 +18,10 @@ class AddBikeParkingAccess : OsmFilterQuestType<ParkingAccess>() {
     // Only include these bicycle_parking types, because access for these types is needed for
     // AddBikeParkingFee and because those are uncontroversial. See #2496 and #2517
     override val elementFilter = """
-        nodes, ways, relations with amenity = bicycle_parking
-        and bicycle_parking ~ building|lockers|shed
-        and (!access or access = unknown)
+        nodes, ways, relations with
+          amenity = bicycle_parking
+          and bicycle_parking ~ building|lockers|shed
+          and (!access or access = unknown)
     """
 
     override val changesetComment = "Specify bicycle parking access"

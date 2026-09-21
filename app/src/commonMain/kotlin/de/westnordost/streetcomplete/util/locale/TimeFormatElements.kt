@@ -17,12 +17,19 @@ data class TimeFormatElements(
     val after: String = "",
 ) {
     companion object {
+        /** Create time format symbols from the given locale. [locale] = null uses the current
+         *  locale for time formatting. For example iOS allows the user to select whether the time
+         *  should be formatted as a 24-hour or 12-hour clock. This setting is only respected when
+         *  the default locale is used, once a locale is specified explicitly, always the default
+         *  formatting rules for that locale are used. */
         fun of(locale: Locale?): TimeFormatElements {
             val formatter = LocalTimeFormatter(
                 locale = locale,
                 style = DateTimeFormatStyle.Short
             )
-            val regex = Regex("(?:(\\D*)\\h)?(\\d{1,2})(\\D+)(\\d)\\d(?:\\h(.*))?")
+            val d = "\\p{Nd}" // digit
+            val a = "\\P{Nd}" // not a digit
+            val regex = Regex("(?:($a*)\\h)?($d{1,2})($a+)($d)$d(?:\\h(.*))?")
             val early = formatter.format(LocalTime(1, 0))
             val late = formatter.format(LocalTime(13, 0))
             var beforeAm = ""
@@ -33,10 +40,12 @@ data class TimeFormatElements(
             var hourSeparator = ":"
             var zero = '0'
             var clock12Elements: Clock12Elements? = null
+            var earlyHour = ""
 
             regex.matchEntire(early)?.let { matchResult ->
                 val values = matchResult.groupValues
                 beforeAm = values[1]
+                earlyHour = values[2]
                 hourSeparator = values[3]
                 zero = values[4].firstOrNull() ?: '0'
                 afterAm = values[5]
@@ -44,7 +53,7 @@ data class TimeFormatElements(
             regex.matchEntire(late)?.let { matchResult ->
                 val values = matchResult.groupValues
                 beforePm = values[1]
-                is24HourClock = values[2].toIntOrNull() == 13
+                is24HourClock = values[2] != earlyHour
                 afterPm = values[5]
             }
             if (!is24HourClock) {

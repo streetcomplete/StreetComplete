@@ -18,29 +18,30 @@ import de.westnordost.streetcomplete.resources.*
 class AddCyclewayPartSurface : OsmFilterQuestType<Surface>() {
 
     override val elementFilter = """
-        ways with (
-          highway = cycleway
-          or (highway ~ path|footway and bicycle and bicycle != no)
-          or (highway = bridleway and bicycle ~ designated|yes)
-        )
-        and segregated = yes
-        and !(sidewalk or sidewalk:left or sidewalk:right or sidewalk:both)
-        and (
-          !cycleway:surface
-          or cycleway:surface ~ ${INVALID_SURFACES.joinToString("|")}
-          or (
-            cycleway:surface ~ paved|unpaved
-            and !cycleway:surface:note
-            and !check_date:cycleway:surface
+        ways with
+          (
+            highway = cycleway
+            or (highway ~ path|footway and bicycle and bicycle != no)
+            or (highway = bridleway and bicycle ~ designated|yes)
           )
-          or cycleway:surface older today -8 years
-        )
-        and (
-          access !~ private|no
-          or (foot and foot !~ private|no)
-          or (bicycle and bicycle !~ private|no)
-        )
-        and ~path|footway|cycleway|bridleway !~ link
+          and segregated = yes
+          and !(sidewalk or sidewalk:left or sidewalk:right or sidewalk:both)
+          and (
+            !cycleway:surface
+            or cycleway:surface ~ ${INVALID_SURFACES.joinToString("|")}
+            or (
+              cycleway:surface ~ paved|unpaved
+              and !cycleway:surface:note
+              and !check_date:cycleway:surface
+            )
+            or cycleway:surface older today -8 years
+          )
+          and (
+            access !~ private|no
+            or (foot and foot !~ private|no)
+            or (bicycle and bicycle !~ private|no)
+          )
+          and ~path|footway|cycleway|bridleway !~ link
     """
     override val changesetComment = "Specify cycleway path surfaces"
     override val wikiLink = "Key:surface"

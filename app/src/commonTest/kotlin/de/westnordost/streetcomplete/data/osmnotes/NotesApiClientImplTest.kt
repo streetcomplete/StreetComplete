@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.user.UserAccessTokenSource
 import de.westnordost.streetcomplete.testutils.OsmDevApi
-import io.ktor.client.HttpClient
 import io.ktor.client.request.bearerAuth
 import io.ktor.client.request.parameter
 import io.ktor.client.request.post
@@ -117,7 +116,7 @@ class NotesApiClientImplTest {
 
     private fun client(token: String?) =
         NotesApiClientImpl(
-            httpClient = HttpClient(),
+            httpClient = OsmDevApi.httpClient(),
             baseUrl = OsmDevApi.URL,
             userAccessTokenSource = object : UserAccessTokenSource { override val accessToken = token.orEmpty() },
             notesApiParser = NotesApiParser()
@@ -125,7 +124,7 @@ class NotesApiClientImplTest {
 
     // for cleanup
     private fun closeNote(id: Long): Unit = runBlocking {
-        HttpClient().post(OsmDevApi.URL + "notes/$id/close") {
+        OsmDevApi.httpClient().post(OsmDevApi.URL + "notes/$id/close") {
             bearerAuth(OsmDevApi.ALLOW_EVERYTHING_TOKEN)
             parameter("text", "")
         }

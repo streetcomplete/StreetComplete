@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.edits
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.AllEditTypes
+import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
@@ -33,8 +34,9 @@ import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
-import de.westnordost.streetcomplete.resources.*
-import kotlin.test.BeforeTest
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_address_title
+import de.westnordost.streetcomplete.resources.quest_fee
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -45,7 +47,7 @@ import kotlin.test.assertTrue
 class ElementEditsDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: ElementEditsDao
 
-    @BeforeTest fun createDao() {
+    override fun onDatabaseInitialized(database: Database) {
         val list = listOf(1 to TEST_QUEST_TYPE, 2 to TEST_QUEST_TYPE2)
         val list2 = listOf(1 to TestOverlay)
         dao = ElementEditsDao(database, AllEditTypes(listOf(QuestTypeRegistry(list), OverlayRegistry(list2))))

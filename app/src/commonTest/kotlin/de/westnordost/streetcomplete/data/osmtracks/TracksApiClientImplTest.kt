@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.user.UserAccessTokenSource
 import de.westnordost.streetcomplete.testutils.OsmDevApi
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
-import io.ktor.client.HttpClient
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Ignore
 import kotlin.test.Test
@@ -37,7 +36,7 @@ class TracksApiClientImplTest {
 
     private fun client(token: String?) =
         TracksApiClientImpl(
-            httpClient = HttpClient(),
+            httpClient = OsmDevApi.httpClient(),
             baseUrl = OsmDevApi.URL,
             userAccessTokenSource = object : UserAccessTokenSource { override val accessToken = token.orEmpty() },
             tracksSerializer = TracksSerializer()

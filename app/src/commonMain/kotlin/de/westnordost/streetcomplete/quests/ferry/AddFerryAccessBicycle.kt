@@ -24,10 +24,10 @@ import org.jetbrains.compose.resources.stringResource
 
 class AddFerryAccessBicycle : OsmElementQuestType<FerryBicycleAccess> {
 
-    private val filter by lazy {
-        "ways, relations with route = ferry and !bicycle and !bicycle:signed"
-            .toElementFilterExpression()
-    }
+    private val filter by lazy { """
+        ways, relations with
+          route = ferry and !bicycle and !bicycle:signed
+    """.toElementFilterExpression() }
 
     override val changesetComment = "Specify ferry access for bicycles"
     override val wikiLink = "Tag:route=ferry"

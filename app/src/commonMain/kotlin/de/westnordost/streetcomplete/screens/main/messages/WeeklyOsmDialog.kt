@@ -46,7 +46,6 @@ import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
@@ -71,10 +70,7 @@ fun WeeklyOsmDialog(
     modifier: Modifier = Modifier,
 ) {
     val appear = remember { Animatable(0f) }
-    val locale = Locale.current
-    val dateFormatter = remember(locale) {
-        LocalDateFormatter(locale = locale, style = DateTimeFormatStyle.Full)
-    }
+    val dateFormatter = remember { LocalDateFormatter(style = DateTimeFormatStyle.Full) }
 
     LaunchedEffect(date) {
         appear.animateTo(1f, tween(1600, easing = LinearOutSlowInEasing))

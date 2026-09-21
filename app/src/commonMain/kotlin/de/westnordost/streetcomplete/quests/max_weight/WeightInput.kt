@@ -29,7 +29,7 @@ fun WeightInputMutcd(
     selectableUnits: List<WeightMeasurementUnit>,
     unitTextStyle: TextStyle,
     modifier: Modifier = Modifier,
-    locale: Locale = Locale.current
+    locale: Locale? = null
 ) {
     Column(
         modifier = modifier,

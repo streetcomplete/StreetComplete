@@ -13,7 +13,10 @@ import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 
 class AddIsBuildingUnderground : OsmFilterQuestType<Boolean>() {
 
-    override val elementFilter = "ways, relations with building and layer ~ -[0-9]+ and !location"
+    override val elementFilter = """
+        ways, relations with
+          building and layer ~ -[0-9]+ and !location
+    """
     override val changesetComment = "Determine whether buildings are fully underground"
     override val wikiLink = "Key:location"
     override val icon = Res.drawable.quest_building_underground

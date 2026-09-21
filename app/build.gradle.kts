@@ -7,7 +7,6 @@ import java.io.FileWriter
 
 /** App version name, code and flavor */
 val appVersionName = "64.0-alpha1"
-val appVersionCode = 6400
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
@@ -21,7 +20,7 @@ val bcp47ExportLanguages = setOf(
 
 /** Version of the iD presets to use
  *  see https://github.com/openstreetmap/id-tagging-schema/releases for latest version */
-val presetsVersion = "v7.0.1"
+val presetsVersion = "v7.2.0"
 
 /** Version of the Name Suggestion Index to use
  *  see https://github.com/osmlab/name-suggestion-index/tags for latest version (without leading "v"
@@ -146,7 +145,7 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.1")
 
                 // location
-                implementation("org.maplibre.compose:location:0.15.0")
+                implementation("org.maplibre.compose:location:0.16.0")
 
                 // SQLite
                 implementation("androidx.sqlite:sqlite:2.7.0")
@@ -366,7 +365,7 @@ tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     languageCodes = bcp47ExportLanguages
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
-    targetFiles = { projectDir.resolve("/src/commonMain/composeResources/values-$it/strings.xml") }
+    targetFiles = { projectDir.resolve("src/commonMain/composeResources/values-$it/strings.xml") }
 }
 
 tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleteness") {
@@ -385,7 +384,8 @@ tasks.register<UpdateIosAppTranslationsTask>("updateIosTranslations") {
     targetFile = projectDir.resolve("../iosApp/iosApp/InfoPlist.xcstrings")
     languageCodes = bcp47ExportLanguages
     strings = mapOf(
-        "NSLocationWhenInUseUsageDescription" to "no_location_permission_warning"
+        "NSLocationWhenInUseUsageDescription" to "no_location_permission_warning",
+        "NSCameraUsageDescription" to "camera_permission_description",
     )
 }
 

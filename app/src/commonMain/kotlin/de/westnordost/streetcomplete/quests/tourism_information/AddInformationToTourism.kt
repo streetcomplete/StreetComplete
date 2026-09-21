@@ -18,7 +18,10 @@ import org.jetbrains.compose.resources.stringResource
 
 class AddInformationToTourism : OsmFilterQuestType<TourismInformation>() {
 
-    override val elementFilter = "nodes, ways with tourism = information and !information"
+    override val elementFilter = """
+        nodes, ways with
+          tourism = information and !information
+    """
     override val changesetComment = "Specify type of tourist informations"
     override val wikiLink = "Tag:tourism=information"
     override val icon = Res.drawable.quest_information

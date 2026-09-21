@@ -467,7 +467,6 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="underground">underjordisk</string>
     <string name="quest_sidewalk_value_yes">trottoar</string>
     <string name="quest_sidewalk_value_no">ingen trottoar</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Finns det ett skyltat förbud för fotgängare att gå på denna väg som saknar trottoar?</string>
     <string name="quest_buildingType_title">Vilken typ av byggnad är detta?</string>
     <string name="pref_title_theme_select">Tema</string>
     <string name="theme_light">Ljust</string>
@@ -673,7 +672,6 @@ nivåer</string>
     <string name="at_housenumber">husnummer %1$s</string>
     <string name="quest_openingHours_add_off_days">Lägg till lediga dagar</string>
     <string name="quest_openingHours_off_day">Ledig dag</string>
-    <string name="quest_cycleway_resurvey_title">Gäller detta fortfarande för cykelvägen här?</string>
     <string name="pref_title_resurvey_intervals">Undersökningsintervall</string>
     <string name="resurvey_intervals_less_often">Fråga mindre ofta</string>
     <string name="resurvey_intervals_default">Standard</string>
@@ -887,7 +885,6 @@ Om du blir överväldigad av alla tillgängliga uppdrag kan du alltid ställa in
     <string name="quest_access_yes">Vem som helst</string>
     <string name="quest_access_customers">Alla som har ett ärende här (t.ex. kunder)</string>
     <string name="quest_access_private">Enbart den som har tillstånd</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Stämmer tömningstiderna för denna brevlåda fortfarande?</string>
     <string name="quest_bicycle_barrier_type_title">Vilken typ av cykelgrind är detta?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Diagonala grindar</string>
     <string name="quest_barrier_bicycle_type_tilted">Inåtlutande grindar</string>
@@ -924,8 +921,6 @@ Du kan också lämna en anteckning (med bild).</string>
     <string name="quest_fireHydrant_position_sidewalk">På trottoaren</string>
     <string name="quest_fireHydrant_position_parking_lot">På en parkeringsplats</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Ja (lämna anteckning)</string>
-    <string name="quest_smoothness_square_title">Hur pass jämnt är det här torget?</string>
-    <string name="quest_smoothness_road_title">Hur pass jämn är den här vägen?</string>
     <string name="quest_smoothness_title_excellent">Jämn och fin</string>
     <string name="quest_smoothness_title_good">Ganska jämn</string>
     <string name="quest_smoothness_title_intermediate">Något ojämn</string>
@@ -978,7 +973,6 @@ Du kan också lämna en anteckning (med bild).</string>
     <string name="ar_core_tracking_error_camera_unavailable">Kameran används av en annan app</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Hållare för styre</string>
     <string name="quest_bicycle_parking_access_title2">Vem får parkera en cykel här? Oavsett om det är avgiftsbelagt eller ej.</string>
-    <string name="quest_playground_access_title2">Vem får använda den här lekplatsen?</string>
     <string name="ar_measure">Mätning</string>
     <string name="ar_core_tracking_error_too_steep_angle">För brant vinkel, backa lite</string>
     <string name="default_disabled_msg_no_ar">Du behöver ett måttband för att kunna slutföra detta uppdrag då din kamera inte stödjer avståndsmätning.</string>
@@ -1034,7 +1028,6 @@ Du kan också lämna en anteckning (med bild).</string>
     <string name="quest_lit_title">Är det belyst här?</string>
     <string name="quest_openingHours_title">Vilket öppettider har det här stället?</string>
     <string name="quest_openingHours_signed_title">Finns det några öppettider här?</string>
-    <string name="quest_openingHours_resurvey_title">Stämmer dessa öppettider fortfarande?</string>
     <string name="quest_placeName_title">Vad heter det här stället?</string>
     <string name="quest_shop_type_title2">Vad är det här för slags butik?</string>
     <string name="quest_smoking_title2">Får man röka här?</string>
@@ -1304,8 +1297,6 @@ Du kan hitta information om donationer på vår hemsida, Google Play tillåter o
     <string name="default_disabled_msg_visible_sign_moped">Denna typ av uppdrag är inaktiverad som standard eftersom huruvida mopeder är tillåtna visas av en särskild skylt vid början/slutet av en cykelväg.</string>
     <string name="quest_arrow_tutorial">Pilarna på bilden pekar i riktningen som vägen på kartans mitt går. Snurra på kartan så förstår du.</string>
     <string name="info">Mer information</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Ja, det finns en förbudsskylt.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Nej, det är tillåtet att gå där.</string>
     <string name="quest_buildingLevels_hint">För byggnader i en sluttning räknas våningsnummer från markplan på den lägsta sidan.
 
 En våning räknas som en takvåning när dess fönster finns i taket. Det följer att ett tak med noll takvåningar inte nödvändigtvis är platt, utan bara inte tillräckligt högt för en hel våning.</string>
@@ -1346,7 +1337,6 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="action_messages">Visa meddelanden</string>
     <string name="action_create_new_poi">Skapa ny</string>
     <string name="auth_error">Inloggningsfel. Försök igen.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Det finns faktiskt en trottoar.</string>
     <string name="quest_bicycle_repair_station_services_title">Vilken cykelutrustning finns tillgänglig här?</string>
     <string name="quest_bicycle_repair_station_pump">Pump</string>
     <string name="quest_bicycle_repair_station_tools">Diverse verktyg</string>
@@ -1417,7 +1407,6 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_bicycle_charging_station_capacity_title">Hur många cyklar kan laddas här samtidigt?</string>
     <string name="quest_charging_station_bicycles_title">Kan man ladda cyklar här också?</string>
     <string name="quest_charging_station_bicycles_hint">Strömadaptrarna till cykelladdarna ansluts till vanliga hushållsuttag.</string>
-    <string name="quest_tower_access_title">Vem har tillträde till detta torn? Oavsett om det är avgiftsbelagt eller ej.</string>
     <string name="quest_recycling_type_pet_bottles">PET flaska</string>
     <string name="quest_maxweight_add_sign">Lägg till skylt</string>
     <string name="quest_maxweight_remove_sign">Ta bort skylt</string>

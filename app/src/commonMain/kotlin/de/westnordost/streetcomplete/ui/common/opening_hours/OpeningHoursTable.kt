@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.toWeekdaysSelectors
+import kotlinx.serialization.Serializable
 
 /** Displays the given [openingHours] for editing and has an Add-button to add times */
 @Composable
@@ -21,8 +22,8 @@ fun OpeningHoursTable(
     countryInfo: CountryInfo,
     addButtonContent: @Composable (RowScope.() -> Unit),
     modifier: Modifier = Modifier,
-    locale: Locale = Locale.current,
-    userLocale: Locale = Locale.current,
+    countryLocale: Locale? = null,
+    userLocale: Locale? = null,
     enabled: Boolean = true,
 ) {
     val workweek = remember(countryInfo) {
@@ -36,7 +37,7 @@ fun OpeningHoursTable(
         MonthsColumn(
             monthsList = openingHours.monthsList,
             onChange = { onChange(HierarchicOpeningHours(it)) },
-            locale = locale,
+            countryLocale = countryLocale,
             userLocale = userLocale,
             enabled = enabled,
         )
@@ -47,7 +48,7 @@ fun OpeningHoursTable(
                 onChange = onChange,
                 timeMode = timeMode,
                 workweek = workweek,
-                locale = locale,
+                countryLocale = countryLocale,
                 userLocale = userLocale,
                 content = addButtonContent,
             )
@@ -55,6 +56,7 @@ fun OpeningHoursTable(
     }
 }
 
+@Serializable
 enum class TimeMode {
     /** May only add time points, e.g. "08:00" */
     Points,

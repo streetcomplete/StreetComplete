@@ -78,7 +78,6 @@ open class MapFragment : Fragment() {
         mapView.onCreate(savedInstanceState)
         mapView.foreground = view.context.getDrawable(R.color.background)
 
-        initOfflineCacheSize()
         cleanOldOfflineRegions()
 
         viewLifecycleScope.launch {
@@ -86,11 +85,6 @@ open class MapFragment : Fragment() {
             this@MapFragment.map = map
             initMap(map)
         }
-    }
-
-    private fun initOfflineCacheSize() {
-        // set really high tile count limit
-        OfflineManager.getInstance(requireContext()).setOfflineMapboxTileCountLimit(10000) // very roughly 1000 km²
     }
 
     private fun cleanOldOfflineRegions() {

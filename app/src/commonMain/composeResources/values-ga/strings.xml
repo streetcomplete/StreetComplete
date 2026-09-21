@@ -466,7 +466,6 @@ Mura bhfuil aon chomhartha feadh na sráide, a bhfuil i bhfeidhm don stráice ai
     <string name="underground">faoi thalamh</string>
     <string name="quest_sidewalk_value_yes">cosán</string>
     <string name="quest_sidewalk_value_no">gan chosán</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">An bhfuil cosc do choisithe ar shiúl ar an mbóthar seo, mura bhfuil cosán ann?</string>
     <string name="quest_buildingType_title">Cén sórt foirgnimh é seo?</string>
     <string name="pref_title_theme_select">Téama</string>
     <string name="theme_light">Geal</string>
@@ -506,13 +505,13 @@ Gearr anois í?</string>
     <string name="quest_recycling_type_glass_bottles">Buidéil agus prócaí gloine</string>
     <string name="quest_recycling_type_glass_bottles_short">Buidéil ⁊ Prócaí</string>
     <string name="quest_recycling_type_paper">Páipéar</string>
-    <string name="quest_recycling_type_plastic">Aon phlaisteach</string>
+    <string name="quest_recycling_type_plastic">Aon saghas plaistigh</string>
     <string name="quest_recycling_type_shoes">Brógaí</string>
     <string name="quest_recycling_type_electric_appliances">Earraí leictreacha</string>
     <string name="quest_recycling_type_plastic_bottles">Buidéil plaisteach</string>
-    <string name="quest_recycling_type_plastic_packaging">Aon phacáistíocht phlaisteach</string>
+    <string name="quest_recycling_type_plastic_packaging">Aon saghas pacáistíocht phlaisteach</string>
     <string name="quest_recycling_type_scrap_metal">Miotal conamair</string>
-    <string name="quest_recycling_type_any_glass">Aon ghloine</string>
+    <string name="quest_recycling_type_any_glass">Aon saghas gloine</string>
     <string name="quest_recycling_glass_title">An bhfuil buidéil agus prócaí gloine amháin le hathchúrsáil anseo, nó aon sórt gloine?</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">Cineálacha gloine nach nglactar go minic: gloine fhaghartha, pánaí fuinneoige, earraí gloine, bolgáin solais agus scátháin.</string>
     <string name="about_title_changelog">Seachadadh</string>
@@ -672,7 +671,6 @@ na n-éachtaí</string>
     <string name="at_housenumber">uimhir an tí %1$s</string>
     <string name="quest_openingHours_add_off_days">Cuir laethanta scíthe leis</string>
     <string name="quest_openingHours_off_day">Lá scíthe</string>
-    <string name="quest_cycleway_resurvey_title">An bhfuil sé seo fós an scéal rothaíochta céanna?</string>
     <string name="pref_title_resurvey_intervals">Minicíocht athshuirbhéireachta</string>
     <string name="resurvey_intervals_less_often">Níos annamh</string>
     <string name="resurvey_intervals_default">Mar is gnách</string>
@@ -884,7 +882,6 @@ Má mhothaíonn tú go bhfuil an iomarca tascanna le feiceáil agat, is féidir 
     <string name="quest_access_yes">Ag aon duine den phobal i gcoitinne</string>
     <string name="quest_access_customers">Ag aon duine atá ar cuairt ag áit shonrach (msh. custaiméirí amháin)</string>
     <string name="quest_access_private">Ag daoine amháin atá cead acu</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">An bhfuil na hamanna bailithe ag an mbosca bailithe seo fós cearta?</string>
     <string name="quest_bicycle_barrier_type_title">Cén sórt bacainn rothair í seo?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Trasnánach leis an tslí</string>
     <string name="quest_barrier_bicycle_type_tilted">Bearna cúng, níos cúinge ag an mbarr</string>
@@ -921,8 +918,6 @@ Mar mhalairt ar sin, d'fhéadfá nóta a fhágáil (le grianghraf).</string>
     <string name="quest_fireHydrant_position_sidewalk">Ar chosán</string>
     <string name="quest_fireHydrant_position_parking_lot">In áit pháirceála</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Tá/Is (fág nóta)</string>
-    <string name="quest_smoothness_square_title">Cé chomh maith atá an cáilíocht dromchla na cearnóige seo?</string>
-    <string name="quest_smoothness_road_title">Cé chomh maith atá an cáilíocht dromchla na bóithre seo?</string>
     <string name="quest_smoothness_title_excellent">Réidh agus comhréidh</string>
     <string name="quest_smoothness_title_good">Comhréidh den chuid is mó</string>
     <string name="quest_smoothness_title_intermediate">Beagáinín míchothrom</string>
@@ -975,7 +970,6 @@ Mar mhalairt ar sin, d'fhéadfá nóta a fhágáil (le grianghraf).</string>
     <string name="ar_core_tracking_error_camera_unavailable">Tá an ceamara á úsáid ag aip eile</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Coinneálaí hanla</string>
     <string name="quest_bicycle_parking_access_title2">Cé ag atá cead a rothar a pháirceáil anseo? Is cuma má tá táille ann nó mura bhfuil.</string>
-    <string name="quest_playground_access_title2">Cé ag atá cead an áit súgartha seo a úsáid?</string>
     <string name="ar_measure">Déan tomhas</string>
     <string name="ar_core_tracking_error_too_steep_angle">Uilinn róghéar, seas siar beagán</string>
     <string name="default_disabled_msg_no_ar">Caithfidh tú miosúr a úsáid chun an tasc seo a réiteach, mar níl tacaíocht ar an ngléas seo le tomhas a dhéanamh leis an gceamara.</string>
@@ -1031,7 +1025,6 @@ Mar mhalairt ar sin, d'fhéadfá nóta a fhágáil (le grianghraf).</string>
     <string name="quest_lit_title">An bhfuil sé soilsithe anseo?</string>
     <string name="quest_openingHours_title">Cad iad na huaireanta oscailte anseo?</string>
     <string name="quest_openingHours_signed_title">An bhfuil na huaireanta oscailte anso scríofa síos?</string>
-    <string name="quest_openingHours_resurvey_title">An bhfuil ná huaireanta oscailte seo fós cearta?</string>
     <string name="quest_placeName_title">Cén t-ainm atá ar an áit seo?</string>
     <string name="quest_shop_type_title2">Cén saghas siopa é seo?</string>
     <string name="quest_smoking_title2">An bhfuil cosc ar chaitheamh tobac anseo?</string>
@@ -1302,8 +1295,6 @@ Is féidir leat tuilleadh eolais a fháil faoi shíntiús ar ár suíomh nó ar 
     <string name="default_disabled_msg_visible_sign_moped">Tá an cineál taisc seo díchumasaithe de ghnáth, mar ní scríobhtar an ceart rochtana ag móipéidí ach ar chomharthaí sainiúla atá ag bun/barr na slite rothar.</string>
     <string name="quest_arrow_tutorial">Bíonn aghaidh na saighead sa léaráid i dtreo ina shíneann an tslí. Rothaigh an léarscáil agus tuigfidh tú é.</string>
     <string name="info">Tuilleadh eolais</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Níl ceart rochtana acu.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Tá ceart rochtana acu.</string>
     <string name="quest_buildingLevels_hint">Más foirgneamh a thógadh ar fhána é, comhaitear na hurláir mar go bhfuil urlár na talún ar an taobh is ísle.
 
 Áirítear urlár mar urlár sa dhíon má tá a fhuinneoga sa dhíon. Chomh maith leis sin, ní gá go mbeadh díonta gan urlár acu maola, ach nach mbeadh siad arda go leor chun go mbeadh áit iontu d'urlár amháin iomlán.</string>
@@ -1344,7 +1335,6 @@ Is féidir leat tuilleadh eolais a fháil faoi shíntiús ar ár suíomh nó ar 
     <string name="action_messages">Taispeáin tchtaí</string>
     <string name="action_create_new_poi">Cruthaigh nua</string>
     <string name="auth_error">Earráid leis an údarú. Déan iarracht arís.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Mar a tharlaíonn, tá cosán ann.</string>
     <string name="quest_bicycle_repair_station_services_title">Cén sórt trealaimh rothair atá ar fáil anseo?</string>
     <string name="quest_bicycle_repair_station_pump">Teannaire</string>
     <string name="quest_bicycle_repair_station_tools">Uirlisí éagsúla</string>
@@ -1427,7 +1417,6 @@ Is féidir leat tuilleadh eolais a fháil faoi shíntiús ar ár suíomh nó ar 
     <string name="quest_bicycle_charging_station_capacity_title">Cá mhéad rothair is féidir a luchtú anseo ag an am céanna?</string>
     <string name="quest_charging_station_bicycles_title">An bhfuil áit anseo le luchtú rothair chomh maith?</string>
     <string name="quest_charging_station_bicycles_hint">Is féidir na cuibheoir don luchtú rothair a phlugáil isteach sna ghnáthshoicéidí tí.</string>
-    <string name="quest_tower_access_title">Cé ag a bhfuil cead dul isteach sa túr seo? Is cuma má tá táille ann nó mura bhfuil.</string>
     <string name="quest_recycling_type_pet_bottles">Buidéil TPE</string>
     <string name="quest_maxweight_add_sign">Cuir comhartha leis</string>
     <string name="quest_maxweight_remove_sign">Bain comhartha</string>
@@ -1483,4 +1472,5 @@ Is féidir leat tuilleadh eolais a fháil faoi shíntiús ar ár suíomh nó ar 
     <string name="quest_maxspeed_answer_roadtype_not_lit">neamhshoilsithe</string>
     <string name="quest_maxspeed_answer_roadtype_dual_carriageway">neamhshoilsithe ⁊ is débhealach í</string>
     <string name="quest_shop_gone_replaced_answer_hint2">Scríobh cad atá uait</string>
+    <string name="resurvey_title">An bhfuil sé seo fós ceart?</string>
 </resources>
