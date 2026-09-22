@@ -12,17 +12,14 @@ fun parseSidewalksSurface(tags: Map<String, String>): SidewalkSurface? {
 
     val sidewalkSides = parseSidewalkSides(tags)
 
-    val left = if (sidewalkSides?.left.hasNoOwnSidewalk()) null
+    // A side without a sidewalk of its own, on this way, must not carry sidewalk:surface tags
+    val left = if (sidewalkSides?.left != Sidewalk.YES) null
     else parseSurface(expandedTags["sidewalk:left:surface"])
 
-    val right = if (sidewalkSides?.right.hasNoOwnSidewalk()) null
+    val right = if (sidewalkSides?.right != Sidewalk.YES) null
     else parseSurface(expandedTags["sidewalk:right:surface"])
 
     if (left == null && right == null) return null
 
     return SidewalkSurface(Sides(left, right))
 }
-
-/** A side without a sidewalk of its own, on this way, must not carry sidewalk:surface tags
- *  (eg: for `sidewalk:left=separate`, the surface belongs on the separately mapped way). */
-fun Sidewalk?.hasNoOwnSidewalk() = this == Sidewalk.NO || this == Sidewalk.SEPARATE
