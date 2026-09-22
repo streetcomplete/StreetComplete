@@ -7,20 +7,12 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfig
-import de.westnordost.streetcomplete.screens.main.edithistory.EditItemsController
-import de.westnordost.streetcomplete.screens.main.map.MainMapSource
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.StateFlow
 import org.maplibre.compose.camera.CameraPosition
 import kotlin.reflect.KClass
 
 // not @Stable, as not all fields are StateFlows or immutable
-abstract class MainViewModel(scope: CoroutineScope) : ViewModel(scope) {
-    /* parts of the screen that outlive its composition; share this view model's scope */
-    abstract val map: MainMapSource
-    abstract val bottomSheet: MainBottomSheetController
-    abstract val editHistory: EditItemsController
-
+abstract class MainViewModel : ViewModel() {
     /* error handling */
     abstract val lastCrashReport: StateFlow<String?>
 

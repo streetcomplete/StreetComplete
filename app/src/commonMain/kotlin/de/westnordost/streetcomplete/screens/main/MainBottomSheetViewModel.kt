@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.main
 
 import androidx.compose.runtime.Stable
+import androidx.lifecycle.ViewModel
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.location.SurveyChecker
@@ -35,9 +36,9 @@ import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
 import de.westnordost.streetcomplete.screens.main.map.getIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.ui.common.quest.Marker
+import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.ktx.truncateTo6Decimals
 import de.westnordost.streetcomplete.util.math.enlargedBy
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.IO
@@ -50,11 +51,10 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.transformWhile
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @Stable
-abstract class MainBottomSheetController {
+abstract class MainBottomSheetViewModel : ViewModel() {
     abstract fun bottomSheet(selection: MainSheetSelection): Flow<ShownBottomSheet?>
     abstract suspend fun getHighlightedMarkers(sheet: ShownBottomSheet): List<Marker>
 
@@ -81,7 +81,7 @@ abstract class MainBottomSheetController {
 }
 
 @Stable
-class MainBottomSheetControllerImpl(
+class MainBottomSheetViewModelImpl(
     private val mapDataSource: MapDataWithEditsSource,
     private val notesSource: NotesWithEditsSource,
     private val osmQuestSource: OsmQuestSource,
@@ -93,8 +93,7 @@ class MainBottomSheetControllerImpl(
     private val visibleQuestsSource: VisibleQuestsSource,
     private val overlayRegistry: OverlayRegistry,
     private val featureDictionary: Lazy<FeatureDictionary>,
-    private val scope: CoroutineScope,
-) : MainBottomSheetController() {
+) : MainBottomSheetViewModel() {
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun bottomSheet(selection: MainSheetSelection): Flow<ShownBottomSheet?> {
         if (selection is MainSheetSelection.CreateNote) {
@@ -211,7 +210,7 @@ class MainBottomSheetControllerImpl(
     }
 
     override fun hideQuest(questKey: QuestKey) {
-        scope.launch(Dispatchers.IO) {
+        launch(Dispatchers.IO) {
             hiddenQuestsController.hide(questKey)
         }
     }
@@ -224,7 +223,7 @@ class MainBottomSheetControllerImpl(
         geometry: ElementGeometry,
         elementEditAction: ElementEditAction,
     ) {
-        scope.launch(Dispatchers.IO) {
+        launch(Dispatchers.IO) {
             val isNearUserLocation = surveyChecker.checkIsSurvey(geometry)
             elementEditsController.add(elementEditType, geometry, "survey", elementEditAction, isNearUserLocation)
         }
@@ -235,7 +234,7 @@ class MainBottomSheetControllerImpl(
         text: String?,
         imagePaths: List<String>,
     ) {
-        scope.launch(Dispatchers.IO) {
+        launch(Dispatchers.IO) {
             noteEditsController.add(note.id, NoteEditAction.COMMENT, note.position, text, imagePaths)
         }
     }
@@ -246,7 +245,7 @@ class MainBottomSheetControllerImpl(
         imagePaths: List<String>,
         trackpoints: List<Trackpoint>?
     ) {
-        scope.launch(Dispatchers.IO) {
+        launch(Dispatchers.IO) {
             noteEditsController.add(0, NoteEditAction.CREATE, position, text, imagePaths, trackpoints)
         }
     }

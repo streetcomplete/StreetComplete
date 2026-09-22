@@ -52,11 +52,11 @@ import org.maplibre.spatialk.units.International
 enum class PinsMode { Quests, EditHistory, None }
 
 /** Everything StreetComplete draws on the map. Quest pins, edit history pins and overlay elements
- *  are only collected from the [source] while they are shown. */
+ *  are only collected from the [viewModel] while they are shown. */
 @Composable
 @MaplibreComposable
 internal fun MainMapContent(
-    source: MainMapSource,
+    viewModel: MainMapViewModel,
     location: LocationMeasurement?,
     /** compass heading in degrees, clockwise from north */
     heading: Float?,
@@ -83,12 +83,12 @@ internal fun MainMapContent(
     val showOverlayAtZoom by remember(mapState) { derivedStateOf { mapState.cameraPosition.zoom >= 14 } }
 
     val pins: Collection<Pin> = if (!showPinsAtZoom) emptyList() else when (pinsMode) {
-        PinsMode.Quests -> source.questPins.collectAsStateWithLifecycle().value
-        PinsMode.EditHistory -> source.editHistoryPins.collectAsStateWithLifecycle().value
+        PinsMode.Quests -> viewModel.questPins.collectAsStateWithLifecycle().value
+        PinsMode.EditHistory -> viewModel.editHistoryPins.collectAsStateWithLifecycle().value
         PinsMode.None -> emptyList()
     }
     val styledElements: Collection<StyledElement> = if (showOverlay && showOverlayAtZoom) {
-        source.styleableElements.collectAsStateWithLifecycle().value
+        viewModel.styleableElements.collectAsStateWithLifecycle().value
     } else emptyList()
 
     val scope = rememberCoroutineScope()
@@ -96,12 +96,12 @@ internal fun MainMapContent(
         if (key == null || !isSelectable) ClickResult.Pass
         else { onSelect(key); ClickResult.Consume }
     val onClickPin: (JsonObject) -> ClickResult = when (pinsMode) {
-        PinsMode.Quests -> { properties -> select(source.getQuestKey(properties), onClickQuest) }
-        PinsMode.EditHistory -> { properties -> select(source.getEditKey(properties), onClickEdit) }
+        PinsMode.Quests -> { properties -> select(viewModel.getQuestKey(properties), onClickQuest) }
+        PinsMode.EditHistory -> { properties -> select(viewModel.getEditKey(properties), onClickEdit) }
         PinsMode.None -> { _ -> ClickResult.Pass }
     }
     val onClickElementProperties: (JsonObject) -> ClickResult = { properties ->
-        select(source.getElementKey(properties), onClickElement)
+        select(viewModel.getElementKey(properties), onClickElement)
     }
 
     val selectedQuest = when (shownBottomSheet) {

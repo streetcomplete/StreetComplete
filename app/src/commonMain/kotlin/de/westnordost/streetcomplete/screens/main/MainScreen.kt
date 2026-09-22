@@ -58,6 +58,7 @@ import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.controls.MainScreenControls
 import de.westnordost.streetcomplete.screens.main.controls.PointerPinButton
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistorySidebar
+import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.errors.LastCrashEffect
 import de.westnordost.streetcomplete.screens.main.errors.LastDownloadErrorEffect
 import de.westnordost.streetcomplete.screens.main.errors.LastUploadErrorEffect
@@ -65,6 +66,7 @@ import de.westnordost.streetcomplete.screens.main.map.BASE_STYLE
 import de.westnordost.streetcomplete.screens.main.map.CameraInspectionEffect
 import de.westnordost.streetcomplete.screens.main.map.MainMap
 import de.westnordost.streetcomplete.screens.main.map.MainMapContent
+import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.PinsMode
 import de.westnordost.streetcomplete.screens.main.map.crosshairPosition
 import de.westnordost.streetcomplete.screens.main.map.getTrackBearing
@@ -122,6 +124,9 @@ fun MainScreen(
     onClickLogin: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: MainViewModel = koinViewModel(),
+    editHistoryViewModel: EditHistoryViewModel = koinViewModel(),
+    mainBottomSheetViewModel: MainBottomSheetViewModel = koinViewModel(),
+    mapViewModel: MainMapViewModel = koinViewModel(),
     runtime: MapRuntime = koinInject(),
 ) {
     //region state
@@ -185,7 +190,7 @@ fun MainScreen(
     var heading by remember { mutableStateOf<Float?>(null) }
     var locationState by remember { mutableStateOf<LocationState?>(null) }
 
-    val sheet = rememberMainSheetState(viewModel.bottomSheet, viewModel.editHistory)
+    val sheet = rememberMainSheetState(mainBottomSheetViewModel, editHistoryViewModel)
     val tracks = rememberMainMapTrackState()
 
     val sheetSelection = sheet.selection
@@ -199,14 +204,13 @@ fun MainScreen(
 
     //region map state
 
-    val downloadedTiles by viewModel.map.downloadedTiles.collectAsStateWithLifecycle()
+    val downloadedTiles by mapViewModel.downloadedTiles.collectAsStateWithLifecycle()
 
     var mapPositionInWindow by remember { mutableStateOf(Offset.Zero) }
 
     val initialCamera = remember(viewModel) { viewModel.initialCamera }
-
     val highlightedMarkers by produceState<List<Marker>>(emptyList(), shownBottomSheet) {
-        value = shownBottomSheet?.let { viewModel.bottomSheet.getHighlightedMarkers(it) }.orEmpty() // todo review
+        value = shownBottomSheet?.let { mainBottomSheetViewModel.getHighlightedMarkers(it) }.orEmpty() // todo review
     }
 
     val markers = sheet.formMarkers ?: highlightedMarkers
@@ -227,7 +231,7 @@ fun MainScreen(
         initialCameraPosition = initialCamera
     ) {
         MainMapContent(
-            source = viewModel.map,
+            viewModel = mapViewModel,
             location = location,
             heading = heading,
             isRecording = tracks.isRecording,
@@ -374,9 +378,9 @@ fun MainScreen(
     }
 
     // Apply the MapLibre viewport to StreetComplete's quest and overlay data sources.
-    LaunchedEffect(mapState, viewModel.map) {
+    LaunchedEffect(mapState, mapViewModel) {
         snapshotFlow { mapState.cameraPosition.zoom to mapState.viewport?.visibleBounds }
-            .collect { (zoom, bounds) -> viewModel.map.onViewportChanged(zoom, bounds?.toStreetCompleteBoundingBox()) }
+            .collect { (zoom, bounds) -> mapViewModel.onViewportChanged(zoom, bounds?.toStreetCompleteBoundingBox()) }
     }
 
     LifecycleEventEffect(Lifecycle.Event.ON_STOP) {
@@ -398,7 +402,7 @@ fun MainScreen(
 
                     val fix = event.toLocation()
                     // Survey checking receives every fix, including ones too inaccurate for a track.
-                    viewModel.map.onLocationChanged(fix)
+                    mapViewModel.onLocationChanged(fix)
                     tracks.addLocation(event.measurement)
                     launch { cameraState.followLocation(fix.position, getTrackBearing(tracks.currentTrack)) }
                 }
@@ -574,9 +578,9 @@ fun MainScreen(
                 editItems = sheet.editItems.orEmpty(),
                 selectedEdit = (shownBottomSheet as? ShownBottomSheet.EditHistory)?.edit,
                 onSelectEdit = { sheet.show(MainSheetSelection.EditHistory(it.key)) },
-                onUndoEdit = { viewModel.editHistory.undo(it.key) },
+                onUndoEdit = { editHistoryViewModel.undo(it.key) },
                 onDismissRequest = sheet::close,
-                getEditElement = viewModel.editHistory::getEditElement,
+                getEditElement = editHistoryViewModel::getEditElement,
             )
         }
 
@@ -602,11 +606,11 @@ fun MainScreen(
                         onSolved = { icon, position ->
                             getOffset(position)?.let { lastQuestSolved = QuestSolvedEvent(icon, it) }
                         },
-                        onHideQuest = viewModel.bottomSheet::hideQuest,
-                        isSurvey = viewModel.bottomSheet::isSurvey,
-                        onSubmitEdit = viewModel.bottomSheet::submitEdit,
-                        onCommentNote = viewModel.bottomSheet::commentNote,
-                        onCreateNote = viewModel.bottomSheet::createNote,
+                        onHideQuest = mainBottomSheetViewModel::hideQuest,
+                        isSurvey = mainBottomSheetViewModel::isSurvey,
+                        onSubmitEdit = mainBottomSheetViewModel::submitEdit,
+                        onCommentNote = mainBottomSheetViewModel::commentNote,
+                        onCreateNote = mainBottomSheetViewModel::createNote,
                         shownBottomSheet = shownBottomSheet,
                         mapRotation = mapCamera.bearing.toFloat(),
                         mapTilt = mapCamera.tilt.toFloat(),
