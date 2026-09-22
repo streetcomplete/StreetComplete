@@ -32,7 +32,6 @@ import kotlinx.serialization.json.JsonObject
 
 abstract class MainMapViewModel : ViewModel() {
     abstract fun onViewportChanged(zoom: Double, bounds: BoundingBox?)
-    abstract fun onLocationChanged(location: Location)
 
     /** Downloaded areas */
     abstract val downloadedTiles: StateFlow<Collection<TilePos>>
@@ -55,12 +54,7 @@ class MainMapViewModelImpl(
     private val mapQuestPinsSource: MapQuestPinsSource,
     private val editHistoryPinsSource: EditHistoryPinsSource,
     private val styleableOverlaySource: StyleableOverlaySource,
-    private val surveyChecker: SurveyChecker,
 ) : MainMapViewModel() {
-
-    override fun onLocationChanged(location: Location) {
-        surveyChecker.addRecentLocation(location)
-    }
 
     override fun onViewportChanged(zoom: Double, bounds: BoundingBox?) {
         mapQuestPinsSource.onMapMoved(zoom, bounds)

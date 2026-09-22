@@ -12,10 +12,8 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.Text
@@ -40,10 +38,8 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.DpOffset
-import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
-import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.messages.Message
@@ -89,7 +85,6 @@ import de.westnordost.streetcomplete.ui.ktx.dir
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toLatLon
-import de.westnordost.streetcomplete.util.ktx.toLocation
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
@@ -397,14 +392,11 @@ fun MainScreen(
         locationProvider.updates().collect { event ->
             when (event) {
                 is LocationEvent.Update -> {
-                    location = event.measurement
+                    val measurement = event.measurement
+                    location = measurement
                     locationState = LocationState.UPDATING
-
-                    val fix = event.toLocation()
-                    // Survey checking receives every fix, including ones too inaccurate for a track.
-                    mapViewModel.onLocationChanged(fix)
-                    tracks.addLocation(event.measurement)
-                    launch { cameraState.followLocation(fix.position, getTrackBearing(tracks.currentTrack)) }
+                    tracks.addLocation(measurement)
+                    launch { cameraState.followLocation(measurement.position.toLatLon(), getTrackBearing(tracks.currentTrack)) }
                 }
                 is LocationEvent.Unavailable -> {
                     location = null

@@ -457,7 +457,7 @@ val commonModule = module {
         lazy { get<FeatureDictionary>() }
     }
 
-    single { SurveyChecker() }
+    single { SurveyChecker(get()) }
 
     //endregion
 
@@ -606,7 +606,7 @@ val commonModule = module {
     }
 
     viewModel<MainMapViewModel> {
-        MainMapViewModelImpl(get(), get(), get(), get(), get())
+        MainMapViewModelImpl(get(), get(), get(), get())
     }
     factory { MapQuestPinsSource(get(), get(), get()) }
     factory { EditHistoryPinsSource(get()) }

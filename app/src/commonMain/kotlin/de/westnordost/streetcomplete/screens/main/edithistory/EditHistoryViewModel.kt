@@ -37,7 +37,6 @@ abstract class EditHistoryViewModel : ViewModel() {
     abstract suspend fun getEditGeometry(edit: Edit): ElementGeometry
 
     abstract fun undo(editKey: EditKey)
-
 }
 
 data class EditItem(
