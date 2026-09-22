@@ -7,10 +7,8 @@ import de.westnordost.streetcomplete.util.ktx.addedToFront
 import java.util.Locale
 
 /** Get the override-locale selected in this app or null if there is no override */
-fun getSelectedLocale(prefs: Preferences): Locale? {
-    val languageTag = prefs.language ?: ""
-    return if (languageTag.isEmpty()) null else Locale.forLanguageTag(languageTag)
-}
+fun getSelectedLocale(prefs: Preferences): Locale? =
+    prefs.locale?.platformLocale
 
 /** Get the locale selected in this app (if any) appended by the system locales */
 fun getSelectedLocales(prefs: Preferences): LocaleList {
