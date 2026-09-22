@@ -488,12 +488,7 @@ fun MainScreen(
                     }
                 }
 
-                // the pointer stays within the map area not covered by system bars or a form
-                GeographicLayout(
-                    Modifier
-                        .windowInsetsPadding(WindowInsets.safeDrawing)
-                        .padding(if (sheet.isFormOpen) sheetPadding else PaddingValues(0.dp))
-                ) {
+                GeographicLayout(Modifier.windowInsetsPadding(WindowInsets.safeDrawing)) {
                     val position = location?.position
                     if (position != null) {
                         PointerPinButton(targetPosition = position, onClick = ::followLocation) {
