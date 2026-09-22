@@ -34,7 +34,7 @@ class SettingsActivity : BaseActivity() {
             }
         }
 
-        listeners += prefs.onLanguageChanged { ActivityCompat.recreate(this) }
+        listeners += prefs.onLocaleChanged { ActivityCompat.recreate(this) }
         listeners += prefs.onThemeChanged { ActivityCompat.recreate(this) }
     }
 

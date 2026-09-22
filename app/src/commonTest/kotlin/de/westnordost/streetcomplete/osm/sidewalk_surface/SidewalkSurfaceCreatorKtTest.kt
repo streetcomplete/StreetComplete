@@ -19,7 +19,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryAdd("sidewalk:both:surface", "asphalt")
             ),
             SidewalkSurface(Sides(ASPHALT, ASPHALT)).appliedTo(
-                mapOf()
+                mapOf("sidewalk" to "both")
             ),
         )
     }
@@ -31,11 +31,34 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryAdd("sidewalk:right:surface", "paving_stones")
             ),
             SidewalkSurface(Sides(ASPHALT, PAVING_STONES)).appliedTo(
-                mapOf()
+                mapOf("sidewalk" to "both")
             ),
         )
     }
-
+    @Test fun `remove generic surface and apply side-specific surface on one-sided sidewalk`() {
+        assertEquals(
+            setOf(
+                StringMapEntryDelete("sidewalk:surface", "asphalt"),
+                StringMapEntryAdd("sidewalk:left:surface", "paving_stones"),
+            ),
+            SidewalkSurface(Sides(PAVING_STONES, null)).appliedTo(mapOf(
+                "sidewalk" to "left",
+                "sidewalk:surface" to "asphalt",
+            ))
+        )
+    }
+    @Test fun `same surface as generic surface on one-sided sidewalk does not create both tag`() {
+        assertEquals(
+            setOf(
+                StringMapEntryDelete("sidewalk:surface", "asphalt"),
+                StringMapEntryAdd("sidewalk:left:surface", "asphalt"),
+            ),
+            SidewalkSurface(Sides(ASPHALT, null)).appliedTo(mapOf(
+                "sidewalk" to "left",
+                "sidewalk:surface" to "asphalt",
+            ))
+        )
+    }
     @Test fun `updates check_date`() {
         assertEquals(
             setOf(
@@ -43,6 +66,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryModify("check_date:sidewalk:surface", "2000-10-10", nowAsCheckDateString()),
             ),
             SidewalkSurface(Sides(ASPHALT, ASPHALT)).appliedTo(mapOf(
+                "sidewalk" to "both",
                 "sidewalk:both:surface" to "asphalt",
                 "check_date:sidewalk:surface" to "2000-10-10"
             ))
@@ -57,6 +81,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryAdd("sidewalk:both:surface", "concrete")
             ),
             SidewalkSurface(Sides(CONCRETE, CONCRETE)).appliedTo(mapOf(
+                "sidewalk" to "both",
                 "sidewalk:left:surface" to "asphalt",
                 "sidewalk:right:surface" to "paving_stones"
             ))
@@ -70,6 +95,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryModify("sidewalk:right:surface", "paving_stones", "gravel"),
             ),
             SidewalkSurface(Sides(CONCRETE, GRAVEL)).appliedTo(mapOf(
+                "sidewalk" to "both",
                 "sidewalk:left:surface" to "asphalt",
                 "sidewalk:right:surface" to "paving_stones"
             ))
@@ -83,6 +109,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryModify("sidewalk:both:surface", "asphalt", "paving_stones")
             ),
             SidewalkSurface(Sides(PAVING_STONES, PAVING_STONES)).appliedTo(mapOf(
+                "sidewalk" to "both",
                 "sidewalk:both:surface" to "asphalt",
                 "sidewalk:both:smoothness" to "excellent"
             ))
@@ -99,6 +126,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryAdd("sidewalk:both:surface", "paving_stones")
             ),
             SidewalkSurface(Sides(PAVING_STONES, PAVING_STONES)).appliedTo(mapOf(
+                "sidewalk" to "both",
                 "sidewalk:left:surface" to "asphalt",
                 "sidewalk:right:surface" to "concrete",
                 "sidewalk:left:smoothness" to "excellent",
@@ -106,7 +134,19 @@ internal class SidewalkSurfaceCreatorKtTest {
             ))
         )
     }
-
+    @Test fun `remove surface from separately mapped sidewalk side`() {
+        assertEquals(
+            setOf(
+                StringMapEntryDelete("sidewalk:surface", "asphalt"),
+                StringMapEntryAdd("sidewalk:right:surface", "paving_stones"),
+            ),
+            SidewalkSurface(Sides(null, PAVING_STONES)).appliedTo(mapOf(
+                "sidewalk:left" to "separate",
+                "sidewalk:right" to "yes",
+                "sidewalk:surface" to "asphalt",
+            ))
+        )
+    }
     @Test fun `carriageway properties not affected by sidewalk answer`() {
         assertEquals(
             setOf(

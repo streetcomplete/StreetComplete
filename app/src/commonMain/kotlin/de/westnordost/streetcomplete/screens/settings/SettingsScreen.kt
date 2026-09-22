@@ -24,7 +24,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
@@ -54,7 +53,7 @@ fun SettingsScreen(
     onClickPresetSelection: () -> Unit,
     onClickQuestSelection: () -> Unit,
     onClickOverlaySelection: () -> Unit,
-    onClickLanguageSelection: () -> Unit,
+    onClickLocaleSelection: () -> Unit,
     onClickMessagesSelection: () -> Unit,
     onClickShowMap: () -> Unit,
     onClickBack: () -> Unit,
@@ -70,7 +69,7 @@ fun SettingsScreen(
     val theme by viewModel.theme.collectAsState()
     val keepScreenOn by viewModel.keepScreenOn.collectAsState()
     val showZoomButtons by viewModel.showZoomButtons.collectAsState()
-    val selectedLanguage by viewModel.selectedLanguage.collectAsState()
+    val selectedLocale by viewModel.selectedLocale.collectAsState()
 
     var showDeleteCacheConfirmation by remember { mutableStateOf(false) }
     var showRestoreHiddenQuestsConfirmation by remember { mutableStateOf(false) }
@@ -174,10 +173,10 @@ fun SettingsScreen(
 
                 Preference(
                     name = stringResource(Res.string.pref_title_language_select2),
-                    onClick = onClickLanguageSelection,
+                    onClick = onClickLocaleSelection,
                 ) {
                     Text(
-                        text = selectedLanguage?.let { getLanguageDisplayName(it) }
+                        text = selectedLocale?.let { it.getDisplayName(it) ?: it.toLanguageTag() }
                             ?: stringResource(Res.string.language_default),
                         modifier = Modifier.weight(1f, fill = false)
                     )
@@ -299,10 +298,4 @@ private val Theme.title: StringResource get() = when (this) {
     Theme.LIGHT -> Res.string.theme_light
     Theme.DARK -> Res.string.theme_dark
     Theme.SYSTEM -> Res.string.theme_system_default
-}
-
-private fun getLanguageDisplayName(languageTag: String): String? {
-    if (languageTag.isEmpty()) return null
-    val locale = Locale(languageTag)
-    return locale.getDisplayName(locale) ?: languageTag
 }
