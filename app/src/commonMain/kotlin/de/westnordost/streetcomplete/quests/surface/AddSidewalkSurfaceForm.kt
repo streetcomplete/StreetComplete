@@ -55,8 +55,9 @@ fun AddSidewalkSurfaceForm(
             emptyList()
         }
     }
+    val existingSidewalkSurface = remember(element) { parseSidewalksSurface(element.tags)?.value }
     var sidewalkSurfaces by rememberSerializable(element) {
-        mutableStateOf(parseSidewalksSurface(element.tags)?.value ?: Sides<Surface>(null, null))
+        mutableStateOf(existingSidewalkSurface ?: Sides<Surface>(null, null))
     }
 
     QuestForm(
@@ -72,6 +73,8 @@ fun AddSidewalkSurfaceForm(
             }
             on(Answer(SidewalkSurfaceAnswer.Surfaces(SidewalkSurface(sidewalkSurfaces))))
         },
+        isResurvey =
+            existingSidewalkSurface != null,
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_sidewalk_answer_different)) {
                 on(Answer(SidewalkSurfaceAnswer.SidewalkIsDifferent))
