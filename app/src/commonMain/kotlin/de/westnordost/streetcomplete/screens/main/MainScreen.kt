@@ -713,8 +713,6 @@ fun MainScreen(
     }
 
     //endregion
-
-
 }
 
 /** A bottom sheet as shown, with its form's state */

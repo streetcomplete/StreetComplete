@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete
 
 import androidx.compose.ui.text.intl.Locale
-
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.data.preferences.Preferences
 

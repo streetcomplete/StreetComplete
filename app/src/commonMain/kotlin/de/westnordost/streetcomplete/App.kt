@@ -1,12 +1,11 @@
 package de.westnordost.streetcomplete
 
-import androidx.compose.ui.text.intl.Locale
-
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.data.preferences.Theme
 import de.westnordost.streetcomplete.screens.MainNavHost
 import de.westnordost.streetcomplete.ui.theme.AppTheme
