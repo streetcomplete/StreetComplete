@@ -251,12 +251,12 @@ val links = listOf(
         Res.drawable.link_mapy_tactile,
         Res.string.link_mapy_tactile_description
     ),
-    Link( // TODO no achievement yet
+    Link(
         "openinframap",
         "https://openinframap.org",
         "Open Infrastructure Map",
         LinkCategory.MAPS,
-        null,
+        Res.drawable.link_openinframap,
         Res.string.link_openinframap_description
     ),
     // note: osmapp.org (and cartes.app) actually includes this as an overlay. An integration into
@@ -626,6 +626,7 @@ val achievements = listOf(
             2 to links("figuregrounder"),
             3 to links("prettymapp"),
             4 to links("terraink"),
+            4 to links("openinframap"),
         )
     ),
 
