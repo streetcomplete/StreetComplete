@@ -207,7 +207,7 @@ fun MainScreen(
 
     val showOverlay =
         selectedOverlay != null
-        && sheetSelection == MainSheetSelection.Overlay || sheetSelection == null
+        && (sheetSelection is MainSheetSelection.Overlay || sheetSelection == null)
 
     val mapState = rememberMapState(
         runtime = runtime,
