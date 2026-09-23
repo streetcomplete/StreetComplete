@@ -58,7 +58,7 @@ fun MoveNodeForm(
         val isFeetAndInch = countryInfo.lengthUnits.firstOrNull() == LengthUnit.FOOT_AND_INCH
         if (isFeetAndInch) MeasureDisplayUnitFeetInch(4) else MeasureDisplayUnitMeter(10)
     }
-    val arrowColor = MaterialTheme.colors.primary
+    val arrowColor = MaterialTheme.colors.secondary
     val arrowWidthPx = 6.dp.toPx()
     val arrowHeadSizePx = 14.dp.toPx()
 
