@@ -4,8 +4,7 @@ import androidx.compose.ui.text.intl.Locale
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.data.preferences.Preferences
 
-/** Keeps the platform's default locale in sync with the app locale setting, so that resources
- *  and formatting outside the composition use the selected locale. */
+/** Applies the selected locale to resources and formatting for the lifetime of the application. */
 class AppLocaleUpdater(private val prefs: Preferences) {
     private var listener: SettingsListener? = null
 
@@ -20,5 +19,5 @@ class AppLocaleUpdater(private val prefs: Preferences) {
     }
 }
 
-/** Makes [locale] the default for resources and formatting, or restores the system default. */
+/** Applies [locale] to resources and formatting, or restores the system defaults. */
 internal expect fun applyAppLocale(locale: Locale?)

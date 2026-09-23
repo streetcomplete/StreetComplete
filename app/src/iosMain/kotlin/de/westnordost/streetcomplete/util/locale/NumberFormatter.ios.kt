@@ -15,7 +15,7 @@ actual class NumberFormatter actual constructor(
 ) {
     private val format = NSNumberFormatter().also {
         it.numberStyle = NSNumberFormatterDecimalStyle
-        formatterLocale(locale)?.let { selected -> it.locale = selected }
+        it.locale = formatterLocale(locale)
         it.usesGroupingSeparator = useGrouping
         it.minimumIntegerDigits = minIntegerDigits.toULong()
         it.maximumIntegerDigits = maxIntegerDigits.toULong()

@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.util.locale
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.util.ktx.toNSLocale
 import platform.Foundation.NSLocale
+import platform.Foundation.currentLocale
 
-/** The app language, if one is selected. iOS has no process-wide default locale to set instead. */
-internal var appFormattingLocale: Locale? = null
+/** The app's formatting locale, managed by AppLocaleUpdater independently of resource languages.
+ *  Retaining the native system locale preserves user overrides such as the 12/24-hour clock. */
+internal var appFormattingLocale: NSLocale = NSLocale.currentLocale
 
-/** The locale a formatter should use for [locale], or null to keep the native defaults, which
- *  include the user's region formatting and 12/24-hour clock choice. */
-internal fun formatterLocale(locale: Locale?): NSLocale? = (locale ?: appFormattingLocale)?.toNSLocale()
+internal fun formatterLocale(locale: Locale?): NSLocale = locale?.toNSLocale() ?: appFormattingLocale
