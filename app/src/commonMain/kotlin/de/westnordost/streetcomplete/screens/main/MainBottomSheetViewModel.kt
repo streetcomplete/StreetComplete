@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.main
 
 import androidx.compose.runtime.Stable
+import androidx.lifecycle.ViewModel
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.location.SurveyChecker
@@ -15,7 +16,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.LazyMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
@@ -36,9 +36,9 @@ import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
 import de.westnordost.streetcomplete.screens.main.map.getIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.ui.common.quest.Marker
+import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.ktx.truncateTo6Decimals
 import de.westnordost.streetcomplete.util.math.enlargedBy
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.IO
@@ -51,12 +51,11 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.transformWhile
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @Stable
-abstract class MainBottomSheetController {
-    abstract fun bottomSheet(selection: MainBottomSheetSelection): Flow<ShownBottomSheet?>
+abstract class MainBottomSheetViewModel : ViewModel() {
+    abstract fun bottomSheet(selection: MainSheetSelection): Flow<ShownBottomSheet?>
     abstract suspend fun getHighlightedMarkers(sheet: ShownBottomSheet): List<Marker>
 
     abstract fun hideQuest(questKey: QuestKey)
@@ -82,7 +81,7 @@ abstract class MainBottomSheetController {
 }
 
 @Stable
-class MainBottomSheetControllerImpl(
+class MainBottomSheetViewModelImpl(
     private val mapDataSource: MapDataWithEditsSource,
     private val notesSource: NotesWithEditsSource,
     private val osmQuestSource: OsmQuestSource,
@@ -94,14 +93,13 @@ class MainBottomSheetControllerImpl(
     private val visibleQuestsSource: VisibleQuestsSource,
     private val overlayRegistry: OverlayRegistry,
     private val featureDictionary: Lazy<FeatureDictionary>,
-    private val scope: CoroutineScope,
-) : MainBottomSheetController() {
+) : MainBottomSheetViewModel() {
     @OptIn(ExperimentalCoroutinesApi::class)
-    override fun bottomSheet(selection: MainBottomSheetSelection): Flow<ShownBottomSheet?> {
-        if (selection is MainBottomSheetSelection.CreateNote) {
+    override fun bottomSheet(selection: MainSheetSelection): Flow<ShownBottomSheet?> {
+        if (selection is MainSheetSelection.CreateNote) {
             return flowOf(ShownBottomSheet.CreateOsmNote(selection.trackpoints))
         }
-        if (selection is MainBottomSheetSelection.Overlay && selection.elementKey == null) {
+        if (selection is MainSheetSelection.Overlay && selection.elementKey == null) {
             return flowOf(overlayRegistry.getByName(selection.name)?.let { ShownBottomSheet.Overlay(it, null, null) })
         }
         // Shows the object as it was when selected: updates would swap the open form mid-edit.
@@ -119,33 +117,33 @@ class MainBottomSheetControllerImpl(
         }
     }
 
-    private fun load(selection: MainBottomSheetSelection): ShownBottomSheet? = when (selection) {
-        is MainBottomSheetSelection.Quest -> getQuest(selection.key)
-        is MainBottomSheetSelection.Overlay -> {
+    private fun load(selection: MainSheetSelection): ShownBottomSheet? = when (selection) {
+        is MainSheetSelection.Quest -> getQuest(selection.key)
+        is MainSheetSelection.Overlay -> {
             val overlay = overlayRegistry.getByName(selection.name)
             val key = selection.elementKey
             if (overlay == null) null
             else if (key == null) ShownBottomSheet.Overlay(overlay, null, null)
             else getElementInOverlay(overlay, key)
         }
-        is MainBottomSheetSelection.CreateNote -> ShownBottomSheet.CreateOsmNote(selection.trackpoints)
+        is MainSheetSelection.CreateNote -> ShownBottomSheet.CreateOsmNote(selection.trackpoints)
         // resolved from the edit history instead, see MainSheetState
-        is MainBottomSheetSelection.EditHistory -> null
+        is MainSheetSelection.EditHistory -> null
     }
 
     /** Emits once, then whenever the [selection]'s object may have been removed. Listeners are
      *  registered before the first emission, so no removal is missed. */
-    private fun changes(selection: MainBottomSheetSelection): Flow<Unit> = callbackFlow {
+    private fun changes(selection: MainSheetSelection): Flow<Unit> = callbackFlow {
         val elementKey = when (selection) {
-            is MainBottomSheetSelection.Overlay -> selection.elementKey
-            is MainBottomSheetSelection.Quest -> (selection.key as? OsmQuestKey)?.let {
+            is MainSheetSelection.Overlay -> selection.elementKey
+            is MainSheetSelection.Quest -> (selection.key as? OsmQuestKey)?.let {
                 ElementKey(it.elementType, it.elementId)
             }
             else -> null
         }
         val questListener = object : VisibleQuestsSource.Listener {
             override fun onUpdated(added: Collection<Quest>, removed: Collection<QuestKey>) {
-                if (selection is MainBottomSheetSelection.Quest && selection.key in removed) trySend(Unit)
+                if (selection is MainSheetSelection.Quest && selection.key in removed) trySend(Unit)
             }
             override fun onInvalidated() { trySend(Unit) }
         }
@@ -212,7 +210,7 @@ class MainBottomSheetControllerImpl(
     }
 
     override fun hideQuest(questKey: QuestKey) {
-        scope.launch(Dispatchers.IO) {
+        launch(Dispatchers.IO) {
             hiddenQuestsController.hide(questKey)
         }
     }
@@ -225,7 +223,7 @@ class MainBottomSheetControllerImpl(
         geometry: ElementGeometry,
         elementEditAction: ElementEditAction,
     ) {
-        scope.launch(Dispatchers.IO) {
+        launch(Dispatchers.IO) {
             val isNearUserLocation = surveyChecker.checkIsSurvey(geometry)
             elementEditsController.add(elementEditType, geometry, "survey", elementEditAction, isNearUserLocation)
         }
@@ -236,7 +234,7 @@ class MainBottomSheetControllerImpl(
         text: String?,
         imagePaths: List<String>,
     ) {
-        scope.launch(Dispatchers.IO) {
+        launch(Dispatchers.IO) {
             noteEditsController.add(note.id, NoteEditAction.COMMENT, note.position, text, imagePaths)
         }
     }
@@ -247,7 +245,7 @@ class MainBottomSheetControllerImpl(
         imagePaths: List<String>,
         trackpoints: List<Trackpoint>?
     ) {
-        scope.launch(Dispatchers.IO) {
+        launch(Dispatchers.IO) {
             noteEditsController.add(0, NoteEditAction.CREATE, position, text, imagePaths, trackpoints)
         }
     }

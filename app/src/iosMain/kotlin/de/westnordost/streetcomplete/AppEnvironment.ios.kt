@@ -20,7 +20,7 @@ import platform.UIKit.UIUserInterfaceStyle
 
 @Composable
 actual fun AppEnvironment(
-    language: String?,
+    locale: Locale?,
     theme: Theme,
     keepScreenOn: Boolean,
     content: @Composable () -> Unit,
@@ -38,12 +38,12 @@ actual fun AppEnvironment(
         onDispose { UIApplication.sharedApplication.idleTimerDisabled = false }
     }
     // AppLocaleUpdater has already put the selected language in front of the preferred languages
-    val locale = language?.let(::Locale) ?: Locale.current
-    val direction = if (NSLocale.characterDirectionForLanguage(locale.language) == NSLocaleLanguageDirectionRightToLeft) {
+    val effectiveLocale = locale ?: Locale.current
+    val direction = if (NSLocale.characterDirectionForLanguage(effectiveLocale.language) == NSLocaleLanguageDirectionRightToLeft) {
         LayoutDirection.Rtl
     } else LayoutDirection.Ltr
     CompositionLocalProvider(
-        LocalAppLocale provides AppLocale(language, LocaleList.current),
+        LocalAppLocale provides AppLocale(locale, LocaleList.current),
         LocalLayoutDirection provides direction,
         content = content,
     )

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.settings.language_selection
+package de.westnordost.streetcomplete.screens.settings.locale_selection
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -46,29 +46,29 @@ import de.westnordost.streetcomplete.util.ktx.getDisplayName
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun LanguageSelectionScreen(
-    viewModel: LanguageSelectionViewModel,
+fun LocaleSelectionScreen(
+    viewModel: LocaleSelectionViewModel,
     onClickBack: () -> Unit,
 ) {
-    val selectableLanguages by viewModel.selectableLanguages.collectAsState()
-    val selectedLanguage by viewModel.selectedLanguage.collectAsState()
+    val selectableLocales by viewModel.selectableLocales.collectAsState()
+    val selectedLocale by viewModel.selectedLocale.collectAsState()
 
-    val languageNames by remember { derivedStateOf {
-        selectableLanguages?.associateWith { getLanguageDisplayName(it) }.orEmpty()
+    val localeNames by remember { derivedStateOf {
+        selectableLocales?.associateWith { it.getDisplayNameOrLanguageTag() }.orEmpty()
     } }
 
     var searchText by rememberSaveable { mutableStateOf("") }
 
     // languages are sorted alphabetically by their display name
-    val sortedAndFilteredSelectableLanguages by remember { derivedStateOf {
-        listOf(null) + selectableLanguages
-            ?.filter { languageNames[it].orEmpty().startsWith(searchText, ignoreCase = true) }
-            ?.sortedBy { languageNames[it]?.lowercase() }
+    val sortedAndFilteredSelectableLocales by remember { derivedStateOf {
+        listOf(null) + selectableLocales
+            ?.filter { localeNames[it].orEmpty().startsWith(searchText, ignoreCase = true) }
+            ?.sortedBy { localeNames[it]?.lowercase() }
             .orEmpty()
     } }
 
     Column(Modifier.fillMaxSize()) {
-        LanguageSelectionTopAppBar(
+        LocaleSelectionTopAppBar(
             onClickBack = onClickBack,
             search = searchText,
             onSearchChange = { searchText = it },
@@ -76,10 +76,10 @@ fun LanguageSelectionScreen(
         val insets = WindowInsets.safeDrawing.only(
             WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
         ).asPaddingValues()
-        LanguageSelectionList(
-            languages = sortedAndFilteredSelectableLanguages,
-            selectedLanguage = selectedLanguage,
-            onSelect = { viewModel.setSelectedLanguage(it) },
+        LocaleSelectionList(
+            locales = sortedAndFilteredSelectableLocales,
+            selectedLocale = selectedLocale,
+            onSelect = { viewModel.setSelectedLocale(it) },
             modifier = Modifier
                 .fillMaxHeight()
                 .consumeWindowInsets(insets),
@@ -89,7 +89,7 @@ fun LanguageSelectionScreen(
 }
 
 @Composable
-private fun LanguageSelectionTopAppBar(
+private fun LocaleSelectionTopAppBar(
     onClickBack: () -> Unit,
     search: String,
     onSearchChange: (String) -> Unit,
@@ -125,10 +125,10 @@ private fun LanguageSelectionTopAppBar(
 }
 
 @Composable
-private fun LanguageSelectionList(
-    languages: List<String?>,
-    selectedLanguage: String?,
-    onSelect: (languageCode: String?) -> Unit,
+private fun LocaleSelectionList(
+    locales: List<Locale?>,
+    selectedLocale: Locale?,
+    onSelect: (locale: Locale?) -> Unit,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues.Zero,
 ) {
@@ -136,21 +136,21 @@ private fun LanguageSelectionList(
         modifier = modifier,
         contentPadding = contentPadding
     ) {
-        items(languages, key = { it.orEmpty() }) { language ->
-            val isSelected = selectedLanguage == language
+        items(locales, key = { it?.toLanguageTag().orEmpty() }) { locale ->
+            val isSelected = selectedLocale == locale
             Row(
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
                     .background(MaterialTheme.colors.surface)
                     .animateItem()
-                    .selectable(isSelected) { onSelect(language) }
+                    .selectable(isSelected) { onSelect(locale) }
                     .padding(horizontal = 24.dp)
                     .defaultMinSize(minHeight = 48.dp)
             ) {
                 Box(modifier = Modifier.weight(1f)) {
                     Text(
-                        language?.let { getLanguageDisplayName(it) }
+                        locale?.let { it.getDisplayNameOrLanguageTag() }
                             ?: stringResource(Res.string.language_default)
                     )
                 }
@@ -160,8 +160,5 @@ private fun LanguageSelectionList(
     }
 }
 
-private fun getLanguageDisplayName(languageTag: String): String? {
-    if (languageTag.isEmpty()) return null
-    val locale = Locale(languageTag)
-    return locale.getDisplayName(locale) ?: languageTag
-}
+private fun Locale.getDisplayNameOrLanguageTag(): String =
+    getDisplayName(this) ?: toLanguageTag()

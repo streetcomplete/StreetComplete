@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.screens.main.map
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
@@ -17,7 +19,6 @@ import de.westnordost.streetcomplete.screens.main.map.sources.StyleableOverlaySo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.IO
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.SharingStarted
@@ -29,12 +30,11 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 
-abstract class MainMapSource {
+abstract class MainMapViewModel : ViewModel() {
     // Keep full tracks across navigation; the saved-state copy is bounded only for process death.
     internal var trackState: MainMapTrackState? = null
 
     abstract fun onViewportChanged(zoom: Double, bounds: BoundingBox?)
-    abstract fun onLocationChanged(location: Location)
 
     /** Downloaded areas */
     abstract val downloadedTiles: StateFlow<Collection<TilePos>>
@@ -52,18 +52,12 @@ abstract class MainMapSource {
     abstract fun getElementKey(properties: JsonObject): ElementKey?
 }
 
-class MainMapSourceImpl(
+class MainMapViewModelImpl(
     private val downloadedTilesSource: DownloadedTilesSource,
     private val mapQuestPinsSource: MapQuestPinsSource,
     private val editHistoryPinsSource: EditHistoryPinsSource,
     private val styleableOverlaySource: StyleableOverlaySource,
-    private val surveyChecker: SurveyChecker,
-    private val scope: CoroutineScope,
-) : MainMapSource() {
-
-    override fun onLocationChanged(location: Location) {
-        surveyChecker.addRecentLocation(location)
-    }
+) : MainMapViewModel() {
 
     override fun onViewportChanged(zoom: Double, bounds: BoundingBox?) {
         mapQuestPinsSource.onMapMoved(zoom, bounds)
@@ -84,20 +78,20 @@ class MainMapSourceImpl(
         withContext(Dispatchers.IO) {
             downloadedTilesSource.getAll(ApplicationConstants.DELETE_OLD_DATA_AFTER)
         }
-    }.stateIn(scope, SharingStarted.WhileSubscribed(replayExpirationMillis = 0), emptyList())
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(replayExpirationMillis = 0), emptyList())
 
     override val questPins = mapQuestPinsSource.pins
-        .stateIn(scope, SharingStarted.WhileSubscribed(replayExpirationMillis = 0), emptyList())
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(replayExpirationMillis = 0), emptyList())
 
     override fun getQuestKey(properties: JsonObject) = mapQuestPinsSource.getQuestKey(properties)
 
     override val editHistoryPins = editHistoryPinsSource.pins
-        .stateIn(scope, SharingStarted.WhileSubscribed(replayExpirationMillis = 0), emptyList())
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(replayExpirationMillis = 0), emptyList())
 
     override fun getEditKey(properties: JsonObject) = editHistoryPinsSource.getEditKey(properties)
 
     override val styleableElements = styleableOverlaySource.styledElements
-        .stateIn(scope, SharingStarted.WhileSubscribed(replayExpirationMillis = 0), emptyList())
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(replayExpirationMillis = 0), emptyList())
 
     override fun getElementKey(properties: JsonObject) = styleableOverlaySource.getElementKey(properties)
 }

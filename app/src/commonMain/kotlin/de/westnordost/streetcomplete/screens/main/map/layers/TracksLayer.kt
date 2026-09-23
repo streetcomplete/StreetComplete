@@ -11,10 +11,10 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.map.animateLatLonAsState
 import de.westnordost.streetcomplete.screens.main.map.toLineGeometry
 import de.westnordost.streetcomplete.screens.main.map.toMultiLineGeometry
-import de.westnordost.streetcomplete.screens.main.map.toPosition
 import de.westnordost.streetcomplete.ui.theme.Location
 import de.westnordost.streetcomplete.ui.theme.Recording
 import de.westnordost.streetcomplete.util.ktx.isApril1st
+import de.westnordost.streetcomplete.util.ktx.toPosition
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jetbrains.compose.resources.painterResource

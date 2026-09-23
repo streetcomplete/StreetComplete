@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 /** Application preferences and incoming requests, independent of the visible destination. */
 class AppViewModel(prefs: Preferences, private val savedState: SavedStateHandle) : ViewModel() {
     val theme = MutableStateFlow(prefs.theme)
-    val language = MutableStateFlow(prefs.language)
+    val locale = MutableStateFlow(prefs.locale)
     val keepScreenOn = MutableStateFlow(prefs.keepScreenOn)
 
     val pendingUri = savedState.getStateFlow<String?>("uri", null)
@@ -16,7 +16,7 @@ class AppViewModel(prefs: Preferences, private val savedState: SavedStateHandle)
 
     private val listeners = listOf(
         prefs.onThemeChanged { theme.value = it },
-        prefs.onLanguageChanged { language.value = it },
+        prefs.onLocaleChanged { locale.value = it },
         prefs.onKeepScreenOnChanged { keepScreenOn.value = it },
     )
 

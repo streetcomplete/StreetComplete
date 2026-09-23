@@ -6,7 +6,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -35,7 +34,9 @@ import org.jetbrains.compose.resources.DrawableResource
  * It actually ought to be displayed at full size, because bottom sheets may have elements that
  * should be displayed above the acutal bottom sheet form (such as a crosshairs, or the arrow when
  * moving a node). So, the actual sliding up/down of the bottom sheet(s) is handled by the forms
- * individually. */
+ * individually.
+ *
+ * What the forms place on the map is composed in [MainBottomSheetMapOverlay]. */
 @Composable
 fun MainBottomSheet(
     onDismiss: () -> Unit,
@@ -51,7 +52,7 @@ fun MainBottomSheet(
     mapPosition: LatLon,
     mapMetersPerDp: Double,
     onSetMapMarkers: (Iterable<Marker>?) -> Unit,
-    getOffset: (position: LatLon) -> Offset?,
+    formState: BottomSheetFormState,
     lastMapClick: MapClick?,
     modifier: Modifier = Modifier
 ) {
@@ -138,7 +139,7 @@ fun MainBottomSheet(
                 mapTilt = mapTilt,
                 mapMetersPerDp = mapMetersPerDp,
                 onSetMapMarkers = onSetMapMarkers,
-                getOffset = getOffset,
+                formState = formState,
                 lastMapClick = lastMapClick,
                 modifier = modifier,
             )
@@ -180,7 +181,8 @@ fun MainBottomSheet(
                 mapPosition = mapPosition,
                 mapMetersPerDp = mapMetersPerDp,
                 onSetMapMarkers = onSetMapMarkers,
-                getOffset = getOffset,
+                formState = formState,
+                form = checkNotNull(formState.overlayForm),
                 lastMapClick = lastMapClick,
                 modifier = modifier,
             )

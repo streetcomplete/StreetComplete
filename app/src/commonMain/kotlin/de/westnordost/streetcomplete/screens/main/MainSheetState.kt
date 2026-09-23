@@ -13,7 +13,7 @@ import androidx.compose.runtime.saveable.rememberSaveableStateHolder
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import de.westnordost.streetcomplete.data.edithistory.EditKey
-import de.westnordost.streetcomplete.screens.main.edithistory.EditItemsController
+import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.edithistory.EditItem
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.Marker
@@ -25,30 +25,30 @@ import kotlin.uuid.Uuid
 
 @Composable
 fun rememberMainSheetState(
-    controller: MainBottomSheetController,
-    editItemsController: EditItemsController,
+    viewModel: MainBottomSheetViewModel,
+    editHistoryViewModel: EditHistoryViewModel,
 ): MainSheetState {
     val formStateHolder = rememberSaveableStateHolder()
-    val selection = rememberSaveable(stateSaver = MainBottomSheetSelection.Saver) {
-        mutableStateOf<MainBottomSheetSelection?>(null)
+    val selection = rememberSaveable(stateSaver = MainSheetSelection.Saver) {
+        mutableStateOf<MainSheetSelection?>(null)
     }
     val id = rememberSaveable { mutableStateOf("") }
-    val state = remember(controller, editItemsController) {
-        MainSheetState(controller, editItemsController, formStateHolder, selection, id)
+    val state = remember(viewModel, editHistoryViewModel) {
+        MainSheetState(viewModel, editHistoryViewModel, formStateHolder, selection, id)
     }
     LaunchedEffect(state) { state.observe() }
     return state
 }
 
-/** The bottom sheet selection, what it resolved to, and the open form's map interaction. The edit
+/** The sheet selection, what it resolved to, and the open form's map interaction. The edit
  *  history sidebar is never shown together with a bottom sheet, so it is one of the selections. */
 @Stable
 class MainSheetState internal constructor(
-    private val controller: MainBottomSheetController,
-    private val editItemsController: EditItemsController,
+    private val viewModel: MainBottomSheetViewModel,
+    private val editHistoryViewModel: EditHistoryViewModel,
     /** Holds the state of the form(s), keyed by [id] */
     val formStateHolder: SaveableStateHolder,
-    selection: MutableState<MainBottomSheetSelection?>,
+    selection: MutableState<MainSheetSelection?>,
     id: MutableState<String>,
 ) {
     /** The selected object; saved to survive process death */
@@ -76,11 +76,11 @@ class MainSheetState internal constructor(
     val isOpen: Boolean get() = selection != null
 
     /** Whether a bottom sheet is open, as opposed to the edit history sidebar */
-    val isFormOpen: Boolean get() = selection.let { it != null && it !is MainBottomSheetSelection.EditHistory }
+    val isFormOpen: Boolean get() = selection.let { it != null && it !is MainSheetSelection.EditHistory }
 
     val hasEdits: Boolean get() = !editItems.isNullOrEmpty()
 
-    fun show(selection: MainBottomSheetSelection) {
+    fun show(selection: MainSheetSelection) {
         formStateHolder.removeState(id)
         id = Uuid.random().toString()
         this.selection = selection
@@ -91,7 +91,7 @@ class MainSheetState internal constructor(
     /** Shows the edit history sidebar with the most recent edit selected */
     fun showEditHistory() {
         val newest = editItems?.lastOrNull() ?: return
-        show(MainBottomSheetSelection.EditHistory(newest.edit.key))
+        show(MainSheetSelection.EditHistory(newest.edit.key))
     }
 
     fun close() {
@@ -105,7 +105,7 @@ class MainSheetState internal constructor(
     @OptIn(ExperimentalCoroutinesApi::class)
     internal suspend fun observe(): Unit = coroutineScope {
         launch {
-            editItemsController.editItems.collect { editItems = it }
+            editHistoryViewModel.editItems.collect { editItems = it }
         }
         launch {
             snapshotFlow { selection }.collectLatest { selection ->
@@ -113,19 +113,19 @@ class MainSheetState internal constructor(
                 shownBottomSheet = null
                 when (selection) {
                     null -> {}
-                    is MainBottomSheetSelection.EditHistory -> observeEdit(selection.editKey)
+                    is MainSheetSelection.EditHistory -> observeEdit(selection.editKey)
                     else -> observeBottomSheet(selection)
                 }
             }
         }
     }
 
-    private suspend fun observeBottomSheet(selection: MainBottomSheetSelection) {
-        controller.bottomSheet(selection).collect { sheet ->
-            if (selection is MainBottomSheetSelection.Overlay && sheet is ShownBottomSheet.OsmNoteQuest) {
+    private suspend fun observeBottomSheet(selection: MainSheetSelection) {
+        viewModel.bottomSheet(selection).collect { sheet ->
+            if (selection is MainSheetSelection.Overlay && sheet is ShownBottomSheet.OsmNoteQuest) {
                 // A note at the element blocks editing it. Selecting the note instead also
                 // closes this sheet when the note is hidden or deleted.
-                this.selection = MainBottomSheetSelection.Quest(sheet.quest.key)
+                this.selection = MainSheetSelection.Quest(sheet.quest.key)
                 return@collect
             }
             shownBottomSheet = sheet
@@ -135,15 +135,15 @@ class MainSheetState internal constructor(
     }
 
     private suspend fun observeEdit(key: EditKey) {
-        editItemsController.editItems.collect { items ->
+        editHistoryViewModel.editItems.collect { items ->
             if (items == null) return@collect
             val edit = items.find { it.edit.key == key }?.edit
             if (edit != null) {
-                shownBottomSheet = ShownBottomSheet.EditHistory(edit, editItemsController.getEditGeometry(edit))
+                shownBottomSheet = ShownBottomSheet.EditHistory(edit, editHistoryViewModel.getEditGeometry(edit))
             } else {
                 // the edit was undone or is synced: select the newest remaining edit, if any
                 val newest = items.lastOrNull()?.edit?.key
-                if (newest != null) selection = MainBottomSheetSelection.EditHistory(newest) else close()
+                if (newest != null) selection = MainSheetSelection.EditHistory(newest) else close()
             }
         }
     }

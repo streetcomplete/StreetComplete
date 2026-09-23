@@ -12,6 +12,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.core.view.WindowCompat
 import de.westnordost.streetcomplete.data.preferences.Theme
@@ -21,7 +22,7 @@ import de.westnordost.streetcomplete.util.ktx.findActivity
 
 @Composable
 actual fun AppEnvironment(
-    language: String?,
+    locale: Locale?,
     theme: Theme,
     keepScreenOn: Boolean,
     content: @Composable () -> Unit,
@@ -30,7 +31,7 @@ actual fun AppEnvironment(
     val configuration = LocalConfiguration.current
     val darkTheme = theme.isDark
     // AppLocaleUpdater has already made these the process defaults
-    val localeList = remember(configuration, language) { appLocales(language) }
+    val localeList = remember(configuration, locale) { appLocales(locale) }
     val localizedConfiguration = remember(configuration, localeList, darkTheme) {
         Configuration(configuration).apply {
             setLocales(localeList)
@@ -59,7 +60,7 @@ actual fun AppEnvironment(
         LocalContext provides localizedContext,
         LocalConfiguration provides localizedConfiguration,
         LocalLayoutDirection provides layoutDirection,
-        LocalAppLocale provides AppLocale(language, androidx.compose.ui.text.intl.LocaleList.current),
+        LocalAppLocale provides AppLocale(locale, androidx.compose.ui.text.intl.LocaleList.current),
         content = content,
     )
 }

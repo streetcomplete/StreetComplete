@@ -1,21 +1,17 @@
 package de.westnordost.streetcomplete.overlays.street_parking
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.absoluteOffset
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.center
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.create.createNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
@@ -29,6 +25,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.Edit
 import de.westnordost.streetcomplete.data.overlays.OverlayAction
+import de.westnordost.streetcomplete.data.overlays.ShownOverlayForm
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.traffic_calming.LaneNarrowingTrafficCalming
@@ -42,67 +39,69 @@ import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.overlay.ItemSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
-import de.westnordost.streetcomplete.ui.common.quest.LocalGetOffsetCallback
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
-import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.ui.ktx.toPx
+import de.westnordost.streetcomplete.util.ktx.toPosition
+import de.westnordost.streetcomplete.util.math.PositionOnWay
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
+import org.maplibre.compose.overlay.MapOverlayScope
 
-@Composable
-fun LaneNarrowingTrafficCalmingForm(
-    on: (OverlayAction) -> Unit,
-    element: Element?,
-    geometry: ElementGeometry,
-    mapDataWithEditsSource: MapDataWithEditsSource = koinInject(),
-    preferences: Preferences = koinInject()
-) {
-    val originalLaneNarrowingTrafficCalming = remember(element) {
-        element?.tags?.let { parseNarrowingTrafficCalming(it) }
-    }
+/** The form for lane narrowing traffic calmings. A new one snaps to a road near the crosshair,
+ *  which is shown as a pin on the map. */
+class LaneNarrowingTrafficCalmingForm(
+    private val element: Element?,
+    private val mapDataWithEditsSource: MapDataWithEditsSource,
+) : ShownOverlayForm {
+    /** The road lines around the new traffic calming. Loaded only once. */
+    private var roadLines: Collection<Pair<Way, List<LatLon>>>? = null
 
-    val position = if (element == null) geometry.center else null
-    val roadLines = remember<Collection<Pair<Way, List<LatLon>>>?>(position != null) {
-        position?.let {
-            mapDataWithEditsSource.getRoadLines(position.enclosingBoundingBox(100.0))
+    /** Where on a road near the crosshair a new traffic calming node would be created */
+    @Composable
+    private fun positionOnWay(geometry: ElementGeometry): PositionOnWay? {
+        if (element != null) return null
+        val position = geometry.center
+        val metersPerDp = LocalMapMetersPerDp.current
+        val maxDistanceToCrosshair = (metersPerDp * 24).dp.toPx().toDouble()
+        val snapToVertexDistance = (metersPerDp * 12).dp.toPx().toDouble()
+        return remember(position, maxDistanceToCrosshair, snapToVertexDistance) {
+            val lines = roadLines
+                ?: mapDataWithEditsSource.getRoadLines(position.enclosingBoundingBox(100.0))
+                    .also { roadLines = it }
+            position.getPositionOnWays(
+                ways = lines,
+                maxDistance = maxDistanceToCrosshair,
+                snapToVertexDistance = snapToVertexDistance
+            )
         }
     }
-    val metersPerDp = LocalMapMetersPerDp.current
-    val maxDistanceToCrosshair = (metersPerDp * 24).dp.toPx().toDouble()
-    val snapToVertexDistance = (metersPerDp * 12).dp.toPx().toDouble()
 
-    val positionOnWay = remember(position, roadLines) {
-        if (position == null) return@remember null
-        if (roadLines == null) return@remember null
-
-        position.getPositionOnWays(
-            ways = roadLines,
-            maxDistance = maxDistanceToCrosshair,
-            snapToVertexDistance = snapToVertexDistance
+    @Composable
+    override fun MapOverlayScope.MapOverlay(geometry: ElementGeometry) {
+        val positionOnWay = positionOnWay(geometry) ?: return
+        Pin(
+            iconPainter = painterResource(Res.drawable.quest_choker),
+            modifier = Modifier.placedAt(positionOnWay.position.toPosition()),
         )
     }
 
-    var confirmRemoveLaneNarrowingTrafficCalming by remember { mutableStateOf(false) }
-
-    Box(Modifier.fillMaxSize()) {
-        if (positionOnWay != null) {
-            val offset = LocalGetOffsetCallback.current?.invoke(positionOnWay.position)
-            if (offset != null) {
-                Pin(
-                    iconPainter = painterResource(Res.drawable.quest_choker),
-                    modifier = Modifier
-                        .align(AbsoluteAlignment.TopLeft)
-                        .size(71.dp, 142.dp)
-                        .absoluteOffset(
-                            x = offset.x.pxToDp() - 36.dp,
-                            y = offset.y.pxToDp() - 71.dp
-                        )
-                )
-            }
+    @Composable
+    override fun Content(
+        on: (OverlayAction) -> Unit,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo,
+    ) {
+        val originalLaneNarrowingTrafficCalming = remember(element) {
+            element?.tags?.let { parseNarrowingTrafficCalming(it) }
         }
+
+        val positionOnWay = positionOnWay(geometry)
+        val preferences = koinInject<Preferences>()
+
+        var confirmRemoveLaneNarrowingTrafficCalming by remember { mutableStateOf(false) }
 
         ItemSelectOverlayForm(
             on = on,
@@ -137,18 +136,18 @@ fun LaneNarrowingTrafficCalmingForm(
                 }
             ) }
         )
-    }
 
-    if (confirmRemoveLaneNarrowingTrafficCalming) {
-        AreYouSureDialog(
-            onDismissRequest = { confirmRemoveLaneNarrowingTrafficCalming = false },
-            onConfirmed = {
-                if (element == null) return@AreYouSureDialog
-                val tagChanges = StringMapChangesBuilder(element.tags)
-                (null as LaneNarrowingTrafficCalming?).applyTo(tagChanges)
-                on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
-            }
-        )
+        if (confirmRemoveLaneNarrowingTrafficCalming) {
+            AreYouSureDialog(
+                onDismissRequest = { confirmRemoveLaneNarrowingTrafficCalming = false },
+                onConfirmed = {
+                    if (element == null) return@AreYouSureDialog
+                    val tagChanges = StringMapChangesBuilder(element.tags)
+                    (null as LaneNarrowingTrafficCalming?).applyTo(tagChanges)
+                    on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
+                }
+            )
+        }
     }
 }
 

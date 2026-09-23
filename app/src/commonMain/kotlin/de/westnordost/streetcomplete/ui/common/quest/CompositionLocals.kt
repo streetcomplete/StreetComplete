@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.ui.common.quest
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.compositionLocalOf
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.unit.DpOffset
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -22,8 +21,6 @@ val LocalMapMetersPerDp = compositionLocalOf<Double> { 0.0 }
 val LocalLastMapClick = compositionLocalOf<MapClick?> { null }
 
 val LocalMapMarkersCallback = compositionLocalOf<((Iterable<Marker>) -> Unit)?> { null }
-
-val LocalGetOffsetCallback = compositionLocalOf<((LatLon) -> Offset?)?> { null }
 
 /** A click on the map: where on the map and where on the screen, relative to the map */
 @Immutable

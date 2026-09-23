@@ -6,11 +6,11 @@ import platform.Foundation.NSLocale
 import platform.Foundation.NSUserDefaults
 import platform.Foundation.preferredLanguages
 
-internal actual fun applyAppLanguage(language: String?) {
+internal actual fun applyAppLocale(locale: Locale?) {
     val defaults = NSUserDefaults.standardUserDefaults
     // Read the system list without our previous override.
     defaults.removeObjectForKey("AppleLanguages")
     val systemLanguages = NSLocale.preferredLanguages.filterIsInstance<String>()
-    if (language != null) defaults.setObject((listOf(language) + systemLanguages).distinct(), "AppleLanguages")
-    appFormattingLocale = language?.let(::Locale)
+    if (locale != null) defaults.setObject((listOf(locale.toLanguageTag()) + systemLanguages).distinct(), "AppleLanguages")
+    appFormattingLocale = locale
 }

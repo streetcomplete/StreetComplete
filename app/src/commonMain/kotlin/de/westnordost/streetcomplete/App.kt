@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete
 
+import androidx.compose.ui.text.intl.Locale
+
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
@@ -13,9 +15,9 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun App(viewModel: AppViewModel = koinViewModel()) {
     val theme by viewModel.theme.collectAsState()
-    val language by viewModel.language.collectAsState()
+    val locale by viewModel.locale.collectAsState()
     val keepScreenOn by viewModel.keepScreenOn.collectAsState()
-    AppEnvironment(language, theme, keepScreenOn) {
+    AppEnvironment(locale, theme, keepScreenOn) {
         AppTheme(theme.isDark) {
             Surface { MainNavHost(viewModel) }
         }
@@ -25,7 +27,7 @@ fun App(viewModel: AppViewModel = koinViewModel()) {
 /** Applies native locale/resource settings and window behavior without recreating the app. */
 @Composable
 expect fun AppEnvironment(
-    language: String?,
+    locale: Locale?,
     theme: Theme,
     keepScreenOn: Boolean,
     content: @Composable () -> Unit,

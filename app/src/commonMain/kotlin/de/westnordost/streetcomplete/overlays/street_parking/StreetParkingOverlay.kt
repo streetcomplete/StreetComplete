@@ -1,8 +1,10 @@
 package de.westnordost.streetcomplete.overlays.street_parking
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -12,6 +14,7 @@ import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
+import de.westnordost.streetcomplete.data.overlays.ShownOverlayForm
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
@@ -23,6 +26,7 @@ import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
 import de.westnordost.streetcomplete.osm.traffic_calming.LaneNarrowingTrafficCalming
 import de.westnordost.streetcomplete.osm.traffic_calming.parseNarrowingTrafficCalming
 import de.westnordost.streetcomplete.resources.*
+import org.koin.compose.koinInject
 
 class StreetParkingOverlay : Overlay {
 
@@ -60,6 +64,21 @@ class StreetParkingOverlay : Overlay {
             if (style != null) it to style else null
         }
 
+    private fun isRoad(element: Element?): Boolean =
+        element != null && element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes"
+
+    private fun isLaneNarrowingTrafficCalming(element: Element?): Boolean =
+        element == null || parseNarrowingTrafficCalming(element.tags) != null
+
+    @Composable
+    override fun rememberForm(element: Element?): ShownOverlayForm =
+        if (!isRoad(element) && isLaneNarrowingTrafficCalming(element)) {
+            val mapDataWithEditsSource = koinInject<MapDataWithEditsSource>()
+            remember(element) { LaneNarrowingTrafficCalmingForm(element, mapDataWithEditsSource) }
+        } else {
+            super.rememberForm(element)
+        }
+
     @Composable
     override fun Form(
         on: (OverlayAction) -> Unit,
@@ -67,10 +86,10 @@ class StreetParkingOverlay : Overlay {
         geometry: ElementGeometry,
         countryInfo: CountryInfo,
     ) {
-        if (element != null && element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes") {
-            StreetParkingOverlayForm(on, element, geometry, countryInfo)
-        } else if (element == null || parseNarrowingTrafficCalming(element.tags) != null) {
-            LaneNarrowingTrafficCalmingForm(on, element, geometry)
+        if (isRoad(element)) {
+            StreetParkingOverlayForm(on, element!!, geometry, countryInfo)
+        } else if (isLaneNarrowingTrafficCalming(element)) {
+            with(rememberForm(element)) { Content(on, geometry, countryInfo) }
         }
     }
 }
