@@ -135,6 +135,7 @@ building/
     kiosk.svg
     office.svg
     other.svg
+    pagoda.svg                  Amaan Qureshi, License: CC-BY 4.0
     parking.svg                 parts taken from Twemoji: U+1F698
     retail.svg
     roof.svg
