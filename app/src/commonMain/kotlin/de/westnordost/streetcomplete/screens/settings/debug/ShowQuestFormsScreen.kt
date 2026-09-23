@@ -36,7 +36,6 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.no_search_results
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.quest.OsmQuestFormContainer
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.rememberBottomSheetFormState
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import kotlinx.io.files.FileSystem
@@ -131,7 +130,7 @@ fun ShowQuestFormsScreen(
                 mapTilt = 0f,
                 mapMetersPerDp = 0.01,
                 onSetMapMarkers = { /* No map here */ },
-                formState = rememberBottomSheetFormState(null),
+                onSetMapOverlay = { /* No map here */ },
                 lastMapClick = null
             )
         }

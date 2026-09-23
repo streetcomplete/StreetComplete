@@ -34,8 +34,6 @@ import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.quests.shop_type.ShopType
 import de.westnordost.streetcomplete.quests.shop_type.ShopTypeAnswer
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.BottomSheetFormState
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.BottomSheetSubForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.move_node.MoveNodeForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.LeaveNoteInsteadForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.split_way.SplitWayForm
@@ -45,6 +43,9 @@ import de.westnordost.streetcomplete.ui.common.quest.ConfirmDeleteDialog
 import de.westnordost.streetcomplete.ui.common.quest.LocalElement
 import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMarkersCallback
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapOverlayCallback
+import de.westnordost.streetcomplete.ui.common.quest.MapOverlayContent
+import de.westnordost.streetcomplete.ui.common.quest.OnMap
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
@@ -52,8 +53,10 @@ import de.westnordost.streetcomplete.ui.common.quest.LocalQuestType
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.util.ReplaceBottomSheetTransitionSpec
+import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.util.ktx.geometryType
+import kotlinx.serialization.Serializable
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 
@@ -65,7 +68,8 @@ import org.koin.compose.koinInject
  *  @param onSetMapMarkers is called when the form shown wishes to show markers on the map. E.g. the
  *         split way form and level form shows markers
  *
- *  @param formState which form is shown, shared with what it places on the map
+ *  @param onSetMapOverlay is called with content the form shown wishes to place on the map,
+ *         see [OnMap]
  */
 @Composable
 fun <T> OsmQuestFormContainer(
@@ -81,7 +85,7 @@ fun <T> OsmQuestFormContainer(
     mapTilt: Float,
     mapMetersPerDp: Double,
     onSetMapMarkers: (Iterable<Marker>?) -> Unit,
-    formState: BottomSheetFormState,
+    onSetMapOverlay: (MapOverlayContent?) -> Unit,
     lastMapClick: MapClick?,
     modifier: Modifier = Modifier,
     countryBoundaries: CountryBoundaries = koinInject(),
@@ -97,15 +101,18 @@ fun <T> OsmQuestFormContainer(
     var confirmReplacePlace by remember { mutableStateOf(false) }
     var confirmCantSay by remember { mutableStateOf(false) }
 
-    fun showForm(form: BottomSheetSubForm) {
-        formState.subForm = form
+    var state by rememberSerializable { mutableStateOf<QuestFormState>(QuestFormState.Quest) }
+
+    fun showForm(form: QuestFormState) {
+        state = form
         onSetMapMarkers(null)
+        onSetMapOverlay(null)
     }
 
     fun onAction(action: QuestAction<T>) {
         when (action) {
             Action.Dismiss -> onDismiss()
-            Action.LeaveNote -> showForm(BottomSheetSubForm.LeaveNote)
+            Action.LeaveNote -> showForm(QuestFormState.LeaveNote)
             Action.HideQuest -> onHideQuest()
             Action.CantSay -> confirmCantSay = true
             Action.SplitWay -> confirmSplitWay = true
@@ -122,7 +129,7 @@ fun <T> OsmQuestFormContainer(
     }
 
     AnimatedContent(
-        targetState = formState.subForm,
+        targetState = state,
         transitionSpec = ReplaceBottomSheetTransitionSpec,
         modifier = modifier,
     ) { currentState ->
@@ -134,10 +141,11 @@ fun <T> OsmQuestFormContainer(
             LocalMapMetersPerDp provides mapMetersPerDp,
             LocalLastMapClick provides lastMapClick,
             // AnimatedContent keeps the outgoing form alive until its transition ends.
-            LocalMapMarkersCallback provides { if (currentState == formState.subForm) onSetMapMarkers(it) },
+            LocalMapMarkersCallback provides { if (currentState == state) onSetMapMarkers(it) },
+            LocalMapOverlayCallback provides { if (currentState == state) onSetMapOverlay(it) },
         ) {
             when (currentState) {
-                BottomSheetSubForm.Main -> {
+                QuestFormState.Quest -> {
                     questType.Form(
                         on = ::onAction,
                         element = element,
@@ -145,7 +153,7 @@ fun <T> OsmQuestFormContainer(
                         countryInfo = countryInfo
                     )
                 }
-                BottomSheetSubForm.LeaveNote -> {
+                QuestFormState.LeaveNote -> {
                     LeaveNoteInsteadForm(
                         onLeaveNote = { text, noteImagePaths ->
                             onLeaveNote(text, noteImagePaths)
@@ -155,17 +163,16 @@ fun <T> OsmQuestFormContainer(
                         element = element,
                     )
                 }
-                BottomSheetSubForm.SplitWay -> {
+                QuestFormState.SplitWay -> {
                     SplitWayForm(
                         onConfirmed = { onEdit(SplitWayAction(element, it)) },
                         onDismiss = onDismiss,
                         mapPosition = mapPosition,
                         way = element as Way,
                         wayGeometry = geometry as ElementPolylinesGeometry,
-                        snipAnimation = formState.snipAnimation,
                     )
                 }
-                BottomSheetSubForm.MoveNode -> {
+                QuestFormState.MoveNode -> {
                     MoveNodeForm(
                         onConfirmed = { onEdit(MoveNodeAction(element, it)) },
                         onDismiss = onDismiss,
@@ -180,14 +187,14 @@ fun <T> OsmQuestFormContainer(
     if (confirmSplitWay) {
         ConfirmationDialog(
             onDismissRequest = { confirmSplitWay = false },
-            onConfirmed = { showForm(BottomSheetSubForm.SplitWay) },
+            onConfirmed = { showForm(QuestFormState.SplitWay) },
             text = { Text(stringResource(Res.string.quest_split_way_description)) }
         )
     }
     if (confirmMoveNode) {
         ConfirmationDialog(
             onDismissRequest = { confirmMoveNode = false },
-            onConfirmed = { showForm(BottomSheetSubForm.MoveNode) },
+            onConfirmed = { showForm(QuestFormState.MoveNode) },
             text = { Text(stringResource(Res.string.quest_move_node_message)) }
         )
     }
@@ -208,7 +215,7 @@ fun <T> OsmQuestFormContainer(
                         onEdit(UpdateElementTagsAction(element, builder.create()))
                     }
                     ShopTypeAnswer.LeaveNote -> {
-                        showForm(BottomSheetSubForm.LeaveNote)
+                        showForm(QuestFormState.LeaveNote)
                     }
                 }
             },
@@ -224,16 +231,23 @@ fun <T> OsmQuestFormContainer(
                 onEdit(DeletePoiNodeAction(element as Node))
             },
             onLeaveNote = {
-                showForm(BottomSheetSubForm.LeaveNote)
+                showForm(QuestFormState.LeaveNote)
             }
         )
     }
     if (confirmCantSay) {
         CantSayDialog(
             onDismissRequest = { confirmCantSay = false },
-            onLeaveNote = { showForm(BottomSheetSubForm.LeaveNote) },
+            onLeaveNote = { showForm(QuestFormState.LeaveNote) },
             onHideQuest = { onHideQuest() },
         )
     }
 }
 
+@Serializable
+private enum class QuestFormState {
+    Quest,
+    LeaveNote,
+    SplitWay,
+    MoveNode
+}

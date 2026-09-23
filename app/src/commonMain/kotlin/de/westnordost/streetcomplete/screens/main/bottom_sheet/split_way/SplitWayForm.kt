@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet.split_way
 
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -39,6 +38,7 @@ import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMarkersCallback
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
 import de.westnordost.streetcomplete.ui.common.quest.Marker
+import de.westnordost.streetcomplete.ui.common.quest.OnMap
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
@@ -48,7 +48,6 @@ import de.westnordost.streetcomplete.util.math.getSplitAt
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.maplibre.compose.overlay.MapOverlayScope
 
 /** Form that lets the user split an OSM way */
 @Composable
@@ -59,8 +58,6 @@ fun SplitWayForm(
     mapPosition: LatLon?,
     way: Way,
     wayGeometry: ElementPolylinesGeometry,
-    /** Progress of the scissors' snip, shown on the map */
-    snipAnimation: Animatable<Float, AnimationVector1D>,
     modifier: Modifier = Modifier,
 ) {
     var confirmManySplits by remember { mutableStateOf(false) }
@@ -70,16 +67,27 @@ fun SplitWayForm(
 
     val metersPerDp = LocalMapMetersPerDp.current
     val minDistanceToOtherCuts = (metersPerDp * 24).dp.toPx().toDouble()
+    val maxDistanceToCrosshair = (metersPerDp * 24).dp.toPx().toDouble()
+    val snapToVertexDistance = (metersPerDp * 12).dp.toPx().toDouble()
 
     val mapMarkersCallback = LocalMapMarkersCallback.current
 
-    val scissorsPosition = rememberScissorsPosition(mapPosition, wayGeometry)
+    val scissorsPosition = remember(mapPosition) {
+        mapPosition?.let {
+            wayGeometry.polylines.first().getSplitAt(
+                position = mapPosition,
+                maxDistance = maxDistanceToCrosshair,
+                snapToVertexDistance = snapToVertexDistance,
+            )
+        }
+    }
 
     val hasChanges = cuts.isNotEmpty()
     val isFormComplete = cuts.size >= if (way.isClosed) 2 else 1
     val canSplitHere = scissorsPosition != null
         && cuts.all { scissorsPosition.pos.distanceTo(it.pos) >= minDistanceToOtherCuts }
 
+    val snipAnimation = remember { Animatable(0f) }
     val scope = rememberCoroutineScope()
 
     LaunchedEffect(cuts) {
@@ -93,6 +101,19 @@ fun SplitWayForm(
             confirmDiscard = true
         } else {
             onDismiss()
+        }
+    }
+
+    if (scissorsPosition != null) {
+        OnMap {
+            Image(
+                painter = scissorsPainter(snipAnimation.value),
+                contentDescription = null,
+                modifier = Modifier
+                    .placedAt(scissorsPosition.pos.toPosition())
+                    .size(72.dp)
+                    .rotate(-30f)
+            )
         }
     }
 
@@ -155,40 +176,4 @@ fun SplitWayForm(
             onConfirmed = { onDismiss() },
         )
     }
-}
-
-/** Where the way would be cut: on the way, near the crosshair at [mapPosition]. Null if the
- *  crosshair is not near the way. */
-@Composable
-fun rememberScissorsPosition(mapPosition: LatLon?, wayGeometry: ElementPolylinesGeometry): SplitPolylineAtPosition? {
-    val metersPerDp = LocalMapMetersPerDp.current
-    val maxDistanceToCrosshair = (metersPerDp * 24).dp.toPx().toDouble()
-    val snapToVertexDistance = (metersPerDp * 12).dp.toPx().toDouble()
-    return remember(mapPosition, maxDistanceToCrosshair, snapToVertexDistance) {
-        mapPosition?.let {
-            wayGeometry.polylines.first().getSplitAt(
-                position = mapPosition,
-                maxDistance = maxDistanceToCrosshair,
-                snapToVertexDistance = snapToVertexDistance,
-            )
-        }
-    }
-}
-
-/** The scissors on the map, at where the way would be cut. See [SplitWayForm]. */
-@Composable
-fun MapOverlayScope.SplitWayMapOverlay(
-    mapPosition: LatLon?,
-    wayGeometry: ElementPolylinesGeometry,
-    snipAnimation: Animatable<Float, AnimationVector1D>,
-) {
-    val scissorsPosition = rememberScissorsPosition(mapPosition, wayGeometry) ?: return
-    Image(
-        painter = scissorsPainter(snipAnimation.value),
-        contentDescription = null,
-        modifier = Modifier
-            .placedAt(scissorsPosition.pos.toPosition())
-            .size(72.dp)
-            .rotate(-30f)
-    )
 }
