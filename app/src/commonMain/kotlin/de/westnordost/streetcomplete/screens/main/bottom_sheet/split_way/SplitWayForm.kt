@@ -22,8 +22,12 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.TransformOrigin
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
+import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -45,6 +49,7 @@ import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toPosition
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.math.getSplitAt
+import de.westnordost.streetcomplete.util.math.initialBearingTo
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -81,6 +86,23 @@ fun SplitWayForm(
             )
         }
     }
+    val scissorsAngle = remember(scissorsPosition) {
+        val pos1 = scissorsPosition?.pos
+        val pos2 = when (scissorsPosition) {
+            is SplitAtLinePosition -> {
+                scissorsPosition.pos2
+            }
+            is SplitAtPoint -> {
+                val way = wayGeometry.polylines.first()
+                val index = way.indexOfFirst { it == scissorsPosition.pos }
+                way.getOrNull(index + 1)
+            }
+            null -> null
+        }
+        if (pos1 != null && pos2 != null) {
+            pos1.initialBearingTo(pos2)
+        } else null
+    }
 
     val hasChanges = cuts.isNotEmpty()
     val isFormComplete = cuts.size >= if (way.isClosed) 2 else 1
@@ -112,7 +134,11 @@ fun SplitWayForm(
                 modifier = Modifier
                     .placedAt(scissorsPosition.pos.toPosition())
                     .size(72.dp)
-                    .rotate(-30f)
+                    .graphicsLayer(
+                        translationY = 6.dp.toPx(),
+                        transformOrigin = TransformOrigin(pivotFractionX = 0.5f, pivotFractionY = 0.5f - 4f/44f),
+                        rotationZ = (scissorsAngle?.toFloat() ?: 0f) + 90f
+                    )
             )
         }
     }
