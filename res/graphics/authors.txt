@@ -242,6 +242,7 @@ laurel_wreath/
 
 links/
     link_neis_one.svg
+    openinframap.svg               bsd-3-clause      Russ Garrett
 
 living street/
     default.svg                                      Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
