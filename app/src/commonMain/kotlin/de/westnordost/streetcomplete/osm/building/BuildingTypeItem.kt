@@ -141,7 +141,7 @@ val BuildingType.icon: DrawableResource get() = when (this) {
     CATHEDRAL ->       Res.drawable.religion_christian
     MOSQUE ->          Res.drawable.religion_muslim
     TEMPLE ->          Res.drawable.building_temple
-    PAGODA ->          Res.drawable.building_temple
+    PAGODA ->          Res.drawable.building_pagoda
     SYNAGOGUE ->       Res.drawable.religion_jewish
     SHRINE ->          Res.drawable.building_temple
     CARPORT ->         Res.drawable.building_carport
