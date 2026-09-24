@@ -116,19 +116,6 @@ class MainBottomSheetViewModelImpl(
         }
     }
 
-    private fun load(selection: MainSheetSelection): ShownBottomSheet? = when (selection) {
-        is MainSheetSelection.Quest -> getQuest(selection.key)
-        is MainSheetSelection.Overlay -> {
-            val overlay = overlayRegistry.getByName(selection.name)
-            val key = selection.elementKey
-            if (overlay == null) null
-            else if (key == null) ShownBottomSheet.Overlay(overlay, null, null)
-            else getElementInOverlay(overlay, key)
-        }
-        is MainSheetSelection.CreateNote -> ShownBottomSheet.CreateOsmNote(selection.trackpoints)
-        is MainSheetSelection.EditHistory -> null
-    }
-
     /** Emits once, then whenever the [selection]'s object may have been removed. Listeners are
      *  registered before the first emission, so no removal is missed. */
     private fun changes(selection: MainSheetSelection): Flow<Unit> = callbackFlow {
@@ -162,20 +149,15 @@ class MainBottomSheetViewModelImpl(
         }
     }.buffer(Channel.CONFLATED)
 
-    private fun getElementInOverlay(overlay: Overlay, key: ElementKey): ShownBottomSheet? {
-        val geometry = mapDataSource.getGeometry(key.type, key.id) ?: return null
-        // A note at the position of the element blocks editing that element.
-        val note = getNoteForElementAt(geometry.center)
-        return if (note != null) {
-            val quest = osmNoteQuestSource.get(note.id) ?: return null
-            ShownBottomSheet.OsmNoteQuest(quest, note)
-        } else {
-            val element = mapDataSource.get(key.type, key.id) ?: return null
-            ShownBottomSheet.Overlay(overlay, element, geometry)
-        }
+    private fun load(selection: MainSheetSelection): ShownBottomSheet? = when (selection) {
+        is MainSheetSelection.Quest -> getQuestBottomSheet(selection)
+        is MainSheetSelection.Overlay -> getOverlayBottomSheet(selection)
+        is MainSheetSelection.CreateNote -> ShownBottomSheet.CreateOsmNote(selection.trackpoints)
+        is MainSheetSelection.EditHistory -> null
     }
 
-    private fun getQuest(key: QuestKey): ShownBottomSheet? {
+    private fun getQuestBottomSheet(selection: MainSheetSelection.Quest): ShownBottomSheet? {
+        val key = selection.key
         if (visibleQuestsSource.get(key) == null) return null
         return when (key) {
             is OsmQuestKey -> {
@@ -187,6 +169,27 @@ class MainBottomSheetViewModelImpl(
                 val quest = osmNoteQuestSource.get(key.noteId) ?: return null
                 val note = notesSource.get(key.noteId) ?: return null
                 ShownBottomSheet.OsmNoteQuest(quest, note)
+            }
+        }
+    }
+
+    private fun getOverlayBottomSheet(selection: MainSheetSelection.Overlay): ShownBottomSheet? {
+        val overlay = overlayRegistry.getByName(selection.name) ?: return null
+        val key = selection.elementKey
+        return if (key == null) {
+            // overlay form for new element
+            ShownBottomSheet.Overlay(overlay, null, null)
+        } else {
+            val geometry = mapDataSource.getGeometry(key.type, key.id) ?: return null
+            // A note at the position of the element blocks editing that element. Instead, the
+            // note quest will be shown
+            val note = getNoteForElementAt(geometry.center)
+            if (note != null) {
+                val quest = osmNoteQuestSource.get(note.id) ?: return null
+                ShownBottomSheet.OsmNoteQuest(quest, note)
+            } else {
+                val element = mapDataSource.get(key.type, key.id) ?: return null
+                ShownBottomSheet.Overlay(overlay, element, geometry)
             }
         }
     }
