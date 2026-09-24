@@ -300,6 +300,14 @@ val links = listOf(
         Res.drawable.link_openclimbing,
         Res.string.link_openclimbing_description
     ),
+    Link(
+        "waymarkedtrails",
+        "https://waymarkedtrails.org/",
+        "Waymarked Trails",
+        LinkCategory.MAPS,
+        Res.drawable.link_waymarkedtrails,
+        Res.string.link_waymarked_description
+    ),
 
     /* -------------------------------------- Showcase ---------------------------------------*/
     Link(
@@ -716,8 +724,9 @@ val achievements = listOf(
         { lvl -> (lvl + 1) * 10 },
         mapOf(
             1 to links("openorienteeringmap"),
-            4 to links("opencampingmap"),
-            6 to links("openclimbing")
+            3 to links("opencampingmap"),
+            5 to links("openclimbing"),
+            7 to links("waymarkedtrails")
         )
     ),
 
