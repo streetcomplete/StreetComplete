@@ -58,8 +58,7 @@ class MainMapCameraState internal constructor(
         if ((mode as? CameraMode.Sheet)?.padded == true) sheetPadding else PaddingValues(0.dp)
 
     suspend fun zoomBy(amount: Double) {
-        val camera = map.cameraPosition
-        map.animateCameraPosition(camera.copy(zoom = camera.zoom + amount), CameraAnimation.Ease(300.milliseconds))
+        map.zoomBy(amount)
     }
 
     suspend fun locate(location: LatLon?, bearing: Double?) {
@@ -145,7 +144,7 @@ class MainMapCameraState internal constructor(
         val camera = map.cameraPosition
         mode = sheet.copy(focused = true,
             previous = sheet.previous ?: FocusCamera(camera.target.toLatLon(), camera.zoom))
-        focus(geometry, sheet.resume.tracking.navigating)
+        map.animateTo(geometry, sheet.resume.tracking.navigating)
     }
 
     suspend fun composeNote(id: String, position: LatLon) {
@@ -172,7 +171,7 @@ class MainMapCameraState internal constructor(
         val history = mode as? CameraMode.EditHistory ?: return
         if (history.key != key || history.focused) return
         mode = history.copy(focused = true)
-        focus(geometry, history.resume.tracking.navigating)
+        map.animateTo(geometry, history.resume.tracking.navigating)
     }
 
     fun closeInspection() {
@@ -227,25 +226,6 @@ class MainMapCameraState internal constructor(
             map.animateCameraPosition(map.cameraPosition.copy(tilt = 0.0), CameraAnimation.Ease(300.milliseconds))
         }
     }
-
-    private suspend fun focus(geometry: ElementGeometry, flatten: Boolean) {
-        val camera = map.cameraPosition
-        val tilt = if (flatten) 0.0 else camera.tilt
-        val fitted = map.cameraForGeometry(geometry.toGeometry(), camera.bearing, tilt)
-        // zoom in a bit less than fully to keep a margin around the element, and not too far for points
-        val targetZoom = min(fitted.zoom - 0.75, 19.0)
-        val zoomDiff = abs(camera.zoom - targetZoom)
-        map.animateCameraPosition(
-            camera.copy(
-                target = fitted.target,
-                tilt = tilt,
-                // only zoom if the difference is big enough
-                zoom = if (zoomDiff > 0.5) targetZoom else camera.zoom,
-            ),
-            CameraAnimation.Ease(maxOf(450, (zoomDiff * 450).roundToInt()).milliseconds),
-        )
-    }
-
 }
 
 @Serializable
