@@ -47,7 +47,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.transformWhile
 import kotlinx.coroutines.withContext
@@ -95,12 +94,6 @@ class MainBottomSheetViewModelImpl(
 ) : MainBottomSheetViewModel() {
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun bottomSheet(selection: MainSheetSelection): Flow<ShownBottomSheet?> {
-        if (selection is MainSheetSelection.CreateNote) {
-            return flowOf(ShownBottomSheet.CreateOsmNote(selection.trackpoints))
-        }
-        if (selection is MainSheetSelection.Overlay && selection.elementKey == null) {
-            return flowOf(overlayRegistry.getByName(selection.name)?.let { ShownBottomSheet.Overlay(it, null, null) })
-        }
         // Shows the object as it was when selected: updates would swap the open form mid-edit.
         // Only its disappearance closes the sheet.
         return flow {
