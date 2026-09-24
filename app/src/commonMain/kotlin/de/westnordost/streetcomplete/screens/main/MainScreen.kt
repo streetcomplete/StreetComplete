@@ -194,7 +194,7 @@ fun MainScreen(
 
     val initialCamera = remember(viewModel) { viewModel.initialCamera }
     val highlightedMarkers by produceState<List<Marker>>(emptyList(), shownBottomSheet) {
-        value = shownBottomSheet?.let { mainBottomSheetViewModel.getHighlightedMarkers(it) }.orEmpty() // todo review
+        value = shownBottomSheet?.let { mainBottomSheetViewModel.getHighlightedMarkers(it) }.orEmpty()
     }
 
     val markers = sheet.formMarkers ?: highlightedMarkers
