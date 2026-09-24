@@ -2,8 +2,6 @@ package de.westnordost.streetcomplete.data.elementfilter
 
 import de.westnordost.streetcomplete.data.location.CurrentHemisphere
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.testutils.rel
-import de.westnordost.streetcomplete.testutils.way
 import kotlin.test.Test
 import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
@@ -30,12 +28,12 @@ class ContextFilterParserTest {
         notMatchesTags(expr)
     }
 
-    @Test fun `__season__ filter with node matches current season`() {
+    @Test fun `= __season__ value filter matches current season`() {
         val expr = "season = __season__"
         matchesTags(expr, mapOf("season" to CurrentHemisphere.currentSeason))
     }
 
-    @Test fun `__season__ filter fails when not equal to current season`() {
+    @Test fun `!= __season__ value filter fails when equal to current season`() {
         val expr = "season != __season__"
         notMatchesTags(expr, mapOf("season" to CurrentHemisphere.currentSeason))
     }
@@ -48,6 +46,22 @@ class ContextFilterParserTest {
     @Test fun `list of all seasons never matches`() {
         val expr = "__season__ !~ winter|summer|autumn|spring"
         notMatchesTags(expr)
+    }
+
+    @Test fun `__season__ filter fails on season that is different to the current one in the users timezone`() {
+        var season = "winter"
+        if (CurrentHemisphere.currentSeason == "winter")
+            season = "summer"
+        val expr = "__season__ = $season"
+        notMatchesTags(expr)
+    }
+
+    @Test fun `= __season__ value filter fails on different season`() {
+        val expr = "season = __season__"
+        var season = "winter"
+        if (CurrentHemisphere.currentSeason == "winter")
+            season = "summer"
+        notMatchesTags(expr, mapOf("season" to season))
     }
 
     private fun shouldFail(input: String) {
