@@ -1864,6 +1864,7 @@
     <string name="lane_narrowing_traffic_calming_none">No narrowed lane here</string>
     <string name="quest_barrier_opening_width_gate">What is the width of the opening here?</string>
     <string name="quest_barrier_opening_width_bollard">What is the widest gap one can pass through here?</string>
+    <string name="quest_barrier_opening_not_wheelchair_accessible">Not suitable for wheelchairs</string>
 
     <!-- MTB = Mountainbike -->
     <string name="overlay_mtb_scale">MTB difficulty</string>
