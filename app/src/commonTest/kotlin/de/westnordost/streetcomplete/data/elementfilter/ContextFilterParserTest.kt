@@ -1,0 +1,67 @@
+package de.westnordost.streetcomplete.data.elementfilter
+
+import de.westnordost.streetcomplete.data.location.CurrentHemisphere
+import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.testutils.rel
+import de.westnordost.streetcomplete.testutils.way
+import kotlin.test.Test
+import kotlin.test.assertFailsWith
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
+
+class ContextFilterParserTest {
+    @Test
+    fun `fail on comparison of __season__`() {
+        shouldFail("__season__ > test")
+    }
+
+    @Test
+    fun `fail on age comparison of __season__`() {
+        shouldFail("__season__ older test")
+    }
+
+    @Test fun `__season__ filter matches current season`() {
+        val expr = "__season__ = " + CurrentHemisphere.currentSeason
+        matchesTags(expr)
+    }
+
+    @Test fun `__season__ filter does not match an unknown season`() {
+        val expr = "__season__ = wombats"
+        notMatchesTags(expr)
+    }
+
+    @Test fun `__season__ filter with node matches current season`() {
+        val expr = "season = __season__"
+        matchesTags(expr, mapOf("season" to CurrentHemisphere.currentSeason))
+    }
+
+    @Test fun `__season__ filter fails when not equal to current season`() {
+        val expr = "season != __season__"
+        notMatchesTags(expr, mapOf("season" to CurrentHemisphere.currentSeason))
+    }
+
+    @Test fun `list of all seasons always matches`() {
+        val expr = "__season__ ~ winter|summer|autumn|spring"
+        matchesTags(expr)
+    }
+
+    @Test fun `list of all seasons never matches`() {
+        val expr = "__season__ !~ winter|summer|autumn|spring"
+        notMatchesTags(expr)
+    }
+
+    private fun shouldFail(input: String) {
+        assertFailsWith<ParseException> {
+            input.toElementFilterExpression()
+        }
+    }
+
+    private fun parse(input: String): ElementFilterExpression =
+        input.toElementFilterExpression()
+
+    private fun matchesTags(input: String, tags: Map<String, String> = emptyMap()) =
+        assertTrue(("nodes with $input").toElementFilterExpression().matches(node(tags = tags)))
+
+    private fun notMatchesTags(input: String, tags: Map<String, String> = emptyMap()) =
+        assertFalse(("nodes with $input").toElementFilterExpression().matches(node(tags = tags)))
+}

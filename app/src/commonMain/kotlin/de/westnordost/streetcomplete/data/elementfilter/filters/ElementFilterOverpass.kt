@@ -57,7 +57,7 @@ fun ElementFilter.toOverpassString(): String = when (this) {
     is NotHasKeyLike -> "[!~${key.toPattern().quote()} ~ '.*']"
     is NotHasTag -> "[${key.quoteIfNecessary()} != ${value.quoteIfNecessary()}]"
     is NotHasTagValueLike -> "[${key.quoteIfNecessary()} !~ ${value.toPattern().quote()}]"
-    is IsSeason -> ""
+    is ContextFilter -> ""
 }
 
 private fun String.toPattern(): String = "^($this)$"

@@ -174,10 +174,3 @@ class CombineFilters(vararg val filters: ElementFilter) : ElementFilter {
     override fun toString() = filters.joinToString(" and ")
     override fun matches(obj: Element) = filters.all { it.matches(obj) }
 }
-
-class IsSeason(val season: String) : ElementFilter {
-    override fun toString() = "season = $season"
-    override fun matches(obj: Element): Boolean {
-        return currentSeason.equals(season, ignoreCase = true)
-    }
-}

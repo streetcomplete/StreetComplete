@@ -1,6 +1,10 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
 import de.westnordost.streetcomplete.data.elementfilter.filters.CombineFilters
+import de.westnordost.streetcomplete.data.elementfilter.filters.ContextIs
+import de.westnordost.streetcomplete.data.elementfilter.filters.ContextIsNot
+import de.westnordost.streetcomplete.data.elementfilter.filters.ContextLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.ContextNotLike
 import de.westnordost.streetcomplete.data.elementfilter.filters.DateFilter
 import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
 import de.westnordost.streetcomplete.data.elementfilter.filters.ElementNewerThan
@@ -19,7 +23,6 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagLessOrEqua
 import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagLessThan
 import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagLike
 import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagValueLike
-import de.westnordost.streetcomplete.data.elementfilter.filters.IsSeason
 import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasKey
 import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasKeyLike
 import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTag
@@ -28,6 +31,7 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTagValueLi
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagNewerThan
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
+import de.westnordost.streetcomplete.data.location.CurrentHemisphere.currentSeason
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.util.StringWithCursor
@@ -235,8 +239,19 @@ private fun StringWithCursor.parseElementFilter(): ElementFilter {
     val key = parseTag()
     val operator = parseOperatorWithSurroundingSpaces() ?: return HasKey(key)
 
-    if (key == "season" && operator == EQUALS) {
-        return IsSeason(parseTag())
+    if (key == "__season__")
+    {
+        if (operator in KEY_VALUE_OPERATORS) {
+            val value = parseTag()
+            when (operator) {
+                EQUALS       -> return ContextIs(key, value)
+                NOT_EQUALS   -> return ContextIsNot(key, value)
+                LIKE         -> return ContextLike(key, value)
+                NOT_LIKE     -> return ContextNotLike(key, value)
+            }
+        }
+        else
+            throw ParseException("__season__ only accepts = or !=", cursor)
     }
 
     if (operator == OLDER) {
@@ -247,7 +262,11 @@ private fun StringWithCursor.parseElementFilter(): ElementFilter {
     }
 
     if (operator in KEY_VALUE_OPERATORS) {
-        val value = parseTag()
+        var value = parseTag()
+        if(value == "__season__")
+        {
+            value = currentSeason
+        }
         when (operator) {
             EQUALS       -> return HasTag(key, value)
             NOT_EQUALS   -> return NotHasTag(key, value)

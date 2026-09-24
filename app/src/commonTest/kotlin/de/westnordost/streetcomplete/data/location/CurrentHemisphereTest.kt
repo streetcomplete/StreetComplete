@@ -44,4 +44,12 @@ class CurrentHemisphereTest {
         val seasonSouthernHemisphere = CurrentHemisphere.currentSeason
         assertNotEquals(seasonNorthernHemisphere, seasonSouthernHemisphere)
     }
+
+    @Test
+    fun `it is exactly one season`() {
+        val location = Location(LatLon(48.0, 11.0), 10f, 0.seconds)
+        CurrentHemisphere.addRecentLocation(location)
+        val season = CurrentHemisphere.currentSeason
+        assertTrue(season in listOf("spring", "summer", "autumn", "winter"))
+    }
 }

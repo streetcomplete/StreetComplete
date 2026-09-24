@@ -566,11 +566,6 @@ class ElementFiltersParserTest {
         notMatchesTags(mapOfKeys("a", "b", "c", "d"), expr)
     }
 
-    @Test fun `season operator is parsed correctly`() {
-        matchesTags(mapOf(), "season = summer")
-        matchesTags(mapOf(), "season = winter")
-    }
-
     @Test fun `brackets are not dissolved illegally`() {
         val expr = "a or (b or c) and !d"
         matchesTags(mapOfKeys("a"), expr)

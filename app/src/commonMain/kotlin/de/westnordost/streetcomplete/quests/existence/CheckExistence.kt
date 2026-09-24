@@ -44,7 +44,7 @@ class CheckExistence(
                 amenity = grit_bin and
                 (
                     seasonal = no
-                    or season = winter
+                    or __season__ = winter
                 )
               )
               or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
