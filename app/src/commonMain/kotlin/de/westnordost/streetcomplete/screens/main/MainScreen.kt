@@ -258,9 +258,19 @@ fun MainScreen(
     fun ClickEvent.toMapClick(): MapClick? =
         position?.let { MapClick(it.toLatLon(), screenOffset, clickAreaSizeInMeters = metersPerDp * 14) }
 
-    fun followLocation() {
+    fun followPosition() {
         scope.launch {
-            cameraState.locate(location?.position?.toLatLon(), getTrackBearing(tracks.currentTrack))
+            cameraState.followPosition(location?.position?.toLatLon(), getTrackBearing(tracks.currentTrack))
+        }
+    }
+
+    fun toggleNavigationMode() {
+        scope.launch {
+            cameraState.setNavigationMode(
+                value = !cameraState.isNavigationMode,
+                position = location?.position?.toLatLon(),
+                bearing = getTrackBearing(tracks.currentTrack)
+            )
         }
     }
 
@@ -298,15 +308,9 @@ fun MainScreen(
             if (systemSettingsLauncher.canOpenLocationServicesSettings) showLocationSettingsDialog = true
             else showToast = Toast.NoLocation
         } else if (!cameraState.isFollowingPosition) {
-            followLocation()
+            followPosition()
         } else {
-            scope.launch {
-                cameraState.setNavigationMode(
-                    value = !cameraState.isNavigationMode,
-                    location = location?.position?.toLatLon(),
-                    bearing = getTrackBearing(tracks.currentTrack)
-                )
-            }
+            toggleNavigationMode()
         }
     }
 
@@ -366,7 +370,11 @@ fun MainScreen(
     }
 
     LifecycleEventEffect(Lifecycle.Event.ON_STOP) {
-        viewModel.saveCamera(mapState.cameraPosition, cameraState.isFollowingPosition, cameraState.isNavigationMode)
+        viewModel.saveCamera(
+            camera = mapState.cameraPosition,
+            following = cameraState.isFollowingPosition,
+            navigating = cameraState.isNavigationMode
+        )
     }
 
     LaunchedEffect(headingProvider) {
@@ -383,7 +391,12 @@ fun MainScreen(
                     location = measurement
                     locationState = LocationState.UPDATING
                     tracks.addLocation(measurement)
-                    launch { cameraState.animateToPositionIfFollowing(measurement.position.toLatLon(), getTrackBearing(tracks.currentTrack)) }
+                    launch {
+                        cameraState.animateToPositionIfFollowing(
+                            position = measurement.position.toLatLon(),
+                            bearing = getTrackBearing(tracks.currentTrack)
+                        )
+                    }
                 }
                 is LocationEvent.Unavailable -> {
                     location = null
@@ -470,7 +483,7 @@ fun MainScreen(
                 GeographicLayout(Modifier.windowInsetsPadding(WindowInsets.safeDrawing)) {
                     val position = location?.position
                     if (position != null) {
-                        PointerPinButton(targetPosition = position, onClick = ::followLocation) {
+                        PointerPinButton(targetPosition = position, onClick = ::followPosition) {
                             Image(painterResource(Res.drawable.location_dot_small), null)
                         }
                     }

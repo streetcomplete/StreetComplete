@@ -40,7 +40,11 @@ fun MapState.offsetInWindow(position: LatLon, mapOrigin: Offset, density: Densit
     }
 
 /** Zoom to the given [geometry]. Resets the tilt to 0 when [flatten] is true. */
-suspend fun MapState.animateTo(geometry: ElementGeometry, flatten: Boolean) {
+suspend fun MapState.animateTo(
+    geometry: ElementGeometry,
+    flatten: Boolean,
+    animation: (zoomDiff: Double) -> CameraAnimation
+) {
     val camera = cameraPosition
     val tilt = if (flatten) 0.0 else camera.tilt
     val fitted = cameraForGeometry(geometry.toGeometry(), camera.bearing, tilt)
@@ -60,10 +64,10 @@ suspend fun MapState.animateTo(geometry: ElementGeometry, flatten: Boolean) {
 }
 
 /** Zoom in or out by the given zoom level [amount] */
-suspend fun MapState.zoomBy(amount: Double) {
+suspend fun MapState.zoomBy(amount: Double, animation: CameraAnimation) {
     val camera = cameraPosition
     animateCameraPosition(
         position = camera.copy(zoom = camera.zoom + amount),
-        animation = CameraAnimation.Ease(300.milliseconds)
+        animation = animation
     )
 }

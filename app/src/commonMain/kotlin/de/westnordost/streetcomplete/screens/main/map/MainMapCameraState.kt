@@ -55,43 +55,60 @@ class MainMapCameraState internal constructor(
         if ((mode as? CameraMode.Sheet)?.padded == true) sheetPadding else PaddingValues(0.dp)
 
     suspend fun zoomBy(amount: Double) {
-        map.zoomBy(amount)
+        map.zoomBy(amount, SnapAnimation)
     }
 
-    suspend fun locate(location: LatLon?, bearing: Double?) {
+    /** Start following the current position.
+     *  Special case when a sheet is open: Just zoom to the position, don't start to follow it. */
+    suspend fun followPosition(position: LatLon?, bearing: Double?) {
         val browsing = mode as? CameraMode.Browsing
         if (browsing == null) {
             // An explicit location click can recenter an open form without resuming GPS following.
-            if (location != null) {
+            if (position != null) {
                 val camera = map.cameraPosition
-                map.animateCameraPosition(camera.copy(target = location.toPosition(),
-                    zoom = if (camera.zoom < 17.0) 18.0 else camera.zoom), CameraAnimation.Ease(600.milliseconds))
+                map.animateCameraPosition(
+                    position = camera.copy(
+                        target = position.toPosition(),
+                        zoom = if (camera.zoom < 17.0) LOCATE_ZOOM else camera.zoom
+                    ),
+                    animation = LocateAnimation
+                )
             }
             return
         }
         mode = browsing.copy(isFollowingPosition = true)
-        animateToPositionIfFollowing(location, bearing)
+        animateToPositionIfFollowing(position, bearing)
     }
 
-    /** Panning only stops following once a location is displayed; the first fix still centers
-     *  the map after panning while waiting for it. */
+    /** Turn navigation mode either on or off. When turned off, resets tilt back to 0 but not
+     *  bearing. */
+    suspend fun setNavigationMode(value: Boolean, position: LatLon?, bearing: Double?) {
+        val browsing = mode as? CameraMode.Browsing ?: return
+        if (browsing.isNavigationMode == value) return
+        mode = browsing.copy(isNavigationMode = value)
+        if (value) {
+            animateToPositionIfFollowing(position, bearing)
+        } else {
+            map.animateCameraPosition(
+                position = map.cameraPosition.copy(tilt = 0.0),
+                animation = SnapAnimation
+            )
+        }
+    }
+
     fun onPan(hasLocation: Boolean) {
+        // Panning while a sheet is open does not set isFollowingPosition to false. I.e. it will
+        // snap back once exiting the form
         val browsing = when (val current = mode) {
             is CameraMode.Browsing -> current
             is CameraMode.Restoring -> current.resume
             else -> return
         }
-        if (hasLocation) {
-            mode = CameraMode.Browsing(isFollowingPosition = false)
-        }
-    }
+        // Panning only stops following once a location is displayed; the first fix still centers
+        // the map after panning while waiting for it.
+        if (!hasLocation) return
 
-    suspend fun setNavigationMode(value: Boolean, location: LatLon?, bearing: Double?) {
-        val browsing = mode as? CameraMode.Browsing ?: return
-        if (browsing.isNavigationMode == value) return
-        mode = browsing.copy(isNavigationMode = true)
-        if (value) animateToPositionIfFollowing(location, bearing)
-        else map.animateCameraPosition(map.cameraPosition.copy(tilt = 0.0), CameraAnimation.Ease(300.milliseconds))
+        mode = browsing.copy(isFollowingPosition = false)
     }
 
     /** Animate the current camera position to [position] and [bearing] if not null each and if it
@@ -100,7 +117,7 @@ class MainMapCameraState internal constructor(
         val browsing = mode as? CameraMode.Browsing ?: return
         if (!browsing.isFollowingPosition || position == null) return
         val camera = map.cameraPosition
-        val zoom = if (!browsing.zoomedYet && camera.zoom < 17.0) 18.0 else camera.zoom
+        val zoom = if (!browsing.zoomedYet && camera.zoom < 17.0) LOCATE_ZOOM else camera.zoom
         mode = browsing.copy(zoomedYet = true)
         map.animateCameraPosition(
             position = camera.copy(
@@ -109,7 +126,7 @@ class MainMapCameraState internal constructor(
                 bearing = if (browsing.isNavigationMode) bearing ?: camera.bearing else camera.bearing,
                 tilt = if (browsing.isNavigationMode) 60.0 else camera.tilt,
             ),
-            animation = CameraAnimation.Ease(600.milliseconds)
+            animation = LocateAnimation
         )
     }
 
@@ -127,19 +144,23 @@ class MainMapCameraState internal constructor(
         }
         map.animateCameraPosition(
             position = map.cameraPosition.copy(bearing = 0.0, tilt = 0.0),
-            animation = CameraAnimation.Ease(300.milliseconds)
+            animation = SnapAnimation
         )
     }
 
-    /** Enter immediately, before the selected form has finished loading, to stop following. */
+    /** Suspends the current browsing mode */
     fun openSheet(id: String, padded: Boolean) {
         val previous = mode
         if (previous is CameraMode.Sheet && previous.id == id) {
             mode = previous.copy(padded = padded)
             return
         }
-        mode = CameraMode.Sheet(id, padded, previous.browsing,
-            previous = (previous as? CameraMode.Sheet)?.previous)
+        mode = CameraMode.Sheet(
+            id = id,
+            padded = padded,
+            resume = previous.browsing,
+            previous = (previous as? CameraMode.Sheet)?.previous
+        )
     }
 
     suspend fun focusSheet(id: String, geometry: ElementGeometry) {
@@ -150,7 +171,11 @@ class MainMapCameraState internal constructor(
             focused = true,
             previous = sheet.previous ?: FocusCamera(camera.target.toLatLon(), camera.zoom)
         )
-        map.animateTo(geometry, sheet.resume.isNavigationMode)
+        map.animateTo(
+            geometry = geometry,
+            flatten = sheet.resume.isNavigationMode,
+            animation = { zoomAnimation(it) }
+        )
     }
 
     suspend fun inspectSheet(id: String) {
@@ -164,8 +189,13 @@ class MainMapCameraState internal constructor(
         if (sheet.id != id || sheet.focused) return
         mode = sheet.copy(focused = true)
         val camera = map.cameraPosition
-        map.animateCameraPosition(camera.copy(target = position.toPosition(),
-            tilt = if (sheet.resume.isNavigationMode) 0.0 else camera.tilt), CameraAnimation.Ease(300.milliseconds))
+        map.animateCameraPosition(
+            position = camera.copy(
+                target = position.toPosition(),
+                tilt = if (sheet.resume.isNavigationMode) 0.0 else camera.tilt
+            ),
+            animation = SnapAnimation
+        )
     }
 
     /** Keep the crosshair over the same position when opening a form changes the map padding. */
@@ -183,37 +213,38 @@ class MainMapCameraState internal constructor(
         val history = mode as? CameraMode.EditHistory ?: return
         if (history.key != key || history.focused) return
         mode = history.copy(focused = true)
-        map.animateTo(geometry, history.resume.isNavigationMode)
+        map.animateTo(
+            geometry = geometry,
+            flatten = history.resume.isNavigationMode,
+            animation = { zoomAnimation(it) }
+        )
     }
 
     fun closeInspection() {
         val inspection = mode
         if (inspection is CameraMode.Browsing || inspection is CameraMode.Restoring) return
-        mode = CameraMode.Restoring(inspection.browsing.copy(zoomedYet = false),
-            (inspection as? CameraMode.Sheet)?.previous)
+        mode = CameraMode.Restoring(
+            resume = inspection.browsing.copy(zoomedYet = false),
+            previous = (inspection as? CameraMode.Sheet)?.previous
+        )
     }
 
-    /** Returning to a previous [position] and [bearing] after a sheet has been focussed. */
+    /** Returning to a previous [position] and [bearing] after a sheet has been focused. */
     internal suspend fun restore(position: LatLon?, bearing: Double?) {
         val restoring = mode as? CameraMode.Restoring ?: return
         val camera = map.cameraPosition
         val resume = restoring.resume
-        if (resume.isFollowingPosition && resume.isNavigationMode && position != null) {
-            map.animateCameraPosition(
-                position = camera.copy(
-                    target = position.toPosition(),
-                    zoom = if (camera.zoom < 17.0) 18.0 else camera.zoom,
-                    bearing = bearing ?: camera.bearing,
-                    tilt = 60.0,
-                ),
-                animation = CameraAnimation.Ease(600.milliseconds)
-            )
+        if (resume.isFollowingPosition && position != null) {
+            animateToPositionIfFollowing(position, bearing)
         } else if (restoring.previous != null) {
             val previous = restoring.previous
             // Restore the pre-focus target and zoom, keeping the user's current bearing and tilt.
             map.animateCameraPosition(
-                position = camera.copy(target = previous.position.toPosition(), zoom = previous.zoom),
-                animation = CameraAnimation.Ease(maxOf(300, (abs(camera.zoom - previous.zoom) * 300).roundToInt()).milliseconds),
+                position = camera.copy(
+                    target = previous.position.toPosition(),
+                    zoom = previous.zoom
+                ),
+                animation = zoomAnimation(camera.zoom - previous.zoom),
             )
         }
         if (mode == restoring) mode = resume
@@ -221,13 +252,31 @@ class MainMapCameraState internal constructor(
 
     /** Move the camera immediately to the given [position]. */
     fun moveTo(position: CameraPosition) {
+        val freeBrowsing = CameraMode.Browsing(false, false)
+        // this also stops any position-following and navigation mode
         mode = when (val current = mode) {
             is CameraMode.Browsing,
-            is CameraMode.Restoring -> CameraMode.Browsing()
-            is CameraMode.Sheet -> current.copy(resume = CameraMode.Browsing())
-            is CameraMode.EditHistory -> current.copy(resume = CameraMode.Browsing())
+            is CameraMode.Restoring -> freeBrowsing
+            is CameraMode.Sheet -> current.copy(resume = freeBrowsing)
+            is CameraMode.EditHistory -> current.copy(resume = freeBrowsing)
         }
         map.setCameraPosition(position)
+    }
+
+    companion object {
+        /** Zoom level when focusing on the user's location */
+        private const val LOCATE_ZOOM = 18.0
+
+        /** Camera animation when animating the user's location */
+        private val LocateAnimation = CameraAnimation.Ease(600.milliseconds)
+
+        /** Camera animation when animating the tilt or bearing */
+        private val SnapAnimation = CameraAnimation.Ease(300.milliseconds)
+
+        /** Camera animation when animating the zoom. Duration depends on how much is zoomed */
+        private fun zoomAnimation(zoomDiff: Double) = CameraAnimation.Ease(
+            maxOf(300, (abs(zoomDiff) * 300).roundToInt()).milliseconds
+        )
     }
 }
 
@@ -240,10 +289,10 @@ internal sealed interface CameraMode {
     @Serializable
     data class Browsing(
         /** Whether the camera is following the user's position */
-        val isFollowingPosition: Boolean = false,
+        val isFollowingPosition: Boolean,
         /** Whether when the camera is following the user's position the map is tilted and the
          *  bearing is updated according to the user's direction */
-        val isNavigationMode: Boolean = false,
+        val isNavigationMode: Boolean,
         /** Whether after starting to follow the user's position, the camera has already zoomed to
          *  an appropriate zoom level once. */
         val zoomedYet: Boolean = false
