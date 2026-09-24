@@ -174,10 +174,9 @@ class MainMapCameraState internal constructor(
     suspend fun focusSheet(id: String, geometry: ElementGeometry) {
         val sheet = mode as? CameraMode.Sheet ?: return
         if (sheet.id != id || sheet.focused) return
-        val camera = map.cameraPosition
         mode = sheet.copy(
             focused = true,
-            previous = sheet.previous ?: camera
+            previous = sheet.previous ?: map.cameraPosition
         )
         map.animateTo(
             geometry = geometry,
