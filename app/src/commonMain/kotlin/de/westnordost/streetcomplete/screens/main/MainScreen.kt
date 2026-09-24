@@ -383,7 +383,7 @@ fun MainScreen(
                     location = measurement
                     locationState = LocationState.UPDATING
                     tracks.addLocation(measurement)
-                    launch { cameraState.followLocation(measurement.position.toLatLon(), getTrackBearing(tracks.currentTrack)) }
+                    launch { cameraState.animateToPositionIfFollowing(measurement.position.toLatLon(), getTrackBearing(tracks.currentTrack)) }
                 }
                 is LocationEvent.Unavailable -> {
                     location = null
