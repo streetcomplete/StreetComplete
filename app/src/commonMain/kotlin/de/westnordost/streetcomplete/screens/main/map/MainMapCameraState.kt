@@ -263,12 +263,19 @@ internal sealed interface CameraMode {
     }
 
     @Serializable
-    data class Restoring(val resume: Browsing, val previous: FocusCamera?) : CameraMode {
+    data class Restoring(
+        val resume: Browsing,
+        val previous: FocusCamera?
+    ) : CameraMode {
         override val inspectionKey get() = "restoring"
     }
 
     @Serializable
-    data class EditHistory(val key: EditKey, val resume: Browsing, val focused: Boolean = false) : CameraMode {
+    data class EditHistory(
+        val key: EditKey,
+        val resume: Browsing,
+        val focused: Boolean = false
+    ) : CameraMode {
         override val inspectionKey get() = "edit history $key"
     }
 }

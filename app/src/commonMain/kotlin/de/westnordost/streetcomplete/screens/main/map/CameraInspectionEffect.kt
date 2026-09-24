@@ -43,11 +43,19 @@ internal fun CameraInspectionEffect(
                 if (inspection.id != sheet.id) return@LaunchedEffect
                 val shown = snapshotFlow { sheet.shownBottomSheet }.filterNotNull().first()
                 when (val selection = sheet.selection) {
-                    is MainSheetSelection.CreateNote -> cameraState.composeNote(inspection.id, selection.position)
+                    is MainSheetSelection.CreateNote -> {
+                        cameraState.composeNote(inspection.id, selection.position)
+                    }
                     else -> when (shown) {
-                        is ShownBottomSheet.OsmQuest -> cameraState.focusSheet(inspection.id, shown.quest.geometry)
-                        is ShownBottomSheet.OsmNoteQuest -> cameraState.focusSheet(inspection.id, shown.quest.geometry)
-                        else -> cameraState.inspectSheet(inspection.id)
+                        is ShownBottomSheet.OsmQuest -> {
+                            cameraState.focusSheet(inspection.id, shown.quest.geometry)
+                        }
+                        is ShownBottomSheet.OsmNoteQuest -> {
+                            cameraState.focusSheet(inspection.id, shown.quest.geometry)
+                        }
+                        else -> {
+                            cameraState.inspectSheet(inspection.id)
+                        }
                     }
                 }
             }
@@ -56,7 +64,9 @@ internal fun CameraInspectionEffect(
                     .filterNotNull().first { it.edit.key == inspection.key }
                 cameraState.focusEdit(inspection.key, shown.geometry)
             }
-            is CameraMode.Restoring -> cameraState.restore(position?.toLatLon(), getTrackBearing(tracks.currentTrack))
+            is CameraMode.Restoring -> {
+                cameraState.restore(position?.toLatLon(), getTrackBearing(tracks.currentTrack))
+            }
             else -> Unit
         }
     }
