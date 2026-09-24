@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.screens.main.ShownBottomSheet
+import de.westnordost.streetcomplete.screens.main.ShownEdit
 import de.westnordost.streetcomplete.screens.main.edithistory.icon
 import de.westnordost.streetcomplete.screens.main.map.layers.CurrentLocationLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.DownloadedAreaLayer
@@ -64,6 +65,8 @@ internal fun MainMapContent(
     trackpoints: List<LatLon>,
     oldTrackpointsLists: List<List<LatLon>>,
     shownBottomSheet: ShownBottomSheet?,
+    /** the edit selected in the edit history, highlighted on the map */
+    selectedEdit: ShownEdit?,
     shownMarkers: Collection<Marker>?,
     /** labels of the background map to hide, e.g. because the selected overlay replaces them */
     hiddenLabels: Set<MapLabel>,
@@ -110,7 +113,6 @@ internal fun MainMapContent(
         else -> null
     }
     val selectedOverlayElement = shownBottomSheet as? ShownBottomSheet.Overlay
-    val selectedEdit = (shownBottomSheet as? ShownBottomSheet.EditHistory)?.edit
 
     val languages = LocaleList.current.localeList.map { it.language }.distinct()
     val colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light
@@ -180,7 +182,7 @@ internal fun MainMapContent(
                     mapImages = mapImages
                 )
             }
-            shownBottomSheet?.geometry?.let { geometry ->
+            (shownBottomSheet?.geometry ?: selectedEdit?.geometry)?.let { geometry ->
                 FocusedGeometryLayers(geometry)
             }
 
@@ -202,11 +204,11 @@ internal fun MainMapContent(
             )
 
             if (selectedEdit != null) {
-                val icon = selectedEdit.icon
+                val icon = selectedEdit.edit.icon
                 if (icon != null) {
                     SelectedPinsLayer(
                         icon = icon,
-                        pinPositions = listOf(selectedEdit.position)
+                        pinPositions = listOf(selectedEdit.edit.position)
                     )
                 }
             } else if (selectedOverlayElement?.element != null) {

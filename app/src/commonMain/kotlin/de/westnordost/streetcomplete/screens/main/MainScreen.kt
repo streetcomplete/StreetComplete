@@ -222,6 +222,7 @@ fun MainScreen(
             trackpoints = tracks.recentTrackPositions,
             oldTrackpointsLists = tracks.olderTrackPositions,
             shownBottomSheet = shownBottomSheet,
+            selectedEdit = sheet.shownEdit,
             shownMarkers = markers,
             hiddenLabels = selectedOverlay?.hiddenLabels.orEmpty(),
             showOverlay = showOverlay,
@@ -550,7 +551,7 @@ fun MainScreen(
         ) {
             EditHistorySidebar(
                 editItems = sheet.editItems.orEmpty(),
-                selectedEdit = (shownBottomSheet as? ShownBottomSheet.EditHistory)?.edit,
+                selectedEdit = sheet.shownEdit?.edit,
                 onSelectEdit = { sheet.show(MainSheetSelection.EditHistory(it.key)) },
                 onUndoEdit = { editHistoryViewModel.undo(it.key) },
                 onDismissRequest = sheet::close,
@@ -559,7 +560,7 @@ fun MainScreen(
         }
 
         AnimatedContent(
-            targetState = shownBottomSheet?.takeUnless { it is ShownBottomSheet.EditHistory }?.let { sheet.id to it },
+            targetState = shownBottomSheet?.let { sheet.id to it },
             contentKey = { it?.first },
             transitionSpec = {
                 if (initialState != null && targetState != null) {

@@ -52,7 +52,7 @@ internal fun CameraInspectionEffect(
                 }
             }
             is CameraMode.EditHistory -> {
-                val shown = snapshotFlow { sheet.shownBottomSheet as? ShownBottomSheet.EditHistory }
+                val shown = snapshotFlow { sheet.shownEdit }
                     .filterNotNull().first { it.edit.key == inspection.key }
                 cameraState.focusEdit(inspection.key, shown.geometry)
             }
