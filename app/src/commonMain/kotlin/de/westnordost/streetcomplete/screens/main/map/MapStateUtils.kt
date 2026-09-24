@@ -39,22 +39,19 @@ fun MapState.offsetInWindow(position: LatLon, mapOrigin: Offset, density: Densit
         with(density) { Offset(it.x.toPx(), it.y.toPx()) } + mapOrigin
     }
 
-/** Zoom to the given [geometry]. Resets the tilt to 0 when [flatten] is true. */
+/** Zoom to the given [geometry]. */
 suspend fun MapState.animateTo(
     geometry: ElementGeometry,
-    flatten: Boolean,
     animation: (zoomDiff: Double) -> CameraAnimation
 ) {
     val camera = cameraPosition
-    val tilt = if (flatten) 0.0 else camera.tilt
-    val fitted = cameraForGeometry(geometry.toGeometry(), camera.bearing, tilt)
+    val fitted = cameraForGeometry(geometry.toGeometry(), camera.bearing, camera.tilt)
     // zoom in a bit less than fully to keep a margin around the element, and not too far for points
     val targetZoom = min(fitted.zoom - 0.75, 19.0)
     val zoomDiff = abs(camera.zoom - targetZoom)
     animateCameraPosition(
         position = camera.copy(
             target = fitted.target,
-            tilt = tilt,
             // only zoom if the difference is big enough
             zoom = if (zoomDiff > 0.5) targetZoom else camera.zoom,
         ),

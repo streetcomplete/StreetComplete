@@ -173,7 +173,6 @@ class MainMapCameraState internal constructor(
         )
         map.animateTo(
             geometry = geometry,
-            flatten = sheet.resume.isNavigationMode,
             animation = { zoomAnimation(it) }
         )
     }
@@ -215,7 +214,6 @@ class MainMapCameraState internal constructor(
         mode = history.copy(focused = true)
         map.animateTo(
             geometry = geometry,
-            flatten = history.resume.isNavigationMode,
             animation = { zoomAnimation(it) }
         )
     }
