@@ -10,7 +10,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
-import de.westnordost.streetcomplete.data.location.CurrentHemisphere
+import de.westnordost.streetcomplete.data.location.CurrentSeason
 import de.westnordost.streetcomplete.data.location.SurveyChecker
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -75,7 +75,7 @@ class MainMapFragment : MapFragment() {
     private val downloadedTilesSource: DownloadedTilesSource by inject()
     private val surveyChecker: SurveyChecker by inject()
     private val prefs: Preferences by inject()
-    private val currentHemisphere: CurrentHemisphere by inject()
+    private val currentHemisphere: CurrentSeason by inject()
 
     private lateinit var headingProvider: HeadingProvider
 

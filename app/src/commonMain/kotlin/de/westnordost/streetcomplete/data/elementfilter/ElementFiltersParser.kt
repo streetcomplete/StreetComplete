@@ -31,7 +31,7 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTagValueLi
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagNewerThan
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
-import de.westnordost.streetcomplete.data.location.CurrentHemisphere.currentSeason
+import de.westnordost.streetcomplete.data.location.CurrentSeason.getCurrentSeason
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.util.StringWithCursor
@@ -251,7 +251,7 @@ private fun StringWithCursor.parseElementFilter(): ElementFilter {
             }
         }
         else
-            throw ParseException("__season__ only accepts = or !=", cursor)
+            throw ParseException("__season__ only accepts =, !=, ~ and !~ operators", cursor)
     }
 
     if (operator == OLDER) {
@@ -265,7 +265,7 @@ private fun StringWithCursor.parseElementFilter(): ElementFilter {
         var value = parseTag()
         if(value == "__season__")
         {
-            value = currentSeason
+            value = getCurrentSeason
         }
         when (operator) {
             EQUALS       -> return HasTag(key, value)

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
-import de.westnordost.streetcomplete.data.location.CurrentHemisphere
+import de.westnordost.streetcomplete.data.location.CurrentSeason
 import de.westnordost.streetcomplete.testutils.node
 import kotlin.test.Test
 import kotlin.test.assertFailsWith
@@ -19,7 +19,7 @@ class ContextFilterParserTest {
     }
 
     @Test fun `__season__ filter matches current season`() {
-        val expr = "__season__ = " + CurrentHemisphere.currentSeason
+        val expr = "__season__ = " + CurrentSeason.getCurrentSeason
         matchesTags(expr)
     }
 
@@ -30,12 +30,12 @@ class ContextFilterParserTest {
 
     @Test fun `= __season__ value filter matches current season`() {
         val expr = "season = __season__"
-        matchesTags(expr, mapOf("season" to CurrentHemisphere.currentSeason))
+        matchesTags(expr, mapOf("season" to CurrentSeason.getCurrentSeason))
     }
 
     @Test fun `!= __season__ value filter fails when equal to current season`() {
         val expr = "season != __season__"
-        notMatchesTags(expr, mapOf("season" to CurrentHemisphere.currentSeason))
+        notMatchesTags(expr, mapOf("season" to CurrentSeason.getCurrentSeason))
     }
 
     @Test fun `list of all seasons always matches`() {
@@ -50,7 +50,7 @@ class ContextFilterParserTest {
 
     @Test fun `__season__ filter fails on season that is different to the current one in the users timezone`() {
         var season = "winter"
-        if (CurrentHemisphere.currentSeason == "winter")
+        if (CurrentSeason.getCurrentSeason == "winter")
             season = "summer"
         val expr = "__season__ = $season"
         notMatchesTags(expr)
@@ -59,7 +59,7 @@ class ContextFilterParserTest {
     @Test fun `= __season__ value filter fails on different season`() {
         val expr = "season = __season__"
         var season = "winter"
-        if (CurrentHemisphere.currentSeason == "winter")
+        if (CurrentSeason.getCurrentSeason == "winter")
             season = "summer"
         notMatchesTags(expr, mapOf("season" to season))
     }
