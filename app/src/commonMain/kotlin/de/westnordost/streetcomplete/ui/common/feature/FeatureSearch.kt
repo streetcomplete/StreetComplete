@@ -24,6 +24,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.intl.LocaleList
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -85,7 +86,11 @@ fun FeatureSearch(
             onValueChange = { search = it },
             modifier = Modifier.fillMaxWidth().focusRequester(focusRequester),
             placeholder = {
-                Text(stringResource(Res.string.quest_shop_gone_replaced_answer_hint2))
+                Text(
+                    text = stringResource(Res.string.quest_shop_gone_replaced_answer_hint2),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
             },
             leadingIcon = { SearchIcon() },
             trailingIcon = {

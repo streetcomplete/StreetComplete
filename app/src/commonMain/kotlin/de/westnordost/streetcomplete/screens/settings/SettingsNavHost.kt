@@ -8,7 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsScreen
-import de.westnordost.streetcomplete.screens.settings.language_selection.LanguageSelectionScreen
+import de.westnordost.streetcomplete.screens.settings.locale_selection.LocaleSelectionScreen
 import de.westnordost.streetcomplete.screens.settings.messages.MessageSelectionScreen
 import de.westnordost.streetcomplete.screens.settings.overlay_selection.OverlaySelectionScreen
 import de.westnordost.streetcomplete.screens.settings.presets.EditTypePresetsScreen
@@ -42,7 +42,7 @@ import org.koin.compose.viewmodel.koinViewModel
                 onClickPresetSelection = { navController.navigate(SettingsDestination.EditTypePresets) },
                 onClickQuestSelection = { navController.navigate(SettingsDestination.QuestSelection) },
                 onClickOverlaySelection = { navController.navigate(SettingsDestination.OverlaySelection) },
-                onClickLanguageSelection = { navController.navigate(SettingsDestination.LanguageSelection) },
+                onClickLocaleSelection = { navController.navigate(SettingsDestination.LocaleSelection) },
                 onClickMessagesSelection = { navController.navigate(SettingsDestination.MessagesSelection) },
                 onClickBack = ::goBack
             )
@@ -65,8 +65,8 @@ import org.koin.compose.viewmodel.koinViewModel
                 onClickBack = ::goBack
             )
         }
-        composable(SettingsDestination.LanguageSelection) {
-            LanguageSelectionScreen(
+        composable(SettingsDestination.LocaleSelection) {
+            LocaleSelectionScreen(
                 viewModel = koinViewModel(),
                 onClickBack = ::goBack
             )
@@ -91,7 +91,7 @@ object SettingsDestination {
     const val EditTypePresets = "edit_type_presets"
     const val QuestSelection = "quest_selection"
     const val OverlaySelection = "overlay_selection"
-    const val LanguageSelection = "language_selection"
+    const val LocaleSelection = "locale_selection"
     const val MessagesSelection = "messages_selection"
     const val ShowQuestForms = "show_quest_forms"
 }

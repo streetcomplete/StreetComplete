@@ -42,7 +42,7 @@ fun BottomSheetFormScaffold(
     initialState: BottomSheetState =
         if (LocalWindowInfo.current.isLandscape) BottomSheetState.Expanded
         else BottomSheetState.Collapsed,
-    peekHeight: Dp = Dimensions.QuestFormPeekHeight
+    peekHeight: Dp = Dimensions.getQuestFormPeekHeight(LocalWindowInfo.current)
 ) {
     val windowInfo = LocalWindowInfo.current
 

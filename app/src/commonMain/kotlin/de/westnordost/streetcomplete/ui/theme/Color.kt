@@ -46,19 +46,19 @@ val Color.Companion.GrassGray get() = Color(0xff888888)
 val Color.Companion.LeafGreen get() = Color(0xff006a00)
 
 val LightColors = lightColors(
-    primary = Color(0xff4141ba),
-    primaryVariant = Color(0xff3939a3),
-    secondary = Color(0xffD14000),
-    secondaryVariant = Color(0xffF44336),
+    primary = Color(0xff3F51B5), // indigo 500
+    primaryVariant = Color(0xff3949AB), // indigo 600
+    secondary = Color(0xffF44336), // red 500
+    secondaryVariant = Color(0xffE53935), // red 600
     onPrimary = Color.White,
     onSecondary = Color.White
 )
 
 val DarkColors = darkColors(
-    primary = Color(0xff4141ba),
-    primaryVariant = Color(0xff3939a3),
-    secondary = Color(0xffff6600),
-    secondaryVariant = Color(0xffF44336),
+    primary = Color(0xff29B6F6), // light blue 400
+    primaryVariant = Color(0xff03A9F4), // light blue 500
+    secondary = Color(0xffFF5722), // deep orange 500
+    secondaryVariant = Color(0xffF4511E), // deep orange 600
     onPrimary = Color.White,
     onSecondary = Color.White
 )
