@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.overlays.Overlay
@@ -174,12 +175,16 @@ class MainBottomSheetViewModelImpl(
             ShownBottomSheet.Overlay(overlay, null, null)
         } else {
             val geometry = mapDataSource.getGeometry(key.type, key.id) ?: return null
-            // A note at the position of the element blocks editing that element. Instead, the
+            // A note at the position of the element blocks editing that element. Instead, a
             // note quest will be shown
             val note = getNoteForElementAt(geometry.center)
             if (note != null) {
-                val quest = osmNoteQuestSource.get(note.id) ?: return null
-                ShownBottomSheet.OsmNoteQuest(quest, note)
+                // ... even if it is usually not visible (due to not containing a question or the
+                // last commenter being this user, see `Note.shouldShowAsQuest`).
+                // For this reason, we don't use
+                // `val quest = osmNoteQuestSource.get(note.id)` here.
+                val quest = OsmNoteQuest(note.id, geometry.center)
+                ShownBottomSheet.OsmNoteQuest(OsmNoteQuest(note.id, geometry.center), note)
             } else {
                 val element = mapDataSource.get(key.type, key.id) ?: return null
                 ShownBottomSheet.Overlay(overlay, element, geometry)
