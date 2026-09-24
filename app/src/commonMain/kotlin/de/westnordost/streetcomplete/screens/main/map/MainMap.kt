@@ -19,6 +19,7 @@ fun MainMap(
     modifier: Modifier = Modifier,
     cameraPadding: PaddingValues = PaddingValues(0.dp),
     onPan: () -> Unit = {},
+    onRotate: () -> Unit = {},
     onMapClick: (ClickEvent) -> ClickResult = { ClickResult.Pass },
     onMapLongClick: (ClickEvent) -> ClickResult = { ClickResult.Pass },
     overlay: @Composable MapOverlayScope.() -> Unit = {},
@@ -31,6 +32,7 @@ fun MainMap(
         interactions = MapInteractions {
             camera {
                 pan { onStart(onPan) }
+                rotate { onStart(onRotate) }
             }
             callbacks {
                 click { onUnhandled(onMapClick) }

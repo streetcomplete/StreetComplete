@@ -462,6 +462,7 @@ fun MainScreen(
                 .onGloballyPositioned { mapPositionInWindow = it.positionInWindow() },
             cameraPadding = cameraPadding,
             onPan = { cameraState.onPan(location != null) },
+            onRotate = { cameraState.onRotate(location != null) },
             onMapClick = { event ->
                 when (sheet.selection) {
                     null -> {}

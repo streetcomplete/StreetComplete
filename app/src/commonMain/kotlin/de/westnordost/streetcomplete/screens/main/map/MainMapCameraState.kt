@@ -111,6 +111,21 @@ class MainMapCameraState internal constructor(
         mode = browsing.copy(isFollowingPosition = false)
     }
 
+    fun onRotate(hasLocation: Boolean) {
+        val browsing = when (val current = mode) {
+            is CameraMode.Browsing -> current
+            is CameraMode.Restoring -> current.resume
+            else -> return
+        }
+        if (!hasLocation) return
+
+        // as navigation mode continuously updates the bearing, rotating manually signals the user
+        // intent to end this mode (like clicking the compass)
+        if (browsing.isNavigationMode == true) {
+            mode = browsing.copy(isNavigationMode = false)
+        }
+    }
+
     /** Animate the current camera position to [position] and [bearing] if not null each and if it
      *  is allowed by the current camera mode */
     suspend fun animateToPositionIfFollowing(position: LatLon?, bearing: Double?) {
