@@ -177,7 +177,7 @@ class MainMapCameraState internal constructor(
         val camera = map.cameraPosition
         mode = sheet.copy(
             focused = true,
-            previous = sheet.previous ?: FocusCamera(camera.target.toLatLon(), camera.zoom)
+            previous = sheet.previous ?: camera
         )
         map.animateTo(
             geometry = geometry,
@@ -238,17 +238,20 @@ class MainMapCameraState internal constructor(
     internal suspend fun restore(position: LatLon?, bearing: Double?) {
         val restoring = mode as? CameraMode.Restoring ?: return
         val camera = map.cameraPosition
+        // when we follow the user's position, we want to zoom back to the current user's position
+        // instead of zoom back to the position from where the sheet was opened
         if (isFollowingPosition && position != null) {
             animateToPositionIfFollowing(position, bearing)
         } else if (restoring.previous != null) {
-            val previous = restoring.previous
-            // Restore the pre-focus target and zoom, keeping the user's current bearing and tilt.
+            // when restoring, keep the user's current bearing and tilt because also rotating and
+            // tilting back to where the camera was when the sheet was opened would be too
+            // distracting and obstrusive
             map.animateCameraPosition(
                 position = camera.copy(
-                    target = previous.position.toPosition(),
-                    zoom = previous.zoom
+                    target = restoring.previous.target,
+                    zoom = restoring.previous.zoom,
                 ),
-                animation = zoomAnimation(camera.zoom - previous.zoom),
+                animation = zoomAnimation(camera.zoom - restoring.previous.zoom),
             )
         }
         if (mode == restoring) mode = CameraMode.Browsing
@@ -293,7 +296,7 @@ internal sealed interface CameraMode {
     data class Sheet(
         val id: String,
         val padded: Boolean,
-        val previous: FocusCamera? = null,
+        val previous: CameraPosition? = null,
         val focused: Boolean = false,
     ) : CameraMode {
         override val inspectionKey get() = "sheet $id"
@@ -301,7 +304,7 @@ internal sealed interface CameraMode {
 
     @Serializable
     data class Restoring(
-        val previous: FocusCamera?
+        val previous: CameraPosition?
     ) : CameraMode {
         override val inspectionKey get() = "restoring"
     }
@@ -314,6 +317,3 @@ internal sealed interface CameraMode {
         override val inspectionKey get() = "edit history $key"
     }
 }
-
-@Serializable
-internal data class FocusCamera(val position: LatLon, val zoom: Double)
