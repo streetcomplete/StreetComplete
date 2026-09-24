@@ -6,14 +6,17 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.todayIn
 import kotlinx.datetime.number
 
-/** Saves the hemisphere the user is in. */
+/**
+ * Provides the season in the users hemisphere and timezone.
+ * The implementation is split into multiple functions to allow for easier testing.
+ * The season is updated every time a new location is added.
+ * */
 object CurrentSeason {
 
     var season: String = "unknown"
 
     fun addRecentLocation(location: Location) {
-        var southernHemisphere = isSouthernHemisphere(location)
-
+        val southernHemisphere = isSouthernHemisphere(location)
         updateSeason(southernHemisphere, Clock.System.todayIn(TimeZone.currentSystemDefault()).month)
     }
 
@@ -22,14 +25,13 @@ object CurrentSeason {
             return season
         }
 
-    fun updateSeason(southernHemisphere: Boolean, month: Month): String {
+    fun updateSeason(southernHemisphere: Boolean, month: Month) {
         season = when (month.number) {
             3, 4, 5 -> if (southernHemisphere) "autumn" else "spring"
             6, 7, 8 -> if (southernHemisphere) "winter" else "summer"
             9, 10, 11 -> if (southernHemisphere) "spring" else "autumn"
             else -> if (southernHemisphere) "summer" else "winter" // 12, 1, 2
         }
-        return season
     }
 
     fun isSouthernHemisphere(location: Location): Boolean{

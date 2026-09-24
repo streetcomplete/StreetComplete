@@ -24,10 +24,14 @@ class CurrentSeasonTest {
 
     @Test
     fun `season calculation is correct`() {
-        assertEquals("winter", CurrentSeason.updateSeason(false, Month.DECEMBER))
-        assertEquals("spring", CurrentSeason.updateSeason(false, Month.MARCH))
-        assertEquals("winter", CurrentSeason.updateSeason(true, Month.JULY))
-        assertEquals("summer", CurrentSeason.updateSeason(true, Month.DECEMBER))
+        CurrentSeason.updateSeason(true, Month.DECEMBER)
+        assertEquals("summer", CurrentSeason.getCurrentSeason )
+        CurrentSeason.updateSeason(false, Month.DECEMBER)
+        assertEquals("winter", CurrentSeason.getCurrentSeason )
+        CurrentSeason.updateSeason(false, Month.MARCH)
+        assertEquals("spring", CurrentSeason.getCurrentSeason )
+        CurrentSeason.updateSeason(true, Month.OCTOBER)
+        assertEquals("spring", CurrentSeason.getCurrentSeason )
     }
 
     @Test
