@@ -132,24 +132,25 @@ class MainBottomSheetViewModelImpl(
     /** Emits once, then whenever the [selection]'s object may have been removed. Listeners are
      *  registered before the first emission, so no removal is missed. */
     private fun changes(selection: MainSheetSelection): Flow<Unit> = callbackFlow {
-        val elementKey = when (selection) {
-            is MainSheetSelection.Overlay -> selection.elementKey
-            is MainSheetSelection.Quest -> (selection.key as? OsmQuestKey)?.let {
-                ElementKey(it.elementType, it.elementId)
-            }
-            else -> null
-        }
         val questListener = object : VisibleQuestsSource.Listener {
             override fun onUpdated(added: Collection<Quest>, removed: Collection<QuestKey>) {
-                if (selection is MainSheetSelection.Quest && selection.key in removed) trySend(Unit)
+                // quest for which the form is open has been removed
+                if (selection is MainSheetSelection.Quest && selection.key in removed) {
+                    trySend(Unit)
+                }
             }
             override fun onInvalidated() { trySend(Unit) }
         }
         val elementListener = object : MapDataWithEditsSource.Listener {
             override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-                if (elementKey != null && elementKey in deleted) trySend(Unit)
+                // element for which the form is open has been removed
+                if (selection is MainSheetSelection.Overlay && selection.elementKey in deleted) {
+                    trySend(Unit)
+                }
             }
-            override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) { trySend(Unit) }
+            override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
+                trySend(Unit)
+            }
             override fun onCleared() { trySend(Unit) }
         }
         visibleQuestsSource.addListener(questListener)
