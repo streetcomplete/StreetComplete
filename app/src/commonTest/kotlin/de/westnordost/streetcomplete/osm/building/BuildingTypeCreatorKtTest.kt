@@ -29,7 +29,20 @@ class BuildingTypeCreatorKtTest {
             RESIDENTIAL.appliedTo(mapOf("man_made" to "storage_tank"))
         )
     }
+    @Test fun `set terraced house`() {
+        assertEquals(
+            mapOf("building" to "house", "house" to "terraced"),
+            TERRACED_HOUSE.appliedTo(mapOf())
+        )
 
+        assertEquals(
+            mapOf("building" to "house", "house" to "terraced"),
+            TERRACED_HOUSE.appliedTo(mapOf(
+                "building" to "house",
+                "house" to "detached",
+            ))
+        )
+    }
     @Test fun `set man-made`() {
         assertEquals(
             mapOf("man_made" to "storage_tank"),
