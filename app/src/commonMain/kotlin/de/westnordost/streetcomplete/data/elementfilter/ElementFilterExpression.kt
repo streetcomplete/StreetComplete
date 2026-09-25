@@ -8,6 +8,11 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.CompareDateTagVa
 import de.westnordost.streetcomplete.data.elementfilter.filters.CompareElementAge
 import de.westnordost.streetcomplete.data.elementfilter.filters.CompareTagAge
 import de.westnordost.streetcomplete.data.elementfilter.filters.CompareTagValue
+import de.westnordost.streetcomplete.data.elementfilter.filters.ContextFilter
+import de.westnordost.streetcomplete.data.elementfilter.filters.ContextIs
+import de.westnordost.streetcomplete.data.elementfilter.filters.ContextIsNot
+import de.westnordost.streetcomplete.data.elementfilter.filters.ContextLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.ContextNotLike
 import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
 import de.westnordost.streetcomplete.data.elementfilter.filters.HasKey
 import de.westnordost.streetcomplete.data.elementfilter.filters.HasKeyLike
@@ -53,6 +58,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
  *  | `shop or craft`                | has either a tag with key `shop` or one with key `craft`                      |
  *  | `shop and (ref or name)`       | has a tag with key `shop` and either a tag with key `ref` or `name`           |
  *  | `shop and !(ref or name)`      | has a tag with key `shop` but not either a tag with key `ref` or `name`       |
+ *  | `__season__ = summer`          | the current season for the user is summer                                     |
+ *  | `seasonal != __season__`       | the object is not usable in the current season                                |
  *
  *  Note that regexes have to match the whole string, i.e. `~shop|craft` does not match `shop_type`.
  *
@@ -107,7 +114,8 @@ private val ElementFilter.mayEvaluateToTrueWithNoTags: Boolean get() = when (thi
     is NotHasTag,
     is NotHasTagValueLike,
     is HasTagValueLike,
-    is NotHasTagLike ->
+    is NotHasTagLike,
+    is ContextFilter ->
         true
     is HasKey,
     is HasKeyLike,

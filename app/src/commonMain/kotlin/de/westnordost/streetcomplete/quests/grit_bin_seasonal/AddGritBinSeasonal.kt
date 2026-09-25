@@ -18,13 +18,13 @@ class AddGritBinSeasonal : OsmFilterQuestType<Boolean>() {
         nodes with
           amenity = grit_bin
           and !seasonal
+          and season = summer
     """
     override val changesetComment = "Specify whether grit bins are seasonal"
     override val wikiLink = "Key:seasonal"
     override val icon = Res.drawable.quest_calendar
     override val title = Res.string.quest_gritBinSeasonal_title
     override val achievements = listOf(CITIZEN)
-    override val defaultDisabledMessage = Res.string.default_disabled_msg_seasonal
 
     @Composable
     override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
