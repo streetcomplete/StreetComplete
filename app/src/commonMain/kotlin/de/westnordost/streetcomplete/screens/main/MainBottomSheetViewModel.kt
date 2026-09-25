@@ -11,10 +11,8 @@ import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.LazyMapDataWithGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
@@ -27,7 +25,6 @@ import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
-import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
@@ -40,21 +37,12 @@ import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.ktx.truncateTo6Decimals
 import de.westnordost.streetcomplete.util.math.enlargedBy
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.IO
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.buffer
-import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.mapLatest
-import kotlinx.coroutines.flow.transformWhile
 import kotlinx.coroutines.withContext
 
 @Stable
 abstract class MainBottomSheetViewModel : ViewModel() {
-    abstract fun bottomSheet(selection: MainSheetSelection): Flow<ShownBottomSheet?>
+    abstract suspend fun getBottomSheet(selection: MainSheetSelection): ShownBottomSheet?
     abstract suspend fun getHighlightedMarkers(sheet: ShownBottomSheet): List<Marker>
 
     abstract fun hideQuest(questKey: QuestKey)
@@ -93,55 +81,8 @@ class MainBottomSheetViewModelImpl(
     private val overlayRegistry: OverlayRegistry,
     private val featureDictionary: Lazy<FeatureDictionary>,
 ) : MainBottomSheetViewModel() {
-    @OptIn(ExperimentalCoroutinesApi::class)
-    override fun bottomSheet(selection: MainSheetSelection): Flow<ShownBottomSheet?> {
-        // Shows the object as it was when selected: updates would swap the open form mid-edit.
-        // Only its disappearance closes the sheet.
-        return flow {
-            var isShown = false
-            changes(selection)
-                .mapLatest { withContext(Dispatchers.IO) { load(selection) } }
-                .transformWhile { loaded ->
-                    if (!isShown || loaded == null) emit(loaded)
-                    isShown = true
-                    loaded != null
-                }
-                .collect { emit(it) }
-        }
-    }
-
-    /** Emits once, then whenever the [selection]'s object may have been removed. Listeners are
-     *  registered before the first emission, so no removal is missed. */
-    private fun changes(selection: MainSheetSelection): Flow<Unit> = callbackFlow {
-        val questListener = object : VisibleQuestsSource.Listener {
-            override fun onUpdated(added: Collection<Quest>, removed: Collection<QuestKey>) {
-                // quest for which the form is open has been removed
-                if (selection is MainSheetSelection.Quest && selection.key in removed) {
-                    trySend(Unit)
-                }
-            }
-            override fun onInvalidated() { trySend(Unit) }
-        }
-        val elementListener = object : MapDataWithEditsSource.Listener {
-            override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-                // element for which the form is open has been removed
-                if (selection is MainSheetSelection.Overlay && selection.elementKey in deleted) {
-                    trySend(Unit)
-                }
-            }
-            override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
-                trySend(Unit)
-            }
-            override fun onCleared() { trySend(Unit) }
-        }
-        visibleQuestsSource.addListener(questListener)
-        mapDataSource.addListener(elementListener)
-        trySend(Unit)
-        awaitClose {
-            visibleQuestsSource.removeListener(questListener)
-            mapDataSource.removeListener(elementListener)
-        }
-    }.buffer(Channel.CONFLATED)
+    override suspend fun getBottomSheet(selection: MainSheetSelection): ShownBottomSheet? =
+        withContext(Dispatchers.IO) { load(selection) }
 
     private fun load(selection: MainSheetSelection): ShownBottomSheet? = when (selection) {
         is MainSheetSelection.Quest -> getQuestBottomSheet(selection)

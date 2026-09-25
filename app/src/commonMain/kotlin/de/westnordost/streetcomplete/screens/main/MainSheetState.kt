@@ -20,7 +20,6 @@ import de.westnordost.streetcomplete.screens.main.edithistory.EditItem
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.MapOverlayContent
 import de.westnordost.streetcomplete.ui.common.quest.Marker
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -115,7 +114,6 @@ class MainSheetState internal constructor(
     }
 
     /** Keeps [shownBottomSheet] in sync with the [selection]. Runs until cancelled. */
-    @OptIn(ExperimentalCoroutinesApi::class)
     internal suspend fun observe(): Unit = coroutineScope {
         launch {
             editHistoryViewModel.editItems.collect { editItems = it }
@@ -128,17 +126,15 @@ class MainSheetState internal constructor(
                 when (selection) {
                     null -> {}
                     is MainSheetSelection.EditHistory -> observeEdit(selection.editKey)
-                    else -> observeBottomSheet(selection)
+                    else -> showBottomSheet(selection)
                 }
             }
         }
     }
 
-    private suspend fun observeBottomSheet(selection: MainSheetSelection) {
-        viewModel.bottomSheet(selection).collect { sheet ->
-            shownBottomSheet = sheet
-            if (sheet == null) close()
-        }
+    private suspend fun showBottomSheet(selection: MainSheetSelection) {
+        val sheet = viewModel.getBottomSheet(selection)
+        if (sheet != null) shownBottomSheet = sheet else close()
     }
 
     private suspend fun observeEdit(key: EditKey) {
