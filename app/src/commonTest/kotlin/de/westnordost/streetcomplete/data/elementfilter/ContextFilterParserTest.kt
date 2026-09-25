@@ -40,11 +40,13 @@ class ContextFilterParserTest {
 
     @Test fun `list of all seasons always matches`() {
         val expr = "__season__ ~ winter|summer|autumn|spring"
+        CurrentSeason.updateSeason(true, kotlinx.datetime.Month.DECEMBER)
         matchesTags(expr)
     }
 
     @Test fun `list of all seasons never matches`() {
         val expr = "__season__ !~ winter|summer|autumn|spring"
+        CurrentSeason.updateSeason(true, kotlinx.datetime.Month.DECEMBER)
         notMatchesTags(expr)
     }
 

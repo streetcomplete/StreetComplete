@@ -35,5 +35,5 @@ class ContextNotLike(key: String = "__season__", val value: String) : ContextFil
     private val regex = RegexOrSet.from(value)
 
     override fun toString() = "$key !~ $value"
-    override fun matches(el: Element) = !regex.matches(getCurrentSeason)
+    override fun matches(el: Element) = value != "unknown" && !regex.matches(getCurrentSeason)
 }
