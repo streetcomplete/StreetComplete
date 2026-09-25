@@ -145,7 +145,7 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.1")
 
                 // location
-                implementation("org.maplibre.compose:location:0.16.0")
+                implementation("org.maplibre.compose:location:0.17.0")
 
                 // SQLite
                 implementation("androidx.sqlite:sqlite:2.7.0")
@@ -197,6 +197,9 @@ kotlin {
 
                 // UI widgets
 
+                // Map
+                implementation("org.maplibre.compose:maplibre-compose:0.17.0")
+
                 // non-lazy grid
                 // NOTE: might replace with
                 // https://developer.android.com/develop/ui/compose/layouts/adaptive/grid
@@ -220,7 +223,6 @@ kotlin {
             }
         }
         androidMain {
-            kotlin.srcDirs(layout.buildDirectory.dir("generated/androidMain/kotlin"))
             dependencies {
                 // Dependency injection
                 implementation("io.insert-koin:koin-android")
@@ -242,8 +244,8 @@ kotlin {
                 // HTTP Client
                 implementation("io.ktor:ktor-client-android:3.5.1")
 
-                // map and location
-                implementation("org.maplibre.gl:android-sdk-opengl:13.3.1")
+                // map
+                implementation("org.maplibre.compose:maplibre-compose-runtime-opengl-android:0.17.0")
 
                 // required to @Preview composables in Android Studio
                 runtimeOnly("androidx.compose.ui:ui-tooling:1.10.0")
@@ -395,13 +397,6 @@ tasks.register<UpdateChangelogTask>("updateChangelog") {
     targetFile = projectDir.resolve("src/commonMain/composeResources/files/changelog.html")
 }
 
-tasks.register<UpdateMapStyleTask>("updateMapStyle") {
-    group = "streetcomplete"
-    targetDir = projectDir.resolve("src/androidMain/assets/map_theme")
-    apiKey = "mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ"
-    mapStyleBranch = "master"
-}
-
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
     group = "streetcomplete"
     dependsOn(
@@ -423,51 +418,6 @@ tasks.register("copyDefaultStringsToEnStrings") {
     }
 }
 
-// necessary as long as map hasn't been converted to compose yet
-tasks.register<CopyIconsTask>("copyIconsToAndroid") {
-    group = "streetcomplete"
-    sourceDir = projectDir.resolve("src/commonMain/composeResources/drawable")
-    targetDir = projectDir.resolve("build/generated/androidMain/res/drawable")
-    filter = {
-        // quest pins, icons for overlays
-        it.startsWith("quest_") ||
-        it.startsWith("building_") ||
-        it.startsWith("preset_") ||
-        it == "sport_volleyball.xml" ||
-        it == "religion_christian.xml" ||
-        it == "religion_jewish.xml" ||
-        it == "religion_muslim.xml" ||
-        it == "address_dot.xml" ||
-        it == "none.png" ||
-        // icons for base map
-        it == "pin_shadow.png" ||
-        it == "location_nyan.png" ||
-        it == "scissors_cut.xml" ||
-        it == "scissors.xml" ||
-        it == "track_nyan.png" ||
-        it == "track_nyan_record.png" ||
-        it == "downloaded_area_hatching.xml" ||
-        it == "location_shadow.xml" ||
-        it == "location_view_direction.xml" ||
-        it == "pin.xml" ||
-        it == "pin_circle.xml"
-    }
-    indexFile = projectDir.resolve("build/generated/androidMain/kotlin/de/westnordost/streetcomplete/view/IconIndex.kt")
-}
-
-tasks.register<CopyStringsTask>("copyStringsToAndroid") {
-    group = "streetcomplete"
-    sourceDir = projectDir.resolve("src/commonMain/composeResources")
-    targetDir = projectDir.resolve("build/generated/androidMain/res")
-}
-
-project.afterEvaluate {
-    tasks.named("androidPreBuild") {
-        dependsOn(tasks.named("copyIconsToAndroid"))
-        dependsOn(tasks.named("copyStringsToAndroid"))
-    }
-}
-
 tasks.register<JavaExec>("printQuestFiltersAsOverpassQL") {
     group = "utils"
 
@@ -486,10 +436,4 @@ tasks.register<JavaExec>("openingHoursParsingStatistics") {
     classpath = testTask.get().classpath
 
     mainClass.set("de.westnordost.streetcomplete.OpeningHoursParsingStatisticsKt")
-}
-
-androidComponents {
-    onVariants { variant ->
-        variant.sources.res?.addStaticSourceDirectory(layout.buildDirectory.dir("generated/androidMain/res").get().asFile.absolutePath)
-    }
 }
