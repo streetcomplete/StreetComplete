@@ -136,14 +136,7 @@ class MainSheetState internal constructor(
 
     private suspend fun observeBottomSheet(selection: MainSheetSelection) {
         viewModel.bottomSheet(selection).collect { sheet ->
-            if (selection is MainSheetSelection.Overlay && sheet is ShownBottomSheet.OsmNoteQuest) {
-                // A note at the element blocks editing it. Selecting the note instead also
-                // closes this sheet when the note is hidden or deleted.
-                this.selection = MainSheetSelection.Quest(sheet.quest.key)
-                return@collect
-            }
             shownBottomSheet = sheet
-            // null: the selected object does not exist anymore
             if (sheet == null) close()
         }
     }
