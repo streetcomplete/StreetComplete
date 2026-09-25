@@ -172,6 +172,8 @@ fun MainScreen(
     var showLocationSettingsDialog by remember { mutableStateOf(false) }
     var shownMessage by remember { mutableStateOf<Message?>(null) }
     var showToast by remember { mutableStateOf<Toast?>(null) }
+    var showMapContextMenu by remember { mutableStateOf(false) }
+    // retained while the context menu is dismissed so that it does not move during its exit animation
     var lastMapLongClick by remember { mutableStateOf<MapClick?>(null) }
     var lastQuestSolved by remember { mutableStateOf<QuestSolvedEvent?>(null) }
 
@@ -475,6 +477,7 @@ fun MainScreen(
             onMapLongClick = { event ->
                 if (!sheet.isOpen) {
                     lastMapLongClick = event.toMapClick()
+                    showMapContextMenu = lastMapLongClick != null
                 }
                 ClickResult.Consume
             },
@@ -617,8 +620,8 @@ fun MainScreen(
     lastQuestSolved?.let { LastQuestSolvedEffect(it) }
 
     MapContextMenu(
-        expanded = lastMapLongClick != null,
-        onDismissRequest = { lastMapLongClick = null },
+        expanded = showMapContextMenu,
+        onDismissRequest = { showMapContextMenu = false },
         onClickCreateNote = {
             if (mapState.cameraPosition.zoom < ApplicationConstants.NOTE_MIN_ZOOM) showToast = Toast.ImpreciseNote
             else lastMapLongClick?.let { composeNote(it.position) }
