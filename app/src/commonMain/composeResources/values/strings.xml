@@ -910,7 +910,7 @@
     <string name="quest_buildingType_terrace2">Row houses</string>
     <string name="quest_buildingType_terraced_house">Individual row house</string>
     <string name="quest_buildingType_terrace_description">a linear row of similar single-family homes</string>
-    <string name="quest_buildingType_terraced_house_description">an individual house in a row of houses</string>
+    <string name="quest_buildingType_terraced_house_description">an individual house in a row of similar houses</string>
     <string name="quest_buildingType_hotel">Hotel building</string>
     <string name="quest_buildingType_dormitory">Dormitory building</string>
     <string name="quest_buildingType_houseboat">Houseboat</string>
