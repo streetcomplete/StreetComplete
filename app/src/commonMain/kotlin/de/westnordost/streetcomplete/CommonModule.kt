@@ -457,7 +457,7 @@ val commonModule = module {
         lazy { get<FeatureDictionary>() }
     }
 
-    single { SurveyChecker() }
+    single { SurveyChecker(get()) }
 
     //endregion
 
@@ -613,7 +613,7 @@ val commonModule = module {
     factory { StyleableOverlaySource(get(), get()) }
 
     viewModel<MainBottomSheetViewModel> {
-        MainBottomSheetViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get())
+        MainBottomSheetViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(named("FeatureDictionaryLazy")))
     }
 
     viewModel<ArMeasureViewModel> { ArMeasureViewModelImpl(get(), get()) }

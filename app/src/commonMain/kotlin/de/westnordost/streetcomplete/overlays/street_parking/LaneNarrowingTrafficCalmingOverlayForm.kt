@@ -1,17 +1,12 @@
 package de.westnordost.streetcomplete.overlays.street_parking
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.absoluteOffset
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.center
 import androidx.compose.ui.unit.dp
@@ -42,10 +37,10 @@ import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.overlay.ItemSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
-import de.westnordost.streetcomplete.ui.common.quest.LocalGetOffsetCallback
+import de.westnordost.streetcomplete.ui.common.quest.OnMap
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
-import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.ui.ktx.toPx
+import de.westnordost.streetcomplete.util.ktx.toPosition
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
 import org.jetbrains.compose.resources.painterResource
@@ -87,57 +82,48 @@ fun LaneNarrowingTrafficCalmingForm(
 
     var confirmRemoveLaneNarrowingTrafficCalming by remember { mutableStateOf(false) }
 
-    Box(Modifier.fillMaxSize()) {
-        if (positionOnWay != null) {
-            val offset = LocalGetOffsetCallback.current?.invoke(positionOnWay.position)
-            if (offset != null) {
-                Pin(
-                    iconPainter = painterResource(Res.drawable.quest_choker),
-                    modifier = Modifier
-                        .align(AbsoluteAlignment.TopLeft)
-                        .size(71.dp, 142.dp)
-                        .absoluteOffset(
-                            x = offset.x.pxToDp() - 36.dp,
-                            y = offset.y.pxToDp() - 71.dp
-                        )
-                )
-            }
+    if (positionOnWay != null) {
+        OnMap {
+            Pin(
+                iconPainter = painterResource(Res.drawable.quest_choker),
+                modifier = Modifier.placedAt(positionOnWay.position.toPosition()),
+            )
         }
-
-        ItemSelectOverlayForm(
-            on = on,
-            isComplete = element != null || positionOnWay != null,
-            itemsPerRow = 2,
-            items = LaneNarrowingTrafficCalming.entries,
-            initialSelectedItem = originalLaneNarrowingTrafficCalming,
-            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            lastPickedItemContent = { Image(painterResource(it.icon), stringResource(it.title), Modifier.height(32.dp)) },
-            onClickOk = { selectedItem ->
-                if (element != null) {
-                    val tagChanges = StringMapChangesBuilder(element.tags)
-                    selectedItem.applyTo(tagChanges)
-                    on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
-                } else if (positionOnWay != null) {
-                    val action = createNodeAction(positionOnWay, mapDataWithEditsSource) { selectedItem.applyTo(it) }
-                    if (action != null) {
-                        val geometry = ElementPointGeometry(positionOnWay.position)
-                        on(Edit(action))
-                    }
-                }
-            },
-            prefs = preferences,
-            favoriteKey = "LaneNarrowingTrafficCalmingForm",
-            otherAnswers = { listOfNotNull(
-                if (element != null) {
-                    AnswerItem(stringResource(Res.string.lane_narrowing_traffic_calming_none)) {
-                        confirmRemoveLaneNarrowingTrafficCalming = true
-                    }
-                } else {
-                    null
-                }
-            ) }
-        )
     }
+
+    ItemSelectOverlayForm(
+        on = on,
+        isComplete = element != null || positionOnWay != null,
+        itemsPerRow = 2,
+        items = LaneNarrowingTrafficCalming.entries,
+        initialSelectedItem = originalLaneNarrowingTrafficCalming,
+        itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+        lastPickedItemContent = { Image(painterResource(it.icon), stringResource(it.title), Modifier.height(32.dp)) },
+        onClickOk = { selectedItem ->
+            if (element != null) {
+                val tagChanges = StringMapChangesBuilder(element.tags)
+                selectedItem.applyTo(tagChanges)
+                on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
+            } else if (positionOnWay != null) {
+                val action = createNodeAction(positionOnWay, mapDataWithEditsSource) { selectedItem.applyTo(it) }
+                if (action != null) {
+                    val geometry = ElementPointGeometry(positionOnWay.position)
+                    on(Edit(action))
+                }
+            }
+        },
+        prefs = preferences,
+        favoriteKey = "LaneNarrowingTrafficCalmingForm",
+        otherAnswers = { listOfNotNull(
+            if (element != null) {
+                AnswerItem(stringResource(Res.string.lane_narrowing_traffic_calming_none)) {
+                    confirmRemoveLaneNarrowingTrafficCalming = true
+                }
+            } else {
+                null
+            }
+        ) }
+    )
 
     if (confirmRemoveLaneNarrowingTrafficCalming) {
         AreYouSureDialog(

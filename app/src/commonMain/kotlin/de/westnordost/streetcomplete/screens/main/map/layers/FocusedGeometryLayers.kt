@@ -8,6 +8,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.screens.main.map.isArea
@@ -48,9 +49,8 @@ fun FocusedGeometryLayers(geometry: ElementGeometry) {
     val lineWidth = ((breathing + 1) * 8).dp // 8..16
     val circleRadius = ((breathing + 1) * 10).dp // 10..20
 
-    val source = rememberGeoJsonSource(
-        data = GeoJsonData.Features(geometry.toGeometry())
-    )
+    val data = remember(geometry) { GeoJsonData.Features(geometry.toGeometry()) }
+    val source = rememberGeoJsonSource(data = data)
 
     FillLayer(
         id = "focus-geo-fill",
