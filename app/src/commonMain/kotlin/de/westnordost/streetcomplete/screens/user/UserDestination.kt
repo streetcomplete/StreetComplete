@@ -1,8 +1,11 @@
 package de.westnordost.streetcomplete.screens.user
 
+import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
@@ -25,10 +28,12 @@ fun NavGraphBuilder.userScreen(onClickBack: () -> Unit) {
         LaunchedEffect(Unit) {
             if (launchAuth && !isLoggedIn) loginViewModel.startLogin()
         }
-        if (isLoggedIn) {
-            UserScreen(onClickBack = onClickBack)
-        } else {
-            LoginScreen(viewModel = loginViewModel, onClickBack = onClickBack)
+        Crossfade(targetState = isLoggedIn, modifier = Modifier.fillMaxSize()) { loggedIn ->
+            if (loggedIn) {
+                UserScreen(onClickBack = onClickBack)
+            } else {
+                LoginScreen(viewModel = loginViewModel, onClickBack = onClickBack)
+            }
         }
     }
 }
