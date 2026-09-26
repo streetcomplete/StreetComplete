@@ -24,18 +24,17 @@ class AddChargingStationBicycles : OsmFilterQuestType<Boolean>() {
           and access !~ private|no
           and (
              socket:ropd > 0
-             or socket:bosch_3pin > 0
-             or socket:shimano_steps_5pin > 0
-             or socket:xlr_3pin_cable > 0
-             or socket:domestic > 0
-             or socket:typec > 0
-             or socket:typee > 0
-             or socket:nema_5_15 > 0
-             or socket:nema_5_20 > 0
-             or socket:nema_TT_30 > 0
-             or socket:schuko > 0
-             or socket:as3112 > 0
-             or socket:sev1011_t23 > 0
+             or socket:bosch_3pin = yes or socket:bosch_3pin > 0
+             or socket:shimano_steps_5pin = yes or socket:shimano_steps_5pin > 0
+             or socket:xlr_3pin_cable = yes or socket:xlr_3pin_cable > 0
+             or socket:domestic = yes or socket:domestic > 0
+             or socket:typec = yes or socket:typec > 0
+             or socket:typee = yes or socket:typee > 0
+             or socket:nema_5_15 = yes or socket:nema_5_15 > 0
+             or socket:nema_5_20 = yes or socket:nema_5_20 > 0
+             or socket:schuko = yes or socket:schuko > 0
+             or socket:as3112 = yes or socket:as3112 > 0
+             or socket:sev1011_t23 = yes or socket:sev1011_t23 > 0
           )
     """
     override val changesetComment = "Specify whether bicycles can be charged at charging stations"
