@@ -13,7 +13,7 @@ import org.maplibre.compose.location.LocationMeasurement
 import org.maplibre.spatialk.units.International
 import kotlin.math.max
 
-/** Walked and recorded tracks, owned by the main map view model. */
+/** Walked and recorded tracks, owned by the application composition above navigation. */
 class MainMapTrackState {
     private class Track(val points: SnapshotStateList<Trackpoint>, val isRecording: Boolean) {
         /** Points before this index are drawn as part of the older tracks. A recording is never

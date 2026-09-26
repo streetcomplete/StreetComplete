@@ -12,6 +12,7 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.compose.NavHost
@@ -21,6 +22,7 @@ import de.westnordost.streetcomplete.screens.about.AboutDestination
 import de.westnordost.streetcomplete.screens.about.aboutGraph
 import de.westnordost.streetcomplete.screens.main.MainScreen
 import de.westnordost.streetcomplete.screens.main.MainViewModel
+import de.westnordost.streetcomplete.screens.main.map.MainMapTrackState
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeWizard
 import de.westnordost.streetcomplete.screens.settings.SettingsDestination
 import de.westnordost.streetcomplete.screens.settings.settingsGraph
@@ -39,6 +41,8 @@ fun MainNavHost(
     onConsumedSettingsRequest: () -> Unit,
 ) {
     val navController = rememberNavController()
+    // Navigation keeps the full tracks; restoring the app uses the bounded saved copy.
+    val tracks = rememberSaveable(saver = MainMapTrackState.Saver) { MainMapTrackState() }
     // The main screen is always at the bottom of the back stack, so its view model lives as long
     // as the app and can receive requests while another destination is shown.
     val mainViewModel = koinViewModel<MainViewModel>()
@@ -67,6 +71,7 @@ fun MainNavHost(
     ) {
         composable(MainDestination.Main) {
             MainScreen(
+                tracks = tracks,
                 onClickSettings = { navController.navigate(SettingsDestination.Settings) },
                 onClickQuestSettings = { navController.navigate(SettingsDestination.QuestSelection) },
                 onClickAbout = { navController.navigate(AboutDestination.About) },

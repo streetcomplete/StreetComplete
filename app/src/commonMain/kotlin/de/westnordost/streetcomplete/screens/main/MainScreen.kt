@@ -57,6 +57,7 @@ import de.westnordost.streetcomplete.screens.main.map.BASE_STYLE
 import de.westnordost.streetcomplete.screens.main.map.CameraInspectionEffect
 import de.westnordost.streetcomplete.screens.main.map.MainMap
 import de.westnordost.streetcomplete.screens.main.map.MainMapContent
+import de.westnordost.streetcomplete.screens.main.map.MainMapTrackState
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.PinsMode
 import de.westnordost.streetcomplete.screens.main.map.crosshairPosition
@@ -101,6 +102,7 @@ import kotlin.time.Duration.Companion.milliseconds
 /** The map and its controls, forms, and sidebars. */
 @Composable
 fun MainScreen(
+    tracks: MainMapTrackState,
     onClickSettings: () -> Unit,
     onClickQuestSettings: () -> Unit,
     onClickAbout: () -> Unit,
@@ -177,7 +179,6 @@ fun MainScreen(
     var locationState by remember { mutableStateOf<LocationState?>(null) }
 
     val sheet = rememberMainSheetState(mainBottomSheetViewModel, editHistoryViewModel)
-    val tracks = mapViewModel.trackState
 
     val sheetSelection = sheet.selection
     val shownBottomSheet = sheet.shownBottomSheet
