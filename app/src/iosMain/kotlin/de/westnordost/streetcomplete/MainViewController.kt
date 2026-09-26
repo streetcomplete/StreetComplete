@@ -6,7 +6,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.window.ComposeUIViewController
 import platform.UIKit.UIViewController
 
-/** Holds an incoming URL even when SwiftUI receives it before the composition is ready. */
+/** Gives Swift a simple API to update Compose state without exposing Compose types.
+ *  Holds an incoming URL even when SwiftUI receives it before the composition is ready. */
 class IosAppLinks {
     internal var uri by mutableStateOf<String?>(null)
         private set
