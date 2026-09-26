@@ -44,7 +44,7 @@ fun ScaleBar(
     alignment: Alignment.Horizontal = Alignment.Start,
 ) {
     ScaleBar(
-        metersPerDp = metersPerDp,
+        metersPerDp = { metersPerDp },
         modifier = modifier,
         measures = measures,
         color = color,

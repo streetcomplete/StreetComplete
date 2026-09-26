@@ -79,7 +79,7 @@ class MapImages internal constructor(
                 val image = withContext(Dispatchers.Default) { create(icon, painter) } ?: continue
                 if (map.style.images[image.id] != null) continue
                 try {
-                    map.style.images.add(image.id, image.bitmap, sdf = image.sdf)
+                    map.style.images.set(image.id, image.bitmap, sdf = image.sdf)
                 } catch (e: StyleHandleException) {
                     // the style was replaced meanwhile; the next call adds the image again
                     return

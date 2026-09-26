@@ -10,27 +10,30 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toPosition
 import org.maplibre.compose.camera.CameraAnimation
+import org.maplibre.compose.camera.CameraUpdate
 import org.maplibre.compose.map.MapState
+import org.maplibre.compose.util.DpPadding
 import kotlin.math.abs
 import kotlin.math.min
 import kotlin.math.roundToInt
 import kotlin.time.Duration.Companion.milliseconds
 
-/** The position under the crosshair, which is drawn at the center of the map area not covered by
- *  the [padding] of an open form. This is the camera target only while that padding is applied to
- *  the camera; it is not while the form is still opening or if the map is deliberately not moved
- *  for a form. Null if the map has no size yet. */
-fun MapState.crosshairPosition(padding: PaddingValues, layoutDirection: LayoutDirection): LatLon? {
+/** The position shown at the center of the map area inside the given [padding], e.g. where the
+ *  crosshair is drawn while a form is open. Null if the map has no size yet. */
+fun MapState.positionAtCenter(padding: DpPadding): LatLon? {
     val size = viewport?.size ?: return null
-    val left = padding.calculateLeftPadding(layoutDirection)
-    val right = padding.calculateRightPadding(layoutDirection)
-    val top = padding.calculateTopPadding()
-    val bottom = padding.calculateBottomPadding()
     return positionFromScreenLocation(DpOffset(
-        left + (size.width - left - right) / 2,
-        top + (size.height - top - bottom) / 2,
+        padding.left + (size.width - padding.left - padding.right) / 2,
+        padding.top + (size.height - padding.top - padding.bottom) / 2,
     ))?.toLatLon()
 }
+
+fun PaddingValues.toDpPadding(layoutDirection: LayoutDirection) = DpPadding(
+    left = calculateLeftPadding(layoutDirection),
+    top = calculateTopPadding(),
+    right = calculateRightPadding(layoutDirection),
+    bottom = calculateBottomPadding(),
+)
 
 /** The offset of [position] in the window, given the [mapOrigin] in the window. Null if the map
  *  has no size yet. */
@@ -40,20 +43,18 @@ fun MapState.offsetInWindow(position: LatLon, mapOrigin: Offset, density: Densit
     }
 
 /** Zoom to the given [geometry]. */
-suspend fun MapState.animateTo(
-    geometry: ElementGeometry,
-    animation: (zoomDiff: Double) -> CameraAnimation
-) {
+suspend fun MapState.animateTo(geometry: ElementGeometry, padding: DpPadding) {
     val camera = cameraPosition
-    val fitted = cameraForGeometry(geometry.toGeometry(), camera.bearing, camera.tilt)
+    val fitted = cameraForGeometry(geometry.toGeometry(), camera.bearing, camera.tilt, cameraPadding = padding)
     // zoom in a bit less than fully to keep a margin around the element, and not too far for points
     val targetZoom = min(fitted.zoom - 0.75, 19.0)
     val zoomDiff = abs(camera.zoom - targetZoom)
-    animateCameraPosition(
-        position = camera.copy(
+    animateCamera(
+        update = CameraUpdate(
             target = fitted.target,
             // only zoom if the difference is big enough
-            zoom = if (zoomDiff > 0.5) targetZoom else camera.zoom,
+            zoom = if (zoomDiff > 0.5) targetZoom else null,
+            padding = padding,
         ),
         // more animation duration for longer zooms
         animation = CameraAnimation.Ease(maxOf(450, (zoomDiff * 450).roundToInt()).milliseconds),
@@ -62,9 +63,5 @@ suspend fun MapState.animateTo(
 
 /** Zoom in or out by the given zoom level [amount] */
 suspend fun MapState.zoomBy(amount: Double, animation: CameraAnimation) {
-    val camera = cameraPosition
-    animateCameraPosition(
-        position = camera.copy(zoom = camera.zoom + amount),
-        animation = animation
-    )
+    animateCamera(CameraUpdate(zoom = cameraPosition.zoom + amount), animation)
 }
