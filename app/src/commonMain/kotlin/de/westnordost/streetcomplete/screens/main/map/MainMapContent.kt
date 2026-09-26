@@ -38,6 +38,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
+import org.maplibre.compose.camera.CameraUpdate
 import org.maplibre.compose.interaction.ClickResult
 import org.maplibre.compose.location.LocationMeasurement
 import org.maplibre.compose.map.LocalMapState
@@ -199,7 +200,7 @@ internal fun MainMapContent(
                 mapImages = mapImages,
                 onClickPin = onClickPin,
                 onZoomToCluster = { zoom ->
-                    scope.launch { mapState.animateCameraPosition(mapState.cameraPosition.copy(zoom = zoom)) }
+                    scope.launch { mapState.animateCamera(CameraUpdate(zoom = zoom)) }
                 }
             )
 

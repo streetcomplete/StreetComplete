@@ -1,5 +1,28 @@
 # Changelog
 
+## 64.0-alpha2
+
+🍎 After v64.0-alpha1, this update brings huge changes AGAIN, which again should be mostly
+invisible! @sargunv and I ported the map and any interaction with it to a multiplatform UI framework
+(#6352, #7088). This also fixes some issues with map behavior (#7108, #7152, #5860).
+
+### General
+- Increase size of time picker in dialogs (#7144), by @Amaanprobably
+
+### Quest improvements
+- Step count: Don't ask if step count are given already in another form (#7136, #7137), by @paulklie
+- Sidewalk surface: Upgrade ambiguous to explicit tagging correctly (#7138, #7139), by @Amaanprobably
+- Barrier opening: Add answer option "not suitable for wheelchairs" (#7127), by @kmpoppe
+- Level of things: Don't ask for things whose location non-indoor location is already known (#7114)
+
+### Overlay improvements
+- Buildings overlay: Buildings are now shown in 3D again (#7153), by @paulklie
+
+### Changes and fixes for 64.0-alpha1
+- Quest peek height is now relative to available screen height (#7135), by @mcliquid
+- Parking charge: Also ask when there's not always a fee (#7133)
+- Small visual fixes (#7132, #7130)
+
 ## 64.0-alpha1
 
 🍏 This update brings huge changes, albeit they should be mostly invisible. I re-did the UI for all 

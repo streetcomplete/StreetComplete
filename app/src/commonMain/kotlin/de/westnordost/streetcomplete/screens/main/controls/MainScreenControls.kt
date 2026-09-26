@@ -67,8 +67,8 @@ fun MainScreenControls(
     onZoomDrag: (Float) -> Unit,
 
     // compass button
-    mapRotation: Float,
-    mapTilt: Float,
+    mapRotation: () -> Float,
+    mapTilt: () -> Float,
     onClickCompass: () -> Unit,
 
     // location button
@@ -91,7 +91,7 @@ fun MainScreenControls(
     onClickUndo: () -> Unit,
 
     // scale bar
-    metersPerDp: Double,
+    metersPerDp: () -> Double,
 
     modifier: Modifier = Modifier,
 ) {
@@ -178,7 +178,7 @@ fun MainScreenControls(
                         ) {
                             CompassButton(
                                 onClick = onClickCompass,
-                                rotation = -mapRotation,
+                                rotation = { -mapRotation() },
                                 tilt = mapTilt,
                             )
                             if (showZoomButtons) {

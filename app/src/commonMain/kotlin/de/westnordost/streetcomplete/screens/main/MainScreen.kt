@@ -60,7 +60,8 @@ import de.westnordost.streetcomplete.screens.main.map.MainMapContent
 import de.westnordost.streetcomplete.screens.main.map.MainMapTrackState
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.PinsMode
-import de.westnordost.streetcomplete.screens.main.map.crosshairPosition
+import de.westnordost.streetcomplete.screens.main.map.positionAtCenter
+import de.westnordost.streetcomplete.screens.main.map.toDpPadding
 import de.westnordost.streetcomplete.screens.main.map.getTrackBearing
 import de.westnordost.streetcomplete.screens.main.map.offsetInWindow
 import de.westnordost.streetcomplete.screens.main.map.rememberMainMapCameraState
@@ -236,13 +237,7 @@ fun MainScreen(
     }
 
     val cameraState = rememberMainMapCameraState(mapState, viewModel.initiallyFollowing, viewModel.initiallyNavigating)
-    val mapCamera = mapState.cameraPosition
-    val viewport = mapState.viewport
-    val metersPerDp = remember(viewport, mapCamera) {
-        mapState.metersPerDpAtLatitude(mapCamera.target.latitude) ?: 0.0
-    }
-    val sheetPadding = Dimensions.getOpenQuestFormMapPadding(windowInfo)
-    val cameraPadding = cameraState.padding(sheetPadding)
+    val sheetPadding = Dimensions.getOpenQuestFormMapPadding(windowInfo).toDpPadding(layoutDirection)
     //endregion
 
     //region actions
@@ -251,10 +246,13 @@ fun MainScreen(
         mapState.offsetInWindow(position, mapPositionInWindow, density)
 
     fun getCrosshairPosition(): LatLon? =
-        mapState.crosshairPosition(sheetPadding, layoutDirection)
+        mapState.positionAtCenter(sheetPadding)
+
+    fun getMetersPerDp(): Double =
+        mapState.metersPerDpAtLatitude(mapState.cameraPosition.target.latitude) ?: 0.0
 
     fun ClickEvent.toMapClick(): MapClick? =
-        position?.let { MapClick(it.toLatLon(), screenOffset, clickAreaSizeInMeters = metersPerDp * 14) }
+        position?.let { MapClick(it.toLatLon(), screenOffset, clickAreaSizeInMeters = getMetersPerDp() * 14) }
 
     fun followPosition() {
         scope.launch {
@@ -413,7 +411,7 @@ fun MainScreen(
         }
     }
 
-    CameraInspectionEffect(cameraState, sheet, location?.position, tracks)
+    CameraInspectionEffect(cameraState, sheet, location?.position, tracks, sheetPadding)
 
     LaunchedEffect(selectedOverlay) {
         val selection = sheet.selection as? MainSheetSelection.Overlay
@@ -456,7 +454,6 @@ fun MainScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .onGloballyPositioned { mapPositionInWindow = it.positionInWindow() },
-            cameraPadding = cameraPadding,
             onPan = { cameraState.onPan(location != null) },
             onRotate = { cameraState.onRotate(location != null) },
             onMapClick = { event ->
@@ -512,8 +509,8 @@ fun MainScreen(
                     onClickZoomOut = { zoomBy(-1.0) },
                     onZoomDrag = { zoomBy(it / 20.0) },
 
-                    mapRotation = mapCamera.bearing.toFloat(),
-                    mapTilt = mapCamera.tilt.toFloat(),
+                    mapRotation = { mapState.cameraPosition.bearing.toFloat() },
+                    mapTilt = { mapState.cameraPosition.tilt.toFloat() },
                     onClickCompass = { scope.launch { cameraState.resetCompass() } },
 
                     locationState = locationState,
@@ -532,12 +529,8 @@ fun MainScreen(
 
                     isCreateNodeEnabled = isCreateNodeEnabled,
                     onClickCreate = {
-                        if (mapCamera.zoom >= 17.0) {
-                            selectedOverlay?.let { overlay ->
-                                val position = getCrosshairPosition()
-                                sheet.show(MainSheetSelection.Overlay(overlay.name))
-                                position?.let { cameraState.preserveCrosshairPosition(it) }
-                            }
+                        if (mapState.cameraPosition.zoom >= 17.0) {
+                            selectedOverlay?.let { sheet.show(MainSheetSelection.Overlay(it.name)) }
                         } else {
                             showToast = Toast.DownloadAreaTooBig
                         }
@@ -547,7 +540,7 @@ fun MainScreen(
                     isUndoEnabled = !isUploadingOrDownloading,
                     onClickUndo = sheet::showEditHistory,
 
-                    metersPerDp = metersPerDp,
+                    metersPerDp = { getMetersPerDp() },
                 )
             },
         )
@@ -584,6 +577,7 @@ fun MainScreen(
         ) { content ->
             if (content != null) {
                 val (id, shownBottomSheet) = content
+                val mapCamera = mapState.cameraPosition
                 sheet.formStateHolder.SaveableStateProvider(id) {
                     MainBottomSheet(
                         onDismiss = sheet::close,
@@ -599,7 +593,7 @@ fun MainScreen(
                         mapRotation = mapCamera.bearing.toFloat(),
                         mapTilt = mapCamera.tilt.toFloat(),
                         mapPosition = getCrosshairPosition() ?: mapCamera.target.toLatLon(),
-                        mapMetersPerDp = metersPerDp,
+                        mapMetersPerDp = getMetersPerDp(),
                         onSetMapMarkers = { if (id == sheet.id) sheet.formMarkers = it?.toList() },
                         onSetMapOverlay = { if (id == sheet.id) sheet.formMapOverlay = it },
                         lastMapClick = sheet.lastMapClick,

@@ -270,7 +270,7 @@
 
     <string name="quest_selection_hint_title">Too much to do?</string>
     <string name="quest_selection_hint_message">Contributing should primarily be fun!\n\nIf you are overwhelmed by the number of quests, you can always fine-tune which quests are displayed to you and in what order in the settings.</string>
-
+    <string name="quest_selection_hint_message_open_settings">Open settings</string>
     <string name="weekly_osm_new_edition_title">New Edition!</string>
     <string name="calendar_new_event_title">New OSM event in your area!</string>
 
