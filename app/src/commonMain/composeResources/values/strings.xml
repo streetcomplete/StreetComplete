@@ -508,6 +508,7 @@
     <string name="link_backofyourhand_description">How well do you know your area? Test your knowledge by locating streets.</string>
     <string name="link_notesreview_description">Conveniently see, filter and comment on notes created by you and others. Many notes can be solved by putting the information contained in them on the map with iD or JOSM</string>
     <string name="link_transitous_description">Provider-neutral, free, and open-source public transport routing.</string>
+    <string name="link_waymarked_description">Shows marked paths for hiking, cycling, mtb, riding, skating and winter sports.</string>
 
     <!-- Achievement screen -->
 
@@ -1151,6 +1152,10 @@
     <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
     <string name="quest_fuelSelfService_title">Does this gas station allow self-service?</string>
 
+    <string name="quest_generalAccess_title">Who may use this?</string>
+    <string name="quest_generalAccess_title2">Who may enter here?</string>
+    <string name="quest_generalAccess_title3">Who may stay here?</string>
+    <string name="quest_generalAccess_hint">Ignore any fees or charges. Whether access requires payment will be asked separately.</string>
     <string name="quest_generalFee_title">Do you need to pay to use this?</string>
     <string name="quest_generalFee_title2">Do you need to pay to enter here?</string>
     <string name="quest_generalFee_title3">Do you need to pay to stay here?</string>
@@ -1425,8 +1430,6 @@
     <string name="quest_placeName_title">What’s the name of this place?</string>
     <string name="quest_placeName_no_name_answer">There is no name sign…</string>
 
-    <string name="quest_playground_access_title2">Who is allowed to use this playground?</string>
-
     <string name="quest_policeType_title">Which type of police station is this?</string>
 
     <string name="quest_postboxCollectionTimes_title">What are the pickup times of this collection box?</string>
@@ -1539,7 +1542,7 @@
     <string name="quest_shop_gone_title">What’s here now instead?</string>
     <string name="quest_shop_gone_vacant_answer">It’s vacant…</string>
     <string name="quest_shop_gone_replaced_answer">A(n)…</string>
-    <string name="quest_shop_gone_replaced_answer_hint2">Type what you are looking for</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Type to search</string>
 
     <string name="quest_shower_hot_water_title">Is there hot water here?</string>
 
@@ -1710,6 +1713,7 @@
     <string name="quest_toiletAvailability_title">Is there a restroom here?</string>
 
     <string name="quest_toiletsFee_title">Do you have to pay to use this restroom?</string>
+    <string name="quest_toiletsFee_fee_for_non_customers">Only non-customers must pay a fee</string>
 
     <string name="quest_tourism_information_title">What type of tourist information is this?</string>
     <string name="quest_tourism_information_office">Tourist information office</string>
@@ -1724,8 +1728,6 @@
     <string name="quest_tracktype_grade3">Mixture</string>
     <string name="quest_tracktype_grade4">Mostly soft</string>
     <string name="quest_tracktype_grade5">Soft</string>
-
-    <string name="quest_tower_access_title">Who may access this tower? It may be free or paid.</string>
 
     <string name="quest_entrance_reference">What is signed at this entrance?</string>
     <string name="quest_entrance_reference_select_flat_range_and_code">Entrance label and range of flats</string>
@@ -1863,6 +1865,7 @@
     <string name="lane_narrowing_traffic_calming_none">No narrowed lane here</string>
     <string name="quest_barrier_opening_width_gate">What is the width of the opening here?</string>
     <string name="quest_barrier_opening_width_bollard">What is the widest gap one can pass through here?</string>
+    <string name="quest_barrier_opening_not_wheelchair_accessible">Not suitable for wheelchairs</string>
 
     <!-- MTB = Mountainbike -->
     <string name="overlay_mtb_scale">MTB difficulty</string>

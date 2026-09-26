@@ -467,7 +467,6 @@ Ak pozdĺž cesty nie je žiadna značka obmedzujúca rýchlosť na zvýraznenej
     <string name="underground">v podzemí</string>
     <string name="quest_sidewalk_value_yes">chodník</string>
     <string name="quest_sidewalk_value_no">bez chodníka</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Majú chodci zakázané chodiť po tejto ceste?</string>
     <string name="quest_buildingType_title">Aký je to typ budovy?</string>
     <string name="pref_title_theme_select">Vyberte vzhľad</string>
     <string name="theme_light">Svetlý</string>
@@ -668,7 +667,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="at_housenumber">číslo domu %1$s</string>
     <string name="quest_openingHours_add_off_days">Pridať dni, kedy je zatvorené</string>
     <string name="quest_openingHours_off_day">Zatvorené</string>
-    <string name="quest_cycleway_resurvey_title">Je to tu stále aktuálna situácia cyklotrasy?</string>
     <string name="pref_title_resurvey_intervals">Intervaly pre overovanie</string>
     <string name="resurvey_intervals_less_often">Pýtať sa menej často</string>
     <string name="resurvey_intervals_default">Predvolené</string>
@@ -880,7 +878,6 @@ Ak ste zahltení počtom úloh, v nastaveniach môžete vždy doladiť, ktoré �
     <string name="quest_access_yes">Ktokoľvek</string>
     <string name="quest_access_customers">Ktokoľvek navštevujúci dané miesto (napr. iba pre zákazníkov)</string>
     <string name="quest_access_private">Iba osoby s povolením</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Sú časy vybratia tejto poštovej schránky správne?</string>
     <string name="quest_bicycle_barrier_type_title">Aký je toto typ prekážky pre cyklistov?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Diagonálne vzhľadom na chodník</string>
     <string name="quest_barrier_bicycle_type_tilted">Zúžený prejazd, menší hore</string>
@@ -917,8 +914,6 @@ Taktiež môžete nechať poznámku (s fotkou)</string>
     <string name="quest_fireHydrant_position_sidewalk">Na chodníku</string>
     <string name="quest_fireHydrant_position_parking_lot">Na parkovacom mieste</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Áno (nechajte poznámku)</string>
-    <string name="quest_smoothness_square_title">Aká je kvalita povrchu tohto námestia?</string>
-    <string name="quest_smoothness_road_title">Aká je kvalita povrchu tejto cesty?</string>
     <string name="quest_smoothness_title_excellent">Hladký a rovný</string>
     <string name="quest_smoothness_title_good">Viacmenej rovný</string>
     <string name="quest_smoothness_title_intermediate">Trochu hrbolatý</string>
@@ -971,7 +966,6 @@ Taktiež môžete nechať poznámku (s fotkou)</string>
     <string name="ar_core_tracking_error_camera_unavailable">Fotoaparát je používaný inou aplikáciou</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Držiak na riadidlá</string>
     <string name="quest_bicycle_parking_access_title2">Kto tu môže zaparkovať bicykel? Parkovanie môže byť zadarmo / platené.</string>
-    <string name="quest_playground_access_title2">Kto môže používať toto ihrisko?</string>
     <string name="ar_measure">Meranie</string>
     <string name="ar_core_tracking_error_too_steep_angle">Príliš veľký uhol, trochu odstúpte</string>
     <string name="default_disabled_msg_no_ar">Pre vyriešenie tejto úlohy je potrebný meter, pretože meranie pomocou fotoaparátu nie je na tomto zariadení podporované.</string>
@@ -1027,7 +1021,6 @@ Taktiež môžete nechať poznámku (s fotkou)</string>
     <string name="quest_lit_title">Svieti sa tu?</string>
     <string name="quest_openingHours_title">Aké sú tu otváracie hodiny?</string>
     <string name="quest_openingHours_signed_title">Sú tu napísané otváracie hodiny?</string>
-    <string name="quest_openingHours_resurvey_title">Sú tieto otváracie hodiny správne?</string>
     <string name="quest_placeName_title">Ako sa volá toto miesto?</string>
     <string name="quest_shop_type_title2">O aký typ obchodu ide?</string>
     <string name="quest_smoking_title2">Je tu povolené fajčiť?</string>
@@ -1300,8 +1293,6 @@ Informácie o prispievaní nájdete na našej webovej stránke, Google Play nám
     <string name="default_disabled_msg_visible_sign_moped">Tento typ úlohy je predvolene vypnutý, pretože vjazd mopedov upravuje dopravné značenie na začiatku/konci cyklochodníka.</string>
     <string name="quest_arrow_tutorial">Šípky na obrázku ukazujú smery, ktorými vedie cesta na mape v mieste jej stredového kolíka. Skúste mapu otočiť, pochopíte to.</string>
     <string name="info">Viac informácií</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Je to zakázané.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Je to povolené.</string>
     <string name="quest_buildingLevels_hint">V prípade budov na svahu sa počítanie úrovne začína od úrovne terénu na najnižšej strane.
 
 Poschodie sa počíta ako strešné, ak má okna v streche. Podobne, strechy bez strešných poschodí nemusia byť nutne ploché, len nie sú dosť vysoké, aby sa počítali za poschodie.</string>
@@ -1342,7 +1333,6 @@ Poschodie sa počíta ako strešné, ak má okna v streche. Podobne, strechy bez
     <string name="action_messages">Zobraziť správy</string>
     <string name="action_create_new_poi">Vytvoriť</string>
     <string name="auth_error">Chyba autorizácie. Skúste sa prihlásiť znova.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">V skutočnosti je tu chodník.</string>
     <string name="quest_bicycle_repair_station_services_title">Aké vybavenie na bicykel je tu k dispozícii?</string>
     <string name="quest_bicycle_repair_station_pump">Pumpa</string>
     <string name="quest_bicycle_repair_station_tools">Rôzne náradie</string>
@@ -1418,7 +1408,6 @@ Poschodie sa počíta ako strešné, ak má okna v streche. Podobne, strechy bez
     <string name="quest_lane_markings_title">Má táto cesta vodorovné dopravné značenie?</string>
     <string name="quest_bicycle_charging_station_capacity_title">Koľko bicyklov sa tu dá nabíjať súčasne?</string>
     <string name="quest_charging_station_bicycles_title">Dajú sa tu nabíjať aj bicykle?</string>
-    <string name="quest_tower_access_title">Kto má prístup do tejto veže? Vstup môže byť bezplatný alebo platený.</string>
     <string name="quest_recycling_type_pet_bottles">PET flaše</string>
     <string name="quest_artwork_title">Aký to je druh umeleckého diela?</string>
     <string name="quest_artwork_sculpture">Plastika</string>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <path d="m128 64c0 35.346-28.654 64-64 64s-64-28.654-64-64 28.654-64 64-64 64 28.654 64 64" fill="#9bbe55" stroke-width=".2"/>
+  <g transform="matrix(1.046503, 0, 0, 1.046503, -951.505493, -950.510925)">
+    <path d="m993.38 957.18c-4.3625 0-8.7117 1.6754-12.012 5.0254-5.5 5.5-6.5445 13.986-3.1445 20.486l-26 26v6l2 2h10l3-3v-6l1-1h6l6-6v-6l5-5c6.5 3.6 14.744 2.3125 20.144-3.1875 6.8-6.7 6.7996-17.599 0.1-24.299-3.35-3.35-7.7254-5.0254-12.088-5.0254zm3.6387 8.3242c1.325 0 2.6504 0.5 3.6504 1.5 2.1 2 2.1 5.3004 0 7.4004-2 2-5.3008 2-7.3008 0s-2-5.3004 0-7.4004c1-1 2.3254-1.5 3.6504-1.5z" fill-opacity=".2"/>
+    <path d="m1005.5 958.21c-6.7-6.7-17.5-6.7-24.1 0-5.5 5.5-6.5437 13.988-3.1437 20.488l-26 26v6l2 2h4l27-27c6.5 3.6 14.744 2.3125 20.144-3.1875 6.8-6.7 6.8-17.6 0.1-24.3m-4.8 12.2c-2 2-5.3 2-7.3 0s-2-5.3 0-7.4c2-2 5.3-2 7.3 0 2.1 2 2.1 5.3 0 7.4" fill="#eda432"/>
+    <g fill="#d68c3a">
+      <path d="m967.23 1009.7v-6l-9 9h6z"/>
+      <path d="m980.23 996.69v-6l-12.056 12h6.0563z"/>
+      <path d="m981.23 981.69-29 29 2 2 29-29z" color="#000000" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+    </g>
+  </g>
+  <g transform="matrix(-1.046512, 0, 0, -1.046512, 1079.80249, 1080.802734)" style="">
+    <path d="M 993.38 949.322 C 989.018 949.322 984.668 950.998 981.368 954.348 C 975.868 959.848 974.823 968.334 978.224 974.834 L 952.224 1000.84 L 952.224 1006.84 L 954.224 1008.84 L 964.224 1008.84 L 967.224 1005.84 L 967.224 999.838 L 968.224 998.838 L 974.224 998.838 L 980.224 992.834 L 980.224 986.834 L 985.224 981.834 C 991.724 985.434 999.968 984.146 1005.37 978.646 C 1012.17 971.946 1012.17 961.047 1005.47 954.347 C 1002.12 950.997 997.742 949.322 993.379 949.322 L 993.38 949.322 Z M 997.019 957.647 C 998.344 957.647 999.669 958.147 1000.67 959.147 C 1002.77 961.147 1002.77 964.447 1000.67 966.547 C 998.669 968.547 995.368 968.547 993.368 966.547 C 991.368 964.547 991.368 961.247 993.368 959.147 C 994.368 958.147 995.694 957.647 997.019 957.647 Z" fill-opacity=".2"/>
+    <path d="m1005.5 958.21c-6.7-6.7-17.5-6.7-24.1 0-5.5 5.5-6.5437 13.988-3.1437 20.488l-26 26v6l2 2h4l27-27c6.5 3.6 14.744 2.3125 20.144-3.1875 6.8-6.7 6.8-17.6 0.1-24.3m-4.8 12.2c-2 2-5.3 2-7.3 0s-2-5.3 0-7.4c2-2 5.3-2 7.3 0 2.1 2 2.1 5.3 0 7.4" fill="#C0C0C0"/>
+    <g fill="#9A9A9A">
+      <path d="m967.23 1009.7v-6l-9 9h6z"/>
+      <path d="m980.23 996.69v-6l-12.056 12h6.0563z"/>
+      <path d="m981.23 981.69-29 29 2 2 29-29z" color="#000000" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+    </g>
+  </g>
+</svg>

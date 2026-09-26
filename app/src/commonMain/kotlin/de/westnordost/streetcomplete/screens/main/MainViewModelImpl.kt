@@ -1,11 +1,14 @@
 package de.westnordost.streetcomplete.screens.main
 
-import androidx.compose.ui.geometry.Offset
 import androidx.lifecycle.viewModelScope
+import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.FeedsUpdater
+import de.westnordost.streetcomplete.data.PeriodicCleaner
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
+import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.messages.MessagesSource
 import de.westnordost.streetcomplete.data.osm.edits.EditType
@@ -22,6 +25,7 @@ import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.preferences.Autosync
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
+import de.westnordost.streetcomplete.data.quest.AutoSyncer
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.upload.UploadController
@@ -33,11 +37,13 @@ import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterController
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
-import de.westnordost.streetcomplete.screens.main.controls.LocationState
-import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
 import de.westnordost.streetcomplete.util.error_reporting.ErrorReportBuilder
 import de.westnordost.streetcomplete.util.ktx.launch
+import de.westnordost.streetcomplete.util.ktx.toLatLon
+import de.westnordost.streetcomplete.util.ktx.toPosition
+import de.westnordost.streetcomplete.util.math.area
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.parseGeoUri
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -53,6 +59,9 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.plus
 import kotlinx.coroutines.withContext
+import org.maplibre.compose.camera.CameraPosition
+import kotlin.math.PI
+import kotlin.math.sqrt
 import kotlin.reflect.KClass
 
 class MainViewModelImpl(
@@ -76,8 +85,27 @@ class MainViewModelImpl(
     private val teamModeQuestFilterController: TeamModeQuestFilterController,
     private val elementEditsSource: ElementEditsSource,
     private val noteEditsSource: NoteEditsSource,
+    private val autoSyncer: AutoSyncer,
+    private val periodicCleaner: PeriodicCleaner,
+    private val feedsUpdater: FeedsUpdater,
     private val prefs: Preferences,
 ) : MainViewModel() {
+
+    override val initialCamera get() = CameraPosition(
+        target = prefs.mapPosition.toPosition(), bearing = prefs.mapRotation,
+        tilt = prefs.mapTilt, zoom = prefs.mapZoom,
+    )
+    override val initiallyFollowing get() = prefs.mapIsFollowing
+    override val initiallyNavigating get() = prefs.mapIsNavigationMode
+
+    override fun saveCamera(camera: CameraPosition, following: Boolean, navigating: Boolean) {
+        prefs.mapPosition = camera.target.toLatLon()
+        prefs.mapRotation = camera.bearing
+        prefs.mapTilt = camera.tilt
+        prefs.mapZoom = camera.zoom
+        prefs.mapIsFollowing = following
+        prefs.mapIsNavigationMode = navigating
+    }
 
     /* error handling */
     override val lastCrashReport = MutableStateFlow<String?>(null)
@@ -113,7 +141,7 @@ class MainViewModelImpl(
                 val zoom = if (geo.zoom == null || geo.zoom < 14) 18.0 else geo.zoom
                 val pos = LatLon(geo.latitude, geo.longitude)
 
-                geoUri.value = CameraPosition(pos, 0.0, 0.0, zoom)
+                geoUri.value = CameraPosition(target = pos.toPosition(), bearing = 0.0, tilt = 0.0, zoom = zoom)
             }
         }
     }
@@ -206,7 +234,7 @@ class MainViewModelImpl(
         }
         selectedOverlayController.addListener(listener)
         awaitClose { selectedOverlayController.removeListener(listener) }
-    }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, null)
+    }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, selectedOverlayController.selectedOverlay)
 
     override var hasShownOverlaysTutorial: Boolean
         get() = prefs.hasShownOverlaysTutorial
@@ -232,8 +260,16 @@ class MainViewModelImpl(
         launch(Dispatchers.IO) { teamModeQuestFilterController.disableTeamMode() }
     }
 
-    override fun download(bbox: BoundingBox) {
+    override fun download(displayedArea: BoundingBox, center: LatLon): Boolean {
+        val tilesBounds = displayedArea.asBoundingBoxOfEnclosingTiles(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
+        val areaInSqKm = tilesBounds.area() / 1_000_000
+        if (areaInSqKm > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM) return false
+        val bbox = if (areaInSqKm < ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM) {
+            val radius = sqrt(1_000_000 * ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM / PI)
+            center.enclosingBoundingBox(radius)
+        } else tilesBounds
         downloadController.download(bbox, true)
+        return true
     }
 
     private val teamModeListener = object : TeamModeQuestFilterSource.Listener {
@@ -415,24 +451,21 @@ class MainViewModelImpl(
         syncedEdits + unsyncedEdits
     }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, 0)
 
-    override val locationState: MutableStateFlow<LocationState?> = MutableStateFlow(LocationState.ENABLED)
-    override val mapCamera = MutableStateFlow<CameraPosition?>(null)
-    override val metersPerDp = MutableStateFlow(0.0)
-    override val displayedPosition = MutableStateFlow<Offset?>(null)
-
-    override val isFollowingPosition = MutableStateFlow(false)
-    override val isNavigationMode = MutableStateFlow(false)
-
-    override val isRecordingTracks = MutableStateFlow(false)
-
-    override val userHasMovedCamera = MutableStateFlow(false)
-
     // ---------------------------------------------------------------------------------------
 
     init {
         launch(Dispatchers.IO) {
             lastCrashReport.value = crashReportHolder.takeCrashReport()
         }
+
+        feedsUpdater.updateAtMostDaily()
+        // this must be enqueued once the UI is started, i.e. not in headless mode. This is why
+        // it is done here, rather than in AppInitializer. Reason is that
+        // AppInitializer.initialize() is also executed when a background job is run. But we don't
+        // want to enqueue the cleanup job again while running the cleanup job, but only once after
+        // the user actually opened the actual app!
+        periodicCleaner.enqueue()
+
         teamModeQuestFilterController.addListener(teamModeListener)
         elementEditsSource.addListener(elementEditsListener)
         noteEditsSource.addListener(noteEditsListener)
@@ -442,5 +475,7 @@ class MainViewModelImpl(
         teamModeQuestFilterController.removeListener(teamModeListener)
         elementEditsSource.removeListener(elementEditsListener)
         noteEditsSource.removeListener(noteEditsListener)
+
+        autoSyncer.onClear()
     }
 }

@@ -16,7 +16,7 @@ class MapDataDownloader(
     private val mapDataApi: MapDataApiClient,
     private val mapDataController: MapDataController
 ) {
-    suspend fun download(bbox: BoundingBox) = withContext(Dispatchers.IO) {
+    suspend fun download(bbox: BoundingBox) {
         val time = nowAsEpochMilliseconds()
 
         val expandedBBox = bbox.enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
@@ -27,7 +27,7 @@ class MapDataDownloader(
 
         yield()
 
-        mapDataController.putAllForBBox(bbox, mapData)
+        withContext(Dispatchers.IO) { mapDataController.putAllForBBox(bbox, mapData) }
     }
 
     private suspend fun getMapAndHandleTooBigQuery(bounds: BoundingBox): MutableMapData {

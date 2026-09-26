@@ -246,9 +246,6 @@
           "name": "Växlingskontor",
           "terms": ["växlingskontor", "växling", "valuta", "pengar", "pengaväxling", "resecheckar", "pengaväxlare"]
         },
-        "amenity/bus_station": {
-          "name": "Busstation / Bussterminal"
-        },
         "amenity/cafe": {
           "name": "Café",
           "terms": ["kaffeservering", "kaffestuga", "kafeteria", "cafeteria", "servering", "konditori", "kondis", "fik", "kaffe", "te", "bistro"]
@@ -288,6 +285,10 @@
         "amenity/charging_station": {
           "name": "Laddstation",
           "terms": ["laddstation", "elbil", "snabbladdning", "el", "eluttag"]
+        },
+        "amenity/charging_station/charging_station_bicycle": {
+          "name": "Cykelladdstation",
+          "terms": ["cykelladdstation", "elcykelladdstation", "laddstation för cyklar", "laddstation för elcyklar", "cykelladdning", "elcykelladdning", "elcykel", "elcyklar", "eldriven cykel", "e-bike", "laddare"]
         },
         "amenity/childcare": {
           "name": "Barnomsorg",
@@ -338,12 +339,12 @@
           "terms": ["samlingslokal", "bystuga", "allmänn lokal", "gemenskapslokal", "möteslokal", "föreningslokal", "bygdegård", "allaktivitetshus", "gemenskapscenter", "samhällslokal", "allmän samlingsplats", "lokal för gemenskap", "allmän möteslokal"]
         },
         "amenity/community_centre/cultural_centre": {
-          "name": "Kulturcenter",
-          "terms": ["kulturcenter", "kulturhus", "kulturcentrum", "kulturinstitution", "kulturbyggnad", "kulturlokal", "kulturanläggning", "kulturellt center", "kulturens hus", "kulturellt centrum", "kulturmötesplats", "kulturens mötesplats"]
+          "name": "Kulturcentrum",
+          "terms": ["kulturcentrum", "kulturcenter"]
         },
         "amenity/community_centre/family_centre": {
-          "name": "Familjecenter",
-          "terms": ["familjecenter", "familjecentrum", "familjehus", "familjeanläggning", "familjemötesplats", "familjelokal", "familjeverksamhet", "familjegård", "center för familjer", "familjeservice", "familjeaktivitetshus", "familjens samlingsplats"]
+          "name": "Familjecentrum",
+          "terms": ["familjecentrum", "familjecenter"]
         },
         "amenity/community_centre/lgbtq": {
           "name": "HBTQ-samlingslokal",
@@ -525,9 +526,6 @@
           "name": "Förarutbildningsplats",
           "terms": ["förarutbildningsplats", "förautbildning", "körskola", "halkbana", "trafikövningsplats", "körkortsutbildning", "riskutbildning"]
         },
-        "amenity/embassy": {
-          "name": "Ambassad"
-        },
         "amenity/events_venue": {
           "name": "Evenemangsplats/festlokal",
           "terms": ["evenemangsplats", "festlokal", "evenemangslokal", "festplats", "bankettsal", "dop", "födelsedag", "fest", "konferens", "konfirmation", "möten", "möteslokal", "bröllop"]
@@ -606,9 +604,6 @@
         "amenity/fast_food/wings": {
           "name": "Snabbmat – Kycklingvingar",
           "terms": ["snabbmat", "skräpmat", "gatuköksmat", "bukfylla", "junk-food", "gatukök", "restaurang", "takeaway", "hämtmat", "drive-in", "mat", "äta", "grill", "lunch", "kyckling", "kycklingvingar", "kycklingrätt"]
-        },
-        "amenity/ferry_terminal": {
-          "name": "Färjeterminal"
         },
         "amenity/fire_station": {
           "name": "Brandstation",
@@ -746,16 +741,13 @@
           "name": "HBTQ-nattklubb",
           "terms": ["hbtq-nattklubb", "gay-nattklubb", "gay nattklub", "lesbisk nattklubb", "gay-disko", "gay disko", "lesbiskt disko", "hbtq-klubb", "gay-klubb", "lesbisk klubb"]
         },
-        "amenity/nursing_home": {
-          "name": "Vårdhem"
-        },
         "amenity/parcel_locker": {
           "name": "Paketautomat (utlämning)",
           "terms": ["paketautomat", "amazon", "paket", "paketutlämning", "utlämning", "leverans", "paketleverans", "internetbutik", "webbshop", "inposts"]
         },
         "amenity/parking": {
-          "name": "Parkeringsplats",
-          "terms": ["parkering", "parkeringsplats", "p-plats", "parkeringsområde", "bilparkering", "bil"]
+          "name": "Parkering",
+          "terms": ["parkering"]
         },
         "amenity/parking/multi-storey": {
           "name": "Flervånigt parkeringsgarage",
@@ -784,6 +776,10 @@
         "amenity/parking_space/disabled": {
           "name": "Handikappsplats",
           "terms": ["handikappsplats", "handikapsparkering", "handikapad", "rullstol", "rullstolsplats", "handikapsficka"]
+        },
+        "amenity/parking_surface": {
+          "name": "Markparkering",
+          "terms": ["markparkering", "parkering"]
         },
         "amenity/payment_centre": {
           "name": "Betalningscenter",
@@ -1362,6 +1358,12 @@
         },
         "area": {
           "name": "Yta",
+          "relation": {
+            "role_labels": {
+              "inner": "Inre",
+              "outer": "Yttre"
+            }
+          },
           "terms": ["yta", "areal", "område", "plan", "utrymme", "fällt", "mark"]
         },
         "area/footway": {
@@ -1570,8 +1572,8 @@
           "terms": ["grind vid betesmark", "kryssgrind"]
         },
         "barrier/lift_gate": {
-          "name": "Bom-bariär",
-          "terms": ["bom-bariär", "bombariär", "bomgrind", "bom", "lyftbom", "bomlyft", "lyftgrind", "vägbom", "spärr", "avspärrning", "vridbar stolpe"]
+          "name": "Vägbom",
+          "terms": ["vägbom", "bom"]
         },
         "barrier/log": {
           "name": "Fallet träd-hinder",
@@ -1630,13 +1632,6 @@
         },
         "barrier/yes": {
           "name": "Barriär (ospecificerad typ)"
-        },
-        "boundary": {
-          "name": "Gräns"
-        },
-        "boundary/administrative": {
-          "name": "Administrativ gräns",
-          "terms": ["gräns", "administrativ gräns", "gränslinje"]
         },
         "boundary/hazard": {
           "name": "Riskområde",
@@ -1728,9 +1723,6 @@
         "building/dormitory": {
           "name": "Elevhem",
           "terms": ["elevhem", "internatskola", "internat", "sovsal", "kollektiv", "korridorboende", "studentkorridor"]
-        },
-        "building/entrance": {
-          "name": "Entré / Utgång"
         },
         "building/farm": {
           "name": "Mangårdsbyggnad (bostadshus på gård)",
@@ -1882,6 +1874,10 @@
           "name": "Tempelbyggnad",
           "terms": ["tempelbyggnad", "tempel", "andaktsrum", "bönhus", "bönehus", "böneplats", "dyrkan", "fristad", "gud", "guds hus", "gudshus", "helgedom", "mission", "religion", "religiös", "religiös anläggning", "religiöst område", "tempelområde", "tillbedjan", "tro"]
         },
+        "building/tent": {
+          "name": "Permanent tält",
+          "terms": ["permanent tält", "tältbyggnad"]
+        },
         "building/terrace": {
           "name": "Radhuslänga",
           "terms": ["radhus", "kedjehus", "parhus", "hus", "bostad", "boende", "länga", "flerbostadshus", "flerfamiljshus", "terrass", "terrasserat", "bostadstyp", "hustyp", "lägenhet", "huskropp"]
@@ -1906,9 +1902,6 @@
           "name": "Byggnadsdel",
           "terms": ["byggnadsdel", "tak", "enkla 3d-byggnader", "3d"]
         },
-        "building_point": {
-          "name": "Byggnad"
-        },
         "cemetery/grave": {
           "name": "Grav",
           "terms": ["grav", "mausoleum", "gravsten", "familjegrav"]
@@ -1916,14 +1909,6 @@
         "cemetery/sector": {
           "name": "Kyrkogårdssektionen",
           "terms": ["kyrkogårdssektionen", "begravningsplats", "kyrkogård", "gravgård", "mausoleum", "grav", "kvarte", "sektion", "område", "gravområde", "gravsektion"]
-        },
-        "climbing/crag": {
-          "name": "Klätterklippa",
-          "terms": ["klätterklippa", "klippa", "klättring", "klättervägg", "klätterberg", "klippvägg", "klipphäll", "klippformation", "klätterområde", "sportklättring", "tradklättring", "bouldering", "klätterställe"]
-        },
-        "climbing/route": {
-          "name": "Klätterled",
-          "terms": ["klättring", "klippklättring", "klätterled", "sportklättring", "klättertur", "klätterlinje", "klätterväg", "klätterproblem", "led"]
         },
         "climbing/route_bottom": {
           "name": "Startpunkt för klätterled",
@@ -2049,9 +2034,6 @@
           "name": "Nyckeltillverkning",
           "terms": ["nyckeltillverkning", "nyckel", "nycklar", "nyckelkopiering", "nyckelring", "nyckelringar", "hänglås"]
         },
-        "craft/locksmith": {
-          "name": "Låssmed"
-        },
         "craft/metal_construction": {
           "name": "Metallarbete",
           "terms": ["metallarbete", "metallarbetare", "kallbearbetning", "metallindustri", "svets", "svetsare", "svetsning"]
@@ -2123,9 +2105,6 @@
         "craft/stonemason": {
           "name": "Stenhuggare",
           "terms": ["stenhuggare", "stenbrott"]
-        },
-        "craft/tailor": {
-          "name": "Skräddare"
         },
         "craft/tiler": {
           "name": "Plattsättare",
@@ -2348,9 +2327,6 @@
           "name": "Vadställe",
           "terms": ["vadställe", "vad", "övergångsställe"]
         },
-        "ford_line": {
-          "name": "Vadställe"
-        },
         "golf/bunker": {
           "name": "Bunker",
           "terms": ["bunker", "sandfälla", "sandgrop", "sandhål", "hinder", "golf"]
@@ -2444,12 +2420,12 @@
           "terms": ["förlossning", "förlossningsavdelning", "barnbördshus", "bb", "barn", "baby", "bäbis", "bebis", "graviditet", "barnafödsel"]
         },
         "healthcare/blood_donation": {
-          "name": "Blodgivarcentral",
-          "terms": ["blodgivarcentral", "blodcentral", "blodgivare", "blodgivning", "bloddonation", "ge blod", "donera blod", "blodbank", "blodtransfusion", "aferes", "plasmaferes", "plateletpheresis", "stamcellsdonation"]
+          "name": "Blodgivningscentral",
+          "terms": ["blodgivningscentral", "blodcentral"]
         },
         "healthcare/counselling": {
-          "name": "Rådgivningscenter",
-          "terms": ["rådgivningscenter", "rådgivning", "sexrådgivning", "sexualrådgivning", "kostrådgivning"]
+          "name": "Rådgivningscentrum",
+          "terms": ["rådgivningscentrum", "rådgivning"]
         },
         "healthcare/dentist/orthodontics": {
           "name": "Ortodontist",
@@ -2476,8 +2452,8 @@
           "terms": ["optometri", "optometrier", "ögon", "glasögon", "ögonlaser", "linser", "syn", "synfel", "korrektionsglas", "synhjälpmedel"]
         },
         "healthcare/physiotherapist": {
-          "name": "Fysioterapi (sjukgymnastik)",
-          "terms": ["fysioterapeut", "fysioterapi", "sjukgymnastik", "fysisk", "terapeut", "terapi"]
+          "name": "Fysioterapeut",
+          "terms": ["fysioterapeut", "sjukgymnast"]
         },
         "healthcare/podiatrist": {
           "name": "Podiatri (fötter)",
@@ -2512,9 +2488,6 @@
         "highway/bus_guideway": {
           "name": "Spårbuss",
           "terms": ["spårbuss", "buss", "guidad buss"]
-        },
-        "highway/bus_stop": {
-          "name": "Busshållplats"
         },
         "highway/busway": {
           "name": "Bussväg",
@@ -2936,6 +2909,10 @@
           "name": "Stolperstein-minnesplakett",
           "terms": ["stolperstein-minnesplakett", "minnesplakett stolperstein", "stolpersten", "snubbelsten"]
         },
+        "historic/millstone": {
+          "name": "Kvarnsten",
+          "terms": ["kvarnsten"]
+        },
         "historic/monument": {
           "name": "Monument",
           "terms": ["monument", "minnesmärke"]
@@ -2974,9 +2951,6 @@
         "indoor/corridor": {
           "name": "Korridor inomhus",
           "terms": ["korridor inomhus", "inomhuskorridor", "korridor", "inomhus", "gång", "förbindelsegång", "gångpassage"]
-        },
-        "indoor/corridor_line": {
-          "name": "Korridor inomhus"
         },
         "indoor/door": {
           "name": "Dörr inomhus",
@@ -3021,9 +2995,6 @@
           "name": "Fiskodling",
           "terms": ["fiskodling", "fiskfarm", "fiskkläckeri", "fiskuppfödning", "fiskproduktion", "fiskanläggning", "abborre", "karp", "lax", "stör", "tilapia", "öring"]
         },
-        "landuse/basin": {
-          "name": "Avrinningsområde"
-        },
         "landuse/brownfield": {
           "name": "Övergivet industriområde (Brownfield)",
           "terms": ["industriområde", "övergivet", "rivet", "rivningstomt", "förorenat", "industri", "ödetomt", "byggtomt", "brownfield"]
@@ -3047,9 +3018,6 @@
           "name": "Utbildningscampus",
           "terms": ["utbildningscampus", "utbildningslokaler", "campus", "skolområde", "skolcentrum", "högskola", "universitet", "högskoleområde", "universitetsområde", "utbildningsområde", "utbildningsanläggning", "skola", "skolcampus", "skolgård"]
         },
-        "landuse/farm": {
-          "name": "Åkermark"
-        },
         "landuse/farmland": {
           "name": "Åkermark",
           "terms": ["åker", "åkerjord", "åkerfält", "fält", "gärde", "teg", "åkerlapp", "inäga", "odling", "odlingsfält", "lantbruk", "åkermark"]
@@ -3068,7 +3036,7 @@
         },
         "landuse/garages": {
           "name": "Garageområde",
-          "terms": ["garageområde", "garage", "bilstall", "bilskjul", "carport", "varmgarage", "kallgarage", "bilplatser", "parking"]
+          "terms": ["garageområde", "garagelängor", "garageanläggning", "garage", "bilgarage", "parkeringsgarage", "förrådsgarage", "garageområde med enskilda garage", "garage landuse", "parkering", "bilstall", "bilskjul", "carport", "varmgarage", "kallgarage", "bilplatser\n\n`"]
         },
         "landuse/grass": {
           "name": "Gräs",
@@ -3166,9 +3134,6 @@
           "name": "Plantskola",
           "terms": ["plantskola", "handelsträdgård"]
         },
-        "landuse/pond": {
-          "name": "Damm"
-        },
         "landuse/quarry": {
           "name": "Stenbrott/Sandtag",
           "terms": ["täkt", "gruva", "utgrävning", "stenbrott", "sand", "stenbrytning", "sten", "sandtäckt", "sandtag"]
@@ -3184,9 +3149,6 @@
         "landuse/religious": {
           "name": "Religiöst område",
           "terms": ["religiöst område", "religiös", "religion", "tillbedjan", "kyrka", "moske", "moské", "synagoga", "kyrkogård", "religiös anläggning", "tempelområde", "tempel", "böneplats", "andligt område", "dyrkan", "gud", "helgedom", "kristen", "kristendom", "tro", "vallfärdsort", "vallfärgsplats"]
-        },
-        "landuse/reservoir": {
-          "name": "Reservoar"
         },
         "landuse/residential": {
           "name": "Bostadsområde",
@@ -3614,6 +3576,10 @@
           "name": "Bastu",
           "terms": ["bastu", "sauna", "badstuga", "kölna"]
         },
+        "leisure/schoolyard": {
+          "name": "Skolgård",
+          "terms": ["skolgård", "rastgård", "skolgårdsområde", "skollekplats", "skolgårdslekplats", "skolgårdsyta", "rastplats", "skolgårdsplan", "skolgård för elever", "lekplats"]
+        },
         "leisure/slipway": {
           "name": "Stapelbädd",
           "terms": ["stapelbädd", "sjösättningsplats", "staplar", "varv", "docka", "fartygsdocka", "torrdocka", "båtramp", "sjösättning"]
@@ -3688,9 +3654,6 @@
         "leisure/track/athletics/pole_vault": {
           "name": "Ansatsbana för stavhopp",
           "terms": ["stavhopp", "stavhoppsbana", "hoppgren", "stavhoppsområde", "stav", "ansats", "ansatsbana"]
-        },
-        "leisure/track/athletics/running": {
-          "name": "Löparbana"
         },
         "leisure/track/athletics/sprint": {
           "name": "Sprintbana",
@@ -3995,6 +3958,10 @@
           "name": "Silo",
           "terms": ["ensilage", "pressfoder", "silo", "lager", "foder", "djurfoder", "spannmålslagring", "spannmål", "spannmålssilo", "fodersilo"]
         },
+        "man_made/silo/crop": {
+          "name": "Grödesilo",
+          "terms": ["grödesilo", "silo"]
+        },
         "man_made/ski_jump": {
           "name": "Skidhoppstorn",
           "terms": ["hoppbacketorn", "skidhoppstorn", "skidhopp", "hoppbackestruktur", "skidbacketorn", "inrun-torn", "hoppbacke", "skidhopptorn", "skidhoppningsbacke", "skidhoppstorn för inrun", "hoppbacketorn för skidåkning", "skidbacke för hoppning"]
@@ -4169,10 +4136,6 @@
         "military/checkpoint": {
           "name": "Militär kontrollpunkt",
           "terms": ["militär kontrollpunkt", "kontrollpunkt", "kontrollstation", "vägspärr", "militär kontroll", "luftvapen", "luftförsvar", "militär", "armé", "bas", "flotta", "marin", "soldat", "krig", "försvar", "trupp", "vakt"]
-        },
-        "military/nuclear_explosion_site": {
-          "name": "Område för kärnvapenprov",
-          "terms": ["område för kärnvapenprov", "kärnvapenprov", "kärnvapen", "vapentest"]
         },
         "military/office": {
           "name": "Militärkontor",
@@ -4586,9 +4549,6 @@
           "name": "Advokatkontor",
           "terms": ["advokatkontor", "advokat", "jurist", "juridiskt ombud", "rättsombud", "ombud", "försvarare", "lagman"]
         },
-        "office/lawyer/notary": {
-          "name": "Notariekontor"
-        },
         "office/moving_company": {
           "name": "Flyttfirma",
           "terms": ["flyttfirma", "flyttning", "transport", "flytt", "flyttlass", "flyttkarl", "bärare"]
@@ -4655,9 +4615,6 @@
         "office/translator": {
           "name": "Översättningsbyrå",
           "terms": ["översättningsbyrå", "översättarkontor", "översättningstjänst", "översättarbyrå", "översättarfirma", "översättningsföretag", "översättarservice", "översättningsoffice", "översättningsagentur"]
-        },
-        "office/travel_agent": {
-          "name": "Resebyrå"
         },
         "office/union": {
           "name": "Fackföreningskontor",
@@ -4952,6 +4909,14 @@
           "name": "Solpanel på byggnad",
           "terms": ["hemsolpanel", "taksolcellsmodul", "pv-modul", "taksolpanel", "solpanel", "solcell"]
         },
+        "power/generator/method/solar_thermal_collector": {
+          "name": "Solvärmekollektor",
+          "terms": ["solvärmekollektor"]
+        },
+        "power/generator/method/solar_thermal_collector/location/roof": {
+          "name": "Solvärmekollektor på tak",
+          "terms": ["solvärmekollektor på tak"]
+        },
         "power/generator/source/hydro": {
           "name": "Vattenkraftverk",
           "terms": ["vattenturbin", "vattenkraft", "vattenkraftverk", "dam", "generator", "turbin"]
@@ -5041,8 +5006,7 @@
           "terms": ["transformator", "nätstation", "elomvandling"]
         },
         "public_transport/platform": {
-          "name": "Plattform för kollektivtrafik",
-          "terms": ["plattform", "väntplats", "påstigningsplats", "avsats", "perrong", "kollektivtrafik", "transport", "transit"]
+          "name": "Plattform för kollektivtrafik"
         },
         "public_transport/platform/aerialway": {
           "name": "Linbaneplattform",
@@ -5115,12 +5079,10 @@
           "terms": ["busshållplats", "bussplattform", "plattform", "trådbuss", "hållplats", "buss", "kollektivtrafik", "spårlös", "spårvagn", "vagn", "transit", "transport"]
         },
         "public_transport/platform_point": {
-          "name": "Hållplats / Plattform för kollektivtrafik",
-          "terms": ["plattform", "väntplats", "påstigningsplats", "avsats", "perrong"]
+          "name": "Hållplats / Plattform för kollektivtrafik"
         },
         "public_transport/station": {
-          "name": "Station för kollektivtrafik",
-          "terms": ["station för kollektivtrafik", "station", "kollektivtrafik", "terminal", "resecenter", "bytespunkt", "transport"]
+          "name": "Station för kollektivtrafik"
         },
         "public_transport/station_aerialway": {
           "name": "Linbanestation",
@@ -5167,8 +5129,7 @@
           "terms": ["bytespunkt", "transit", "resecenter", "station", "terminal", "byte", "kollektivtrafik", "linjetrafik", "transport", "hållplats", "knutpunkt"]
         },
         "public_transport/stop_position": {
-          "name": "Stopposition för kollektivtrafik",
-          "terms": ["stopposition för kollektivtrafik", "stopposition", "kollektivtrafik", "linjetrafik", "transport", "hållplats"]
+          "name": "Stopposition för kollektivtrafik"
         },
         "public_transport/stop_position_aerialway": {
           "name": "Stopposition för linbana",
@@ -5237,9 +5198,6 @@
           "name": "Bergbana",
           "terms": ["bergbana", "linbana", "klippbana"]
         },
-        "railway/halt": {
-          "name": "Mindre järnvägshållplats"
-        },
         "railway/level_crossing": {
           "name": "Järnvägskorsning (väg)",
           "terms": ["korsning", "järnvägskorsning", "järnvägsövergång", "järnvägspassage", "plankorsning", "spårpassage", "tågövergång", "tågkorsning", "tågpassage"]
@@ -5268,9 +5226,6 @@
           "name": "Smalspårbana",
           "terms": ["smalspårbana", "smalspår", "smalspårig", "smalspårig bana", "smalspårig järnväg", "järnväg"]
         },
-        "railway/platform": {
-          "name": "Järnvägsperrong"
-        },
         "railway/preserved": {
           "name": "Museijärnväg",
           "terms": ["museijärnväg", "historisk järnväg", "historiskt tåg", "bevarad järnväg", "ångtåg", "turisttåg", "turistjärnväg"]
@@ -5294,9 +5249,6 @@
         "railway/signal_box": {
           "name": "Ställverk",
           "terms": ["ställverk", "signalställverk", "signalkabin", "signalkur", "ställverksbyggnad", "ställverkskabin", "ställverkskur", "signalhus", "signalbyggnad", "styrhus", "styrkabin", "styrkur", "kontrollhus", "kontrollbyggnad", "kontrollkabin", "kontrollkur"]
-        },
-        "railway/station": {
-          "name": "Järnvägsstation"
         },
         "railway/subway": {
           "name": "Tunnelbana",
@@ -5353,10 +5305,6 @@
           "name": "Berg- och dalbanespår",
           "terms": ["berg- och dalbana", "berg-och-dalbana", "bergochdalbana", "bergodalbana", "berg-och-dal-bana", "dalbana", "åkattraktion", "temapark", "nöjespark", "tivoli", "berg- och dalbanespår", "berg- och dalbaneskena", "berg- och dalbaneräls"]
         },
-        "route/ferry": {
-          "name": "Färjerutt",
-          "terms": ["färjerutt", "båtrutt", "rutt", "färjelinje", "båtlinje", "färja", "båt i linjetrafik"]
-        },
         "seamark": {
           "name": "Sjömärke"
         },
@@ -5383,6 +5331,10 @@
         "seamark/mooring": {
           "name": "Förtöjning",
           "terms": ["förtöjning", "pollare", "boj", "förtöjningspåle", "knap", "krysshult", "påle"]
+        },
+        "seamark/offshore_platform": {
+          "name": "Havsbaserad plattform",
+          "terms": ["havsbaserad plattform"]
         },
         "shop": {
           "name": "Affär",
@@ -6381,6 +6333,14 @@
         },
         "type/boundary/administrative": {
           "name": "Administrativ gräns",
+          "relation": {
+            "role_labels": {
+              "admin_centre": "Administrativt centrum",
+              "inner": "Inre",
+              "label": "Etikett",
+              "outer": "Yttre"
+            }
+          },
           "terms": ["administrativ gräns", "gräns", "stat", "territorium", "administrativ enhet"]
         },
         "type/boundary/protected_area": {
@@ -6405,7 +6365,13 @@
         },
         "type/multipolygon": {
           "name": "Multipolygon",
-          "terms": ["multipolygon", "polygon", "komplex yta"]
+          "terms": ["multipolygon", "polygon", "komplex yta"],
+          "relation": {
+            "role_labels": {
+              "inner": "Inre",
+              "outer": "Yttre"
+            }
+          }
         },
         "type/public_transport/stop_area_group": {
           "name": "Grupp av stopp för kollektivtrafik",
@@ -6506,10 +6472,6 @@
         "type/route/piste": {
           "name": "Pist / Skidspår",
           "terms": ["pist", "pistspår", "skidor", "skidspår", "skidrutt", "skidbacke", "slalombacke", "skidbana", "utförsåkning", "längdskidåkning", "längdskidspår", "skidtur", "slädspår", "skridskospår", "skridskobana", "skridskorutt", "snöpark", "skidled", "skidåkning", "slalom", "offpist"]
-        },
-        "type/route/power": {
-          "name": "Kraftledningsrutt",
-          "terms": ["kraftledningsrutt", "kraftledning", "elförsörjning", "elnät"]
         },
         "type/route/railway": {
           "name": "Järnvägsrutt",
@@ -6637,6 +6599,299 @@
         "waterway/weir": {
           "name": "Damm",
           "terms": ["damm", "reservoar", "fördämning", "vattensamling"]
+        },
+        "boundary": {
+          "name": "Gräns",
+          "terms": ["gräns", "gränslinje", "administrativ gräns"]
+        },
+        "building_point": {
+          "name": "Byggnad",
+          "terms": ["byggnad", "hus", "konstruktion", "byggnadsverk", "bygge", "anläggning", "fastighet", "kåk"]
+        },
+        "ford_line": {
+          "name": "Vadställe",
+          "terms": ["vadställe", "vad", "övergångsställe"]
+        },
+        "traffic_sign/maxspeed-US-CA-LR": {
+          "name": "Hastighetsskylt",
+          "terms": ["trafikskyllt", "skyllt", "vägskyllt", "vägmärke", "vägvisare", "trafikmärke", "hastighetsskylt", "hastighetsbegränsning", "fart", "hastighet", "maxhastighet", "maxfart"]
+        },
+        "shop/ice_cream": {
+          "name": "Glassaffär",
+          "terms": ["glassaffär", "glass", "glasskiosk", "kulglass", "mjukglass", "gelato", "sorbet", "sherbet", "frozen", "yogurt"]
+        },
+        "route/ferry": {
+          "name": "Färjerutt",
+          "terms": ["färjerutt", "båtrutt", "båtlinjetrafik"]
+        },
+        "railway/halt": {
+          "name": "Mindre järnvägshållplats",
+          "terms": ["mindre järnvägshållplats", "järnvägshållplats", "hållplats", "järnvägsstation", "station", "plattform", "avstigning", "påstigning", "kollektivtrafik", "järnväg", "spår", "tåg", "transit", "transport", "hållställe"]
+        },
+        "railway/platform": {
+          "name": "Järnvägsperrong",
+          "terms": ["tågstopp", "perrong", "järnvägsperrong", "plattform", "järnvägsplattform", "järnväg", "tåg", "stopp", "kollektivtrafik", "linjetrafik", "spår", "transit", "transport"]
+        },
+        "railway/station": {
+          "name": "Järnvägsstation",
+          "terms": ["järnvägsstation", "centralstation", "central", "huvudbangård", "tågstation", "järnvägshållplats", "tåghållplats", "trafikplats", "hållställe", "linjeplats", "hållplats"]
+        },
+        "office/travel_agent": {
+          "name": "Resebyrå",
+          "terms": ["resebyrå", "reseagent", "biljettförsäljning", "charter", "charterflyg", "charterresa"]
+        },
+        "office/lawyer/notary": {
+          "name": "Notarie",
+          "terms": ["notariekontor", "notarie", "notarius", "notarius publicus", "signatur", "fullmakt", "namnteckning", "påskrift", "underskrift", "bevittna", "testamente", "arv", "handlingar", "kontrakt", "avtal", "egendom", "dödsbo", "värdehandlningar"]
+        },
+        "natural/wood_point": {
+          "name": "Naturskog",
+          "terms": ["naturskog", "skog", "urskog", "djungel", "bush", "regnskog", "vildmark", "träd"]
+        },
+        "man_made/geoglyph_multilinestring": {
+          "name": "Geoglyf",
+          "terms": ["geoglyf", "markfigur", "landskapsfigur", "jordkonst", "markkonst", "landskapskonst", "hill figure", "earthwork", "land art"]
+        },
+        "leisure/track/athletics/running": {
+          "name": "Tävlingsbana (Löpning)",
+          "terms": ["tävlingsbana", "löpning", "kapplöpningsbana", "löpbana", "löparbana", "sprint", "språng", "springa"]
+        },
+        "landuse/basin": {
+          "name": "Avrinningsområde",
+          "terms": ["avrinning", "avrinningsområde", "bassäng", "infiltration", "infiltrering", "dagvatten", "dagvattenbassäng"]
+        },
+        "landuse/reservoir": {
+          "name": "Reservoar",
+          "terms": ["reservoar", "tank", "damm", "fördämning"]
+        },
+        "landuse/military/danger_area_point": {
+          "name": "Militärt riskområde",
+          "terms": ["farligt område", "skjutbana", "skjutfält", "övningsfält", "säkerhetszon", "militärt skyddsområde", "militärt övningsområde", "ammunition", "minor", "skjutning", "sprängning", "skyddsobjekt", "försvarsmateriel", "oxa"]
+        },
+        "landuse/industrial/brewery": {
+          "name": "Industriellt bryggeri",
+          "terms": ["industriellt bryggeri", "bryggeri", "ölframställning", "öltillverkning", "öl"]
+        },
+        "landuse/industrial/industrial_point": {
+          "name": "Industriområde",
+          "terms": ["industriområde", "fabriksområde", "fabriksdistrikt", "industricentrum"]
+        },
+        "indoor/corridor_line": {
+          "name": "Korridor inomhus",
+          "terms": ["korridor inomhus", "inomhuskorridor", "korridor", "inomhus", "gång", "förbindelsegång", "gångpassage"]
+        },
+        "highway/bus_stop": {
+          "name": "Busshållplats",
+          "terms": ["busstopp", "busshållplats", "buss", "hållplats", "anhalt", "station", "busstation"]
+        },
+        "highway/raceway_unspecific": {
+          "name": "Motorracerbana",
+          "terms": ["racerbana", "motorracerbana", "motorbana", "tävlingsbana", "motortävling", "rally", "rallybana", "kappkörning", "gokart", "go-kart", "bil*", "formula one", "f1", "f-1", "race*"]
+        },
+        "highway/traffic_sign": {
+          "name": "Vägmärke",
+          "terms": ["trafikskyllt", "skyllt", "vägskyllt", "vägmärke", "vägvisare", "trafikmärke"]
+        },
+        "highway/motorway_link-US-CA": {
+          "name": "Anslutning, motorväg",
+          "terms": ["anslutning", "motorvägsanslutning", "påfart", "avfart", "trafikplats"]
+        },
+        "highway/primary_link-US-CA": {
+          "name": "Anslutning, primär väg",
+          "terms": ["anslutning", "påfart", "avfart", "huvudväg", "riksväg", "primär väg", "primärväg"]
+        },
+        "highway/trunk_link-US-CA": {
+          "name": "Anslutning, stamväg",
+          "terms": ["ramp", "anslutning", "påfart", "avfart", "huvudväg", "europaväg"]
+        },
+        "highway/path/bicycle_foot": {
+          "name": "Cykel- och gångväg",
+          "terms": ["cykel- och gångväg", "gång- och cykelväg", "gång och cykelväg", "gc-väg", "cykelbana", "gångbana", "cykelväg", "gångväg", "gående", "cyklande", "cykel", "gång", "gcm-väg"]
+        },
+        "highway/path/traffic_island_shared": {
+          "name": "Cykel- och gångrefug",
+          "terms": ["cykel- och gångrefug", "korsningsö", "cykel- och gångö", "trafikö", "refugö", "ö mittrefug", "cykelrefug", "gångrefug", "refug för cyklister och fotgängare", "cykelvägsrefug", "kombinerad refug"]
+        },
+        "highway/path/crossing/informal": {
+          "name": "Informell korsning"
+        },
+        "highway/path/crossing/marked": {
+          "name": "Markerad cykel- och gångövergång"
+        },
+        "highway/path/crossing/bicycle_foot": {
+          "name": "Cykel- och gångkorsning",
+          "terms": ["cykel- och gångkorsning", "gång- och cykelkorsning", "gång och cykelkorsning", "gc-korsning", "cykelkorsning", "gångkorsning", "cykelpassage", "gångpassage", "övergångsställe", "gående", "cyklande", "cykel", "gång", "cykelväg", "gångväg", "gc-passage", "gc-övergång"]
+        },
+        "highway/footway/crossing/informal": {
+          "name": "Informell korsning"
+        },
+        "highway/footway/crossing/marked": {
+          "name": "Markerad korsning",
+          "terms": ["övergångsställe för gående", "övergångsställe", "vägövergång", "vägpassage", "gångvägspassage", "gångpassage", "markerat övergångsställe", "markerad gångpassage", "markerad övergång"]
+        },
+        "highway/footway/crossing/zebra": {
+          "name": "Markerad korsning",
+          "terms": ["övergångsställe för gående", "övergångsställe", "vägövergång", "vägpassage", "gångvägspassage", "gångpassage", "markerat övergångsställe", "markerad gångpassage", "markerad övergång"]
+        },
+        "highway/cycleway/crossing/marked": {
+          "name": "Markerad cykelkorsning",
+          "terms": ["markerad cykelkorsning", "cykelfil", "cykelväg", "cykelvägskorsning", "cykelkorsning", "cykel"]
+        },
+        "highway/crossing/marked": {
+          "name": "Markerad korsning",
+          "terms": ["övergångsställe för gående", "övergångsställe", "vägövergång", "vägpassage", "gångvägspassage", "gångpassage", "markerat övergångsställe", "markerad gångpassage", "markerad övergång", "markerad korsning", "markerad gångvägsövergång", "märkt övergångsställe", "passage"]
+        },
+        "highway/crossing/zebra": {
+          "name": "Markerad korsning",
+          "terms": ["övergångsställe för gående", "övergångsställe", "vägövergång", "vägpassage", "gångvägspassage", "gångpassage", "markerat övergångsställe", "markerad gångpassage", "markerad övergång", "markerad korsning", "markerad gångvägsövergång", "märkt övergångsställe", "passage"]
+        },
+        "craft/locksmith": {
+          "name": "Låssmed",
+          "terms": ["låssmed", "nyckeltillverkning", "nyckelkopiering", "nyckel", "lås", "låsinstallation", "dyrkning", "låsdyrkning"]
+        },
+        "craft/tailor": {
+          "name": "Skräddare",
+          "terms": ["skräddare", "kläder", "kostym", "klänning"]
+        },
+        "climbing/crag": {
+          "name": "Klätterklippa",
+          "terms": ["klätterklippa", "klippa", "klättring", "klättervägg", "klätterberg", "klippvägg", "klipphäll", "klippformation", "klätterområde", "sportklättring", "tradklättring", "bouldering", "klätterställe"]
+        },
+        "climbing/route": {
+          "name": "Klätterled",
+          "terms": ["klättring", "klippklättring", "klätterled", "sportklättring", "klättertur", "klätterlinje", "klätterväg", "klätterproblem", "led"]
+        },
+        "building/entrance": {
+          "name": "Entré / utgång",
+          "terms": ["ingång", "utgång", "entré", "dörr", "huvudentré"]
+        },
+        "building/glasshouse": {
+          "name": "Växthus",
+          "terms": ["växthus", "drivhus", "orangeri", "driveri", "vinterträdgård", "växtodling", "blomsterhus", "odlingshus"]
+        },
+        "building/house/detached": {
+          "name": "Fristående hus",
+          "terms": ["villa", "hus", "småhus", "enfamiljshus", "enbostadshus", "kåk", "egnahem", "fristående hus", "friliggande hus", "envåningshus", "fristående villa", "friliggande villa"]
+        },
+        "building/house/semi-detached": {
+          "name": "Parhus",
+          "terms": ["villa", "hus", "småhus", "radhus", "kedjehus", "parhus", "radhusområde", "parhusområde", "duplex"]
+        },
+        "building/house/terrace": {
+          "name": "Radhuslänga",
+          "terms": ["radhus", "kedjehus", "parhus", "hus", "bostad", "boende", "länga", "flerbostadshus", "flerfamiljshus", "terrass", "terrasserat", "bostadstyp", "hustyp", "lägenhet", "huskropp"]
+        },
+        "boundary/administrative": {
+          "name": "Administrativ gräns",
+          "terms": ["administrativ gräns", "gräns", "stat", "territorium", "administrativ enhet"]
+        },
+        "amenity/bus_station": {
+          "name": "Busstation / Bussterminal",
+          "terms": ["busstation", "bussterminal", "buss", "kollektivtrafik", "station", "terminal", "transit", "transport", "busshållplats", "resecenter", "reseterminal"]
+        },
+        "amenity/college": {
+          "name": "Högskoleområde",
+          "terms": ["högskola", "universitet", "campus", "studieområde", "lärosäte", "studentområde"]
+        },
+        "amenity/coworking_space": {
+          "name": "Dagkontor",
+          "terms": ["dagkontor", "lånekontor", "fjärrarbetsplats", "distansarbete", "coworking", "kontorsplats", "kontorsarbetsplats", "konferensrum", "mötesrum", "affärslounger", "tillfällig arbetsplats", "tillfälligt kontor", "kontor"]
+        },
+        "amenity/dancing_school": {
+          "name": "Dansskola",
+          "terms": ["dansskola", "balettskola", "dansstudio", "dansundervisning", "jazzdans", "swing", "tango", "vals", "bugg", "foxtrot", "salsa"]
+        },
+        "amenity/driving_school": {
+          "name": "Trafikskola",
+          "terms": ["trafikskola", "körskola", "körlektioner", "körutbildning", "förarutbildning", "bilskola", "körkort"]
+        },
+        "amenity/embassy": {
+          "name": "Ambassad",
+          "terms": ["diplomatkontor", "diplomat", "ambassadör", "statssändebud", "envoyé", "ambassad", "ambassadkontor", "konsulat"]
+        },
+        "amenity/ferry_terminal": {
+          "name": "Färjeterminal",
+          "terms": ["färjeterminal", "terminal", "färja", "båtterminal", "båthållplats", "färjehållplats", "färjestation", "båt", "brygga", "pir", "kollektivtrafik", "station", "transit", "transport"]
+        },
+        "amenity/kindergarten": {
+          "name": "Förskoleområde",
+          "terms": ["förskola", "förskoleområde", "dagis", "barnomsorg", "förskoleverksamhet", "förskoleklass", "daghem"]
+        },
+        "amenity/language_school": {
+          "name": "Språkskola",
+          "terms": ["språkskola", "språkutbildning", "språkinstitut", "språkkurser", "språkkurscenter", "sfi", "svenska för invandrare", "språkundervisning", "språkträning"]
+        },
+        "amenity/music_school": {
+          "name": "Musikskola",
+          "terms": ["musikskola", "musikutbildning", "kulturskola", "musikinstitut", "musikkurser", "musikundervisning", "musikträning", "musiklärare", "musiklektioner"]
+        },
+        "amenity/nursing_home": {
+          "name": "Seniorboende",
+          "terms": ["vårdhem", "ålderdomshem", "assistansboende", "pensionärshem", "servicehus", "servicehem", "hem för gamla", "äldreboende", "hem för vård och boende", "hvb-hem", "seniorboende", "pensionär", "senior"]
+        },
+        "amenity/prep_school": {
+          "name": "Stödundervisning",
+          "terms": ["läxhjälp", "studiehjälp", "privatundervisning", "förberedande undervisning", "provförberedelse", "stödundervisning", "matematikundervisning", "lästräning", "skrivträning", "studieteknik"]
+        },
+        "amenity/school": {
+          "name": "Skolområde",
+          "terms": ["skola", "skolområde", "grundskola", "högstadium", "mellanstadium", "lågstadium", "skolbyggnad", "utbildning", "akademi"]
+        },
+        "amenity/university": {
+          "name": "Universitetsområde",
+          "terms": ["universitet", "universitetsområde", "högskola", "högskoleområde", "högre utbildning", "campus", "masterprogram", "doktorandprogram", "magisterutbildning", "forskarutbildning"]
+        },
+        "amenity/charging_station/charging_station_bicycle_designated": {
+          "name": "Cykelladdstation",
+          "terms": ["cykelladdstation", "elcykelladdstation", "laddstation för cyklar", "laddstation för elcyklar", "cykelladdning", "elcykelladdning", "elcykel", "elcyklar", "eldriven cykel", "e-bike", "laddare"]
+        },
+        "aerialway/station": {
+          "name": "Linbanestation",
+          "terms": ["linbanestation", "station", "linbana", "aerialway", "kollektivtrafik", "terminal", "transit", "transport"]
+        },
+        "@templates/contact": {
+          "name": "Punkt",
+          "terms": ["punkt", "fläck", "läge", "ställe", "plats"]
+        },
+        "@templates/internet_access": {
+          "name": "Punkt",
+          "terms": ["punkt", "fläck", "läge", "ställe", "plats"]
+        },
+        "@templates/poi": {
+          "name": "Punkt",
+          "terms": ["punkt", "fläck", "läge", "ställe", "plats"]
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Punkt",
+          "terms": ["punkt", "fläck", "läge", "ställe", "plats"]
+        },
+        "@templates/crossing/defaults": {
+          "name": "Punkt",
+          "terms": ["punkt", "fläck", "läge", "ställe", "plats"]
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Punkt",
+          "terms": ["punkt", "fläck", "läge", "ställe", "plats"]
+        },
+        "@templates/crossing/markings": {
+          "name": "Punkt",
+          "terms": ["punkt", "fläck", "läge", "ställe", "plats"]
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Punkt",
+          "terms": ["punkt", "fläck", "läge", "ställe", "plats"]
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Punkt",
+          "terms": ["punkt", "fläck", "läge", "ställe", "plats"]
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Punkt",
+          "terms": ["punkt", "fläck", "läge", "ställe", "plats"]
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Punkt",
+          "terms": ["punkt", "fläck", "läge", "ställe", "plats"]
         }
       }
     }

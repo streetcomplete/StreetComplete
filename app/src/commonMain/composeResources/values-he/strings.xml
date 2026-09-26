@@ -463,7 +463,6 @@
     <string name="underground">תת-קרקעי</string>
     <string name="quest_sidewalk_value_yes">מדרכה</string>
     <string name="quest_sidewalk_value_no">ללא מדרכה</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">האם אסור להולכי רגל לצעוד בכביש כאן?</string>
     <string name="quest_buildingType_title">איזה סוג של מבנה זה?</string>
     <string name="pref_title_theme_select">בחירת נושא</string>
     <string name="theme_light">בהיר</string>
@@ -655,7 +654,6 @@
     <string name="at_housenumber">מספר בית %1$s</string>
     <string name="quest_openingHours_add_off_days">הוספת ימי חופשה</string>
     <string name="quest_openingHours_off_day">ימי חופשה</string>
-    <string name="quest_cycleway_resurvey_title">האם זה עדיין מצב המיחזור כאן?</string>
     <string name="resurvey_intervals_less_often">שאל בתדירות נמוכה יותר</string>
     <string name="resurvey_intervals_default">ברירת מחדל</string>
     <string name="resurvey_intervals_more_often">שאל בתדירות גבוהה יותר</string>
@@ -843,7 +841,6 @@
     <string name="quest_access_yes">הציבור הרחב</string>
     <string name="quest_access_customers">כל מבקרי מיקום מסוים (לדוגמה לקוחות בלבד)</string>
     <string name="quest_access_private">רק בעל(י) רשות</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">האם זמני האיסוף של תיבת דואר זו עדיין נכונים?</string>
     <string name="language_default">ברירת המחדל של המערכת</string>
     <string name="on_floor">בקומה %1$s</string>
     <string name="select_street_parking_orientation">נא לבחור כיוון ביחס לכביש:</string>
@@ -874,8 +871,6 @@
     <string name="quest_fireHydrant_position_sidewalk">על המדרכה</string>
     <string name="quest_fireHydrant_position_parking_lot">במקום חניה</string>
     <string name="quest_generic_hasFeature_yes_leave_note">כן (השאר/י הערה)</string>
-    <string name="quest_smoothness_square_title">מהי איכות פני השטח בריבוע זה?</string>
-    <string name="quest_smoothness_road_title">מהי איכות פני השטח של הכביש כאו?</string>
     <string name="quest_smoothness_title_excellent">חלק ושטוח</string>
     <string name="quest_smoothness_title_good">שטוח ברובו</string>
     <string name="quest_smoothness_title_intermediate">מעט משובש</string>
@@ -919,7 +914,6 @@
     <string name="ar_core_tracking_error_insufficient_features">אין מספיק מאפיינים חזותיים כאן</string>
     <string name="ar_core_tracking_error_camera_unavailable">המצלמה בשימוש על ידי יישום אחר</string>
     <string name="quest_bicycle_parking_access_title2">למי מותר להחנות אופניים כאן? החנייה יכול להיות בחינם או בתשלום.</string>
-    <string name="quest_playground_access_title2">למי מותר להשתמש בגן המשחקים הזה?</string>
     <string name="ar_measure">מדידה</string>
     <string name="ar_core_tracking_error_too_steep_angle">זווית תלולה מידי, נא לזוז מעט אחורה</string>
     <string name="default_disabled_msg_no_ar">נדרש סרט מדידה כדי לפתור שאלת מחקר זו מכיוון שמדידה באמצעות מצלמה איננה נתמכת במכשיר זה.</string>
@@ -973,7 +967,6 @@
     <string name="quest_lit_title">האם מואר כאן?</string>
     <string name="quest_openingHours_title">מהן שעות הפתיחה?</string>
     <string name="quest_openingHours_signed_title">האם יש שילוט אודות שעות הפתיחה?</string>
-    <string name="quest_openingHours_resurvey_title">האם שעות הפתיחה האלו עדיין נכונות?</string>
     <string name="quest_placeName_title">מהו שמו של מקום זה?</string>
     <string name="quest_shop_type_title2">איזה סוג של חנות זו?</string>
     <string name="quest_smoking_title2">האם העישון מותר כאן?</string>

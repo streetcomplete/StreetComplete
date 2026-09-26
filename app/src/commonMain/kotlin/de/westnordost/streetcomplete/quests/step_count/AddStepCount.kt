@@ -26,6 +26,8 @@ class AddStepCount : OsmFilterQuestType<Int>() {
           )
           and access !~ private|no
           and !step_count
+          and !steps
+          and !flat_steps
     """
     override val changesetComment = "Specify step counts"
     override val wikiLink = "Key:step_count"
@@ -40,6 +42,7 @@ class AddStepCount : OsmFilterQuestType<Int>() {
         CountInputQuestForm(
             on = on,
             icon = painterResource(Res.drawable.count_step),
+            minimum = if (element.tags["highway"] != null) 1 else 0
         )
     }
 

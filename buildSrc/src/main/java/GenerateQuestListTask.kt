@@ -11,7 +11,7 @@ import java.net.URI
 
 const val wikiRowSpan2 = " rowspan=\"2\" |"
 const val noteQuestName = "OsmNoteQuest"
-const val noteQuestPackageName = "note_discussion"
+const val noteQuestPackageName = "note_comments"
 
 /**
  * This Gradle task generates a CSV file with information about quest types (see `writeCsvFile` function).
@@ -281,7 +281,9 @@ private class WikiQuest(rowCells: List<String>, rowIndex: Int) {
         sinceVersion = rowCellContents[6]
         notes = rowCellContents[7]
 
-        val code = rowCellContents[8]
+        // Anchor templates (e.g. `{{Anchor|note_discussion}}`) only add link targets, so ignore them
+        val code = rowCellContents[8].replace(Regex("""\{\{\s*[Aa]nchor\s*\|[^}]*}}"""), "").trim()
+
         val codeArguments = code.split("|")
 
         if (!code.startsWith("{{StreetComplete Quest Code|")

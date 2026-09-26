@@ -1,10 +1,10 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
-atmOperators: [בנק הפועלים, כספונט, בנק לאומי, כספומט, קרן התמר, מזרחי טפחות, דיסקונט, בנק ירושלים, Leumi, Bitcoin Change, הבנק הבינלאומי, הבינלאומי, בנק דיסקונט לישראל, Triton, Discount, Bank Hapoalim]
-chargingStationOperators: [Tesla, מילגם, אפקון, Afcon, EV Edge, סונול EV, Kfar Hanokdim, Afcon EV]
-chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
+atmOperators: [כספונט, בנק הפועלים, בנק לאומי, כספומט, מזרחי טפחות, קרן התמר, דיסקונט, בנק ירושלים, Leumi, Triton, Bitcoin Change, הבנק הבינלאומי, הבינלאומי, בנק דיסקונט לישראל, Discount, Bank Hapoalim]
+chargingStationOperators: [Tesla, מילגם, אפקון, EV Edge, Afcon EV, Afcon, פז Charge, סונול EVI, אמישראגרין, Kfar Hanokdim]
 clothesContainerOperators: [Golden Recycling, שביל אמונה, WIZO]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeh, typec]
 hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: vienna
@@ -13,7 +13,7 @@ noStoppingLineStyle: red-white on curb
 noStoppingSignStyle: israel
 officialLanguages: [he, ar]
 orchardProduces: [olive, avocado, grape, date, tomato, orange, peach, banana, apple, lemon, lime, chilli_pepper, sweet_pepper, guava, mango, mangosteen, grapefruit, plum, pear]
-parcelLockerBrand: [E-post, DONE]
+parcelLockerBrand: [שלאגר, E-post, DONE]
 popularReligions: [jewish, christian, muslim]
 postboxesHaveCollectionTimes: true
 workweek: Su-Th

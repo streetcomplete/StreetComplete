@@ -335,7 +335,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_religion_bahai">バハーイー教</string>
     <string name="quest_religion_caodaist">カオダイ教</string>
     <string name="quest_religion_chinese_folk">中国の民俗宗教</string>
-    <string name="quest_religion_for_wayside_shrine_title">この神社にはどのような宗教がありますか？</string>
+    <string name="quest_religion_for_wayside_shrine_title">この路傍の神仏はどの宗教に関係しますか？</string>
     <string name="quest_parking_fee_title">ここに駐車するのに料金がかかりますか？</string>
     <string name="quest_surface_value_unhewn_cobblestone">切断されていない石畳</string>
     <string name="quest_streetSurface_square_title">この広場の路面は何ですか？</string>
@@ -469,7 +469,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="underground">地下</string>
     <string name="quest_sidewalk_value_yes">歩道</string>
     <string name="quest_sidewalk_value_no">歩道なし</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">この道路では歩行者の通行が禁止されていますか？</string>
     <string name="quest_buildingType_title">これはどんな建物ですか？</string>
     <string name="pref_title_theme_select">テーマを選択</string>
     <string name="theme_light">ライト</string>
@@ -673,7 +672,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="at_housenumber">住居番号 %1$s</string>
     <string name="quest_openingHours_add_off_days">休業日の追加</string>
     <string name="quest_openingHours_off_day">休業日</string>
-    <string name="quest_cycleway_resurvey_title">ここは今でも自転車が乗れる状況ですか？</string>
     <string name="pref_title_resurvey_intervals">再調査間隔</string>
     <string name="resurvey_intervals_less_often">質問頻度を減らす</string>
     <string name="resurvey_intervals_default">デフォルト</string>
@@ -885,7 +883,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_access_yes">一般向け</string>
     <string name="quest_access_customers">利用者向け（例：店舗利用者用）</string>
     <string name="quest_access_private">許可を受けた人のみ</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">この回収箱の集荷時間は今でも正しいですか？</string>
     <string name="quest_bicycle_barrier_type_title">これはどんなタイプの自転車用の柵ですか?</string>
     <string name="quest_barrier_bicycle_type_diagonal">パスに対して斜め</string>
     <string name="quest_barrier_bicycle_type_tilted">一節が狭く、上に向かって狭くなっている</string>
@@ -922,8 +919,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_fireHydrant_position_sidewalk">歩道で</string>
     <string name="quest_fireHydrant_position_parking_lot">駐車場で</string>
     <string name="quest_generic_hasFeature_yes_leave_note">はい（メモを残す）</string>
-    <string name="quest_smoothness_square_title">この広場の表面品質はどれくらいですか?</string>
-    <string name="quest_smoothness_road_title">ここのこの道路の表面品質はどれくらいですか?</string>
     <string name="quest_smoothness_title_excellent">滑らかで平ら</string>
     <string name="quest_smoothness_title_good">おおむね平ら</string>
     <string name="quest_smoothness_title_intermediate">少しでこぼこ</string>
@@ -976,7 +971,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="ar_core_tracking_error_camera_unavailable">カメラは他のアプリで使われています</string>
     <string name="quest_bicycle_parking_type_handlebarholder">ハンドルバーホルダー</string>
     <string name="quest_bicycle_parking_access_title2">誰がここに自転車を駐車できますか?駐車場は無料または有料です。</string>
-    <string name="quest_playground_access_title2">この遊び場を利用できるのはどんな人ですか？</string>
     <string name="ar_measure">計測</string>
     <string name="ar_core_tracking_error_too_steep_angle">角度が急すぎます。少し離れてください</string>
     <string name="default_disabled_msg_no_ar">このデバイスではカメラでの計測をサポートしていないため、クエストを解決するには巻尺が必要です。</string>
@@ -1032,7 +1026,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_lit_title">ここに街灯がありますか？</string>
     <string name="quest_openingHours_title">ここの開業時間は何時ですか？</string>
     <string name="quest_openingHours_signed_title">ここの開業時間は表示されていますか？</string>
-    <string name="quest_openingHours_resurvey_title">これらの開業時間は今でも正しいですか？</string>
     <string name="quest_placeName_title">この場所の名前は何ですか？</string>
     <string name="quest_shop_type_title2">どんなお店ですか?</string>
     <string name="quest_smoking_title2">喫煙は可能ですか？</string>
@@ -1299,8 +1292,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_moped_access_forbidden">原付を禁止する標識があります</string>
     <string name="default_disabled_msg_visible_sign_moped">このクエストタイプはデフォルトでは無効になっています。原付の通行可否は、通常自転車道の始点や終点に特定の標識でのみ示されるためです。</string>
     <string name="info">詳細情報</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">禁じられている。</string>
-    <string name="quest_accessible_for_pedestrians_allowed">可能です。</string>
     <string name="quest_buildingLevels_hint">傾斜地に建つ建物の場合、階数は最も低い側の地面を基準に数えます。
 
 屋根部分に窓がある階は屋根の階数として扱われます。なお、屋根の階数が0でもその屋根が平らであるとは限らず、単に屋根の高さが1階分に満たないだけの場合もあります。</string>
@@ -1358,7 +1349,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_aerialway_bicycle_summer">夏季のみ</string>
     <string name="quest_board_type_rules">ルール</string>
     <string name="quest_lane_markings_title">この道路には車線表示がありますか？</string>
-    <string name="quest_tower_access_title">この塔には誰が入れるのでしょうか？入場料は無料の場合も有料の場合もあります。</string>
     <string name="quest_recycling_type_pet_bottles">ペットボトル</string>
     <string name="pref_title_messages">アプリ内メッセージ</string>
     <string name="pref_title_message_achievements">実績をアンロックした時</string>

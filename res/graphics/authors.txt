@@ -111,6 +111,7 @@ building/
     bunker.svg
     car.svg                     modified from Twemoji: U+1F698
     carport.svg                 parts taken from Twemoji: U+1F698
+    cathedral.svg               Amaan Qureshi, License: CC-BY-SA 4.0
     civic.svg
     college.svg
     detached.svg
@@ -120,6 +121,7 @@ building/
     fire_truck.svg              modified bus.svg, which is based on Twemoji: U+1F68D
     garage.svg                  parts taken from Twemoji: U+1F698
     garages.svg                 parts taken from Twemoji: U+1F698
+    grandstand.svg              Amaan Qureshi, License: CC-BY-SA 4.0
     greenhouse.svg
     guardhouse.svg
     hangar.svg
@@ -134,6 +136,7 @@ building/
     kiosk.svg
     office.svg
     other.svg
+    pagoda.svg                  Amaan Qureshi, License: CC-BY 4.0
     parking.svg                 parts taken from Twemoji: U+1F698
     retail.svg
     roof.svg
@@ -143,7 +146,7 @@ building/
     semi_detached.svg
     service.svg
     shed.svg
-    stadium.svg                 EmojiOne 2: U+1F3D0
+    stadium.svg                 Amaan Qureshi, License: CC-BY-SA 4.0
     static_caravan.svg
     storage_tank.svg
     temple.svg
@@ -240,6 +243,7 @@ laurel_wreath/
 
 links/
     link_neis_one.svg
+    openinframap.svg               bsd-3-clause      Russ Garrett
 
 living street/
     default.svg                                      Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
@@ -270,6 +274,7 @@ italian police type/
     polizia.svg                     modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia.svg, Gigillo83, License: CC-BY-SA 3.0
 
 quest/
+    access.svg                       modified by paulklie from parking_access.svg by Tobias Zwick (CC-BY-SA 4.0) with parts taken from EmojiOne 2: U+1F511 (CC-BY 4.0), resulting work is CC-BY-SA 4.0
     access_point.svg
     apple.svg
     artwork.svg
@@ -407,6 +412,7 @@ quest/
     playground.svg
     poo.svg                          modified from Twemoji: U+1f4a9
     power.svg
+    power_line.svg                   Amaan Qureshi, License: CC-BY-SA 4.0
     quest.svg
     railway.svg
     recycling.svg                    modified from Twemoji: U+267B

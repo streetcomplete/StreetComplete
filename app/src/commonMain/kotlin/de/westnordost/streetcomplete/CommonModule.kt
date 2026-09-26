@@ -172,12 +172,17 @@ import de.westnordost.streetcomplete.screens.main.MainViewModel
 import de.westnordost.streetcomplete.screens.main.MainViewModelImpl
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModelImpl
+import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
+import de.westnordost.streetcomplete.screens.main.map.MainMapViewModelImpl
+import de.westnordost.streetcomplete.screens.main.map.sources.EditHistoryPinsSource
+import de.westnordost.streetcomplete.screens.main.map.sources.MapQuestPinsSource
+import de.westnordost.streetcomplete.screens.main.map.sources.StyleableOverlaySource
 import de.westnordost.streetcomplete.screens.settings.SettingsViewModel
 import de.westnordost.streetcomplete.screens.settings.SettingsViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsViewModel
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsViewModelImpl
-import de.westnordost.streetcomplete.screens.settings.language_selection.LanguageSelectionViewModel
-import de.westnordost.streetcomplete.screens.settings.language_selection.LanguageSelectionViewModelImpl
+import de.westnordost.streetcomplete.screens.settings.locale_selection.LocaleSelectionViewModel
+import de.westnordost.streetcomplete.screens.settings.locale_selection.LocaleSelectionViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.messages.MessageSelectionViewModel
 import de.westnordost.streetcomplete.screens.settings.messages.MessageSelectionViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.overlay_selection.OverlaySelectionViewModel
@@ -361,12 +366,12 @@ val commonModule = module {
     factory { OpenChangesetsDao(get()) }
     factory { EditElementsDao(get()) }
 
-    single { OpenChangesetsManager(get(), get(), get(), get()) }
+    single { OpenChangesetsManager(get(), get()) }
 
     single { ElementEditsUploader(get(), get(), get(), get(), get(), get()) }
 
     single<ElementEditsSource> { get<ElementEditsController>() }
-    single<ElementEditsController> { ElementEditsControllerImpl(get(), get(), get(), get()) }
+    single<ElementEditsController> { ElementEditsControllerImpl(get(), get(), get()) }
     single<MapDataWithEditsSource> { MapDataWithEditsSourceImpl(get(), get(), get()) }
 
     factory { CreatedElementsDao(get()) }
@@ -452,7 +457,7 @@ val commonModule = module {
         lazy { get<FeatureDictionary>() }
     }
 
-    single { SurveyChecker() }
+    single { SurveyChecker(get()) }
 
     //endregion
 
@@ -592,7 +597,7 @@ val commonModule = module {
     viewModel<MainViewModel> {
         MainViewModelImpl(
             get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
-            get(), get(), get(), get(), get(), get(), get(), get(), get(),
+            get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
         )
     }
 
@@ -600,8 +605,15 @@ val commonModule = module {
         EditHistoryViewModelImpl(get(), get())
     }
 
+    viewModel<MainMapViewModel> {
+        MainMapViewModelImpl(get(), get(), get(), get())
+    }
+    factory { MapQuestPinsSource(get(), get(), get()) }
+    factory { EditHistoryPinsSource(get()) }
+    factory { StyleableOverlaySource(get(), get()) }
+
     viewModel<MainBottomSheetViewModel> {
-        MainBottomSheetViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get())
+        MainBottomSheetViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(named("FeatureDictionaryLazy")))
     }
 
     viewModel<ArMeasureViewModel> { ArMeasureViewModelImpl(get(), get()) }
@@ -638,7 +650,7 @@ val commonModule = module {
 
     viewModel<SettingsViewModel> { SettingsViewModelImpl(get(), get(), get(), get(), get(), get(), get()) }
     viewModel<OverlaySelectionViewModel> { OverlaySelectionViewModelImpl(get(), get(), get()) }
-    viewModel<LanguageSelectionViewModel> { LanguageSelectionViewModelImpl(get(), get()) }
+    viewModel<LocaleSelectionViewModel> { LocaleSelectionViewModelImpl(get(), get()) }
     viewModel<EditTypePresetsViewModel> { EditTypePresetsViewModelImpl(get(), get(), get(), get()) }
     viewModel<MessageSelectionViewModel> { MessageSelectionViewModelImpl(get()) }
     viewModel<QuestSelectionViewModel> { QuestSelectionViewModelImpl(get(), get(), get(), get(), get(named("CountryBoundariesLazy")), get()) }
