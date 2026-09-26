@@ -1,7 +1,10 @@
 package de.westnordost.streetcomplete.screens.main.map
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.SavedStateHandleSaveableApi
+import androidx.lifecycle.viewmodel.compose.saveable
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
@@ -31,8 +34,7 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 
 abstract class MainMapViewModel : ViewModel() {
-    // Keep full tracks across navigation; the saved-state copy is bounded only for process death.
-    internal var trackState: MainMapTrackState? = null
+    abstract val trackState: MainMapTrackState
 
     abstract fun onViewportChanged(zoom: Double, bounds: BoundingBox?)
 
@@ -57,7 +59,13 @@ class MainMapViewModelImpl(
     private val mapQuestPinsSource: MapQuestPinsSource,
     private val editHistoryPinsSource: EditHistoryPinsSource,
     private val styleableOverlaySource: StyleableOverlaySource,
+    savedState: SavedStateHandle,
 ) : MainMapViewModel() {
+    // Keep full tracks across navigation and activity recreation; bound only the process-death copy.
+    @OptIn(SavedStateHandleSaveableApi::class)
+    override val trackState = savedState.saveable("tracks", saver = MainMapTrackState.Saver) {
+        MainMapTrackState()
+    }
 
     override fun onViewportChanged(zoom: Double, bounds: BoundingBox?) {
         mapQuestPinsSource.onMapMoved(zoom, bounds)

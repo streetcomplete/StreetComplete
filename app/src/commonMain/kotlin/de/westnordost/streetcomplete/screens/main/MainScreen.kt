@@ -63,7 +63,6 @@ import de.westnordost.streetcomplete.screens.main.map.crosshairPosition
 import de.westnordost.streetcomplete.screens.main.map.getTrackBearing
 import de.westnordost.streetcomplete.screens.main.map.offsetInWindow
 import de.westnordost.streetcomplete.screens.main.map.rememberMainMapCameraState
-import de.westnordost.streetcomplete.screens.main.map.rememberMainMapTrackState
 import de.westnordost.streetcomplete.screens.main.map.toStreetCompleteBoundingBox
 import de.westnordost.streetcomplete.screens.main.messages.MessageDialog
 import de.westnordost.streetcomplete.screens.main.urlconfig.ApplyUrlConfigEffect
@@ -178,7 +177,7 @@ fun MainScreen(
     var locationState by remember { mutableStateOf<LocationState?>(null) }
 
     val sheet = rememberMainSheetState(mainBottomSheetViewModel, editHistoryViewModel)
-    val tracks = rememberMainMapTrackState(mapViewModel)
+    val tracks = mapViewModel.trackState
 
     val sheetSelection = sheet.selection
     val shownBottomSheet = sheet.shownBottomSheet
