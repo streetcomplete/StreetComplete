@@ -59,8 +59,8 @@ val LightColors = lightColors(
 )
 
 val DarkColors = darkColors(
-    primary = Color(0xff29B6F6), // light blue 400
-    primaryVariant = Color(0xff03A9F4), // light blue 500
+    primary = Color(0xff03A9F4), // light blue 500
+    primaryVariant = Color(0xff039BE5), // light blue 600
     secondary = Color(0xffFF5722), // deep orange 500
     secondaryVariant = Color(0xffF4511E), // deep orange 600
     onPrimary = Color.White,
