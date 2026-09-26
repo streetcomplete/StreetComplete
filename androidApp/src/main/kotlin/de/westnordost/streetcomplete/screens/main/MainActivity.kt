@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import de.westnordost.streetcomplete.App
 import de.westnordost.streetcomplete.AppViewModel
 import org.koin.android.scope.AndroidScopeComponent
@@ -22,7 +24,19 @@ class MainActivity : ComponentActivity(), AndroidScopeComponent {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) handleIntent(intent)
-        setContent { KoinActivityScope { App(viewModel) } }
+        setContent {
+            KoinActivityScope {
+                val uri by viewModel.pendingUri.collectAsState()
+                val openSettings by viewModel.openSettings.collectAsState()
+                App(
+                    uri = uri,
+                    onConsumedUri = viewModel::consumeUri,
+                    openSettings = openSettings,
+                    onConsumedSettingsRequest = viewModel::consumeSettingsRequest,
+                    viewModel = viewModel,
+                )
+            }
+        }
     }
 
     override fun onNewIntent(intent: Intent) {

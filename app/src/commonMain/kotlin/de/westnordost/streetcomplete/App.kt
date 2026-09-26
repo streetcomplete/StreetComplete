@@ -12,13 +12,21 @@ import de.westnordost.streetcomplete.ui.theme.AppTheme
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun App(viewModel: AppViewModel = koinViewModel()) {
+fun App(
+    uri: String?,
+    onConsumedUri: () -> Unit,
+    openSettings: Boolean = false,
+    onConsumedSettingsRequest: () -> Unit = {},
+    viewModel: AppViewModel = koinViewModel(),
+) {
     val theme by viewModel.theme.collectAsState()
     val locale by viewModel.locale.collectAsState()
     val keepScreenOn by viewModel.keepScreenOn.collectAsState()
     AppEnvironment(locale, theme, keepScreenOn) {
         AppTheme(theme.isDark) {
-            Surface { MainNavHost(viewModel) }
+            Surface {
+                MainNavHost(uri, onConsumedUri, openSettings, onConsumedSettingsRequest)
+            }
         }
     }
 }

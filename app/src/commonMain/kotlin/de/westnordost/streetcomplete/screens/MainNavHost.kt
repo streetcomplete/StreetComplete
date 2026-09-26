@@ -11,15 +11,12 @@ import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import de.westnordost.streetcomplete.AppViewModel
 import de.westnordost.streetcomplete.screens.about.AboutDestination
 import de.westnordost.streetcomplete.screens.about.aboutGraph
 import de.westnordost.streetcomplete.screens.main.MainScreen
@@ -35,14 +32,17 @@ import de.westnordost.streetcomplete.ui.ktx.dir
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun MainNavHost(appViewModel: AppViewModel) {
+fun MainNavHost(
+    uri: String?,
+    onConsumedUri: () -> Unit,
+    openSettings: Boolean,
+    onConsumedSettingsRequest: () -> Unit,
+) {
     val navController = rememberNavController()
     // The main screen is always at the bottom of the back stack, so its view model lives as long
     // as the app and can receive requests while another destination is shown.
     val mainViewModel = koinViewModel<MainViewModel>()
     val dir = LocalLayoutDirection.current.dir
-    val uri by appViewModel.pendingUri.collectAsState()
-    val openSettings by appViewModel.openSettings.collectAsState()
 
     NavHost(
         navController = navController,
@@ -98,14 +98,14 @@ fun MainNavHost(appViewModel: AppViewModel) {
         uri?.let {
             navController.popBackStack(MainDestination.Main, inclusive = false)
             mainViewModel.setUri(it)
-            appViewModel.consumeUri()
+            onConsumedUri()
         }
         if (openSettings) {
             navController.navigate(SettingsDestination.Settings) {
                 popUpTo(MainDestination.Main)
                 launchSingleTop = true
             }
-            appViewModel.consumeSettingsRequest()
+            onConsumedSettingsRequest()
         }
     }
 }
