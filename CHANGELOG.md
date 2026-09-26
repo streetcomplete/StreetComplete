@@ -2,6 +2,10 @@
 
 ## 64.0-alpha2
 
+🍎 After v64.0-alpha1, this update brings huge changes AGAIN, which again should be mostly
+invisible! @sargunv and I ported the map and any interaction with it to a multiplatform UI framework
+(#6352, #7088). This also fixes some issues with map behavior (#7108, #7152, #5860).
+
 ### General
 - Increase size of time picker in dialogs (#7144), by @Amaanprobably
 
