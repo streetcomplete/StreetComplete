@@ -51,6 +51,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.LocalAppLocale
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
@@ -70,7 +71,7 @@ fun WeeklyOsmDialog(
     modifier: Modifier = Modifier,
 ) {
     val appear = remember { Animatable(0f) }
-    val dateFormatter = remember { LocalDateFormatter(style = DateTimeFormatStyle.Full) }
+    val dateFormatter = remember(LocalAppLocale.current) { LocalDateFormatter(style = DateTimeFormatStyle.Full) }
 
     LaunchedEffect(date) {
         appear.animateTo(1f, tween(1600, easing = LinearOutSlowInEasing))

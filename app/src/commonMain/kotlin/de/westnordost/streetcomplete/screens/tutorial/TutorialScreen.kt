@@ -48,12 +48,12 @@ fun TutorialScreen(
 ) {
     val state = rememberPagerState { pageCount }
     val scope = rememberCoroutineScope()
-    BackHandler(state.currentPage > 0 || dismissOnBackPress) {
+    BackHandler {
         if (state.currentPage > 0) {
             scope.launch {
                 state.animateScrollToPage(state.currentPage - 1)
             }
-        } else {
+        } else if (dismissOnBackPress) {
             onDismissRequest()
         }
     }

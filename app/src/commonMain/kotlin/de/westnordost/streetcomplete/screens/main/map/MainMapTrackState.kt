@@ -1,9 +1,7 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.saveable.Saver
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.runtime.toMutableStateList
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -15,12 +13,7 @@ import org.maplibre.compose.location.LocationMeasurement
 import org.maplibre.spatialk.units.International
 import kotlin.math.max
 
-@Composable
-fun rememberMainMapTrackState(): MainMapTrackState = rememberSaveable(saver = MainMapTrackState.Saver) {
-    MainMapTrackState()
-}
-
-/** Walked and recorded tracks, owned by the map screen's composition. */
+/** Walked and recorded tracks, owned by the application composition above navigation. */
 class MainMapTrackState {
     private class Track(val points: SnapshotStateList<Trackpoint>, val isRecording: Boolean) {
         /** Points before this index are drawn as part of the older tracks. A recording is never
