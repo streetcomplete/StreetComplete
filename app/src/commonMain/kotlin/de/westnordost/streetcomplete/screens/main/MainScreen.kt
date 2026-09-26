@@ -59,7 +59,8 @@ import de.westnordost.streetcomplete.screens.main.map.MainMap
 import de.westnordost.streetcomplete.screens.main.map.MainMapContent
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.PinsMode
-import de.westnordost.streetcomplete.screens.main.map.crosshairPosition
+import de.westnordost.streetcomplete.screens.main.map.positionAtCenter
+import de.westnordost.streetcomplete.screens.main.map.toDpPadding
 import de.westnordost.streetcomplete.screens.main.map.getTrackBearing
 import de.westnordost.streetcomplete.screens.main.map.offsetInWindow
 import de.westnordost.streetcomplete.screens.main.map.rememberMainMapCameraState
@@ -245,8 +246,7 @@ fun MainScreen(
     val metersPerDp = remember(viewport, mapCamera) {
         mapState.metersPerDpAtLatitude(mapCamera.target.latitude) ?: 0.0
     }
-    val sheetPadding = Dimensions.getOpenQuestFormMapPadding(windowInfo)
-    val cameraPadding = cameraState.padding(sheetPadding)
+    val sheetPadding = Dimensions.getOpenQuestFormMapPadding(windowInfo).toDpPadding(layoutDirection)
     //endregion
 
     //region actions
@@ -255,7 +255,7 @@ fun MainScreen(
         mapState.offsetInWindow(position, mapPositionInWindow, density)
 
     fun getCrosshairPosition(): LatLon? =
-        mapState.crosshairPosition(sheetPadding, layoutDirection)
+        mapState.positionAtCenter(sheetPadding)
 
     fun ClickEvent.toMapClick(): MapClick? =
         position?.let { MapClick(it.toLatLon(), screenOffset, clickAreaSizeInMeters = metersPerDp * 14) }
@@ -417,7 +417,7 @@ fun MainScreen(
         }
     }
 
-    CameraInspectionEffect(cameraState, sheet, location?.position, tracks)
+    CameraInspectionEffect(cameraState, sheet, location?.position, tracks, sheetPadding)
 
     LaunchedEffect(selectedOverlay) {
         val selection = sheet.selection as? MainSheetSelection.Overlay
@@ -462,7 +462,6 @@ fun MainScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .onGloballyPositioned { mapPositionInWindow = it.positionInWindow() },
-            cameraPadding = cameraPadding,
             onPan = { cameraState.onPan(location != null) },
             onRotate = { cameraState.onRotate(location != null) },
             onMapClick = { event ->
@@ -541,11 +540,7 @@ fun MainScreen(
                     isCreateNodeEnabled = isCreateNodeEnabled,
                     onClickCreate = {
                         if (mapCamera.zoom >= 17.0) {
-                            selectedOverlay?.let { overlay ->
-                                val position = getCrosshairPosition()
-                                sheet.show(MainSheetSelection.Overlay(overlay.name))
-                                position?.let { cameraState.preserveCrosshairPosition(it) }
-                            }
+                            selectedOverlay?.let { sheet.show(MainSheetSelection.Overlay(it.name)) }
                         } else {
                             showToast = Toast.DownloadAreaTooBig
                         }

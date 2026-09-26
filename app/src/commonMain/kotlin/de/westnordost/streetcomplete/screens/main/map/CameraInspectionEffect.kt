@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.screens.main.ShownBottomSheet
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
+import org.maplibre.compose.util.DpPadding
 import org.maplibre.spatialk.geojson.Position
 
 /** Moves the camera to what the user inspects: the object of the open bottom sheet or the edit
@@ -22,30 +23,30 @@ internal fun CameraInspectionEffect(
     sheet: MainSheetState,
     position: Position?,
     tracks: MainMapTrackState,
+    sheetPadding: DpPadding,
 ) {
-    LaunchedEffect(cameraState, sheet.selection, sheet.id) {
+    LaunchedEffect(cameraState, sheet.selection, sheet.id, sheetPadding) {
         when (val selection = sheet.selection) {
             null -> {
                 cameraState.closeSheet(position?.toLatLon(), getTrackBearing(tracks.currentTrack))
             }
             is MainSheetSelection.EditHistory -> {
-                cameraState.openSheet(padded = false)
+                cameraState.openSheet()
                 val shown = snapshotFlow { sheet.shownEdit }
                     .filterNotNull().first { it.edit.key == selection.editKey }
-                cameraState.focus(shown.geometry)
+                cameraState.focus(shown.geometry, DpPadding.Zero)
             }
             is MainSheetSelection.CreateNote -> {
-                cameraState.openSheet(padded = true)
-                cameraState.focus(selection.position)
+                cameraState.openSheet()
+                cameraState.focus(selection.position, sheetPadding)
             }
             else -> {
-                // Inspecting an existing overlay element must leave the map in place.
-                val existingOverlay = selection is MainSheetSelection.Overlay && selection.elementKey != null
-                cameraState.openSheet(padded = !existingOverlay)
+                cameraState.openSheet()
                 when (val shown = snapshotFlow { sheet.shownBottomSheet }.filterNotNull().first()) {
-                    is ShownBottomSheet.OsmQuest -> cameraState.focus(shown.quest.geometry)
-                    is ShownBottomSheet.OsmNoteQuest -> cameraState.focus(shown.quest.geometry)
-                    else -> {}
+                    is ShownBottomSheet.OsmQuest -> cameraState.focus(shown.quest.geometry, sheetPadding)
+                    is ShownBottomSheet.OsmNoteQuest -> cameraState.focus(shown.quest.geometry, sheetPadding)
+                    // overlay forms leave the map in place
+                    else -> cameraState.setPadding(sheetPadding)
                 }
             }
         }
