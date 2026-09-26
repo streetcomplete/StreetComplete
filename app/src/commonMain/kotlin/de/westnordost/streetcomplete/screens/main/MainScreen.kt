@@ -498,9 +498,9 @@ fun MainScreen(
 
                     overlays = overlays,
                     selectedOverlay = selectedOverlay,
-                    onSelectOverlay = { overlay ->
-                        viewModel.selectOverlay(overlay)
-                        if (!viewModel.hasShownOverlaysTutorial) onShowOverlaysTutorial()
+                    onSelectOverlay = viewModel::selectOverlay,
+                    onShowOverlaysTutorial = onShowOverlaysTutorial.takeUnless {
+                        viewModel.hasShownOverlaysTutorial
                     },
 
                     shownUnsyncedEdits = if (!isAutoSync) unsyncedEditsCount else 0,
