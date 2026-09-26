@@ -66,7 +66,7 @@ import de.westnordost.streetcomplete.screens.main.map.offsetInWindow
 import de.westnordost.streetcomplete.screens.main.map.rememberMainMapCameraState
 import de.westnordost.streetcomplete.screens.main.map.toStreetCompleteBoundingBox
 import de.westnordost.streetcomplete.screens.main.messages.MessageDialog
-import de.westnordost.streetcomplete.screens.main.urlconfig.ApplyUrlConfigEffect
+import de.westnordost.streetcomplete.screens.main.urlconfig.ApplyUrlConfigDialog
 import de.westnordost.streetcomplete.ui.common.ToastPopup
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
@@ -684,10 +684,11 @@ fun MainScreen(
     }
 
     urlConfig?.let { config ->
-        ApplyUrlConfigEffect(
-            urlConfig = config.urlConfig,
+        ApplyUrlConfigDialog(
+            presetName = config.urlConfig.presetName,
             presetNameAlreadyExists = config.alreadyExists,
-            onApplyUrlConfig = { viewModel.applyUrlConfig(it) }
+            onDismissRequest = viewModel::consumeUrlConfig,
+            onConfirmed = { viewModel.applyUrlConfig(config.urlConfig) },
         )
     }
 
