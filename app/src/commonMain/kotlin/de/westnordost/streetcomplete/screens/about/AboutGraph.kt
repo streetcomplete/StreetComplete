@@ -19,7 +19,7 @@ fun NavGraphBuilder.aboutGraph(navController: NavHostController) {
             onClickCredits = { navController.navigate(AboutDestination.Credits) },
             onClickPrivacyStatement = { navController.navigate(AboutDestination.PrivacyStatement) },
             onClickLogs = { navController.navigate(AboutDestination.Logs) },
-            onClickIntroTutorial = { navController.navigate(TutorialDestination.Intro) },
+            onClickIntroTutorial = { navController.navigate(TutorialDestination.intro()) },
             onClickBack = ::goBack
         )
     }

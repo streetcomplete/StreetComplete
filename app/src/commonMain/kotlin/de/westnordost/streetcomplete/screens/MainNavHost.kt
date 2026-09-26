@@ -73,7 +73,7 @@ fun MainNavHost(
                 onClickProfile = { navController.navigate(UserDestination.user()) },
                 onClickLogin = { navController.navigate(UserDestination.user(launchAuth = true)) },
                 onClickEnterTeamMode = { navController.navigate(MainDestination.TeamModeWizard) },
-                onShowIntroTutorial = { navController.navigate(TutorialDestination.Intro) },
+                onShowIntroTutorial = { navController.navigate(TutorialDestination.intro(onboarding = true)) },
                 onShowOverlaysTutorial = { navController.navigate(TutorialDestination.Overlays) },
                 viewModel = mainViewModel,
             )
@@ -88,7 +88,11 @@ fun MainNavHost(
                 allQuestIcons = questIcons,
             )
         }
-        tutorialScreens(navController, mainViewModel)
+        tutorialScreens(
+            navController = navController,
+            onIntroFinished = { mainViewModel.hasShownTutorial = true },
+            onOverlaysFinished = { mainViewModel.hasShownOverlaysTutorial = true },
+        )
         settingsGraph(navController)
         aboutGraph(navController)
         userScreen(onClickBack = { navController.popBackStack() })
@@ -118,6 +122,6 @@ object MainDestination {
 /** Screens that appear on top of the current one like a full-screen dialog */
 private val NavBackStackEntry.isFullScreenDialog: Boolean get() = destination.route in setOf(
     MainDestination.TeamModeWizard,
-    TutorialDestination.Intro,
+    TutorialDestination.IntroRoute,
     TutorialDestination.Overlays,
 )
