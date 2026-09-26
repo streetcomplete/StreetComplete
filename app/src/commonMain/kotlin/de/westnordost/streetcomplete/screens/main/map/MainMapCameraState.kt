@@ -142,21 +142,20 @@ class MainMapCameraState internal constructor(
         map.animateCamera(CameraUpdate(bearing = 0.0, tilt = 0.0), SnapAnimation)
     }
 
-    /** Stop the camera from following the position while a sheet is open. Opening a sheet while
-     *  another is open keeps the camera position to return to when the sheet is closed. */
+    /** Stop the camera from following the position while a sheet is open. */
     fun openSheet() {
-        mode = CameraMode.Sheet(previous = (mode as? CameraMode.Sheet)?.previous)
+        if (mode !is CameraMode.Sheet) mode = CameraMode.Sheet()
     }
 
     /** Zoom to the given [geometry] of the object shown in the open sheet. */
     suspend fun focus(geometry: ElementGeometry, padding: DpPadding) {
-        if (!rememberPositionBeforeSheet()) return
+        rememberPositionBeforeSheet()
         map.animateTo(geometry, padding)
     }
 
     /** Move to the given [position] of the object shown in the open sheet. */
     suspend fun focus(position: LatLon, padding: DpPadding) {
-        if (!rememberPositionBeforeSheet()) return
+        rememberPositionBeforeSheet()
         map.animateCamera(
             update = CameraUpdate(target = position.toPosition(), padding = padding),
             animation = SnapAnimation
@@ -164,11 +163,10 @@ class MainMapCameraState internal constructor(
     }
 
     /** Remembers the camera position the first time a sheet moves the camera, so that the camera
-     *  can return to it when the sheet is closed. Returns false if no sheet is open. */
-    private fun rememberPositionBeforeSheet(): Boolean {
-        val sheet = mode as? CameraMode.Sheet ?: return false
+     *  can return to it when the sheet is closed. */
+    private fun rememberPositionBeforeSheet() {
+        val sheet = mode as? CameraMode.Sheet ?: return
         if (sheet.previous == null) mode = sheet.copy(previous = map.cameraPosition)
-        return true
     }
 
     /** Change the [padding] without moving the map. */
