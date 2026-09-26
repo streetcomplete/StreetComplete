@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -8,16 +7,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toPosition
 import kotlinx.serialization.Serializable
 import org.maplibre.compose.camera.CameraAnimation
 import org.maplibre.compose.camera.CameraPosition
+import org.maplibre.compose.camera.CameraUpdate
 import org.maplibre.compose.map.MapState
+import org.maplibre.compose.util.DpPadding
 import kotlin.math.abs
 import kotlin.math.roundToInt
 import kotlin.time.Duration.Companion.milliseconds
@@ -55,13 +54,6 @@ class MainMapCameraState internal constructor(
 
     private var zoomedYet by zoomedYet
 
-    /** The padding the map is composed with. It is not part of the camera position, so applying it
-     *  shifts the map. It is not applied for sheets that must leave the map in place. */
-    // TODO: pass the sheet padding in the camera updates instead once CameraPosition has a padding
-    //  and drop this function and CameraMode.Sheet.padded
-    fun padding(sheetPadding: PaddingValues): PaddingValues =
-        if ((mode as? CameraMode.Sheet)?.padded == true) sheetPadding else PaddingValues(0.dp)
-
     suspend fun zoomBy(amount: Double) {
         map.zoomBy(amount, SnapAnimation)
     }
@@ -72,11 +64,10 @@ class MainMapCameraState internal constructor(
         if (mode !is CameraMode.Browsing) {
             // An explicit location click can recenter an open form without resuming GPS following.
             if (position != null) {
-                val camera = map.cameraPosition
-                map.animateCameraPosition(
-                    position = camera.copy(
+                map.animateCamera(
+                    update = CameraUpdate(
                         target = position.toPosition(),
-                        zoom = if (camera.zoom < 17.0) LOCATE_ZOOM else camera.zoom
+                        zoom = if (map.cameraPosition.zoom < 17.0) LOCATE_ZOOM else null
                     ),
                     animation = LocateAnimation
                 )
@@ -97,10 +88,7 @@ class MainMapCameraState internal constructor(
         if (value) {
             animateToPositionIfFollowing(position, bearing)
         } else {
-            map.animateCameraPosition(
-                position = map.cameraPosition.copy(tilt = 0.0),
-                animation = SnapAnimation
-            )
+            map.animateCamera(CameraUpdate(tilt = 0.0), SnapAnimation)
         }
     }
 
@@ -129,15 +117,16 @@ class MainMapCameraState internal constructor(
     suspend fun animateToPositionIfFollowing(position: LatLon?, bearing: Double?) {
         if (mode !is CameraMode.Browsing) return
         if (!isFollowingPosition || position == null) return
-        val camera = map.cameraPosition
-        val zoom = if (!zoomedYet && camera.zoom < 17.0) LOCATE_ZOOM else camera.zoom
+        val zoom = if (!zoomedYet && map.cameraPosition.zoom < 17.0) LOCATE_ZOOM else null
         zoomedYet = true
-        map.animateCameraPosition(
-            position = camera.copy(
+        map.animateCamera(
+            update = CameraUpdate(
                 target = position.toPosition(),
                 zoom = zoom,
-                bearing = if (isNavigationMode) bearing ?: camera.bearing else camera.bearing,
-                tilt = if (isNavigationMode) 60.0 else camera.tilt,
+                bearing = if (isNavigationMode) bearing else null,
+                tilt = if (isNavigationMode) 60.0 else null,
+                // browsing has no sheet padding
+                padding = DpPadding.Zero,
             ),
             animation = LocateAnimation
         )
@@ -150,49 +139,43 @@ class MainMapCameraState internal constructor(
         if (mode is CameraMode.Browsing) {
             isNavigationMode = false
         }
-        map.animateCameraPosition(
-            position = map.cameraPosition.copy(bearing = 0.0, tilt = 0.0),
-            animation = SnapAnimation
-        )
+        map.animateCamera(CameraUpdate(bearing = 0.0, tilt = 0.0), SnapAnimation)
     }
 
-    /** Stop the camera from following the position while a sheet is open. The map is composed
-     *  with the sheet padding if [padded]. Opening a sheet while another is open keeps the camera
-     *  position to return to when the sheet is closed. */
-    fun openSheet(padded: Boolean) {
-        mode = CameraMode.Sheet(padded = padded, previous = (mode as? CameraMode.Sheet)?.previous)
+    /** Stop the camera from following the position while a sheet is open. */
+    fun openSheet() {
+        if (mode !is CameraMode.Sheet) mode = CameraMode.Sheet()
     }
 
     /** Zoom to the given [geometry] of the object shown in the open sheet. */
-    suspend fun focus(geometry: ElementGeometry) {
-        if (!rememberPositionBeforeSheet()) return
-        map.animateTo(
-            geometry = geometry,
-            animation = { zoomAnimation(it) }
-        )
+    suspend fun focus(geometry: ElementGeometry, padding: DpPadding) {
+        rememberPositionBeforeSheet()
+        map.animateTo(geometry, padding)
     }
 
     /** Move to the given [position] of the object shown in the open sheet. */
-    suspend fun focus(position: LatLon) {
-        if (!rememberPositionBeforeSheet()) return
-        map.animateCameraPosition(
-            position = map.cameraPosition.copy(target = position.toPosition()),
+    suspend fun focus(position: LatLon, padding: DpPadding) {
+        rememberPositionBeforeSheet()
+        map.animateCamera(
+            update = CameraUpdate(target = position.toPosition(), padding = padding),
             animation = SnapAnimation
         )
     }
 
     /** Remembers the camera position the first time a sheet moves the camera, so that the camera
-     *  can return to it when the sheet is closed. Returns false if no sheet is open. */
-    private fun rememberPositionBeforeSheet(): Boolean {
-        val sheet = mode as? CameraMode.Sheet ?: return false
+     *  can return to it when the sheet is closed. */
+    private fun rememberPositionBeforeSheet() {
+        val sheet = mode as? CameraMode.Sheet ?: return
         if (sheet.previous == null) mode = sheet.copy(previous = map.cameraPosition)
-        return true
     }
 
-    /** Keep the crosshair over the same position when opening a form changes the map padding. */
-    // TODO: set the target and the padding in one camera update once CameraPosition has a padding
-    fun preserveCrosshairPosition(position: LatLon) {
-        map.setCameraPosition(map.cameraPosition.copy(target = position.toPosition()))
+    /** Change the [padding] without moving the map. */
+    fun setPadding(padding: DpPadding) {
+        val camera = map.cameraPosition
+        map.setCameraPosition(camera.copy(
+            target = map.positionAtCenter(padding)?.toPosition() ?: camera.target,
+            padding = padding,
+        ))
     }
 
     /** Resume browsing. Returns to the user's [position] and [bearing] when following it, otherwise
@@ -200,9 +183,6 @@ class MainMapCameraState internal constructor(
     suspend fun closeSheet(position: LatLon?, bearing: Double?) {
         val sheet = mode as? CameraMode.Sheet ?: return
         mode = CameraMode.Browsing
-        // TODO: animate the padding back to zero in the same camera update once CameraPosition has
-        //  a padding
-        val camera = map.cameraPosition
         // when we follow the user's position, we want to zoom back to the current user's position
         // instead of zoom back to the position from where the sheet was opened
         if (isFollowingPosition && position != null) {
@@ -211,13 +191,16 @@ class MainMapCameraState internal constructor(
             // when restoring, keep the user's current bearing and tilt because also rotating and
             // tilting back to where the camera was when the sheet was opened would be too
             // distracting and obstrusive
-            map.animateCameraPosition(
-                position = camera.copy(
+            map.animateCamera(
+                update = CameraUpdate(
                     target = sheet.previous.target,
                     zoom = sheet.previous.zoom,
+                    padding = DpPadding.Zero,
                 ),
-                animation = zoomAnimation(camera.zoom - sheet.previous.zoom),
+                animation = zoomAnimation(map.cameraPosition.zoom - sheet.previous.zoom),
             )
+        } else {
+            setPadding(DpPadding.Zero)
         }
     }
 
@@ -254,8 +237,6 @@ internal sealed interface CameraMode {
      *  sheet is closed. */
     @Serializable
     data class Sheet(
-        /** Whether the map is composed with the sheet padding */
-        val padded: Boolean,
         /** Camera position from before the sheet moved the camera. Null if it did not. */
         val previous: CameraPosition? = null,
     ) : CameraMode
