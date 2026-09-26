@@ -55,7 +55,7 @@ class MainMapCameraState internal constructor(
     private var zoomedYet by zoomedYet
 
     suspend fun zoomBy(amount: Double) {
-        map.zoomBy(amount, SnapAnimation)
+        map.animateCamera(CameraUpdate(zoom = map.cameraPosition.zoom + amount), SnapAnimation)
     }
 
     /** Start following the current position.

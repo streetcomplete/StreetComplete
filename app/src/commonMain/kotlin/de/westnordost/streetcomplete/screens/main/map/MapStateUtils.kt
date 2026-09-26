@@ -60,8 +60,3 @@ suspend fun MapState.animateTo(geometry: ElementGeometry, padding: DpPadding) {
         animation = CameraAnimation.Ease(maxOf(450, (zoomDiff * 450).roundToInt()).milliseconds),
     )
 }
-
-/** Zoom in or out by the given zoom level [amount] */
-suspend fun MapState.zoomBy(amount: Double, animation: CameraAnimation) {
-    animateCamera(CameraUpdate(zoom = cameraPosition.zoom + amount), animation)
-}
