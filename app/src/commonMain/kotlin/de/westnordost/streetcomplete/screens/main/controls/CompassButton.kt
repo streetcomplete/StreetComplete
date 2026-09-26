@@ -6,6 +6,9 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.tooling.preview.Preview
@@ -24,11 +27,12 @@ import org.jetbrains.compose.resources.stringResource
 fun CompassButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    rotation: Float = 0f,
-    tilt: Float = 0f,
+    rotation: () -> Float = { 0f },
+    tilt: () -> Float = { 0f },
 ) {
+    val visible by remember { derivedStateOf { rotation() != 0f || tilt() != 0f } }
     AnimatedVisibility(
-        visible = rotation != 0f || tilt != 0f,
+        visible = visible,
         modifier = modifier,
         enter = fadeIn(),
         exit = fadeOut()
@@ -42,10 +46,10 @@ fun CompassButton(
                 contentDescription = stringResource(Res.string.compass),
                 modifier = Modifier
                     .size(32.dp)
-                    .graphicsLayer(
-                        rotationZ = rotation,
-                        rotationX = tilt
-                    )
+                    .graphicsLayer {
+                        rotationZ = rotation()
+                        rotationX = tilt()
+                    }
             )
         }
     }
@@ -56,7 +60,7 @@ fun CompassButton(
 private fun PreviewCompassButton() {
     CompassButton(
         onClick = {},
-        rotation = 30f,
-        tilt = 0f
+        rotation = { 30f },
+        tilt = { 0f }
     )
 }
