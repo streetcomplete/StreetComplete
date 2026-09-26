@@ -12,6 +12,7 @@ val BuildingType.title: StringResource get() = when (this) {
     DETACHED ->        Res.string.quest_buildingType_detached
     SEMI_DETACHED ->   Res.string.quest_buildingType_semi_detached
     TERRACE ->         Res.string.quest_buildingType_terrace2
+    TERRACED_HOUSE ->  Res.string.quest_buildingType_terraced_house
     HOTEL ->           Res.string.quest_buildingType_hotel
     DORMITORY ->       Res.string.quest_buildingType_dormitory
     HOUSEBOAT ->       Res.string.quest_buildingType_houseboat
@@ -84,6 +85,7 @@ val BuildingType.description: StringResource? get() = when (this) {
     DETACHED ->        Res.string.quest_buildingType_detached_description
     SEMI_DETACHED ->   Res.string.quest_buildingType_semi_detached_description2
     TERRACE ->         Res.string.quest_buildingType_terrace_description
+    TERRACED_HOUSE ->  Res.string.quest_buildingType_terraced_house_description
     BUNGALOW ->        Res.string.quest_buildingType_bungalow_description2
     OUTBUILDING ->     Res.string.quest_buildingType_outbuilding_description
     HUT ->             Res.string.quest_buildingType_hut_description
@@ -112,6 +114,7 @@ val BuildingType.icon: DrawableResource get() = when (this) {
     DETACHED ->        Res.drawable.building_detached
     SEMI_DETACHED ->   Res.drawable.building_semi_detached
     TERRACE ->         Res.drawable.building_terrace
+    TERRACED_HOUSE ->  Res.drawable.building_terraced_house
     HOTEL ->           Res.drawable.building_hotel
     DORMITORY ->       Res.drawable.building_dormitory
     HOUSEBOAT ->       Res.drawable.building_houseboat

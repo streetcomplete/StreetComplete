@@ -901,7 +901,7 @@
     <string name="quest_buildingType_residential">Residential</string>
     <string name="quest_buildingType_residential_description">building where people live</string>
     <string name="quest_buildingType_house">House</string>
-    <string name="quest_buildingType_house_description2">non-detached single-family home, e.g. a single row house</string>
+    <string name="quest_buildingType_house_description2">non-detached single-family home</string>
     <string name="quest_buildingType_apartments">Apartment building</string>
     <string name="quest_buildingType_apartments_description">house for multiple families, may have retail outlets on the ground floor</string>
     <string name="quest_buildingType_detached">Detached house</string>
@@ -909,7 +909,9 @@
     <string name="quest_buildingType_semi_detached">Semi-detached house</string>
     <string name="quest_buildingType_semi_detached_description2">adjoined single-family home(s)</string>
     <string name="quest_buildingType_terrace2">Row houses</string>
+    <string name="quest_buildingType_terraced_house">Individual row house</string>
     <string name="quest_buildingType_terrace_description">a linear row of similar single-family homes</string>
+    <string name="quest_buildingType_terraced_house_description">an individual house in a row of similar houses</string>
     <string name="quest_buildingType_hotel">Hotel building</string>
     <string name="quest_buildingType_dormitory">Dormitory building</string>
     <string name="quest_buildingType_houseboat">Houseboat</string>
