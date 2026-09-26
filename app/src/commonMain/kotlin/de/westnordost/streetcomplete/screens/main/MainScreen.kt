@@ -18,12 +18,10 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
@@ -46,10 +44,7 @@ import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.BottomSheetFormState
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.MainBottomSheet
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.MainBottomSheetMapOverlay
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.rememberBottomSheetFormState
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.controls.MainScreenControls
 import de.westnordost.streetcomplete.screens.main.controls.PointerPinButton
@@ -74,7 +69,6 @@ import de.westnordost.streetcomplete.screens.main.messages.MessageDialog
 import de.westnordost.streetcomplete.screens.main.urlconfig.ApplyUrlConfigEffect
 import de.westnordost.streetcomplete.ui.common.ToastPopup
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
-import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.ktx.dir
@@ -174,6 +168,8 @@ fun MainScreen(
     var showLocationSettingsDialog by remember { mutableStateOf(false) }
     var shownMessage by remember { mutableStateOf<Message?>(null) }
     var showToast by remember { mutableStateOf<Toast?>(null) }
+    var showMapContextMenu by remember { mutableStateOf(false) }
+    // retained while the context menu is dismissed so that it does not move during its exit animation
     var lastMapLongClick by remember { mutableStateOf<MapClick?>(null) }
     var lastQuestSolved by remember { mutableStateOf<QuestSolvedEvent?>(null) }
 
@@ -186,11 +182,6 @@ fun MainScreen(
 
     val sheetSelection = sheet.selection
     val shownBottomSheet = sheet.shownBottomSheet
-    // The form's state is read both by the bottom sheet and by what the form places on the map.
-    val shownForm = shownBottomSheet?.takeUnless { it is ShownBottomSheet.EditHistory }?.let { shown ->
-        key(sheet.id) { ShownForm(sheet.id, shown, rememberBottomSheetFormState(shown)) } // todo review
-    }
-
     //endregion
 
     //region map state
@@ -201,7 +192,7 @@ fun MainScreen(
 
     val initialCamera = remember(viewModel) { viewModel.initialCamera }
     val highlightedMarkers by produceState<List<Marker>>(emptyList(), shownBottomSheet) {
-        value = shownBottomSheet?.let { mainBottomSheetViewModel.getHighlightedMarkers(it) }.orEmpty() // todo review
+        value = shownBottomSheet?.let { mainBottomSheetViewModel.getHighlightedMarkers(it) }.orEmpty()
     }
 
     val markers = sheet.formMarkers ?: highlightedMarkers
@@ -214,7 +205,7 @@ fun MainScreen(
 
     val showOverlay =
         selectedOverlay != null
-        && sheetSelection == MainSheetSelection.Overlay || sheetSelection == null
+        && (sheetSelection is MainSheetSelection.Overlay || sheetSelection == null)
 
     val mapState = rememberMapState(
         runtime = runtime,
@@ -229,6 +220,7 @@ fun MainScreen(
             trackpoints = tracks.recentTrackPositions,
             oldTrackpointsLists = tracks.olderTrackPositions,
             shownBottomSheet = shownBottomSheet,
+            selectedEdit = sheet.shownEdit,
             shownMarkers = markers,
             hiddenLabels = selectedOverlay?.hiddenLabels.orEmpty(),
             showOverlay = showOverlay,
@@ -251,9 +243,6 @@ fun MainScreen(
     }
     val sheetPadding = Dimensions.getOpenQuestFormMapPadding(windowInfo)
     val cameraPadding = cameraState.padding(sheetPadding)
-    /** The crosshair's position: what an open form refers to on the map */
-    val mapPosition = mapState.crosshairPosition(sheetPadding, layoutDirection) ?: mapCamera.target.toLatLon()
-
     //endregion
 
     //region actions
@@ -267,9 +256,19 @@ fun MainScreen(
     fun ClickEvent.toMapClick(): MapClick? =
         position?.let { MapClick(it.toLatLon(), screenOffset, clickAreaSizeInMeters = metersPerDp * 14) }
 
-    fun followLocation() {
+    fun followPosition() {
         scope.launch {
-            cameraState.locate(location?.position?.toLatLon(), getTrackBearing(tracks.currentTrack))
+            cameraState.followPosition(location?.position?.toLatLon(), getTrackBearing(tracks.currentTrack))
+        }
+    }
+
+    fun toggleNavigationMode() {
+        scope.launch {
+            cameraState.setNavigationMode(
+                value = !cameraState.isNavigationMode,
+                position = location?.position?.toLatLon(),
+                bearing = getTrackBearing(tracks.currentTrack)
+            )
         }
     }
 
@@ -307,15 +306,9 @@ fun MainScreen(
             if (systemSettingsLauncher.canOpenLocationServicesSettings) showLocationSettingsDialog = true
             else showToast = Toast.NoLocation
         } else if (!cameraState.isFollowingPosition) {
-            followLocation()
+            followPosition()
         } else {
-            scope.launch {
-                cameraState.setNavigationMode(
-                    value = !cameraState.isNavigationMode,
-                    location = location?.position?.toLatLon(),
-                    bearing = getTrackBearing(tracks.currentTrack)
-                )
-            }
+            toggleNavigationMode()
         }
     }
 
@@ -375,7 +368,11 @@ fun MainScreen(
     }
 
     LifecycleEventEffect(Lifecycle.Event.ON_STOP) {
-        viewModel.saveCamera(mapState.cameraPosition, cameraState.isFollowingPosition, cameraState.isNavigationMode)
+        viewModel.saveCamera(
+            camera = mapState.cameraPosition,
+            following = cameraState.isFollowingPosition,
+            navigating = cameraState.isNavigationMode
+        )
     }
 
     LaunchedEffect(headingProvider) {
@@ -392,7 +389,12 @@ fun MainScreen(
                     location = measurement
                     locationState = LocationState.UPDATING
                     tracks.addLocation(measurement)
-                    launch { cameraState.followLocation(measurement.position.toLatLon(), getTrackBearing(tracks.currentTrack)) }
+                    launch {
+                        cameraState.animateToPositionIfFollowing(
+                            position = measurement.position.toLatLon(),
+                            bearing = getTrackBearing(tracks.currentTrack)
+                        )
+                    }
                 }
                 is LocationEvent.Unavailable -> {
                     location = null
@@ -456,6 +458,7 @@ fun MainScreen(
                 .onGloballyPositioned { mapPositionInWindow = it.positionInWindow() },
             cameraPadding = cameraPadding,
             onPan = { cameraState.onPan(location != null) },
+            onRotate = { cameraState.onRotate(location != null) },
             onMapClick = { event ->
                 when (sheet.selection) {
                     null -> {}
@@ -468,20 +471,17 @@ fun MainScreen(
             onMapLongClick = { event ->
                 if (!sheet.isOpen) {
                     lastMapLongClick = event.toMapClick()
+                    showMapContextMenu = lastMapLongClick != null
                 }
                 ClickResult.Consume
             },
             overlay = {
-                if (shownForm != null) {
-                    CompositionLocalProvider(LocalMapMetersPerDp provides metersPerDp) {
-                        MainBottomSheetMapOverlay(shownForm.sheet, shownForm.formState, mapPosition)
-                    }
-                }
+                sheet.formMapOverlay?.invoke(this)
 
                 GeographicLayout(Modifier.windowInsetsPadding(WindowInsets.safeDrawing)) {
                     val position = location?.position
                     if (position != null) {
-                        PointerPinButton(targetPosition = position, onClick = ::followLocation) {
+                        PointerPinButton(targetPosition = position, onClick = ::followPosition) {
                             Image(painterResource(Res.drawable.location_dot_small), null)
                         }
                     }
@@ -560,7 +560,7 @@ fun MainScreen(
         ) {
             EditHistorySidebar(
                 editItems = sheet.editItems.orEmpty(),
-                selectedEdit = (shownBottomSheet as? ShownBottomSheet.EditHistory)?.edit,
+                selectedEdit = sheet.shownEdit?.edit,
                 onSelectEdit = { sheet.show(MainSheetSelection.EditHistory(it.key)) },
                 onUndoEdit = { editHistoryViewModel.undo(it.key) },
                 onDismissRequest = sheet::close,
@@ -569,8 +569,8 @@ fun MainScreen(
         }
 
         AnimatedContent(
-            targetState = shownForm,
-            contentKey = { it?.id },
+            targetState = shownBottomSheet?.let { sheet.id to it },
+            contentKey = { it?.first },
             transitionSpec = {
                 if (initialState != null && targetState != null) {
                     fadeIn() + slideInVertically { it / 16 } togetherWith fadeOut()
@@ -583,7 +583,7 @@ fun MainScreen(
             },
         ) { content ->
             if (content != null) {
-                val (id, shownBottomSheet, formState) = content
+                val (id, shownBottomSheet) = content
                 sheet.formStateHolder.SaveableStateProvider(id) {
                     MainBottomSheet(
                         onDismiss = sheet::close,
@@ -598,10 +598,10 @@ fun MainScreen(
                         shownBottomSheet = shownBottomSheet,
                         mapRotation = mapCamera.bearing.toFloat(),
                         mapTilt = mapCamera.tilt.toFloat(),
-                        mapPosition = mapPosition,
+                        mapPosition = getCrosshairPosition() ?: mapCamera.target.toLatLon(),
                         mapMetersPerDp = metersPerDp,
                         onSetMapMarkers = { if (id == sheet.id) sheet.formMarkers = it?.toList() },
-                        formState = formState,
+                        onSetMapOverlay = { if (id == sheet.id) sheet.formMapOverlay = it },
                         lastMapClick = sheet.lastMapClick,
                     )
                 }
@@ -612,8 +612,8 @@ fun MainScreen(
     lastQuestSolved?.let { LastQuestSolvedEffect(it) }
 
     MapContextMenu(
-        expanded = lastMapLongClick != null,
-        onDismissRequest = { lastMapLongClick = null },
+        expanded = showMapContextMenu,
+        onDismissRequest = { showMapContextMenu = false },
         onClickCreateNote = {
             if (mapState.cameraPosition.zoom < ApplicationConstants.NOTE_MIN_ZOOM) showToast = Toast.ImpreciseNote
             else lastMapLongClick?.let { composeNote(it.position) }
@@ -715,8 +715,6 @@ fun MainScreen(
     //endregion
 }
 
-/** A bottom sheet as shown, with its form's state */
-private data class ShownForm(val id: String, val sheet: ShownBottomSheet, val formState: BottomSheetFormState)
 
 private enum class Toast {
     Offline,

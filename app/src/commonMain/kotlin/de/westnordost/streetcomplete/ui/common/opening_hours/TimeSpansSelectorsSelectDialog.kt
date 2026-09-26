@@ -37,7 +37,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.TimePicker
 import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
 import de.westnordost.streetcomplete.ui.common.rememberTimePickerState
-import de.westnordost.streetcomplete.ui.theme.largeInput
+import de.westnordost.streetcomplete.ui.theme.veryLargeInput
 import de.westnordost.streetcomplete.util.locale.TimeFormatElements
 import org.jetbrains.compose.resources.stringResource
 
@@ -89,7 +89,7 @@ fun TimeSpansSelectorSelectDialog(
                     val timePickerState = if (step == 0) startTimePickerState else endTimePickerState
                     val openEnd = if (step == 0) startOpenEnd else endOpenEnd
 
-                    ProvideTextStyle(MaterialTheme.typography.largeInput) {
+                    ProvideTextStyle(MaterialTheme.typography.veryLargeInput) {
                         TimePicker(
                             state = timePickerState,
                             timeFormatElements = timeFormatElements,

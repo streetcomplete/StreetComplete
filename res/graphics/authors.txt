@@ -111,6 +111,7 @@ building/
     bunker.svg
     car.svg                     modified from Twemoji: U+1F698
     carport.svg                 parts taken from Twemoji: U+1F698
+    cathedral.svg               Amaan Qureshi, License: CC-BY-SA 4.0
     civic.svg
     college.svg
     detached.svg
@@ -135,6 +136,7 @@ building/
     kiosk.svg
     office.svg
     other.svg
+    pagoda.svg                  Amaan Qureshi, License: CC-BY 4.0
     parking.svg                 parts taken from Twemoji: U+1F698
     retail.svg
     roof.svg
@@ -241,6 +243,7 @@ laurel_wreath/
 
 links/
     link_neis_one.svg
+    openinframap.svg               bsd-3-clause      Russ Garrett
 
 living street/
     default.svg                                      Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)

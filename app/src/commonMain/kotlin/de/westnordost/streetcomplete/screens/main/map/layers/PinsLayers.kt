@@ -85,6 +85,7 @@ fun PinsLayers(
     )
 
     val currentOnZoomToCluster by rememberUpdatedState(onZoomToCluster)
+    val currentOnClickPin by rememberUpdatedState(onClickPin)
 
     fun onClickClusterFeature(features: List<Feature<Geometry, JsonObject?>>): ClickResult {
         val feature = features.firstOrNull() ?: return ClickResult.Pass
@@ -103,7 +104,7 @@ fun PinsLayers(
 
     fun onClick(features: List<Feature<Geometry, JsonObject?>>): ClickResult {
         val properties = features.firstOrNull()?.properties ?: return ClickResult.Pass
-        return onClickPin(properties)
+        return currentOnClickPin(properties)
     }
 
     SymbolLayer(

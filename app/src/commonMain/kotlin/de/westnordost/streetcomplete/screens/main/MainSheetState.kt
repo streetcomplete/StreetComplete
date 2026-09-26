@@ -12,12 +12,14 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.saveable.rememberSaveableStateHolder
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
+import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditKey
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.edithistory.EditItem
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
+import de.westnordost.streetcomplete.ui.common.quest.MapOverlayContent
 import de.westnordost.streetcomplete.ui.common.quest.Marker
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -63,12 +65,19 @@ class MainSheetState internal constructor(
     var shownBottomSheet by mutableStateOf<ShownBottomSheet?>(null)
         private set
 
+    /** The edit selected in the edit history sidebar. Null when it is not open or while loading. */
+    var shownEdit by mutableStateOf<ShownEdit?>(null)
+        private set
+
     /** All edits that can be undone. Null while loading. */
     var editItems by mutableStateOf<List<EditItem>?>(null)
         private set
 
     /** Markers the open form asks the map to display; null uses the quest's default highlights. */
     var formMarkers by mutableStateOf<List<Marker>?>(null)
+
+    /** Content the open form places on the map, e.g. a pin that snaps to a way */
+    var formMapOverlay by mutableStateOf<MapOverlayContent?>(null)
 
     /** Where the user clicked on the map while the form was open */
     var lastMapClick by mutableStateOf<MapClick?>(null)
@@ -85,6 +94,7 @@ class MainSheetState internal constructor(
         id = Uuid.random().toString()
         this.selection = selection
         formMarkers = null
+        formMapOverlay = null
         lastMapClick = null
     }
 
@@ -96,13 +106,14 @@ class MainSheetState internal constructor(
 
     fun close() {
         selection = null
+        shownEdit = null
         formMarkers = null
+        formMapOverlay = null
         lastMapClick = null
         formStateHolder.removeState(id)
     }
 
     /** Keeps [shownBottomSheet] in sync with the [selection]. Runs until cancelled. */
-    @OptIn(ExperimentalCoroutinesApi::class)
     internal suspend fun observe(): Unit = coroutineScope {
         launch {
             editHistoryViewModel.editItems.collect { editItems = it }
@@ -111,27 +122,19 @@ class MainSheetState internal constructor(
             snapshotFlow { selection }.collectLatest { selection ->
                 // never show the previous selection's sheet for a new selection
                 shownBottomSheet = null
+                shownEdit = null
                 when (selection) {
                     null -> {}
                     is MainSheetSelection.EditHistory -> observeEdit(selection.editKey)
-                    else -> observeBottomSheet(selection)
+                    else -> showBottomSheet(selection)
                 }
             }
         }
     }
 
-    private suspend fun observeBottomSheet(selection: MainSheetSelection) {
-        viewModel.bottomSheet(selection).collect { sheet ->
-            if (selection is MainSheetSelection.Overlay && sheet is ShownBottomSheet.OsmNoteQuest) {
-                // A note at the element blocks editing it. Selecting the note instead also
-                // closes this sheet when the note is hidden or deleted.
-                this.selection = MainSheetSelection.Quest(sheet.quest.key)
-                return@collect
-            }
-            shownBottomSheet = sheet
-            // null: the selected object does not exist anymore
-            if (sheet == null) close()
-        }
+    private suspend fun showBottomSheet(selection: MainSheetSelection) {
+        val sheet = viewModel.getBottomSheet(selection)
+        if (sheet != null) shownBottomSheet = sheet else close()
     }
 
     private suspend fun observeEdit(key: EditKey) {
@@ -139,7 +142,7 @@ class MainSheetState internal constructor(
             if (items == null) return@collect
             val edit = items.find { it.edit.key == key }?.edit
             if (edit != null) {
-                shownBottomSheet = ShownBottomSheet.EditHistory(edit, editHistoryViewModel.getEditGeometry(edit))
+                shownEdit = ShownEdit(edit, editHistoryViewModel.getEditGeometry(edit))
             } else {
                 // the edit was undone or is synced: select the newest remaining edit, if any
                 val newest = items.lastOrNull()?.edit?.key
@@ -148,3 +151,6 @@ class MainSheetState internal constructor(
         }
     }
 }
+
+/** An edit selected in the edit history sidebar, with its geometry to show on the map */
+data class ShownEdit(val edit: Edit, val geometry: ElementGeometry)

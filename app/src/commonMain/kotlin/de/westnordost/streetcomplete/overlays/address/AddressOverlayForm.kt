@@ -33,7 +33,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.Edit
 import de.westnordost.streetcomplete.data.overlays.OverlayAction
-import de.westnordost.streetcomplete.data.overlays.ShownOverlayForm
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.address.Address
@@ -50,239 +49,229 @@ import de.westnordost.streetcomplete.ui.common.Pin
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
+import de.westnordost.streetcomplete.ui.common.quest.OnMap
 import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.ktx.toPosition
-import de.westnordost.streetcomplete.util.math.PositionOnWay
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.maplibre.compose.overlay.MapOverlayScope
+import org.koin.compose.koinInject
 
-/** The address overlay form. A new address snaps to a building outline near the crosshair, which
- *  is shown as a pin on the map. */
-class AddressOverlayForm(
-    private val element: Element?,
-    private val mapDataWithEditsSource: MapDataWithEditsSource,
-    private val nameSuggestionsSource: NameSuggestionsSource,
-    private val featureDictionary: FeatureDictionary,
-) : ShownOverlayForm {
-    /** Whether a new address node on a building outline is also tagged as an entrance */
-    private var addEntrance by mutableStateOf(true)
+@Composable
+fun AddressOverlayForm(
+    on: (OverlayAction) -> Unit,
+    element: Element?,
+    geometry: ElementGeometry,
+    countryInfo: CountryInfo,
+    mapDataWithEditsSource: MapDataWithEditsSource = koinInject(),
+    nameSuggestionsSource: NameSuggestionsSource = koinInject(),
+    featureDictionary: FeatureDictionary = koinInject(),
+) {
+    // previous address and current address being input
+    val originalAddress = remember(element) {
+        Address(
+            streetOrPlace =
+                element?.tags?.get("addr:street")?.let { StreetName(it) }
+                ?: element?.tags?.get("addr:place")?.let { PlaceName(it) }
+                ?: if (lastWasPlaceName) PlaceName("") else StreetName(""),
+            number = element?.tags?.let { parseAddressNumber(it) },
+            name = element?.tags?.get("addr:housename")
+        )
+    }
+    var address by rememberSerializable(originalAddress) {
+        mutableStateOf(originalAddress)
+    }
+    // whether the button to switch between street name and place name is shown at all
+    var showStreetOrPlaceSelect by rememberSaveable { mutableStateOf(lastWasPlaceName) }
 
-    /** The building outlines around the new address. Loaded only once. */
-    private var buildingOutlines: Collection<Pair<Way, List<LatLon>>>? = null
-
-    /** Where on a building outline near the crosshair a new address node would be created */
-    @Composable
-    private fun positionOnWay(geometry: ElementGeometry): PositionOnWay? {
-        if (element != null) return null
-        val position = geometry.center
-        val metersPerDp = LocalMapMetersPerDp.current
-        val maxDistanceToCrosshair = (metersPerDp * 24).dp.toPx().toDouble()
-        val snapToVertexDistance = (metersPerDp * 12).dp.toPx().toDouble()
-        return remember(position, maxDistanceToCrosshair, snapToVertexDistance) {
-            val outlines = buildingOutlines
-                ?: mapDataWithEditsSource.getBuildingOutlines(position.enclosingBoundingBox(100.0))
-                    .also { buildingOutlines = it }
-            position.getPositionOnWays(
-                ways = outlines,
-                maxDistance = maxDistanceToCrosshair,
-                snapToVertexDistance = snapToVertexDistance,
-                // don't snap to vertices that are shared with several buildings
-                allowVerticesOfMultipleWays = false
-            )
+    // adding an address at new node or (new) vertex of way. Get the building outlines only *once*
+    // once the position is non-null
+    val position = if (element == null) geometry.center else null
+    val buildingOutlines = remember<Collection<Pair<Way, List<LatLon>>>?>(position != null) {
+        position?.let {
+            mapDataWithEditsSource.getBuildingOutlines(position.enclosingBoundingBox(100.0))
         }
     }
+    val metersPerDp = LocalMapMetersPerDp.current
+    val maxDistanceToCrosshair = (metersPerDp * 24).dp.toPx().toDouble()
+    val snapToVertexDistance = (metersPerDp * 12).dp.toPx().toDouble()
 
-    @Composable
-    override fun MapOverlayScope.MapOverlay(geometry: ElementGeometry) {
-        val positionOnWay = positionOnWay(geometry) ?: return
-        Pin(
-            iconPainter = painterResource(if (addEntrance) Res.drawable.quest_door else Res.drawable.quest_housenumber),
-            modifier = Modifier.placedAt(positionOnWay.position.toPosition()),
+    val positionOnWay = remember(position, buildingOutlines) {
+        if (position == null) return@remember null
+        if (buildingOutlines == null) return@remember null
+
+        position.getPositionOnWays(
+            ways = buildingOutlines,
+            maxDistance = maxDistanceToCrosshair,
+            snapToVertexDistance = snapToVertexDistance,
+            // don't snap to vertices that are shared with several buildings
+            allowVerticesOfMultipleWays = false
         )
     }
 
+    var addEntrance by rememberSaveable { mutableStateOf(true) }
+
+    var confirmRemoveAddress by remember { mutableStateOf(false) }
+
+    val mapClick = LocalLastMapClick.current
+    LaunchedEffect(mapClick) {
+        if (mapClick != null) {
+            // only allow selection of street when that field is actually displayed
+            if (address.streetOrPlace !is StreetName) return@LaunchedEffect
+
+            val name = nameSuggestionsSource
+                .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
+                .firstOrNull()
+                ?.find { it.languageTag.isEmpty() }
+                ?.name
+                ?.let { address = address.copy(streetOrPlace = StreetName(it)) }
+        }
+    }
+
     @Composable
-    override fun Content(
-        on: (OverlayAction) -> Unit,
-        geometry: ElementGeometry,
-        countryInfo: CountryInfo,
+    fun createOtherAnswers(): List<AnswerItem> {
+        val result = ArrayList<AnswerItem>()
+
+        if (address.name == null) {
+            result.add(AnswerItem(stringResource(Res.string.quest_address_answer_house_name2)) {
+                address = address.copy(
+                    name = "",
+                    number = address.number?.takeIf { !it.isBlank() }
+                )
+            })
+        }
+
+        if (address.streetOrPlace is StreetName) {
+            result.add(AnswerItem(stringResource(Res.string.quest_address_street_no_named_streets)) {
+                address = address.copy(streetOrPlace = PlaceName(""))
+                showStreetOrPlaceSelect = true
+            })
+        }
+
+        if (countryInfo.countryCode !in listOf("JP", "CZ", "SK")) {
+            val houseNumber = address.number?.streetHouseNumber ?: ""
+            if (address.number is BlockAndHouseNumber) {
+                result.add(AnswerItem(stringResource(Res.string.quest_address_answer_no_block2)) {
+                    address = address.copy(number = HouseNumber(houseNumber))
+                })
+            } else {
+                result.add(AnswerItem(stringResource(Res.string.quest_address_answer_block2)) {
+                    address = address.copy(number = BlockAndHouseNumber("", houseNumber))
+                })
+            }
+        }
+
+        if (element != null) {
+            result.add(AnswerItem(stringResource(Res.string.quest_address_answer_no_address)) {
+                confirmRemoveAddress = true
+            })
+        }
+
+        if (element == null && addEntrance) {
+            result.add(AnswerItem(stringResource(Res.string.overlay_addresses_no_entrance)) {
+                addEntrance = false
+            })
+        }
+
+        return result
+    }
+
+    fun applyChanges(tagChanges: StringMapChangesBuilder) {
+        address.applyTo(tagChanges, countryInfo.countryCode)
+        tagChanges.remove("noaddress")
+        tagChanges.remove("nohousenumber")
+    }
+
+    fun onClickOk() {
+        val number = address.number
+        val name = address.name
+        val streetOrPlace = address.streetOrPlace
+
+        lastWasPlaceName = address.streetOrPlace is PlaceName
+        number?.streetHouseNumber?.let { lastHouseNumber = it }
+        lastBlock = if (number is BlockAndHouseNumber) number.block else null
+        lastPlaceName = if (streetOrPlace is PlaceName) streetOrPlace.name else null
+        lastStreetName = if (streetOrPlace is StreetName) streetOrPlace.name else null
+
+        val tagChanges = StringMapChangesBuilder(element?.tags.orEmpty())
+        val positionOnWay = positionOnWay
+
+        // add/change address of existing element
+        if (element != null) {
+            applyChanges(tagChanges)
+            on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
+        }
+        // add address to vertex or new vertex on way
+        else if (positionOnWay != null) {
+            val geometry = ElementPointGeometry(positionOnWay.position)
+            val action = createNodeAction(positionOnWay, mapDataWithEditsSource) { tagChanges ->
+                applyChanges(tagChanges)
+                if (addEntrance && !tagChanges.containsKey("entrance")) {
+                    tagChanges["entrance"] = "yes"
+                }
+            }
+            if (action != null) {
+                on(Edit(action))
+            }
+        }
+        // add new address node
+        else if (position != null) {
+            applyChanges(tagChanges)
+            on(Edit(CreateNodeAction(position, tagChanges)))
+        }
+    }
+
+    if (positionOnWay != null) {
+        OnMap {
+            Pin(
+                iconPainter = painterResource(if (addEntrance) Res.drawable.quest_door else Res.drawable.quest_housenumber),
+                modifier = Modifier.placedAt(positionOnWay.position.toPosition()),
+            )
+        }
+    }
+
+    OverlayForm(
+        on = on,
+        isComplete =
+            // street is optional as in new developments sometimes the street names are not
+            // posted yet, or it is not clear on-site, see #6528
+            address.number?.isComplete() == true
+            || address.name?.isNotBlank() == true && address.number?.isBlank() != false,
+        hasChanges = originalAddress != address,
+        onClickOk = ::onClickOk,
+        label =
+            // never show house number, as it already is shown in the form
+            element?.let { nameAndLocationLabel(it, featureDictionary, showHouseNumber = false) },
+        pinContent = {
+            if (positionOnWay == null) {
+                Pin(iconPainter = painterResource(Res.drawable.quest_housenumber))
+            }
+        },
+        otherAnswers = ::createOtherAnswers
     ) {
-        // previous address and current address being input
-        val originalAddress = remember(element) {
-            Address(
-                streetOrPlace =
-                    element?.tags?.get("addr:street")?.let { StreetName(it) }
-                    ?: element?.tags?.get("addr:place")?.let { PlaceName(it) }
-                    ?: if (lastWasPlaceName) PlaceName("") else StreetName(""),
-                number = element?.tags?.let { parseAddressNumber(it) },
-                name = element?.tags?.get("addr:housename")
-            )
-        }
-        var address by rememberSerializable(originalAddress) {
-            mutableStateOf(originalAddress)
-        }
-        // whether the button to switch between street name and place name is shown at all
-        var showStreetOrPlaceSelect by rememberSaveable { mutableStateOf(lastWasPlaceName) }
+        AddressForm(
+            value = address,
+            onValueChange = { address = it },
+            countryCode = countryInfo.countryCode,
+            showStreetOrPlaceSelect = showStreetOrPlaceSelect,
+            streetNameSuggestion = lastStreetName,
+            placeNameSuggestion = lastPlaceName,
+            houseNumberSuggestion = lastHouseNumber,
+            blockSuggestion = lastBlock,
+        )
+    }
 
-        // adding an address at new node or (new) vertex of way
-        val position = if (element == null) geometry.center else null
-        val positionOnWay = positionOnWay(geometry)
-
-        var confirmRemoveAddress by remember { mutableStateOf(false) }
-
-        val mapClick = LocalLastMapClick.current
-        LaunchedEffect(mapClick) {
-            if (mapClick != null) {
-                // only allow selection of street when that field is actually displayed
-                if (address.streetOrPlace !is StreetName) return@LaunchedEffect
-
-                val name = nameSuggestionsSource
-                    .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
-                    .firstOrNull()
-                    ?.find { it.languageTag.isEmpty() }
-                    ?.name
-                    ?.let { address = address.copy(streetOrPlace = StreetName(it)) }
-            }
-        }
-
-        @Composable
-        fun createOtherAnswers(): List<AnswerItem> {
-            val result = ArrayList<AnswerItem>()
-
-            if (address.name == null) {
-                result.add(AnswerItem(stringResource(Res.string.quest_address_answer_house_name2)) {
-                    address = address.copy(
-                        name = "",
-                        number = address.number?.takeIf { !it.isBlank() }
-                    )
-                })
-            }
-
-            if (address.streetOrPlace is StreetName) {
-                result.add(AnswerItem(stringResource(Res.string.quest_address_street_no_named_streets)) {
-                    address = address.copy(streetOrPlace = PlaceName(""))
-                    showStreetOrPlaceSelect = true
-                })
-            }
-
-            if (countryInfo.countryCode !in listOf("JP", "CZ", "SK")) {
-                val houseNumber = address.number?.streetHouseNumber ?: ""
-                if (address.number is BlockAndHouseNumber) {
-                    result.add(AnswerItem(stringResource(Res.string.quest_address_answer_no_block2)) {
-                        address = address.copy(number = HouseNumber(houseNumber))
-                    })
-                } else {
-                    result.add(AnswerItem(stringResource(Res.string.quest_address_answer_block2)) {
-                        address = address.copy(number = BlockAndHouseNumber("", houseNumber))
-                    })
-                }
-            }
-
-            if (element != null) {
-                result.add(AnswerItem(stringResource(Res.string.quest_address_answer_no_address)) {
-                    confirmRemoveAddress = true
-                })
-            }
-
-            if (element == null && addEntrance) {
-                result.add(AnswerItem(stringResource(Res.string.overlay_addresses_no_entrance)) {
-                    addEntrance = false
-                })
-            }
-
-            return result
-        }
-
-        fun applyChanges(tagChanges: StringMapChangesBuilder) {
-            address.applyTo(tagChanges, countryInfo.countryCode)
-            tagChanges.remove("noaddress")
-            tagChanges.remove("nohousenumber")
-        }
-
-        fun onClickOk() {
-            val number = address.number
-            val name = address.name
-            val streetOrPlace = address.streetOrPlace
-
-            lastWasPlaceName = address.streetOrPlace is PlaceName
-            number?.streetHouseNumber?.let { lastHouseNumber = it }
-            lastBlock = if (number is BlockAndHouseNumber) number.block else null
-            lastPlaceName = if (streetOrPlace is PlaceName) streetOrPlace.name else null
-            lastStreetName = if (streetOrPlace is StreetName) streetOrPlace.name else null
-
-            val tagChanges = StringMapChangesBuilder(element?.tags.orEmpty())
-            val positionOnWay = positionOnWay
-
-            // add/change address of existing element
-            if (element != null) {
-                applyChanges(tagChanges)
-                on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
-            }
-            // add address to vertex or new vertex on way
-            else if (positionOnWay != null) {
-                val geometry = ElementPointGeometry(positionOnWay.position)
-                val action = createNodeAction(positionOnWay, mapDataWithEditsSource) { tagChanges ->
-                    applyChanges(tagChanges)
-                    if (addEntrance && !tagChanges.containsKey("entrance")) {
-                        tagChanges["entrance"] = "yes"
-                    }
-                }
-                if (action != null) {
-                    on(Edit(action))
-                }
-            }
-            // add new address node
-            else if (position != null) {
-                applyChanges(tagChanges)
-                on(Edit(CreateNodeAction(position, tagChanges)))
-            }
-        }
-
-        OverlayForm(
-            on = on,
-            isComplete =
-                // street is optional as in new developments sometimes the street names are not
-                // posted yet, or it is not clear on-site, see #6528
-                address.number?.isComplete() == true
-                || address.name?.isNotBlank() == true && address.number?.isBlank() != false,
-            hasChanges = originalAddress != address,
-            onClickOk = ::onClickOk,
-            label =
-                // never show house number, as it already is shown in the form
-                element?.let { nameAndLocationLabel(it, featureDictionary, showHouseNumber = false) },
-            pinContent = {
-                if (positionOnWay == null) {
-                    Pin(iconPainter = painterResource(Res.drawable.quest_housenumber))
-                }
-            },
-            otherAnswers = ::createOtherAnswers
-        ) {
-            AddressForm(
-                value = address,
-                onValueChange = { address = it },
-                countryCode = countryInfo.countryCode,
-                showStreetOrPlaceSelect = showStreetOrPlaceSelect,
-                streetNameSuggestion = lastStreetName,
-                placeNameSuggestion = lastPlaceName,
-                houseNumberSuggestion = lastHouseNumber,
-                blockSuggestion = lastBlock,
-            )
-        }
-
-        if (confirmRemoveAddress) {
-            AreYouSureDialog(
-                onDismissRequest = { confirmRemoveAddress = false },
-                onConfirmed = { on(Edit(createRemoveAddressElementEditAction(element!!))) }
-            )
-        }
+    if (confirmRemoveAddress) {
+        AreYouSureDialog(
+            onDismissRequest = { confirmRemoveAddress = false },
+            onConfirmed = { on(Edit(createRemoveAddressElementEditAction(element!!))) }
+        )
     }
 }
 

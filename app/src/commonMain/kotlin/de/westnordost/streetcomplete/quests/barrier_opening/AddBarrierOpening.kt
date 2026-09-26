@@ -6,6 +6,8 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.Action
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
@@ -13,15 +15,16 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.width.AddWidthForm
-import de.westnordost.streetcomplete.quests.width.WidthAnswer
+import de.westnordost.streetcomplete.quests.barrier_opening.BarrierOpeningAnswer
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
 class AddBarrierOpening(
     private val checkArSupport: ArSupportChecker
-) : OsmElementQuestType<WidthAnswer> {
+) : OsmElementQuestType<BarrierOpeningAnswer> {
 
     private val nodeFilter by lazy { """
         nodes with
@@ -33,11 +36,15 @@ class AddBarrierOpening(
           and (!width or source:width ~ ".*estimat.*")
           and (!maxwidth or source:maxwidth ~ ".*estimat.*")
           and access !~ private|no|customers|agricultural
+          and wheelchair != no
     """.toElementFilterExpression() }
 
     private val waysFilter by lazy { """
         ways with
-          highway ~ ${ALL_PATHS.joinToString("|")}
+          (
+            highway ~ ${(ALL_PATHS - "steps").joinToString("|")}
+            or highway = steps and ramp:wheelchair = yes
+          )
           and area != yes
           and (access !~ private|no or (foot and foot !~ private|no))
     """.toElementFilterExpression() }
@@ -63,32 +70,49 @@ class AddBarrierOpening(
         if (nodeFilter.matches(element)) null else false
 
     @Composable
-    override fun Form(on: (QuestAction<WidthAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<BarrierOpeningAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         val isSomeKindOfBollard =
             element.tags["barrier"] == "bollard" ||
             element.tags["barrier"] == "block" ||
             element.tags["cycle_barrier"] == "diagonal"
 
         AddWidthForm(
-            on = on,
+            on = { action ->
+                when (action) {
+                    is Answer -> on(Answer(BarrierWidth(action.value)))
+                    is Action -> on(action)
+                }
+            },
             element = element,
             title = stringResource(
                 if (isSomeKindOfBollard) Res.string.quest_barrier_opening_width_bollard
                 else Res.string.quest_barrier_opening_width_gate
             ),
             countryInfo = countryInfo,
+            otherAnswers = {
+                listOf(
+                    AnswerItem(stringResource(Res.string.quest_barrier_opening_not_wheelchair_accessible)) {
+                        on(Answer(BarrierNotWheelchairAccessible))
+                    }
+                )
+            },
         )
     }
 
-    override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        val key = "maxwidth:physical"
-
-        tags[key] = answer.width.toOsmValue()
-
-        if (answer.isARMeasurement) {
-            tags["source:$key"] = "ARCore"
-        } else {
-            tags.remove("source:$key")
+    override fun applyAnswerTo(answer: BarrierOpeningAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        when (answer) {
+            is BarrierWidth -> {
+                val key = "maxwidth:physical"
+                tags[key] = answer.widthAnswer.width.toOsmValue()
+                if (answer.widthAnswer.isARMeasurement) {
+                    tags["source:$key"] = "ARCore"
+                } else {
+                    tags.remove("source:$key")
+                }
+            }
+            BarrierNotWheelchairAccessible -> {
+                tags["wheelchair"] = "no"
+            }
         }
     }
 }
