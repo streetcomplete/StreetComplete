@@ -1328,7 +1328,7 @@
     <string name="about_category_help">Помощь</string>
     <string name="quest_camp_power_supply_hint">Это могут быть розетки непосредственно на территории лагеря, розетки в служебном здании, доступном для гостей, специальная зарядная станция для телефонов, ноутбуков и т. д.</string>
     <string name="quest_barrier_opening_width_bollard">Какова ширина самого широкого промежутка между стойками, через который можно пройти?</string>
-    <string name="user_profile_all_time_title">Общее время</string>
+    <string name="user_profile_all_time_title">За всё время</string>
     <string name="user_statistics_country_rank2">Ранг в %1$s</string>
     <string name="quest_leafType_tree_is_just_a_stump">Это просто пень</string>
     <string name="quest_board_name_title">Как называется эта информационная доска?</string>

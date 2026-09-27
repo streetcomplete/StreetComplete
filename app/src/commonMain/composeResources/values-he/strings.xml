@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">הגדרות</string>
-    <string name="oauth_communication_error">החיבור לשרת ההרשאות נכשל</string>
+    <string name="oauth_communication_error">לא ניתן להגיע לשרת ההרשאות</string>
     <string name="oauth_failed_permissions">ההרשאה נכשלה: חייב להסכים לכל ההרשאות המבוקשות</string>
     <string name="pref_category_communication">תקשורת</string>
     <string name="pref_category_display">תצוגה</string>
@@ -355,6 +355,7 @@
     <string name="questList_disabled_in_country">לעולם לא מוצג ב%1$s</string>
     <string name="quest_select_hint_most_specific">יש לבחור את הפריט המתאים ביותר:</string>
     <string name="quest_generic_item_confirmation">בטוח שלא ניתן לקבוע באופן מפורט יותר?</string>
+    <string name="privacy_html_third_party_quest_sources">&lt;p&gt;עבור חלק מהמשימות, מידע נוסף מורד מצדדים שלישיים.&lt;/p&gt;</string>
     <string name="quest_generic_hasFeature_no_leave_note">לא (נא להשאיר הערה)</string>
     <string name="pref_quests_reset">לאפס את המשימות שנבחרו וסדרן לברירת המחדל?</string>
     <string name="quest_generic_item_invalid_value">נא לבחור ערך ספציפי יותר.</string>
@@ -429,6 +430,7 @@
     <string name="quest_buildingType_shrine">מקדש</string>
     <string name="quest_maxspeed_title_short2">מהי המהירות המותרת ברחוב זה?</string>
     <string name="quest_maxspeed_answer_sign">שלט</string>
+    <string name="quest_maxspeed_answer_zone2">זה בתוך אזור מהירות מוגבלת</string>
     <string name="quest_maxspeed_answer_noSign2">אין תמרור, ברירת המחדל חלה</string>
     <string name="quest_openingHours_no_sign">אין שלט המציין שעות פתיחה</string>
     <string name="quest_buildingType_sports_centre">מרכז ספורט</string>
@@ -584,6 +586,8 @@
     <string name="link_mapillary_description">שירות ויישום לשיתוף תמונות רחוב ממקורות המון, עם הרשאות מפורשות להשתמש בהן לתרומה ל-OSM</string>
     <string name="link_openstreetcam_description">שירות ויישום לשיתוף תמונות רחוב ממקורות המון, עם הרשאות מפורשות להשתמש בהן לתרומה ל-OSM</string>
     <string name="link_openrouteservice_wheelchair_description">ניווט פנייה אחר פנייה למשתמשי כסאות גלגלים</string>
+    <string name="link_nominatim_description">הגיאוקודר לנתוני OSM, המשמש שירותים רבים אחרים</string>
+    <string name="link_city_roads_description">הצגת כל הרחובות בעיר, להדפסה על חולצות, ספלים ועוד…</string>
     <string name="link_myosmatic_description">יצירת מפות ערים להדפסה במספר צעדים פשוטים, עם אפשרות להוספת מדריך רחובות</string>
     <string name="link_brouter_description">ככל הנראה מנוע הניווט הטוב ביותר לרוכבי אופניים</string>
     <string name="link_show_me_the_way_description">צפייה בעריכות OSM מתרחשות בזמן אמת</string>
@@ -607,6 +611,7 @@
     <string name="achievement_postman_title">דוור</string>
     <string name="achievement_postman_solved_X">עזרת לאתר %1$d כתובות!
 מידע זה חיוני לא רק לדוורים אלא גם למערכות ניווט.</string>
+    <string name="achievement_building_title">רב מקומות</string>
     <string name="achievement_building_solved_X">פתרת %1$d משימות מחקר שקשורות לבניינים.
 הערה: יישום זה מבקש מספרי בתים של בניינים רק לאחר שנקבע סוג הבניין.</string>
     <string name="achievement_blind_title">חוש שישי</string>
@@ -621,10 +626,12 @@
     <string name="unread_messages_button">פתח תיבת דואר נכנס</string>
     <string name="action_about2">אודות</string>
     <string name="map_btn_menu">תפריט</string>
+    <string name="privacy_html_statistics">הנתונים המוצגים בפרופיל שלך נאספים מהיסטוריית התרומות הציבורית שלך ל-OpenStreetMap ומאוחסנים לאחר מכן בשרת שלי.</string>
     <string name="confirmation_authorize_now_note2">ניתן לעשות זאת גם מאוחר יותר במסך הפרופיל.</string>
     <string name="credits_projects_contributors_title">פרויקטים שנעשו עבור StreetComplete</string>
     <string name="credits_main_contributors_title">תורמים/ות עיקריים</string>
     <string name="stats_are_syncing">נתוני הסטטיסטיקה שלך עדיין מסתנכרנים. נא לבדוק מסך זה במועד מאוחר יותר.</string>
+    <string name="user_statistics_country_wiki_link">פורטל המיפוי %1$s</string>
     <string name="user_statistics_filter_by_country">לפי מדינה</string>
     <string name="user_statistics_filter_by_quest_type">לפי סוג משימה</string>
     <string name="user_profile_global_rank">מיקום בעולם</string>
@@ -636,6 +643,7 @@
     <string name="quest_address_street_place_name_label">שם מקום:</string>
     <string name="quest_recycling_type_cooking_oil">שמן בישול</string>
     <string name="quest_recycling_type_engine_oil">שמן מנועים</string>
+    <string name="link_photon_description">הרחבה עצמאית ל-Nominatim הכוללת חיפוש לא מדויק וחיפוש תוך כדי הקלדה</string>
     <string name="about_title_sponsors">ספונסורים</string>
     <string name="quest_board_type_history">היסטוריה</string>
     <string name="quest_board_type_geology">גאולוגיה</string>
@@ -834,6 +842,7 @@
     <string name="quest_traffic_calming_type_choker">הצרה ברחוב</string>
     <string name="quest_traffic_calming_type_island">אי תנועה</string>
     <string name="quest_fireHydrant_diameter_title">מה הקוטר שמצויין על השלט לברז כיבוי זה?</string>
+    <string name="quest_diet_answer_no_food">אין כאן אוכל</string>
     <string name="short_no_answer_on_button">לא</string>
     <string name="restore_confirmation">שיחזור</string>
     <string name="restore_dialog_message">האם לשחזר את כל המשימות שהסתרת?</string>
@@ -1133,9 +1142,16 @@
     <string name="quest_is_amenity_inside_title">האם זה בתוך מבנה?</string>
     <string name="quest_bbq_fuel_wood">עץ</string>
     <string name="quest_bbq_fuel_electric">חשמל</string>
+    <string name="quest_recycling_type_food_waste">פסולת מזון</string>
     <string name="quest_defibrillator_location">היכן ממוקם הדפיברילטור?</string>
     <string name="quest_generalFee_title">האם צריך להשתמש כדי להשתמש בזה?</string>
     <string name="action_filter">סינון</string>
+    <string name="action_share">שתף יומנים</string>
+    <string name="about_title_show_logs">*הצגת יומנים*</string>
+    <string name="label_log_level">רמת יומן</string>
+    <string name="label_log_newer_than">מ-</string>
+    <string name="label_log_older_than">עד</string>
+    <string name="label_log_message_contains">ההודעה מכילה</string>
     <string name="quest_buildingType_tent">אוהל</string>
     <string name="quest_buildingType_tower">מגדל</string>
     <string name="overlay_buildings">בניינים</string>
@@ -1158,6 +1174,13 @@
     <string name="quest_boat_rental_surfboard">גלשן</string>
     <string name="quest_boat_rental_sailboard">גלשן רוח</string>
     <string name="quest_boat_rental_yacht">יאכטה</string>
+    <string name="quest_dietType_explanation_glutenfree">הכנת מוצרים ללא גלוטן דורשת ידע, שכן תבלינים ורטבים נפוצים עלולים להכיל גלוטן. מזון ללא גלוטן יסומן במפורש ככזה.</string>
+    <string name="default_disabled_overlay_domain_expert">שכבת-על זו מושבתת כברירת מחדל מכיוון שעליך להיות מומחה בתחום כדי לתעד נתונים אלה במדויק.</string>
+    <string name="pref_title_overlays">בחירת שכבת-על</string>
+    <string name="pref_overlays_reset">לאפס את הפעלת שכבות-העל לברירת המחדל?</string>
+    <string name="overlay">שכבת-על</string>
+    <string name="enable_overlay_confirmation_title">להפעיל שכבת-על זו?</string>
+    <string name="link_transitous_description">ניתוב תחבורה ציבורית חינמי, בקוד פתוח ובלתי תלוי בספק</string>
     <string name="quest_streetName_add_language">הוסף שפה</string>
     <string name="quest_board_type_rules">חוקים</string>
 </resources>

@@ -270,7 +270,7 @@
 
     <string name="quest_selection_hint_title">Too much to do?</string>
     <string name="quest_selection_hint_message">Contributing should primarily be fun!\n\nIf you are overwhelmed by the number of quests, you can always fine-tune which quests are displayed to you and in what order in the settings.</string>
-
+    <string name="quest_selection_hint_message_open_settings">Open settings</string>
     <string name="weekly_osm_new_edition_title">New Edition!</string>
     <string name="calendar_new_event_title">New OSM event in your area!</string>
 
@@ -508,6 +508,7 @@
     <string name="link_backofyourhand_description">How well do you know your area? Test your knowledge by locating streets.</string>
     <string name="link_notesreview_description">Conveniently see, filter and comment on notes created by you and others. Many notes can be solved by putting the information contained in them on the map with iD or JOSM</string>
     <string name="link_transitous_description">Provider-neutral, free, and open-source public transport routing.</string>
+    <string name="link_waymarked_description">Shows marked paths for hiking, cycling, mtb, riding, skating and winter sports.</string>
 
     <!-- Achievement screen -->
 
@@ -900,7 +901,7 @@
     <string name="quest_buildingType_residential">Residential</string>
     <string name="quest_buildingType_residential_description">building where people live</string>
     <string name="quest_buildingType_house">House</string>
-    <string name="quest_buildingType_house_description2">non-detached single-family home, e.g. a single row house</string>
+    <string name="quest_buildingType_house_description2">non-detached single-family home</string>
     <string name="quest_buildingType_apartments">Apartment building</string>
     <string name="quest_buildingType_apartments_description">house for multiple families, may have retail outlets on the ground floor</string>
     <string name="quest_buildingType_detached">Detached house</string>
@@ -908,7 +909,9 @@
     <string name="quest_buildingType_semi_detached">Semi-detached house</string>
     <string name="quest_buildingType_semi_detached_description2">adjoined single-family home(s)</string>
     <string name="quest_buildingType_terrace2">Row houses</string>
+    <string name="quest_buildingType_terraced_house">Individual row house</string>
     <string name="quest_buildingType_terrace_description">a linear row of similar single-family homes</string>
+    <string name="quest_buildingType_terraced_house_description">an individual house in a row of similar houses</string>
     <string name="quest_buildingType_hotel">Hotel building</string>
     <string name="quest_buildingType_dormitory">Dormitory building</string>
     <string name="quest_buildingType_houseboat">Houseboat</string>
@@ -1541,7 +1544,7 @@
     <string name="quest_shop_gone_title">What’s here now instead?</string>
     <string name="quest_shop_gone_vacant_answer">It’s vacant…</string>
     <string name="quest_shop_gone_replaced_answer">A(n)…</string>
-    <string name="quest_shop_gone_replaced_answer_hint2">Type what you are looking for</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Type to search</string>
 
     <string name="quest_shower_hot_water_title">Is there hot water here?</string>
 
@@ -1864,6 +1867,7 @@
     <string name="lane_narrowing_traffic_calming_none">No narrowed lane here</string>
     <string name="quest_barrier_opening_width_gate">What is the width of the opening here?</string>
     <string name="quest_barrier_opening_width_bollard">What is the widest gap one can pass through here?</string>
+    <string name="quest_barrier_opening_not_wheelchair_accessible">Not suitable for wheelchairs</string>
 
     <!-- MTB = Mountainbike -->
     <string name="overlay_mtb_scale">MTB difficulty</string>

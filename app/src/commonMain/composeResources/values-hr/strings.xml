@@ -1506,4 +1506,10 @@ U suprotnom, možete preuzeti drugu tipkovnicu u trgovini aplikacija. Na Android
     <string name="unit_minute">minuti</string>
     <string name="quest_parking_charge_title">Koliko morate platiti za parkiranje ovdje?</string>
     <string name="quest_parking_charge_time_unit_label">po</string>
+    <string name="quest_generalAccess_title">Tko ovo može koristiti?</string>
+    <string name="quest_generalAccess_title2">Tko ovdje može ući?</string>
+    <string name="quest_generalAccess_title3">Tko može ovdje boraviti?</string>
+    <string name="quest_generalAccess_hint">Zanemarite sve naknade ili troškove. Pitanje plaćanja za pristup dolazi naknadno.</string>
+    <string name="quest_toiletsFee_fee_for_non_customers">Plaćaju samo osobe koje nisu klijenti</string>
+    <string name="quest_vending_machine_type">Koja je to vrsta samoposlužnog automata?</string>
 </resources>

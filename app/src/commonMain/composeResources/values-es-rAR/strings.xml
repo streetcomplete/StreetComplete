@@ -1484,4 +1484,22 @@ Por ejemplo 1,3 o 2b,4,6.</string>
 De lo contrario, podés descargar otro teclado en la tienda de aplicaciones. En Android, podés probar FlorisBoard o HeliBoard.</string>
     <string name="bicycle_boulevard_is_a2">Es una ciclovía</string>
     <string name="bicycle_boulevard_is_not_a2">No es una ciclovía</string>
+    <string name="camera_permission_description">Se necesita el permiso de la cámara para adjuntar fotos a las notas del mapa.</string>
+    <string name="resurvey_title">¿Esto sigue siendo correcto?</string>
+    <string name="add">Agregar</string>
+    <string name="quest_bothway_aerialway_confirm">¿Estás seguro de que se puede viajar en este medio de elevación en ambas direcciones?</string>
+    <string name="quest_doctor_type_title">¿Qué médicos atienden acá?</string>
+    <string name="quest_generalFee_title3">¿Tenés que pagar para quedarte acá?</string>
+    <string name="quest_access_permit">Titulares de un permiso (por lo general, fácil de obtener)</string>
+    <string name="unit_day">día</string>
+    <string name="unit_hour">hora</string>
+    <string name="unit_minute">minuto</string>
+    <string name="quest_parking_charge_title">¿Cuánto tenés que pagar para estacionar acá?</string>
+    <string name="quest_parking_charge_time_unit_label">por</string>
+    <string name="quest_generalAccess_title">¿Quién puede usar esto?</string>
+    <string name="quest_generalAccess_title2">¿Quién puede entrar acá?</string>
+    <string name="quest_generalAccess_title3">¿Quién puede quedarse acá?</string>
+    <string name="quest_generalAccess_hint">Ignorá cualquier tarifa o cargo. Si hay que pagar para acceder, se preguntará por separado.</string>
+    <string name="quest_toiletsFee_fee_for_non_customers">Solo deben pagar quienes no son clientes</string>
+    <string name="quest_vending_machine_type">¿Qué tipo de máquina expendedora es esta?</string>
 </resources>

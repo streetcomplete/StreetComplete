@@ -1506,4 +1506,11 @@ Ellers kan du downloade et andet tastatur fra appbutikken. På Android kan du ev
     <string name="unit_minute">minut</string>
     <string name="quest_parking_charge_title">Hvor meget skal man betale for at parkere her?</string>
     <string name="quest_parking_charge_time_unit_label">pr.</string>
+    <string name="quest_generalAccess_title">Hvem må bruge dette?</string>
+    <string name="quest_generalAccess_title2">Hvem har adgang her?</string>
+    <string name="quest_generalAccess_title3">Hvem må opholde sig her?</string>
+    <string name="quest_generalAccess_hint">Se bort fra eventuelle gebyrer eller afgifter. Om adgang kræver betaling, vil blive spurgt om særskilt.
+</string>
+    <string name="quest_toiletsFee_fee_for_non_customers">Kun ikke-kunder skal betale et gebyr</string>
+    <string name="quest_vending_machine_type">Hvilken type automat er dette?</string>
 </resources>

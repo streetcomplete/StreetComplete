@@ -349,16 +349,40 @@
             "value": "Kako bi se fotografije mogle priložiti bilješkama na karti, potrebno je dozvoliti pristup kameri."
           }
         },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你需要允許相機權限才能附加照片到地圖註記"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
             "value": "Щоб додавати фотографії до нотаток на мапі, потрібен дозвіл на доступ до камери."
           }
         },
+        "en-AU": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camera permission is needed to attach photos to map notes."
+          }
+        },
         "el": {
           "stringUnit": {
             "state": "translated",
             "value": "Χρειάζεται η άδεια της κάμερας για να επισυνάψετε φωτογραφίες στις σημειώσεις χάρτη."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sono richiesti i permessi della fotocamera per allegare foto alle note della mappa."
+          }
+        },
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotode lisamiseks kaardi märkmetele vajab rakendus kaamera kasutamise õigust."
           }
         },
         "fa": {
@@ -382,13 +406,25 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "L'autorisation d'accès à l'appareil photo est nécessaire pour joindre des photos aux notes."
+            "value": "L’autorisation d’accès à l’appareil photo est nécessaire pour joindre des photos aux notes."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kameratillstånd krävs för att kunna bifoga foton till kartanteckningar."
           }
         },
         "cs": {
           "stringUnit": {
             "state": "translated",
             "value": "K přidávání fotografií k mapovým poznámkám je potřeba oprávnění pro fotoaparát."
+          }
+        },
+        "es-AR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se necesita el permiso de la cámara para adjuntar fotos a las notas del mapa."
           }
         },
         "da": {

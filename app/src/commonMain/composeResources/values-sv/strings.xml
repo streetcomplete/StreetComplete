@@ -188,8 +188,8 @@ Om det inte finns några skyltar längs hela vägen som gäller för den markera
     <string name="quest_wheelchairAccess_limited_description_public_transport">Delvis innebär att det inte krävs mer än ett enda ankelhögt trappsteg för att komma åt det.</string>
     <string name="quest_recycling_type_title">Vilken typ av återvinningsstation är det här?</string>
     <string name="recycling_centre">Återvinningscentral</string>
-    <string name="overground_recycling_container">Godsbehållare</string>
-    <string name="underground_recycling_container">Underjordisk godsbehållare</string>
+    <string name="overground_recycling_container">Sopbehållare</string>
+    <string name="underground_recycling_container">Underjordisk sopbehållare</string>
     <string name="quest_streetName_answer_cantType">Bokstäverna på skylten kan inte skrivas</string>
     <string name="quest_streetName_cantType_title">Saknas tangentbordslayout?</string>
     <string name="quest_streetName_menuItem_nolanguage">(ospecificerad)</string>
@@ -1466,4 +1466,23 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="link_gomap_description">Avancerad OSM-redigerare för iOS</string>
     <string name="quest_place_vacant_type_title">Den här lokalen har stått tom. Vad finns här nu?</string>
     <string name="quest_surface_value_laterite">Laterit</string>
+    <string name="bicycle_boulevard_is_a2">Det är en cykelboulevard</string>
+    <string name="bicycle_boulevard_is_not_a2">Det är ingen cykelboulevard</string>
+    <string name="camera_permission_description">Kameratillstånd krävs för att kunna bifoga foton till kartanteckningar.</string>
+    <string name="resurvey_title">Stämmer det fortfarande?</string>
+    <string name="add">Lägg till</string>
+    <string name="quest_doctor_type_title">Vilka läkare finns här?</string>
+    <string name="quest_generalFee_title3">Måste man betala för att bo här?</string>
+    <string name="quest_access_permit">Innehavare av tillstånd (som i regel kan erhållas)</string>
+    <string name="unit_day">dag</string>
+    <string name="unit_hour">timme</string>
+    <string name="unit_minute">minut</string>
+    <string name="quest_parking_charge_title">Hur mycket kostar det att parkera här?</string>
+    <string name="quest_parking_charge_time_unit_label">per</string>
+    <string name="quest_generalAccess_title">Vem får använda detta?</string>
+    <string name="quest_generalAccess_title2">Vem får komma in här?</string>
+    <string name="quest_generalAccess_title3">Vem får bo här?</string>
+    <string name="quest_generalAccess_hint">Bortse från eventuella avgifter eller kostnader. Du kommer att få en separat fråga om huruvida åtkomsten kräver betalning.</string>
+    <string name="quest_toiletsFee_fee_for_non_customers">Endast icke-kunder måste betala en avgift</string>
+    <string name="quest_vending_machine_type">Vilken typ av automat är det här?</string>
 </resources>

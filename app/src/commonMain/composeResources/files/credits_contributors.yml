@@ -1,13 +1,18 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 620073
-  linesOfInterfaceMarkupChanged: 176983
-  assetFilesChanged: 2338
+  linesOfCodeChanged: 629141
+  linesOfInterfaceMarkupChanged: 177268
+  assetFilesChanged: 2354
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
   linesOfCodeChanged: 26789
   linesOfInterfaceMarkupChanged: 3788
   assetFilesChanged: 152
+- name: "Sargun Vohra"
+  githubUsername: "sargunv"
+  linesOfCodeChanged: 22730
+  linesOfInterfaceMarkupChanged: 103
+  assetFilesChanged: 12
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
   linesOfCodeChanged: 22353
@@ -40,9 +45,9 @@
   assetFilesChanged: 7
 - name: "arthedain"
   githubUsername: "paulklie"
-  linesOfCodeChanged: 3238
-  linesOfInterfaceMarkupChanged: 279
-  assetFilesChanged: 60
+  linesOfCodeChanged: 3296
+  linesOfInterfaceMarkupChanged: 380
+  assetFilesChanged: 62
 - name: "Krzysztof Zbudniewek"
   githubUsername: "neonowy"
   linesOfCodeChanged: 2626
@@ -79,7 +84,7 @@
   linesOfInterfaceMarkupChanged: 62
 - name: "Kai Michael Poppe"
   githubUsername: "kmpoppe"
-  linesOfCodeChanged: 987
+  linesOfCodeChanged: 1056
   linesOfInterfaceMarkupChanged: 869
   assetFilesChanged: 44
 - name: "David Dean"
@@ -93,7 +98,7 @@
   assetFilesChanged: 12
 - name: "Peter Newman"
   githubUsername: "peternewman"
-  linesOfCodeChanged: 911
+  linesOfCodeChanged: 912
 - name: "Lars Toenning"
   githubUsername: "ltoenning"
   linesOfCodeChanged: 860
@@ -110,9 +115,6 @@
 - name: "Krzysztof Krason"
   linesOfCodeChanged: 738
   assetFilesChanged: 22
-- name: "Sargun Vohra"
-  githubUsername: "sargunv"
-  linesOfCodeChanged: 695
 - name: "Katrina Knight"
   githubUsername: "GaeaKat"
   linesOfCodeChanged: 629
@@ -186,6 +188,11 @@
   githubUsername: "TacoTheDank"
   linesOfCodeChanged: 176
   linesOfInterfaceMarkupChanged: 131
+- name: "Amaan Qureshi"
+  githubUsername: "Amaanprobably"
+  linesOfCodeChanged: 175
+  linesOfInterfaceMarkupChanged: 322
+  assetFilesChanged: 6
 - name: "@RubenKelevra"
   githubUsername: "RubenKelevra"
   linesOfCodeChanged: 174
@@ -348,11 +355,6 @@
 - name: "ferdinand0101"
   githubUsername: "Giselle-MS"
   linesOfCodeChanged: 7
-- name: "Amaan Qureshi"
-  githubUsername: "Amaanprobably"
-  linesOfCodeChanged: 6
-  linesOfInterfaceMarkupChanged: 115
-  assetFilesChanged: 3
 - name: "CTJoriginal"
   githubUsername: "CTJoriginal"
   linesOfCodeChanged: 6

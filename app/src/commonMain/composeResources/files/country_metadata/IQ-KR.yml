@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Cihan Bank, RT Bank, Trade Bank of Iraq, ATM, Sulaymaniya, National Bank of Iraq, Duhok, هەژماری من, Soran, MyAccount, Erbil, BBAC]
+atmOperators: [Cihan Bank, RT Bank, RT Bank;National Bank of Iraq;Trade Bank of Iraq, Trade Bank of Iraq, ATM, Sulaymaniya, Duhok, هەژماری من, Soran, RT Bank;Trade Bank of Iraq, RT Bank;National Bank of Iraq, National Bank of Iraq, Erbil, Cihan Bank;RT Bank, Bank of Baghdad;Iraqi Islamic Bank, BBAC]
 chargingStationOperators: [KurdNeft]
 officialLanguages: [ku, ar]

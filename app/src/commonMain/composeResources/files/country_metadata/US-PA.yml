@@ -3,4 +3,4 @@ atmOperators: [PNC Bank, Wells Fargo, Bank of America, Citizens Bank, First Nati
 chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Tesla, Volta, Blink, Electrify America, EVgo, eVgo, FLO, Whole Foods, Tru by Hilton Chambersburg, SemaConnect, Jolt]
 clothesContainerOperators: [Planet Aid, Via of the Lehigh Valley, USAgain]
 defaultSpeedLimitHasUrbanOrRural: true
-parcelLockerBrand: [Amazon Hub, Amazon Locker, Amazon Hub Locker]
+parcelLockerBrand: [Amazon Locker, Amazon Hub, Amazon Hub Locker]
