@@ -91,7 +91,6 @@ import de.westnordost.streetcomplete.osm.updateCheckDate
 
                 val tags = HashMap<String, String>()
                 val builder = StringMapChangesBuilder(tags)
-                builder.updateCheckDate()
                 feature.applyTo(builder)
                 builder.create().applyTo(tags)
                 on(Edit(CreateNodeAction(geometry.center, tags)))

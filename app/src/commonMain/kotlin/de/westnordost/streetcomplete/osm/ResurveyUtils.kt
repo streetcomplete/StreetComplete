@@ -2,10 +2,13 @@ package de.westnordost.streetcomplete.osm
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.things.addCheckDateThing
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
+import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.datetime.LocalDate
 
 /** Returns all the known keys used for recording the date at which the tag with the given key
@@ -105,9 +108,20 @@ fun Tags.removeCheckDates() {
 }
 
 /** Check if an edited element should have a check_date added or updated and apply */
-fun Element.setCheckDates(changeBuilder: StringMapChangesBuilder) {
-    if (changeBuilder.hasChanges && (isPlaceOrDisusedPlace() || addCheckDateThing())) {
+fun updateMetadataResurvey(changeBuilder: StringMapChangesBuilder) {
+
+    //Log.d("ResurveyUtils", "Updating metadata for element $id. Current tags: $tags")
+    val dummy = Node(
+        0, tags = changeBuilder,
+        position = LatLon(0.0, 0.0),
+        version = 1,
+        timestampEdited = 1
+    )
+    if (dummy.isPlaceOrDisusedPlace() || dummy.addCheckDateThing()) {
         changeBuilder.updateCheckDate()
+    }
+    if (dummy.tags["fixme"] == "resurvey") {
+        changeBuilder.remove("fixme")
     }
 }
 

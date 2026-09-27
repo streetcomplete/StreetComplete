@@ -137,8 +137,6 @@ import kotlin.time.Duration.Companion.milliseconds
             newFeature.applyTo(tagChanges, originalFeature)
         }
 
-        tagChanges.updateCheckDate()
-
         if (!newFeature.hasFixedName) {
             // in this case name input was not even shown so newNames will be empty
             // newNames should not be applied as it will erase names provided by NSI

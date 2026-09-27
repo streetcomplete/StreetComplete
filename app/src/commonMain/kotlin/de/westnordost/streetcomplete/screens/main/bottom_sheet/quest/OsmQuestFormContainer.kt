@@ -32,6 +32,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.places.applyReplacePlaceTo
 import de.westnordost.streetcomplete.osm.places.getPlaceAsDisused
+import de.westnordost.streetcomplete.osm.updateMetadataResurvey
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.quests.shop_type.ShopType
 import de.westnordost.streetcomplete.quests.shop_type.ShopTypeAnswer
@@ -119,6 +120,7 @@ fun <T> OsmQuestFormContainer(
             is Answer<T> -> {
                 val changesBuilder = StringMapChangesBuilder(element.tags)
                 questType.applyAnswerTo(action.value, changesBuilder, geometry, element.timestampEdited)
+                updateMetadataResurvey(changesBuilder)
                 val changes = changesBuilder.create()
                 onEdit(UpdateElementTagsAction(element, changes))
             }
