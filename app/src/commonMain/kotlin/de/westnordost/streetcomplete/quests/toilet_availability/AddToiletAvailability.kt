@@ -25,6 +25,7 @@ class AddToiletAvailability : OsmFilterQuestType<Boolean>() {
             or leisure ~ bathing_place|marina
             or amenity = ranger_station
           )
+          and access !~ private|no
           and !toilets
     """
     override val changesetComment = "Survey toilet availabilities"

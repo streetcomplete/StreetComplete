@@ -44,6 +44,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
           )
           and takeaway != only
           and (!smoking or smoking older today -8 years)
+          and access !~ private|no
     """
     override val changesetComment = "Survey whether smoking is allowed or prohibited"
     override val wikiLink = "Key:smoking"

@@ -23,6 +23,7 @@ class AddCarWashType : OsmFilterQuestType<Set<CarWashType>>() {
         nodes, ways, relations with
           amenity = car_wash
           and !automated and !self_service
+          and access !~ private|no
     """
     override val changesetComment = "Specify car wash types"
     override val wikiLink = "Tag:amenity=car_wash"
