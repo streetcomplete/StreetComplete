@@ -57,20 +57,17 @@ import de.westnordost.streetcomplete.screens.main.map.BASE_STYLE
 import de.westnordost.streetcomplete.screens.main.map.CameraInspectionEffect
 import de.westnordost.streetcomplete.screens.main.map.MainMap
 import de.westnordost.streetcomplete.screens.main.map.MainMapContent
+import de.westnordost.streetcomplete.screens.main.map.MainMapTrackState
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.PinsMode
-import de.westnordost.streetcomplete.screens.main.map.crosshairPosition
+import de.westnordost.streetcomplete.screens.main.map.positionAtCenter
+import de.westnordost.streetcomplete.screens.main.map.toDpPadding
 import de.westnordost.streetcomplete.screens.main.map.getTrackBearing
 import de.westnordost.streetcomplete.screens.main.map.offsetInWindow
 import de.westnordost.streetcomplete.screens.main.map.rememberMainMapCameraState
-import de.westnordost.streetcomplete.screens.main.map.rememberMainMapTrackState
 import de.westnordost.streetcomplete.screens.main.map.toStreetCompleteBoundingBox
 import de.westnordost.streetcomplete.screens.main.messages.MessageDialog
-import de.westnordost.streetcomplete.screens.main.teammode.TeamModeWizard
-import de.westnordost.streetcomplete.screens.main.urlconfig.ApplyUrlConfigEffect
-import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialScreen
-import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialScreen
-import de.westnordost.streetcomplete.ui.common.AnimatedScreenVisibility
+import de.westnordost.streetcomplete.screens.main.urlconfig.ApplyUrlConfigDialog
 import de.westnordost.streetcomplete.ui.common.ToastPopup
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
@@ -106,11 +103,15 @@ import kotlin.time.Duration.Companion.milliseconds
 /** The map and its controls, forms, and sidebars. */
 @Composable
 fun MainScreen(
+    tracks: MainMapTrackState,
     onClickSettings: () -> Unit,
     onClickQuestSettings: () -> Unit,
     onClickAbout: () -> Unit,
     onClickProfile: () -> Unit,
     onClickLogin: () -> Unit,
+    onClickEnterTeamMode: () -> Unit,
+    onShowIntroTutorial: () -> Unit,
+    onShowOverlaysTutorial: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: MainViewModel = koinViewModel(),
     editHistoryViewModel: EditHistoryViewModel = koinViewModel(),
@@ -163,9 +164,6 @@ fun MainScreen(
     val geoUri by viewModel.geoUri.collectAsState()
 
     var confirmReplaceDownload by remember { mutableStateOf(false) }
-    var showOverlaysTutorial by remember { mutableStateOf(false) }
-    var showIntroTutorial by remember { mutableStateOf(false) }
-    var showTeamModeWizard by remember { mutableStateOf(false) }
     var showMainMenuDialog by remember { mutableStateOf(false) }
     var showLocationPermissionRationaleDialog by remember { mutableStateOf(false) }
     var showApplicationSettingsDialog by remember { mutableStateOf(false) }
@@ -182,7 +180,6 @@ fun MainScreen(
     var locationState by remember { mutableStateOf<LocationState?>(null) }
 
     val sheet = rememberMainSheetState(mainBottomSheetViewModel, editHistoryViewModel)
-    val tracks = rememberMainMapTrackState()
 
     val sheetSelection = sheet.selection
     val shownBottomSheet = sheet.shownBottomSheet
@@ -240,13 +237,7 @@ fun MainScreen(
     }
 
     val cameraState = rememberMainMapCameraState(mapState, viewModel.initiallyFollowing, viewModel.initiallyNavigating)
-    val mapCamera = mapState.cameraPosition
-    val viewport = mapState.viewport
-    val metersPerDp = remember(viewport, mapCamera) {
-        mapState.metersPerDpAtLatitude(mapCamera.target.latitude) ?: 0.0
-    }
-    val sheetPadding = Dimensions.getOpenQuestFormMapPadding(windowInfo)
-    val cameraPadding = cameraState.padding(sheetPadding)
+    val sheetPadding = Dimensions.getOpenQuestFormMapPadding(windowInfo).toDpPadding(layoutDirection)
     //endregion
 
     //region actions
@@ -255,10 +246,13 @@ fun MainScreen(
         mapState.offsetInWindow(position, mapPositionInWindow, density)
 
     fun getCrosshairPosition(): LatLon? =
-        mapState.crosshairPosition(sheetPadding, layoutDirection)
+        mapState.positionAtCenter(sheetPadding)
+
+    fun getMetersPerDp(): Double =
+        mapState.metersPerDpAtLatitude(mapState.cameraPosition.target.latitude) ?: 0.0
 
     fun ClickEvent.toMapClick(): MapClick? =
-        position?.let { MapClick(it.toLatLon(), screenOffset, clickAreaSizeInMeters = metersPerDp * 14) }
+        position?.let { MapClick(it.toLatLon(), screenOffset, clickAreaSizeInMeters = getMetersPerDp() * 14) }
 
     fun followPosition() {
         scope.launch {
@@ -417,17 +411,15 @@ fun MainScreen(
         }
     }
 
-    CameraInspectionEffect(cameraState, sheet, location?.position, tracks)
+    CameraInspectionEffect(cameraState, sheet, location?.position, tracks, sheetPadding)
 
     LaunchedEffect(selectedOverlay) {
         val selection = sheet.selection as? MainSheetSelection.Overlay
         if (selection != null && selection.name != selectedOverlay?.name) sheet.close()
     }
 
-    LaunchedEffect(viewModel.hasShownTutorial) {
-        if (!viewModel.hasShownTutorial && !isLoggedIn) {
-            showIntroTutorial = true
-        }
+    LaunchedEffect(Unit) {
+        if (!viewModel.hasShownTutorial && !isLoggedIn) onShowIntroTutorial()
     }
 
     LaunchedEffect(isTeamMode) {
@@ -462,7 +454,6 @@ fun MainScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .onGloballyPositioned { mapPositionInWindow = it.positionInWindow() },
-            cameraPadding = cameraPadding,
             onPan = { cameraState.onPan(location != null) },
             onRotate = { cameraState.onRotate(location != null) },
             onMapClick = { event ->
@@ -504,11 +495,9 @@ fun MainScreen(
 
                     overlays = overlays,
                     selectedOverlay = selectedOverlay,
-                    onSelectOverlay = { overlay ->
-                        viewModel.selectOverlay(overlay)
-                        if (!viewModel.hasShownOverlaysTutorial) {
-                            showOverlaysTutorial = true
-                        }
+                    onSelectOverlay = viewModel::selectOverlay,
+                    onShowOverlaysTutorial = onShowOverlaysTutorial.takeUnless {
+                        viewModel.hasShownOverlaysTutorial
                     },
 
                     shownUnsyncedEdits = if (!isAutoSync) unsyncedEditsCount else 0,
@@ -520,8 +509,8 @@ fun MainScreen(
                     onClickZoomOut = { zoomBy(-1.0) },
                     onZoomDrag = { zoomBy(it / 20.0) },
 
-                    mapRotation = mapCamera.bearing.toFloat(),
-                    mapTilt = mapCamera.tilt.toFloat(),
+                    mapRotation = { mapState.cameraPosition.bearing.toFloat() },
+                    mapTilt = { mapState.cameraPosition.tilt.toFloat() },
                     onClickCompass = { scope.launch { cameraState.resetCompass() } },
 
                     locationState = locationState,
@@ -540,12 +529,8 @@ fun MainScreen(
 
                     isCreateNodeEnabled = isCreateNodeEnabled,
                     onClickCreate = {
-                        if (mapCamera.zoom >= 17.0) {
-                            selectedOverlay?.let { overlay ->
-                                val position = getCrosshairPosition()
-                                sheet.show(MainSheetSelection.Overlay(overlay.name))
-                                position?.let { cameraState.preserveCrosshairPosition(it) }
-                            }
+                        if (mapState.cameraPosition.zoom >= 17.0) {
+                            selectedOverlay?.let { sheet.show(MainSheetSelection.Overlay(it.name)) }
                         } else {
                             showToast = Toast.DownloadAreaTooBig
                         }
@@ -555,7 +540,7 @@ fun MainScreen(
                     isUndoEnabled = !isUploadingOrDownloading,
                     onClickUndo = sheet::showEditHistory,
 
-                    metersPerDp = metersPerDp,
+                    metersPerDp = { getMetersPerDp() },
                 )
             },
         )
@@ -592,6 +577,7 @@ fun MainScreen(
         ) { content ->
             if (content != null) {
                 val (id, shownBottomSheet) = content
+                val mapCamera = mapState.cameraPosition
                 sheet.formStateHolder.SaveableStateProvider(id) {
                     MainBottomSheet(
                         onDismiss = sheet::close,
@@ -607,7 +593,7 @@ fun MainScreen(
                         mapRotation = mapCamera.bearing.toFloat(),
                         mapTilt = mapCamera.tilt.toFloat(),
                         mapPosition = getCrosshairPosition() ?: mapCamera.target.toLatLon(),
-                        mapMetersPerDp = metersPerDp,
+                        mapMetersPerDp = getMetersPerDp(),
                         onSetMapMarkers = { if (id == sheet.id) sheet.formMarkers = it?.toList() },
                         onSetMapOverlay = { if (id == sheet.id) sheet.formMapOverlay = it },
                         lastMapClick = sheet.lastMapClick,
@@ -682,7 +668,7 @@ fun MainScreen(
             onClickAbout = onClickAbout,
             onClickDownload = ::onClickDownload,
             onClickUpload = ::onClickUpload,
-            onClickEnterTeamMode = { showTeamModeWizard = true },
+            onClickEnterTeamMode = onClickEnterTeamMode,
             onClickExitTeamMode = { viewModel.disableTeamMode() },
             isLoggedIn = isLoggedIn,
             indexInTeam = if (isTeamMode) indexInTeam else null,
@@ -692,10 +678,11 @@ fun MainScreen(
     }
 
     urlConfig?.let { config ->
-        ApplyUrlConfigEffect(
-            urlConfig = config.urlConfig,
+        ApplyUrlConfigDialog(
+            presetName = config.urlConfig.presetName,
             presetNameAlreadyExists = config.alreadyExists,
-            onApplyUrlConfig = { viewModel.applyUrlConfig(it) }
+            onDismissRequest = viewModel::consumeUrlConfig,
+            onConfirmed = { viewModel.applyUrlConfig(config.urlConfig) },
         )
     }
 
@@ -720,37 +707,6 @@ fun MainScreen(
         )
     }
 
-    //endregion
-
-    //region full-screen dialogs
-
-    AnimatedScreenVisibility(showTeamModeWizard) {
-        val questIcons = remember { viewModel.allQuestTypes.map { it.icon } }
-        TeamModeWizard(
-            onDismissRequest = { showTeamModeWizard = false },
-            onFinished = { teamSize, indexInTeam ->
-                viewModel.enableTeamMode(
-                    teamSize = teamSize,
-                    indexInTeam = indexInTeam
-                )
-            },
-            allQuestIcons = questIcons
-        )
-    }
-
-    AnimatedScreenVisibility(showOverlaysTutorial) {
-        OverlaysTutorialScreen(
-            onDismissRequest = { showOverlaysTutorial = false },
-            onFinished = { viewModel.hasShownOverlaysTutorial = true }
-        )
-    }
-
-    AnimatedScreenVisibility(showIntroTutorial) {
-        IntroTutorialScreen(
-            onDismissRequest = { showIntroTutorial = false },
-            onFinished = { viewModel.hasShownTutorial = true },
-        )
-    }
     //endregion
 }
 

@@ -20,6 +20,7 @@ class AddFuelSelfService : OsmFilterQuestType<Boolean>() {
           amenity = fuel
           and !self_service
           and !automated
+          and access !~ private|no
     """
     override val changesetComment = "Survey whether fuel stations provide self-service"
     override val wikiLink = "Key:self_service"

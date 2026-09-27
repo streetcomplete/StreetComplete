@@ -21,6 +21,7 @@ class AddCabins : OsmFilterQuestType<Boolean>() {
           tourism ~ caravan_site|camp_site
           and !cabins
           and !backcountry
+          and access !~ private|no
     """
     override val changesetComment = "Survey whether this site has cabins"
     override val wikiLink = "Key:cabins"

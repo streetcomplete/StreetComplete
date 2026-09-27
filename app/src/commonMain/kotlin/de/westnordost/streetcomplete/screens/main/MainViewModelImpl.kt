@@ -156,6 +156,10 @@ class MainViewModelImpl(
 
     override val urlConfig = MutableStateFlow<ShownUrlConfig?>(null)
 
+    override fun consumeUrlConfig() {
+        urlConfig.value = null
+    }
+
     override fun applyUrlConfig(config: UrlConfig) {
         launch(Dispatchers.IO) {
             urlConfigController.apply(config)

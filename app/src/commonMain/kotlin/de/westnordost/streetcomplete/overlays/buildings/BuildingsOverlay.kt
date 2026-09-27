@@ -91,7 +91,7 @@ class BuildingsOverlay : Overlay {
             OverlayColor.Blue
 
         // ~non-detached homes
-        HOUSE, DORMITORY, APARTMENTS, TERRACE, -> // 52%
+        HOUSE, DORMITORY, APARTMENTS, TERRACE, TERRACED_HOUSE -> // 52%
             OverlayColor.Sky
 
         // unspecified residential
