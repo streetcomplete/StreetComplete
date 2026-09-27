@@ -29,6 +29,7 @@ class AddCampShower : OsmFilterQuestType<Boolean>() {
             !shower
             or shower older today -4 years and shower ~ yes|no
           )
+          and access !~ private|no
     """
     override val changesetComment = "Specify whether there are showers available"
     override val wikiLink = "Key:shower"
