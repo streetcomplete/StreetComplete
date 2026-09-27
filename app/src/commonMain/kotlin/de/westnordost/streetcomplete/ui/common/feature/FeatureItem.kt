@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.LocalAppLocale
 import de.westnordost.streetcomplete.ui.common.feature.buildAnnotatedName
 import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
 
@@ -41,7 +42,7 @@ fun FeatureItem(
     iconSize: Dp = 45.dp // preset icons are 15x15, so this is 3x
 ) {
     val color = LocalContentColor.current
-    val languages = remember { getLanguagesForFeatureDictionary() }
+    val languages = remember(LocalAppLocale.current) { getLanguagesForFeatureDictionary() }
     val parentFeature = if (feature.isSuggestion) {
         featureDictionary.getParentOfById(
             id = feature.id,
