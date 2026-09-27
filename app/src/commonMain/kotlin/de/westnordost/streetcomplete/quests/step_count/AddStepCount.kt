@@ -27,7 +27,6 @@ class AddStepCount : OsmFilterQuestType<Int>() {
           and access !~ private|no
           and !step_count
           and !steps
-          and !flat_steps
     """
     override val changesetComment = "Specify step counts"
     override val wikiLink = "Key:step_count"

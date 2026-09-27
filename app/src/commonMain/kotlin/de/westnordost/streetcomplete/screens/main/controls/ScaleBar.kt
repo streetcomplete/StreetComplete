@@ -33,7 +33,7 @@ import org.maplibre.compose.overlay.ScaleBarMeasures
  */
 @Composable
 fun ScaleBar(
-    metersPerDp: Double,
+    metersPerDp: () -> Double,
     modifier: Modifier = Modifier,
     measures: ScaleBarMeasures = ScaleBarDefaults.measures(),
     haloColor: Color = MaterialTheme.colors.surface,
