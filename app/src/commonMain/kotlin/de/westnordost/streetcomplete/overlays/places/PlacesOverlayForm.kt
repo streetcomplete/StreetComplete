@@ -46,6 +46,7 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import kotlin.time.Duration.Companion.milliseconds
+import de.westnordost.streetcomplete.osm.updateCheckDate
 
 @Composable fun PlacesOverlayForm(
     on: (OverlayAction) -> Unit,
@@ -136,6 +137,8 @@ import kotlin.time.Duration.Companion.milliseconds
         } else {
             newFeature.applyTo(tagChanges, originalFeature)
         }
+
+        tagChanges.updateCheckDate()
 
         if (!newFeature.hasFixedName) {
             // in this case name input was not even shown so newNames will be empty
