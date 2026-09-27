@@ -8,7 +8,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import de.westnordost.streetcomplete.App
+import de.westnordost.streetcomplete.AppLocaleUpdater
 import de.westnordost.streetcomplete.AppViewModel
+import org.koin.android.ext.android.inject
 import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.compose.scope.KoinActivityScope
 import org.koin.androidx.scope.activityScope
@@ -19,8 +21,10 @@ import org.koin.core.scope.Scope
 class MainActivity : ComponentActivity(), AndroidScopeComponent {
     override val scope: Scope by activityScope()
     private val viewModel: AppViewModel by viewModel()
+    private val appLocaleUpdater: AppLocaleUpdater by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        appLocaleUpdater.update()
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) handleIntent(intent)
@@ -34,6 +38,12 @@ class MainActivity : ComponentActivity(), AndroidScopeComponent {
                 )
             }
         }
+    }
+
+    override fun onResume() {
+        // Android can reset the default locales without another Application configuration callback.
+        appLocaleUpdater.update()
+        super.onResume()
     }
 
     override fun onNewIntent(intent: Intent) {
