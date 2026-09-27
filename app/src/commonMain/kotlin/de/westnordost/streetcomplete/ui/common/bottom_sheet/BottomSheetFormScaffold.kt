@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
@@ -46,7 +47,11 @@ fun BottomSheetFormScaffold(
 ) {
     val windowInfo = LocalWindowInfo.current
 
-    Box(modifier = modifier.sizeIn(maxWidth = Dimensions.getMaxQuestFormWidth(windowInfo))) {
+    // Keep the sheet's drag bounds above the keyboard, including when collapsed.
+    Box(modifier = modifier
+        .imePadding()
+        .sizeIn(maxWidth = Dimensions.getMaxQuestFormWidth(windowInfo))
+    ) {
         BottomSheet(
             initialState = initialState,
             peekHeight = peekHeight

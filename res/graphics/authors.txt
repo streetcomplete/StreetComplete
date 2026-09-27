@@ -111,6 +111,7 @@ building/
     bunker.svg
     car.svg                     modified from Twemoji: U+1F698
     carport.svg                 parts taken from Twemoji: U+1F698
+    cathedral.svg               Amaan Qureshi, License: CC-BY-SA 4.0
     civic.svg
     college.svg
     detached.svg
@@ -150,6 +151,7 @@ building/
     storage_tank.svg
     temple.svg
     terrace.svg
+    terraced_house.svg          Amaan Qureshi, modified terrace.svg, License: CC-BY-SA 4.0
     toilets.svg
     train_station.svg           modified from Twemoji: U+1F689
     transportation.svg          modified from Twemoji: U+1F68D

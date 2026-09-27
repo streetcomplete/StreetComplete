@@ -173,6 +173,11 @@ import de.westnordost.streetcomplete.screens.main.MainViewModel
 import de.westnordost.streetcomplete.screens.main.MainViewModelImpl
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModelImpl
+import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
+import de.westnordost.streetcomplete.screens.main.map.MainMapViewModelImpl
+import de.westnordost.streetcomplete.screens.main.map.sources.EditHistoryPinsSource
+import de.westnordost.streetcomplete.screens.main.map.sources.MapQuestPinsSource
+import de.westnordost.streetcomplete.screens.main.map.sources.StyleableOverlaySource
 import de.westnordost.streetcomplete.screens.settings.SettingsViewModel
 import de.westnordost.streetcomplete.screens.settings.SettingsViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsViewModel
@@ -225,10 +230,12 @@ val OSM_API_URL = if (USE_TEST_API) OSM_API_URL_TEST else OSM_API_URL_LIVE
 private const val STATISTICS_BACKEND_URL = "https://streetcomplete.app/statistics/"
 
 val commonModule = module {
+    viewModel { AppViewModel(get(), get()) }
+    single { AppLocaleUpdater(get()) }
 
     //region basic configuration
 
-    factory { ApplicationInitializer(get(), get(), get(), get(), get(), get(), get()) }
+    factory { ApplicationInitializer(get(), get(), get(), get(), get(), get(), get(), get()) }
 
     single { HttpClient {
         defaultRequest {
@@ -453,8 +460,8 @@ val commonModule = module {
         lazy { get<FeatureDictionary>() }
     }
 
-    single { SurveyChecker() }
-    single { CurrentSeason }
+    single { SurveyChecker(get()) }
+    single { CurrentSeason(get()) }
 
     //endregion
 
@@ -602,8 +609,15 @@ val commonModule = module {
         EditHistoryViewModelImpl(get(), get())
     }
 
+    viewModel<MainMapViewModel> {
+        MainMapViewModelImpl(get(), get(), get(), get())
+    }
+    factory { MapQuestPinsSource(get(), get(), get()) }
+    factory { EditHistoryPinsSource(get()) }
+    factory { StyleableOverlaySource(get(), get()) }
+
     viewModel<MainBottomSheetViewModel> {
-        MainBottomSheetViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get())
+        MainBottomSheetViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(named("FeatureDictionaryLazy")))
     }
 
     viewModel<ArMeasureViewModel> { ArMeasureViewModelImpl(get(), get()) }

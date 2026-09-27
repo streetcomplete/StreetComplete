@@ -1,17 +1,37 @@
 package de.westnordost.streetcomplete.data.location
 
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.datetime.Month
 import kotlin.time.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.todayIn
 import kotlinx.datetime.number
+import org.maplibre.compose.location.LocationProvider
+import de.westnordost.streetcomplete.util.ktx.toLocation
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
+import org.maplibre.compose.location.LocationEvent
 
 /**
  * Provides the season in the users hemisphere and timezone.
  * The implementation is split into multiple functions to allow for easier testing.
  * The season is updated every time a new location is added.
  * */
-object CurrentSeason {
+class CurrentSeason(
+    private val locationProvider: LocationProvider,
+) {
+    private val coroutineScope = CoroutineScope(SupervisorJob() + CoroutineName("SurveyChecker"))
+
+    init {
+        coroutineScope.launch {
+            locationProvider.updates().collect { locationEvent ->
+                if (locationEvent is LocationEvent.Update) {
+                    addRecentLocation(locationEvent.measurement.toLocation())
+                }
+            }
+        }
+    }
 
     var season: String = "unknown"
 
@@ -20,10 +40,10 @@ object CurrentSeason {
         updateSeason(southernHemisphere, Clock.System.todayIn(TimeZone.currentSystemDefault()).month)
     }
 
-    val getCurrentSeason: String
-        get() {
-            return season
-        }
+    fun getCurrentSeason() : String
+    {
+        return season
+    }
 
     fun updateSeason(southernHemisphere: Boolean, month: Month) {
         season = when (month.number) {

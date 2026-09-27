@@ -18,7 +18,7 @@ class AddGritBinSeasonal : OsmFilterQuestType<Boolean>() {
         nodes with
           amenity = grit_bin
           and !seasonal
-          and season = summer
+          and __season__ = summer
     """
     override val changesetComment = "Specify whether grit bins are seasonal"
     override val wikiLink = "Key:seasonal"

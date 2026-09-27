@@ -265,7 +265,7 @@ private fun StringWithCursor.parseElementFilter(): ElementFilter {
         var value = parseTag()
         if(value == "__season__")
         {
-            value = getCurrentSeason
+            value = getCurrentSeason()
         }
         when (operator) {
             EQUALS       -> return HasTag(key, value)
