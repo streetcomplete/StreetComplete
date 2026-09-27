@@ -14,8 +14,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 25
         targetSdk = 37
-        versionCode = 6308
-        versionName = "64.0-alpha1"
+        versionCode = 6400
+        versionName = "64.0-alpha2"
 
         // no x86: the MapLibre Compose runtime has no x86 build, and other native libraries must
         // not make the app installable where the map cannot run
@@ -69,9 +69,9 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.13.0")
 
     // Compose
-    implementation("org.jetbrains.compose.runtime:runtime:1.12.0")
-    implementation("org.jetbrains.compose.ui:ui:1.12.0")
-    debugImplementation("androidx.compose.ui:ui-tooling:1.10.0")
+    implementation("org.jetbrains.compose.runtime:runtime:1.12.1")
+    implementation("org.jetbrains.compose.ui:ui:1.12.1")
+    debugImplementation("androidx.compose.ui:ui-tooling:1.12.1")
 
     // Dependency Injection
     implementation("io.insert-koin:koin-android:4.2.2")
