@@ -31,6 +31,10 @@ fun BuildingType.applyTo(tags: Tags) {
         tags["building"] = "yes"
     }
 
+    if (this == TERRACED_HOUSE){
+        tags["building"] = "house"
+    }
+
     tags[osmKey] = osmValue
 
     // we set the check date and not check_date:building because this is about the primary feature,
