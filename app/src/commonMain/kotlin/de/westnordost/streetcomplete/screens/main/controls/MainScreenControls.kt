@@ -1,20 +1,20 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
@@ -27,22 +27,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.layout.boundsInRoot
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.overlays.Overlay
-import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionDropdownMenu
 import de.westnordost.streetcomplete.ui.common.LargeCreateIcon
 import de.westnordost.streetcomplete.ui.common.StopRecordingIcon
 import de.westnordost.streetcomplete.ui.common.UndoIcon
-import de.westnordost.streetcomplete.ui.ktx.pxToDp
-import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.resources.stringResource
-import kotlin.math.PI
 
 /** Map controls shown on top of the map, a.k.a. the map HUD */
 @Composable
@@ -79,13 +69,11 @@ fun MainScreenControls(
     mapTilt: Float,
     onClickCompass: () -> Unit,
 
-    // location button & pointer
+    // location button
     locationState: LocationState?,
     isNavigationMode: Boolean,
     isFollowingPosition: Boolean,
-    displayedLocationOffset: Offset?,
     onClickLocation: () -> Unit,
-    onClickLocationPointer: () -> Unit,
 
     // (stop) record track button
     isRecordingTracks: Boolean,
@@ -103,22 +91,9 @@ fun MainScreenControls(
     // scale bar
     metersPerDp: Double,
 
-    // attribution button
-    userHasMovedMap: Boolean,
-
     modifier: Modifier = Modifier,
 ) {
-    val mapAttribution = listOf(
-        AttributionLink(stringResource(Res.string.map_attribution_osm), "https://osm.org/copyright"),
-        AttributionLink("© JawgMaps", "https://jawg.io")
-    )
-
     var showOverlaysDropdown by remember { mutableStateOf(false) }
-
-    var screen by remember { mutableStateOf<Rect?>(null) }
-    val intersection = remember(displayedLocationOffset, screen) {
-        findEllipsisIntersection(screen, displayedLocationOffset)
-    }
 
     // color for HUD elements without a background (e.g. scalebar, attribution button)
     CompositionLocalProvider(LocalContentColor provides MaterialTheme.colors.onSurface) {
@@ -129,19 +104,9 @@ fun MainScreenControls(
                 Crosshair()
             }
 
-            intersection?.let { (offset, angle) ->
-                val rotation = angle * 180 / PI
-                PointerPinButton(
-                    onClick = onClickLocationPointer,
-                    rotate = rotation.toFloat(),
-                    modifier = Modifier.absoluteOffset(offset.x.pxToDp(), offset.y.pxToDp()),
-                ) { Image(painterResource(Res.drawable.location_dot_small), null) }
-            }
-
             Box(Modifier
                 .fillMaxSize()
                 .windowInsetsPadding(WindowInsets.safeDrawing)
-                .onGloballyPositioned { screen = it.boundsInRoot() }
             ) {
 
                 // top-start controls
@@ -271,20 +236,21 @@ fun MainScreenControls(
                         }
                     }
 
-                    Box(Modifier.fillMaxWidth().padding(4.dp)) {
-                        AttributionButton(
-                            userHasMovedMap = userHasMovedMap,
-                            attributions = mapAttribution,
-                            modifier = Modifier.align(Alignment.TopStart),
-                            popupElevation = 4.dp,
-                            textLinkStyles = TextLinkStyles()
-                        )
+                    // Expanded attribution can cover the scale bar and grow upwards over the map.
+                    Box(
+                        modifier = Modifier.fillMaxWidth().padding(4.dp).height(48.dp),
+                    ) {
                         ScaleBar(
                             metersPerDp = metersPerDp,
                             modifier = Modifier
                                 .align(Alignment.CenterEnd)
                                 .padding(horizontal = 12.dp),
                             alignment = Alignment.End,
+                        )
+                        AttributionButton(
+                            modifier = Modifier
+                                .align(Alignment.BottomStart)
+                                .wrapContentHeight(Alignment.Bottom, unbounded = true)
                         )
                     }
                 }

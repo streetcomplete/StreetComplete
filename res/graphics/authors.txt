@@ -111,6 +111,7 @@ building/
     bunker.svg
     car.svg                     modified from Twemoji: U+1F698
     carport.svg                 parts taken from Twemoji: U+1F698
+    cathedral.svg               Amaan Qureshi, License: CC-BY-SA 4.0
     civic.svg
     college.svg
     detached.svg

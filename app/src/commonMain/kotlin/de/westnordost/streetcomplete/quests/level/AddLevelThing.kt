@@ -22,7 +22,11 @@ class AddLevelThing : OsmElementQuestType<String> {
 
     /* only nodes because ways/relations are not likely to be floating around freely in a mall
      * outline */
-    private val filter by lazy { "nodes with !level".toElementFilterExpression() }
+    private val filter by lazy { """
+        nodes with
+          !level
+          and (!location or location = indoor)
+    """.toElementFilterExpression() }
 
     /* including any kind of public transport station because even really large bus stations feel
      * like small airport terminals, like Mo Chit 2 in Bangkok*/
@@ -44,8 +48,9 @@ class AddLevelThing : OsmElementQuestType<String> {
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // get geometry of all malls in the area
         val mallGeometries = mapData
-            .filter { mallFilter.matches(it) }
+            .filter(mallFilter)
             .mapNotNull { mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry }
+            .toList()
         if (mallGeometries.isEmpty()) return emptyList()
 
         val multiLevelMallGeometries = getMultiLevelMallGeometries(mallGeometries, mapData)

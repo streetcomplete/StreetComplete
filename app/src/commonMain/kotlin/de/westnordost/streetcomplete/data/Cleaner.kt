@@ -47,6 +47,8 @@ class Cleaner(
             if (deleted < MAX_DELETE_ELEMENTS) break
         }
         ensureActive()
+        mapTilesDownloader.deleteOld(oldDataTimestamp)
+        ensureActive()
         downloadedTilesController.deleteOlderThan(oldDataTimestamp)
         // do this after cleaning map data and notes, because some metadata rely on map data
         questTypeRegistry.forEach {
