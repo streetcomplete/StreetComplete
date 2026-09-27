@@ -15,8 +15,6 @@ import org.koin.compose.viewmodel.koinViewModel
 fun App(
     uri: String?,
     onConsumedUri: () -> Unit,
-    openSettings: Boolean = false,
-    onConsumedSettingsRequest: () -> Unit = {},
     viewModel: AppViewModel = koinViewModel(),
 ) {
     val theme by viewModel.theme.collectAsState()
@@ -25,7 +23,7 @@ fun App(
     AppEnvironment(locale, theme, keepScreenOn) {
         AppTheme(theme.isDark) {
             Surface {
-                MainNavHost(uri, onConsumedUri, openSettings, onConsumedSettingsRequest)
+                MainNavHost(uri, onConsumedUri)
             }
         }
     }

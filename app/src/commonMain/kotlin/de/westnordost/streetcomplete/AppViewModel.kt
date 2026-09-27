@@ -12,7 +12,6 @@ class AppViewModel(prefs: Preferences, private val savedState: SavedStateHandle)
     val keepScreenOn = MutableStateFlow(prefs.keepScreenOn)
 
     val pendingUri = savedState.getStateFlow<String?>("uri", null)
-    val openSettings = savedState.getStateFlow("settings", false)
 
     private val listeners = listOf(
         prefs.onThemeChanged { theme.value = it },
@@ -21,9 +20,7 @@ class AppViewModel(prefs: Preferences, private val savedState: SavedStateHandle)
     )
 
     fun openUri(uri: String) { savedState["uri"] = uri }
-    fun showSettings() { savedState["settings"] = true }
     fun consumeUri() { savedState["uri"] = null }
-    fun consumeSettingsRequest() { savedState["settings"] = false }
 
     override fun onCleared() { listeners.forEach { it.deactivate() } }
 }

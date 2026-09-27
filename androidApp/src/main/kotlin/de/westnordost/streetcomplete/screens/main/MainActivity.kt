@@ -27,12 +27,9 @@ class MainActivity : ComponentActivity(), AndroidScopeComponent {
         setContent {
             KoinActivityScope {
                 val uri by viewModel.pendingUri.collectAsState()
-                val openSettings by viewModel.openSettings.collectAsState()
                 App(
                     uri = uri,
                     onConsumedUri = viewModel::consumeUri,
-                    openSettings = openSettings,
-                    onConsumedSettingsRequest = viewModel::consumeSettingsRequest,
                     viewModel = viewModel,
                 )
             }
@@ -45,9 +42,8 @@ class MainActivity : ComponentActivity(), AndroidScopeComponent {
     }
 
     private fun handleIntent(intent: Intent) {
-        when (intent.action) {
-            Intent.ACTION_VIEW -> intent.data?.toString()?.let(viewModel::openUri)
-            Intent.ACTION_MANAGE_NETWORK_USAGE -> viewModel.showSettings()
+        if (intent.action == Intent.ACTION_VIEW) {
+            intent.data?.toString()?.let(viewModel::openUri)
         }
     }
 }

@@ -37,8 +37,6 @@ import org.koin.compose.viewmodel.koinViewModel
 fun MainNavHost(
     uri: String?,
     onConsumedUri: () -> Unit,
-    openSettings: Boolean,
-    onConsumedSettingsRequest: () -> Unit,
 ) {
     val navController = rememberNavController()
     // Navigation keeps the full tracks; restoring the app uses the bounded saved copy.
@@ -103,18 +101,11 @@ fun MainNavHost(
         userScreen(onClickBack = { navController.popBackStack() })
     }
 
-    LaunchedEffect(uri, openSettings) {
+    LaunchedEffect(uri) {
         uri?.let {
             navController.popBackStack(MainDestination.Main, inclusive = false)
             mainViewModel.setUri(it)
             onConsumedUri()
-        }
-        if (openSettings) {
-            navController.navigate(SettingsDestination.Settings) {
-                popUpTo(MainDestination.Main)
-                launchSingleTop = true
-            }
-            onConsumedSettingsRequest()
         }
     }
 }
