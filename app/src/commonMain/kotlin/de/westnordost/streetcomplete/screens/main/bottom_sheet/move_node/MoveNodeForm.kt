@@ -17,9 +17,6 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.center
 import androidx.compose.ui.unit.dp
-import androidx.navigationevent.NavigationEventInfo
-import androidx.navigationevent.compose.NavigationBackHandler
-import androidx.navigationevent.compose.rememberNavigationEventState
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.data.meta.get
@@ -27,6 +24,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
+import de.westnordost.streetcomplete.ui.common.NonPredictiveBackHandler
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
 import de.westnordost.streetcomplete.ui.common.quest.OnMap
@@ -67,16 +65,13 @@ fun MoveNodeForm(
 
     var confirmDiscard by remember { mutableStateOf(false) }
 
-    NavigationBackHandler(
-        state = rememberNavigationEventState(NavigationEventInfo.None),
-        onBackCompleted = {
-            if (mapPosition != node.position) {
-                confirmDiscard = true
-            } else {
-                onDismiss()
-            }
+    NonPredictiveBackHandler {
+        if (mapPosition != node.position) {
+            confirmDiscard = true
+        } else {
+            onDismiss()
         }
-    )
+    }
     // an arrow from the node to the crosshair, i.e. to where it would be moved
     OnMap {
         val mapState = checkNotNull(LocalMapState.current)

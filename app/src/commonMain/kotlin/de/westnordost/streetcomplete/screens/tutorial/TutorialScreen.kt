@@ -29,9 +29,7 @@ import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.navigationevent.NavigationEventInfo
-import androidx.navigationevent.compose.NavigationBackHandler
-import androidx.navigationevent.compose.rememberNavigationEventState
+import de.westnordost.streetcomplete.ui.common.NonPredictiveBackHandler
 import kotlinx.coroutines.launch
 
 /** Generic multiple-page tutorial screen */
@@ -48,18 +46,15 @@ fun TutorialScreen(
 ) {
     val state = rememberPagerState { pageCount }
     val scope = rememberCoroutineScope()
-    NavigationBackHandler(
-        state = rememberNavigationEventState(NavigationEventInfo.None),
-        onBackCompleted = {
-            if (state.currentPage > 0) {
-                scope.launch {
-                    state.animateScrollToPage(state.currentPage - 1)
-                }
-            } else if (dismissOnBackPress) {
-                onDismissRequest()
+    NonPredictiveBackHandler {
+        if (state.currentPage > 0) {
+            scope.launch {
+                state.animateScrollToPage(state.currentPage - 1)
             }
+        } else if (dismissOnBackPress) {
+            onDismissRequest()
         }
-    )
+    }
     LaunchedEffect(state.currentPage) {
         onPageChanged(state.currentPage)
     }

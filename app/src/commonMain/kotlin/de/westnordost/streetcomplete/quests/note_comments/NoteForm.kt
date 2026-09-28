@@ -24,12 +24,10 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import androidx.navigationevent.NavigationEventInfo
-import androidx.navigationevent.compose.NavigationBackHandler
-import androidx.navigationevent.compose.rememberNavigationEventState
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.rememberTrackpointsPainter
+import de.westnordost.streetcomplete.ui.common.NonPredictiveBackHandler
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
 import de.westnordost.streetcomplete.ui.util.photo.compressPhotoAndOverwrite
 import de.westnordost.streetcomplete.ui.util.photo.createOpenCameraSettings
@@ -87,16 +85,13 @@ fun NoteForm(
         onDismiss()
     }
 
-    NavigationBackHandler(
-        state = rememberNavigationEventState(NavigationEventInfo.None),
-        onBackCompleted = {
-            if (hasChanges) {
-                confirmDiscard = true
-            } else {
-                onDiscard()
-            }
+    NonPredictiveBackHandler {
+        if (hasChanges) {
+            confirmDiscard = true
+        } else {
+            onDiscard()
         }
-    )
+    }
 
     Column(
         modifier = modifier,

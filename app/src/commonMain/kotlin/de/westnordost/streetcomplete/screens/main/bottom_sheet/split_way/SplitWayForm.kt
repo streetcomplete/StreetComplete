@@ -24,9 +24,6 @@ import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.dp
-import androidx.navigationevent.NavigationEventInfo
-import androidx.navigationevent.compose.NavigationBackHandler
-import androidx.navigationevent.compose.rememberNavigationEventState
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
@@ -37,6 +34,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.scissorsPainter
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
+import de.westnordost.streetcomplete.ui.common.NonPredictiveBackHandler
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
@@ -118,16 +116,13 @@ fun SplitWayForm(
         )
     }
 
-    NavigationBackHandler(
-        state = rememberNavigationEventState(NavigationEventInfo.None),
-        onBackCompleted = {
-            if (hasChanges) {
-                confirmDiscard = true
-            } else {
-                onDismiss()
-            }
+    NonPredictiveBackHandler {
+        if (hasChanges) {
+            confirmDiscard = true
+        } else {
+            onDismiss()
         }
-    )
+    }
 
     if (scissorsPosition != null) {
         OnMap {

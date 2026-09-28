@@ -34,9 +34,6 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import androidx.navigationevent.NavigationEventInfo
-import androidx.navigationevent.compose.NavigationBackHandler
-import androidx.navigationevent.compose.rememberNavigationEventState
 import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
@@ -47,6 +44,7 @@ import de.westnordost.streetcomplete.osm.street_parking.painter
 import de.westnordost.streetcomplete.osm.street_parking.title
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
+import de.westnordost.streetcomplete.ui.common.NonPredictiveBackHandler
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.item_select.ItemSelectGrid
 import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
@@ -85,13 +83,9 @@ fun StreetParkingSelectionDialog(
         onDismissRequest = onDismissRequest,
         properties = properties
     ) {
-        NavigationBackHandler(
-            state = rememberNavigationEventState(NavigationEventInfo.None),
-            isBackEnabled = parkingOrientation != null,
-            onBackCompleted = {
-                parkingOrientation = null
-            }
-        )
+        NonPredictiveBackHandler(isBackEnabled = parkingOrientation != null) {
+            parkingOrientation = null
+        }
 
         Surface(
             modifier = modifier,

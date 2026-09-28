@@ -35,12 +35,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.unit.dp
-import androidx.navigationevent.NavigationEventInfo
-import androidx.navigationevent.compose.NavigationBackHandler
-import androidx.navigationevent.compose.rememberNavigationEventState
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.NonPredictiveBackHandler
 import de.westnordost.streetcomplete.ui.common.ToastPopup
 import de.westnordost.streetcomplete.ui.ktx.isItemAtIndexFullyVisible
 import de.westnordost.streetcomplete.ui.ktx.plus
@@ -89,12 +87,9 @@ fun EditHistorySidebar(
     }
 
     // close on back
-    NavigationBackHandler(
-        state = rememberNavigationEventState(NavigationEventInfo.None),
-        onBackCompleted = {
-            onDismissRequest()
-        }
-    )
+    NonPredictiveBackHandler {
+        onDismissRequest()
+    }
 
     fun onClickUndoEdit(edit: Edit) {
         if (edit.isUndoable) {
