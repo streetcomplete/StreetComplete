@@ -36,7 +36,7 @@ But this is not all! @sargunv also took the last remaining steps for a fully wor
 - Parking charge: Also ask when there's not always a fee (#7133)
 - Keyboard would sometimes obscure the quest form (#7107), by @sargunv
 - Fix several small issues related to the map (#7152, #7108), by @sargunv
-- Small visual fixes (#7132, #7130)
+- Small visual fixes (#7132, #7130, #7176)
 
 ## v64.0-alpha1
 

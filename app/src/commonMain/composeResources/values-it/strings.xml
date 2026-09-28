@@ -752,7 +752,7 @@ Se invece qualche corsia è riservata ai bus per favore lascia un commento.</str
     <string name="quest_surface_value_clay">Argilla</string>
     <string name="quest_surface_value_artificial_turf">Erba sintetica</string>
     <string name="quest_bicycle_parking_fee_title">Si paga per parcheggiare la bici qui?</string>
-    <string name="quest_buildingType_house_description2">casa unifamiliare non indipendente, per esempio una casa a schiera</string>
+    <string name="quest_buildingType_house_description2">casa unifamiliare non indipendente</string>
     <string name="quest_drinking_water_potable_signed">È sicura da bere (è scritto così)</string>
     <string name="quest_drinking_water_not_potable_signed">Non sicura da bere (è scritto così)</string>
     <string name="quest_postboxRoyalCypher_title">Quale monogramma reale è presente su questa cassetta postale?</string>

@@ -754,7 +754,7 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku.</str
     <string name="quest_surface_value_clay">Mrvljena cigla</string>
     <string name="quest_surface_value_artificial_turf">Umjetna trava</string>
     <string name="quest_bicycle_parking_fee_title">Naplaćuje li se parkiranje bicikla ovdje?</string>
-    <string name="quest_buildingType_house_description2">Neodvojena obiteljska kuća, npr. jedna od kuća u nizu</string>
+    <string name="quest_buildingType_house_description2">Neodvojena obiteljska kuća</string>
     <string name="quest_drinking_water_potable_signed">Sigurno za piće (s oznakom)</string>
     <string name="quest_drinking_water_not_potable_signed">Nije za piće (s oznakom)</string>
     <string name="quest_postboxRoyalCypher_title">Koji je kraljevski žig na ovom poštanskom sandučiću?</string>

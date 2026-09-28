@@ -75,6 +75,7 @@ data class XcStrings(
 
 @Serializable
 data class XcStringEntry(
+    val extractionState: String = "manual",
     val localizations: Map<String, XcLocalization>,
 )
 

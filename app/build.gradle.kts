@@ -392,8 +392,8 @@ tasks.register<UpdateIosAppTranslationsTask>("updateIosTranslations") {
     targetFile = projectDir.resolve("../iosApp/iosApp/InfoPlist.xcstrings")
     languageCodes = bcp47ExportLanguages
     strings = mapOf(
-        "NSLocationWhenInUseUsageDescription" to "no_location_permission_warning",
         "NSCameraUsageDescription" to "camera_permission_description",
+        "NSLocationWhenInUseUsageDescription" to "no_location_permission_warning",
     )
 }
 

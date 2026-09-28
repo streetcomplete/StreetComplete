@@ -755,7 +755,7 @@ If any lanes are reserved for buses, please leave a note instead.</string>
     <string name="quest_surface_value_clay">Clay court</string>
     <string name="quest_surface_value_artificial_turf">Astroturf</string>
     <string name="quest_bicycle_parking_fee_title">Do you have to pay to park a bicycle here?</string>
-    <string name="quest_buildingType_house_description2">non-detached single-family home, e.g. a single terraced house</string>
+    <string name="quest_buildingType_house_description2">non-detached single-family home</string>
     <string name="quest_drinking_water_potable_signed">Drinking water (with a sign)</string>
     <string name="quest_drinking_water_not_potable_signed">Non-potable water (with a sign)</string>
     <string name="quest_postboxRoyalCypher_title">What’s the royal cypher on this postbox?</string>

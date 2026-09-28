@@ -752,7 +752,7 @@ Kui mõni sõidurada on mõeldud ühistranspordile, siis pigem lisa vastav ingli
     <string name="quest_surface_value_clay">Savi</string>
     <string name="quest_surface_value_artificial_turf">Kunstmuru</string>
     <string name="quest_bicycle_parking_fee_title">Kas jalgratta parkimine siin on tasuline?</string>
-    <string name="quest_buildingType_house_description2">mitte eraldiseisev ühepereelamu, näiteks üks osa ridaelamust</string>
+    <string name="quest_buildingType_house_description2">mitte eraldiseisev ühepereelamu</string>
     <string name="quest_drinking_water_potable_signed">Sobib joogiveeks (sildiga märgitud)</string>
     <string name="quest_drinking_water_not_potable_signed">Ei sobib joogiveeks (sildiga märgitud)</string>
     <string name="quest_postboxRoyalCypher_title">Missugune kuninglik monogramm on sellel kirjakastil?</string>

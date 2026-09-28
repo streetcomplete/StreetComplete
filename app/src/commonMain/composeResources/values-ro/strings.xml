@@ -751,7 +751,7 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă.</str
     <string name="quest_surface_value_clay">Zgură</string>
     <string name="quest_surface_value_artificial_turf">Gazon artificial</string>
     <string name="quest_bicycle_parking_fee_title">Este o parcare de biciclete cu plată? </string>
-    <string name="quest_buildingType_house_description2">casă unifamilială neseparată (e.g. încadrată de alte clădiri)</string>
+    <string name="quest_buildingType_house_description2">casă unifamilială neseparată</string>
     <string name="quest_drinking_water_potable_signed">Potabilă (semnalat)</string>
     <string name="quest_drinking_water_not_potable_signed">Nepotabilă (semnalat)</string>
     <string name="quest_postboxRoyalCypher_title">Care-i cifrul regal de pe această cutie poștală?</string>
