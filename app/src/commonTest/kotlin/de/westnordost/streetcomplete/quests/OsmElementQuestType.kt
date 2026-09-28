@@ -6,9 +6,13 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 
-fun <T> OsmElementQuestType<T>.answerAppliedTo(answer: T, tags: Map<String, String>): Set<StringMapEntryChange> {
+fun <T> OsmElementQuestType<T>.answerAppliedTo(
+    answer: T,
+    tags: Map<String, String>,
+    timestampEdited: Long = 0,
+): Set<StringMapEntryChange> {
     val cb = StringMapChangesBuilder(tags)
-    applyAnswerTo(answer, cb, ElementPointGeometry(LatLon(0.0, 0.0)), 0)
+    applyAnswerTo(answer, cb, ElementPointGeometry(LatLon(0.0, 0.0)), timestampEdited)
     return cb.create().changes
 }
 

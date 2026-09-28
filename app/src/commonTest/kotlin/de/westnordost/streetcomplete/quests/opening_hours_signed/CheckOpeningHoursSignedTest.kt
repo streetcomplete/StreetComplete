@@ -11,9 +11,13 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
+import kotlin.time.Instant
 
 class CheckOpeningHoursSignedTest {
     private val questType = CheckOpeningHoursSigned(getFeature = { feature() })
+
+    // midday UTC, so that the local date is the same in (almost) every time zone
+    private val lastEditTimestamp = Instant.parse("1970-01-01T12:00:00Z").toEpochMilliseconds()
 
     @Test fun `is applicable to old place`() {
         assertTrue(questType.isApplicableTo(node(
@@ -92,7 +96,7 @@ class CheckOpeningHoursSignedTest {
                 StringMapEntryDelete("opening_hours:signed", "no"),
                 StringMapEntryAdd("check_date:opening_hours", "1970-01-01")
             ),
-            questType.answerAppliedTo(true, mapOf("opening_hours:signed" to "no"))
+            questType.answerAppliedTo(true, mapOf("opening_hours:signed" to "no"), lastEditTimestamp)
         )
     }
 
@@ -120,7 +124,8 @@ class CheckOpeningHoursSignedTest {
                 mapOf(
                     "opening_hours" to "my opening hours",
                     "opening_hours:signed" to "no"
-                )
+                ),
+                lastEditTimestamp
             )
         )
     }
