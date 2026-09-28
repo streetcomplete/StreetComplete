@@ -57,9 +57,9 @@ open class UpdateIosAppTranslationsTask : DefaultTask() {
                         val string = strings[stringId]
                         if (string != null) XcLocalization(stringUnit = XcStringUnit(value = string))
                         else null
-                    }
+                    }.toSortedMap()
                 )
-            }
+            }.toSortedMap()
         )
 
         targetFile.writeText(json.encodeToString(strings))
