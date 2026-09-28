@@ -2,6 +2,7 @@ import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.BOOLEAN
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 import dev.mokkery.MockMode
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.targets.native.tasks.KotlinNativeSimulatorTest
 import java.io.FileWriter
 
 
@@ -281,6 +282,15 @@ dependencies {
     androidRuntimeClasspath("org.jetbrains.compose.ui:ui-tooling:1.12.1")
     // see comment in android.compileOptions.isCoreLibraryDesugaringEnabled
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
+}
+
+// run tests in a fixed time zone so that results don't depend on the host's time zone
+tasks.withType<Test>().configureEach {
+    systemProperty("user.timezone", "UTC")
+}
+tasks.withType<KotlinNativeSimulatorTest>().configureEach {
+    // simctl passes SIMCTL_CHILD_-prefixed variables on to the simulated process
+    environment("SIMCTL_CHILD_TZ", "UTC")
 }
 
 tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
