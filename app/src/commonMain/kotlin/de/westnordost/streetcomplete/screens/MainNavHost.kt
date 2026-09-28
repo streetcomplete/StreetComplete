@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens
 
-import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.fadeIn
@@ -9,28 +8,37 @@ import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.togetherWith
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.saveable.rememberSerializable
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.navigation.NavBackStackEntry
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import de.westnordost.streetcomplete.screens.about.AboutDestination
-import de.westnordost.streetcomplete.screens.about.aboutGraph
+import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
+import androidx.navigation3.runtime.NavBackStack
+import androidx.navigation3.runtime.NavEntryDecorator
+import androidx.navigation3.runtime.entryProvider
+import androidx.navigation3.runtime.metadata
+import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
+import androidx.navigation3.runtime.serialization.NavBackStackSerializer
+import androidx.navigation3.ui.NavDisplay
+import de.westnordost.streetcomplete.data.logs.LogsFilters
+import de.westnordost.streetcomplete.screens.about.aboutEntries
 import de.westnordost.streetcomplete.screens.main.MainScreen
 import de.westnordost.streetcomplete.screens.main.MainViewModel
 import de.westnordost.streetcomplete.screens.main.map.MainMapTrackState
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeWizard
-import de.westnordost.streetcomplete.screens.settings.SettingsDestination
-import de.westnordost.streetcomplete.screens.settings.settingsGraph
-import de.westnordost.streetcomplete.screens.tutorial.TutorialDestination
-import de.westnordost.streetcomplete.screens.tutorial.tutorialScreens
-import de.westnordost.streetcomplete.screens.user.UserDestination
-import de.westnordost.streetcomplete.screens.user.userScreen
+import de.westnordost.streetcomplete.screens.settings.settingsEntries
+import de.westnordost.streetcomplete.screens.tutorial.tutorialEntries
+import de.westnordost.streetcomplete.screens.user.userEntry
 import de.westnordost.streetcomplete.ui.ktx.dir
+import de.westnordost.streetcomplete.util.ktx.systemTimeNow
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.LocalTime
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -38,86 +46,100 @@ fun MainNavHost(
     uri: String?,
     onConsumedUri: () -> Unit,
 ) {
-    val navController = rememberNavController()
+    val backStack = rememberSerializable(serializer = NavBackStackSerializer(Route.serializer())) {
+        NavBackStack<Route>(Route.Main)
+    }
     // Navigation keeps the full tracks; restoring the app uses the bounded saved copy.
     val tracks = rememberSaveable(saver = MainMapTrackState.Saver) { MainMapTrackState() }
     // The main screen is always at the bottom of the back stack, so its view model lives as long
     // as the app and can receive requests while another destination is shown.
     val mainViewModel = koinViewModel<MainViewModel>()
+    val logsFilters = rememberSerializable {
+        mutableStateOf(LogsFilters(
+            timestampNewerThan = LocalDateTime(systemTimeNow().toLocalDate(), LocalTime(0, 0, 0))
+        ))
+    }
     val dir = LocalLayoutDirection.current.dir
 
-    NavHost(
-        navController = navController,
-        startDestination = MainDestination.Main,
-        enterTransition = {
-            if (targetState.isFullScreenDialog) fadeIn() + slideInVertically(initialOffsetY = { it / 10 })
-            else slideInHorizontally(initialOffsetX = { +it * dir })
+    NavDisplay(
+        backStack = backStack,
+        entryDecorators = listOf(
+            rememberSaveableStateHolderNavEntryDecorator(),
+            rememberViewModelStoreNavEntryDecorator(),
+            // Each screen needs its own opaque background. Otherwise, the map below can punch
+            // through it while screens slide over it (seen on Android 7)
+            remember { NavEntryDecorator<Route> { entry -> Surface { entry.Content() } } },
+        ),
+        transitionSpec = {
+            slideInHorizontally(initialOffsetX = { +it * dir }) togetherWith
+            slideOutHorizontally(targetOffsetX = { -it * dir })
         },
-        exitTransition = {
-            // the screen below stays put while a dialog appears on top of it
-            if (targetState.isFullScreenDialog) ExitTransition.KeepUntilTransitionsFinished
-            else slideOutHorizontally(targetOffsetX = { -it * dir })
+        popTransitionSpec = {
+            slideInHorizontally(initialOffsetX = { -it * dir }) togetherWith
+            slideOutHorizontally(targetOffsetX = { +it * dir })
         },
-        popEnterTransition = {
-            if (initialState.isFullScreenDialog) EnterTransition.None
-            else slideInHorizontally(initialOffsetX = { -it * dir })
+        predictivePopTransitionSpec = {
+            slideInHorizontally(initialOffsetX = { -it * dir }) togetherWith
+            slideOutHorizontally(targetOffsetX = { +it * dir })
         },
-        popExitTransition = {
-            if (initialState.isFullScreenDialog) fadeOut() + slideOutVertically(targetOffsetY = { it / 10 })
-            else slideOutHorizontally(targetOffsetX = { +it * dir })
-        },
-    ) {
-        composable(MainDestination.Main) {
-            MainScreen(
-                tracks = tracks,
-                onClickSettings = { navController.navigate(SettingsDestination.Settings) },
-                onClickQuestSettings = { navController.navigate(SettingsDestination.QuestSelection) },
-                onClickAbout = { navController.navigate(AboutDestination.About) },
-                onClickProfile = { navController.navigate(UserDestination.user()) },
-                onClickLogin = { navController.navigate(UserDestination.user(launchAuth = true)) },
-                onClickEnterTeamMode = { navController.navigate(MainDestination.TeamModeWizard) },
-                onShowIntroTutorial = { navController.navigate(TutorialDestination.intro(onboarding = true)) },
-                onShowOverlaysTutorial = { navController.navigate(TutorialDestination.Overlays) },
-                viewModel = mainViewModel,
+        entryProvider = entryProvider {
+            entry<Route.Main> {
+                MainScreen(
+                    tracks = tracks,
+                    onClickSettings = { backStack.add(Route.Settings) },
+                    onClickQuestSettings = { backStack.add(Route.QuestSelection) },
+                    onClickAbout = { backStack.add(Route.About) },
+                    onClickProfile = { backStack.add(Route.User()) },
+                    onClickLogin = { backStack.add(Route.User(launchAuth = true)) },
+                    onClickEnterTeamMode = { backStack.add(Route.TeamModeWizard) },
+                    onShowIntroTutorial = { backStack.add(Route.IntroTutorial(onboarding = true)) },
+                    onShowOverlaysTutorial = { backStack.add(Route.OverlaysTutorial) },
+                    viewModel = mainViewModel,
+                )
+            }
+            entry<Route.TeamModeWizard>(metadata = fullScreenDialogTransitions) {
+                val questIcons = remember { mainViewModel.allQuestTypes.map { it.icon } }
+                TeamModeWizard(
+                    onDismissRequest = { backStack.goBack() },
+                    onFinished = { teamSize, indexInTeam ->
+                        mainViewModel.enableTeamMode(teamSize = teamSize, indexInTeam = indexInTeam)
+                    },
+                    allQuestIcons = questIcons,
+                )
+            }
+            tutorialEntries(
+                backStack = backStack,
+                onIntroFinished = { mainViewModel.hasShownTutorial = true },
+                onOverlaysFinished = { mainViewModel.hasShownOverlaysTutorial = true },
             )
-        }
-        composable(MainDestination.TeamModeWizard) {
-            val questIcons = remember { mainViewModel.allQuestTypes.map { it.icon } }
-            TeamModeWizard(
-                onDismissRequest = { navController.popBackStack() },
-                onFinished = { teamSize, indexInTeam ->
-                    mainViewModel.enableTeamMode(teamSize = teamSize, indexInTeam = indexInTeam)
-                },
-                allQuestIcons = questIcons,
-            )
-        }
-        tutorialScreens(
-            navController = navController,
-            onIntroFinished = { mainViewModel.hasShownTutorial = true },
-            onOverlaysFinished = { mainViewModel.hasShownOverlaysTutorial = true },
-        )
-        settingsGraph(navController)
-        aboutGraph(navController)
-        userScreen(onClickBack = { navController.popBackStack() })
-    }
+            settingsEntries(backStack)
+            aboutEntries(backStack, logsFilters)
+            userEntry(onClickBack = { backStack.goBack() })
+        },
+    )
 
     LaunchedEffect(uri) {
         uri?.let {
-            navController.popBackStack(MainDestination.Main, inclusive = false)
+            while (backStack.size > 1) backStack.goBack()
             mainViewModel.setUri(it)
             onConsumedUri()
         }
     }
 }
 
-object MainDestination {
-    const val Main = "main"
-    const val TeamModeWizard = "team_mode_wizard"
+/** For screens that appear on top of the current one like a full-screen dialog: The screen below
+ *  stays put while the dialog appears on top of it */
+val fullScreenDialogTransitions = metadata {
+    put(NavDisplay.TransitionKey) {
+        fadeIn() + slideInVertically(initialOffsetY = { it / 10 }) togetherWith
+        ExitTransition.KeepUntilTransitionsFinished
+    }
+    put(NavDisplay.PopTransitionKey) {
+        EnterTransition.None togetherWith
+        fadeOut() + slideOutVertically(targetOffsetY = { it / 10 })
+    }
+    put(NavDisplay.PredictivePopTransitionKey) {
+        EnterTransition.None togetherWith
+        fadeOut() + slideOutVertically(targetOffsetY = { it / 10 })
+    }
 }
-
-/** Screens that appear on top of the current one like a full-screen dialog */
-private val NavBackStackEntry.isFullScreenDialog: Boolean get() = destination.route in setOf(
-    MainDestination.TeamModeWizard,
-    TutorialDestination.IntroRoute,
-    TutorialDestination.Overlays,
-)

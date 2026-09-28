@@ -6,27 +6,20 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavType
-import androidx.navigation.compose.composable
-import androidx.navigation.navArgument
-import androidx.savedstate.read
+import androidx.navigation3.runtime.EntryProviderScope
+import de.westnordost.streetcomplete.screens.Route
 import de.westnordost.streetcomplete.screens.user.login.LoginScreen
 import de.westnordost.streetcomplete.screens.user.login.LoginViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 /** Login and profile share one destination, so logging out cannot leave a profile in the back stack. */
-fun NavGraphBuilder.userScreen(onClickBack: () -> Unit) {
-    composable(
-        route = UserDestination.User + "?${UserDestination.LaunchAuth}={${UserDestination.LaunchAuth}}",
-        arguments = listOf(navArgument(UserDestination.LaunchAuth) { type = NavType.BoolType; defaultValue = false }),
-    ) {
+fun EntryProviderScope<Route>.userEntry(onClickBack: () -> Unit) {
+    entry<Route.User> { route ->
         val viewModel = koinViewModel<UserViewModel>()
         val loginViewModel = koinViewModel<LoginViewModel>()
         val isLoggedIn by viewModel.isLoggedIn.collectAsState()
-        val launchAuth = it.arguments?.read { getBoolean(UserDestination.LaunchAuth) } == true
         LaunchedEffect(Unit) {
-            if (launchAuth && !isLoggedIn) loginViewModel.startLogin()
+            if (route.launchAuth && !isLoggedIn) loginViewModel.startLogin()
         }
         Crossfade(targetState = isLoggedIn, modifier = Modifier.fillMaxSize()) { loggedIn ->
             if (loggedIn) {
@@ -36,11 +29,4 @@ fun NavGraphBuilder.userScreen(onClickBack: () -> Unit) {
             }
         }
     }
-}
-
-object UserDestination {
-    const val User = "user"
-    const val LaunchAuth = "launchAuth"
-
-    fun user(launchAuth: Boolean = false) = "$User?$LaunchAuth=$launchAuth"
 }
