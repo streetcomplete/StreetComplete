@@ -15,7 +15,6 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Matrix
 import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.PathParser
 import androidx.compose.ui.graphics.vector.toPath
 import androidx.compose.ui.unit.Density
@@ -46,44 +45,51 @@ fun MapOverlayScope.PointerPinButton(
     val placement = rememberPlacedTowardsState()
     Surface(
         onClick = onClick,
-        modifier = modifier
-            .placedTowards(targetPosition, placement)
-            // Placement sets the angle during layout; draw-time rotation uses it in the same frame.
-            .graphicsLayer { rotationZ = placement.angleDegrees },
+        modifier = modifier.placedTowards(targetPosition, placement),
         enabled = enabled,
-        shape = PointerPinShape,
+        shape = PointerPinShape(placement.angleDegrees),
         color = colors.backgroundColor(enabled).value,
         contentColor = colors.contentColor(enabled).value,
         border = BorderStroke(1.dp, MaterialTheme.colors.divider),
         elevation = 4.dp
     ) {
         Box(Modifier
-            .graphicsLayer { rotationZ = -placement.angleDegrees }
             .proportionalPadding(14f / 76f)
             .padding(contentPadding)
         ) { content() }
     }
 }
 
-private object PointerPinShape : Shape {
-
-    private val pathSize = 76f
-    private val path = PathParser()
-        .parsePathString("M 38,62 C 24.745,62 14,51.255 14,38 14.003,32.6405 15.7995,27.4365 19.1035,23.217 L 38,0 56.914,23.2715 C 60.2005,27.4785 61.99,32.6615 62,38 62,51.255 51.255,62 38,62 Z")
-        .toNodes()
-
+// we need to pass and let the shape itself rotate itself rather than just rotating the parent
+// surface composable to work around a bug in Android 7.1.1 (API level 25): The rotation
+// (`Modifier.rotate`) of a composable is ignored for clipping (`Modifier.clip`). `Surface` always
+// clips to its given `shape`. (see #7176)
+private class PointerPinShape(val rotation: Float = 0f) : Shape {
     override fun createOutline(
         size: Size,
         layoutDirection: LayoutDirection,
         density: Density
     ): Outline {
         val m = Matrix()
+        val halfWidth = size.width / 2
+        val halfHeight = size.height / 2
+        m.translate(halfWidth, halfHeight)
+        m.rotateZ(rotation)
+        m.translate(-halfWidth, -halfHeight)
         m.scale(
-            x = size.width / pathSize,
-            y = size.height / pathSize
+            x = size.width / PATH_SIZE,
+            y = size.height / PATH_SIZE
         )
-        val p = path.toPath()
+        val p = PATH.toPath()
         p.transform(m)
         return Outline.Generic(p)
+    }
+
+    companion object {
+        private val PATH_SIZE = 76f
+        private val PATH by lazy { PathParser()
+            .parsePathString("M 38,62 C 24.745,62 14,51.255 14,38 14.003,32.6405 15.7995,27.4365 19.1035,23.217 L 38,0 56.914,23.2715 C 60.2005,27.4785 61.99,32.6615 62,38 62,51.255 51.255,62 38,62 Z")
+            .toNodes()
+        }
     }
 }
