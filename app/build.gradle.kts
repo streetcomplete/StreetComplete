@@ -38,7 +38,7 @@ plugins {
     id("org.jetbrains.compose")
     id("com.codingfeline.buildkonfig") version "0.23.0"
     // keep in sync with Kotlin version! See https://mokkery.dev/docs/Setup/#compatibility
-    id("dev.mokkery") version "3.4.2"
+    id("dev.mokkery") version "3.5.0"
     id("org.jetbrains.kotlin.plugin.allopen") version "2.4.20"
 }
 
