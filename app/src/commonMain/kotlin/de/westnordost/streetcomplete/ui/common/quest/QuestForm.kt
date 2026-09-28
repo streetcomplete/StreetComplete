@@ -17,11 +17,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
+import androidx.navigationevent.NavigationEventInfo
+import androidx.navigationevent.compose.NavigationBackHandler
+import androidx.navigationevent.compose.rememberNavigationEventState
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
@@ -140,7 +141,6 @@ fun QuestForm(
     )
 }
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 private fun QuestForm(
     on: (Action) -> Unit,
@@ -164,13 +164,16 @@ private fun QuestForm(
 
     var confirmDiscard by remember { mutableStateOf(false) }
 
-    BackHandler {
-        if (hasChanges) {
-            confirmDiscard = true
-        } else {
-            on(Action.Dismiss)
+    NavigationBackHandler(
+        state = rememberNavigationEventState(NavigationEventInfo.None),
+        onBackCompleted = {
+            if (hasChanges) {
+                confirmDiscard = true
+            } else {
+                on(Action.Dismiss)
+            }
         }
-    }
+    )
 
     @Composable
     fun createDefaultOtherAnswers(): List<AnswerItem> {

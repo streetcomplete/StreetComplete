@@ -189,7 +189,7 @@ kotlin {
                 implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.12.1")
 
                 // UI Navigation
-                implementation("org.jetbrains.compose.ui:ui-backhandler:1.12.1")
+                implementation("org.jetbrains.androidx.navigationevent:navigationevent-compose:1.1.0")
                 implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.2")
 
                 // UI ViewModel

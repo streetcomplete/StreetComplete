@@ -24,17 +24,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigationevent.NavigationEventInfo
+import androidx.navigationevent.compose.NavigationBackHandler
+import androidx.navigationevent.compose.rememberNavigationEventState
 import kotlinx.coroutines.launch
 
 /** Generic multiple-page tutorial screen */
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun TutorialScreen(
     pageCount: Int,
@@ -48,15 +48,18 @@ fun TutorialScreen(
 ) {
     val state = rememberPagerState { pageCount }
     val scope = rememberCoroutineScope()
-    BackHandler {
-        if (state.currentPage > 0) {
-            scope.launch {
-                state.animateScrollToPage(state.currentPage - 1)
+    NavigationBackHandler(
+        state = rememberNavigationEventState(NavigationEventInfo.None),
+        onBackCompleted = {
+            if (state.currentPage > 0) {
+                scope.launch {
+                    state.animateScrollToPage(state.currentPage - 1)
+                }
+            } else if (dismissOnBackPress) {
+                onDismissRequest()
             }
-        } else if (dismissOnBackPress) {
-            onDismissRequest()
         }
-    }
+    )
     LaunchedEffect(state.currentPage) {
         onPageChanged(state.currentPage)
     }

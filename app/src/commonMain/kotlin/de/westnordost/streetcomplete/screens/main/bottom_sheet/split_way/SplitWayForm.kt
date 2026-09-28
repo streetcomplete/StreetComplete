@@ -18,14 +18,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.dp
+import androidx.navigationevent.NavigationEventInfo
+import androidx.navigationevent.compose.NavigationBackHandler
+import androidx.navigationevent.compose.rememberNavigationEventState
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
@@ -56,7 +57,6 @@ import org.jetbrains.compose.resources.stringResource
 
 /** Form that lets the user split an OSM way */
 @Composable
-@OptIn(ExperimentalComposeUiApi::class)
 fun SplitWayForm(
     onConfirmed: (splits: List<SplitPolylineAtPosition>) -> Unit,
     onDismiss: () -> Unit,
@@ -118,13 +118,16 @@ fun SplitWayForm(
         )
     }
 
-    BackHandler {
-        if (hasChanges) {
-            confirmDiscard = true
-        } else {
-            onDismiss()
+    NavigationBackHandler(
+        state = rememberNavigationEventState(NavigationEventInfo.None),
+        onBackCompleted = {
+            if (hasChanges) {
+                confirmDiscard = true
+            } else {
+                onDismiss()
+            }
         }
-    }
+    )
 
     if (scissorsPosition != null) {
         OnMap {

@@ -19,13 +19,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.navigationevent.NavigationEventInfo
+import androidx.navigationevent.compose.NavigationBackHandler
+import androidx.navigationevent.compose.rememberNavigationEventState
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.rememberTrackpointsPainter
@@ -48,7 +49,6 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 
 /** Form in which you can leave a note, with images */
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun NoteForm(
     onDismiss: () -> Unit,
@@ -87,13 +87,16 @@ fun NoteForm(
         onDismiss()
     }
 
-    BackHandler {
-        if (hasChanges) {
-            confirmDiscard = true
-        } else {
-            onDiscard()
+    NavigationBackHandler(
+        state = rememberNavigationEventState(NavigationEventInfo.None),
+        onBackCompleted = {
+            if (hasChanges) {
+                confirmDiscard = true
+            } else {
+                onDiscard()
+            }
         }
-    }
+    )
 
     Column(
         modifier = modifier,

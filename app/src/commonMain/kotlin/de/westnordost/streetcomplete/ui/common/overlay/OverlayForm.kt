@@ -24,14 +24,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
+import androidx.navigationevent.NavigationEventInfo
+import androidx.navigationevent.compose.NavigationBackHandler
+import androidx.navigationevent.compose.rememberNavigationEventState
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
@@ -63,7 +64,6 @@ import org.koin.compose.koinInject
  *  Floating in the lower end corner, an OK button for confirmation. [isComplete] should be true
  *  when the form is complete, while [hasChanges] should be true when any changes have been made.
  *  */
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun OverlayForm(
     on: (Action) -> Unit,
@@ -83,13 +83,16 @@ fun OverlayForm(
 ) {
     var confirmDiscard by remember { mutableStateOf(false) }
 
-    BackHandler {
-        if (hasChanges) {
-            confirmDiscard = true
-        } else {
-            on(Action.Dismiss)
+    NavigationBackHandler(
+        state = rememberNavigationEventState(NavigationEventInfo.None),
+        onBackCompleted = {
+            if (hasChanges) {
+                confirmDiscard = true
+            } else {
+                on(Action.Dismiss)
+            }
         }
-    }
+    )
 
     @Composable
     fun createDefaultOtherAnswers(): List<AnswerItem> {

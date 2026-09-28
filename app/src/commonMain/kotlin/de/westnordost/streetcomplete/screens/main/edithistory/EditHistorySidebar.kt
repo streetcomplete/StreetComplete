@@ -32,11 +32,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.unit.dp
+import androidx.navigationevent.NavigationEventInfo
+import androidx.navigationevent.compose.NavigationBackHandler
+import androidx.navigationevent.compose.rememberNavigationEventState
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.resources.*
@@ -56,7 +57,6 @@ import kotlin.time.Instant
 
 /** Shows the edit history in a sidebar. The edit history is grouped by time and date, ordered by
  *  the most recent edit at the bottom. The list always scrolls to the currently selected edit. */
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun EditHistorySidebar(
     editItems: List<EditItem>,
@@ -89,9 +89,12 @@ fun EditHistorySidebar(
     }
 
     // close on back
-    BackHandler {
-        onDismissRequest()
-    }
+    NavigationBackHandler(
+        state = rememberNavigationEventState(NavigationEventInfo.None),
+        onBackCompleted = {
+            onDismissRequest()
+        }
+    )
 
     fun onClickUndoEdit(edit: Edit) {
         if (edit.isUndoable) {

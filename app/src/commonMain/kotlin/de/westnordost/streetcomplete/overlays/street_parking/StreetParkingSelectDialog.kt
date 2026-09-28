@@ -28,14 +28,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import androidx.navigationevent.NavigationEventInfo
+import androidx.navigationevent.compose.NavigationBackHandler
+import androidx.navigationevent.compose.rememberNavigationEventState
 import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
@@ -52,7 +53,6 @@ import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
 import org.jetbrains.compose.resources.stringResource
 
 /** Dialog in which both the parking orientation and parking position is selected in two steps. */
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun StreetParkingSelectionDialog(
     isUpsideDown: Boolean,
@@ -85,9 +85,13 @@ fun StreetParkingSelectionDialog(
         onDismissRequest = onDismissRequest,
         properties = properties
     ) {
-        BackHandler(parkingOrientation != null) {
-            parkingOrientation = null
-        }
+        NavigationBackHandler(
+            state = rememberNavigationEventState(NavigationEventInfo.None),
+            isBackEnabled = parkingOrientation != null,
+            onBackCompleted = {
+                parkingOrientation = null
+            }
+        )
 
         Surface(
             modifier = modifier,
