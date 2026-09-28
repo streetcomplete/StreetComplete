@@ -1,6 +1,6 @@
 # Changelog
 
-## 64.0-alpha2
+## v64.0-alpha2
 
 🍎 After v64.0-alpha1, this update brings huge changes AGAIN, which again should be mostly
 invisible! @sargunv and I ported the map and any interaction with it to a multiplatform UI framework
@@ -9,31 +9,36 @@ invisible! @sargunv and I ported the map and any interaction with it to a multip
 But this is not all! @sargunv also took the last remaining steps for a fully working iOS version! (#7125)
 
 ### General
+
 - Increase size of time picker in dialogs (#7144), by @Amaanprobably
 
 ### Quest improvements
-- Step count: Don't ask if step count are given already in another form (#7136, #7137), by @paulklie
+
+- Step count: Don't ask if step count is given already in another form (#7136, #7137, #7168), by @paulklie, @peternewman
 - Sidewalk surface: Upgrade ambiguous to explicit tagging correctly (#7138, #7139), by @Amaanprobably
 - Barrier opening: Add answer option "not suitable for wheelchairs" (#7127), by @kmpoppe
-- Level of things: Don't ask for things whose location non-indoor location is already known (#7114)
-- Buildings: Can not select "terraced house" (#7159), by @Amaanprobably
-- Other small improvements (#7164, #7170, #7165), by @paulklie, 
+- Level of things: Don't ask for things whose location is already known to be non-indoor (#7114)
+- Buildings: Can now select "terraced house" (#7159), by @Amaanprobably
+- Other small improvements (#7164, #7170, #7165), by @paulklie
 
 ### Overlay improvements
+
 - Buildings overlay: Buildings are now shown in 3D again (#7153), by @paulklie
 
 ### Fixes
+
 - Fix zoom animation was sometimes interrupted by the map following the user's position (#5860), by @sargunv
 - Fix selected language was sometimes overwritten by system default language (#5942), by @sargunv
 
-### Changes and fixes for 64.0-alpha1
+### Changes and fixes for v64.0-alpha1
+
 - Quest peek height is now relative to available screen height (#7135), by @mcliquid
 - Parking charge: Also ask when there's not always a fee (#7133)
 - Keyboard would sometimes obscure the quest form (#7107), by @sargunv
 - Fix several small issues related to the map (#7152, #7108), by @sargunv
 - Small visual fixes (#7132, #7130)
 
-## 64.0-alpha1
+## v64.0-alpha1
 
 🍏 This update brings huge changes, albeit they should be mostly invisible. I re-did the UI for all 
 quest forms, a side effect of the migration to a multiplatform UI framework. An iOS version of the 
