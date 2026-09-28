@@ -28,6 +28,12 @@
             "value": "Χρειάζεται η άδεια της κάμερας για να επισυνάψετε φωτογραφίες στις σημειώσεις χάρτη."
           }
         },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camera permission is needed to attach photos to map notes."
+          }
+        },
         "en-AU": {
           "stringUnit": {
             "state": "translated",
@@ -163,6 +169,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Η άδεια ακριβούς τοποθεσίας είναι απαραίτητη για την εμφάνιση της θέση σου στον χάρτη και λήψη δεδομένων τριγύρω σου."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Precise location permission is needed to show your position on the map and download data in your vicinity."
           }
         },
         "en-AU": {

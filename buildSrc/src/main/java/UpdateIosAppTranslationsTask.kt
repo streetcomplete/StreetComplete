@@ -33,7 +33,8 @@ open class UpdateIosAppTranslationsTask : DefaultTask() {
         val translations = HashMap<String, Map<String, String>>()
 
         for (languageTag in languageTags) {
-            val locale = Locale.forLanguageTag(languageTag)
+            val lang = if (languageTag.lowercase() == "en-us") "en" else languageTag
+            val locale = Locale.forLanguageTag(lang)
 
             if (!exportLanguages.any { it == locale }) continue
 
