@@ -13,6 +13,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -169,6 +170,18 @@ private fun QuestForm(
             confirmDiscard = true
         } else {
             on(Action.Dismiss)
+        }
+    }
+
+    val lastMapClick = LocalLastMapClick.current
+    LaunchedEffect(lastMapClick) {
+        if (lastMapClick != null) {
+            // User has tapped the map. Dismiss changes.
+            if (hasChanges) {
+                confirmDiscard = true
+            } else {
+                on(Action.Dismiss)
+            }
         }
     }
 
