@@ -106,7 +106,10 @@ fun EditHistorySidebar(
 
     Surface(
         modifier = modifier
-            .graphicsLayer { translationX = -backProgress * size.width * dir }
+            .graphicsLayer {
+                translationX = -backProgress * size.width * dir
+                alpha = 1f - backProgress
+            }
             .fillMaxHeight()
             .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.End))
             .shadow(16.dp),
