@@ -58,12 +58,24 @@ open class UpdateIosAppTranslationsTask : DefaultTask() {
                         val string = strings[stringId]
                         if (string != null) XcLocalization(stringUnit = XcStringUnit(value = string))
                         else null
-                    }.toSortedMap()
+                    }.toSortedMap() // see comment below
                 )
-            }.toSortedMap()
+            }.toSortedMap() // no, not this one, one further down!
         )
+        val stringsJson = json.encodeToString(strings)
 
-        targetFile.writeText(json.encodeToString(strings))
+        // XCode parses and then overwrites the xcstrings file. It uses a particular syntax:
+        // It sorts all string keys in `strings` alphabetically and then also all language tags in
+        // `localizations` alphabetically.
+        // Furthermore, it puts a space before each colon in associative arrays, e.g.
+        // `"sourceLanguage" : "en",`
+        // so, we adapt to this syntax so that XCode doesn't create actual changes that'd be
+        // commited to the repository.
+
+        val findColons = Regex("^(\\s*\".+\"): ", RegexOption.MULTILINE)
+        targetFile.writeText(stringsJson.replace(findColons) { matchResult ->
+            matchResult.groupValues[1] + " : "
+        })
     }
 }
 
