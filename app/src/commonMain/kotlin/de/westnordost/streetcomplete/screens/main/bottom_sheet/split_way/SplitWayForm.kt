@@ -18,9 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
@@ -36,6 +34,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.scissorsPainter
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
+import de.westnordost.streetcomplete.ui.common.NonPredictiveBackHandler
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
@@ -56,7 +55,6 @@ import org.jetbrains.compose.resources.stringResource
 
 /** Form that lets the user split an OSM way */
 @Composable
-@OptIn(ExperimentalComposeUiApi::class)
 fun SplitWayForm(
     onConfirmed: (splits: List<SplitPolylineAtPosition>) -> Unit,
     onDismiss: () -> Unit,
@@ -118,7 +116,7 @@ fun SplitWayForm(
         )
     }
 
-    BackHandler {
+    NonPredictiveBackHandler {
         if (hasChanges) {
             confirmDiscard = true
         } else {
