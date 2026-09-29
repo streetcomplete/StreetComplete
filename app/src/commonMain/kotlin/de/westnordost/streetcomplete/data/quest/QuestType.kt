@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.quest
 
 import de.westnordost.streetcomplete.data.osm.edits.EditType
+import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 
@@ -21,4 +22,6 @@ interface QuestType : EditType {
 
     /** The quest type can clean its metadata that is older than the given timestamp here, if any  */
     fun deleteMetadataOlderThan(timestamp: Long) {}
+
+    fun onClickMap(mapClick: MapClick): Boolean {return true}
 }

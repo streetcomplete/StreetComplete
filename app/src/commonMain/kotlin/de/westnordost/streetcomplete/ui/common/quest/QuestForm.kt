@@ -59,6 +59,7 @@ fun QuestForm(
     isComplete: Boolean,
     onClickOk: () -> Unit,
     modifier: Modifier = Modifier,
+    onClickMap: ((MapClick) -> Boolean) = { true },
     featureDictionary: FeatureDictionary = koinInject(),
     hasChanges: Boolean = isComplete,
     title: String = stringResource(LocalQuestType.current!!.title),
@@ -87,6 +88,7 @@ fun QuestForm(
         otherAnswers = otherAnswers,
         contentPadding = contentPadding,
         modifier = modifier,
+        onClickMap = onClickMap,
         content = content,
         isResurvey = isResurvey,
     )
@@ -108,6 +110,7 @@ fun QuestForm(
     on: (Action) -> Unit,
     answers: List<AnswerItem>,
     modifier: Modifier = Modifier,
+    onClickMap: ((MapClick) -> Boolean) = { true },
     featureDictionary: FeatureDictionary = koinInject(),
     title: String = stringResource(LocalQuestType.current!!.title),
     isResurvey: Boolean = false,
@@ -135,6 +138,7 @@ fun QuestForm(
         otherAnswers = otherAnswers,
         contentPadding = contentPadding,
         modifier = modifier,
+        onClickMap = onClickMap,
         content = content,
         isResurvey = isResurvey,
     )
@@ -156,6 +160,7 @@ private fun QuestForm(
     otherAnswers: @Composable () -> List<AnswerItem>,
     contentPadding: PaddingValues,
     modifier: Modifier = Modifier,
+    onClickMap: ((MapClick) -> Boolean) = { true },
     mapDataWithEditsSource: MapDataWithEditsSource = koinInject(),
     content: @Composable (BoxScope.() -> Unit)?,
 ) {
@@ -174,11 +179,14 @@ private fun QuestForm(
     val lastMapClick = LocalLastMapClick.current
     LaunchedEffect(lastMapClick) {
         if (lastMapClick != null) {
-            // User has tapped the map. Dismiss changes.
-            if (hasChanges) {
-                confirmDiscard = true
-            } else {
-                on(Action.Dismiss)
+            if(onClickMap(lastMapClick))
+            {
+                // User has tapped the map. Dismiss changes.
+                if (hasChanges) {
+                    confirmDiscard = true
+                } else {
+                    on(Action.Dismiss)
+                }
             }
         }
     }

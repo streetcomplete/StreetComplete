@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalElement
 import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
+import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.jetbrains.compose.resources.stringResource
@@ -46,29 +47,31 @@ fun AddAddressStreetForm(
        place name (i.e. "does not belong to a named street") */
     var showSelect by rememberSaveable { mutableStateOf(lastWasPlaceName) }
 
-    val mapClick = LocalLastMapClick.current
-    LaunchedEffect(mapClick) {
-        if (mapClick != null) {
-            // only allow selection of street when that field is actually displayed
-            if (streetOrPlaceName !is StreetName) return@LaunchedEffect
-
-            nameSuggestionsSource
-                .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
-                .firstOrNull()
-                ?.find { it.languageTag.isEmpty() }
-                ?.name
-                ?.let { streetOrPlaceName = StreetName(it) }
-        }
-    }
-
     QuestForm(
         on = on,
         isComplete =
             streetOrPlaceName.name.isNotBlank() &&
-            streetOrPlaceName.name.length <= MAX_OSM_TAG_VALUE_LENGTH,
+                streetOrPlaceName.name.length <= MAX_OSM_TAG_VALUE_LENGTH,
         onClickOk = {
             lastWasPlaceName = streetOrPlaceName is PlaceName
             on(Answer(streetOrPlaceName))
+        },
+        onClickMap = { mapClick: MapClick ->
+            if (streetOrPlaceName !is StreetName) {
+                true
+            } else {
+                nameSuggestionsSource
+                    .getNames(
+                        mapClick.position,
+                        mapClick.clickAreaSizeInMeters,
+                        roadsWithNamesFilter
+                    )
+                    .firstOrNull()
+                    ?.find { it.languageTag.isEmpty() }
+                    ?.name
+                    ?.let { streetOrPlaceName = StreetName(it) }
+                false
+            }
         },
         subtitle = nameAndLocationLabel(LocalElement.current!!, featureDictionary, showHouseNumber = true),
         otherAnswers = { listOf(
