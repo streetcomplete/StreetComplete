@@ -705,7 +705,7 @@
     <string name="quest_address_street_no_named_streets">It does not belong to a named street…</string>
     <string name="quest_address_street_place_name_label">Place name:</string>
     <string name="quest_address_street_street_name_label">Street name:</string>
-    <string name="quest_address_street_hint2">Tap street on map to select it</string>
+    <string name="quest_address_street_hint2">Tap street on map to select its name.</string>
 
     <string name="quest_aerialway_bicycle_title">Does this aerial lift transport bicycles?</string>
     <string name="quest_aerialway_bicycle_summer">Only in summer</string>
