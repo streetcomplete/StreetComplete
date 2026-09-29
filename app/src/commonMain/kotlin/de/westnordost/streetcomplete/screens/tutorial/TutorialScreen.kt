@@ -22,14 +22,16 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.ui.common.NonPredictiveBackHandler
+import de.westnordost.streetcomplete.ui.common.rememberPredictiveBackProgress
 import kotlinx.coroutines.launch
 
 /** Generic multiple-page tutorial screen */
@@ -46,14 +48,20 @@ fun TutorialScreen(
 ) {
     val state = rememberPagerState { pageCount }
     val scope = rememberCoroutineScope()
-    NonPredictiveBackHandler {
+    // on the first page, back is left to the navigation, which dismisses this screen
+    val backProgress by rememberPredictiveBackProgress(
+        isBackEnabled = state.currentPage > 0 || !dismissOnBackPress,
+    ) {
         if (state.currentPage > 0) {
             scope.launch {
                 state.animateScrollToPage(state.currentPage - 1)
             }
-        } else if (dismissOnBackPress) {
-            onDismissRequest()
         }
+    }
+    // peek at the previous page while the back gesture is in progress
+    LaunchedEffect(state) {
+        // read the progress outside of composition, so the screen doesn't recompose on every frame
+        snapshotFlow { backProgress }.collect { state.scrollToPage(state.currentPage, -0.4f * it) }
     }
     LaunchedEffect(state.currentPage) {
         onPageChanged(state.currentPage)
