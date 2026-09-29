@@ -34,12 +34,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.NonPredictiveBackHandler
 import de.westnordost.streetcomplete.ui.common.ToastPopup
+import de.westnordost.streetcomplete.ui.common.rememberPredictiveBackProgress
+import de.westnordost.streetcomplete.ui.ktx.dir
 import de.westnordost.streetcomplete.ui.ktx.isItemAtIndexFullyVisible
 import de.westnordost.streetcomplete.ui.ktx.plus
 import de.westnordost.streetcomplete.ui.theme.titleSmall
@@ -86,10 +89,9 @@ fun EditHistorySidebar(
         }
     }
 
-    // close on back
-    NonPredictiveBackHandler {
-        onDismissRequest()
-    }
+    // close on back, following the back gesture towards the edge
+    val backProgress by rememberPredictiveBackProgress(onBackCompleted = onDismissRequest)
+    val dir = LocalLayoutDirection.current.dir
 
     fun onClickUndoEdit(edit: Edit) {
         if (edit.isUndoable) {
@@ -104,6 +106,7 @@ fun EditHistorySidebar(
 
     Surface(
         modifier = modifier
+            .graphicsLayer { translationX = -backProgress * size.width * dir }
             .fillMaxHeight()
             .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.End))
             .shadow(16.dp),
