@@ -88,7 +88,10 @@ fun StyleableOverlayLabelLayer(
             fallback = const(false),
             21 to const(true)
         ),
-        onClick = { onClick(it, onClickElement) }
+        onClick = { onClick(it, onClickElement) },
+        // the preset icons are about 34x34 dp (+5dp halo) while the recommended minimum interactive
+        // component size is 48x48 dp, so let's add some padding for clicking
+        hitPadding = 8.dp
     )
 }
 
@@ -136,7 +139,11 @@ fun StyleableOverlayLayers(
         width = width,
         cap = const(LineCap.Round),
         join = const(LineJoin.Round),
-        onClick = { onClick(it, onClickElement) }
+        onClick = { onClick(it, onClickElement) },
+        // the lines get more thick when one zooms in, and also differ largely in size (road vs
+        // path), so it is hard to determine which padding is necessary to make this properly
+        // clickable. We can adapt the padding later after experimentation
+        hitPadding = 8.dp
     )
     LineLayer(
         id = "overlay-lines-dashed",
