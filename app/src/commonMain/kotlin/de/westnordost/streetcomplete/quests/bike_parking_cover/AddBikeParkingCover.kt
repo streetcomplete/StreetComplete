@@ -20,7 +20,7 @@ class AddBikeParkingCover : OsmFilterQuestType<Boolean>() {
         nodes, ways with
           (
             amenity = bicycle_parking
-            or amenity = charging_station and bicycle ~ yes|designated and lockable=no and motorcar=no
+            or amenity = charging_station and bicycle ~ yes|designated and lockable = no and motorcar = no
           )
           and access !~ private|no
           and !covered

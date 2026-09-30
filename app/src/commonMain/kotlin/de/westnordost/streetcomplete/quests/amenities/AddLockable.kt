@@ -20,18 +20,17 @@ class AddLockable : OsmFilterQuestType<Boolean>() {
         nodes, ways, relations with
           (
             amenity = device_charging_station
-            or
-            (
+            or (
                 amenity = charging_station
-                and motorcar=no
-                and bicycle|scooter ~ yes|designated
+                and motorcar = no
+                and ~bicycle|scooter ~ yes|designated
             )
           )
           and !lockable
           and access !~ private|no
     """
 
-    override val changesetComment = "Specify whether an object can be locked"
+    override val changesetComment = "Specify whether charging stations can be locked"
     override val wikiLink = "Key:lockable"
     override val icon = Res.drawable.quest_access
     override val title = Res.string.quest_lockable_title
