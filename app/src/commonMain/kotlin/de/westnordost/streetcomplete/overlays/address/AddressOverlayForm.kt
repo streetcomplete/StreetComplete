@@ -249,7 +249,7 @@ fun AddressOverlayForm(
             // never show house number, as it already is shown in the form
             element?.let { nameAndLocationLabel(it, featureDictionary, showHouseNumber = false) },
         pinContent = {
-            if (positionOnWay == null) {
+            if (element == null && positionOnWay == null) {
                 Pin(iconPainter = painterResource(Res.drawable.quest_housenumber))
             }
         },
