@@ -171,7 +171,7 @@ fun AddCyclewayForm(
                     (cycleways.left != null || !isLeftSideVisible) &&
                     (cycleways.right != null || !isRightSideVisible),
                 hasChanges =
-                    cycleways.left != null || cycleways.right != null,
+                    cycleways != originalCycleway,
                 onClickOk = {
                     if (cycleways.wasNoOnewayForCyclistsButNowItIs(element.tags, countryInfo.isLeftHandTraffic)) {
                         confirmNotOnewayForCyclists = true
