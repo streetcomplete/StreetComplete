@@ -58,7 +58,7 @@ fun AddAddressStreetForm(
         },
         onClickMap = { mapClick: MapClick ->
             if (streetOrPlaceName !is StreetName) {
-                // Do not consume event.
+                // Do not consume event if the street name is not displayed
                 false
             } else {
                 nameSuggestionsSource
