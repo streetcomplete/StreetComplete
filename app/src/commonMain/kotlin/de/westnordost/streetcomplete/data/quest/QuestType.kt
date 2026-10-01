@@ -23,5 +23,9 @@ interface QuestType : EditType {
     /** The quest type can clean its metadata that is older than the given timestamp here, if any  */
     fun deleteMetadataOlderThan(timestamp: Long) {}
 
-    fun onClickMap(mapClick: MapClick): Boolean {return false}
+    /**
+     * Callback when map is clicked/tapped, can be used to override default behavior
+     * (closing the quest form). Return true when event is consumed/handled manually.
+     */
+    fun onClickMap(mapClick: MapClick) = false
 }
