@@ -220,7 +220,7 @@ kotlin {
                 implementation("com.ionspin.kotlin:bignum:0.3.10")
 
                 // taking a photo (, picking an image from gallery, ...)
-                implementation("io.github.vinceglb:filekit-dialogs-compose:0.14.2")
+                implementation("io.github.vinceglb:filekit-dialogs-compose:0.16.0")
             }
         }
         androidMain {
