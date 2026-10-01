@@ -118,8 +118,9 @@ private fun <T> StreetSideIllustrationSide(
                     drawRect(Color(0x33666666))
                     if (painter != null) {
                         val flip = if (side == Side.RIGHT) 0f else 180f
+                        val phase = if (side == Side.RIGHT) 0.5f else 0f
                         rotate(flip) {
-                            drawVerticallyRepeatingImage(painter)
+                            drawVerticallyRepeatingImage(painter, phase)
                         }
                     }
                 }
@@ -135,15 +136,18 @@ private fun <T> StreetSideIllustrationSide(
     }
 }
 
-private fun DrawScope.drawVerticallyRepeatingImage(painter: Painter) {
+private fun DrawScope.drawVerticallyRepeatingImage(painter: Painter, phase: Float = 0f) {
     val w = size.width
     val h = painter.intrinsicSize.height / painter.intrinsicSize.width * size.width
+    val startY = (if (phase <= 0f) 0f else phase - 1f) * h
     val repetitions = ceil(size.height / h).toInt()
-    for (i in 0 until repetitions) {
-        // -1f so that they rather overlap than not on rounding imprecision
-        translate(top = i * ceil(h - 1f)) {
+    var y = startY
+    while (y < size.height) {
+        translate(top = y) {
             with(painter) { draw(Size(w, h)) }
         }
+        // -1f so that they rather overlap than not on rounding imprecision
+        y += h - 1f
     }
 }
 

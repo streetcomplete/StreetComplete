@@ -15,7 +15,7 @@ To make the app easy to use, quests are limited to those answerable by asking si
 
 ## Screenshots
 
-<img src="metadata/en/images/phoneScreenshots/screenshot1.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot2.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot3.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot4.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot5.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot6.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot7.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot8.png" width="240"/>
+<img src="metadata/en/images/phoneScreenshots/1_quests.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/2_cycleway.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/3_surface.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/4_places.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/5_note.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/6_collection_times.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/7_parking.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/8_statistics.png" width="240"/>
 
 ## Download
 

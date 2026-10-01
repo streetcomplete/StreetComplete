@@ -2,7 +2,9 @@ package de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street
 
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.BicycleInPedestrianStreet.*
+import kotlinx.serialization.Serializable
 
+@Serializable
 enum class BicycleInPedestrianStreet {
     /** Pedestrian area also designated for bicycles (like shared-use path) */
     DESIGNATED,

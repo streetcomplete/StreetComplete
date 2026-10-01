@@ -63,7 +63,7 @@ class ProfileViewModelImpl(
 ) : ProfileViewModel() {
 
     override val userName = MutableStateFlow<String?>(null)
-    override val userAvatarFile = MutableStateFlow(getUserAvatarFile())
+    override val userAvatarFile = MutableStateFlow<Path?>(getUserAvatarFile())
     override val achievementLevels = MutableStateFlow(0)
     override val unsyncedChangesCount = MutableStateFlow(0)
     override val datesActive = MutableStateFlow(DatesActiveInRange(emptyList(), 0))
@@ -107,7 +107,6 @@ class ProfileViewModelImpl(
     private val userListener = object : UserDataSource.Listener {
         override fun onUpdated() {
             userName.value = userDataSource.userName
-            userAvatarFile.value = getUserAvatarFile()
         }
     }
     private val userAvatarListener = object : UserUpdater.Listener {
@@ -175,8 +174,10 @@ class ProfileViewModelImpl(
         }
     }
 
-    private fun getUserAvatarFile(): Path =
-        Path(avatarsCacheDirectory, userDataSource.userId.toString())
+    private fun getUserAvatarFile(): Path? =
+        if (userDataSource.userId >= 0) {
+            Path(avatarsCacheDirectory, userDataSource.userId.toString())
+        } else null
 
     override fun onCleared() {
         unsyncedChangesCountSource.removeListener(unsyncedChangesCountListener)

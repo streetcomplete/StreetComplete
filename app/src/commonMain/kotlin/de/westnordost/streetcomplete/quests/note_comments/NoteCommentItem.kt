@@ -64,7 +64,9 @@ fun NoteCommentItem(
         }
     }
 
-    val annotatedCommentText = noteComment.text?.annotateLinks(textLinkStyles)
+    val annotatedCommentText = noteComment.text
+        ?.takeIf { it.isNotEmpty() }
+        ?.annotateLinks(textLinkStyles)
 
     val dateTimeFormatter = LocalDateTimeFormatter(
         dateStyle = DateTimeFormatStyle.Short,
@@ -125,13 +127,12 @@ fun NoteCommentItem(
             SpeechBubbleNoArrow(
                 elevation = elevation,
                 color = color,
+                border = null,
             ) {
                 Text(
                     text = stringResource(actionTextResource)
                         .formatAnnotated(annotatedUserName, dateText),
-                    modifier = Modifier
-                        .padding(horizontal = 16.dp, vertical = 12.dp)
-                        .alpha(ContentAlpha.medium),
+                    modifier = Modifier.alpha(ContentAlpha.medium),
                     fontStyle = FontStyle.Italic,
                 )
             }
