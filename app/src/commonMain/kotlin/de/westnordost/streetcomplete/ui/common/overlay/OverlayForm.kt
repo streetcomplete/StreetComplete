@@ -18,6 +18,7 @@ import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -43,6 +44,8 @@ import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaff
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalElement
+import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
+import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.theme.titleMedium
 import de.westnordost.streetcomplete.util.ktx.isSplittable
@@ -77,7 +80,8 @@ fun OverlayForm(
     otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
     pinContent: @Composable (() -> Unit)? = null,
-    content: @Composable BoxScope.() -> Unit
+    onClickMap: ((MapClick) -> Boolean) = { false },
+    content: @Composable BoxScope.() -> Unit,
 ) {
     var confirmDiscard by remember { mutableStateOf(false) }
 
@@ -149,6 +153,22 @@ fun OverlayForm(
                 )
             },
         )
+    }
+
+    val lastMapClick = LocalLastMapClick.current
+    LaunchedEffect(lastMapClick) {
+        if (lastMapClick != null) {
+            // Check if the map click event has already been consumed by the quest form
+            if(!onClickMap(lastMapClick))
+            {
+                // User has tapped the map. Dismiss changes.
+                if (hasChanges) {
+                    confirmDiscard = true
+                } else {
+                    on(Action.Dismiss)
+                }
+            }
+        }
     }
 
     if (confirmDiscard) {

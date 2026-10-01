@@ -49,6 +49,7 @@ import de.westnordost.streetcomplete.ui.common.Pin
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
+import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.OnMap
 import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
@@ -118,21 +119,6 @@ fun AddressOverlayForm(
     var addEntrance by rememberSaveable { mutableStateOf(true) }
 
     var confirmRemoveAddress by remember { mutableStateOf(false) }
-
-    val mapClick = LocalLastMapClick.current
-    LaunchedEffect(mapClick) {
-        if (mapClick != null) {
-            // only allow selection of street when that field is actually displayed
-            if (address.streetOrPlace !is StreetName) return@LaunchedEffect
-
-            val name = nameSuggestionsSource
-                .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
-                .firstOrNull()
-                ?.find { it.languageTag.isEmpty() }
-                ?.name
-                ?.let { address = address.copy(streetOrPlace = StreetName(it)) }
-        }
-    }
 
     @Composable
     fun createOtherAnswers(): List<AnswerItem> {
@@ -253,7 +239,21 @@ fun AddressOverlayForm(
                 Pin(iconPainter = painterResource(Res.drawable.quest_housenumber))
             }
         },
-        otherAnswers = ::createOtherAnswers
+
+        otherAnswers = ::createOtherAnswers,
+        onClickMap = { mapClick: MapClick ->
+            if (address.streetOrPlace !is StreetName) {
+                false
+            } else {
+                nameSuggestionsSource
+                    .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
+                    .firstOrNull()
+                    ?.find { it.languageTag.isEmpty() }
+                    ?.name
+                    ?.let { address = address.copy(streetOrPlace = StreetName(it)) }
+                true
+            }
+        },
     ) {
         AddressForm(
             value = address,
