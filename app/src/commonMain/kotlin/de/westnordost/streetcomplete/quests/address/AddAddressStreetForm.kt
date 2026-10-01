@@ -58,7 +58,8 @@ fun AddAddressStreetForm(
         },
         onClickMap = { mapClick: MapClick ->
             if (streetOrPlaceName !is StreetName) {
-                true
+                // Do not consume event.
+                false
             } else {
                 nameSuggestionsSource
                     .getNames(
@@ -70,7 +71,7 @@ fun AddAddressStreetForm(
                     ?.find { it.languageTag.isEmpty() }
                     ?.name
                     ?.let { streetOrPlaceName = StreetName(it) }
-                false
+                true
             }
         },
         subtitle = nameAndLocationLabel(LocalElement.current!!, featureDictionary, showHouseNumber = true),

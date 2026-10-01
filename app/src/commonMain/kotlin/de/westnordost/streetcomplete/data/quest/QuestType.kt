@@ -23,5 +23,5 @@ interface QuestType : EditType {
     /** The quest type can clean its metadata that is older than the given timestamp here, if any  */
     fun deleteMetadataOlderThan(timestamp: Long) {}
 
-    fun onClickMap(mapClick: MapClick): Boolean {return true}
+    fun onClickMap(mapClick: MapClick): Boolean {return false}
 }
