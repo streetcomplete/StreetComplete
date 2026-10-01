@@ -1,5 +1,33 @@
 # Changelog
 
+## vNext
+
+### General
+
+- Support predictive back gesture (#7113), by @sargunv
+- Other minor UI improvements
+- Reduce yank when animating between screens (#7194, …), by @Amaanprobably, @sargunv
+
+### Fixes
+
+- Fix rendering issue in parking overlay form
+- Fix avatar image didn't appear immediately after login
+
+### Quest improvements
+
+- Other minor improvements (#7182, #7187), thanks @paulklie
+
+### Changes and fixes for v64.0-alpha
+
+- Dismiss quest and overlay forms by clicking on the map (#7179), by @paulklie
+- Only show drag handle on bottom sheets if the can actually be dragged up
+- Fix crash in cycleway overlay and board type quest on iOS (#7184)
+- Fix rare crash in opening hours and collection times form
+- Fix cycleway form would in rare circumstances detect changes when there were none
+- Fix cycleway form would not recognize resurvey of cycleways as resurvey
+- Made overlay elements clickable easier (#7178), thanks @sargunv
+- Fix new-address pin was also displayed when editing existing opening hours (#7183)
+
 ## v64.0-alpha2
 
 🍎 After v64.0-alpha1, this update brings huge changes AGAIN, which again should be mostly
@@ -70,7 +98,7 @@ app has now come within reach! (#6842).
 - UI now prevents possibility to create duplicate notes (#4853)
 - Context menus now appear at less wrong positions (#6665)
 - "Are you sure?" dialog had poor contrast in dark mode (#6753)
-- Fix rare crash in places overlay (#6648) 
+- Fix rare crash in places overlay (#6648), and another (#5809)
 - Quest form used to not have padding for the camera notch (#6764)
 - Internet access: "none" option was not exclusive (#7016)
 - Fix formatting of links in notes (#7048)
