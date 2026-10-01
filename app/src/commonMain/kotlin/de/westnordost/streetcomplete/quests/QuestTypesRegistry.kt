@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.quests.artwork.AddArtworkType
 import de.westnordost.streetcomplete.quests.atm_cashin.AddAtmCashIn
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
+import de.westnordost.streetcomplete.quests.kids_area.AddKidsArea
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_installation.AddBicycleBarrierInstallation
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.AddBicycleBarrierType
 import de.westnordost.streetcomplete.quests.barrier_opening.AddBarrierOpening
@@ -520,6 +521,7 @@ fun questTypeRegistry(
     // shop and others, but have to go inside
     176 to AddHandwashing(), // have to go inside, but only your toilet, not potentially others
     120 to AddBabyChangingTable(), // used by OsmAnd in the object description, have to go inside
+    200 to AddKidsArea(), // have to go inside
     121 to AddWheelchairAccessToiletsPart(), // have to go inside
 
     133 to AddFuelSelfService(),
