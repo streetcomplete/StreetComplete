@@ -42,7 +42,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.MainBottomSheet
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
@@ -99,6 +98,7 @@ import org.maplibre.compose.style.BaseStyle
 import org.maplibre.spatialk.units.Bearing
 import org.maplibre.spatialk.units.extensions.inDegrees
 import kotlin.time.Duration.Companion.milliseconds
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 
 /** The map and its controls, forms, and sidebars. */
 @Composable
@@ -252,7 +252,7 @@ fun MainScreen(
         mapState.metersPerDpAtLatitude(mapState.cameraPosition.target.latitude) ?: 0.0
 
     fun ClickEvent.toMapClick(): MapClick? =
-        position?.let { MapClick(it.toLatLon(), screenOffset, clickAreaSizeInMeters = getMetersPerDp() * 14) }
+        position?.let { MapClick(it.toLatLon(), screenOffset, clickAreaSizeInMeters = getMetersPerDp() * 20) }
 
     fun followPosition() {
         scope.launch {
@@ -596,8 +596,7 @@ fun MainScreen(
                         mapMetersPerDp = getMetersPerDp(),
                         onSetMapMarkers = { if (id == sheet.id) sheet.formMarkers = it?.toList() },
                         onSetMapOverlay = { if (id == sheet.id) sheet.formMapOverlay = it },
-                        lastMapClick = sheet.lastMapClick,
-                    )
+                        lastMapClick = sheet.lastMapClick                    )
                 }
             }
         }

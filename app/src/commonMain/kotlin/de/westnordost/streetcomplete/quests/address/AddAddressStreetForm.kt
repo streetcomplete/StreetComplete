@@ -55,16 +55,25 @@ fun AddAddressStreetForm(
             on(Answer(streetOrPlaceName))
         },
         onClickMap = { mapClick: MapClick ->
-            val suggestedNames = nameSuggestionsSource
-                .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
-                .firstOrNull()
+            if (streetOrPlaceName !is StreetName)
+                false
+            else {
+                val suggestedNames = nameSuggestionsSource
+                    .getNames(
+                        mapClick.position,
+                        mapClick.clickAreaSizeInMeters,
+                        roadsWithNamesFilter
+                    )
+                    .firstOrNull()
 
-            if (suggestedNames != null) {
-                suggestedNames.find { it.languageTag.isEmpty() }
-                    ?.name
-                    ?.let { streetOrPlaceName = StreetName(it) }
-                true
-            } else false
+                if (suggestedNames != null) {
+                    suggestedNames.find { it.languageTag.isEmpty() }
+                        ?.name
+                        ?.let { streetOrPlaceName = StreetName(it) }
+                    true
+                }
+                else false
+            }
         },
         subtitle = nameAndLocationLabel(LocalElement.current!!, featureDictionary, showHouseNumber = true),
         otherAnswers = { listOf(

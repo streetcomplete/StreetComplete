@@ -182,8 +182,7 @@ fun MainBottomSheet(
                 onSetMapMarkers = onSetMapMarkers,
                 onSetMapOverlay = onSetMapOverlay,
                 lastMapClick = lastMapClick,
-                modifier = modifier,
-            )
+                modifier = modifier            )
         }
     }
 
