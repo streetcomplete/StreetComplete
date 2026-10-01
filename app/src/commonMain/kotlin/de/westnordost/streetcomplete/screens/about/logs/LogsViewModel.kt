@@ -19,8 +19,6 @@ import kotlinx.coroutines.IO
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 import kotlinx.datetime.LocalDateTime
 
@@ -37,24 +35,8 @@ class LogsViewModelImpl(
     private val logsSource: LogsSource,
 ) : LogsViewModel() {
 
-    /**
-     * Produce a call back flow of all incoming logs matching the given [filters].
-     */
-    private fun getIncomingLogs(filters: LogsFilters) = callbackFlow {
-        // Listener that sends the messages matching the filters to the observer
-        val listener = object : LogsSource.Listener {
-            override fun onAdded(message: LogMessage) {
-                if (filters.matches(message)) {
-                    trySend(message) // Send it to the observer
-                }
-            }
-        }
-        logsSource.addListener(listener)
-        awaitClose { logsSource.removeListener(listener) }
-    }
-
-    override fun getLogs(filters: LogsFilters): Flow<List<LogMessage>> = flow {
-        val logs = logsSource
+    override fun getLogs(filters: LogsFilters): Flow<List<LogMessage>> = callbackFlow {
+        val logs = withContext(Dispatchers.IO) { logsSource
             .getLogs(
                 levels = filters.levels,
                 messageContains = filters.messageContains,
@@ -62,14 +44,22 @@ class LogsViewModelImpl(
                 olderThan = filters.timestampOlderThan?.toEpochMilli()
             )
             .toMutableList()
-
-        emit(UniqueList(logs))
-
-        getIncomingLogs(filters).collect {
-            logs.add(it)
-            emit(UniqueList(logs))
         }
-    }.flowOn(Dispatchers.IO)
+
+        trySend(UniqueList(logs))
+
+        val listener = object : LogsSource.Listener {
+            override fun onAdded(message: LogMessage) {
+                if (filters.matches(message)) {
+                    logs.add(message)
+                    trySend(UniqueList(logs))
+                }
+            }
+        }
+
+        logsSource.addListener(listener)
+        awaitClose { logsSource.removeListener(listener) }
+    }
 
     override suspend fun createLogsFile(logs: List<LogMessage>): PlatformFile {
         val logTimestamp = LocalDateTime.now().toString()
