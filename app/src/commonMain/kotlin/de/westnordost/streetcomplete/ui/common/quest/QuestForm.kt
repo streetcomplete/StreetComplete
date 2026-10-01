@@ -48,6 +48,8 @@ import org.koin.compose.koinInject
  *  bubble, then finally the speech bubble containing the center-aligned [content] padded with a
  *  [contentPadding] (if there is any content) and an OK button to confirm the input. If
  *  [isResurvey] is true an additional title "Is this still correct" is added.
+ *  [onClickMap] is called when map is clicked/tapped, can be used to override default behavior
+ *  (closing the quest form). Return true when event is consumed/handled by the quest form.
  *
  *  **This composable requires the `LocalQuestType` composition local to be set!**
  *
