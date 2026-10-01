@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
@@ -17,8 +18,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -27,6 +34,7 @@ import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleArrowDi
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleNoArrow
 import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
 import de.westnordost.streetcomplete.ui.ktx.isLandscape
+import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 
 /** A [BottomSheet] form that features a [header] at the top, below, a [note], then below, a
@@ -46,6 +54,8 @@ fun BottomSheetFormScaffold(
     peekHeight: Dp = Dimensions.QuestFormPeekHeight
 ) {
     val windowInfo = LocalWindowInfo.current
+    var bottomSheetHeightPx by remember { mutableIntStateOf(0) }
+    val bottomSheetPeekHeight = peekHeight.toPx()
 
     // Keep the sheet's drag bounds above the keyboard, including when collapsed.
     Box(modifier = modifier
@@ -59,6 +69,7 @@ fun BottomSheetFormScaffold(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .onSizeChanged { bottomSheetHeightPx = it.height }
                     .safeDrawingPadding(),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
@@ -74,7 +85,11 @@ fun BottomSheetFormScaffold(
                             PaddingValues(start = 16.dp, top = 8.dp, end = 16.dp, bottom = 12.dp),
                         content = {
                             Column(Modifier.fillMaxWidth()) {
-                                BottomSheetDragHandle(Modifier.padding(bottom = 8.dp))
+                                if (bottomSheetHeightPx > bottomSheetPeekHeight) {
+                                    BottomSheetDragHandle(Modifier.padding(bottom = 8.dp))
+                                } else {
+                                    Spacer(Modifier.size(4.dp))
+                                }
                                 Box { header() }
                             }
                         }
