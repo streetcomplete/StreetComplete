@@ -38,11 +38,14 @@ fun AddBusStopNameForm(
             Text(stringResource(Res.string.quest_streetName_abbreviation_instruction))
         },
         onClickMap = { mapClick: MapClick ->
-            nameSuggestionsSource
+            val suggestedNames = nameSuggestionsSource
                 .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, busStopsWithNamesFilter)
                 .firstOrNull()
-                ?.let { initialLocalizedNames = it }
-            true
+
+            if (suggestedNames != null) {
+                initialLocalizedNames = suggestedNames
+                true
+            } else false
         },
     )
 

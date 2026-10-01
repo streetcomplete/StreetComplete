@@ -44,13 +44,16 @@ fun AddRoadNameForm(
         },
         isResurvey = initialLocalizedNames != null && !copiedName,
         onClickMap = { mapClick: MapClick ->
-            copiedName = true
-            nameSuggestionsSource
+            val suggestedNames = nameSuggestionsSource
                 .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
                 .firstOrNull()
-                ?.let { initialLocalizedNames = it }
-            true
-        }
+
+            if (suggestedNames != null) {
+                copiedName = true
+                initialLocalizedNames = suggestedNames
+                true
+            } else false
+        },
     )
 }
 
