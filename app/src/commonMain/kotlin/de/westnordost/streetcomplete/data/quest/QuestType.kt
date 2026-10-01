@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.quest
 
 import de.westnordost.streetcomplete.data.osm.edits.EditType
-import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 
