@@ -635,7 +635,7 @@ fun MainScreen(
                         mapMetersPerDp = getMetersPerDp(),
                         onSetMapMarkers = { if (id == sheet.id) sheet.formMarkers = it?.toList() },
                         onSetMapOverlay = { if (id == sheet.id) sheet.formMapOverlay = it },
-                        lastMapClick = sheet.lastMapClick
+                        lastMapClick = sheet.lastMapClick,
                     )
                 }
             }
