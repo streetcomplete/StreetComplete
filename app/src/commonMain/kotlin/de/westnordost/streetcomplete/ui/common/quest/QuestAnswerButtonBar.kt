@@ -3,7 +3,9 @@ package de.westnordost.streetcomplete.ui.common.quest
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.DropdownMenu
@@ -49,7 +51,10 @@ fun QuestAnswerButtonBar(
             if (otherAnswers != null || index != 0) {
                 VerticalDivider(Modifier.height(24.dp))
             }
-            TextButton(onClick = item.action) { Text(item.text) }
+            TextButton(
+                onClick = item.action,
+                modifier = Modifier.defaultMinSize(minWidth = 80.dp, minHeight = 48.dp)
+            ) { Text(item.text) }
         }
     }
 }
@@ -62,7 +67,10 @@ private fun OtherAnswersTextButton(
     var expanded by rememberSaveable { mutableStateOf(false) }
 
     Box(modifier) {
-        TextButton(onClick = { expanded = true }) {
+        TextButton(
+            onClick = { expanded = true },
+            modifier = Modifier.defaultMinSize(minWidth = 80.dp, minHeight = 48.dp)
+        ) {
             Text(stringResource(Res.string.quest_generic_otherAnswers2))
         }
         DropdownMenu(
@@ -84,9 +92,10 @@ private fun QuestAnswerButtonBarPreview() {
     QuestAnswerButtonBar(
         answers = listOf(
             AnswerItem("No") {},
-            AnswerItem("Perhaps") {},
-            AnswerItem("Depends how you define \"No\"") {},
             AnswerItem("Yes") {},
+            AnswerItem("Only") {},
+            AnswerItem("Depends how you define \"No\"") {},
+            AnswerItem("Perhaps") {},
         ),
         otherAnswers = { listOf(
             AnswerItem("Depends how you define \"Yes\"") {},
