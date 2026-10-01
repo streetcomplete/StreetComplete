@@ -365,7 +365,7 @@
     <!-- Credits screen -->
 
     <string name="credits_author_title">Author and maintainer</string>
-    <string name="credits_main_contributors_title">Main contributors</string>
+    <string name="credits_main_contributors_title">Current main contributors</string>
     <string name="credits_contributors_title">Code contributors</string>
     <string name="credits_contributors">See the &lt;a href="https://github.com/streetcomplete/StreetComplete/graphs/contributors"&gt;complete list on GitHub&lt;/a&gt;.</string>
     <string name="credits_translations_title">Translations</string>
