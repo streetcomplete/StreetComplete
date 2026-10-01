@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.road_name
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -16,7 +15,6 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.osm.localized_name.parseLocalizedNames
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
 import de.westnordost.streetcomplete.ui.common.quest.LocalizedNameQuestForm
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.util.rememberSerializable

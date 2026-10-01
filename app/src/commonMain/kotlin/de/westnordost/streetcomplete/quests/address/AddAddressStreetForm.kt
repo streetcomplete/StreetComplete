@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.address
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -24,7 +23,6 @@ import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalElement
-import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.nameAndLocationLabel

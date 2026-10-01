@@ -1,14 +1,12 @@
 package de.westnordost.streetcomplete.overlays.address
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.center
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -49,10 +47,9 @@ import de.westnordost.streetcomplete.ui.common.Pin
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.OnMap
-import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
-import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.isArea
