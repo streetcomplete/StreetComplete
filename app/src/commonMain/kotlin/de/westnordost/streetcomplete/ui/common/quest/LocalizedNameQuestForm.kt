@@ -50,6 +50,7 @@ fun LocalizedNameQuestForm(
     otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     preferences: Preferences = koinInject(),
     isResurvey: Boolean = false,
+    onClickMap: ((MapClick) -> Boolean) = { false },
 ) {
     val selectableLanguages = remember {
         preferences.getLanguagesWithPreferredFirst(
@@ -89,6 +90,7 @@ fun LocalizedNameQuestForm(
                 confirmNoName = true
             },
         ) },
+        onClickMap = onClickMap
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             if (hint != null) {

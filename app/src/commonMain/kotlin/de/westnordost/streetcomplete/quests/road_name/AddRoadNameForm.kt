@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.osm.localized_name.parseLocalizedNames
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
 import de.westnordost.streetcomplete.ui.common.quest.LocalizedNameQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
@@ -35,17 +36,6 @@ fun AddRoadNameForm(
         parseLocalizedNames(element.tags)
     ) }
 
-    val mapClick = LocalLastMapClick.current
-    LaunchedEffect(mapClick) {
-        if (mapClick != null) {
-            copiedName = true
-            nameSuggestionsSource
-                .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
-                .firstOrNull()
-                ?.let { initialLocalizedNames = it }
-        }
-    }
-
     LocalizedNameQuestForm(
         on = on,
         countryInfo = countryInfo,
@@ -54,7 +44,15 @@ fun AddRoadNameForm(
         noNameConfirmationText = {
             Text(stringResource(Res.string.quest_streetName_answer_noName_confirmation_description))
         },
-        isResurvey = initialLocalizedNames != null && !copiedName
+        isResurvey = initialLocalizedNames != null && !copiedName,
+        onClickMap = { mapClick: MapClick ->
+            copiedName = true
+            nameSuggestionsSource
+                .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
+                .firstOrNull()
+                ?.let { initialLocalizedNames = it }
+            true
+        }
     )
 }
 
