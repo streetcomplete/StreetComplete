@@ -46,6 +46,13 @@ plugins {
 repositories {
     google()
     mavenCentral()
+    // TODO: remove once MapLibre Compose v0.19 is released
+    maven("https://central.sonatype.com/repository/maven-snapshots/") {
+        mavenContent {
+            snapshotsOnly()
+            includeGroup("org.maplibre.compose")
+        }
+    }
 }
 
 buildkonfig {
@@ -146,7 +153,7 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.1")
 
                 // location
-                implementation("org.maplibre.compose:location:0.18.0")
+                implementation("org.maplibre.compose:location:0.18.1-SNAPSHOT")
 
                 // SQLite
                 implementation("androidx.sqlite:sqlite:2.7.1")
@@ -199,7 +206,7 @@ kotlin {
                 // UI widgets
 
                 // Map
-                implementation("org.maplibre.compose:maplibre-compose:0.18.0")
+                implementation("org.maplibre.compose:maplibre-compose:0.18.1-SNAPSHOT")
 
                 // non-lazy grid
                 // NOTE: might replace with
@@ -242,7 +249,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-android:3.5.2")
 
                 // map
-                implementation("org.maplibre.compose:maplibre-compose-runtime-opengl-android:0.18.0")
+                implementation("org.maplibre.compose:maplibre-compose-runtime-opengl-android:0.18.1-SNAPSHOT")
 
                 // required to @Preview composables in Android Studio
                 runtimeOnly("androidx.compose.ui:ui-tooling:1.12.1")
