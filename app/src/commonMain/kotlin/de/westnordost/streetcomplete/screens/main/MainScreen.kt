@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -36,12 +37,14 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.DpOffset
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.MainBottomSheet
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
@@ -49,6 +52,7 @@ import de.westnordost.streetcomplete.screens.main.controls.MainScreenControls
 import de.westnordost.streetcomplete.screens.main.controls.PointerPinButton
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistorySidebar
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
+import de.westnordost.streetcomplete.screens.main.edithistory.icon
 import de.westnordost.streetcomplete.screens.main.errors.LastCrashEffect
 import de.westnordost.streetcomplete.screens.main.errors.LastDownloadErrorEffect
 import de.westnordost.streetcomplete.screens.main.errors.LastUploadErrorEffect
@@ -75,6 +79,7 @@ import de.westnordost.streetcomplete.ui.ktx.dir
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toLatLon
+import de.westnordost.streetcomplete.util.ktx.toPosition
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
@@ -95,10 +100,10 @@ import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.rememberMapState
 import org.maplibre.compose.overlay.GeographicLayout
 import org.maplibre.compose.style.BaseStyle
+import org.maplibre.compose.util.DpPadding
 import org.maplibre.spatialk.units.Bearing
 import org.maplibre.spatialk.units.extensions.inDegrees
 import kotlin.time.Duration.Companion.milliseconds
-import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 
 /** The map and its controls, forms, and sidebars. */
 @Composable
@@ -257,6 +262,18 @@ fun MainScreen(
     fun followPosition() {
         scope.launch {
             cameraState.followPosition(location?.position?.toLatLon(), getTrackBearing(tracks.currentTrack))
+        }
+    }
+
+    fun jumpToEdit() {
+        scope.launch {
+            sheet.shownEdit?.geometry?.let { cameraState.focus(it, DpPadding.Zero) }
+        }
+    }
+
+    fun jumpToBottomSheetFocus() {
+        scope.launch {
+            shownBottomSheet?.geometry?.let { cameraState.focus(it, sheetPadding) }
         }
     }
 
@@ -476,6 +493,28 @@ fun MainScreen(
                 sheet.formMapOverlay?.invoke(this)
 
                 GeographicLayout(Modifier.windowInsetsPadding(WindowInsets.safeDrawing)) {
+                    val shownEdit = sheet.shownEdit?.edit
+                    shownEdit?.position?.toPosition()?.let { position ->
+                        val icon = shownEdit.icon ?: Res.drawable.empty_128
+                        PointerPinButton(
+                            targetPosition = position,
+                            onClick = ::jumpToEdit,
+                            contentPadding = 6.dp,
+                        ) {
+                            Image(painterResource(icon), null, modifier = Modifier.size(36.dp))
+                        }
+                    }
+
+                    shownBottomSheet?.position?.toPosition()?.let { position ->
+                        PointerPinButton(
+                            targetPosition = position,
+                            onClick = ::jumpToBottomSheetFocus,
+                            contentPadding = 6.dp,
+                        ) {
+                            Image(painterResource(shownBottomSheet.icon), null, modifier = Modifier.size(36.dp))
+                        }
+                    }
+
                     val position = location?.position
                     if (position != null) {
                         PointerPinButton(targetPosition = position, onClick = ::followPosition) {
@@ -596,7 +635,8 @@ fun MainScreen(
                         mapMetersPerDp = getMetersPerDp(),
                         onSetMapMarkers = { if (id == sheet.id) sheet.formMarkers = it?.toList() },
                         onSetMapOverlay = { if (id == sheet.id) sheet.formMapOverlay = it },
-                        lastMapClick = sheet.lastMapClick                    )
+                        lastMapClick = sheet.lastMapClick
+                    )
                 }
             }
         }

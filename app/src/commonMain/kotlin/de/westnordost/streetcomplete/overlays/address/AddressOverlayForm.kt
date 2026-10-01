@@ -238,6 +238,7 @@ fun AddressOverlayForm(
         },
         otherAnswers = ::createOtherAnswers,
         onClickMap = { mapClick: MapClick ->
+            // Do not consume event if the street name is not displayed
             if (address.streetOrPlace !is StreetName)
                 false
             else
@@ -246,6 +247,7 @@ fun AddressOverlayForm(
                     .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
                     .firstOrNull()
 
+                // Do not consume event if the user did not hit a road
                 if (suggestedNames != null) {
                     suggestedNames.find { it.languageTag.isEmpty() }
                         ?.name

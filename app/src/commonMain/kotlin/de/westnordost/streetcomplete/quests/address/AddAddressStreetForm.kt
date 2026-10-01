@@ -55,9 +55,11 @@ fun AddAddressStreetForm(
             on(Answer(streetOrPlaceName))
         },
         onClickMap = { mapClick: MapClick ->
+            // Do not consume event if the street name is not displayed
             if (streetOrPlaceName !is StreetName)
                 false
             else {
+                // Do not consume event if the user did not hit a road
                 val suggestedNames = nameSuggestionsSource
                     .getNames(
                         mapClick.position,
