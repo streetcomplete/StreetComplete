@@ -1,6 +1,8 @@
 ![StreetComplete](.github/images/feature_graphic.png)
 
-StreetComplete is an easy to use editor of OpenStreetMap data available for Android. It can be used without any OpenStreetMap-specific knowledge. It asks simple questions, with answers directly used to edit and improve OpenStreetMap data. The app is aimed at users who do not know anything about OSM tagging schemes but still want to contribute to OpenStreetMap.
+### >>> [Test on iOS TestFlight now!](https://testflight.apple.com/join/K1u3eUU5)
+
+StreetComplete is an easy to use editor of OpenStreetMap data available for Android and iOS. It can be used without any OpenStreetMap-specific knowledge. It asks simple questions, with answers directly used to edit and improve OpenStreetMap data. The app is aimed at users who do not know anything about OSM tagging schemes but still want to contribute to OpenStreetMap.
 
 StreetComplete automatically looks for nearby places where a survey is needed and shows them as quest markers on its map. Each of these quests can then be solved on site by answering a simple question. For example, tapping on a marker may show the question "What is the name of this road?", with a text field to answer it.
 More examples are shown in the screenshots below.
