@@ -12,6 +12,7 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -504,7 +505,7 @@ fun MainScreen(
                         PointerPinButton(
                             targetPosition = position,
                             onClick = ::jumpToEdit,
-                            contentPadding = 6.dp,
+                            contentPadding = PaddingValues(6.dp),
                         ) {
                             Image(painterResource(icon), null, modifier = Modifier.size(36.dp))
                         }
@@ -514,7 +515,7 @@ fun MainScreen(
                         PointerPinButton(
                             targetPosition = position,
                             onClick = ::jumpToBottomSheetFocus,
-                            contentPadding = 6.dp,
+                            contentPadding = PaddingValues(6.dp),
                         ) {
                             Image(painterResource(shownBottomSheet.icon), null, modifier = Modifier.size(36.dp))
                         }
