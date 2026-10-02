@@ -4,9 +4,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Divider
 import androidx.compose.material.DropdownMenu
@@ -117,10 +120,14 @@ fun OverlayForm(
     Box(
         modifier = modifier.fillMaxSize()
     ) {
+        val openFormPadding = Dimensions.getOpenQuestFormMapPadding(
+            LocalWindowInfo.current,
+            WindowInsets.safeDrawing.asPaddingValues()
+        )
         if (pinContent != null) {
             Box(Modifier
+                .padding(openFormPadding)
                 .align(Alignment.Center)
-                .padding(Dimensions.getOpenQuestFormMapPadding(LocalWindowInfo.current))
             ) {
                 pinContent()
             }

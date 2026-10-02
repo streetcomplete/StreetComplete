@@ -3,8 +3,11 @@ package de.westnordost.streetcomplete.screens.main.bottom_sheet.split_way
 import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
@@ -142,12 +145,16 @@ fun SplitWayForm(
     }
 
     Box(modifier = modifier.fillMaxSize()) {
+        val openFormPadding = Dimensions.getOpenQuestFormMapPadding(
+            LocalWindowInfo.current,
+            WindowInsets.safeDrawing.asPaddingValues()
+        )
         Icon(
             painter = painterResource(Res.drawable.crosshair),
             contentDescription = null,
             modifier = Modifier
-                .align(Alignment.Center)
-                .padding(Dimensions.getOpenQuestFormMapPadding(LocalWindowInfo.current)),
+                .padding(openFormPadding)
+                .align(Alignment.Center),
             tint = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)
         )
 

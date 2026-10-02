@@ -2,9 +2,12 @@ package de.westnordost.streetcomplete.screens.main.bottom_sheet.note
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.runtime.Composable
@@ -43,6 +46,10 @@ fun CreateNoteForm(
     var trackpointsDeleted by rememberSaveable { mutableStateOf(false) }
 
     val trackpoints = if (trackpointsDeleted) null else trackpoints
+    val openFormPadding = Dimensions.getOpenQuestFormMapPadding(
+        LocalWindowInfo.current,
+        WindowInsets.safeDrawing.asPaddingValues()
+    )
 
     Box(
         modifier = modifier.fillMaxSize()
@@ -50,8 +57,8 @@ fun CreateNoteForm(
         Pin(
             iconPainter = painterResource(Res.drawable.quest_create_note),
             modifier = Modifier
+                .padding(openFormPadding)
                 .align(Alignment.Center)
-                .padding(Dimensions.getOpenQuestFormMapPadding(LocalWindowInfo.current))
                 .animateFallDown(startDelay = 200.milliseconds)
         )
 
