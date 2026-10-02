@@ -1,5 +1,10 @@
 package de.westnordost.streetcomplete.osm
 
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
+import de.westnordost.streetcomplete.osm.things.addCheckDateThing
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import kotlinx.datetime.LocalDate
@@ -98,6 +103,22 @@ fun Tags.hasCheckDate(): Boolean =
 /** Delete any check date for the entire item */
 fun Tags.removeCheckDates() {
     LAST_CHECK_DATE_KEYS.forEach { remove(it) }
+}
+
+/** Check if an edited element should have a check_date added or updated and apply */
+fun updateMetadataResurvey(changeBuilder: StringMapChangesBuilder) {
+    val dummy = Node(
+        0, tags = changeBuilder,
+        position = LatLon(0.0, 0.0),
+        version = 1,
+        timestampEdited = 1
+    )
+    if (dummy.isPlaceOrDisusedPlace() || dummy.addCheckDateThing()) {
+        changeBuilder.updateCheckDate()
+    }
+    if (dummy.tags["fixme"] == "resurvey") {
+        changeBuilder.remove("fixme")
+    }
 }
 
 /** Date format of the tags used for recording the date at which the element or tag with the given

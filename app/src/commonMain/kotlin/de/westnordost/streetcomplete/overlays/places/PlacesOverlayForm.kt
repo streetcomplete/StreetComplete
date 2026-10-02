@@ -31,6 +31,7 @@ import de.westnordost.streetcomplete.osm.places.getPlaceAsDisused
 import de.westnordost.streetcomplete.osm.places.getPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.places.isDisusedPlace
 import de.westnordost.streetcomplete.osm.places.shouldReplacePlace
+import de.westnordost.streetcomplete.osm.updateCheckDate
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.animateFallDown
 import de.westnordost.streetcomplete.ui.common.Pin
@@ -45,6 +46,7 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import kotlin.time.Duration.Companion.milliseconds
+import de.westnordost.streetcomplete.osm.updateCheckDate
 
 @Composable fun PlacesOverlayForm(
     on: (OverlayAction) -> Unit,
@@ -135,6 +137,8 @@ import kotlin.time.Duration.Companion.milliseconds
         } else {
             newFeature.applyTo(tagChanges, originalFeature)
         }
+
+        tagChanges.updateCheckDate()
 
         if (!newFeature.hasFixedName) {
             // in this case name input was not even shown so newNames will be empty
