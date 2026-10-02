@@ -13,11 +13,13 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.get
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementsTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -26,6 +28,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.Action
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.AppliesAnswerToNearbyElements
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.places.applyReplacePlaceTo
@@ -56,6 +59,7 @@ import de.westnordost.streetcomplete.ui.util.ReplaceBottomSheetTransitionSpec
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.util.ktx.geometryType
+import de.westnordost.streetcomplete.util.math.enlargedBy
 import kotlinx.serialization.Serializable
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
@@ -91,6 +95,7 @@ fun <T> OsmQuestFormContainer(
     countryBoundaries: CountryBoundaries = koinInject(),
     featureDictionary: FeatureDictionary = koinInject(),
     countryInfos: CountryInfos = koinInject(),
+    mapDataSource: MapDataWithEditsSource = koinInject(),
 ) {
     val center = geometry.center
     val countryInfo = remember(center) { countryInfos.get(countryBoundaries, center) }
@@ -109,6 +114,20 @@ fun <T> OsmQuestFormContainer(
         onSetMapOverlay(null)
     }
 
+    /** Tag updates on other, nearby elements that are implied by the given [answer], if the quest
+     *  type is one whose answer applies to nearby elements, too */
+    fun createNearbyElementsActions(answer: T): List<UpdateElementTagsAction> {
+        if (questType !is AppliesAnswerToNearbyElements<*>) return emptyList()
+        @Suppress("UNCHECKED_CAST")
+        val quest = questType as AppliesAnswerToNearbyElements<T>
+        val mapData = mapDataSource.getMapDataWithGeometry(
+            geometry.bounds.enlargedBy(quest.nearbyElementsRadius)
+        )
+        return quest.applyAnswerToNearbyElements(answer, element, mapData)
+            .filter { (_, changes) -> !changes.isEmpty() }
+            .map { (otherElement, changes) -> UpdateElementTagsAction(otherElement, changes) }
+    }
+
     fun onAction(action: QuestAction<T>) {
         when (action) {
             Action.Dismiss -> onDismiss()
@@ -122,8 +141,13 @@ fun <T> OsmQuestFormContainer(
             is Answer<T> -> {
                 val changesBuilder = StringMapChangesBuilder(element.tags)
                 questType.applyAnswerTo(action.value, changesBuilder, geometry, element.timestampEdited)
-                val changes = changesBuilder.create()
-                onEdit(UpdateElementTagsAction(element, changes))
+                val elementAction = UpdateElementTagsAction(element, changesBuilder.create())
+                val nearbyElementsActions = createNearbyElementsActions(action.value)
+                if (nearbyElementsActions.isEmpty()) {
+                    onEdit(elementAction)
+                } else {
+                    onEdit(UpdateElementsTagsAction(listOf(elementAction) + nearbyElementsActions))
+                }
             }
         }
     }

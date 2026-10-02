@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.osmquests
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -61,6 +62,10 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      * not (this is slow). */
     fun isApplicableTo(element: Element): Boolean?
 
+    /** Whether editing [element] may affect this quest type on nearby elements. If true, this
+     *  quest type is re-evaluated around the edited element. */
+    fun mayAffectNearbyQuests(element: Element): Boolean = false
+
     /** Elements that should be highlighted on the map alongside the selected one because they
      *  provide context for the given element. For example, nearby benches should be shown when
      *  answering a question for a bench so the user knows which of the benches is meant. */
@@ -118,6 +123,26 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      * with the given [tags] and the given [geometry].
      * The element is not directly modified, instead, a map of [tags] is modified */
     fun applyAnswerTo(answer: T, tags: Tags, geometry: ElementGeometry, timestampEdited: Long)
+}
+
+/** Additional interface for an [OsmElementQuestType] whose answer may also imply tag changes on
+ *  other, nearby elements, not only on the element the quest refers to.
+ *
+ *  E.g. that a crosswalk has tactile paving on both ends implies that the kerbs at its ends have
+ *  tactile paving. */
+interface AppliesAnswerToNearbyElements<in T> {
+    /** Radius in meters around the quest's element for which map data is provided to
+     *  [applyAnswerToNearbyElements] */
+    val nearbyElementsRadius: Double get() = 100.0
+
+    /** Returns the tag changes on other, nearby elements that are implied by the given [answer]
+     *  to the quest on the given [element]. The element itself is not changed here, but in
+     *  [OsmElementQuestType.applyAnswerTo]. */
+    fun applyAnswerToNearbyElements(
+        answer: T,
+        element: Element,
+        mapData: MapDataWithGeometry
+    ): List<Pair<Element, StringMapChanges>>
 }
 
 sealed interface QuestAction<out T>
