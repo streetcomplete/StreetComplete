@@ -8,9 +8,11 @@ import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.mapNotNull
 import org.maplibre.compose.offline.DownloadProgress
 import org.maplibre.compose.offline.DownloadStatus
 import org.maplibre.compose.offline.OfflineManager
+import org.maplibre.compose.offline.OfflineManagerState
 import org.maplibre.compose.offline.OfflinePack
 import org.maplibre.compose.offline.OfflinePackDefinition
 import kotlin.coroutines.cancellation.CancellationException
@@ -69,7 +71,7 @@ class MapLibreMapTilesDownloader(
 
     override suspend fun deleteOld(time: Long) {
         try {
-            for (pack in manager.packs.value) {
+            for (pack in manager.awaitPacks()) {
                 val packTime = pack.metadata.value?.decodeToString()?.toLongOrNull()
                 if (packTime == null || packTime < time) {
                     manager.delete(pack)
@@ -84,7 +86,7 @@ class MapLibreMapTilesDownloader(
 
     override suspend fun clear() {
         try {
-            for (pack in manager.packs.value) { manager.delete(pack) }
+            for (pack in manager.awaitPacks()) { manager.delete(pack) }
             manager.clearAmbientCache()
         } catch (error: CancellationException) {
             throw error
@@ -97,6 +99,16 @@ class MapLibreMapTilesDownloader(
         private const val TAG = "MapTilesDownload"
     }
 }
+
+/** Waits until the manager has read its stored packs, then returns them */
+private suspend fun OfflineManager.awaitPacks(): Set<OfflinePack> =
+    state.mapNotNull {
+        when (it) {
+            OfflineManagerState.Loading -> null
+            is OfflineManagerState.Ready -> it.packs
+            is OfflineManagerState.Failed -> throw it.cause
+        }
+    }.first()
 
 private val DownloadProgress.isFinished: Boolean get() = when (this) {
     is DownloadProgress.Healthy -> status == DownloadStatus.Complete
