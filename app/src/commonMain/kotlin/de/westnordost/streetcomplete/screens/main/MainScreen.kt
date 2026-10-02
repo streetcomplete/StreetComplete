@@ -262,7 +262,7 @@ fun MainScreen(
         mapState.metersPerDpAtLatitude(mapState.cameraPosition.target.latitude) ?: 0.0
 
     fun ClickEvent.toMapClick(): MapClick? =
-        position?.let { MapClick(it.toLatLon(), screenOffset, clickAreaSizeInMeters = getMetersPerDp() * 14) }
+        position?.let { MapClick(it.toLatLon(), screenOffset, clickAreaSizeInMeters = getMetersPerDp() * 20) }
 
     fun followPosition() {
         scope.launch {

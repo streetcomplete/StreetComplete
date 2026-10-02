@@ -236,19 +236,25 @@ fun AddressOverlayForm(
                 Pin(iconPainter = painterResource(Res.drawable.quest_housenumber))
             }
         },
-
         otherAnswers = ::createOtherAnswers,
         onClickMap = { mapClick: MapClick ->
-            if (address.streetOrPlace !is StreetName) {
+            // Do not consume event if the street name is not displayed
+            if (address.streetOrPlace !is StreetName)
                 false
-            } else {
-                nameSuggestionsSource
+            else
+            {
+                val suggestedNames = nameSuggestionsSource
                     .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
                     .firstOrNull()
-                    ?.find { it.languageTag.isEmpty() }
-                    ?.name
-                    ?.let { address = address.copy(streetOrPlace = StreetName(it)) }
-                true
+
+                // Do not consume event if the user did not hit a road
+                if (suggestedNames != null) {
+                    suggestedNames.find { it.languageTag.isEmpty() }
+                        ?.name
+                        ?.let { address = address.copy(streetOrPlace = StreetName(it)) }
+                    true
+                }
+                else false
             }
         },
     ) {
