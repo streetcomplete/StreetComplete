@@ -1,12 +1,13 @@
 # Changelog
 
-## vNext
+## v64.0-alpha3
 
 ### General
 
 - Support predictive back gesture (#7113), by @sargunv
 - Other minor UI improvements
-- Reduce yank when animating between screens (#7194, …), by @Amaanprobably, @sargunv
+- Reduce yank when animating between screens (#7194, …), by @Amaanprobably
+- Show button on map to return to currently focused element (#7195)
 
 ### Fixes
 
@@ -15,11 +16,11 @@
 
 ### Quest improvements
 
-- Other minor improvements (#7182, #7187), thanks @paulklie
+- Other minor improvements (#7182, #7187, #7201), thanks @paulklie
 
 ### Changes and fixes for v64.0-alpha
 
-- Dismiss quest and overlay forms by clicking on the map (#7179), by @paulklie
+- Dismiss quest, overlay and note forms by clicking on the map (#7179, #7202, …), by @paulklie
 - Only show drag handle on bottom sheets if the can actually be dragged up
 - Fix crash in cycleway overlay and board type quest on iOS (#7184)
 - Fix rare crash in opening hours and collection times form
@@ -27,6 +28,8 @@
 - Fix cycleway form would not recognize resurvey of cycleways as resurvey
 - Made overlay elements clickable easier (#7178), thanks @sargunv
 - Fix new-address pin was also displayed when editing existing opening hours (#7183)
+- Fix zoomed in geometry of focused element was not fully in view (regression of #7135)
+- Make buttons in quest answer button bar a little bigger (#7190)
 
 ## v64.0-alpha2
 
