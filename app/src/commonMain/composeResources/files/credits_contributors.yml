@@ -1,8 +1,8 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 629141
+  linesOfCodeChanged: 629558
   linesOfInterfaceMarkupChanged: 177268
-  assetFilesChanged: 2354
+  assetFilesChanged: 2787
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
   linesOfCodeChanged: 26789
@@ -10,7 +10,7 @@
   assetFilesChanged: 152
 - name: "Sargun Vohra"
   githubUsername: "sargunv"
-  linesOfCodeChanged: 22730
+  linesOfCodeChanged: 22885
   linesOfInterfaceMarkupChanged: 103
   assetFilesChanged: 12
 - name: "Mateusz Konieczny"
@@ -38,16 +38,16 @@
   linesOfCodeChanged: 3763
   linesOfInterfaceMarkupChanged: 607
   assetFilesChanged: 72
+- name: "arthedain"
+  githubUsername: "paulklie"
+  linesOfCodeChanged: 3602
+  linesOfInterfaceMarkupChanged: 380
+  assetFilesChanged: 62
 - name: "arrival-spring"
   githubUsername: "arrival-spring"
   linesOfCodeChanged: 3308
   linesOfInterfaceMarkupChanged: 2280
   assetFilesChanged: 7
-- name: "arthedain"
-  githubUsername: "paulklie"
-  linesOfCodeChanged: 3296
-  linesOfInterfaceMarkupChanged: 380
-  assetFilesChanged: 62
 - name: "Krzysztof Zbudniewek"
   githubUsername: "neonowy"
   linesOfCodeChanged: 2626
@@ -171,6 +171,11 @@
 - name: "darken"
   githubUsername: "d4rken"
   linesOfCodeChanged: 230
+- name: "Amaan Qureshi"
+  githubUsername: "Amaanprobably"
+  linesOfCodeChanged: 229
+  linesOfInterfaceMarkupChanged: 322
+  assetFilesChanged: 6
 - name: "errol pais"
   githubUsername: "errolpais"
   linesOfCodeChanged: 227
@@ -188,11 +193,6 @@
   githubUsername: "TacoTheDank"
   linesOfCodeChanged: 176
   linesOfInterfaceMarkupChanged: 131
-- name: "Amaan Qureshi"
-  githubUsername: "Amaanprobably"
-  linesOfCodeChanged: 175
-  linesOfInterfaceMarkupChanged: 322
-  assetFilesChanged: 6
 - name: "@RubenKelevra"
   githubUsername: "RubenKelevra"
   linesOfCodeChanged: 174

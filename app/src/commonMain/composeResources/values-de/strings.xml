@@ -634,7 +634,7 @@ Beachte, dass diese App nur Hausnummern von Gebäuden abfragt, deren Typ bereits
     <string name="confirmation_authorize_now_note2">Du kannst dich auch später auf der Profilseite anmelden.</string>
     <string name="credits_art_contributors_title">Grafikbeiträge</string>
     <string name="credits_projects_contributors_title">Begleitprojekte</string>
-    <string name="credits_main_contributors_title">Hauptmitwirkende</string>
+    <string name="credits_main_contributors_title">Derzeitige Hauptmitwirkende</string>
     <string name="stats_are_syncing">Deine Statistiken werden noch synchronisiert. Schau später noch mal vorbei.</string>
     <string name="user_statistics_country_wiki_link">Mapping-Portal %1$s</string>
     <string name="user_statistics_filter_by_country">nach Land</string>
@@ -1118,7 +1118,7 @@ Alternativ kann auch ein Hinweis (mit Foto) hinterlassen werden.</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">Ein Sammelplatz ist ein Ort, an dem sich Menschen im Notfall versammeln. Er sieht meist ähnlich aus wie dieser:</string>
     <string name="quest_address_answer_house_name2">Adresse hat einen Hausnamen …</string>
     <string name="quest_address_street_street_name_label">Straßenname:</string>
-    <string name="quest_address_street_hint2">Straße auf der Karte antippen, um sie auszuwählen</string>
+    <string name="quest_address_street_hint2">Straße auf der Karte antippen, um sie auszuwählen.</string>
     <string name="quest_bicycle_incline_title">Welche Richtung führt hier nach oben?</string>
     <string name="quest_bicycle_incline_up_and_down">Es geht rauf und runter</string>
     <string name="quest_drinking_water_type_generic_water_fountain">Anderer Trinkwasserbrunnen</string>
@@ -1165,7 +1165,7 @@ Alternativ kann auch ein Hinweis (mit Foto) hinterlassen werden.</string>
 Jetzt verschieben?</string>
     <string name="node_moved_not_far_enough">Zu wenig verschoben</string>
     <string name="node_moved_too_far">Zu weit verschoben. Verfasse stattdessen einen Hinweis</string>
-    <string name="node_moved">Verschoben um %1$s</string>
+    <string name="node_moved">Verschieben um %1$s</string>
     <string name="move_node_description">Verschiebe die Karte, um den Punkt an die richtige Stelle zu verschieben. Nutze die Zoom-Funktion, um so präzise wie möglich zu sein. Bitte sei dir bewusst, dass deine eigene Position weniger exakt als angezeigt sein kann.</string>
     <string name="move_node_action_description">Du hast den Punkt verschoben</string>
     <string name="quest_cycleway_value_shoulder">Keiner, aber Seitenstreifen für Radfahrer nutzbar</string>
