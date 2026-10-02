@@ -6,7 +6,7 @@
 
 - Support predictive back gesture (#7113), by @sargunv
 - Other minor UI improvements
-- Reduce yank when animating between screens (#7194, …), by @Amaanprobably
+- Reduce yank when animating between screens (#7194, #7193…), by @Amaanprobably, @sargunv
 - Show button on map to return to currently focused element (#7195)
 
 ### Fixes
@@ -20,6 +20,7 @@
 
 ### Changes and fixes for v64.0-alpha
 
+- Map now works on iOS 15.5 (#7193), by @sargunv
 - Dismiss quest, overlay and note forms by clicking on the map (#7179, #7202, …), by @paulklie
 - Only show drag handle on bottom sheets if the can actually be dragged up
 - Fix crash in cycleway overlay and board type quest on iOS (#7184)
