@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.urlconfig.UrlConfig
 import kotlinx.coroutines.flow.StateFlow
 import org.maplibre.compose.camera.CameraPosition
 import kotlin.reflect.KClass
@@ -22,14 +21,6 @@ abstract class MainViewModel : ViewModel() {
     abstract suspend fun createErrorReport(error: Exception): String
 
     /* start parameters */
-    abstract fun setUri(uri: String)
-
-    abstract val urlConfig: StateFlow<ShownUrlConfig?>
-    abstract fun consumeUrlConfig()
-    abstract fun applyUrlConfig(config: UrlConfig)
-    abstract val geoUri: StateFlow<CameraPosition?>
-    abstract fun consumeGeoUri()
-
     abstract val initialCamera: CameraPosition
     abstract val initiallyFollowing: Boolean
     abstract val initiallyNavigating: Boolean
@@ -85,5 +76,3 @@ abstract class MainViewModel : ViewModel() {
     abstract val isShowingStarsCurrentWeek: StateFlow<Boolean>
     abstract fun toggleShowingCurrentWeek()
 }
-
-data class ShownUrlConfig(val urlConfig: UrlConfig, val alreadyExists: Boolean)

@@ -160,6 +160,8 @@ import de.westnordost.streetcomplete.data.weeklyosm.WeeklyOsmUpdater
 import de.westnordost.streetcomplete.overlays.overlaysRegistry
 import de.westnordost.streetcomplete.quests.questTypeRegistry
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.screens.MainNavViewModel
+import de.westnordost.streetcomplete.screens.MainNavViewModelImpl
 import de.westnordost.streetcomplete.screens.about.ChangelogViewModel
 import de.westnordost.streetcomplete.screens.about.ChangelogViewModelImpl
 import de.westnordost.streetcomplete.screens.about.CreditsViewModel
@@ -605,9 +607,11 @@ val commonModule = module {
     viewModel<MainViewModel> {
         MainViewModelImpl(
             get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
-            get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
+            get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
         )
     }
+
+    viewModel<MainNavViewModel> { MainNavViewModelImpl(get(), get()) }
 
     viewModel<EditHistoryViewModel> {
         EditHistoryViewModelImpl(get(), get())
