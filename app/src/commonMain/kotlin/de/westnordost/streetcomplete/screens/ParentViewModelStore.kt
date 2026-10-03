@@ -15,7 +15,8 @@ import androidx.savedstate.compose.LocalSavedStateRegistryOwner
 
 /* Navigation 3 has no nested graphs to scope a view model shared by several screens to. Instead,
  * an entry can declare a parent entry whose view models it can then access, e.g. a screen and a
- * sub-screen that edits its state. Adapted from the shared view model recipe of nav3-recipes. */
+ * sub-screen that edits its state. Adapted from the shared view model recipe of nav3-recipes:
+ * https://github.com/android/nav3-recipes/tree/main/app/src/main/java/com/example/nav3recipes/sharedviewmodel */
 
 /** The view model store of the entry declared as parent with [parentViewModelStore] */
 val LocalParentViewModelStoreOwner = staticCompositionLocalOf<ViewModelStoreOwner> {
