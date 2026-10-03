@@ -160,6 +160,8 @@ import de.westnordost.streetcomplete.data.weeklyosm.WeeklyOsmUpdater
 import de.westnordost.streetcomplete.overlays.overlaysRegistry
 import de.westnordost.streetcomplete.quests.questTypeRegistry
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.screens.MainNavViewModel
+import de.westnordost.streetcomplete.screens.MainNavViewModelImpl
 import de.westnordost.streetcomplete.screens.about.ChangelogViewModel
 import de.westnordost.streetcomplete.screens.about.ChangelogViewModelImpl
 import de.westnordost.streetcomplete.screens.about.CreditsViewModel
@@ -174,6 +176,8 @@ import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewMod
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModelImpl
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModelImpl
+import de.westnordost.streetcomplete.screens.main.teammode.TeamModeViewModel
+import de.westnordost.streetcomplete.screens.main.teammode.TeamModeViewModelImpl
 import de.westnordost.streetcomplete.screens.main.map.sources.EditHistoryPinsSource
 import de.westnordost.streetcomplete.screens.main.map.sources.MapQuestPinsSource
 import de.westnordost.streetcomplete.screens.main.map.sources.StyleableOverlaySource
@@ -191,6 +195,10 @@ import de.westnordost.streetcomplete.screens.settings.presets.EditTypePresetsVie
 import de.westnordost.streetcomplete.screens.settings.presets.EditTypePresetsViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.quest_selection.QuestSelectionViewModel
 import de.westnordost.streetcomplete.screens.settings.quest_selection.QuestSelectionViewModelImpl
+import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialViewModel
+import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialViewModelImpl
+import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialViewModel
+import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialViewModelImpl
 import de.westnordost.streetcomplete.screens.user.UserViewModel
 import de.westnordost.streetcomplete.screens.user.UserViewModelImpl
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementsViewModel
@@ -599,9 +607,11 @@ val commonModule = module {
     viewModel<MainViewModel> {
         MainViewModelImpl(
             get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
-            get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
+            get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
         )
     }
+
+    viewModel<MainNavViewModel> { MainNavViewModelImpl(get(), get()) }
 
     viewModel<EditHistoryViewModel> {
         EditHistoryViewModelImpl(get(), get())
@@ -619,6 +629,11 @@ val commonModule = module {
     }
 
     viewModel<ArMeasureViewModel> { ArMeasureViewModelImpl(get(), get()) }
+
+    viewModel<TeamModeViewModel> { TeamModeViewModelImpl(get(), get()) }
+
+    viewModel<IntroTutorialViewModel> { IntroTutorialViewModelImpl(get()) }
+    viewModel<OverlaysTutorialViewModel> { OverlaysTutorialViewModelImpl(get()) }
 
     //endregion
 
