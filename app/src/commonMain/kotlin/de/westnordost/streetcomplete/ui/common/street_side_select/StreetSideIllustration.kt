@@ -31,6 +31,7 @@ import de.westnordost.streetcomplete.osm.get
 import de.westnordost.streetcomplete.ui.ktx.conditional
 import de.westnordost.streetcomplete.ui.ktx.tapHint
 import de.westnordost.streetcomplete.ui.util.FallDownTransitionSpec
+import de.westnordost.streetcomplete.ui.util.rememberSessionHint
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.ceil
@@ -56,6 +57,8 @@ import kotlin.math.cos
     isLeftSideVisible: Boolean = true,
     isRightSideVisible: Boolean = true,
 ) {
+    val showTapHint = rememberSessionHint(STREET_SIDE_TAP_HINT, enabled = onClickSide != null)
+
     val scale = 1f + abs(cos(rotation * PI / 180)).toFloat() * 0.67f
     BoxWithConstraints(
         modifier = modifier.fillMaxSize(),
@@ -76,6 +79,7 @@ import kotlin.math.cos
                     rotation = rotation,
                     onClickSide = onClickSide,
                     enabled = isLeftSideEnabled,
+                    showTapHint = showTapHint,
                     modifier = Modifier.weight(1f).fillMaxHeight()
                 )
             }
@@ -88,6 +92,7 @@ import kotlin.math.cos
                     rotation = rotation,
                     onClickSide = onClickSide,
                     enabled = isRightSideEnabled,
+                    showTapHint = showTapHint,
                     modifier = Modifier.weight(1f).fillMaxHeight()
                 )
             }
@@ -104,6 +109,7 @@ private fun <T> StreetSideIllustrationSide(
     rotation: Float,
     onClickSide: ((Side) -> Unit)?,
     enabled: Boolean,
+    showTapHint: Boolean,
     modifier: Modifier = Modifier,
 ) {
     val interactionSource = remember { MutableInteractionSource() }
@@ -114,7 +120,7 @@ private fun <T> StreetSideIllustrationSide(
         modifier = modifier.tapHint(
             interactionSource = interactionSource,
             delayMillis = if (side == Side.LEFT) 3000L else 3600L,
-            enabled = onClickSide != null && enabled,
+            enabled = showTapHint && enabled,
         )
     ) { value ->
         val painter = getIllustrationPainter(value, side)
@@ -166,3 +172,5 @@ private fun DrawScope.drawVerticallyRepeatingImage(painter: Painter, phase: Floa
 }
 
 enum class Side { LEFT, RIGHT }
+
+private const val STREET_SIDE_TAP_HINT = "street-side-tap"
