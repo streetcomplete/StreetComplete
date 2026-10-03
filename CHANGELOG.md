@@ -16,6 +16,7 @@
 
 ### Quest improvements
 
+- Count surfaces answered via the SurfaceOverlay together with AddRoadSurface (#7110)
 - Other minor improvements (#7182, #7187, #7201), thanks @paulklie
 
 ### Changes and fixes for v64.0-alpha

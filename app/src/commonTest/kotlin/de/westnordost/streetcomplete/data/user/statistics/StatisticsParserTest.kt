@@ -82,4 +82,43 @@ class StatisticsParserTest {
         ),
         StatisticsParser(listOf("TestQuestTypeCAlias" to "TestQuestTypeC")).parse(buffer))
     }
+
+    @Test fun `parse quest type alias adds counts into the new name`() {
+        val buffer = Buffer()
+        buffer.writeString("""
+        {
+            "questTypes": {
+                "AddRoadSurface": "7",
+                "SurfaceOverlay": "13",
+                "AddPathSurface": "5"
+            },
+            "countries": {},
+            "countryRanks": {},
+            "rank": 0,
+            "currentWeekRank": 0,
+            "currentWeekQuestTypes": {},
+            "currentWeekCountries": {},
+            "currentWeekCountryRanks": {},
+            "daysActive": 0,
+            "activeDatesRange": 0,
+            "activeDates": [],
+            "lastUpdate": "2007-12-03T10:15:30+01:00",
+            "isAnalyzing": false
+        }
+        """)
+
+        // SurfaceOverlay usage should merge into AddRoadSurface (issue #7110).
+        // AddPathSurface stays under its own name (no alias defined for it).
+        assertEquals(
+            listOf(
+                EditTypeStatistics("AddRoadSurface", 7 + 13),
+                EditTypeStatistics("AddPathSurface", 5),
+            ).sortedBy { it.type },
+            StatisticsParser(listOf("SurfaceOverlay" to "AddRoadSurface"))
+                .parse(buffer)
+                .types
+                .sortedBy { it.type },
+        )
+    }
 }
+
