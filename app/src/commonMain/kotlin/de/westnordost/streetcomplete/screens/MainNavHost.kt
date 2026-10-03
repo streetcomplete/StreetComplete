@@ -12,11 +12,11 @@ import androidx.compose.animation.togetherWith
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.saveable.rememberSerializable
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.lifecycle.viewmodel.compose.rememberViewModelStoreProvider
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavEntryDecorator
@@ -25,7 +25,6 @@ import androidx.navigation3.runtime.metadata
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.runtime.serialization.NavBackStackSerializer
 import androidx.navigation3.ui.NavDisplay
-import de.westnordost.streetcomplete.data.logs.LogsFilters
 import de.westnordost.streetcomplete.screens.about.aboutEntries
 import de.westnordost.streetcomplete.screens.main.MainScreen
 import de.westnordost.streetcomplete.screens.main.MainViewModel
@@ -36,10 +35,6 @@ import de.westnordost.streetcomplete.screens.settings.settingsEntries
 import de.westnordost.streetcomplete.screens.tutorial.tutorialEntries
 import de.westnordost.streetcomplete.screens.user.userEntry
 import de.westnordost.streetcomplete.ui.ktx.dir
-import de.westnordost.streetcomplete.util.ktx.systemTimeNow
-import de.westnordost.streetcomplete.util.ktx.toLocalDate
-import kotlinx.datetime.LocalDateTime
-import kotlinx.datetime.LocalTime
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -59,18 +54,15 @@ fun MainNavHost(
     }
     // Navigation keeps the full tracks; restoring the app uses the bounded saved copy.
     val tracks = rememberSaveable(saver = MainMapTrackState.Saver) { MainMapTrackState() }
-    val logsFilters = rememberSerializable {
-        mutableStateOf(LogsFilters(
-            timestampNewerThan = LocalDateTime(systemTimeNow().toLocalDate(), LocalTime(0, 0, 0))
-        ))
-    }
+    val viewModelStoreProvider = rememberViewModelStoreProvider()
     val dir = LocalLayoutDirection.current.dir
 
     NavDisplay(
         backStack = backStack,
         entryDecorators = listOf(
             rememberSaveableStateHolderNavEntryDecorator(),
-            rememberViewModelStoreNavEntryDecorator(),
+            rememberParentViewModelStoreNavEntryDecorator(viewModelStoreProvider),
+            rememberViewModelStoreNavEntryDecorator(viewModelStoreProvider),
             // Each screen needs its own opaque background. Otherwise, the map below can punch
             // through it while screens slide over it (seen on Android 7)
             remember { NavEntryDecorator<Route> { entry -> Surface { entry.Content() } } },
@@ -117,7 +109,7 @@ fun MainNavHost(
                 onOverlaysFinished = { mainViewModel.hasShownOverlaysTutorial = true },
             )
             settingsEntries(backStack)
-            aboutEntries(backStack, logsFilters)
+            aboutEntries(backStack)
             userEntry(onClickBack = { backStack.goBack() })
         },
     )

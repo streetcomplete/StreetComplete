@@ -18,9 +18,12 @@ import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.data.logs.LogsFilters
+import androidx.lifecycle.viewmodel.compose.viewModel
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.ClearIcon
@@ -29,10 +32,11 @@ import org.jetbrains.compose.resources.stringResource
 /** Allows to change filters for logs screen */
 @Composable
 fun LogsFiltersScreen(
-    filters: LogsFilters,
-    onFiltersChange: (LogsFilters) -> Unit,
+    viewModel: LogsViewModel,
     onClickBack: () -> Unit,
 ) {
+    val filters by viewModel.filters.collectAsState()
+
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
             title = { Text(stringResource(Res.string.title_logs_filters)) },
@@ -51,15 +55,15 @@ fun LogsFiltersScreen(
         ) {
             LogLevelFilterChips(
                 selectedLogLevels = filters.levels,
-                onSelectedLogLevels = { onFiltersChange(filters.copy(levels = it)) }
+                onSelectedLogLevels = { viewModel.setFilters(filters.copy(levels = it)) }
             )
             OutlinedTextField(
                 value = filters.messageContains.orEmpty(),
-                onValueChange = { onFiltersChange(filters.copy(messageContains = it.takeIf { it.isNotEmpty() })) },
+                onValueChange = { viewModel.setFilters(filters.copy(messageContains = it.takeIf { it.isNotEmpty() })) },
                 label = { Text(stringResource(Res.string.label_log_message_contains)) },
                 trailingIcon = if (filters.messageContains.orEmpty().isNotEmpty()) {
                     {
-                        IconButton(onClick = { onFiltersChange(filters.copy(messageContains = null)) }) {
+                        IconButton(onClick = { viewModel.setFilters(filters.copy(messageContains = null)) }) {
                             ClearIcon()
                         }
                     }
@@ -70,12 +74,12 @@ fun LogsFiltersScreen(
             )
             DateTimeSelectField(
                 value = filters.timestampNewerThan,
-                onValueChange = { onFiltersChange(filters.copy(timestampNewerThan = it)) },
+                onValueChange = { viewModel.setFilters(filters.copy(timestampNewerThan = it)) },
                 label = { Text(stringResource(Res.string.label_log_newer_than)) },
             )
             DateTimeSelectField(
                 value = filters.timestampOlderThan,
-                onValueChange = { onFiltersChange(filters.copy(timestampOlderThan = it)) },
+                onValueChange = { viewModel.setFilters(filters.copy(timestampOlderThan = it)) },
                 label = { Text(stringResource(Res.string.label_log_older_than)) },
             )
         }
