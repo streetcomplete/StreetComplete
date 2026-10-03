@@ -206,14 +206,12 @@ fun <T> OsmQuestFormContainer(
                         answer.feature.applyReplacePlaceTo(builder)
                         onEdit(UpdateElementTagsAction(element, builder.create()))
                     }
-
                     ShopTypeAnswer.IsShopVacant -> {
                         val vacantShop = featureDictionary.getPlaceAsDisused(element, country = countryInfo.countryOrSubdivisionCode)
                         val builder = StringMapChangesBuilder(element.tags)
                         vacantShop.applyReplacePlaceTo(builder)
                         onEdit(UpdateElementTagsAction(element, builder.create()))
                     }
-
                     ShopTypeAnswer.LeaveNote -> {
                         showForm(QuestFormState.LeaveNote)
                     }
