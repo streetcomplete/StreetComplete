@@ -30,6 +30,7 @@ import de.westnordost.streetcomplete.screens.about.aboutEntries
 import de.westnordost.streetcomplete.screens.main.MainScreen
 import de.westnordost.streetcomplete.screens.main.MainViewModel
 import de.westnordost.streetcomplete.screens.main.map.MainMapTrackState
+import de.westnordost.streetcomplete.screens.main.teammode.TeamModeViewModel
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeWizard
 import de.westnordost.streetcomplete.screens.settings.settingsEntries
 import de.westnordost.streetcomplete.screens.tutorial.tutorialEntries
@@ -98,13 +99,13 @@ fun MainNavHost(
                 )
             }
             entry<Route.TeamModeWizard>(metadata = fullScreenDialogTransitions) {
-                val questIcons = remember { mainViewModel.allQuestTypes.map { it.icon } }
+                val viewModel = koinViewModel<TeamModeViewModel>()
                 TeamModeWizard(
                     onDismissRequest = { backStack.goBack() },
                     onFinished = { teamSize, indexInTeam ->
-                        mainViewModel.enableTeamMode(teamSize = teamSize, indexInTeam = indexInTeam)
+                        viewModel.enableTeamMode(teamSize = teamSize, indexInTeam = indexInTeam)
                     },
-                    allQuestIcons = questIcons,
+                    allQuestIcons = viewModel.allQuestIcons,
                 )
             }
             tutorialEntries(

@@ -256,10 +256,6 @@ class MainViewModelImpl(
     override var teamModeChanged: Boolean = false
     override val indexInTeam = MutableStateFlow(teamModeQuestFilterController.indexInTeam)
 
-    override fun enableTeamMode(teamSize: Int, indexInTeam: Int) {
-        launch(Dispatchers.IO) { teamModeQuestFilterController.enableTeamMode(teamSize, indexInTeam) }
-    }
-
     override fun disableTeamMode() {
         launch(Dispatchers.IO) { teamModeQuestFilterController.disableTeamMode() }
     }

@@ -174,6 +174,8 @@ import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewMod
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModelImpl
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModelImpl
+import de.westnordost.streetcomplete.screens.main.teammode.TeamModeViewModel
+import de.westnordost.streetcomplete.screens.main.teammode.TeamModeViewModelImpl
 import de.westnordost.streetcomplete.screens.main.map.sources.EditHistoryPinsSource
 import de.westnordost.streetcomplete.screens.main.map.sources.MapQuestPinsSource
 import de.westnordost.streetcomplete.screens.main.map.sources.StyleableOverlaySource
@@ -619,6 +621,8 @@ val commonModule = module {
     }
 
     viewModel<ArMeasureViewModel> { ArMeasureViewModelImpl(get(), get()) }
+
+    viewModel<TeamModeViewModel> { TeamModeViewModelImpl(get(), get()) }
 
     //endregion
 

@@ -59,7 +59,6 @@ abstract class MainViewModel : ViewModel() {
     abstract val isTeamMode: StateFlow<Boolean>
     abstract var teamModeChanged: Boolean
     abstract val indexInTeam: StateFlow<Int>
-    abstract fun enableTeamMode(teamSize: Int, indexInTeam: Int)
     abstract fun disableTeamMode()
 
     /* uploading, downloading */
