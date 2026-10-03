@@ -125,7 +125,6 @@ class MainViewModelImpl(
     override suspend fun createErrorReport(error: Exception): String =
         withContext(Dispatchers.IO) { errorReportBuilder.createErrorReport(error) }
 
-    /* start parameters */
     /* intro */
 
     override val shouldShowIntroTutorial: Boolean
