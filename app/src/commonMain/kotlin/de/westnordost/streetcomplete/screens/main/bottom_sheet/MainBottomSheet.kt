@@ -133,6 +133,7 @@ fun MainBottomSheet(
                 questType = shownBottomSheet.quest.type,
                 element = shownBottomSheet.element,
                 geometry = shownBottomSheet.quest.geometry,
+                countryInfo = shownBottomSheet.countryInfo,
                 mapPosition = mapPosition,
                 mapRotation = mapRotation,
                 mapTilt = mapTilt,

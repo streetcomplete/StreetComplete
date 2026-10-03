@@ -10,8 +10,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.meta.get
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
@@ -54,7 +53,6 @@ import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.util.ReplaceBottomSheetTransitionSpec
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import kotlinx.serialization.Serializable
 import org.jetbrains.compose.resources.stringResource
@@ -64,6 +62,10 @@ import org.koin.compose.koinInject
  *
  *  Takes care of showing the forms for the "other answers" (leave note, split way, move node)
  *  and associated confirmation dialogs and animates between the overlay form and those.
+ *
+ *  @param countryInfo the [CountryInfo] for the location of the quest. It is resolved off the main
+ *         thread before the bottom sheet is shown, so that composition never has to load country
+ *         metadata.
  *
  *  @param onSetMapMarkers is called when the form shown wishes to show markers on the map. E.g. the
  *         split way form and level form shows markers
@@ -80,6 +82,7 @@ fun <T> OsmQuestFormContainer(
     questType: OsmElementQuestType<T>,
     element: Element,
     geometry: ElementGeometry,
+    countryInfo: CountryInfo,
     mapPosition: LatLon?,
     mapRotation: Float,
     mapTilt: Float,
@@ -88,13 +91,8 @@ fun <T> OsmQuestFormContainer(
     onSetMapOverlay: (MapOverlayContent?) -> Unit,
     lastMapClick: MapClick?,
     modifier: Modifier = Modifier,
-    countryBoundaries: CountryBoundaries = koinInject(),
     featureDictionary: FeatureDictionary = koinInject(),
-    countryInfos: CountryInfos = koinInject(),
 ) {
-    val center = geometry.center
-    val countryInfo = remember(center) { countryInfos.get(countryBoundaries, center) }
-
     var confirmSplitWay by remember { mutableStateOf(false) }
     var confirmMoveNode by remember { mutableStateOf(false) }
     var confirmDeletePoi by remember { mutableStateOf(false) }
@@ -208,12 +206,14 @@ fun <T> OsmQuestFormContainer(
                         answer.feature.applyReplacePlaceTo(builder)
                         onEdit(UpdateElementTagsAction(element, builder.create()))
                     }
+
                     ShopTypeAnswer.IsShopVacant -> {
                         val vacantShop = featureDictionary.getPlaceAsDisused(element, country = countryInfo.countryOrSubdivisionCode)
                         val builder = StringMapChangesBuilder(element.tags)
                         vacantShop.applyReplacePlaceTo(builder)
                         onEdit(UpdateElementTagsAction(element, builder.create()))
                     }
+
                     ShopTypeAnswer.LeaveNote -> {
                         showForm(QuestFormState.LeaveNote)
                     }

@@ -615,7 +615,7 @@ val commonModule = module {
     factory { StyleableOverlaySource(get(), get()) }
 
     viewModel<MainBottomSheetViewModel> {
-        MainBottomSheetViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(named("FeatureDictionaryLazy")))
+        MainBottomSheetViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(named("FeatureDictionaryLazy")), get(), get(named("CountryBoundariesLazy")))
     }
 
     viewModel<ArMeasureViewModel> { ArMeasureViewModelImpl(get(), get()) }

@@ -25,6 +25,8 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
+import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.meta.get
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
@@ -38,6 +40,7 @@ import de.westnordost.streetcomplete.resources.no_search_results
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.quest.OsmQuestFormContainer
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
+import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import kotlinx.io.files.FileSystem
 import kotlinx.io.files.Path
 import org.jetbrains.compose.resources.stringResource
@@ -52,12 +55,15 @@ fun ShowQuestFormsScreen(
     questTypeRegistry: QuestTypeRegistry = koinInject(),
     fileSystem: FileSystem = koinInject()
 ) {
+    val countryInfos: CountryInfos = koinInject()
+    val countryBoundaries: CountryBoundaries = koinInject()
     val searchText by viewModel.searchText.collectAsState()
     val filteredQuests by viewModel.filteredQuests.collectAsState()
     var shownQuestType by rememberSaveable(stateSaver = QuestTypeSaver(questTypeRegistry)) {
         mutableStateOf<QuestType?>(null)
     }
     var message by remember { mutableStateOf<String?>(null) }
+    val countryInfo = remember(viewModel.mockGeometry.center) { countryInfos.get(countryBoundaries, viewModel.mockGeometry.center) }
 
     Box(Modifier.fillMaxSize()) {
         Column(Modifier.fillMaxSize()) {
@@ -125,6 +131,7 @@ fun ShowQuestFormsScreen(
                 questType = questType,
                 element = viewModel.mockElement,
                 geometry = viewModel.mockGeometry,
+                countryInfo = countryInfo,
                 mapPosition = LatLon(0.0, 0.0),
                 mapRotation = viewModel.mockRotation,
                 mapTilt = 0f,

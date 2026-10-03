@@ -4,6 +4,9 @@ import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.location.SurveyChecker
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.meta.get
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
@@ -33,6 +36,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.map.getIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.ui.common.quest.Marker
+import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.ktx.truncateTo6Decimals
 import de.westnordost.streetcomplete.util.math.enlargedBy
@@ -81,6 +85,8 @@ class MainBottomSheetViewModelImpl(
     private val visibleQuestsSource: VisibleQuestsSource,
     private val overlayRegistry: OverlayRegistry,
     private val featureDictionary: Lazy<FeatureDictionary>,
+    private val countryInfos: CountryInfos,
+    private val countryBoundaries: Lazy<CountryBoundaries>,
 ) : MainBottomSheetViewModel() {
     override suspend fun getBottomSheet(selection: MainSheetSelection): ShownBottomSheet? =
         withContext(Dispatchers.IO) { load(selection) }
@@ -99,7 +105,10 @@ class MainBottomSheetViewModelImpl(
             is OsmQuestKey -> {
                 val quest = osmQuestSource.get(key) ?: return null
                 val element = mapDataSource.get(key.elementType, key.elementId) ?: return null
-                ShownBottomSheet.OsmQuest(quest, element)
+                // Runs on Dispatchers.IO (see getBottomSheet).
+                // May read country metadata files on a cache miss, so it must never be done during composition.
+                val countryInfo = countryInfos.get(countryBoundaries.value, quest.geometry.center)
+                ShownBottomSheet.OsmQuest(quest, element, countryInfo)
             }
             is OsmNoteQuestKey -> {
                 val quest = osmNoteQuestSource.get(key.noteId) ?: return null
@@ -206,6 +215,7 @@ sealed interface ShownBottomSheet {
     data class OsmQuest(
         val quest: de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest,
         val element: Element,
+        val countryInfo: CountryInfo,
     ) : ShownBottomSheet {
         override val position get() = quest.position
         override val geometry get() = quest.geometry
