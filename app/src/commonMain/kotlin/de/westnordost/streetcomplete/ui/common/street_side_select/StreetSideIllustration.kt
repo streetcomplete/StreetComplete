@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.ui.common.street_side_select
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
@@ -27,7 +29,9 @@ import androidx.compose.ui.unit.min
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.get
 import de.westnordost.streetcomplete.ui.ktx.conditional
+import de.westnordost.streetcomplete.ui.ktx.tapHint
 import de.westnordost.streetcomplete.ui.util.FallDownTransitionSpec
+import de.westnordost.streetcomplete.ui.util.rememberSessionHint
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.ceil
@@ -53,6 +57,8 @@ import kotlin.math.cos
     isLeftSideVisible: Boolean = true,
     isRightSideVisible: Boolean = true,
 ) {
+    val showTapHint = rememberSessionHint(STREET_SIDE_TAP_HINT, enabled = onClickSide != null)
+
     val scale = 1f + abs(cos(rotation * PI / 180)).toFloat() * 0.67f
     BoxWithConstraints(
         modifier = modifier.fillMaxSize(),
@@ -73,6 +79,7 @@ import kotlin.math.cos
                     rotation = rotation,
                     onClickSide = onClickSide,
                     enabled = isLeftSideEnabled,
+                    showTapHint = showTapHint,
                     modifier = Modifier.weight(1f).fillMaxHeight()
                 )
             }
@@ -85,6 +92,7 @@ import kotlin.math.cos
                     rotation = rotation,
                     onClickSide = onClickSide,
                     enabled = isRightSideEnabled,
+                    showTapHint = showTapHint,
                     modifier = Modifier.weight(1f).fillMaxHeight()
                 )
             }
@@ -101,13 +109,19 @@ private fun <T> StreetSideIllustrationSide(
     rotation: Float,
     onClickSide: ((Side) -> Unit)?,
     enabled: Boolean,
+    showTapHint: Boolean,
     modifier: Modifier = Modifier,
 ) {
+    val interactionSource = remember { MutableInteractionSource() }
     val scale = 1f + abs(cos(rotation * PI / 180)).toFloat() * 0.67f
     AnimatedContent(
         targetState = value,
         transitionSpec = FallDownTransitionSpec,
-        modifier = modifier
+        modifier = modifier.tapHint(
+            interactionSource = interactionSource,
+            delayMillis = if (side == Side.LEFT) 3000L else 3600L,
+            enabled = showTapHint && enabled,
+        )
     ) { value ->
         val painter = getIllustrationPainter(value, side)
         val floatingPainter = getFloatingPainter(value, side)
@@ -124,7 +138,13 @@ private fun <T> StreetSideIllustrationSide(
                         }
                     }
                 }
-                .conditional(onClickSide) { clickable(onClick = { it(side) }, enabled = enabled) },
+                .conditional(onClickSide) {
+                    clickable(
+                        interactionSource = interactionSource,
+                        onClick = { it(side) },
+                        enabled = enabled,
+                    )
+                },
             contentAlignment = Alignment.Center,
         ) {
             if (floatingPainter != null) {
@@ -152,3 +172,5 @@ private fun DrawScope.drawVerticallyRepeatingImage(painter: Painter, phase: Floa
 }
 
 enum class Side { LEFT, RIGHT }
+
+private const val STREET_SIDE_TAP_HINT = "street-side-tap"
