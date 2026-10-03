@@ -1,6 +1,13 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
-fun String.withOptionalUnitToDoubleOrNull(): Double? {
+fun String.withOptionalUnitToDoubleOrNull(): Double? =
+    withOptionalUnitToDoubleOrNull(::toStandardUnitsFactor)
+
+/** Parses a length in meters, accepting only length units. */
+fun String.withOptionalLengthUnitToDoubleOrNull(): Double? =
+    withOptionalUnitToDoubleOrNull(::toMetersFactor)
+
+private fun String.withOptionalUnitToDoubleOrNull(unitFactor: (String) -> Double?): Double? {
     if (isEmpty()) return null
     if (!first().isDigit() && first() != '.') return null
 
@@ -10,15 +17,15 @@ fun String.withOptionalUnitToDoubleOrNull(): Double? {
     if (withUnitResult != null) {
         val (value, unit) = withUnitResult.destructured
         val v = value.toDoubleOrNull() ?: return null
-        val factor = toStandardUnitsFactor(unit) ?: return null
+        val factor = unitFactor(unit) ?: return null
         return v * factor
     }
 
     val feetInchResult = feetInchRegex.matchEntire(this)
     if (feetInchResult != null) {
         val (feet, inches) = feetInchResult.destructured
-        return feet.toInt() * toStandardUnitsFactor("ft")!! +
-            inches.toInt() * toStandardUnitsFactor("in")!!
+        return feet.toInt() * unitFactor("ft")!! +
+            inches.toInt() * unitFactor("in")!!
     }
 
     return null
@@ -27,11 +34,12 @@ fun String.withOptionalUnitToDoubleOrNull(): Double? {
 private val feetInchRegex = Regex("([0-9]+)\\s*(?:'|ft)\\s*([0-9]+)\\s*(?:\"|in)")
 private val withUnitRegex = Regex("([0-9]+|[0-9]*\\.[0-9]+)\\s*([a-z/'\"]+)")
 
-private fun toStandardUnitsFactor(unit: String): Double? = when (unit) {
-    // speed: to kilometers per hour
-    "km/h", "kph" -> 1.0
-    "mph" -> 1.609344
-    // width/length/height: to meters
+private fun toStandardUnitsFactor(unit: String): Double? =
+    toMetersFactor(unit)
+        ?: toKilometersPerHourFactor(unit)
+        ?: toTonnesFactor(unit)
+
+private fun toMetersFactor(unit: String): Double? = when (unit) {
     "m" -> 1.0
     "mm" -> 0.001
     "cm" -> 0.01
@@ -39,7 +47,16 @@ private fun toStandardUnitsFactor(unit: String): Double? = when (unit) {
     "ft", "'" -> 0.3048
     "in", "\"" -> 0.0254
     "yd", "yds" -> 0.9144
-    // weight: to tonnes
+    else -> null
+}
+
+private fun toKilometersPerHourFactor(unit: String): Double? = when (unit) {
+    "km/h", "kph" -> 1.0
+    "mph" -> 1.609344
+    else -> null
+}
+
+private fun toTonnesFactor(unit: String): Double? = when (unit) {
     "t" -> 1.0
     "kg" -> 0.001
     "st" -> 0.90718474 // short tons

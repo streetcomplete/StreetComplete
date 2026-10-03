@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.osm
 
+import de.westnordost.streetcomplete.data.elementfilter.withOptionalLengthUnitToDoubleOrNull
+
 fun estimateBuildingHeight(tags: Map<String, String>): Float? {
-    val height = tags["height"]?.toFloatOrNull()
+    val height = tags["height"]?.withOptionalLengthUnitToDoubleOrNull()?.toFloat()
     if (height != null) return height
 
     val buildingLevels = tags["building:levels"]?.toIntOrNull() ?: return null
@@ -11,7 +13,7 @@ fun estimateBuildingHeight(tags: Map<String, String>): Float? {
 }
 
 fun estimateMinBuildingHeight(tags: Map<String, String>): Float? {
-    val minHeight = tags["min_height"]?.toFloatOrNull()
+    val minHeight = tags["min_height"]?.withOptionalLengthUnitToDoubleOrNull()?.toFloat()
     if (minHeight != null) return minHeight
 
     val minBuildingLevel = tags["building:min_level"]?.toIntOrNull() ?: return null
