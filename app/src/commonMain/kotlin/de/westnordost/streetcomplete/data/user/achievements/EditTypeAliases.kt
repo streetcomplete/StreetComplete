@@ -30,6 +30,8 @@ val editTypeAliases = listOf(
     // whether lit roads have been added in context of the quest or the overlay should not matter for the statistics
     "WayLitOverlay"                      to AddWayLit::class.simpleName!!,
     "SidewalkOverlay"                    to AddSidewalk::class.simpleName!!,
+    // surface quests answered via the SurfaceOverlay should not be counted separately from the overlay
+    "SurfaceOverlay"                     to AddRoadSurface::class.simpleName!!,
     "CyclewayOverlay"                    to AddCycleway::class.simpleName!!,
     "BuildingsOverlay"                   to AddBuildingType::class.simpleName!!,
     "AddStreetParking"                   to StreetParkingOverlay::class.simpleName!!,
