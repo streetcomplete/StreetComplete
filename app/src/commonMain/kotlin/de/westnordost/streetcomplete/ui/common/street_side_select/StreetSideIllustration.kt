@@ -113,7 +113,7 @@ private fun <T> StreetSideIllustrationSide(
         transitionSpec = FallDownTransitionSpec,
         modifier = modifier.tapHint(
             interactionSource = interactionSource,
-            delayMillis = if (side == Side.LEFT) 500L else 1100L,
+            delayMillis = if (side == Side.LEFT) 3000L else 3600L,
             enabled = onClickSide != null && enabled,
         )
     ) { value ->
