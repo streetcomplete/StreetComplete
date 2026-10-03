@@ -11,8 +11,10 @@ import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.LazyMapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
@@ -142,10 +144,14 @@ class MainBottomSheetViewModelImpl(
         val mapData = LazyMapDataWithGeometry(bbox, mapDataSource)
         val levels = parseLevelsOrNull(element.tags)
         quest.type.getHighlightedElements(element, mapData).mapNotNull { other ->
-            // Highlight nearby elements only on the same level and layer.
+            // Do not highlight the element that the quest is about
             if (element == other) return@mapNotNull null
-            if (!levels.levelsIntersect(parseLevelsOrNull(other.tags))) return@mapNotNull null
-            if (element.tags["layer"] != other.tags["layer"]) return@mapNotNull null
+            // Highlight nearby only on the same level and layer, unless they are unclosed ways,
+            // such as highways, pipelines and aerial ways.
+            if(other !is Way || other.isClosed) {
+                if (!levels.levelsIntersect(parseLevelsOrNull(other.tags))) return@mapNotNull null
+                if (element.tags["layer"] != other.tags["layer"]) return@mapNotNull null
+            }
             val geometry = mapData.getGeometry(other.type, other.id) ?: return@mapNotNull null
             Marker(geometry, getIcon(featureDictionary.value, other), getTitle(other.tags))
         }.toList()
