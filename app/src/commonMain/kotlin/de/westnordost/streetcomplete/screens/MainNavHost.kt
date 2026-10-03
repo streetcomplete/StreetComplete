@@ -103,11 +103,7 @@ fun MainNavHost(
                     allQuestIcons = viewModel.allQuestIcons,
                 )
             }
-            tutorialEntries(
-                backStack = backStack,
-                onIntroFinished = { mainViewModel.hasShownTutorial = true },
-                onOverlaysFinished = { mainViewModel.hasShownOverlaysTutorial = true },
-            )
+            tutorialEntries(backStack)
             settingsEntries(backStack)
             aboutEntries(backStack)
             userEntry(onClickBack = { backStack.goBack() })

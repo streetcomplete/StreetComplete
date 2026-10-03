@@ -177,10 +177,6 @@ class MainViewModelImpl(
     override val shouldShowIntroTutorial: Boolean
         get() = !prefs.hasShownTutorial && !userLoginSource.isLoggedIn
 
-    override var hasShownTutorial: Boolean
-        get() = prefs.hasShownTutorial
-        set(value) { prefs.hasShownTutorial = value }
-
     /* HUD */
     override var showZoomButtons: StateFlow<Boolean> = callbackFlow {
         send(prefs.showZoomButtons)
@@ -243,9 +239,8 @@ class MainViewModelImpl(
         awaitClose { selectedOverlayController.removeListener(listener) }
     }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, selectedOverlayController.selectedOverlay)
 
-    override var hasShownOverlaysTutorial: Boolean
+    override val hasShownOverlaysTutorial: Boolean
         get() = prefs.hasShownOverlaysTutorial
-        set(value) { prefs.hasShownOverlaysTutorial = value }
 
     override fun selectOverlay(overlay: Overlay?) {
         launch(Dispatchers.IO) {

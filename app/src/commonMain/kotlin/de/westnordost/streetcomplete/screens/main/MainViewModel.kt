@@ -38,7 +38,6 @@ abstract class MainViewModel : ViewModel() {
     /* intro */
     /** Whether the intro tutorial should be shown on start */
     abstract val shouldShowIntroTutorial: Boolean
-    abstract var hasShownTutorial: Boolean
 
     /* HUD */
     abstract var showZoomButtons: StateFlow<Boolean>
@@ -53,7 +52,7 @@ abstract class MainViewModel : ViewModel() {
     abstract val selectedOverlay: StateFlow<Overlay?>
     abstract val overlays: StateFlow<List<Overlay>>
 
-    abstract var hasShownOverlaysTutorial: Boolean
+    abstract val hasShownOverlaysTutorial: Boolean
 
     abstract fun selectOverlay(overlay: Overlay?)
 

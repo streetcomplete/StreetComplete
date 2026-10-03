@@ -193,6 +193,10 @@ import de.westnordost.streetcomplete.screens.settings.presets.EditTypePresetsVie
 import de.westnordost.streetcomplete.screens.settings.presets.EditTypePresetsViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.quest_selection.QuestSelectionViewModel
 import de.westnordost.streetcomplete.screens.settings.quest_selection.QuestSelectionViewModelImpl
+import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialViewModel
+import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialViewModelImpl
+import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialViewModel
+import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialViewModelImpl
 import de.westnordost.streetcomplete.screens.user.UserViewModel
 import de.westnordost.streetcomplete.screens.user.UserViewModelImpl
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementsViewModel
@@ -623,6 +627,9 @@ val commonModule = module {
     viewModel<ArMeasureViewModel> { ArMeasureViewModelImpl(get(), get()) }
 
     viewModel<TeamModeViewModel> { TeamModeViewModelImpl(get(), get()) }
+
+    viewModel<IntroTutorialViewModel> { IntroTutorialViewModelImpl(get()) }
+    viewModel<OverlaysTutorialViewModel> { OverlaysTutorialViewModelImpl(get()) }
 
     //endregion
 
