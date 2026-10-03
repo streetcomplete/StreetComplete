@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m128 64c0 35.346-28.654 64-64 64s-64-28.654-64-64 28.654-64 64-64 64 28.654 64 64" fill="#9bbe55"/>
+ <g transform="translate(2.6,3.8)" fill="#000000" opacity="0.2">
+  <circle cx="39.5" cy="39.5" r="15"/>
+  <circle cx="88.5" cy="39.5" r="15"/>
+  <circle cx="64" cy="67.8" r="32"/>
+ </g>
+ <g fill="#ffffff">
+  <circle cx="39.5" cy="39.5" r="15"/>
+  <circle cx="88.5" cy="39.5" r="15"/>
+  <circle cx="64" cy="67.8" r="32"/>
+ </g>
+ <g fill="#9bbe55">
+  <circle cx="52.7" cy="62.1" r="4.1"/>
+  <circle cx="75.3" cy="62.1" r="4.1"/>
+  <ellipse cx="64" cy="76" rx="6.4" ry="4.9"/>
+ </g>
+</svg>
