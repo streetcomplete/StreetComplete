@@ -47,14 +47,18 @@ fun MainNavHost(
     uri: String?,
     onConsumedUri: () -> Unit,
 ) {
-    val backStack = rememberSerializable(serializer = NavBackStackSerializer(Route.serializer())) {
-        NavBackStack<Route>(Route.Main)
-    }
-    // Navigation keeps the full tracks; restoring the app uses the bounded saved copy.
-    val tracks = rememberSaveable(saver = MainMapTrackState.Saver) { MainMapTrackState() }
     // The main screen is always at the bottom of the back stack, so its view model lives as long
     // as the app and can receive requests while another destination is shown.
     val mainViewModel = koinViewModel<MainViewModel>()
+    val backStack = rememberSerializable(serializer = NavBackStackSerializer(Route.serializer())) {
+        if (mainViewModel.shouldShowIntroTutorial) {
+            NavBackStack(Route.Main, Route.IntroTutorial(onboarding = true))
+        } else {
+            NavBackStack<Route>(Route.Main)
+        }
+    }
+    // Navigation keeps the full tracks; restoring the app uses the bounded saved copy.
+    val tracks = rememberSaveable(saver = MainMapTrackState.Saver) { MainMapTrackState() }
     val logsFilters = rememberSerializable {
         mutableStateOf(LogsFilters(
             timestampNewerThan = LocalDateTime(systemTimeNow().toLocalDate(), LocalTime(0, 0, 0))
@@ -93,7 +97,6 @@ fun MainNavHost(
                     onClickProfile = { backStack.add(Route.User()) },
                     onClickLogin = { backStack.add(Route.User(launchAuth = true)) },
                     onClickEnterTeamMode = { backStack.add(Route.TeamModeWizard) },
-                    onShowIntroTutorial = { backStack.add(Route.IntroTutorial(onboarding = true)) },
                     onShowOverlaysTutorial = { backStack.add(Route.OverlaysTutorial) },
                     viewModel = mainViewModel,
                 )

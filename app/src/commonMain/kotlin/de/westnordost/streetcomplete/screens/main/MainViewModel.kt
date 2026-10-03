@@ -36,6 +36,8 @@ abstract class MainViewModel : ViewModel() {
     abstract fun saveCamera(camera: CameraPosition, following: Boolean, navigating: Boolean)
 
     /* intro */
+    /** Whether the intro tutorial should be shown on start */
+    abstract val shouldShowIntroTutorial: Boolean
     abstract var hasShownTutorial: Boolean
 
     /* HUD */

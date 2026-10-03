@@ -174,6 +174,9 @@ class MainViewModelImpl(
 
     /* intro */
 
+    override val shouldShowIntroTutorial: Boolean
+        get() = !prefs.hasShownTutorial && !userLoginSource.isLoggedIn
+
     override var hasShownTutorial: Boolean
         get() = prefs.hasShownTutorial
         set(value) { prefs.hasShownTutorial = value }

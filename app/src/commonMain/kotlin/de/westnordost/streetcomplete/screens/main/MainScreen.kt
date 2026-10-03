@@ -110,7 +110,6 @@ fun MainScreen(
     onClickProfile: () -> Unit,
     onClickLogin: () -> Unit,
     onClickEnterTeamMode: () -> Unit,
-    onShowIntroTutorial: () -> Unit,
     onShowOverlaysTutorial: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: MainViewModel = koinViewModel(),
@@ -416,10 +415,6 @@ fun MainScreen(
     LaunchedEffect(selectedOverlay) {
         val selection = sheet.selection as? MainSheetSelection.Overlay
         if (selection != null && selection.name != selectedOverlay?.name) sheet.close()
-    }
-
-    LaunchedEffect(Unit) {
-        if (!viewModel.hasShownTutorial && !isLoggedIn) onShowIntroTutorial()
     }
 
     LaunchedEffect(isTeamMode) {
