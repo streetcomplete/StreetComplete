@@ -24,14 +24,15 @@ private fun String.withOptionalUnitToDoubleOrNull(unitFactor: (String) -> Double
     val feetInchResult = feetInchRegex.matchEntire(this)
     if (feetInchResult != null) {
         val (feet, inches) = feetInchResult.destructured
-        return feet.toInt() * unitFactor("ft")!! +
+        val feetValue = feet.toIntOrNull() ?: return null
+        return feetValue * unitFactor("ft")!! +
             inches.toInt() * unitFactor("in")!!
     }
 
     return null
 }
 
-private val feetInchRegex = Regex("([0-9]+)\\s*(?:'|ft)\\s*([0-9]+)\\s*(?:\"|in)")
+private val feetInchRegex = Regex("([0-9]+)\\s*(?:'|ft)\\s*([0-9]{1,2})\\s*(?:\"|in)")
 private val withUnitRegex = Regex("([0-9]+|[0-9]*\\.[0-9]+)\\s*([a-z/'\"]+)")
 
 private fun toStandardUnitsFactor(unit: String): Double? =
