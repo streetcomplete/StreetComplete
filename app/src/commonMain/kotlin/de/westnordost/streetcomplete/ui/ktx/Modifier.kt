@@ -56,32 +56,6 @@ fun <T> Modifier.conditional(
 ): Modifier =
     if (value != null) then(modifier(Modifier, value)) else this
 
-/** Shows a centered tap indication once after entering composition, without invoking a click.
- *  Pass the same [interactionSource] to the element's clickable or button. */
-@Composable
-fun Modifier.tapHint(
-    interactionSource: MutableInteractionSource,
-    delayMillis: Long = 500L,
-    enabled: Boolean = true,
-): Modifier {
-    var center by remember { mutableStateOf(Offset.Zero) }
-
-    LaunchedEffect(interactionSource) {
-        if (enabled) {
-            delay(delayMillis)
-            val press = PressInteraction.Press(center)
-            interactionSource.emit(press)
-            try {
-                delay(120)
-            } finally {
-                interactionSource.tryEmit(PressInteraction.Release(press))
-            }
-        }
-    }
-
-    return onSizeChanged { center = Offset(it.width / 2f, it.height / 2f) }
-}
-
 /** set absolute offset proportional to the composable's size */
 fun Modifier.proportionalAbsoluteOffset(
     x: Float = 0f,
