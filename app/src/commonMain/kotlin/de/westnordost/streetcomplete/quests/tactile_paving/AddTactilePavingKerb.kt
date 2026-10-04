@@ -58,7 +58,7 @@ class AddTactilePavingKerb : OsmElementQuestType<Boolean> {
         }
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways with kerb or barrier=kerb")
+        mapData.filter("nodes, ways with kerb or barrier = kerb")
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("tactile_paving", answer.toYesNo())

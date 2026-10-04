@@ -50,7 +50,7 @@ class AddKerbHeight : OsmElementQuestType<KerbHeight> {
         }
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways with kerb or barrier=kerb")
+        mapData.filter("nodes, ways with kerb or barrier = kerb")
 
     @Composable
     override fun Form(on: (QuestAction<KerbHeight>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
