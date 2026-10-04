@@ -64,13 +64,13 @@ fun BottomSheetFormScaffold(
     ) {
         BottomSheet(
             initialState = initialState,
-            peekHeight = peekHeight
+            peekHeight = peekHeight,
+            modifier = Modifier.safeDrawingPadding()
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .onSizeChanged { bottomSheetHeightPx = it.height }
-                    .safeDrawingPadding(),
+                    .onSizeChanged { bottomSheetHeightPx = it.height },
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 if (header != null) {
