@@ -18,7 +18,7 @@
 
 - Other minor improvements (#7182, #7187, #7201), thanks @paulklie
 
-### Changes and fixes for v64.0-alpha2
+### Changes and fixes for earlier v64.0-alphas
 
 - Map now works on iOS 15.5 (#7193), by @sargunv
 - Dismiss quest, overlay and note forms by clicking on the map (#7179, #7202, …), by @paulklie
