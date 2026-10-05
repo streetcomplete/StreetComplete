@@ -6,7 +6,7 @@
 
 - add back button to dismissable onboarding screens (#7209)
 - allow swiping between steps on all onboarding screens (#7198)
-- other small improvements (#7228, #7221…)
+- other small improvements (#7228, #7221…), thanks @Amaanprobably
 
 ### Quest & overlay improvements
 
