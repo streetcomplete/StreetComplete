@@ -60,9 +60,7 @@ class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>() {
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("""
             nodes, ways, relations with
-              (
-                (public_transport = platform and ~bus|trolleybus|tram ~ yes)
-                or (highway = bus_stop and public_transport != stop_position)
-              )
+              (public_transport = platform and ~bus|trolleybus|tram ~ yes)
+              or (highway = bus_stop and public_transport != stop_position)
         """)
 }

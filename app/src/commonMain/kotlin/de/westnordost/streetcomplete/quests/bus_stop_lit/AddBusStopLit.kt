@@ -52,9 +52,7 @@ class AddBusStopLit : OsmFilterQuestType<Boolean>() {
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("""
             nodes, ways, relations with
-              (
-                public_transport = platform
-                or (highway = bus_stop and public_transport != stop_position)
-              )
+              public_transport = platform
+              or (highway = bus_stop and public_transport != stop_position)
         """)
 }

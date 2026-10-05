@@ -57,10 +57,8 @@ class AddBusStopName : OsmFilterQuestType<List<LocalizedName>>() {
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("""
             nodes, ways, relations with
-              (
-                public_transport = platform and bus = yes
-                or highway = bus_stop and public_transport != stop_position
-                or railway ~ halt|station|tram_stop
-              )
+              public_transport = platform and bus = yes
+              or highway = bus_stop and public_transport != stop_position
+              or railway ~ halt|station|tram_stop
         """)
 }
