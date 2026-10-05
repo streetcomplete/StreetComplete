@@ -610,7 +610,6 @@ private fun LabelLayers(
     )
 }
 
-
 @Composable @MaplibreComposable
 private fun RoadLayer(
     road: RoadType,

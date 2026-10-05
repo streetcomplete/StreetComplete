@@ -101,7 +101,9 @@ fun SplitWayForm(
         }
         if (pos1 != null && pos2 != null) {
             pos1.initialBearingTo(pos2)
-        } else null
+        } else {
+            null
+        }
     }
 
     val hasChanges = cuts.isNotEmpty()
@@ -136,7 +138,7 @@ fun SplitWayForm(
                     .size(72.dp)
                     .graphicsLayer(
                         translationY = 6.dp.toPx(),
-                        transformOrigin = TransformOrigin(pivotFractionX = 0.5f, pivotFractionY = 0.5f - 4f/44f),
+                        transformOrigin = TransformOrigin(pivotFractionX = 0.5f, pivotFractionY = 0.5f - 4f / 44f),
                         rotationZ = (scissorsAngle?.toFloat() ?: 0f) + 90f
                     )
             )

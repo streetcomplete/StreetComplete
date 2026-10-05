@@ -45,11 +45,11 @@ fun AddBusStopNameForm(
             if (suggestedNames != null) {
                 initialLocalizedNames = suggestedNames
                 true
-            } else false
+            } else {
+                false
+            }
         },
     )
-
-
 }
 
 // this filter needs to be kept somewhat in sync with the filter in AddBusStopName

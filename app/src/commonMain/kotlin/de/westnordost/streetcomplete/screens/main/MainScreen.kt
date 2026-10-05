@@ -206,7 +206,7 @@ fun MainScreen(
 
     val pinsMode = when (sheetSelection) {
         is MainSheetSelection.EditHistory -> PinsMode.EditHistory
-        null -> PinsMode.Quests// quest pins are only shown if no form is open
+        null -> PinsMode.Quests // quest pins are only shown if no form is open
         else -> PinsMode.None
     }
 
@@ -754,7 +754,6 @@ fun MainScreen(
 
     //endregion
 }
-
 
 private enum class Toast {
     Offline,

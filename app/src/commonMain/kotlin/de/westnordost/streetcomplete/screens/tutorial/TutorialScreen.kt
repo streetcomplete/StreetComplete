@@ -184,7 +184,6 @@ private fun PortraitTutorialScreenLayout(
     }
 }
 
-
 @Composable
 private fun LandscapeTutorialScreenLayout(
     illustration: @Composable BoxScope.() -> Unit,

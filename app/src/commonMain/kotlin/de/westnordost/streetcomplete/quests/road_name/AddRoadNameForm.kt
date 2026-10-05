@@ -52,7 +52,9 @@ fun AddRoadNameForm(
                 copiedName = true
                 initialLocalizedNames = suggestedNames
                 true
-            } else false
+            } else {
+                false
+            }
         },
     )
 }

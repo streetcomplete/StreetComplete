@@ -455,7 +455,7 @@ fun questTypeRegistry(
     184 to AddAerialwayBicycleAccess(),
     187 to AddOnewayAerialway(),
 
-    //103 to AddProhibitedForPedestrians(), - removed in https://github.com/streetcomplete/StreetComplete/issues/7014
+    // 103 to AddProhibitedForPedestrians(), - removed in https://github.com/streetcomplete/StreetComplete/issues/7014
 
     104 to MarkCompletedHighwayConstruction(), // need to look the whole way
 

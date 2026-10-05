@@ -101,4 +101,3 @@ fun List<List<LatLon>>.toMultiLineGeometry() = MultiLineString(
 
 fun LatLon.toGeometry(): Point =
     Point(Position(longitude = longitude, latitude = latitude))
-

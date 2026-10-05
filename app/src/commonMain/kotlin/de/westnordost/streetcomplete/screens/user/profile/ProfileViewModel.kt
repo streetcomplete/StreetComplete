@@ -177,7 +177,9 @@ class ProfileViewModelImpl(
     private fun getUserAvatarFile(): Path? =
         if (userDataSource.userId >= 0) {
             Path(avatarsCacheDirectory, userDataSource.userId.toString())
-        } else null
+        } else {
+            null
+        }
 
     override fun onCleared() {
         unsyncedChangesCountSource.removeListener(unsyncedChangesCountListener)

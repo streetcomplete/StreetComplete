@@ -56,9 +56,9 @@ fun AddAddressStreetForm(
         },
         onClickMap = { mapClick: MapClick ->
             // Do not consume event if the street name is not displayed
-            if (streetOrPlaceName !is StreetName)
+            if (streetOrPlaceName !is StreetName) {
                 false
-            else {
+            } else {
                 // Do not consume event if the user did not hit a road
                 val suggestedNames = nameSuggestionsSource
                     .getNames(
@@ -73,8 +73,9 @@ fun AddAddressStreetForm(
                         ?.name
                         ?.let { streetOrPlaceName = StreetName(it) }
                     true
+                } else {
+                    false
                 }
-                else false
             }
         },
         subtitle = nameAndLocationLabel(LocalElement.current!!, featureDictionary, showHouseNumber = true),

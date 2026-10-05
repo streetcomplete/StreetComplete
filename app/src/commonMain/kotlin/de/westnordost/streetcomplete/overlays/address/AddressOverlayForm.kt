@@ -239,10 +239,9 @@ fun AddressOverlayForm(
         otherAnswers = ::createOtherAnswers,
         onClickMap = { mapClick: MapClick ->
             // Do not consume event if the street name is not displayed
-            if (address.streetOrPlace !is StreetName)
+            if (address.streetOrPlace !is StreetName) {
                 false
-            else
-            {
+            } else {
                 val suggestedNames = nameSuggestionsSource
                     .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
                     .firstOrNull()
@@ -253,8 +252,9 @@ fun AddressOverlayForm(
                         ?.name
                         ?.let { address = address.copy(streetOrPlace = StreetName(it)) }
                     true
+                } else {
+                    false
                 }
-                else false
             }
         },
     ) {

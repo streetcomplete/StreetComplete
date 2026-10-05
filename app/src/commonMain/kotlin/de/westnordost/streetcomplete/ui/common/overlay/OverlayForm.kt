@@ -166,8 +166,7 @@ fun OverlayForm(
     LaunchedEffect(lastMapClick) {
         if (lastMapClick != null) {
             // Check if the map click event has already been consumed by the overlay form
-            if(!onClickMap(lastMapClick))
-            {
+            if (!onClickMap(lastMapClick)) {
                 // User has tapped the map. Dismiss changes.
                 if (hasChanges) {
                     confirmDiscard = true
