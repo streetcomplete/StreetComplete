@@ -70,7 +70,7 @@ fun TeamModeWizard(
         pageCount = 3,
         onDismissRequest = onDismissRequest,
         onFinished = { onFinished(teamSize, indexInTeam) },
-        dismissOnBackPress = true,
+        isDismissable = true,
         nextIsEnabled = { page ->
             if (page == 2 && indexInTeam !in 0..<teamSize) false
             else true
