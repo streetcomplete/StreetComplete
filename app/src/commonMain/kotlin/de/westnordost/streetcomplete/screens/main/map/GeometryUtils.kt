@@ -6,18 +6,18 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.util.ktx.toPosition
 import de.westnordost.streetcomplete.util.math.isInPolygon
 import de.westnordost.streetcomplete.util.math.isRingDefinedClockwise
 import de.westnordost.streetcomplete.util.math.measuredArea
-import de.westnordost.streetcomplete.util.ktx.toPosition
 import org.maplibre.compose.util.VisibleBounds
+import org.maplibre.spatialk.geojson.Geometry
 import org.maplibre.spatialk.geojson.LineString
 import org.maplibre.spatialk.geojson.MultiLineString
 import org.maplibre.spatialk.geojson.MultiPolygon
 import org.maplibre.spatialk.geojson.Point
 import org.maplibre.spatialk.geojson.Polygon
 import org.maplibre.spatialk.geojson.Position
-import org.maplibre.spatialk.geojson.Geometry
 
 typealias GeoJsonBoundingBox = org.maplibre.spatialk.geojson.BoundingBox
 
@@ -101,4 +101,3 @@ fun List<List<LatLon>>.toMultiLineGeometry() = MultiLineString(
 
 fun LatLon.toGeometry(): Point =
     Point(Position(longitude = longitude, latitude = latitude))
-

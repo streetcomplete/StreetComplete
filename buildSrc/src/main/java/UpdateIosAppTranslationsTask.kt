@@ -51,18 +51,24 @@ open class UpdateIosAppTranslationsTask : DefaultTask() {
         // stringId: e.g. "no_location_permission_warning"
         // languageCode: e.g. "zh-Hant"
         // strings: e.g. mapOf("no_location_permission_warning" to "To show your position on the map and download data your vicinity.", …)
-        val strings = XcStrings(
-            strings = strings.mapValues { (iosKey, stringId) ->
-                XcStringEntry(
-                    localizations = translations.mapValuesNotNull { (languageCode, strings) ->
-                        val string = strings[stringId]
-                        if (string != null) XcLocalization(stringUnit = XcStringUnit(value = string))
-                        else null
-                    }.toSortedMap() // see comment below
-                )
-            }.toSortedMap() // no, not this one, one further down!
+        val stringsByKey = strings.mapValues { (iosKey, stringId) ->
+            XcStringEntry(
+                localizations = translations.mapValuesNotNull { (languageCode, strings) ->
+                    val string = strings[stringId]
+                    if (string != null) XcLocalization(stringUnit = XcStringUnit(value = string))
+                    else null
+                }.toSortedMap()
+            )
+        }.toSortedMap()
+
+        // XCode always adds a default translation for the bundle name. So, let's already add it
+        // in the task, so that XCode doesn't overwrite it.
+        stringsByKey["CFBundleName"] = XcStringEntry(
+            localizations = mapOf("en" to XcLocalization(stringUnit = XcStringUnit(value = "StreetComplete")))
         )
-        val stringsJson = json.encodeToString(strings)
+
+        val xcStrings = XcStrings(strings = stringsByKey)
+        val xcStringsJson = json.encodeToString(xcStrings)
 
         // XCode parses and then overwrites the xcstrings file. It uses a particular syntax:
         // It sorts all string keys in `strings` alphabetically and then also all language tags in
@@ -73,7 +79,7 @@ open class UpdateIosAppTranslationsTask : DefaultTask() {
         // commited to the repository.
 
         val findColons = Regex("^(\\s*\".+\"): ", RegexOption.MULTILINE)
-        targetFile.writeText(stringsJson.replace(findColons) { matchResult ->
+        targetFile.writeText(xcStringsJson.replace(findColons) { matchResult ->
             matchResult.groupValues[1] + " : "
         })
     }

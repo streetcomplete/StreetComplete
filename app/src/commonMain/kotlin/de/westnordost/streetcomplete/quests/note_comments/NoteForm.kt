@@ -13,6 +13,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -29,6 +30,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.rememberTrackpointsPainter
 import de.westnordost.streetcomplete.ui.common.NonPredictiveBackHandler
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
+import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
 import de.westnordost.streetcomplete.ui.util.photo.compressPhotoAndOverwrite
 import de.westnordost.streetcomplete.ui.util.photo.createOpenCameraSettings
 import de.westnordost.streetcomplete.ui.util.photo.createPhotoPlatformFile
@@ -90,6 +92,18 @@ fun NoteForm(
             confirmDiscard = true
         } else {
             onDiscard()
+        }
+    }
+
+    val lastMapClick = LocalLastMapClick.current
+    LaunchedEffect(lastMapClick) {
+        if (lastMapClick != null) {
+            // User has tapped the map. Dismiss changes.
+            if (hasChanges) {
+                confirmDiscard = true
+            } else {
+                onDiscard()
+            }
         }
     }
 

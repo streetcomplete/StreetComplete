@@ -53,7 +53,7 @@ fun OverlaysTutorialScreen(
         pageCount = 3,
         onDismissRequest = onDismissRequest,
         onFinished = onFinished,
-        dismissOnBackPress = dismissOnBackPress,
+        isDismissable = dismissOnBackPress,
         illustration = { page ->
             OverlaysTutorialIllustration(page)
         },

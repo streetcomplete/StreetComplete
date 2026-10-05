@@ -29,7 +29,7 @@
     <string name="quest_openingHours_chooseMonthsTitle">Vali kuud</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">Vali nädalapäevad</string>
     <string name="quest_openingHours_24_7_confirmation">Teisiti öeldes, kas see on alati ja iga päev lahti?</string>
-    <string name="quest_noteDiscussion_title">Kas sa saad midagi sellele märkusele lisada?</string>
+    <string name="quest_noteDiscussion_title">Kas saad midagi sellele märkusele lisada?</string>
     <string name="quest_noteDiscussion_no">Ei, peida</string>
     <string name="quest_noteDiscussion_anonymous">Anonüümne</string>
     <string name="confirmation_discard_title">Kas loobud sisendist?</string>

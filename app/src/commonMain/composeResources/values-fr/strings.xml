@@ -1511,4 +1511,9 @@ Sinon, vous pouvez télécharger un autre clavier depuis le magasin d’applicat
     <string name="quest_generalAccess_hint">Ignorez les frais ou charges éventuels. La question de savoir si l’accès est payant sera posée séparément.</string>
     <string name="quest_toiletsFee_fee_for_non_customers">Gratuit seulement pour les clients</string>
     <string name="quest_vending_machine_type">De quel type de distributeur automatique s’agit-il ?</string>
+    <string name="quest_selection_hint_message_open_settings">Ouvrir les paramètres</string>
+    <string name="link_waymarked_description">Affiche les itinéraires balisés pour la randonnée, le vélo, le VTT, l’équitation, le roller et les sports d’hiver.</string>
+    <string name="quest_buildingType_terraced_house">Maison individuelle mitoyenne</string>
+    <string name="quest_buildingType_terraced_house_description">une maison individuelle dans une rangée de maisons similaires</string>
+    <string name="quest_barrier_opening_not_wheelchair_accessible">Non adapté aux fauteuils roulants</string>
 </resources>

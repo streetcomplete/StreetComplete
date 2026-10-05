@@ -12,9 +12,12 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -36,6 +39,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.DpOffset
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -51,6 +55,7 @@ import de.westnordost.streetcomplete.screens.main.controls.MainScreenControls
 import de.westnordost.streetcomplete.screens.main.controls.PointerPinButton
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistorySidebar
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
+import de.westnordost.streetcomplete.screens.main.edithistory.icon
 import de.westnordost.streetcomplete.screens.main.errors.LastCrashEffect
 import de.westnordost.streetcomplete.screens.main.errors.LastDownloadErrorEffect
 import de.westnordost.streetcomplete.screens.main.errors.LastUploadErrorEffect
@@ -61,11 +66,11 @@ import de.westnordost.streetcomplete.screens.main.map.MainMapContent
 import de.westnordost.streetcomplete.screens.main.map.MainMapTrackState
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.PinsMode
-import de.westnordost.streetcomplete.screens.main.map.positionAtCenter
-import de.westnordost.streetcomplete.screens.main.map.toDpPadding
 import de.westnordost.streetcomplete.screens.main.map.getTrackBearing
 import de.westnordost.streetcomplete.screens.main.map.offsetInWindow
+import de.westnordost.streetcomplete.screens.main.map.positionAtCenter
 import de.westnordost.streetcomplete.screens.main.map.rememberMainMapCameraState
+import de.westnordost.streetcomplete.screens.main.map.toDpPadding
 import de.westnordost.streetcomplete.screens.main.map.toStreetCompleteBoundingBox
 import de.westnordost.streetcomplete.screens.main.messages.MessageDialog
 import de.westnordost.streetcomplete.screens.main.urlconfig.ApplyUrlConfigDialog
@@ -77,6 +82,7 @@ import de.westnordost.streetcomplete.ui.ktx.dir
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toLatLon
+import de.westnordost.streetcomplete.util.ktx.toPosition
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
@@ -97,6 +103,7 @@ import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.rememberMapState
 import org.maplibre.compose.overlay.GeographicLayout
 import org.maplibre.compose.style.BaseStyle
+import org.maplibre.compose.util.DpPadding
 import org.maplibre.spatialk.units.Bearing
 import org.maplibre.spatialk.units.extensions.inDegrees
 import kotlin.time.Duration.Companion.milliseconds
@@ -132,7 +139,6 @@ fun MainScreen(
 
     val density = LocalDensity.current
     val layoutDirection = LocalLayoutDirection.current
-    val windowInfo = LocalWindowInfo.current
 
     val starsCount by viewModel.starsCount.collectAsState()
     val isShowingStarsCurrentWeek by viewModel.isShowingStarsCurrentWeek.collectAsState()
@@ -201,7 +207,7 @@ fun MainScreen(
 
     val pinsMode = when (sheetSelection) {
         is MainSheetSelection.EditHistory -> PinsMode.EditHistory
-        null -> PinsMode.Quests// quest pins are only shown if no form is open
+        null -> PinsMode.Quests // quest pins are only shown if no form is open
         else -> PinsMode.None
     }
 
@@ -238,7 +244,12 @@ fun MainScreen(
     }
 
     val cameraState = rememberMainMapCameraState(mapState, viewModel.initiallyFollowing, viewModel.initiallyNavigating)
-    val sheetPadding = Dimensions.getOpenQuestFormMapPadding(windowInfo).toDpPadding(layoutDirection)
+
+    val sheetPadding = Dimensions.getOpenQuestFormMapPadding(
+        LocalWindowInfo.current,
+        WindowInsets.safeDrawing.asPaddingValues()
+    ).toDpPadding(layoutDirection)
+
     //endregion
 
     //region actions
@@ -253,11 +264,23 @@ fun MainScreen(
         mapState.metersPerDpAtLatitude(mapState.cameraPosition.target.latitude) ?: 0.0
 
     fun ClickEvent.toMapClick(): MapClick? =
-        position?.let { MapClick(it.toLatLon(), screenOffset, clickAreaSizeInMeters = getMetersPerDp() * 14) }
+        position?.let { MapClick(it.toLatLon(), screenOffset, clickAreaSizeInMeters = getMetersPerDp() * 20) }
 
     fun followPosition() {
         scope.launch {
             cameraState.followPosition(location?.position?.toLatLon(), getTrackBearing(tracks.currentTrack))
+        }
+    }
+
+    fun jumpToEdit() {
+        scope.launch {
+            sheet.shownEdit?.geometry?.let { cameraState.focus(it, DpPadding.Zero) }
+        }
+    }
+
+    fun jumpToBottomSheetFocus() {
+        scope.launch {
+            shownBottomSheet?.geometry?.let { cameraState.focus(it, sheetPadding) }
         }
     }
 
@@ -473,6 +496,28 @@ fun MainScreen(
                 sheet.formMapOverlay?.invoke(this)
 
                 GeographicLayout(Modifier.windowInsetsPadding(WindowInsets.safeDrawing)) {
+                    val shownEdit = sheet.shownEdit?.edit
+                    shownEdit?.position?.toPosition()?.let { position ->
+                        val icon = shownEdit.icon ?: Res.drawable.empty_128
+                        PointerPinButton(
+                            targetPosition = position,
+                            onClick = ::jumpToEdit,
+                            contentPadding = PaddingValues(6.dp),
+                        ) {
+                            Image(painterResource(icon), null, modifier = Modifier.size(36.dp))
+                        }
+                    }
+
+                    shownBottomSheet?.position?.toPosition()?.let { position ->
+                        PointerPinButton(
+                            targetPosition = position,
+                            onClick = ::jumpToBottomSheetFocus,
+                            contentPadding = PaddingValues(6.dp),
+                        ) {
+                            Image(painterResource(shownBottomSheet.icon), null, modifier = Modifier.size(36.dp))
+                        }
+                    }
+
                     val position = location?.position
                     if (position != null) {
                         PointerPinButton(targetPosition = position, onClick = ::followPosition) {
@@ -706,7 +751,6 @@ fun MainScreen(
 
     //endregion
 }
-
 
 private enum class Toast {
     Offline,

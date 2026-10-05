@@ -14,7 +14,6 @@ fun String.escapeHtmlEntities(): String {
     return result.toString()
 }
 
-
 private val ENTITY_REGEX by lazy { Regex("&[a-zA-Z0-9]+;") }
 
 private val ENTITIES: Map<String, Char> = mapOf(

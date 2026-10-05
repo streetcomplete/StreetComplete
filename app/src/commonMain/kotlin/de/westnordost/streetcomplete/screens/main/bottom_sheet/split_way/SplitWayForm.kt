@@ -3,8 +3,11 @@ package de.westnordost.streetcomplete.screens.main.bottom_sheet.split_way
 import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
@@ -19,7 +22,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalWindowInfo
@@ -99,7 +101,9 @@ fun SplitWayForm(
         }
         if (pos1 != null && pos2 != null) {
             pos1.initialBearingTo(pos2)
-        } else null
+        } else {
+            null
+        }
     }
 
     val hasChanges = cuts.isNotEmpty()
@@ -134,7 +138,7 @@ fun SplitWayForm(
                     .size(72.dp)
                     .graphicsLayer(
                         translationY = 6.dp.toPx(),
-                        transformOrigin = TransformOrigin(pivotFractionX = 0.5f, pivotFractionY = 0.5f - 4f/44f),
+                        transformOrigin = TransformOrigin(pivotFractionX = 0.5f, pivotFractionY = 0.5f - 4f / 44f),
                         rotationZ = (scissorsAngle?.toFloat() ?: 0f) + 90f
                     )
             )
@@ -142,12 +146,16 @@ fun SplitWayForm(
     }
 
     Box(modifier = modifier.fillMaxSize()) {
+        val openFormPadding = Dimensions.getOpenQuestFormMapPadding(
+            LocalWindowInfo.current,
+            WindowInsets.safeDrawing.asPaddingValues()
+        )
         Icon(
             painter = painterResource(Res.drawable.crosshair),
             contentDescription = null,
             modifier = Modifier
-                .align(Alignment.Center)
-                .padding(Dimensions.getOpenQuestFormMapPadding(LocalWindowInfo.current)),
+                .padding(openFormPadding)
+                .align(Alignment.Center),
             tint = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)
         )
 

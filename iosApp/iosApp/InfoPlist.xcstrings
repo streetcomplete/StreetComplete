@@ -1,6 +1,17 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "CFBundleName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "StreetComplete"
+          }
+        }
+      }
+    },
     "NSCameraUsageDescription" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -86,6 +97,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sono richiesti i permessi della fotocamera per allegare foto alle note della mappa."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camerapermissie is vereist om foto's aan notities te kunnen toevoegen."
           }
         },
         "sv" : {
@@ -336,7 +353,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Je locatie is nodig om in je omgeving naar vragen te zoeken."
+            "value" : "Je locatie is nodig om jezelf op de kaart te zien en in je omgeving naar vragen te zoeken."
           }
         },
         "nn" : {

@@ -31,7 +31,7 @@ fun BuildingType.applyTo(tags: Tags) {
         tags["building"] = "yes"
     }
 
-    if (this == TERRACED_HOUSE){
+    if (this == TERRACED_HOUSE) {
         tags["building"] = "house"
     }
 

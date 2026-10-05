@@ -47,7 +47,7 @@ suspend fun MapState.animateTo(geometry: ElementGeometry, padding: DpPadding) {
     val camera = cameraPosition
     val fitted = cameraForGeometry(geometry.toGeometry(), camera.bearing, camera.tilt, cameraPadding = padding)
     // zoom in a bit less than fully to keep a margin around the element, and not too far for points
-    val targetZoom = min(fitted.zoom - 0.75, 19.0)
+    val targetZoom = min(fitted.zoom - 0.5, 19.0)
     val zoomDiff = abs(camera.zoom - targetZoom)
     animateCamera(
         update = CameraUpdate(

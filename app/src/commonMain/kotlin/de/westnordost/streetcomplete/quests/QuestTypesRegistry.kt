@@ -61,7 +61,6 @@ import de.westnordost.streetcomplete.quests.camping.AddCampPower
 import de.westnordost.streetcomplete.quests.camping.AddCampShower
 import de.westnordost.streetcomplete.quests.camping.AddCaravans
 import de.westnordost.streetcomplete.quests.camping.AddTents
-import de.westnordost.streetcomplete.quests.doctor_type.AddDoctorType
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
 import de.westnordost.streetcomplete.quests.charge.AddParkingCharge
 import de.westnordost.streetcomplete.quests.charging_station_bicycles.AddChargingStationBicycles
@@ -83,6 +82,7 @@ import de.westnordost.streetcomplete.quests.diet_type.AddHalal
 import de.westnordost.streetcomplete.quests.diet_type.AddKosher
 import de.westnordost.streetcomplete.quests.diet_type.AddVegan
 import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian
+import de.westnordost.streetcomplete.quests.doctor_type.AddDoctorType
 import de.westnordost.streetcomplete.quests.drinking_water.AddDrinkingWater
 import de.westnordost.streetcomplete.quests.drinking_water_type.AddDrinkingWaterType
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
@@ -455,7 +455,7 @@ fun questTypeRegistry(
     184 to AddAerialwayBicycleAccess(),
     187 to AddOnewayAerialway(),
 
-    //103 to AddProhibitedForPedestrians(), - removed in https://github.com/streetcomplete/StreetComplete/issues/7014
+    // 103 to AddProhibitedForPedestrians(), - removed in https://github.com/streetcomplete/StreetComplete/issues/7014
 
     104 to MarkCompletedHighwayConstruction(), // need to look the whole way
 

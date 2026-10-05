@@ -12,6 +12,7 @@ import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -33,6 +34,8 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
+import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
+import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.theme.defaultTextLinkStyles
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.util.image.loadImageBitmap
@@ -51,6 +54,7 @@ fun AddNoteCommentForm(
     onHideQuest: () -> Unit,
     quest: Quest,
     note: Note,
+    lastMapClick: MapClick?,
     modifier: Modifier = Modifier,
     fileSystem: FileSystem = koinInject(),
     avatarsCacheDir: Path = koinInject(named("AvatarsCacheDirectory")),
@@ -74,65 +78,69 @@ fun AddNoteCommentForm(
         questsHiddenSource.get(OsmNoteQuestKey(note.id)) != null
     }
 
-    BottomSheetFormScaffold(
-        header = {
-            Text(
-                text = stringResource(quest.type.title),
-                style = MaterialTheme.typography.titleLarge
-            )
-        },
-        content = {
-            Column(Modifier.fillMaxWidth()) {
-                ProvideTextStyle(MaterialTheme.typography.body2) {
-                    NoteCommentItems(
-                        noteComments = note.comments.orEmpty(),
-                        avatars = avatars,
-                        textLinkStyles = MaterialTheme.typography.defaultTextLinkStyles(),
-                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
-                    )
-                }
-
-                Divider()
-                NoteForm(
-                    onDismiss = onDismiss,
-                    text = noteText,
-                    onTextChange = { noteText = it },
-                    imagePaths = noteImagePaths,
-                    onImagePathsChange = { noteImagePaths = it },
-                    trackpoints = null,
-                    onDeleteTrackpoints = null,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(PaddingValues(horizontal = 24.dp, vertical = 12.dp))
-                        .align(Alignment.CenterHorizontally)
+    CompositionLocalProvider(
+        LocalLastMapClick provides lastMapClick,
+    ) {
+        BottomSheetFormScaffold(
+            header = {
+                Text(
+                    text = stringResource(quest.type.title),
+                    style = MaterialTheme.typography.titleLarge
                 )
+            },
+            content = {
+                Column(Modifier.fillMaxWidth()) {
+                    ProvideTextStyle(MaterialTheme.typography.body2) {
+                        NoteCommentItems(
+                            noteComments = note.comments.orEmpty(),
+                            avatars = avatars,
+                            textLinkStyles = MaterialTheme.typography.defaultTextLinkStyles(),
+                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
+                        )
+                    }
 
-                Divider()
+                    Divider()
+                    NoteForm(
+                        onDismiss = onDismiss,
+                        text = noteText,
+                        onTextChange = { noteText = it },
+                        imagePaths = noteImagePaths,
+                        onImagePathsChange = { noteImagePaths = it },
+                        trackpoints = null,
+                        onDeleteTrackpoints = null,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(PaddingValues(horizontal = 24.dp, vertical = 12.dp))
+                            .align(Alignment.CenterHorizontally)
+                    )
 
-                Row(Modifier
-                    .padding(horizontal = 8.dp)
-                    .fillMaxWidth()
-                ) {
-                    if (alreadyHidden) {
-                        TextButton(onClick = onDismiss) {
-                            Text(stringResource(Res.string.short_no_answer_on_button))
-                        }
-                    } else {
-                        TextButton(onClick = onHideQuest) {
-                            Text(stringResource(Res.string.quest_noteDiscussion_no))
+                    Divider()
+
+                    Row(Modifier
+                        .padding(horizontal = 8.dp)
+                        .fillMaxWidth()
+                    ) {
+                        if (alreadyHidden) {
+                            TextButton(onClick = onDismiss) {
+                                Text(stringResource(Res.string.short_no_answer_on_button))
+                            }
+                        } else {
+                            TextButton(onClick = onHideQuest) {
+                                Text(stringResource(Res.string.quest_noteDiscussion_no))
+                            }
                         }
                     }
                 }
-            }
-        },
-        fab = {
-            FloatingOkButton(
-                visible = noteText.isNotBlank(),
-                onClick = { onCommentNote(noteText.trim(), noteImagePaths) },
-            )
-        },
-        modifier = modifier,
-    )
+            },
+            fab = {
+                FloatingOkButton(
+                    visible = noteText.isNotBlank(),
+                    onClick = { onCommentNote(noteText.trim(), noteImagePaths) },
+                )
+            },
+            modifier = modifier,
+        )
+    }
 }
 
 @Composable

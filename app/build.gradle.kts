@@ -7,7 +7,7 @@ import java.io.FileWriter
 
 
 /** App version name, code and flavor */
-val appVersionName = "64.0-alpha2"
+val appVersionName = "64.0-alpha3"
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
@@ -145,7 +145,7 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.1")
 
                 // location
-                implementation("org.maplibre.compose:location:0.18.0")
+                implementation("org.maplibre.compose:location:0.19.0")
 
                 // SQLite
                 implementation("androidx.sqlite:sqlite:2.7.1")
@@ -199,7 +199,7 @@ kotlin {
                 // UI widgets
 
                 // Map
-                implementation("org.maplibre.compose:maplibre-compose:0.18.0")
+                implementation("org.maplibre.compose:maplibre-compose:0.19.0")
 
                 // non-lazy grid
                 // NOTE: might replace with
@@ -220,7 +220,7 @@ kotlin {
                 implementation("com.ionspin.kotlin:bignum:0.3.10")
 
                 // taking a photo (, picking an image from gallery, ...)
-                implementation("io.github.vinceglb:filekit-dialogs-compose:0.14.2")
+                implementation("io.github.vinceglb:filekit-dialogs-compose:0.16.0")
             }
         }
         androidMain {
@@ -242,7 +242,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-android:3.5.2")
 
                 // map
-                implementation("org.maplibre.compose:maplibre-compose-runtime-opengl-android:0.18.0")
+                implementation("org.maplibre.compose:maplibre-compose-runtime-opengl-android:0.19.0")
 
                 // required to @Preview composables in Android Studio
                 runtimeOnly("androidx.compose.ui:ui-tooling:1.12.1")

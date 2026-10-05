@@ -12,10 +12,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.screens.main.map.isArea
-import de.westnordost.streetcomplete.screens.main.map.isLines
 import de.westnordost.streetcomplete.screens.main.map.isPoint
 import de.westnordost.streetcomplete.screens.main.map.toGeometry
-import org.maplibre.compose.expressions.dsl.any
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.feature
 import org.maplibre.compose.expressions.dsl.not

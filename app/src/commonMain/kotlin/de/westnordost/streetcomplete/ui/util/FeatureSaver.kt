@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.ui.util
 
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.SaverScope
-import androidx.compose.runtime.saveable.listSaver
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary

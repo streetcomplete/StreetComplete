@@ -17,11 +17,6 @@ private object IosAppLocale {
     private const val LANGUAGES_KEY = "AppleLanguages"
     private val defaults = NSUserDefaults.standardUserDefaults
 
-    init {
-        // Older versions persisted this derived setting. Preferences already stores the selection.
-        defaults.removeObjectForKey(LANGUAGES_KEY)
-    }
-
     private val originalLanguages = defaults.volatileDomainForName(NSArgumentDomain)[LANGUAGES_KEY]
     private val systemLanguages = NSLocale.preferredLanguages.filterIsInstance<String>()
     private val systemFormattingLocale = NSLocale.currentLocale

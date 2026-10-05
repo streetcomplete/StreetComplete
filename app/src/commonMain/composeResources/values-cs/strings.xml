@@ -1513,4 +1513,9 @@ Jinak si můžete v obchodě s aplikacemi stáhnout jinou klávesnici. Na Androi
     <string name="quest_generalAccess_hint">Ignorujte jakékoli poplatky. Zda přístup vyžaduje platbu, se aplikace bude ptát samostatně.</string>
     <string name="quest_toiletsFee_fee_for_non_customers">Platí se poplatek, kromě zákazníků</string>
     <string name="quest_vending_machine_type">Jaký druh prodejního automatu je tohle?</string>
+    <string name="quest_selection_hint_message_open_settings">Otevřít nastavení</string>
+    <string name="link_waymarked_description">Ukazuje značené trasy pro pěší turistiku, cyklistiku, horská kola, jízdu na koni, kolečkové brusle a zimní sporty.</string>
+    <string name="quest_buildingType_terraced_house">Samostatný řadový dům</string>
+    <string name="quest_buildingType_terraced_house_description">samostatný dům v řadě podobných domů</string>
+    <string name="quest_barrier_opening_not_wheelchair_accessible">Nevhodné pro vozíčkáře</string>
 </resources>
