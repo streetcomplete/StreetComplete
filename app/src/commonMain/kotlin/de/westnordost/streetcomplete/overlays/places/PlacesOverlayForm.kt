@@ -95,7 +95,7 @@ import kotlin.time.Duration.Companion.milliseconds
     var localizedNames by rememberSerializable(originalNames) { mutableStateOf(
         originalNames.takeIf { it.isNotEmpty() }
             ?: originalFeature?.addTags?.let { parseLocalizedNames(it) }
-            ?: listOf(LocalizedName(countryInfo.language.orEmpty(), ""))
+            ?: listOf(LocalizedName("", ""))
     ) }
     var isNoName by rememberSaveable(originalNoName) { mutableStateOf(originalNoName) }
     var selectedFeature by rememberSaveable(originalFeature, stateSaver = FeatureSaver(featureDictionary)) {
@@ -113,7 +113,7 @@ import kotlin.time.Duration.Companion.milliseconds
         } else {
             localizedNames =
                 parseLocalizedNames(feature.addTags)
-                ?: listOf(LocalizedName(countryInfo.language.orEmpty(), ""))
+                ?: listOf(LocalizedName("", ""))
         }
     }
 

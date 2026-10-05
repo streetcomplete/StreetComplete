@@ -59,10 +59,7 @@ fun LocalizedNameQuestForm(
     }
 
     var localizedNames by rememberSerializable(initialLocalizedNames) {
-        mutableStateOf(
-            initialLocalizedNames
-                ?: listOf(LocalizedName(selectableLanguages.firstOrNull().orEmpty(), ""))
-        )
+        mutableStateOf(initialLocalizedNames ?: listOf(LocalizedName("", "")))
     }
 
     var showKeyboardInfo by remember { mutableStateOf(false) }
