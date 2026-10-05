@@ -1,16 +1,20 @@
 package de.westnordost.streetcomplete.screens.about
 
+import androidx.compose.runtime.MutableState
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavBackStack
-import de.westnordost.streetcomplete.screens.LocalParentViewModelStoreOwner
+import de.westnordost.streetcomplete.data.logs.LogsFilters
 import de.westnordost.streetcomplete.screens.Route
 import de.westnordost.streetcomplete.screens.about.logs.LogsFiltersScreen
 import de.westnordost.streetcomplete.screens.about.logs.LogsScreen
 import de.westnordost.streetcomplete.screens.goBack
-import de.westnordost.streetcomplete.screens.parentViewModelStore
 import org.koin.compose.viewmodel.koinViewModel
 
-fun EntryProviderScope<Route>.aboutEntries(backStack: NavBackStack<Route>) {
+/** @param logsFilters filters shared by the logs screen and the logs filters screen */
+fun EntryProviderScope<Route>.aboutEntries(
+    backStack: NavBackStack<Route>,
+    logsFilters: MutableState<LogsFilters>,
+) {
     fun goBack() { backStack.goBack() }
 
     entry<Route.About> {
@@ -40,17 +44,18 @@ fun EntryProviderScope<Route>.aboutEntries(backStack: NavBackStack<Route>) {
             onClickBack = ::goBack
         )
     }
-    // the logs filters screen edits the filters of the logs screen's view model
-    entry<Route.Logs>(clazzContentKey = { it.toString() }) {
+    entry<Route.Logs> {
         LogsScreen(
             viewModel = koinViewModel(),
+            filters = logsFilters.value,
             onClickFilters = { backStack.add(Route.LogsFilters) },
             onClickBack = ::goBack
         )
     }
-    entry<Route.LogsFilters>(metadata = parentViewModelStore(Route.Logs.toString())) {
+    entry<Route.LogsFilters> {
         LogsFiltersScreen(
-            viewModel = koinViewModel(viewModelStoreOwner = LocalParentViewModelStoreOwner.current),
+            filters = logsFilters.value,
+            onFiltersChange = { logsFilters.value = it },
             onClickBack = ::goBack
         )
     }

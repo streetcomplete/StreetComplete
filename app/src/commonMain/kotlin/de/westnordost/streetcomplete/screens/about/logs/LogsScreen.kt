@@ -35,6 +35,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.logs.LogsFilters
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
@@ -47,11 +48,11 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun LogsScreen(
     viewModel: LogsViewModel,
+    filters: LogsFilters,
     onClickFilters: () -> Unit,
     onClickBack: () -> Unit,
 ) {
-    val logs by viewModel.logs.collectAsState()
-    val filters by viewModel.filters.collectAsState()
+    val logs by remember(filters) { viewModel.getLogs(filters) }.collectAsState(emptyList())
     val filtersCount = remember(filters) { filters.count() }
 
     val listState = rememberLazyListState()
@@ -89,7 +90,7 @@ fun LogsScreen(
                 }
                 IconButton(onClick = {
                     coroutineScope.launch {
-                        shareFileLauncher.launch(viewModel.createLogsFile())
+                        shareFileLauncher.launch(viewModel.createLogsFile(logs))
                     }
                 }) {
                     Icon(
