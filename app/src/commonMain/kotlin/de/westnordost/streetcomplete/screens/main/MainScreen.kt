@@ -706,6 +706,7 @@ fun MainScreen(
         MainMenuDialog(
             onDismissRequest = { showMainMenuDialog = false },
             onClickProfile = onClickProfile,
+            onClickLogin = onClickLogin,
             onClickSettings = onClickSettings,
             onClickAbout = onClickAbout,
             onClickDownload = ::onClickDownload,

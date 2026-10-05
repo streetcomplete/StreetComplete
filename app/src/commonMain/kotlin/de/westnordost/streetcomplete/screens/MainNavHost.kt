@@ -95,20 +95,10 @@ fun MainNavHost(
                     viewModel = mainViewModel,
                 )
             }
-            entry<Route.TeamModeWizard>(metadata = fullScreenDialogTransitions) {
-                val viewModel = koinViewModel<TeamModeViewModel>()
-                TeamModeWizard(
-                    onDismissRequest = { backStack.goBack() },
-                    onFinished = { teamSize, indexInTeam ->
-                        viewModel.enableTeamMode(teamSize = teamSize, indexInTeam = indexInTeam)
-                    },
-                    allQuestIcons = viewModel.allQuestIcons,
-                )
-            }
             tutorialEntries(backStack)
             settingsEntries(backStack)
             aboutEntries(backStack)
-            userEntry(onClickBack = { backStack.goBack() })
+            userEntry(backStack)
         },
     )
 
@@ -118,22 +108,5 @@ fun MainNavHost(
             navViewModel.setUri(it)
             onConsumedUri()
         }
-    }
-}
-
-/** For screens that appear on top of the current one like a full-screen dialog: The screen below
- *  stays put while the dialog appears on top of it */
-val fullScreenDialogTransitions = metadata {
-    put(NavDisplay.TransitionKey) {
-        fadeIn() + slideInVertically(initialOffsetY = { it / 10 }) togetherWith
-        ExitTransition.KeepUntilTransitionsFinished
-    }
-    put(NavDisplay.PopTransitionKey) {
-        EnterTransition.None togetherWith
-        fadeOut() + slideOutVertically(targetOffsetY = { it / 10 })
-    }
-    put(NavDisplay.PredictivePopTransitionKey) {
-        EnterTransition.None togetherWith
-        fadeOut() + slideOutVertically(targetOffsetY = { it / 10 })
     }
 }

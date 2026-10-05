@@ -199,8 +199,6 @@ import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialViewModel
 import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialViewModelImpl
 import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialViewModel
 import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialViewModelImpl
-import de.westnordost.streetcomplete.screens.user.UserViewModel
-import de.westnordost.streetcomplete.screens.user.UserViewModelImpl
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementsViewModel
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementsViewModelImpl
 import de.westnordost.streetcomplete.screens.user.edits.EditStatisticsViewModel
@@ -650,8 +648,6 @@ val commonModule = module {
     viewModel<LinksViewModel> { LinksViewModelImpl(get(), get()) }
 
     viewModel<AchievementsViewModel> { AchievementsViewModelImpl(get(), get()) }
-
-    viewModel<UserViewModel> { UserViewModelImpl(get()) }
 
     //endregion
 
