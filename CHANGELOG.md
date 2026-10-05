@@ -19,7 +19,7 @@
 - fix note forms were not closeable by clicking on map (#7216)
 - fix map click just above forms was not registered as clicking on map (#7216)
 - fix per-app language setting was overwritten on each start of the app on iOS (#7203, #7213), by @sargunv
-- fix settings screen background turning black on Android 7 (#7175)
+- fix settings screen background turning black on Android 7 (#7175), by @sargunv
 
 
 ## v64.0-alpha3
