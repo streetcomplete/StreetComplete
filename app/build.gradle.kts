@@ -134,7 +134,6 @@ kotlin {
                 implementation("io.insert-koin:koin-core")
                 implementation("io.insert-koin:koin-compose")
                 implementation("io.insert-koin:koin-compose-viewmodel")
-                implementation("io.insert-koin:koin-androidx-compose-navigation")
 
                 // Logging
                 implementation("co.touchlab:kermit:2.2.0")
@@ -191,7 +190,8 @@ kotlin {
 
                 // UI Navigation
                 implementation("org.jetbrains.androidx.navigationevent:navigationevent-compose:1.1.0")
-                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.2")
+                implementation("org.jetbrains.androidx.navigation3:navigation3-ui:1.1.2")
+                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-navigation3:2.11.0")
 
                 // UI ViewModel
                 implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.11.0")
