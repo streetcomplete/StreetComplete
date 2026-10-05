@@ -10,9 +10,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import org.maplibre.compose.overlay.MapOverlayScope
-import org.maplibre.compose.overlay.PointerPinButton as MapLibrePointerPinButton
 import org.maplibre.compose.overlay.PointerPinButtonStyle
 import org.maplibre.spatialk.geojson.Position
+import org.maplibre.compose.overlay.PointerPinButton as MapLibrePointerPinButton
 
 /** A pointer at the edge of the unobstructed map, shown while [targetPosition] lies outside
  *  its inscribed ellipse. The pin points towards the target; its content stays upright. */

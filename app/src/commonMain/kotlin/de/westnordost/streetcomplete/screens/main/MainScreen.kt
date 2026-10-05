@@ -65,11 +65,11 @@ import de.westnordost.streetcomplete.screens.main.map.MainMapContent
 import de.westnordost.streetcomplete.screens.main.map.MainMapTrackState
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.PinsMode
-import de.westnordost.streetcomplete.screens.main.map.positionAtCenter
-import de.westnordost.streetcomplete.screens.main.map.toDpPadding
 import de.westnordost.streetcomplete.screens.main.map.getTrackBearing
 import de.westnordost.streetcomplete.screens.main.map.offsetInWindow
+import de.westnordost.streetcomplete.screens.main.map.positionAtCenter
 import de.westnordost.streetcomplete.screens.main.map.rememberMainMapCameraState
+import de.westnordost.streetcomplete.screens.main.map.toDpPadding
 import de.westnordost.streetcomplete.screens.main.map.toStreetCompleteBoundingBox
 import de.westnordost.streetcomplete.screens.main.messages.MessageDialog
 import de.westnordost.streetcomplete.screens.main.urlconfig.ApplyUrlConfigDialog

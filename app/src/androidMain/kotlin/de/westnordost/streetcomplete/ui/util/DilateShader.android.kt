@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.ui.util
 
 import android.graphics.BitmapShader
-import android.graphics.Shader.TileMode.CLAMP
 import android.graphics.RuntimeShader
+import android.graphics.Shader.TileMode.CLAMP
 import android.os.Build
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap

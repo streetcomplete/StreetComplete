@@ -39,9 +39,7 @@ import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import org.koin.dsl.onClose
-import org.maplibre.compose.location.AndroidHeadingProvider
 import org.maplibre.compose.location.AndroidLocationProvider
-import org.maplibre.compose.location.AndroidSystemSettingsLauncher
 import org.maplibre.compose.location.LocationProvider
 import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.MapRuntimeOptions

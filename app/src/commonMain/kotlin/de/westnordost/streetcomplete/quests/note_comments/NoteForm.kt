@@ -25,7 +25,6 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.data.osm.osmquests.Action
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.rememberTrackpointsPainter

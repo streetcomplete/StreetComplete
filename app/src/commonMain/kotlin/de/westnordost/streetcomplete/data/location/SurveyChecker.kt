@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.util.math.flatDistanceToArcs
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.launch
 import org.maplibre.compose.location.LocationEvent
 import org.maplibre.compose.location.LocationProvider
