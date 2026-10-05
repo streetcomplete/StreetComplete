@@ -252,7 +252,7 @@ val commonModule = module {
 
     factory { Cleaner(get(), get(), get(), get(), get(), get(), get()) }
     factory { CacheTrimmer(get(), get()) }
-    factory { Preloader(get(named("CountryBoundariesLazy")), get(named("FeatureDictionaryLazy"))) }
+    factory { Preloader(get(named("CountryBoundariesLazy")), get(named("FeatureDictionaryLazy")), get(), get()) }
 
     //endregion
 
