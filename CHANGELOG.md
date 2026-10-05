@@ -1,5 +1,27 @@
 # Changelog
 
+## vNext
+
+### General
+
+- add back button to dismissable onboarding screens (#7209)
+- allow swiping between steps on all onboarding screens (#7198)
+- other small improvements (#7228, #7221…)
+
+### Quest & overlay improvements
+
+- add tap hint for street side select UI (#7215), by @sargunv
+
+### Changes and fixes for earlier v64.0-alphas
+
+- fix crash when scrolling around in building overlay (#7214), by @sargunv
+- fix crash in language selection screen in iOS (#7210, #7213), by @sargunv
+- fix note forms were not closeable by clicking on map (#7216)
+- fix map click just above forms was not registered as clicking on map (#7216)
+- fix per-app language setting was overwritten on each start of the app on iOS (#7203, #7213), by @sargunv
+- fix settings screen background turning black on Android 7 (#7175)
+
+
 ## v64.0-alpha3
 
 ### General
