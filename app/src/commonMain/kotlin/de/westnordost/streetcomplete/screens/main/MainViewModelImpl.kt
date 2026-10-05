@@ -125,10 +125,6 @@ class MainViewModelImpl(
     override suspend fun createErrorReport(error: Exception): String =
         withContext(Dispatchers.IO) { errorReportBuilder.createErrorReport(error) }
 
-    /* intro */
-
-    override val shouldShowIntroTutorial: Boolean
-        get() = !prefs.hasShownTutorial && !userLoginSource.isLoggedIn
 
     /* HUD */
     override var showZoomButtons: StateFlow<Boolean> = callbackFlow {

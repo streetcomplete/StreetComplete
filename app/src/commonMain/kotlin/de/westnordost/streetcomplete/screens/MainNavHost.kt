@@ -44,10 +44,9 @@ fun MainNavHost(
 ) {
     // The main screen is always at the bottom of the back stack, so its view model lives as long
     // as the app and can receive requests while another destination is shown.
-    val mainViewModel = koinViewModel<MainViewModel>()
     val navViewModel = koinViewModel<MainNavViewModel>()
     val backStack = rememberSerializable(serializer = NavBackStackSerializer(Route.serializer())) {
-        if (mainViewModel.shouldShowIntroTutorial) {
+        if (navViewModel.shouldShowIntroTutorial) {
             NavBackStack(Route.Main, Route.IntroTutorial(onboarding = true))
         } else {
             NavBackStack<Route>(Route.Main)
@@ -92,7 +91,7 @@ fun MainNavHost(
                     onClickEnterTeamMode = { backStack.add(Route.TeamModeWizard) },
                     onShowOverlaysTutorial = { backStack.add(Route.OverlaysTutorial) },
                     navViewModel = navViewModel,
-                    viewModel = mainViewModel,
+                    viewModel = koinViewModel(),
                 )
             }
             tutorialEntries(backStack)

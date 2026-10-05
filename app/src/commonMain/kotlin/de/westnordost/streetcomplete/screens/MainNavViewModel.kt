@@ -3,9 +3,11 @@ package de.westnordost.streetcomplete.screens
 import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfig
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
+import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.ktx.toPosition
 import de.westnordost.streetcomplete.util.parseGeoUri
@@ -19,6 +21,9 @@ import org.maplibre.compose.camera.CameraPosition
 /** Links the app was opened with. They are set by [MainNavHost] and shown on the main screen. */
 @Stable
 abstract class MainNavViewModel : ViewModel() {
+    /** Whether the intro tutorial should be shown on start */
+    abstract val shouldShowIntroTutorial: Boolean
+
     abstract fun setUri(uri: String)
 
     abstract val urlConfig: StateFlow<ShownUrlConfig?>
@@ -34,7 +39,11 @@ data class ShownUrlConfig(val urlConfig: UrlConfig, val alreadyExists: Boolean)
 class MainNavViewModelImpl(
     private val urlConfigController: UrlConfigController,
     private val editTypePresetsSource: EditTypePresetsSource,
+    private val prefs: Preferences,
 ) : MainNavViewModel() {
+
+    override val shouldShowIntroTutorial: Boolean
+        get() = !prefs.hasShownTutorial
 
     override fun setUri(uri: String) {
         launch {

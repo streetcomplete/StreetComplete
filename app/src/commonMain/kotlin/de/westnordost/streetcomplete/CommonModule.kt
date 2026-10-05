@@ -609,7 +609,7 @@ val commonModule = module {
         )
     }
 
-    viewModel<MainNavViewModel> { MainNavViewModelImpl(get(), get()) }
+    viewModel<MainNavViewModel> { MainNavViewModelImpl(get(), get(), get()) }
 
     viewModel<EditHistoryViewModel> {
         EditHistoryViewModelImpl(get(), get())
