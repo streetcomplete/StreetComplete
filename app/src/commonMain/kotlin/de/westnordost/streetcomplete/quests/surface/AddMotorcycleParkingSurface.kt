@@ -22,20 +22,21 @@ import org.jetbrains.compose.resources.stringResource
 class AddMotorcycleParkingSurface : OsmFilterQuestType<Surface>() {
 
     override val elementFilter = """
-        nodes, ways with amenity = motorcycle_parking
-        and access !~ private|no
-        and parking ~ surface|street_side|carports|layby|shoulder|on_kerb|half_on_kerb
-        and (
-          !surface
-          or surface ~ ${INVALID_SURFACES.joinToString("|")}
-          or (
+        nodes, ways with
+          amenity = motorcycle_parking
+          and access !~ private|no
+          and parking ~ surface|street_side|carports|layby|shoulder|on_kerb|half_on_kerb
+          and (
+            !surface
+            or surface ~ ${INVALID_SURFACES.joinToString("|")}
+            or (
               surface ~ paved|unpaved
               and !surface:note
               and !note:surface
               and !check_date:surface
+            )
+            or surface older today -12 years
           )
-          or surface older today -12 years
-        )
     """
 
     override val changesetComment = "Specify motorcycle parking surface"
