@@ -26,17 +26,17 @@ class AddLevelThing : OsmElementQuestType<String> {
         nodes with
           !level
           and (!location or location = indoor)
+          and access !~ private|no
     """.toElementFilterExpression() }
 
-    /* including any kind of public transport station because even really large bus stations feel
-     * like small airport terminals, like Mo Chit 2 in Bangkok*/
-    private val mallFilter by lazy { """
+    /* including any kind of public buildings */
+    private val buildingFilter by lazy { """
         ways, relations with
           shop ~ department_store|mall
           or aeroway = terminal
-          or railway = station
-          or amenity = bus_station
-          or public_transport = station
+          or building ~  civic|hospital|museum|public|train_station|transportation|university
+          or parking = multi-storey
+          and access !~ private|no
     """.toElementFilterExpression() }
 
     override val changesetComment = "Determine on which level things are in a building"
@@ -48,7 +48,7 @@ class AddLevelThing : OsmElementQuestType<String> {
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // get geometry of all malls in the area
         val mallGeometries = mapData
-            .filter(mallFilter)
+            .filter(buildingFilter)
             .mapNotNull { mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry }
             .toList()
         if (mallGeometries.isEmpty()) return emptyList()
