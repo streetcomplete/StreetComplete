@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.about.logs
 
 import androidx.compose.runtime.Stable
+import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
@@ -14,10 +15,14 @@ import io.github.vinceglb.filekit.FileKit
 import io.github.vinceglb.filekit.PlatformFile
 import io.github.vinceglb.filekit.cacheDir
 import io.github.vinceglb.filekit.writeString
+import kotlinx.atomicfu.locks.ReentrantLock
+import kotlinx.atomicfu.locks.withLock
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.withContext
 import kotlinx.datetime.LocalDateTime
@@ -43,23 +48,28 @@ class LogsViewModelImpl(
                 newerThan = filters.timestampNewerThan?.toEpochMilli(),
                 olderThan = filters.timestampOlderThan?.toEpochMilli()
             )
-            .toMutableList()
+            .toMutableStateList()
         }
 
-        trySend(UniqueList(logs))
+        trySend(logs.toList())
+        val lock = ReentrantLock()
 
         val listener = object : LogsSource.Listener {
             override fun onAdded(message: LogMessage) {
                 if (filters.matches(message)) {
-                    logs.add(message)
-                    trySend(UniqueList(logs))
+                    // Keep concurrent callbacks from sending an older snapshot after a newer one.
+                    lock.withLock {
+                        logs.add(message)
+                        // SnapshotStateList.toList() returns an immutable snapshot without copying.
+                        trySend(logs.toList())
+                    }
                 }
             }
         }
 
         logsSource.addListener(listener)
         awaitClose { logsSource.removeListener(listener) }
-    }
+    }.buffer(Channel.CONFLATED)
 
     override suspend fun createLogsFile(logs: List<LogMessage>): PlatformFile {
         val logTimestamp = LocalDateTime.now().toString()
@@ -70,11 +80,4 @@ class LogsViewModelImpl(
         }
         return file
     }
-}
-
-/** List that only returns true on equals if it is compared to the same instance */
-// this is necessary so that Compose recognizes that the view should be updated after list changed
-private class UniqueList<T>(private val list: List<T>) : List<T> by list {
-    override fun equals(other: Any?) = this === other
-    override fun hashCode() = list.hashCode()
 }
