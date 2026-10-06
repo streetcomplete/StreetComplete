@@ -382,6 +382,7 @@ quest/
     motorcycle_parking.svg
     motorcycle_parking_capacity.svg
     motorcycle_parking_cover.svg
+    motorcycle_parking_surface.svg   Amaan Qureshi, modified motorcycle_parking.svg, License: CC-BY-SA 4.0
     mtb.svg
     museum.svg
     no_bicycles.svg
