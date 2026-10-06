@@ -52,7 +52,8 @@ fun LogsScreen(
     onClickFilters: () -> Unit,
     onClickBack: () -> Unit,
 ) {
-    val logs by remember(filters) { viewModel.getLogs(filters) }.collectAsState(emptyList())
+    val logsState by remember(filters) { viewModel.getLogs(filters) }.collectAsState(null)
+    val logs = logsState?.toList().orEmpty()
     val filtersCount = remember(filters) { filters.count() }
 
     val listState = rememberLazyListState()
@@ -63,12 +64,13 @@ fun LogsScreen(
     // Checking whether the list is scrolled to the end now doesn't work, as the list may have
     // already been laid out with the new logs at this point
     var previousLogsCount by remember { mutableIntStateOf(0) }
-    LaunchedEffect(logs.size) {
+    val logsCount = logs.size
+    LaunchedEffect(logsCount) {
         val lastVisibleIndex = listState.layoutInfo.visibleItemsInfo.lastOrNull()?.index
         if (lastVisibleIndex == null || lastVisibleIndex >= previousLogsCount - 1) {
-            listState.scrollToItem(logs.size)
+            listState.scrollToItem(logsCount)
         }
-        previousLogsCount = logs.size
+        previousLogsCount = logsCount
     }
 
     Column(Modifier.fillMaxSize()) {

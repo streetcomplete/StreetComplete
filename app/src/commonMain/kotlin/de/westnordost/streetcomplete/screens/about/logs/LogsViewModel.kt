@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.screens.about.logs
 
 import androidx.compose.runtime.Stable
+import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
@@ -24,8 +26,8 @@ import kotlinx.datetime.LocalDateTime
 
 @Stable
 abstract class LogsViewModel : ViewModel() {
-    /** Logs matching the given [filters], updated when new logs come in */
-    abstract fun getLogs(filters: LogsFilters): Flow<List<LogMessage>>
+    /** Emits an observable list of matching logs, updated until collection is cancelled. */
+    abstract fun getLogs(filters: LogsFilters): Flow<SnapshotStateList<LogMessage>>
 
     abstract suspend fun createLogsFile(logs: List<LogMessage>): PlatformFile
 }
@@ -35,7 +37,7 @@ class LogsViewModelImpl(
     private val logsSource: LogsSource,
 ) : LogsViewModel() {
 
-    override fun getLogs(filters: LogsFilters): Flow<List<LogMessage>> = callbackFlow {
+    override fun getLogs(filters: LogsFilters): Flow<SnapshotStateList<LogMessage>> = callbackFlow {
         val logs = withContext(Dispatchers.IO) { logsSource
             .getLogs(
                 levels = filters.levels,
@@ -43,16 +45,15 @@ class LogsViewModelImpl(
                 newerThan = filters.timestampNewerThan?.toEpochMilli(),
                 olderThan = filters.timestampOlderThan?.toEpochMilli()
             )
-            .toMutableList()
+            .toMutableStateList()
         }
 
-        trySend(UniqueList(logs))
+        trySend(logs)
 
         val listener = object : LogsSource.Listener {
             override fun onAdded(message: LogMessage) {
                 if (filters.matches(message)) {
                     logs.add(message)
-                    trySend(UniqueList(logs))
                 }
             }
         }
@@ -70,11 +71,4 @@ class LogsViewModelImpl(
         }
         return file
     }
-}
-
-/** List that only returns true on equals if it is compared to the same instance */
-// this is necessary so that Compose recognizes that the view should be updated after list changed
-private class UniqueList<T>(private val list: List<T>) : List<T> by list {
-    override fun equals(other: Any?) = this === other
-    override fun hashCode() = list.hashCode()
 }
