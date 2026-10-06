@@ -237,7 +237,7 @@ private fun QuestForm(
         note = if (note != null || isResurvey) {
             {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    questHeader()
+                    if (isResurvey) questHeader()
                     if (note != null) ObjectNote(text = note)
                 }
             }
