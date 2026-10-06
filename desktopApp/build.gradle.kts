@@ -21,8 +21,7 @@ val hostArch = when (System.getProperty("os.arch")) {
 val mapBackend = if (hostOs == "macos") "metal" else "vulkan"
 
 dependencies {
-    // the webview used for login needs KCEF, which is not on Maven Central; login is unavailable here anyway
-    implementation(project(":app")) { exclude(group = "dev.datlag") }
+    implementation(project(":app"))
     implementation(compose.desktop.currentOs)
     implementation("io.insert-koin:koin-core:4.2.2")
     implementation("org.maplibre.compose:maplibre-compose:0.19.0")
