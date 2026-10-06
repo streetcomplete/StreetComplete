@@ -114,19 +114,21 @@ fun SplitWayForm(
     val snipAnimation = remember { Animatable(0f) }
     val scope = rememberCoroutineScope()
 
-    LaunchedEffect(cuts) {
-        mapMarkersCallback?.invoke(
-            cuts.map { Marker(ElementPointGeometry(it.pos), Res.drawable.scissors_cut) }
-        )
-    }
-
-    NonPredictiveBackHandler {
+    fun dismiss() {
         if (hasChanges) {
             confirmDiscard = true
         } else {
             onDismiss()
         }
     }
+
+    LaunchedEffect(cuts) {
+        mapMarkersCallback?.invoke(
+            cuts.map { Marker(ElementPointGeometry(it.pos), Res.drawable.scissors_cut) }
+        )
+    }
+
+    NonPredictiveBackHandler { dismiss() }
 
     if (scissorsPosition != null) {
         OnMap {
@@ -160,9 +162,10 @@ fun SplitWayForm(
         )
 
         BottomSheetFormScaffold(
+            onDismissRequest = ::dismiss,
             content = {
                 SplitWayFormContent(
-                    onClickCancel = onDismiss,
+                    onClickCancel = ::dismiss,
                     canCutHere = canSplitHere,
                     onCut = {
                         if (scissorsPosition != null) {

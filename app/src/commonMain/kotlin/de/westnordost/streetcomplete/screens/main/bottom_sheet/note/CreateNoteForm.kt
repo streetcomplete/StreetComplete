@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -49,6 +50,8 @@ fun CreateNoteForm(
     var noteImagePaths by rememberSaveable { mutableStateOf(listOf<String>()) }
     var trackpointsDeleted by rememberSaveable { mutableStateOf(false) }
 
+    var requestDismiss by remember { mutableStateOf(false) }
+
     val trackpoints = if (trackpointsDeleted) null else trackpoints
     val openFormPadding = Dimensions.getOpenQuestFormMapPadding(
         LocalWindowInfo.current,
@@ -70,6 +73,7 @@ fun CreateNoteForm(
             )
 
             BottomSheetFormScaffold(
+                onDismissRequest = { requestDismiss = true },
                 header = {
                     QuestHeader(
                         title = stringResource(Res.string.map_btn_create_note),
@@ -85,6 +89,7 @@ fun CreateNoteForm(
                     ProvideTextStyle(MaterialTheme.typography.body1) {
                         NoteForm(
                             onDismiss = onDismiss,
+                            requestDismiss = requestDismiss,
                             text = noteText,
                             onTextChange = { noteText = it },
                             imagePaths = noteImagePaths,

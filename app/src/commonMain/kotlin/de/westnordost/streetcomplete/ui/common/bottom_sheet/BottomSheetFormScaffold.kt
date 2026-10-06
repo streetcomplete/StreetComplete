@@ -1,11 +1,13 @@
 package de.westnordost.streetcomplete.ui.common.bottom_sheet
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
@@ -16,9 +18,12 @@ import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -28,6 +33,7 @@ import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubble
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleArrowDirection
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleNoArrow
@@ -41,6 +47,7 @@ import de.westnordost.streetcomplete.ui.theme.Dimensions
  * in the bottom end corner. */
 @Composable
 fun BottomSheetFormScaffold(
+    onDismissRequest: () -> Unit,
     content: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     header: @Composable (() -> Unit)? = null,
@@ -53,8 +60,14 @@ fun BottomSheetFormScaffold(
     peekHeight: Dp = Dimensions.getQuestFormPeekHeight(LocalWindowInfo.current)
 ) {
     val windowInfo = LocalWindowInfo.current
+
     var bottomSheetHeightPx by remember { mutableIntStateOf(0) }
-    val bottomSheetPeekHeight = peekHeight.toPx()
+    val peekHeightPx = peekHeight.toPx()
+    val showDragHandle by remember { derivedStateOf { bottomSheetHeightPx > peekHeightPx } }
+
+    var bottomSheetTopPx by remember { mutableFloatStateOf(Float.NaN) }
+    val showBackButtonEarlyPx = 56.dp.toPx()
+    val showBackButton by remember { derivedStateOf { bottomSheetTopPx <= showBackButtonEarlyPx } }
 
     // Keep the sheet's drag bounds above the keyboard, including when collapsed.
     Box(modifier = modifier
@@ -64,6 +77,7 @@ fun BottomSheetFormScaffold(
         BottomSheet(
             initialState = initialState,
             peekHeight = peekHeight,
+            onPositionChanged = { bottomSheetTopPx = it },
             modifier = Modifier.safeDrawingPadding()
         ) {
             Column(
@@ -81,15 +95,28 @@ fun BottomSheetFormScaffold(
                             .padding(horizontal = 8.dp)
                             .fillMaxWidth(),
                         contentPadding =
-                            PaddingValues(start = 16.dp, top = 8.dp, end = 16.dp, bottom = 12.dp),
+                            PaddingValues(start = 4.dp, top = 8.dp, end = 16.dp, bottom = 12.dp),
                         content = {
                             Column(Modifier.fillMaxWidth()) {
-                                if (bottomSheetHeightPx > bottomSheetPeekHeight) {
+                                if (showDragHandle) {
                                     BottomSheetDragHandle(Modifier.padding(bottom = 8.dp))
                                 } else {
                                     Spacer(Modifier.size(4.dp))
                                 }
-                                Box { header() }
+                                Row {
+                                    AnimatedContent(showBackButton) { showBackButton ->
+                                        if (showBackButton) {
+                                            IconButton(
+                                                onClick = onDismissRequest,
+                                                modifier = Modifier.padding(end = 12.dp)
+                                            ) { BackIcon() }
+                                        } else {
+                                            Spacer(Modifier.size(12.dp))
+                                        }
+                                    }
+
+                                    Box(Modifier.weight(1f)) { header() }
+                                }
                             }
                         }
                     )

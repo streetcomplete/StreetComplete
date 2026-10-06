@@ -52,6 +52,7 @@ import org.koin.compose.koinInject
 @Composable
 fun NoteForm(
     onDismiss: () -> Unit,
+    requestDismiss: Boolean,
     text: String,
     onTextChange: (String) -> Unit,
     imagePaths: List<String>,
@@ -87,7 +88,7 @@ fun NoteForm(
         onDismiss()
     }
 
-    NonPredictiveBackHandler {
+    fun dismiss() {
         if (hasChanges) {
             confirmDiscard = true
         } else {
@@ -95,15 +96,16 @@ fun NoteForm(
         }
     }
 
+    NonPredictiveBackHandler { dismiss() }
+
+    LaunchedEffect(requestDismiss) {
+        if (requestDismiss) dismiss()
+    }
+
     val lastMapClick = LocalLastMapClick.current
     LaunchedEffect(lastMapClick) {
         if (lastMapClick != null) {
-            // User has tapped the map. Dismiss changes.
-            if (hasChanges) {
-                confirmDiscard = true
-            } else {
-                onDiscard()
-            }
+            dismiss()
         }
     }
 

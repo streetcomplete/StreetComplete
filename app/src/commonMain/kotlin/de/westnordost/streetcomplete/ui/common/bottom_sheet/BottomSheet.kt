@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -22,7 +23,9 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.layout.positionInParent
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.Velocity
@@ -42,6 +45,7 @@ fun BottomSheet(
     modifier: Modifier = Modifier,
     initialState: BottomSheetState = Collapsed,
     peekHeight: Dp = 64.dp,
+    onPositionChanged: (position: Float) -> Unit = {},
     content: @Composable () -> Unit,
 ) {
     val state = rememberSaveable(saver = AnchoredDraggableState.Saver()) {
@@ -84,7 +88,10 @@ fun BottomSheet(
                     state = state,
                     orientation = Orientation.Vertical,
                     flingBehavior = flingBehavior
-                ),
+                )
+                .onGloballyPositioned { coordinates ->
+                    onPositionChanged(coordinates.positionInParent().y)
+                },
             content = { content() }
         )
     }
