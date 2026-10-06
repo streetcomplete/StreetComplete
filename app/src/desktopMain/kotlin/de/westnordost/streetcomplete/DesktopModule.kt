@@ -29,8 +29,13 @@ import io.github.vinceglb.filekit.filesDir
 import io.github.vinceglb.filekit.path
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancelAndJoin
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.job
 import kotlinx.coroutines.launch
 import kotlinx.io.buffered
 import kotlinx.io.files.Path
@@ -142,10 +147,18 @@ val desktopModule = module {
     single<DownloadController> {
         val downloader = get<Downloader>()
         // Downloader already logs errors and notifies its listeners
-        val scope = CoroutineScope(SupervisorJob() + CoroutineExceptionHandler { _, _ -> })
+        val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main + CoroutineExceptionHandler { _, _ -> })
+        var job: Job? = null
         object : DownloadController {
             override fun download(bbox: BoundingBox, isUserInitiated: Boolean) {
-                scope.launch { downloader.download(bbox, isUserInitiated) }
+                scope.launch {
+                    // like on Android: a user-initiated download replaces the current one, others don't
+                    val previous = job
+                    if (!isUserInitiated && previous?.isActive == true) return@launch
+                    job = currentCoroutineContext().job
+                    previous?.cancelAndJoin()
+                    downloader.download(bbox, isUserInitiated)
+                }
             }
         }
     }
