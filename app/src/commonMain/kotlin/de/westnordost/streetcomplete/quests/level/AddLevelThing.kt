@@ -35,11 +35,10 @@ class AddLevelThing : OsmElementQuestType<String> {
           shop ~ department_store|mall
           or aeroway = terminal
           or parking = multi-storey
-          or building:use ~  civic|hospital|museum|public|train_station|transportation|university
-          or
-          (
+          or building:use ~ civic|hospital|museum|public|train_station|transportation|university
+          or (
             !building:use
-            and building ~  civic|hospital|museum|public|train_station|transportation|university
+            and building ~ civic|hospital|museum|public|train_station|transportation|university
           )
           and access !~ private|no
     """.toElementFilterExpression() }
