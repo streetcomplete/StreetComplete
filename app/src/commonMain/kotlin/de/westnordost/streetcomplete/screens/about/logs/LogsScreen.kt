@@ -63,12 +63,13 @@ fun LogsScreen(
     // Checking whether the list is scrolled to the end now doesn't work, as the list may have
     // already been laid out with the new logs at this point
     var previousLogsCount by remember { mutableIntStateOf(0) }
-    LaunchedEffect(logs.size) {
+    val logsCount = logs.size
+    LaunchedEffect(logsCount) {
         val lastVisibleIndex = listState.layoutInfo.visibleItemsInfo.lastOrNull()?.index
         if (lastVisibleIndex == null || lastVisibleIndex >= previousLogsCount - 1) {
-            listState.scrollToItem(logs.size)
+            listState.scrollToItem(logsCount)
         }
-        previousLogsCount = logs.size
+        previousLogsCount = logsCount
     }
 
     Column(Modifier.fillMaxSize()) {
