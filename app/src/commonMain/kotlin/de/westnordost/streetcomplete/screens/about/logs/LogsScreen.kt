@@ -52,8 +52,7 @@ fun LogsScreen(
     onClickFilters: () -> Unit,
     onClickBack: () -> Unit,
 ) {
-    val logsState by remember(filters) { viewModel.getLogs(filters) }.collectAsState(null)
-    val logs = logsState?.toList().orEmpty()
+    val logs by remember(filters) { viewModel.getLogs(filters) }.collectAsState(emptyList())
     val filtersCount = remember(filters) { filters.count() }
 
     val listState = rememberLazyListState()
