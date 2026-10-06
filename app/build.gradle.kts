@@ -61,6 +61,9 @@ buildkonfig {
                 buildConfigField(STRING, "PLATFORM", "ios")
             }
         }
+        create("desktop") {
+            buildConfigField(STRING, "PLATFORM", "desktop")
+        }
     }
 }
 
@@ -112,6 +115,10 @@ kotlin {
             baseName = "StreetComplete"
             isStatic = true
         }
+    }
+
+    jvm("desktop") {
+        compilerOptions.jvmTarget.set(JvmTarget.JVM_25)
     }
 
     applyDefaultHierarchyTemplate()
@@ -258,6 +265,17 @@ kotlin {
             dependencies {
                 // HTTP client
                 implementation("io.ktor:ktor-client-darwin:3.5.2")
+            }
+        }
+        getByName("desktopMain") {
+            dependsOn(jvmAndroidMain)
+            dependsOn(nonAndroidMain)
+            dependencies {
+                // Kotlin
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.11.0")
+
+                // HTTP client
+                implementation("io.ktor:ktor-client-cio:3.5.2")
             }
         }
         commonTest {
