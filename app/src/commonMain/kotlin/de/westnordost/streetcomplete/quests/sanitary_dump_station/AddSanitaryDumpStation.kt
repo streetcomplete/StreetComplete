@@ -15,14 +15,14 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddSanitaryDumpStation : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways with
-         (
-           tourism = caravan_site
-           or tourism = camp_site and caravans = yes and !backcountry
-           or leisure = marina
-         )
-         and access !~ private|no
-         and !sanitary_dump_station
+        nodes, ways, relations with
+          (
+            tourism = caravan_site
+            or tourism = camp_site and caravans = yes and !backcountry
+            or leisure = marina
+          )
+          and access !~ private|no
+          and !sanitary_dump_station
     """
 
     override val changesetComment = "Specify if there is a sanitary dump station at camp or caravan site"

@@ -1,0 +1,29 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:height="48dp" android:viewportHeight="32" android:viewportWidth="32" android:width="48dp">
+      
+    <path android:fillColor="#203140" android:pathData="m2,7.955 l3,4.045v5h22v-5l3,-4.045zM7,12.5h7v3h-7zM18,12.5h7v3h-7z"/>
+      
+    <path android:fillColor="#1a2937" android:pathData="m26,16h-20l-2,7h24z" android:strokeWidth="1.00243"/>
+      
+    <path android:fillColor="#32475b" android:pathData="m27,18h-22l-0.05,1h22.05zM28,21h-24v1h24z"/>
+      
+    <path android:fillColor="#47617d" android:pathData="m15.5,10h1v8h-1zM30,6h-28v1.955h28zM27,12 L28,9h-2v9h1zM5,12 L4,9h2v9h-1z"/>
+      
+    <path android:fillColor="#9ba5b1" android:pathData="m6,15v2l-2,10v-4zM26,15v2l2,10v-4z"/>
+      
+    <path android:fillColor="#abb5c1" android:pathData="m4,24h24v3h-24z"/>
+      
+    <path android:fillColor="#3a5168" android:pathData="m30,27h-28v1h28z"/>
+      
+    <path android:fillColor="#3b5167" android:pathData="m29.5,23h-1.5v4h1.5zM4,23h-1.562l0.062,4h1.5z"/>
+      
+    <path android:fillColor="#d5dadf" android:pathData="m28,23h-24v1h24z"/>
+      
+    <path android:fillColor="#3b5167" android:pathData="m17,23h-2v4h2z"/>
+      
+    <path android:fillColor="#d7dbe0" android:pathData="m5,15h1l-2,8h-1.562z"/>
+      
+    <path android:fillColor="#d7dbe0" android:pathData="m27,15h-1l2,8h1.5z"/>
+      
+    <path android:fillColor="#007ff0" android:pathData="m7.5,17c-0.277,0 -0.5,0.223 -0.5,0.5v1.5h2v-1.5c0,-0.277 -0.223,-0.5 -0.5,-0.5zM10.5,17c-0.277,0 -0.5,0.223 -0.5,0.5v1.5h2v-1.5c0,-0.277 -0.223,-0.5 -0.5,-0.5zM13.5,17c-0.277,0 -0.5,0.223 -0.5,0.5v1.5h2v-1.5c0,-0.277 -0.223,-0.5 -0.5,-0.5zM17.5,17c-0.277,0 -0.5,0.223 -0.5,0.5v1.5h2v-1.5c0,-0.277 -0.223,-0.5 -0.5,-0.5zM20.5,17c-0.277,0 -0.5,0.223 -0.5,0.5v1.5h2v-1.5c0,-0.277 -0.223,-0.5 -0.5,-0.5zM23.5,17c-0.277,0 -0.5,0.223 -0.5,0.5v1.5h2v-1.5c0,-0.277 -0.223,-0.5 -0.5,-0.5zM6.5,20c-0.277,0 -0.5,0.223 -0.5,0.5v1.5h2v-1.5c0,-0.277 -0.223,-0.5 -0.5,-0.5zM10,20c-0.277,0 -0.5,0.223 -0.5,0.5v1.5h2v-1.5c0,-0.277 -0.223,-0.5 -0.5,-0.5zM13.5,20c-0.277,0 -0.5,0.223 -0.5,0.5v1.5h2v-1.5c0,-0.277 -0.223,-0.5 -0.5,-0.5zM17.5,20c-0.277,0 -0.5,0.223 -0.5,0.5v1.5h2v-1.5c0,-0.277 -0.223,-0.5 -0.5,-0.5zM21,20c-0.277,0 -0.5,0.223 -0.5,0.5v1.5h2v-1.5c0,-0.277 -0.223,-0.5 -0.5,-0.5zM24.5,20c-0.277,0 -0.5,0.223 -0.5,0.5v1.5h2v-1.5c0,-0.277 -0.223,-0.5 -0.5,-0.5z"/>
+    
+</vector>

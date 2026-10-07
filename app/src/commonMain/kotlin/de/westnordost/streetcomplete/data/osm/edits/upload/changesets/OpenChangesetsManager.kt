@@ -5,9 +5,7 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.Mockable
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.distanceTo
 import kotlinx.coroutines.Dispatchers
@@ -18,9 +16,7 @@ import kotlinx.coroutines.withContext
 @Mockable
 class OpenChangesetsManager(
     private val changesetApiClient: ChangesetApiClient,
-    private val openChangesetsDB: OpenChangesetsDao,
-    private val changesetAutoCloser: ChangesetAutoCloser,
-    private val prefs: Preferences
+    private val openChangesetsDB: OpenChangesetsDao
 ) {
     suspend fun getOrCreateChangeset(
         type: ElementEditType,
@@ -42,17 +38,8 @@ class OpenChangesetsManager(
     suspend fun createChangeset(type: ElementEditType, source: String, position: LatLon): Long {
         val changesetId = changesetApiClient.open(createChangesetTags(type, source))
         withContext(Dispatchers.IO) { openChangesetsDB.put(OpenChangeset(type.name, source, changesetId, position)) }
-        changesetAutoCloser.enqueue(ApplicationConstants.CLOSE_CHANGESETS_AFTER_INACTIVITY_OF)
         Log.i(TAG, "Created changeset #$changesetId")
         return changesetId
-    }
-
-    suspend fun closeOldChangesets() {
-        val timePassed = nowAsEpochMilliseconds() - prefs.lastEditTime
-        if (timePassed < ApplicationConstants.CLOSE_CHANGESETS_AFTER_INACTIVITY_OF) return
-
-        val openChangesets = withContext(Dispatchers.IO) { openChangesetsDB.getAll() }
-        openChangesets.forEach { closeChangeset(it) }
     }
 
     private suspend fun closeChangeset(openChangeset: OpenChangeset) {

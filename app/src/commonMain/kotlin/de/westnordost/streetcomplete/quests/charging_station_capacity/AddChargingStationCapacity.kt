@@ -34,7 +34,11 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>() {
     override val achievements = listOf(CAR)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways with amenity = charging_station and motorcar != no")
+        mapData.filter("""
+            nodes, ways with
+              amenity = charging_station
+              and motorcar != no
+        """)
 
     @Composable
     override fun Form(on: (QuestAction<Int>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {

@@ -17,8 +17,8 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
 
     override val elementFilter = """
         nodes with
-        amenity = post_box
-        and !ref and noref != yes and ref:signed != no and !~"ref:.*"
+          amenity = post_box
+          and !ref and noref != yes and ref:signed != no and !~"ref:.*"
     """
     override val changesetComment = "Specify postbox refs"
     override val wikiLink = "Tag:amenity=post_box"

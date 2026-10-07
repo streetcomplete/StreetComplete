@@ -18,7 +18,10 @@ import org.jetbrains.compose.resources.stringResource
 
 class AddFireHydrantType : OsmFilterQuestType<FireHydrantType>() {
 
-    override val elementFilter = "nodes with emergency = fire_hydrant and !fire_hydrant:type"
+    override val elementFilter = """
+        nodes with
+          emergency = fire_hydrant and !fire_hydrant:type
+    """
     override val changesetComment = "Specify fire hydrant types"
     override val wikiLink = "Tag:emergency=fire_hydrant"
     override val icon = Res.drawable.quest_fire_hydrant

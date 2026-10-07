@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
-atmOperators: [РСК Банк, KICB, Demir Bank, Optima Bank, DemirBank, Айыл Банк, Demir bank, РСК, Mbank, DEMiR Bank, Халык Банк, РСК банк, КБ Кыргызстан, АКБ КЫРГЫЗСТАН, Халык Банк Кыргызстан, Компаньон, Коммерческий банк Кыргызстан, Демир банк, Демир Банк, Банк Азии, Бай Тушум Банкы, Kyrgyz Investment and Credit Bank, Bakai Bank]
+atmOperators: [РСК Банк, KICB, Demir Bank, Optima Bank, DemirBank, Айыл Банк, Demir bank, Mbank, РСК, DEMiR Bank, РСК банк, Компаньон, КБ Кыргызстан, АКБ КЫРГЫЗСТАН, Элдик Банк, Халык Банк Кыргызстан, Халык Банк, Коммерческий банк Кыргызстан, Демир банк, Демир Банк, Банк Азии, Бай Тушум Банкы, Kyrgyz Investment and Credit Bank, Bakai Bank]
 chargingStationOperators: [Spark]
 defaultSpeedLimitHasUrbanOrRural: true
 domesticSocketTypes: [typef, typec]

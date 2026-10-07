@@ -19,6 +19,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
@@ -50,6 +52,7 @@ class NoteEditsUploader(
 
     private suspend fun uploadMissedImageActivations() {
         while (true) {
+            currentCoroutineContext().ensureActive()
             val edit = noteEditsController.getOldestNeedingImagesActivation() ?: break
             // see uploadEdits
             withContext(NonCancellable) {
@@ -61,6 +64,7 @@ class NoteEditsUploader(
 
     private suspend fun uploadEdits() {
         while (true) {
+            currentCoroutineContext().ensureActive()
             val edit = noteEditsController.getOldestUnsynced() ?: break
             /* the sync of local change -> API and its response should not be cancellable because
              * otherwise an inconsistency in the data would occur. E.g. a note could be uploaded

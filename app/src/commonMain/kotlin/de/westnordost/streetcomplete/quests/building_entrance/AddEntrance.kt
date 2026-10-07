@@ -23,7 +23,8 @@ import org.jetbrains.compose.resources.stringResource
 class AddEntrance : OsmElementQuestType<EntranceAnswer> {
 
     private val withoutEntranceFilter by lazy { """
-        nodes with !entrance and !barrier and noexit != yes and !railway
+        nodes with
+          !entrance and !barrier and noexit != yes and !railway
     """.toElementFilterExpression() }
 
     private val buildingFilter by lazy { """

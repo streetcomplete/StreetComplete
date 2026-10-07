@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.screens.main.map.MapLabel
 import kotlin.jvm.JvmInline
 
 /** An overlay is displayed on top of the normal map but behind quest pins and visualizes how
@@ -16,8 +17,8 @@ interface Overlay : ElementEditType {
     /** which quest types (by name) should not be visible when this overlay is active */
     val hidesQuestTypes: Set<String> get() = emptySet()
 
-    /** layers that should be hidden while this overlay is active */
-    val hidesLayers: List<String> get() = emptyList()
+    /** labels of the background map that should be hidden while this overlay is active */
+    val hiddenLabels: Set<MapLabel> get() = emptySet()
 
     /** Whether the form can be opened with a null element (=new element) */
     val isCreateNodeEnabled: Boolean get() = false

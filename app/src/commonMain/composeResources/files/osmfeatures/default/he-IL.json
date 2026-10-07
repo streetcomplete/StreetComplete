@@ -230,9 +230,6 @@
           "name": "המרת מט״ח",
           "terms": ["חלפן כספים", "צ׳יינג׳", "צ'יינג'", "המרת כסף זר", "המרת מט\"ח"]
         },
-        "amenity/bus_station": {
-          "name": "תחנת אוטובוס"
-        },
         "amenity/cafe": {
           "name": "בית קפה",
           "terms": ["בית קפה"]
@@ -299,10 +296,6 @@
         "amenity/community_centre": {
           "name": "מרכז קהילתי",
           "terms": ["מרכז קהילתי"]
-        },
-        "amenity/community_centre/cultural_centre": {
-          "name": "מרכז תרבותי",
-          "terms": ["מתנ״ס", "היכל תרבות", "מרכז תרבות"]
         },
         "amenity/community_centre/lgbtq": {
           "name": "מרכז קהילתי ללהטבפא״ק+",
@@ -420,9 +413,6 @@
           "name": "מי שתייה",
           "terms": ["מי שתייה"]
         },
-        "amenity/embassy": {
-          "name": "שגרירות"
-        },
         "amenity/events_venue": {
           "name": "מתחם אירועים",
           "terms": ["אולם נשפים", "בר מצווה", "בת מצווה", "אולם אירועים", "חגיגות", "מסיבות", "כנסים", "פגישות", "מפגשי מחזור", "חתונות"]
@@ -489,9 +479,6 @@
         },
         "amenity/fast_food/wings": {
           "name": "מזון מהיר - כנפיים עוף"
-        },
-        "amenity/ferry_terminal": {
-          "name": "מסוף מעבורת"
         },
         "amenity/fire_station": {
           "name": "תחנת כיבוי אש",
@@ -621,16 +608,9 @@
           "name": "מועדון לילה ללהטבפא״ק+",
           "terms": ["מועדון לילה להומואים", "הומוסקסואלים", "מועדון לילה ללסביות", "לסביות", "להט״ב", "להטבפא״ק"]
         },
-        "amenity/nursing_home": {
-          "name": "בית אבות"
-        },
         "amenity/parcel_locker": {
           "name": "תא חבילות",
           "terms": ["תיבות דואר אוטומטיות", "לוקר חבילות", "תא לחבילות"]
-        },
-        "amenity/parking": {
-          "name": "מגרש חנייה",
-          "terms": ["מגרש חנייה"]
         },
         "amenity/parking/multi-storey": {
           "name": "חניון רב קומות",
@@ -1350,10 +1330,6 @@
           "name": "שער מנע בקר",
           "terms": ["מחסום חיות"]
         },
-        "barrier/lift_gate": {
-          "name": "מחסום זרוע",
-          "terms": ["מוט מתרומם", "שער מתרומם"]
-        },
         "barrier/motorcycle_barrier": {
           "name": "מחסום אופנועים"
         },
@@ -1398,13 +1374,6 @@
         },
         "barrier/wicket_gate": {
           "name": "פשפש"
-        },
-        "boundary": {
-          "name": "גבול"
-        },
-        "boundary/administrative": {
-          "name": "גבול ניהולי",
-          "terms": ["גבול ניהולי"]
         },
         "boundary/hazard": {
           "name": "אזור מסוכן"
@@ -1650,9 +1619,6 @@
           "name": "חלק מהמבנה",
           "terms": ["גגות", "בניינים פשוטים בתלת־ממד"]
         },
-        "building_point": {
-          "name": "בניין"
-        },
         "cemetery/sector": {
           "name": "אזור בבית קברות",
           "terms": ["שטח בית קברות", "אגף בית קברות", "שטח בית עלמין", "אגף בית עלמין"]
@@ -1776,9 +1742,6 @@
           "name": "שכפול מפתחות",
           "terms": ["משכפל מפתחות", "משכפלת מפתחות", "שכפול מפתחות"]
         },
-        "craft/locksmith": {
-          "name": "מנעולנות"
-        },
         "craft/metal_construction": {
           "name": "נפחות",
           "terms": ["נפחית", "נפחיה", "ברזל", "מתכת"]
@@ -1850,9 +1813,6 @@
         "craft/stonemason": {
           "name": "סיתות",
           "terms": ["סתתית", "סתתת"]
-        },
-        "craft/tailor": {
-          "name": "חייט"
         },
         "craft/tiler": {
           "name": "מתקין אריחים",
@@ -2010,9 +1970,6 @@
           "name": "מעברה",
           "terms": ["מקום צליחה"]
         },
-        "ford_line": {
-          "name": "מעברה"
-        },
         "golf/bunker": {
           "name": "מכשול חול",
           "terms": ["מכשול חול"]
@@ -2093,14 +2050,6 @@
           "name": "מרכז לידה",
           "terms": ["מרכז לידה"]
         },
-        "healthcare/blood_donation": {
-          "name": "מרכז תרומת דם",
-          "terms": ["מרכז תרומת דם"]
-        },
-        "healthcare/counselling": {
-          "name": "מרכז ייעוץ",
-          "terms": ["מרכז יעוץ"]
-        },
         "healthcare/dentist/orthodontics": {
           "name": "אורתודנט",
           "terms": ["אורתודנטית", "רפואת שיניים", "אורטודנט", "אורטודנטית"]
@@ -2124,10 +2073,6 @@
         "healthcare/optometrist": {
           "name": "אופטומטריסט",
           "terms": ["אופטומטריסטית"]
-        },
-        "healthcare/physiotherapist": {
-          "name": "פיזיותרפיסט",
-          "terms": ["פיזיוטרפיה"]
         },
         "healthcare/podiatrist": {
           "name": "פודיאטר",
@@ -2161,9 +2106,6 @@
         "highway/bus_guideway": {
           "name": "מסלול לאוטובוסים מונחים",
           "terms": ["מסלול אוטובוסים", "מסלול מנחה לאוטובוסים"]
-        },
-        "highway/bus_stop": {
-          "name": "תחנת אוטובוס"
         },
         "highway/construction": {
           "name": "כביש בשיפוצים",
@@ -2547,9 +2489,6 @@
           "name": "מסדרון פנימי",
           "terms": ["מסדרון"]
         },
-        "indoor/corridor_line": {
-          "name": "מסדרון פנימי"
-        },
         "indoor/door": {
           "name": "דלת פנימית",
           "terms": ["מסגרת פנימית", "משקוף פנימי", "מעבר בבית", "דלת בבית", "משקוף ביתי", "חדר", "סף", "מפתן"]
@@ -2589,9 +2528,6 @@
           "name": "חקלאות ימית",
           "terms": ["דיג", "דגה", "דייגים"]
         },
-        "landuse/basin": {
-          "name": "אגן"
-        },
         "landuse/brownfield": {
           "name": "קרקע מזוהמת",
           "terms": ["שדה חום", "שדה מזוהם"]
@@ -2611,9 +2547,6 @@
           "name": "אתר בנייה",
           "terms": ["שטח בנייה", "אזור בנייה", "מתחם בנייה"]
         },
-        "landuse/farm": {
-          "name": "אזור חקלאי"
-        },
         "landuse/farmland": {
           "name": "אזור חקלאי",
           "terms": ["שטח חקלאי"]
@@ -2629,10 +2562,6 @@
         "landuse/forest": {
           "name": "יער מנוהל",
           "terms": ["שטח חיץ", "אזור חיץ", "שביל חוצץ", "שביל חיץ"]
-        },
-        "landuse/garages": {
-          "name": "אזור אחסון",
-          "terms": ["אזור אחסון"]
         },
         "landuse/grass": {
           "name": "דשא",
@@ -2715,9 +2644,6 @@
           "name": "משתלה",
           "terms": ["משתלה"]
         },
-        "landuse/pond": {
-          "name": "בריכת דגים/נוי"
-        },
         "landuse/quarry": {
           "name": "מחצבה",
           "terms": ["מחצבה"]
@@ -2733,9 +2659,6 @@
         "landuse/religious": {
           "name": "אזור דתי",
           "terms": ["אזור דתי", "שטח דתי", "מתחם דת"]
-        },
-        "landuse/reservoir": {
-          "name": "מאגר"
         },
         "landuse/residential": {
           "name": "אזור מגורים",
@@ -3121,9 +3044,6 @@
           "name": "מסלול מרוצים (לבלתי ממונעים)",
           "terms": ["מסלול מרוצים (לא מונע)"]
         },
-        "leisure/track/athletics/running": {
-          "name": "מסלול ריצה"
-        },
         "leisure/track/cycling": {
           "name": "מסלול אופניים",
           "terms": ["מסלול לרוכבי אופניים", "מסלול לדו־גלגליים", "מסלול לדו-גלגליים"]
@@ -3508,10 +3428,6 @@
           "name": "מחסום צבאי",
           "terms": ["ביקורת", "צבא", "משטרה", "חיל האוויר", "בסיס", "חיל הים", "מלחמה", "ביטחון", "צה״ל", "צה\"ל"]
         },
-        "military/nuclear_explosion_site": {
-          "name": "אתר פיצוץ גרעיני",
-          "terms": ["אטום", "פיצוץ", "פצצה", "אתר", "ניסוי", "גרעיני"]
-        },
         "military/office": {
           "name": "משרד צבאי",
           "terms": ["שלישות", "קצין העיר", "צה״ל", "צבא", "מילואים"]
@@ -3865,9 +3781,6 @@
           "name": "משרד עורכי דין",
           "terms": ["משרד עריכת דין"]
         },
-        "office/lawyer/notary": {
-          "name": "משרד נוטריון"
-        },
         "office/moving_company": {
           "name": "משרד חברת הובלה",
           "terms": ["משרד הובלה", "משרד העברת רכוש"]
@@ -3933,9 +3846,6 @@
         "office/translator": {
           "name": "משרד שירותי תרגום",
           "terms": ["שרותי תרגום", "משרד תרגום", "טראנסלט"]
-        },
-        "office/travel_agent": {
-          "name": "סוכנות נסיעות"
         },
         "office/union": {
           "name": "לשכת איגודי עובדים"
@@ -4242,8 +4152,7 @@
           "terms": ["שנאי"]
         },
         "public_transport/platform": {
-          "name": "רציף תחבורה",
-          "terms": ["רציף", "תחנה", "תח״צ", "תחב״צ", "תעבורה", "תחבורה"]
+          "name": "רציף תחבורה"
         },
         "public_transport/platform/aerialway": {
           "name": "רציף תחבורה אווירית",
@@ -4316,12 +4225,10 @@
           "terms": ["רציף / תחנת טרוליבוס"]
         },
         "public_transport/platform_point": {
-          "name": "רציף/תחנת תחבורה",
-          "terms": ["רציף / תחנת תחבורה ציבורית"]
+          "name": "רציף/תחנת תחבורה"
         },
         "public_transport/station": {
-          "name": "תחנת תחבורה ציבורית",
-          "terms": ["תחנת תחבורה ציבורית"]
+          "name": "תחנת תחבורה ציבורית"
         },
         "public_transport/station_aerialway": {
           "name": "תחנת רכבל",
@@ -4368,8 +4275,7 @@
           "terms": ["מתחם תחנת תחבורה ציבורית"]
         },
         "public_transport/stop_position": {
-          "name": "מיקום עצירת תחבורה ציבורית",
-          "terms": ["סיום קו תחבורה ציבורית", "סוף קו תחבורה ציבורית"]
+          "name": "מיקום עצירת תחבורה ציבורית"
         },
         "public_transport/stop_position_aerialway": {
           "name": "תחנת עצירה לרכבל",
@@ -4434,9 +4340,6 @@
           "name": "מסילת פוניקולר",
           "terms": ["כרמלית", "צוק", "רכבל", "מסילת רכבל", "פוניקולר"]
         },
-        "railway/halt": {
-          "name": "תחנת רכבת (ללא החלפה)"
-        },
         "railway/level_crossing": {
           "name": "כביש חציית פסי רכבת",
           "terms": ["פסי רכבת", "כביש", "מעבר מכוניות", "מעבר מפלסי", "חציית פסי רכבת", "חציית מכוניות", "חציית רכבת"]
@@ -4465,9 +4368,6 @@
           "name": "מסילת רכבת צרה",
           "terms": ["מסילה צרה", "רכבת צרה", "מסילה"]
         },
-        "railway/platform": {
-          "name": "רציף רכבת"
-        },
         "railway/preserved": {
           "name": "מסילת רכבת היסטורית",
           "terms": ["מסילת רכבת עתיקה"]
@@ -4487,9 +4387,6 @@
         "railway/signal": {
           "name": "תמרור רכבת",
           "terms": ["תמרור רכבת"]
-        },
-        "railway/station": {
-          "name": "תחנת רכבת"
         },
         "railway/subway": {
           "name": "מסילת רכבת תחתית",
@@ -4532,10 +4429,6 @@
         },
         "roller_coaster/track": {
           "name": "מסלול רכבת הרים"
-        },
-        "route/ferry": {
-          "name": "נתיב מעבורת",
-          "terms": ["נתיב מעבורת"]
         },
         "seamark": {
           "name": "סימון ימי"
@@ -5601,10 +5494,6 @@
           "name": "נתיב צנרת",
           "terms": ["נתיב צנרת"]
         },
-        "type/route/power": {
-          "name": "נתיב חשמל",
-          "terms": ["נתיב חשמל"]
-        },
         "type/route/railway": {
           "name": "מסלול רכבת"
         },
@@ -5717,6 +5606,224 @@
         "waterway/weir": {
           "name": "סכר מגלש",
           "terms": ["מגלש", "סכר"]
+        },
+        "boundary": {
+          "name": "גבול",
+          "terms": ["גבול"]
+        },
+        "building_point": {
+          "name": "בניין",
+          "terms": ["בניין"]
+        },
+        "ford_line": {
+          "name": "מעברה",
+          "terms": ["מקום צליחה"]
+        },
+        "traffic_sign/maxspeed-US-CA-LR": {
+          "name": "תמרור מגבלת מהירות",
+          "terms": ["מהירות מקסימלית", "מהירות מרבית", "שלט מהירות", "מהירות", "דרך ראשית", "דרך מהירה"]
+        },
+        "shop/ice_cream": {
+          "name": "חנות גלידה",
+          "terms": ["חנות גלידה"]
+        },
+        "route/ferry": {
+          "name": "נתיב מעבורת",
+          "terms": ["נתיב מעבורת"]
+        },
+        "railway/halt": {
+          "name": "תחנת רכבת (ללא החלפה)",
+          "terms": ["תחנת רכבת (לא מעבר)", "תחנת רכבת ללא מעבר"]
+        },
+        "railway/platform": {
+          "name": "רציף רכבת",
+          "terms": ["רציף / תחנת רכבת"]
+        },
+        "railway/station": {
+          "name": "תחנת רכבת",
+          "terms": ["תחנת רכבת"]
+        },
+        "office/travel_agent": {
+          "name": "סוכנות נסיעות",
+          "terms": ["סוכנות נסיעות"]
+        },
+        "office/lawyer/notary": {
+          "name": "משרד נוטריון",
+          "terms": ["משרד נוטריון"]
+        },
+        "natural/wood_point": {
+          "name": "חורש טבעי",
+          "terms": ["עצים", "חורשה", "יער", "עץ"]
+        },
+        "leisure/track/athletics/running": {
+          "name": "מסלול ריצה",
+          "terms": ["כושר", "התעמלות", "מסלול אתלטיקה", "ריצה", "ריצה למרחקים ארוכים", "מרתון", "ספרינט", "מסלול", "הליכה"]
+        },
+        "landuse/basin": {
+          "name": "אגן",
+          "terms": ["מאגן"]
+        },
+        "landuse/reservoir": {
+          "name": "מאגר",
+          "terms": ["מאגר"]
+        },
+        "landuse/military/danger_area_point": {
+          "name": "אזור סכנה צבאית"
+        },
+        "landuse/industrial/brewery": {
+          "name": "מבשלת בירה תעשייתית"
+        },
+        "landuse/industrial/industrial_point": {
+          "name": "אזור תעשיה",
+          "terms": ["אזור תעשיה"]
+        },
+        "indoor/corridor_line": {
+          "name": "מסדרון פנימי",
+          "terms": ["מסדרון"]
+        },
+        "highway/bus_stop": {
+          "name": "תחנת אוטובוס",
+          "terms": ["רציף / תחנת אוטובוס"]
+        },
+        "highway/raceway_unspecific": {
+          "name": "מסלול מרוצים (לממונעים)",
+          "terms": ["מסלול מרוצים (מונע)"]
+        },
+        "highway/traffic_sign": {
+          "name": "תמרור",
+          "terms": ["דרך", "כביש", "שלט"]
+        },
+        "highway/motorway_link-US-CA": {
+          "name": "חיבור לכביש מהיר",
+          "terms": ["חיבור לכביש מהיר"]
+        },
+        "highway/primary_link-US-CA": {
+          "name": "חיבור ראשי",
+          "terms": ["חיבור ראשי"]
+        },
+        "highway/trunk_link-US-CA": {
+          "name": "חיבור לכביש בין עירוני",
+          "terms": ["חיבור לכביש בין עירוני"]
+        },
+        "highway/path/bicycle_foot": {
+          "name": "מסלול אופניים והולכי רגל",
+          "terms": ["שביל לאופניים ולהולכי רגל", "שביל לשימוש נרחב", "שביל לשימוש משולב", "שביל ייעודי", "שביל מופרד", "שביל נפרד"]
+        },
+        "highway/path/crossing/bicycle_foot": {
+          "name": "מעבר אופניים והולכי רגל",
+          "terms": ["מעבר לאופניים ולהולכי רגל", "חצייה להולכי רגל ולאופניים", "מעבר אופניים", "שביל אופניים", "חצייה", "רכיבת אופניים", "הולך רגל"]
+        },
+        "highway/footway/crossing/marked": {
+          "name": "מעבר מסומן"
+        },
+        "highway/footway/crossing/zebra": {
+          "name": "מעבר מסומן"
+        },
+        "highway/cycleway/crossing/marked": {
+          "name": "מעבר דו־גלגליים מסומן",
+          "terms": ["מעבר לאופניים", "מעבר לאופנועים", "מעבר לקורקינט"]
+        },
+        "highway/crossing/marked": {
+          "name": "מעבר מסומן"
+        },
+        "highway/crossing/zebra": {
+          "name": "מעבר מסומן"
+        },
+        "craft/locksmith": {
+          "name": "מנעולנות",
+          "terms": ["מנעולנית"]
+        },
+        "craft/tailor": {
+          "name": "חייט",
+          "terms": ["חייטת"]
+        },
+        "building/entrance": {
+          "name": "כניסה/יציאה",
+          "terms": ["כניסה\\יציאה"]
+        },
+        "building/glasshouse": {
+          "name": "חממה",
+          "terms": ["חממה"]
+        },
+        "building/house/detached": {
+          "name": "בית פרטי",
+          "terms": ["בית לא מחובר"]
+        },
+        "building/house/semi-detached": {
+          "name": "בית דו-משפחתי",
+          "terms": ["בית חצי מחובר"]
+        },
+        "boundary/administrative": {
+          "name": "גבול ניהולי",
+          "terms": ["גבול ניהולי"]
+        },
+        "amenity/bus_station": {
+          "name": "תחנת אוטובוס",
+          "terms": ["תחנת אוטובוס"]
+        },
+        "amenity/coworking_space": {
+          "name": "מתחם עבודה משותף",
+          "terms": ["משרדים שיתופיים"]
+        },
+        "amenity/embassy": {
+          "name": "שגרירות",
+          "terms": ["שגרירות", "קונסוליה", "דיפלומטיה", "דיפלומטים", "דיפלומט"]
+        },
+        "amenity/ferry_terminal": {
+          "name": "מסוף מעבורת",
+          "terms": ["מסוף מעבורת", "טרמינל מעבורת", "תחנת מעבורת"]
+        },
+        "amenity/nursing_home": {
+          "name": "בית אבות",
+          "terms": ["בית אבות סיעודי"]
+        },
+        "aerialway/station": {
+          "name": "תחנת רכבל",
+          "terms": ["תחנת רכבל"]
+        },
+        "@templates/contact": {
+          "name": "נקודה",
+          "terms": ["נקודה"]
+        },
+        "@templates/internet_access": {
+          "name": "נקודה",
+          "terms": ["נקודה"]
+        },
+        "@templates/poi": {
+          "name": "נקודה",
+          "terms": ["נקודה"]
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "נקודה",
+          "terms": ["נקודה"]
+        },
+        "@templates/crossing/defaults": {
+          "name": "נקודה",
+          "terms": ["נקודה"]
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "נקודה",
+          "terms": ["נקודה"]
+        },
+        "@templates/crossing/markings": {
+          "name": "נקודה",
+          "terms": ["נקודה"]
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "נקודה",
+          "terms": ["נקודה"]
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "נקודה",
+          "terms": ["נקודה"]
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "נקודה",
+          "terms": ["נקודה"]
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "נקודה",
+          "terms": ["נקודה"]
         }
       }
     }

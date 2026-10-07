@@ -17,16 +17,17 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddHandrail : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        ways with highway = steps
-         and (!indoor or indoor = no)
-         and access !~ private|no
-         and (!conveying or conveying = no)
-         and (
-           !handrail and !handrail:center and !handrail:left and !handrail:right
-           or handrail = no and handrail older today -4 years
-           or handrail older today -8 years
-           or older today -8 years
-         )
+        ways with
+          highway = steps
+          and (!indoor or indoor = no)
+          and access !~ private|no
+          and (!conveying or conveying = no)
+          and (
+            !handrail and !handrail:center and !handrail:left and !handrail:right
+            or handrail = no and handrail older today -4 years
+            or handrail older today -8 years
+            or older today -8 years
+          )
     """
 
     override val changesetComment = "Specify whether steps have handrails"

@@ -82,9 +82,6 @@
           "name": "Обменно бюро",
           "terms": ["чейндж", "чейндж бюро"]
         },
-        "amenity/bus_station": {
-          "name": "Автостанция / терминал"
-        },
         "amenity/cafe": {
           "name": "Кафене"
         },
@@ -126,12 +123,6 @@
         },
         "amenity/community_centre/community_hall": {
           "name": "Общностна зала"
-        },
-        "amenity/community_centre/cultural_centre": {
-          "name": "Културен център"
-        },
-        "amenity/community_centre/family_centre": {
-          "name": "Семеен център"
         },
         "amenity/community_centre/lgbtq": {
           "name": "Център на LGBTQ+ общността"
@@ -232,9 +223,6 @@
           "name": "Учебен полигон",
           "terms": ["мото полигон", "полигон за начинаещи шофьори"]
         },
-        "amenity/embassy": {
-          "name": "Посолство"
-        },
         "amenity/fast_food": {
           "name": "Бърза закуска"
         },
@@ -273,12 +261,6 @@
         },
         "amenity/marketplace": {
           "name": "Пазар"
-        },
-        "amenity/nursing_home": {
-          "name": "Старчески дом"
-        },
-        "amenity/parking": {
-          "name": "Паркинг"
         },
         "amenity/parking/underground": {
           "name": "Подземен паркинг"
@@ -510,12 +492,6 @@
         "barrier/wall/noise_barrier": {
           "name": "Шумоизолираща преграда"
         },
-        "boundary": {
-          "name": "Граница"
-        },
-        "boundary/administrative": {
-          "name": "Административна граница"
-        },
         "building": {
           "name": "Сграда"
         },
@@ -591,9 +567,6 @@
         "building_part": {
           "name": "Част от сграда"
         },
-        "building_point": {
-          "name": "Сграда"
-        },
         "cemetery/sector": {
           "name": "Гробищен сектор"
         },
@@ -627,9 +600,6 @@
         "craft/key_cutter": {
           "name": "Изработка на ключове"
         },
-        "craft/locksmith": {
-          "name": "Ключар"
-        },
         "craft/painter": {
           "name": "Бояджия"
         },
@@ -653,9 +623,6 @@
         },
         "craft/stonemason": {
           "name": "Каменоделец"
-        },
-        "craft/tailor": {
-          "name": "Шивач"
         },
         "demolished/building": {
           "name": "Наскоро разрушена сграда"
@@ -724,9 +691,6 @@
         "healthcare/optometrist": {
           "name": "Оптометрист"
         },
-        "healthcare/physiotherapist": {
-          "name": "Физиотерапевт"
-        },
         "healthcare/podiatrist": {
           "name": "Ортопед"
         },
@@ -738,9 +702,6 @@
         },
         "highway/bridleway": {
           "name": "Конска пътека"
-        },
-        "highway/bus_stop": {
-          "name": "Автобусна спирка"
         },
         "highway/crossing": {
           "name": "Пешеходна пътека"
@@ -939,18 +900,12 @@
         "historic/wayside_shrine": {
           "name": "Крайпътен параклис"
         },
-        "landuse/basin": {
-          "name": "Басейн"
-        },
         "landuse/cemetery": {
           "name": "Гробищен парк"
         },
         "landuse/construction": {
           "name": "Строителна площадка",
           "terms": ["сграда", "булдозер", "строителна площадка", "строителна зона", "кран", "събаряне", "развитие", "инфраструктура", "строеж"]
-        },
-        "landuse/farm": {
-          "name": "Ферма"
         },
         "landuse/farmland": {
           "name": "Земеделска земя",
@@ -1008,17 +963,11 @@
         "landuse/plant_nursery": {
           "name": "Разсадник"
         },
-        "landuse/pond": {
-          "name": "Резервоар"
-        },
         "landuse/quarry": {
           "name": "Кариера"
         },
         "landuse/railway": {
           "name": "Железопътен коридор"
-        },
-        "landuse/reservoir": {
-          "name": "Язовир"
         },
         "landuse/residential": {
           "name": "Жилищна зона"
@@ -1294,14 +1243,8 @@
         "office/lawyer": {
           "name": "Адвокат"
         },
-        "office/lawyer/notary": {
-          "name": "Нотариус"
-        },
         "office/notary": {
           "name": "Нотариус"
-        },
-        "office/travel_agent": {
-          "name": "Туристическа агенция"
         },
         "place": {
           "name": "Населени места"
@@ -1471,9 +1414,6 @@
         "railway/funicular": {
           "name": "Релсов път на фуникуляр"
         },
-        "railway/halt": {
-          "name": "Железопътна спирка (по желание)"
-        },
         "railway/level_crossing": {
           "name": "ЖП прелез",
           "terms": ["железопътен прелез"]
@@ -1487,9 +1427,6 @@
         "railway/narrow_gauge": {
           "name": "Теснолиниеен железопътен път"
         },
-        "railway/platform": {
-          "name": "Перон"
-        },
         "railway/preserved": {
           "name": "Историческа железопътна линия"
         },
@@ -1502,9 +1439,6 @@
         "railway/signal": {
           "name": "Светофор",
           "terms": ["железопътен сигнал"]
-        },
-        "railway/station": {
-          "name": "Гара"
         },
         "railway/subway": {
           "name": "Релсов път на метрото"
@@ -1521,10 +1455,6 @@
         },
         "relation": {
           "name": "Релация"
-        },
-        "route/ferry": {
-          "name": "Фериботна връзка",
-          "terms": ["фериботен маршрут"]
         },
         "shop": {
           "name": "Магазин",
@@ -1946,9 +1876,6 @@
         "type/route/pipeline": {
           "name": "Трасе на тръбопровод"
         },
-        "type/route/power": {
-          "name": "Трасе на електропровод"
-        },
         "type/route/railway": {
           "name": "Маршрут на железопътна линия"
         },
@@ -2003,6 +1930,132 @@
         },
         "waterway/weir": {
           "name": "Преливник"
+        },
+        "boundary": {
+          "name": "Граница"
+        },
+        "building_point": {
+          "name": "Сграда"
+        },
+        "traffic_sign/maxspeed-US-CA-LR": {
+          "name": "Знак за ограничение на скоростта"
+        },
+        "route/ferry": {
+          "name": "Фериботна връзка",
+          "terms": ["фериботен маршрут"]
+        },
+        "railway/halt": {
+          "name": "Железопътна спирка (по желание)"
+        },
+        "railway/platform": {
+          "name": "ЖП перон"
+        },
+        "railway/station": {
+          "name": "Железопътна гара",
+          "terms": ["жп гара", "жп спирка"]
+        },
+        "office/travel_agent": {
+          "name": "Туристическа агенция"
+        },
+        "office/lawyer/notary": {
+          "name": "Нотариус"
+        },
+        "landuse/basin": {
+          "name": "Басейн"
+        },
+        "landuse/reservoir": {
+          "name": "Язовир"
+        },
+        "landuse/industrial/industrial_point": {
+          "name": "Индустриална зона"
+        },
+        "highway/bus_stop": {
+          "name": "Автобусна спирка"
+        },
+        "highway/traffic_sign": {
+          "name": "Пътен знак"
+        },
+        "highway/motorway_link-US-CA": {
+          "name": "Автомагистрална връзка"
+        },
+        "highway/primary_link-US-CA": {
+          "name": "Връзка с първокласен път"
+        },
+        "highway/trunk_link-US-CA": {
+          "name": "Връзка със скоростен път"
+        },
+        "highway/footway/crossing/marked": {
+          "name": "Маркирана пешеходна пътека"
+        },
+        "highway/footway/crossing/zebra": {
+          "name": "Маркирана пешеходна пътека"
+        },
+        "highway/cycleway/crossing/marked": {
+          "name": "Маркирана велосипедна пътека"
+        },
+        "highway/crossing/marked": {
+          "name": "Маркирана пешеходна пътека"
+        },
+        "highway/crossing/zebra": {
+          "name": "Маркирана пешеходна пътека"
+        },
+        "craft/locksmith": {
+          "name": "Ключар"
+        },
+        "craft/tailor": {
+          "name": "Шивач"
+        },
+        "building/entrance": {
+          "name": "Вход / изход"
+        },
+        "building/glasshouse": {
+          "name": "Оранжерия",
+          "terms": ["парник"]
+        },
+        "boundary/administrative": {
+          "name": "Административна граница"
+        },
+        "amenity/bus_station": {
+          "name": "Автостанция / терминал"
+        },
+        "amenity/embassy": {
+          "name": "Посолство"
+        },
+        "amenity/nursing_home": {
+          "name": "Старчески дом"
+        },
+        "@templates/contact": {
+          "name": "Точка"
+        },
+        "@templates/internet_access": {
+          "name": "Точка"
+        },
+        "@templates/poi": {
+          "name": "Точка"
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Точка"
+        },
+        "@templates/crossing/defaults": {
+          "name": "Точка"
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Точка"
+        },
+        "@templates/crossing/markings": {
+          "name": "Точка"
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Точка"
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Точка"
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Точка"
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Точка"
         }
       }
     }

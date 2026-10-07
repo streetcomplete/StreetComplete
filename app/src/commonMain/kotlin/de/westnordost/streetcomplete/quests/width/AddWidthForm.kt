@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.osm.length.Length
 import de.westnordost.streetcomplete.osm.length.LengthForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalQuestType
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.measure.ArMeasureResult
@@ -36,6 +37,7 @@ fun AddWidthForm(
     element: Element,
     countryInfo: CountryInfo,
     title: String = stringResource(LocalQuestType.current!!.title),
+    otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
 ) {
     val viewModel = koinViewModel<ArMeasureViewModel>()
     val arIsSupported = remember { viewModel.isSupported() }
@@ -76,7 +78,8 @@ fun AddWidthForm(
             } else {
                 confirmDubiousRoadWidth = true
             }
-        }
+        },
+        otherAnswers = otherAnswers,
     ) {
         Column {
             if (isRoad) {

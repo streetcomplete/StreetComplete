@@ -21,7 +21,10 @@ import org.jetbrains.compose.resources.stringResource
 
 class AddRecyclingType : OsmFilterQuestType<RecyclingType>() {
 
-    override val elementFilter = "nodes, ways with amenity = recycling and !recycling_type"
+    override val elementFilter = """
+        nodes, ways with
+          amenity = recycling and !recycling_type
+    """
     override val changesetComment = "Specify type of recycling amenities"
     override val wikiLink = "Key:recycling_type"
     override val icon = Res.drawable.quest_recycling

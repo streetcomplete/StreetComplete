@@ -4,7 +4,6 @@ import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.util.math.translate
 import dev.mokkery.answering.returns
@@ -25,17 +24,13 @@ class OpenChangesetsManagerTest {
     private lateinit var questType: OsmElementQuestType<*>
     private lateinit var changesetApiClient: ChangesetApiClient
     private lateinit var openChangesetsDB: OpenChangesetsDao
-    private lateinit var changesetAutoCloser: ChangesetAutoCloser
     private lateinit var manager: OpenChangesetsManager
-    private lateinit var prefs: Preferences
 
     @BeforeTest fun setUp() {
         questType = TestQuestTypeA()
         changesetApiClient = mock()
         openChangesetsDB = mock()
-        changesetAutoCloser = mock()
-        prefs = mock()
-        manager = OpenChangesetsManager(changesetApiClient, openChangesetsDB, changesetAutoCloser, prefs)
+        manager = OpenChangesetsManager(changesetApiClient, openChangesetsDB)
     }
 
     @Test fun `create new changeset if none exists`(): Unit = runBlocking {

@@ -9,11 +9,12 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -26,8 +27,10 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.Button2
 import de.westnordost.streetcomplete.ui.common.feature.FeatureItem
 import de.westnordost.streetcomplete.ui.common.feature.FeatureSearchDialog
+import de.westnordost.streetcomplete.ui.util.FeatureListSaver
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.koinInject
 
 /**
  * A quest form that allows selecting of features via search or from a list of presets.
@@ -35,15 +38,17 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun FeaturesSelectionQuestForm(
     on: (QuestAction<List<Feature>>) -> Unit,
-    featureDictionary: FeatureDictionary,
     modifier: Modifier = Modifier,
     initialSelectedFeatures: List<Feature> = emptyList(),
     geometryType: GeometryType? = null,
     countryCode: String? = null,
     filterFn: (Feature) -> Boolean = { true },
     codesOfDefaultFeatures: List<String> = emptyList(),
+    featureDictionary: FeatureDictionary = koinInject(),
 ) {
-    var selectedFeatures by remember { mutableStateOf(initialSelectedFeatures) }
+    var selectedFeatures by rememberSaveable(initialSelectedFeatures, stateSaver = FeatureListSaver(featureDictionary)) {
+        mutableStateOf(initialSelectedFeatures)
+    }
     var showSearch by remember  { mutableStateOf(false) }
 
     QuestForm(

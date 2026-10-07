@@ -23,16 +23,15 @@ class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStat
 
     override val elementFilter = """
         nodes, ways with
-        amenity = bicycle_repair_station
-        and
-        (
-          !service:bicycle:pump
-          or !service:bicycle:stand
-          or !service:bicycle:tools
-          or !service:bicycle:chain_tool
-          or older today -2 years
-        )
-        and access !~ private|no
+          amenity = bicycle_repair_station
+          and (
+            !service:bicycle:pump
+            or !service:bicycle:stand
+            or !service:bicycle:tools
+            or !service:bicycle:chain_tool
+            or older today -2 years
+          )
+          and access !~ private|no
     """
 
     override val changesetComment = "Specify features of bicycle repair stations"
@@ -58,7 +57,7 @@ class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStat
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("""
             nodes, ways with
-            amenity ~ bicycle_repair_station|compressed_air
+              amenity ~ bicycle_repair_station|compressed_air
         """)
 
     override fun applyAnswerTo(answer: Set<BicycleRepairStationService>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

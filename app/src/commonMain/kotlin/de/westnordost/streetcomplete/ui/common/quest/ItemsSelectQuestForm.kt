@@ -60,7 +60,7 @@ inline fun <reified I> ItemsSelectQuestForm(
 
     QuestForm(
         on = on,
-        isComplete = selectedItems != initialSelectedItems && selectedItems.isNotEmpty(),
+        isComplete = selectedItems.isNotEmpty(),
         onClickOk = {
             if (favoriteKey != null) {
                 preferences.addLastPicked(favoriteKey, selectedItems.toList())

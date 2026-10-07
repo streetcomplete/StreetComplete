@@ -41,9 +41,9 @@ class SidewalkOverlay : Overlay {
         // footways etc, just to highlight e.g. separately mapped sidewalks. However, it is also
         // possible to add sidewalks to them. At least in NL, cycleways with sidewalks actually exist
         mapData.filter("""
-            ways with (
+            ways with
               highway ~ footway|steps|path|bridleway|cycleway
-            ) and area != yes
+              and area != yes
         """).map { it to getFootwayStyle(it).copy(disabled = true) }
 
     @Composable

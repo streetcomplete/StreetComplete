@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
@@ -15,13 +17,12 @@ class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>() {
 
     override val elementFilter = """
         nodes with
-        (
-          (public_transport = platform and ~bus|trolleybus|tram ~ yes)
-          or
-          (highway = bus_stop and public_transport != stop_position)
-        )
-        and access !~ no|private
-        and !ref and noref != yes and ref:signed != no and !~"ref:.*"
+          (
+            (public_transport = platform and ~bus|trolleybus|tram ~ yes)
+            or (highway = bus_stop and public_transport != stop_position)
+          )
+          and access !~ no|private
+          and !ref and noref != yes and ref:signed != no and !~"ref:.*"
     """
     override val enabledInCountries = NoCountriesExcept(
         "AU", // https://github.com/streetcomplete/StreetComplete/issues/4487
@@ -55,4 +56,11 @@ class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>() {
             is BusStopRef ->          tags["ref"] = answer.ref.trim()
         }
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
+            nodes, ways, relations with
+              (public_transport = platform and ~bus|trolleybus|tram ~ yes)
+              or (highway = bus_stop and public_transport != stop_position)
+        """)
 }

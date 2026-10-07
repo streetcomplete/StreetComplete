@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.settings
 
 import androidx.compose.runtime.Stable
+import androidx.compose.ui.text.intl.Locale
 import androidx.lifecycle.ViewModel
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.data.Cleaner
@@ -39,7 +40,7 @@ abstract class SettingsViewModel : ViewModel() {
     abstract val theme: StateFlow<Theme>
     abstract val keepScreenOn: StateFlow<Boolean>
     abstract val showZoomButtons: StateFlow<Boolean>
-    abstract val selectedLanguage: StateFlow<String?>
+    abstract val selectedLocale: StateFlow<Locale?>
 
     abstract fun unhideQuests()
 
@@ -101,7 +102,7 @@ class SettingsViewModelImpl(
     override val showAllNotes = MutableStateFlow(prefs.showAllNotes)
     override val keepScreenOn = MutableStateFlow(prefs.keepScreenOn)
     override val showZoomButtons = MutableStateFlow(prefs.showZoomButtons)
-    override val selectedLanguage = MutableStateFlow(prefs.language)
+    override val selectedLocale = MutableStateFlow(prefs.locale)
 
     private val listeners = mutableListOf<SettingsListener>()
 
@@ -116,7 +117,7 @@ class SettingsViewModelImpl(
         listeners += prefs.onAllShowNotesChanged { showAllNotes.value = it }
         listeners += prefs.onKeepScreenOnChanged { keepScreenOn.value = it }
         listeners += prefs.onShowZoomButtonsChanged { showZoomButtons.value = it }
-        listeners += prefs.onLanguageChanged { selectedLanguage.value = it }
+        listeners += prefs.onLocaleChanged { selectedLocale.value = it }
 
         updateQuestTypeCount()
         updateOverlayCount()

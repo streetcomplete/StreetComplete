@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.ui.common.street_side_select
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
@@ -11,23 +13,31 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.unit.max
 import androidx.compose.ui.unit.min
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.get
 import de.westnordost.streetcomplete.ui.ktx.conditional
 import de.westnordost.streetcomplete.ui.util.FallDownTransitionSpec
+import kotlinx.coroutines.delay
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.ceil
@@ -103,6 +113,23 @@ private fun <T> StreetSideIllustrationSide(
     enabled: Boolean,
     modifier: Modifier = Modifier,
 ) {
+    val interactionSource = remember { MutableInteractionSource() }
+    var center by remember { mutableStateOf(Offset.Zero) }
+
+    // Show each side's tap effect once as a hint that it can be selected.
+    LaunchedEffect(Unit) {
+        if (onClickSide != null && enabled && showTapHint) {
+            delay(if (side == Side.LEFT) 1750L else 3250L)
+            val press = PressInteraction.Press(center)
+            interactionSource.emit(press)
+            try {
+                delay(750)
+            } finally {
+                interactionSource.tryEmit(PressInteraction.Release(press))
+            }
+        }
+    }
+
     val scale = 1f + abs(cos(rotation * PI / 180)).toFloat() * 0.67f
     AnimatedContent(
         targetState = value,
@@ -118,12 +145,23 @@ private fun <T> StreetSideIllustrationSide(
                     drawRect(Color(0x33666666))
                     if (painter != null) {
                         val flip = if (side == Side.RIGHT) 0f else 180f
+                        val phase = if (side == Side.RIGHT) 0.5f else 0f
                         rotate(flip) {
-                            drawVerticallyRepeatingImage(painter)
+                            drawVerticallyRepeatingImage(painter, phase)
                         }
                     }
                 }
-                .conditional(onClickSide) { clickable(onClick = { it(side) }, enabled = enabled) },
+                .onSizeChanged { center = Offset(it.width / 2f, it.height / 2f) }
+                .conditional(onClickSide) { onClickSide ->
+                    clickable(
+                        interactionSource = interactionSource,
+                        onClick = {
+                            onClickSide(side)
+                            showTapHint = false
+                        },
+                        enabled = enabled,
+                    )
+                },
             contentAlignment = Alignment.Center,
         ) {
             if (floatingPainter != null) {
@@ -135,16 +173,21 @@ private fun <T> StreetSideIllustrationSide(
     }
 }
 
-private fun DrawScope.drawVerticallyRepeatingImage(painter: Painter) {
+private fun DrawScope.drawVerticallyRepeatingImage(painter: Painter, phase: Float = 0f) {
     val w = size.width
     val h = painter.intrinsicSize.height / painter.intrinsicSize.width * size.width
+    val startY = (if (phase <= 0f) 0f else phase - 1f) * h
     val repetitions = ceil(size.height / h).toInt()
-    for (i in 0 until repetitions) {
-        // -1f so that they rather overlap than not on rounding imprecision
-        translate(top = i * ceil(h - 1f)) {
+    var y = startY
+    while (y < size.height) {
+        translate(top = y) {
             with(painter) { draw(Size(w, h)) }
         }
+        // -1f so that they rather overlap than not on rounding imprecision
+        y += h - 1f
     }
 }
 
 enum class Side { LEFT, RIGHT }
+
+private var showTapHint = true

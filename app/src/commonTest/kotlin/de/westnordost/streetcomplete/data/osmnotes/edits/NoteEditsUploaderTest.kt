@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.testutils.note
 import de.westnordost.streetcomplete.testutils.noteEdit
 import de.westnordost.streetcomplete.testutils.p
+import dev.mokkery.answering.calls
 import dev.mokkery.answering.repeat
 import dev.mokkery.answering.returns
 import dev.mokkery.answering.sequentially
@@ -25,7 +26,7 @@ import dev.mokkery.verify
 import dev.mokkery.verify.VerifyMode.Companion.exactly
 import dev.mokkery.verifyNoMoreCalls
 import dev.mokkery.verifySuspend
-import kotlinx.coroutines.cancelAndJoin
+import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlin.test.BeforeTest
@@ -62,10 +63,25 @@ class NoteEditsUploaderTest {
         uploader.uploadedChangeListener = listener
     }
 
-    @Test fun `cancel upload works`() = runBlocking {
-        val job = launch { uploader.upload() }
-        job.cancelAndJoin()
-        verifyNoMoreCalls(noteEditsController, noteController, notesApi, imageUploader)
+    @Test fun `cancel upload finishes current edit`() = runBlocking {
+        val edit = noteEdit(noteId = 1L, action = NoteEditAction.COMMENT, text = "abc")
+        val note = note(id = 1L)
+        val job = launch(start = CoroutineStart.LAZY) { uploader.upload() }
+        every { noteEditsController.getOldestUnsynced() } sequentially {
+            returns(edit)
+            repeat { returns(null) }
+        }
+        everySuspend { notesApi.comment(1L, "abc") } calls {
+            job.cancel()
+            note
+        }
+
+        job.start()
+        job.join()
+
+        verify(exactly(1)) { noteEditsController.getOldestUnsynced() }
+        verify { noteEditsController.markSynced(edit, note) }
+        verify { noteController.put(note) }
     }
 
     @Test fun `upload note comment`(): Unit = runBlocking {

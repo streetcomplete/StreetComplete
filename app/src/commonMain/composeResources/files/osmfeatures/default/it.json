@@ -188,6 +188,10 @@
           "name": "Bar LGBTQ+",
           "terms": ["gay bar", "lesbica", "lesbiche", "lgbtq", "lgbt", "lgb", "bisex", "omosessuale", "trans", "queen"]
         },
+        "amenity/bbq": {
+          "name": "Barbecue / Griglia",
+          "aliases": ["Barbecue", "Griglia", "Barbeque"]
+        },
         "amenity/bench": {
           "name": "Panchina",
           "terms": ["seduta", "sedile", "posto a sedere", "panca", "poltrona"]
@@ -239,9 +243,6 @@
           "name": "Cambiavalute",
           "terms": ["cambi", "ufficio cambi", "cambio", "valuta", "cambiovaluta"]
         },
-        "amenity/bus_station": {
-          "name": "Stazione /Terminal degli autobus"
-        },
         "amenity/cafe": {
           "name": "Caffè",
           "terms": ["bistrot", "caffè", "thè", "te", "bar", "caffetteria"],
@@ -282,6 +283,15 @@
           "name": "Stazione di ricarica",
           "terms": ["stazione di ricarica", "ricarica", "colonnina", "colonnina di ricarica"]
         },
+        "amenity/charging_station/charging_station_bicycle": {
+          "name": "Stazione di ricarica per biciclette",
+          "terms": ["colonnina", "caricatore", "punto di ricarica", "bici elettrica", "bicicletta elettrica", "bici a pedalata assistita"],
+          "aliases": ["Stazione di ricarica biciclette", "Colonnina di ricarica bici", "Punto di ricarica bici", "Ricarica e-bike", "Colonnina e-bike"]
+        },
+        "amenity/childcare": {
+          "name": "Asilo nido / Assistenza all'infanzia",
+          "aliases": ["Asilo nido", "Servizi per l'infanzia"]
+        },
         "amenity/cinema": {
           "name": "Cinema",
           "terms": ["cinema", "cine", "film", "cinematografo", "proiezione", "drivein"]
@@ -321,14 +331,6 @@
         "amenity/community_centre/community_hall": {
           "name": "Sala comunitaria",
           "terms": ["sala comune", "salone comunitario", "salone comune"]
-        },
-        "amenity/community_centre/cultural_centre": {
-          "name": "Centro culturale",
-          "terms": ["centro artistico"]
-        },
-        "amenity/community_centre/family_centre": {
-          "name": "Centro per famiglie",
-          "terms": ["famiglie"]
         },
         "amenity/community_centre/lgbtq": {
           "name": "Centro sociale LGBTQ+",
@@ -497,9 +499,6 @@
           "name": "Scuola guida",
           "terms": ["patente", "patenti", "cqc"]
         },
-        "amenity/embassy": {
-          "name": "Ambasciata"
-        },
         "amenity/events_venue": {
           "name": "Sala eventi",
           "terms": ["banchetto", "battesimo", "comunione", "cresima", "bar mitzvah", "bat mizvah", "compleanno", "feste", "celebrazioni", "conferenza", "incontri", "party", "quinceañera", "riunioni", "matrimonio", "laurea"]
@@ -545,6 +544,9 @@
         "amenity/fast_food/ice_cream": {
           "name": "Fast food di gelati"
         },
+        "amenity/fast_food/indian": {
+          "name": "Fast Food Indiano"
+        },
         "amenity/fast_food/juice": {
           "name": "Fast food di succhi di frutta",
           "terms": ["bevande", "frutta", "succhi", "frappé", "frullati"]
@@ -565,11 +567,11 @@
           "name": "Fast food di panini",
           "terms": ["colazione", "caffè", "cena", "cenare", "locale", "drivein", "mangiare", "cibo", "grigliata", "pranzo", "tavolo", "panini", "tramezzini", "farcitura", "schiacciata"]
         },
+        "amenity/fast_food/sushi": {
+          "name": "Fast food di sushi"
+        },
         "amenity/fast_food/wings": {
           "name": "Fast food di ali di pollo"
-        },
-        "amenity/ferry_terminal": {
-          "name": "Terminal traghetti"
         },
         "amenity/fire_station": {
           "name": "Caserma dei vigili del fuoco",
@@ -692,17 +694,9 @@
           "name": "Discoteca LGBTQ+",
           "terms": ["gay club", "lesbica", "lesbiche", "lgbtq", "lgbt", "lgb", "bisex", "omosessuale", "trans", "queen"]
         },
-        "amenity/nursing_home": {
-          "name": "Residenza sanitaria assistenziale",
-          "aliases": ["RSA"]
-        },
         "amenity/parcel_locker": {
           "name": "Punto di ritiro self-service",
           "terms": ["paccomat", "locker"]
-        },
-        "amenity/parking": {
-          "name": "Parcheggio",
-          "terms": ["parcheggio", "auto", "autorimessa", "veicoli", "camion", "tir", "camper", "roulotte"]
         },
         "amenity/parking/multi-storey": {
           "name": "Parcheggio multipiano",
@@ -1002,14 +996,14 @@
           "name": "Assistenza ambulatoriale"
         },
         "amenity/social_facility/assisted_living": {
-          "name": "Struttura di residenza assistita per anziani"
+          "name": "Residenza sanitaria assistenziale per anziani"
         },
         "amenity/social_facility/food_bank": {
           "name": "Banco alimentare",
           "terms": ["mensa del povero", "mensa caritas"]
         },
         "amenity/social_facility/group_home": {
-          "name": "Casa di riposo per anziani",
+          "name": "Villaggio per anziani autosufficienti",
           "terms": ["anziani", "terza età", "diurno", "residenziale"]
         },
         "amenity/social_facility/homeless_shelter": {
@@ -1034,7 +1028,8 @@
           "name": "Studio emittente radiofonica"
         },
         "amenity/studio/television": {
-          "name": "Studio emittente televisiva"
+          "name": "Studio emittente televisiva",
+          "terms": ["trasmissione televisiva", "studio televisivo", "emittente televisiva"]
         },
         "amenity/studio/video": {
           "name": "Studio di produzione video"
@@ -1083,11 +1078,13 @@
           "terms": ["tazza", "scarico", "caduta", "fossa", "pozzo", "buca", "toilette", "gabinetto", "latrina"]
         },
         "amenity/toilets/portable": {
-          "name": "WC portatile"
+          "name": "WC portatile",
+          "terms": ["bagno chimico", "bagno mobile", "bagni autonomi"]
         },
         "amenity/townhall": {
           "name": "Municipio",
-          "terms": ["sala del comune", "palazzo di governo", "tribunale", "municipio"]
+          "terms": ["sala del comune", "palazzo di governo", "tribunale", "municipio"],
+          "aliases": ["Palazzo comunale", "Sede municipale"]
         },
         "amenity/townhall/barangay-PH": {
           "name": "Sala Barangai"
@@ -1100,6 +1097,9 @@
           "name": "Ludoteca",
           "terms": ["giochi", "giocattoli", "giocattolo", "gioco", "lego", "pupazzi", "bambini", "legno", "bambole"]
         },
+        "amenity/traffic_park": {
+          "name": "Parco scuola del traffico"
+        },
         "amenity/trolley_bay": {
           "name": "Corridoio del carrello"
         },
@@ -1107,15 +1107,21 @@
           "name": "Stazione di Aspirapolvere per Interni"
         },
         "amenity/vehicle_inspection": {
-          "name": "Ispezione veicolo"
+          "name": "Centro revisioni",
+          "terms": ["revisioni"]
         },
         "amenity/vending_machine": {
           "name": "Distributore automatico",
-          "terms": ["distributore automatico", "macchinetta"]
+          "terms": ["distributore automatico", "macchinetta"],
+          "aliases": ["Macchinetta"]
+        },
+        "amenity/vending_machine/bicycle_tube": {
+          "name": "Distributore automatico di camere d'aria per biciclette",
+          "terms": ["camere d'aria", "camera d'aria"]
         },
         "amenity/vending_machine/bottle_return": {
           "name": "Macchina per il reso delle bottiglie",
-          "terms": ["reso bottiglie"]
+          "terms": ["reso bottiglie", "vuoto a rendere"]
         },
         "amenity/vending_machine/bread": {
           "name": "Macchina di vendita del pane",
@@ -1157,6 +1163,9 @@
           "name": "Distributore automatico di prodotti per l'igiene femminile",
           "terms": ["preservativo", "preservativi", "pillola", "coppetta", "spirale", "profilattico", "profilattici", "tampone", "tamponi", "assorbente", "assorbenti", "assorbente interno", "assorbenti interni", "donna", "donne", "femmina", "femmine", "femminilità", "sviluppo", "mestruazioni", "ciclo", "mestruale", "prodotti di igiene", "prodotti per la persona", "cura della persona"]
         },
+        "amenity/vending_machine/flowers": {
+          "name": "Distributore automatico di fiori"
+        },
         "amenity/vending_machine/food": {
           "name": "Macchinetta del cibo",
           "terms": ["cibo", "barrette", "sandwich", "panini", "cioccolata", "tramezzini"]
@@ -1179,7 +1188,8 @@
         },
         "amenity/vending_machine/parking_tickets": {
           "name": "Parcometro",
-          "terms": ["distributore automatico", "macchinetta", "parcheggio", "ticket", "biglietto", "parchimetro", "biglietti parcheggio"]
+          "terms": ["distributore automatico", "macchinetta", "parcheggio", "ticket", "biglietto", "parchimetro", "biglietti parcheggio"],
+          "aliases": ["parchimetro"]
         },
         "amenity/vending_machine/pizza": {
           "name": "Distributore automatico di pizze"
@@ -1326,10 +1336,11 @@
         },
         "barrier/border_control": {
           "name": "Controllo frontaliero",
-          "terms": ["frontiera", "controllo", "dogana", "barriera", "polizia di frontiera"]
+          "terms": ["frontiera", "controllo", "dogana", "barriera", "polizia di frontiera"],
+          "aliases": ["Controllo di frontiera"]
         },
         "barrier/bump_gate": {
-          "name": "Transenna"
+          "name": "Cancello a spinta veicolare"
         },
         "barrier/bus_trap": {
           "name": "Trappola per autobus"
@@ -1413,15 +1424,15 @@
         },
         "barrier/kerb/rolled": {
           "name": "Marciapiede arrotondato",
-          "terms": ["rotondo", "arrotondato", "dolce", "scolo"]
+          "terms": ["rotondo", "arrotondato", "dolce", "scolo"],
+          "aliases": ["Marciapiede smussato"]
         },
         "barrier/kissing_gate": {
           "name": "Cancello che non fa passare il bestiame",
           "terms": ["kissing gate"]
         },
         "barrier/lift_gate": {
-          "name": "Sbarra",
-          "terms": ["sbarra", "barra", "sollevamento", "barriera a sollevamento"]
+          "name": "Sbarra"
         },
         "barrier/log": {
           "name": "Ostruzione dell'albero caduto",
@@ -1475,13 +1486,6 @@
         },
         "barrier/yes": {
           "name": "Barriera (Tipo non specificato)"
-        },
-        "boundary": {
-          "name": "Confine"
-        },
-        "boundary/administrative": {
-          "name": "Confine amministrativo",
-          "terms": ["confine amministrativo"]
         },
         "boundary/hazard": {
           "name": "Area pericolosa"
@@ -1567,9 +1571,6 @@
         "building/dormitory": {
           "name": "Dormitorio",
           "terms": ["dormitorio", "struttura sociale"]
-        },
-        "building/entrance": {
-          "name": "Entrata / Uscita"
         },
         "building/farm": {
           "name": "Residenza della fattoria",
@@ -1730,18 +1731,12 @@
           "name": "Parte di edificio",
           "terms": ["tetto", "colonna", "facciata", "edifici 3d", "3d"]
         },
-        "building_point": {
-          "name": "Edificio"
-        },
         "cemetery/grave": {
           "name": "Tomba"
         },
         "cemetery/sector": {
           "name": "Sezione cimitero",
           "terms": ["cimitero", "cimiteriale", "colombario", "tomba", "campo", "camposanto", "sepoltura", "mausoleo"]
-        },
-        "climbing/route": {
-          "name": "Percorso di arrampicata"
         },
         "climbing/route_bottom": {
           "name": "Inizio percorso di arrampicata"
@@ -1859,9 +1854,6 @@
           "name": "Duplicazione di chiavi",
           "terms": ["duplicatore di chiavi"]
         },
-        "craft/locksmith": {
-          "name": "Fabbro"
-        },
         "craft/metal_construction": {
           "name": "Metalmeccanico"
         },
@@ -1929,9 +1921,6 @@
         "craft/stonemason": {
           "name": "Tagliapietre",
           "terms": ["muratura", "scalpellino", "marmista"]
-        },
-        "craft/tailor": {
-          "name": "Sarto"
         },
         "craft/tiler": {
           "name": "Piastrellista",
@@ -2131,9 +2120,6 @@
           "name": "Guado",
           "terms": ["guado"]
         },
-        "ford_line": {
-          "name": "Guado"
-        },
         "golf/bunker": {
           "name": "Bunker",
           "terms": ["sabbia"]
@@ -2220,13 +2206,6 @@
           "name": "Centro nascita",
           "terms": ["maternità", "bambini", "bebè", "neonati", "nascita", "parto", "travaglio", "gravidanza", "post-partum"]
         },
-        "healthcare/blood_donation": {
-          "name": "Centro trasfusionale",
-          "terms": ["donatori", "sangue", "banca dl sangue", "trasfusioni", "plasmaferesi", "piastrinoaferesi", "donazione"]
-        },
-        "healthcare/counselling": {
-          "name": "Centro d'ascolto"
-        },
         "healthcare/dentist/orthodontics": {
           "name": "Ortodontista"
         },
@@ -2251,8 +2230,7 @@
           "terms": ["ottico", "optometrista", "occhi", "occhiali", "lenti", "laser", "visione", "vista", "diottrie", "astigmatismo", "miopia"]
         },
         "healthcare/physiotherapist": {
-          "name": "Fisioterapista",
-          "terms": ["fisico", "terapista", "terapia", "chinesiterapia", "posturale", "muscolo", "ossa", "massoterapia"]
+          "name": "Fisioterapista"
         },
         "healthcare/podiatrist": {
           "name": "Podologo",
@@ -2287,8 +2265,9 @@
           "name": "Binario per autobus",
           "terms": ["binario per autobus"]
         },
-        "highway/bus_stop": {
-          "name": "Fermata autobus"
+        "highway/busway": {
+          "name": "Corsia riservata agli autobus",
+          "aliases": ["Corsia preferenziale per autobus"]
         },
         "highway/construction": {
           "name": "Strada in costruzione"
@@ -2370,7 +2349,8 @@
         },
         "highway/footway/conveying": {
           "name": "Tappeto mobile",
-          "terms": ["mobile", "mobili", "marciapiede", "tappeto", "rullo"]
+          "terms": ["mobile", "mobili", "marciapiede", "tappeto", "rullo"],
+          "aliases": ["Marciapiede mobile"]
         },
         "highway/footway/crossing": {
           "name": "Attraversamento pedonale"
@@ -2519,7 +2499,8 @@
           "terms": ["autogrill", "servizio", "stazione di servizio"]
         },
         "highway/speed_camera": {
-          "name": "Autovelox"
+          "name": "Autovelox",
+          "aliases": ["Rilevatore di velocità"]
         },
         "highway/speed_display": {
           "name": "Dissuasore radar di velocità",
@@ -2684,9 +2665,6 @@
           "name": "Corridoio interno",
           "terms": ["corridoio", "ingresso", "entrata", "stanza", "passaggio"]
         },
-        "indoor/corridor_line": {
-          "name": "Corridoio interno"
-        },
         "indoor/door": {
           "name": "Porta interna",
           "terms": ["porta", "portale", "accesso", "stanza", "stipite", "soglia", "telaio"]
@@ -2723,9 +2701,6 @@
           "name": "Acquacoltura",
           "terms": ["pesci", "crostacei", "alghe", "gambero", "gamberi", "gamberetti", "aragoste", "maricoltura", "algacoltura", "allevamento", "molluschi", "cozze", "ostriche", "orate"]
         },
-        "landuse/basin": {
-          "name": "Bacino"
-        },
         "landuse/brownfield": {
           "name": "Area dismessa"
         },
@@ -2744,9 +2719,6 @@
           "name": "Cantiere",
           "terms": ["scavo", "cantiere", "construction", "costruzione"]
         },
-        "landuse/farm": {
-          "name": "Terreno agricolo"
-        },
         "landuse/farmland": {
           "name": "Terreno agricolo",
           "terms": ["fattoria", "campi", "campo", "agricoltura", "agricolo", "contadino", "campagna"]
@@ -2761,10 +2733,6 @@
         "landuse/forest": {
           "name": "Foresta gestita",
           "terms": ["macchia"]
-        },
-        "landuse/garages": {
-          "name": "Area di garage",
-          "terms": ["area di garage"]
         },
         "landuse/grass": {
           "name": "Prato",
@@ -2856,9 +2824,6 @@
           "name": "Vivaio",
           "terms": ["vivaio", "fiorista", "rimboschimento", "serra"]
         },
-        "landuse/pond": {
-          "name": "Laghetto"
-        },
         "landuse/quarry": {
           "name": "Cava",
           "terms": ["cava"]
@@ -2873,9 +2838,6 @@
         },
         "landuse/religious": {
           "name": "Area religiosa"
-        },
-        "landuse/reservoir": {
-          "name": "Bacino idrico"
         },
         "landuse/residential": {
           "name": "Area residenziale"
@@ -3009,10 +2971,10 @@
           "terms": ["giardino"]
         },
         "leisure/garden/botanical": {
-          "name": "Giardino Botanico"
+          "name": "Giardino botanico"
         },
         "leisure/garden/community": {
-          "name": "Orti in Concessione",
+          "name": "Orti in concessione",
           "terms": ["orti", "orto", "pubblico", "concessione", "lotto", "orti urbani"]
         },
         "leisure/garden/residential": {
@@ -3020,7 +2982,7 @@
         },
         "leisure/golf_course": {
           "name": "Campo da golf",
-          "terms": ["campo da golf"]
+          "terms": ["golf", "18 buche"]
         },
         "leisure/hackerspace": {
           "name": "Spazio hacker"
@@ -3030,7 +2992,7 @@
           "terms": ["maneggio", "cavalli", "equitazione", "equestre"]
         },
         "leisure/ice_rink": {
-          "name": "Pista di Ghiaccio",
+          "name": "Pista di ghiaccio",
           "terms": ["pista di pattinaggio su ghiaccio", "campo da hockey su ghiaccio"]
         },
         "leisure/indoor_play": {
@@ -3076,7 +3038,7 @@
           "terms": ["campo football americano"]
         },
         "leisure/pitch/american_handball": {
-          "name": "Campo da Football Americano"
+          "name": "Campo da football americano"
         },
         "leisure/pitch/archery": {
           "name": "Campo di tiro con l'arco"
@@ -3129,7 +3091,7 @@
           "terms": ["campo da bocce"]
         },
         "leisure/pitch/chess": {
-          "name": "Scacchiera Gigante"
+          "name": "Scacchiera gigante"
         },
         "leisure/pitch/cricket": {
           "name": "Campo da cricket",
@@ -3276,9 +3238,6 @@
           "name": "Pista di salto con l'asta",
           "terms": ["pista", "salto in alto", "salto"]
         },
-        "leisure/track/athletics/running": {
-          "name": "Pista da corsa"
-        },
         "leisure/track/athletics/sprint": {
           "name": "Pista corsa di velocità"
         },
@@ -3391,7 +3350,7 @@
         },
         "man_made/embankment": {
           "name": "Terrapieno",
-          "terms": ["argine", "terrapieno", "rialzo"]
+          "terms": ["argine", "rilevato", "rialzo", "cumulo di terra", "scarpata", "controripa", "sostegno", "accumulo di terreno", "terrazzamento", "diga", "aggere"]
         },
         "man_made/flagpole": {
           "name": "Pennone",
@@ -3654,10 +3613,6 @@
         "military/checkpoint": {
           "name": "Posto di blocco militare",
           "terms": ["posto di blocco", "militari", "base", "esercito"]
-        },
-        "military/nuclear_explosion_site": {
-          "name": "Sito esplosione nucleare",
-          "terms": ["esplosione", "cratere", "sito", "nucleare"]
         },
         "military/office": {
           "name": "Ufficio militare",
@@ -4030,9 +3985,6 @@
           "name": "Studio legale",
           "terms": ["ufficio legale", "legale", "avvocato", "avvocatura", "magistrato", "difensore", "azzeccagarbugli"]
         },
-        "office/lawyer/notary": {
-          "name": "Ufficio notarile"
-        },
         "office/moving_company": {
           "name": "Ufficio compagnia di traslochi"
         },
@@ -4090,9 +4042,6 @@
         },
         "office/translator": {
           "name": "Ufficio traduzioni"
-        },
-        "office/travel_agent": {
-          "name": "Agenzia di viaggi"
         },
         "office/union": {
           "name": "Ufficio del sindacato"
@@ -4536,9 +4485,6 @@
         "railway/funicular": {
           "name": "Binario di funicolare"
         },
-        "railway/halt": {
-          "name": "Fermata ferroviaria (facoltativa/su richiesta)"
-        },
         "railway/level_crossing": {
           "name": "Incrocio tra strada e ferrovia"
         },
@@ -4565,9 +4511,6 @@
           "name": "Binario di ferrovia a scartamento ridotto",
           "terms": ["scartamento ridotto", "ferrovia a scartamento ridotto"]
         },
-        "railway/platform": {
-          "name": "Banchina ferroviaria"
-        },
         "railway/preserved": {
           "name": "Binario di ferrovia storica",
           "terms": ["ferrovia storica"]
@@ -4589,9 +4532,6 @@
         },
         "railway/signal_box": {
           "name": "Cabina di segnalazione"
-        },
-        "railway/station": {
-          "name": "Stazione ferroviaria"
         },
         "railway/subway": {
           "name": "Binario della metropolitana"
@@ -4635,10 +4575,6 @@
         },
         "roller_coaster/track": {
           "name": "Pista montagne russe"
-        },
-        "route/ferry": {
-          "name": "Linea traghetti",
-          "terms": ["itinerario", "linea", "percorso", "rotta", "traghetto", "traghetti", "navi"]
         },
         "seamark": {
           "name": "Elemento marittimo"
@@ -4768,11 +4704,11 @@
         },
         "shop/car_parts": {
           "name": "Negozio di autoricambi",
-          "terms": ["autoricambi"]
+          "terms": ["autoricambi", "negozio di ricambi per automobili"]
         },
         "shop/car_repair": {
           "name": "Autofficina",
-          "terms": ["officina", "meccanico", "elettrauto", "riparazioni", "revisioni"]
+          "terms": ["officina", "meccanico", "elettrauto", "riparazioni", "revisioni", "carrozzeria"]
         },
         "shop/caravan": {
           "name": "Concessionario caravan",
@@ -5694,10 +5630,6 @@
           "name": "Condotta",
           "terms": ["itinerario conduttura"]
         },
-        "type/route/power": {
-          "name": "Linea elettrica",
-          "terms": ["ininerario elettricità"]
-        },
         "type/route/railway": {
           "name": "Percorso Ferroviario",
           "terms": ["binari", "strazione", "treno", "treni"]
@@ -5819,6 +5751,275 @@
         "waterway/weir": {
           "name": "Sbarramento",
           "terms": ["diga a bassa prevalenza", "diga a bassa altezza", "wie"]
+        },
+        "boundary": {
+          "name": "Confine",
+          "terms": ["confine"]
+        },
+        "building_point": {
+          "name": "Edificio",
+          "terms": ["edificio"]
+        },
+        "ford_line": {
+          "name": "Guado",
+          "terms": ["guado"]
+        },
+        "traffic_sign/maxspeed-US-CA-LR": {
+          "name": "Cartello di limite di velocità"
+        },
+        "shop/ice_cream": {
+          "name": "Gelateria",
+          "terms": ["gelato", "gelati", "gelataio", "semifreddo", "semifreddi", "yogurt", "sorbetto", "sorbetti", "ghiacciolo", "ghiaccoli", "grattachecca", "sorbetteria", "gelateria"]
+        },
+        "route/ferry": {
+          "name": "Linea traghetti",
+          "terms": ["itinerario traghetto"]
+        },
+        "railway/halt": {
+          "name": "Fermata ferroviaria (facoltativa/su richiesta)",
+          "terms": ["stop", "stazione", "transito", "treno", "passeggeri"]
+        },
+        "railway/platform": {
+          "name": "Banchina ferroviaria",
+          "terms": ["piattaforma", "banchina", "trasporto pubblico", "ferrovia", "binario", "treno", "transito", "trasporto", "pubblico"]
+        },
+        "railway/station": {
+          "name": "Stazione ferroviaria",
+          "terms": ["stop", "fermata", "transito", "treno", "passeggeri"]
+        },
+        "office/travel_agent": {
+          "name": "Agenzia di viaggi",
+          "terms": ["agenzia di viaggi"]
+        },
+        "office/lawyer/notary": {
+          "name": "Ufficio notarile",
+          "terms": ["firma", "notaio", "stato", "burocrazia"]
+        },
+        "natural/wood_point": {
+          "name": "Bosco naturale",
+          "terms": ["alberi", "albero", "bosco", "boscaglia", "foresta", "arboreo", "boreale", "taiga", "selva", "macchia", "fratta"]
+        },
+        "leisure/track/athletics/running": {
+          "name": "Pista da corsa",
+          "terms": ["pista di atletica", "decathlon", "gara podistica", "distanza", "maratona", "sprint", "camminata", "camminare", "pista"]
+        },
+        "landuse/basin": {
+          "name": "Bacino",
+          "terms": ["bacino", "scarico", "detenzione", "piena", "alluvione", "esondazione", "pioggia", "conservazione", "ritenzione", "cassa", "vasca", "espansione"]
+        },
+        "landuse/reservoir": {
+          "name": "Bacino idrico",
+          "terms": ["serbatoio", "bacino", "acqua", "lago artificiale", "diga"]
+        },
+        "landuse/military/danger_area_point": {
+          "name": "Zona militare pericolosa"
+        },
+        "landuse/industrial/brewery": {
+          "name": "Birrificio industriale",
+          "terms": ["alcool", "birra", "bevuta", "sidro"]
+        },
+        "landuse/industrial/industrial_point": {
+          "name": "Area industriale",
+          "terms": ["zona industriale", "zona artigianale", "industria", "artigianato"]
+        },
+        "indoor/corridor_line": {
+          "name": "Corridoio",
+          "terms": ["corridoio"]
+        },
+        "highway/bus_stop": {
+          "name": "Fermata autobus",
+          "terms": ["bus", "autobus", "piattaforma", "trasporto pubblico", "transito pubblico", "transito", "trasporto", "fermata"]
+        },
+        "highway/raceway_unspecific": {
+          "name": "Circuito per sport motoristici"
+        },
+        "highway/traffic_sign": {
+          "name": "Segnale stradale",
+          "terms": ["strada", "carreggiata", "segnale", "cartello", "pericolo", "triangolo", "precedenza", "divieto", "obbligo"]
+        },
+        "highway/motorway_link-US-CA": {
+          "name": "Svincolo autostradale",
+          "terms": ["svincolo", "rampa", "uscita", "autostrada", "ingresso"]
+        },
+        "highway/primary_link-US-CA": {
+          "name": "Svincolo primario",
+          "terms": ["svincolo", "rampa", "ingresso", "uscita"]
+        },
+        "highway/trunk_link-US-CA": {
+          "name": "Svincolo strada a scorrimento veloce",
+          "terms": ["svincolo", "rampa", "uscita", "ingresso", "strada", "via"]
+        },
+        "highway/path/bicycle_foot": {
+          "name": "Percorso ciclopedonale",
+          "terms": ["percorso", "pista", "bicicletta", "ciclopedonale", "ciclabile", "pedonale", "velocipedi", "misto", "promiscuo", "sentiero", "multiuso", "separato"]
+        },
+        "highway/path/crossing/informal": {
+          "name": "Attraversamento informale"
+        },
+        "highway/path/crossing/bicycle_foot": {
+          "name": "Attraversamento ciclabile e pedonale",
+          "terms": ["attraversamento bici e pedoni", "bici e pedoni", "ciclabile e pedonale"]
+        },
+        "highway/footway/crossing/informal": {
+          "name": "Attraversamento informale"
+        },
+        "highway/footway/crossing/marked": {
+          "name": "Attraversamento pedonale segnalato",
+          "terms": ["strisce pedonali"]
+        },
+        "highway/footway/crossing/zebra": {
+          "name": "Attraversamento pedonale segnalato",
+          "terms": ["strisce pedonali"]
+        },
+        "highway/cycleway/crossing/marked": {
+          "name": "Attraversamento ciclabile segnalato",
+          "terms": ["attraversamento", "bici", "biciclette", "ciclabile", "incrocio", "passaggio"]
+        },
+        "highway/crossing/marked": {
+          "name": "Attraversamento pedonale segnalato",
+          "terms": ["attraversamento", "strisce", "zebra", "pedonale", "pedoni", "piedi", "incrocio", "passaggio"]
+        },
+        "highway/crossing/zebra": {
+          "name": "Attraversamento pedonale segnalato",
+          "terms": ["attraversamento", "strisce", "zebra", "pedonale", "pedoni", "piedi", "incrocio", "passaggio"]
+        },
+        "craft/locksmith": {
+          "name": "Fabbro",
+          "terms": ["fabbro", "ferraio", "serrature", "chiavi", "ferro battuto"]
+        },
+        "craft/tailor": {
+          "name": "Sartoria",
+          "terms": ["sarto", "vestiti", "abiti"]
+        },
+        "climbing/crag": {
+          "name": "Parete da arrampicata"
+        },
+        "climbing/route": {
+          "name": "via di arrampicata"
+        },
+        "building/entrance": {
+          "name": "Entrata / Uscita"
+        },
+        "building/glasshouse": {
+          "name": "Serra",
+          "terms": ["serra", "coltivazione", "piante", "orto", "vegetali"]
+        },
+        "building/house/detached": {
+          "name": "Casa indipendente",
+          "terms": ["abitazione indipendente", "indipendente"]
+        },
+        "building/house/semi-detached": {
+          "name": "Casa semi indipendente",
+          "terms": ["semi-indipendente", "semiindipendente", "semindipendente", "abitazione semi indipendente"]
+        },
+        "building/house/terrace": {
+          "name": "Fila di case a schiera"
+        },
+        "boundary/administrative": {
+          "name": "Confine amministrativo",
+          "terms": ["confine amministrativo"]
+        },
+        "amenity/bus_station": {
+          "name": "Stazione /Terminal degli autobus"
+        },
+        "amenity/college": {
+          "name": "Accademia",
+          "terms": ["conservatorio", "scuola superiore", "afam"]
+        },
+        "amenity/coworking_space": {
+          "name": "Ufficio in coworking",
+          "terms": ["collaborazione", "open", "space", "coworking"]
+        },
+        "amenity/dancing_school": {
+          "name": "Scuola di danza"
+        },
+        "amenity/driving_school": {
+          "name": "Scuola guida"
+        },
+        "amenity/embassy": {
+          "name": "Ambasciata",
+          "terms": ["ambasciatore", "ambasciata", "diplomazia"]
+        },
+        "amenity/ferry_terminal": {
+          "name": "Terminal Traghetti",
+          "terms": ["traghetto", "traghetti", "imbarco", "stazione marittima"]
+        },
+        "amenity/kindergarten": {
+          "name": "Scuola dell'infanzia",
+          "terms": ["asilo", "infanzia"]
+        },
+        "amenity/language_school": {
+          "name": "Scuola di lingue"
+        },
+        "amenity/music_school": {
+          "name": "Scuola di musica"
+        },
+        "amenity/nursing_home": {
+          "name": "Residenza sanitaria assistenziale",
+          "terms": ["casa di riposo", "rsa", "ricovero", "ospizio", "pensionato"]
+        },
+        "amenity/prep_school": {
+          "name": "Scuola professionale"
+        },
+        "amenity/school": {
+          "name": "Scuola",
+          "terms": ["area scolastica", "scuola elementare", "scuola media", "liceo", "scuola superiore"]
+        },
+        "amenity/university": {
+          "name": "Università"
+        },
+        "amenity/charging_station/charging_station_bicycle_designated": {
+          "name": "Stazione di ricarica per biciclette",
+          "aliases": ["Stazione di ricarica biciclette", "Colonnina di ricarica bici", "Punto di ricarica bici", "Ricarica e-bike", "Colonnina e-bike"],
+          "terms": ["colonnina", "caricatore", "punto di ricarica", "bici elettrica", "bicicletta elettrica", "bici a pedalata assistita"]
+        },
+        "aerialway/station": {
+          "name": "Stazione di trasporto a fune",
+          "terms": ["seggiovia", "funivia", "funicolare", "cabinovia", "slittovia", "rotovia", "funivia aerea", "cestovia", "seggiovia navale", "sciovia", "teleferica", "manovia", "palorcio"]
+        },
+        "@templates/contact": {
+          "name": "Punto",
+          "terms": ["punto"]
+        },
+        "@templates/internet_access": {
+          "name": "Punto",
+          "terms": ["punto"]
+        },
+        "@templates/poi": {
+          "name": "Punto",
+          "terms": ["punto"]
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Punto",
+          "terms": ["punto"]
+        },
+        "@templates/crossing/defaults": {
+          "name": "Punto",
+          "terms": ["punto"]
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Punto",
+          "terms": ["punto"]
+        },
+        "@templates/crossing/markings": {
+          "name": "Punto",
+          "terms": ["punto"]
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Punto",
+          "terms": ["punto"]
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Punto",
+          "terms": ["punto"]
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Punto",
+          "terms": ["punto"]
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Punto",
+          "terms": ["punto"]
         }
       }
     }

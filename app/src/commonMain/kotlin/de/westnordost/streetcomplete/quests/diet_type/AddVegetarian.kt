@@ -17,16 +17,16 @@ import de.westnordost.streetcomplete.resources.*
 class AddVegetarian : OsmFilterQuestType<DietAvailabilityAnswer>() {
 
     override val elementFilter = """
-        nodes, ways with
-        (
-          amenity ~ restaurant|cafe|fast_food|food_court and food != no
-          or amenity ~ pub|nightclub|biergarten|bar and food = yes
-          or tourism ~ alpine_hut and food != no
-        )
-        and diet:vegan != only and (
-          !diet:vegetarian
-          or diet:vegetarian != only and diet:vegetarian older today -4 years
-        )
+        nodes, ways, relations with
+          (
+            amenity ~ restaurant|cafe|fast_food|food_court and food != no
+            or amenity ~ pub|nightclub|biergarten|bar and food = yes
+            or tourism = alpine_hut and food != no
+          )
+          and diet:vegan != only and (
+            !diet:vegetarian
+            or diet:vegetarian != only and diet:vegetarian older today -4 years
+          )
     """
     override val changesetComment = "Survey whether places have vegetarian food"
     override val wikiLink = "Key:diet"

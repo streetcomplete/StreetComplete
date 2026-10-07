@@ -36,7 +36,9 @@ import org.jetbrains.compose.resources.painterResource
 import org.koin.compose.koinInject
 import kotlin.random.Random
 
-/** Animation sound effect of a quest just having been solved on the */
+/** Animation and sound effect of a quest just having been solved on the map:
+ *  Plays a minicraft-like "plop" and animates the given quest icon from the given offset to the
+ *  corner of the screen where supposedly the quest counter is located (hardcoded). */
 @Composable
 fun LastQuestSolvedEffect(
     questSolvedEvent: QuestSolvedEvent,

@@ -24,11 +24,13 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.intl.LocaleList
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.LocalAppLocale
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.common.ClearIcon
 import de.westnordost.streetcomplete.ui.common.SearchIcon
@@ -54,7 +56,7 @@ fun FeatureSearch(
     }
 
     var search by remember { mutableStateOf("") }
-    val languages = remember { getLanguagesForFeatureDictionary() }
+    val languages = remember(LocalAppLocale.current) { getLanguagesForFeatureDictionary() }
     val defaultFeatures = remember(codesOfDefaultFeatures, featureDictionary, languages, countryCode) {
         codesOfDefaultFeatures.mapNotNull { id ->
             featureDictionary.getById(
@@ -85,7 +87,11 @@ fun FeatureSearch(
             onValueChange = { search = it },
             modifier = Modifier.fillMaxWidth().focusRequester(focusRequester),
             placeholder = {
-                Text(stringResource(Res.string.quest_shop_gone_replaced_answer_hint2))
+                Text(
+                    text = stringResource(Res.string.quest_shop_gone_replaced_answer_hint2),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
             },
             leadingIcon = { SearchIcon() },
             trailingIcon = {

@@ -34,29 +34,27 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
         See #427 for discussion. */
     override val elementFilter = """
         ways with
-        (
-          highway ~ ${LIT_RESIDENTIAL_ROADS.joinToString("|")}
-          or highway ~ ${LIT_NON_RESIDENTIAL_ROADS.joinToString("|")} and
           (
-            sidewalk ~ both|left|right|yes|separate
-            or sidewalk:both = yes
-            or sidewalk:left = yes
-            or sidewalk:right = yes
-            or ~"${MAX_SPEED_TYPE_KEYS.joinToString("|")}" ~ ".*:(urban|.*zone.*|nsl_restricted)"
-            or maxspeed <= 60
+            highway ~ ${LIT_RESIDENTIAL_ROADS.joinToString("|")}
+            or highway ~ ${LIT_NON_RESIDENTIAL_ROADS.joinToString("|")} and (
+              sidewalk ~ both|left|right|yes|separate
+              or sidewalk:both = yes
+              or sidewalk:left = yes
+              or sidewalk:right = yes
+              or ~"${MAX_SPEED_TYPE_KEYS.joinToString("|")}" ~ ".*:(urban|.*zone.*|nsl_restricted)"
+              or maxspeed <= 60
+            )
+            or highway ~ ${LIT_WAYS.joinToString("|")}
+            or highway = path and (foot = designated or bicycle = designated)
           )
-          or highway ~ ${LIT_WAYS.joinToString("|")}
-          or highway = path and (foot = designated or bicycle = designated)
-        )
-        and
-        (
-          !lit
-          or lit = no and lit older today -8 years
-          or lit older today -16 years
-        )
-        and (access !~ private|no or (foot and foot !~ private|no))
-        and indoor != yes
-        and ~path|footway|cycleway !~ link
+          and (
+            !lit
+            or lit = no and lit older today -8 years
+            or lit older today -16 years
+          )
+          and (access !~ private|no or (foot and foot !~ private|no))
+          and indoor != yes
+          and ~path|footway|cycleway !~ link
     """
 
     override val changesetComment = "Specify whether ways are lit"

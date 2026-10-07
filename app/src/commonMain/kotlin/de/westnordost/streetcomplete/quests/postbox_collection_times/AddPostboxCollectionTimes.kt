@@ -21,7 +21,8 @@ import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
 
     private val filter by lazy { """
-        nodes with amenity = post_box
+        nodes with
+          amenity = post_box
           and access !~ private|no
           and collection_times:signed != no
           and (!collection_times or collection_times older today -2 years)

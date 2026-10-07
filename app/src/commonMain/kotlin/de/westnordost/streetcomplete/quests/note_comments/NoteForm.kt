@@ -13,15 +13,14 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
@@ -29,15 +28,16 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.rememberTrackpointsPainter
+import de.westnordost.streetcomplete.ui.common.NonPredictiveBackHandler
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
+import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
 import de.westnordost.streetcomplete.ui.util.photo.compressPhotoAndOverwrite
-import de.westnordost.streetcomplete.ui.util.photo.createOpenCameraSettings
 import de.westnordost.streetcomplete.ui.util.photo.createPhotoPlatformFile
 import de.westnordost.streetcomplete.ui.util.photo.rememberHasCamera
+import de.westnordost.streetcomplete.ui.util.photo.rememberTakePhotoLauncher
 import de.westnordost.streetcomplete.util.image.fileBitmapPainter
 import io.github.vinceglb.filekit.FileKit
 import io.github.vinceglb.filekit.PlatformFile
-import io.github.vinceglb.filekit.dialogs.compose.rememberCameraPickerLauncher
 import io.github.vinceglb.filekit.path
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -48,10 +48,10 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 
 /** Form in which you can leave a note, with images */
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun NoteForm(
     onDismiss: () -> Unit,
+    requestDismiss: Boolean,
     text: String,
     onTextChange: (String) -> Unit,
     imagePaths: List<String>,
@@ -64,8 +64,8 @@ fun NoteForm(
     val hasCamera = rememberHasCamera()
     var path by rememberSaveable { mutableStateOf<String?>(null) }
     val coroutineScope = rememberCoroutineScope()
-    val takePhotoLauncher = rememberCameraPickerLauncher(createOpenCameraSettings()) { file ->
-        val path2 = path ?: return@rememberCameraPickerLauncher
+    val takePhotoLauncher = rememberTakePhotoLauncher { file ->
+        val path2 = path ?: return@rememberTakePhotoLauncher
         coroutineScope.launch(Dispatchers.IO) {
             if (file != null) {
                 FileKit.compressPhotoAndOverwrite(PlatformFile(path2))
@@ -87,11 +87,24 @@ fun NoteForm(
         onDismiss()
     }
 
-    BackHandler {
+    fun dismiss() {
         if (hasChanges) {
             confirmDiscard = true
         } else {
             onDiscard()
+        }
+    }
+
+    NonPredictiveBackHandler { dismiss() }
+
+    LaunchedEffect(requestDismiss) {
+        if (requestDismiss) dismiss()
+    }
+
+    val lastMapClick = LocalLastMapClick.current
+    LaunchedEffect(lastMapClick) {
+        if (lastMapClick != null) {
+            dismiss()
         }
     }
 
@@ -135,7 +148,7 @@ fun NoteForm(
             onTakePhoto = {
                 val file = createPhotoPlatformFile()
                 path = file.path
-                takePhotoLauncher.launch(destinationFile = file)
+                takePhotoLauncher(file)
             },
             // because otherwise it would overlap with the OK button
             modifier = Modifier.padding(end = 72.dp)

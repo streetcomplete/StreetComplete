@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.ui.util
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
@@ -25,6 +27,8 @@ import de.westnordost.streetcomplete.ui.theme.defaultTextLinkStyles
 import de.westnordost.streetcomplete.util.html.HtmlElementNode
 import de.westnordost.streetcomplete.util.html.HtmlNode
 import de.westnordost.streetcomplete.util.html.HtmlTextNode
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 @Composable
 fun List<HtmlNode>.toAnnotatedString(
@@ -37,10 +41,17 @@ fun List<HtmlNode>.toAnnotatedString(
     }
     val bulletWidth = bulletWidthPx.pxToSp()
 
-    val result = remember(this, bulletWidth, textLinkStyles) {
-        val builder = AnnotatedString.Builder()
-        builder.append(this, bulletWidth, textLinkStyles)
-        builder.toAnnotatedString()
+    val result by produceState(
+        initialValue = AnnotatedString(""),
+        this,
+        bulletWidth,
+        textLinkStyles,
+    ) {
+        value = withContext(Dispatchers.Default) {
+            val builder = AnnotatedString.Builder()
+            builder.append(this@toAnnotatedString, bulletWidth, textLinkStyles)
+            builder.toAnnotatedString()
+        }
     }
     return result
 }

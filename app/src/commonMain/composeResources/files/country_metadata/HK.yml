@@ -13,7 +13,7 @@ mobileCountryCode: 454
 noStoppingLineStyle: double yellow
 officialLanguages: [en, zh]
 orchardProduces: [tomato]
-parcelLockerBrand: [順豐速運 SF Express]
+parcelLockerBrand: [順豐速運 SF Express, 香港郵政 Hongkong Post]
 popularReligions: [chinese_folk, taoist, buddhist]
 postboxesHaveCollectionTimes: true
 postboxesHaveRoyalCypher: true

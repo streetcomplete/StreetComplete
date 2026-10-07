@@ -1,12 +1,12 @@
 plugins {
     // this is necessary to avoid the plugins to be loaded multiple times
     // in each subproject's classloader
-    id("org.jetbrains.kotlin.multiplatform") version "2.4.0" apply false
-    id("org.jetbrains.kotlin.plugin.compose") version "2.4.0"  apply false
+    id("org.jetbrains.kotlin.multiplatform") version "2.4.20" apply false
+    id("org.jetbrains.kotlin.plugin.compose") version "2.4.20"  apply false
     id("com.android.application") version "9.2.1" apply false
     id("com.android.library") version "9.2.1" apply false
     id("com.android.kotlin.multiplatform.library") version "9.2.1" apply false
-    id("org.jetbrains.compose") version "1.12.0" apply false
+    id("org.jetbrains.compose") version "1.12.1" apply false
 }
 
 val poEditorProjectId = "97843"
@@ -87,7 +87,6 @@ tasks.register("updateStreetCompleteData") {
         "app:updateTranslations",
         "app:updateTranslationCompleteness",
         "app:updateIosTranslations",
-        "app:updateMapStyle",
         "app:updateChangelog",
         "app:generateMetadataByCountry",
         "app:updateTranslatorCredits",

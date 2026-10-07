@@ -20,14 +20,14 @@ class AddTrafficSignalsSound : OsmElementQuestType<Boolean> {
 
     private val crossingFilter by lazy { """
         nodes with
-         (crossing = traffic_signals or crossing:signals = yes)
-         and highway ~ crossing|traffic_signals
-         and foot != no
-         and (
-          !$SOUND_SIGNALS
-          or $SOUND_SIGNALS = no and $SOUND_SIGNALS older today -4 years
-          or $SOUND_SIGNALS older today -8 years
-         )
+          (crossing = traffic_signals or crossing:signals = yes)
+          and highway ~ crossing|traffic_signals
+          and foot != no
+          and (
+            !$SOUND_SIGNALS
+            or $SOUND_SIGNALS = no and $SOUND_SIGNALS older today -4 years
+            or $SOUND_SIGNALS older today -8 years
+          )
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """

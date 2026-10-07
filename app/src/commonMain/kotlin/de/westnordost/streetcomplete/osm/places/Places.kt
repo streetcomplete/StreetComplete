@@ -213,13 +213,13 @@ private val IS_PLACE_EXPRESSION by lazy {
 
     """
     nodes, ways, relations with
-    $tags
-    or club
+    club
     or craft
     or healthcare
     or office and office !~ no|vacant
     or shop and shop !~ no|vacant
     or tourism = information and information ~ office|visitor_centre
+    or $tags
     """.toElementFilterExpression()
 }
 

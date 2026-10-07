@@ -17,10 +17,11 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddCabins : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           tourism ~ caravan_site|camp_site
           and !cabins
           and !backcountry
+          and access !~ private|no
     """
     override val changesetComment = "Survey whether this site has cabins"
     override val wikiLink = "Key:cabins"
@@ -29,7 +30,7 @@ class AddCabins : OsmFilterQuestType<Boolean>() {
     override val achievements = listOf(OUTDOORS)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways with tourism ~ caravan_site|camp_site")
+        mapData.filter("nodes, ways, relations with tourism ~ caravan_site|camp_site")
 
     @Composable
     override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {

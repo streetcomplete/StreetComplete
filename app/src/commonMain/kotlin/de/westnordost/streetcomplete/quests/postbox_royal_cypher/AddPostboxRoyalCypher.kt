@@ -19,7 +19,9 @@ import org.jetbrains.compose.resources.painterResource
 class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>() {
 
     override val elementFilter = """
-        nodes with amenity = post_box and (!royal_cypher or royal_cypher = yes)
+        nodes with
+            amenity = post_box
+            and (!royal_cypher or royal_cypher = yes)
     """
     override val changesetComment = "Specify postbox royal cyphers"
     override val wikiLink = "Key:royal_cypher"

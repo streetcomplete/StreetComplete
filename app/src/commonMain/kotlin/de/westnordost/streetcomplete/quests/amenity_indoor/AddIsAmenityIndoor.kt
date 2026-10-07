@@ -46,13 +46,15 @@ class AddIsAmenityIndoor(
      * for verifiability). For these, the question shall always be asked, even when not within a
      * building outline. */
     private val nodesOnWalls by lazy { """
-        nodes with emergency ~ defibrillator|fire_extinguisher|fire_hose
+        nodes with
+          emergency ~ defibrillator|fire_extinguisher|fire_hose
     """.toElementFilterExpression() }
 
     /* We only want survey nodes within building outlines.
      * Roofs do not count as inside a building */
     private val buildingFilter by lazy { """
-        ways, relations with building and building != roof
+        ways, relations with
+          building and building != roof
     """.toElementFilterExpression() }
 
     override val changesetComment = "Determine whether amenities are inside buildings"

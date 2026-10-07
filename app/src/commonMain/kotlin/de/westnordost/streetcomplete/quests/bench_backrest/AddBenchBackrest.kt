@@ -36,7 +36,11 @@ class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
     override val achievements = listOf(PEDESTRIAN, OUTDOORS)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways with amenity = bench or leisure = picnic_table")
+        mapData.filter("""
+            nodes, ways with
+              amenity = bench
+              or leisure = picnic_table
+        """)
 
     @Composable
     override fun Form(on: (QuestAction<BenchBackrestAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {

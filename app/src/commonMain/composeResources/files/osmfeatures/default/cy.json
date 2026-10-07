@@ -225,9 +225,6 @@
           "name": "Cyfnewid Tramor",
           "terms": ["arian", "dramor", "ewro", "dolar", "lira", "biwro", "bureau"]
         },
-        "amenity/bus_station": {
-          "name": "Gorsaf Fysiau"
-        },
         "amenity/cafe": {
           "name": "Caffi",
           "terms": ["caffi", "caffe", "te", "coffi", "bistro", "cwtch", "cwtsh"]
@@ -243,6 +240,9 @@
         "amenity/cafe/teahouse": {
           "name": "Ystafell De",
           "terms": ["te", "caffi", "oolong"]
+        },
+        "amenity/car_pooling": {
+          "name": "Gorsaf Rannu Ceir"
         },
         "amenity/car_rental": {
           "name": "Gwasanaeth Rhentu Ceir",
@@ -303,14 +303,6 @@
         "amenity/community_centre/community_hall": {
           "name": "Neuadd y Gymuned",
           "terms": ["canolfan", "ganolfan", "chanolfan"]
-        },
-        "amenity/community_centre/cultural_centre": {
-          "name": "Canolfan Ddiwylliannol",
-          "terms": ["diwylliannol", "canolfan", "ganolfan", "chanolfan"]
-        },
-        "amenity/community_centre/family_centre": {
-          "name": "Canolfan Deuluol",
-          "terms": ["teulu", "canolfan", "ganolfan", "chanolfan"]
         },
         "amenity/community_centre/lgbtq": {
           "name": "Canolfan Gymunedol LHDTC+",
@@ -486,9 +478,6 @@
           "name": "Tiroedd Hyfforddi Gyrrwyr",
           "terms": ["ysgol yrru", "gyrru", "car", "ceir", "trwydded yrru"]
         },
-        "amenity/embassy": {
-          "name": "Llysgenhadaeth"
-        },
         "amenity/events_venue": {
           "name": "Lleoliad Digwyddiadau"
         },
@@ -534,6 +523,10 @@
         "amenity/fast_food/ice_cream": {
           "name": "Bwyd Brys Hufen Iâ"
         },
+        "amenity/fast_food/indian": {
+          "name": "Bwyd Brys Indianaidd",
+          "terms": ["chaat", "cyri", "dosa", "bwyta", "lassi", "momos", "paneer tikka", "pani puri", "pav bhaji", "samosa", "vada pav"]
+        },
         "amenity/fast_food/juice": {
           "name": "Bwyd Brys Sudd",
           "terms": ["bwyty", "tecawê", "tecawe", "bwyd", "bwyta", "bwrdd", "cinio", "grill", "gyrru trwodd", "ciniawa"]
@@ -554,12 +547,13 @@
           "name": "Bwyd Brys Brechdan",
           "terms": ["bwyty", "tecawê", "tecawe", "bwyd", "bwyta", "bwrdd", "cinio", "grill", "gyrru trwodd", "ciniawa"]
         },
+        "amenity/fast_food/sushi": {
+          "name": "Bwyd Brys Sushi",
+          "terms": ["bwyty", "tecawê", "tecawe", "bwyd", "bwyta", "bwrdd", "cinio", "grill", "gyrru trwodd", "ciniawa"]
+        },
         "amenity/fast_food/wings": {
           "name": "Bwyd Brys Adenydd Cyw Iâr",
           "terms": ["adain", "iar"]
-        },
-        "amenity/ferry_terminal": {
-          "name": "Terfynfa Fferi"
         },
         "amenity/fire_station": {
           "name": "Gorsaf Dân",
@@ -689,15 +683,8 @@
           "name": "Clwb Nos LHDTC+",
           "terms": ["hoyw", "traws", "deurhywiol", "lesbiaidd", "lesbian", "trawsryweddol", "rhywedd", "clwb", "dawnsio", "disco", "discotheque", "discotec"]
         },
-        "amenity/nursing_home": {
-          "name": "Cartref Nyrsio"
-        },
         "amenity/parcel_locker": {
           "name": "Locer Parseli"
-        },
-        "amenity/parking": {
-          "name": "Maes Parcio",
-          "terms": ["faes", "barcio", "pharcio", "parco", "car", "ceir", "cerbyd", "tryc", "lot", "man", "fan"]
         },
         "amenity/parking/multi-storey": {
           "name": "Maes Parcio Aml-lawr"
@@ -875,6 +862,9 @@
         "amenity/restaurant/greek": {
           "name": "Bwyty Groegaidd",
           "terms": ["bar", "brecwast", "caffi", "bwyty", "bwytai", "ty", "tŷ", "grill", "cinio", "dinner", "tabl", "bwrdd", "bord", "bwyta", "diod", "yfed", "ffreutur"]
+        },
+        "amenity/restaurant/hotpot": {
+          "name": "Bwyty Hot Pot"
         },
         "amenity/restaurant/indian": {
           "name": "Bwyty Indianaidd",
@@ -1085,6 +1075,9 @@
         "amenity/toy_library": {
           "name": "Llyfrgell Tegannau"
         },
+        "amenity/traffic_park": {
+          "name": "Parc Traffig"
+        },
         "amenity/trolley_bay": {
           "name": "Bae Trolïau",
           "terms": ["troli", "siopa", "droli", "cart", "cartiau", "dychwelyd"]
@@ -1130,6 +1123,10 @@
         "amenity/vending_machine/feminine_hygiene": {
           "name": "Peiriant Gwerthu Cynnyrch Mislif"
         },
+        "amenity/vending_machine/flowers": {
+          "name": "Peiriant Gwerthu Blodau",
+          "terms": ["bouquet", "blodyn"]
+        },
         "amenity/vending_machine/food": {
           "name": "Peiriant Gwerthu Bwyd"
         },
@@ -1168,6 +1165,10 @@
           "name": "Peiriant Gwerthu Losin",
           "terms": ["losin", "fferins", "dadas", "petha da", "da-das", "candi", "swits"]
         },
+        "amenity/vending_machine/water": {
+          "name": "Peiriant Gwerthu Dŵr Yfed",
+          "terms": ["dwr", "yfed", "diod"]
+        },
         "amenity/veterinary": {
           "name": "Milfeddyg",
           "terms": ["anifail", "anifeiliaid", "doctor", "ysbyty", "vet", "fets", "cath", "ci"]
@@ -1202,6 +1203,12 @@
         },
         "area": {
           "name": "Ardal",
+          "relation": {
+            "role_labels": {
+              "inner": "Mewnol",
+              "outer": "Allanol"
+            }
+          },
           "terms": ["poligon", "polygon", "bolygon", "pholygon", "siap", "siâp"]
         },
         "area/footway": {
@@ -1416,13 +1423,6 @@
         "barrier/yes": {
           "name": "Rhwystr (Math Amhenodol)"
         },
-        "boundary": {
-          "name": "Ffin"
-        },
-        "boundary/administrative": {
-          "name": "Ffin Gweinyddol",
-          "terms": ["bowndari", "bowndry", "bowndri", "fin", "border", "bordor", "bordar"]
-        },
         "boundary/hazard": {
           "name": "Ardal Beryglus"
         },
@@ -1493,9 +1493,6 @@
           "name": "Dorm",
           "terms": ["tai", "llety", "teulu", "preswylfa", "preswyl", "trigo", "byw", "fyw", "cyfeiriad", "cartref", "gartref", "ty", "gyfeiriad", "chyfeiriad", "chartref", "gitre", "gatre"]
         },
-        "building/entrance": {
-          "name": "Mynedfa / Allanfa"
-        },
         "building/farm": {
           "name": "Ffermdy",
           "terms": ["ffarm", "fferm", "ferm", "amaeth", "tŷ", "tai", "ty", "amaethyddol", "clos", "iard", "buarthau", "pond", "bitffald", "ffald", "corlan", "lloc"]
@@ -1555,7 +1552,8 @@
           "terms": ["diwydiant", "ffatri", "depo", "ddiwydiannol", "ddiwydiant"]
         },
         "building/kindergarten": {
-          "name": "Adeilad Meithrinfa"
+          "name": "Adeilad Meithrinfa",
+          "terms": ["meithrinfa", "cyn-ysgol"]
         },
         "building/manufacture": {
           "name": "Adeilad Cynhyrchu Diwydiannol"
@@ -1642,23 +1640,12 @@
         "building_part": {
           "name": "Rhan o Adeilad"
         },
-        "building_point": {
-          "name": "Adeilad"
-        },
         "cemetery/grave": {
           "name": "Bedd",
           "terms": ["fynwent", "semetery", "cloddi", "cloddio", "tomb", "tomen", "bedd", "eglwys"]
         },
         "cemetery/sector": {
           "name": "Adran Fynwent"
-        },
-        "climbing/crag": {
-          "name": "Craig Ddringo",
-          "terms": ["clegyr", "clegyrau", "creigiau"]
-        },
-        "climbing/route": {
-          "name": "Ffordd Ddringo",
-          "terms": ["dringo", "ddringo", "craig", "carreg", "cerryg", "clegyr", "clegyrau"]
         },
         "climbing/route_bottom": {
           "name": "Dechrau Ffordd Ddringo",
@@ -1756,9 +1743,6 @@
         "craft/key_cutter": {
           "name": "Torrwr Goriadau"
         },
-        "craft/locksmith": {
-          "name": "Gof Cloeon"
-        },
         "craft/metal_construction": {
           "name": "Metelwr"
         },
@@ -1816,9 +1800,6 @@
         "craft/stonemason": {
           "name": "Saer Maen",
           "terms": ["carreg", "cerrig", "granit"]
-        },
-        "craft/tailor": {
-          "name": "Teiliwr"
         },
         "craft/tiler": {
           "name": "Teilsiwr"
@@ -2006,9 +1987,6 @@
           "name": "Rhyd",
           "terms": ["ryd"]
         },
-        "ford_line": {
-          "name": "Rhyd"
-        },
         "golf/bunker": {
           "name": "Bwncer Tywod",
           "terms": ["llestair", "rhwystr", "atalfa"]
@@ -2082,12 +2060,6 @@
         "healthcare/birthing_center": {
           "name": "Canolfan Geni"
         },
-        "healthcare/blood_donation": {
-          "name": "Banc Rhoi Gwaed"
-        },
-        "healthcare/counselling": {
-          "name": "Canolfan Cwnsela"
-        },
         "healthcare/dentist/orthodontics": {
           "name": "Orthodontydd"
         },
@@ -2107,9 +2079,6 @@
         "healthcare/optometrist": {
           "name": "Optometrydd",
           "terms": ["llygad", "llygaid", "sbectol", "lasik", "gwelededd"]
-        },
-        "healthcare/physiotherapist": {
-          "name": "Ffisiotherapydd"
         },
         "healthcare/podiatrist": {
           "name": "Podiatrydd",
@@ -2135,9 +2104,6 @@
         },
         "highway/bridleway": {
           "name": "Llwybr Ceffylau"
-        },
-        "highway/bus_stop": {
-          "name": "Safle Bysiau"
         },
         "highway/busway": {
           "name": "Ffordd Fysiau"
@@ -2468,6 +2434,9 @@
         "historic/memorial/plaque": {
           "name": "Plac Coffa"
         },
+        "historic/memorial/stolperstein-EU": {
+          "name": "Plac Coffa Stolperstein"
+        },
         "historic/monument": {
           "name": "Heneb"
         },
@@ -2497,9 +2466,6 @@
           "terms": ["dan-do", "tu mewn"]
         },
         "indoor/corridor": {
-          "name": "Coridor Dan-do"
-        },
-        "indoor/corridor_line": {
           "name": "Coridor Dan-do"
         },
         "indoor/door": {
@@ -2537,9 +2503,6 @@
           "name": "Dyframaeth",
           "terms": ["pysgod", "cragen", "molusg", "chwilod", "mor", "cefnfor", "dŵr", "dwr", "fferm"]
         },
-        "landuse/basin": {
-          "name": "Basin"
-        },
         "landuse/brownfield": {
           "name": "Safle Tir Llwyd",
           "terms": ["tir brown", "diwydiant", "diwydiannol", "browndir", "llwydir", "lot", "datblygu", "adeiladu"]
@@ -2558,9 +2521,6 @@
         },
         "landuse/education": {
           "name": "Ardal Addysgol"
-        },
-        "landuse/farm": {
-          "name": "Tir Ffermio"
         },
         "landuse/farmland": {
           "name": "Tir Ffermio",
@@ -2653,9 +2613,6 @@
           "name": "Magwrfa",
           "terms": ["planhigion", "tyfu", "vivero", "blodau", "blodyn", "planhigyn"]
         },
-        "landuse/pond": {
-          "name": "Pwll"
-        },
         "landuse/quarry": {
           "name": "Chwarel",
           "terms": ["mwynglawdd", "mwyngloddio", "cwaral", "cwarel", "cwari"]
@@ -2669,9 +2626,6 @@
         "landuse/religious": {
           "name": "Ardal Grefyddol",
           "terms": ["crefydd", "grefydd", "chrefydd", "credo", "ffydd", "addoli", "menorah", "hanukiah", "chanukkiah", "seder", "canhwyll", "crefyddol", "iddew", "moslem", "islam", "cristnogaeth", "iesu", "allah", "yahweh", "beibl", "torah", "talmud", "quran"]
-        },
-        "landuse/reservoir": {
-          "name": "Cronfa Ddŵr"
         },
         "landuse/residential": {
           "name": "Ardal Breswyl",
@@ -3001,6 +2955,10 @@
         "leisure/sauna": {
           "name": "Sauna"
         },
+        "leisure/schoolyard": {
+          "name": "Iard Ysgol",
+          "terms": ["buarth", "chwarae"]
+        },
         "leisure/slipway": {
           "name": "Llithrfa"
         },
@@ -3059,9 +3017,6 @@
         },
         "leisure/track/athletics/pole_vault": {
           "name": "Rhedfa Naid Bolyn"
-        },
-        "leisure/track/athletics/running": {
-          "name": "Trac Rhedeg"
         },
         "leisure/track/athletics/sprint": {
           "name": "Rhedfa Gwibio"
@@ -3772,9 +3727,6 @@
         "office/lawyer": {
           "name": "Swyddfa Gyfraith"
         },
-        "office/lawyer/notary": {
-          "name": "Swyddfa Notari"
-        },
         "office/moving_company": {
           "name": "Swyddfa Gwmni Symud",
           "terms": ["cwmni symud", "symudiadau", "tŷ", "tai", "cartref"]
@@ -3822,9 +3774,6 @@
         "office/translator": {
           "name": "Swyddfa Gyfieithu",
           "terms": ["cyfieithu", "asiantaeth", "cwmni", "chyfieithu"]
-        },
-        "office/travel_agent": {
-          "name": "Asiantaeth Teithio"
         },
         "office/union": {
           "name": "Swyddfa Undeb Llafur"
@@ -4192,8 +4141,7 @@
           "terms": ["stop", "stopio", "atal", "trafnidiaeth", "cyhoeddus"]
         },
         "public_transport/stop_position": {
-          "name": "Lleoliad Safle Gludiant",
-          "terms": ["stop", "stopio", "atal", "trafnidiaeth", "cyhoeddus"]
+          "name": "Lleoliad Safle Gludiant"
         },
         "public_transport/stop_position_aerialway": {
           "name": "Lleoliad Safle Lifft Sgïo",
@@ -4245,9 +4193,6 @@
           "name": "Rheilffordd Nas Defnyddir",
           "terms": ["segur"]
         },
-        "railway/halt": {
-          "name": "Gorsaf Drenau (Ar gais)"
-        },
         "railway/level_crossing": {
           "name": "Croesfan Reilffordd-Ffordd"
         },
@@ -4261,17 +4206,11 @@
         "railway/monorail": {
           "name": "Trac Trên-un-Gledren"
         },
-        "railway/platform": {
-          "name": "Platfform Trên"
-        },
         "railway/rail": {
           "name": "Trac Trên"
         },
         "railway/signal": {
           "name": "Signal Rheilffordd"
-        },
-        "railway/station": {
-          "name": "Gorsaf Drenau"
         },
         "railway/subway": {
           "name": "Trac Tanddaear"
@@ -4303,10 +4242,6 @@
         "roller_coaster/track": {
           "name": "Trac Trên Gwyllt",
           "terms": ["drac", "thrac", "parc antur", "parc thema"]
-        },
-        "route/ferry": {
-          "name": "Ffordd Fferi",
-          "terms": ["ffordd", "lwybr", "rowt", "riwt", "trywydd", "trywedd", "llong", "cwch", "tacsi"]
         },
         "seamark": {
           "name": "Nod Morol"
@@ -5204,7 +5139,17 @@
         },
         "type/boundary/administrative": {
           "name": "Ffin Gweinyddol",
+          "relation": {
+            "role_labels": {
+              "inner": "Mewnol",
+              "label": "Label",
+              "outer": "Allanol"
+            }
+          },
           "terms": ["bowndari", "bowndry", "bowndri", "fin", "border", "bordor", "bordar"]
+        },
+        "type/boundary/protected_area": {
+          "name": "Ardal Warchodedig"
         },
         "type/connectivity": {
           "name": "Cysylltiad Lôn",
@@ -5224,7 +5169,13 @@
         },
         "type/multipolygon": {
           "name": "Amlbolygon",
-          "terms": ["amlochron", "amlpolygon"]
+          "terms": ["amlochron", "amlpolygon"],
+          "relation": {
+            "role_labels": {
+              "inner": "Mewnol",
+              "outer": "Allanol"
+            }
+          }
         },
         "type/restriction": {
           "name": "Rhwystr",
@@ -5313,10 +5264,6 @@
         },
         "type/route/piste": {
           "name": "Ffordd Sgïo / Piste"
-        },
-        "type/route/power": {
-          "name": "Ffordd Bŵer",
-          "terms": ["ffordd", "lwybr", "llwybr", "rowt", "riwt", "trywydd", "trywedd"]
         },
         "type/route/railway": {
           "name": "Ffordd Reilffordd",
@@ -5438,6 +5385,252 @@
         "waterway/weir": {
           "name": "Cored",
           "terms": ["cored", "gored", "chored"]
+        },
+        "boundary": {
+          "name": "Ffin",
+          "terms": ["bowndari", "bowndry", "bowndri", "fin", "border", "bordor", "bordar"]
+        },
+        "building_point": {
+          "name": "Adeilad",
+          "terms": ["strwythur"]
+        },
+        "ford_line": {
+          "name": "Rhyd",
+          "terms": ["ryd"]
+        },
+        "traffic_sign/maxspeed-US-CA-LR": {
+          "name": "Arwydd Derfyn Cyflymder"
+        },
+        "shop/ice_cream": {
+          "name": "Siop Hufen Iâ",
+          "terms": ["gelato", "gelado", "sorbet", "sherbet", "frozen", "yogurt", "froyo", "froio", "hufen", "ia", "joe's", "sidoli", "mario"]
+        },
+        "route/ferry": {
+          "name": "Ffordd Fferi",
+          "terms": ["ffordd", "lwybr", "llwybr", "rowt", "riwt", "trywydd", "trywedd"]
+        },
+        "railway/halt": {
+          "name": "Gorsaf Drenau (Ar gais)"
+        },
+        "railway/platform": {
+          "name": "Platfform Trên"
+        },
+        "railway/station": {
+          "name": "Gorsaf Drenau"
+        },
+        "office/travel_agent": {
+          "name": "Asiantaeth Teithio",
+          "terms": ["criws", "awyren", "hedfan", "hotel", "tocyn", "pecyn", "gwyliau"]
+        },
+        "office/lawyer/notary": {
+          "name": "Swyddfa Notari"
+        },
+        "natural/wood_point": {
+          "name": "Coetir Naturiol",
+          "terms": ["coedwig", "coeden", "coedlan", "coetir", "goetir", "choetir", "coed", "goedwig", "choedwig"]
+        },
+        "man_made/geoglyph_multilinestring": {
+          "name": "Daearglyff",
+          "terms": ["cloddwaith", "ffigwr", "celf", "gwrthglodd", "hynafol"]
+        },
+        "leisure/track/athletics/running": {
+          "name": "Trac Rhedeg"
+        },
+        "landuse/basin": {
+          "name": "Basn",
+          "terms": ["basin", "draen", "glaw", "cadw", "llifo"]
+        },
+        "landuse/reservoir": {
+          "name": "Cronfa Ddŵr",
+          "terms": ["dŵr", "gronfa", "chronfa", "llyn", "lac", "pwll", "dwr"]
+        },
+        "landuse/industrial/brewery": {
+          "name": "Bragdy Diwydiannol",
+          "terms": ["alcohol", "cwrw", "seidr", "gwin", "bier", "wisgi", "fodca", "diwydiant"]
+        },
+        "landuse/industrial/industrial_point": {
+          "name": "Ardal Ddiwydiannol",
+          "terms": ["diwydiannol", "diwydiant", "gweithgynhyrchu", "depo", "ffatri", "cynhyrchu", "ystâd", "tir", "ystad"]
+        },
+        "indoor/corridor_line": {
+          "name": "Coridor Dan-do"
+        },
+        "highway/bus_stop": {
+          "name": "Safle Bysiau"
+        },
+        "highway/traffic_sign": {
+          "name": "Arwydd Draffig",
+          "terms": ["traffig", "heol", "cefnffordd", "traffordd", "stryd"]
+        },
+        "highway/motorway_link-US-CA": {
+          "name": "Cyswllt Traffordd",
+          "terms": ["ramp", "heol", "stryd", "hewl", "ffordd", "lon", "lôn", "dolen", "cyffordd", "gyffordd", "chyffordd"]
+        },
+        "highway/primary_link-US-CA": {
+          "name": "Cyswllt Prif Ffordd",
+          "terms": ["ramp", "heol", "stryd", "hewl", "ffordd", "lon", "lôn", "dolen", "cyffordd", "gyffordd", "chyffordd"]
+        },
+        "highway/trunk_link-US-CA": {
+          "name": "Cyswllt Cefnffordd",
+          "terms": ["ramp", "heol", "stryd", "hewl", "ffordd", "lon", "lôn", "dolen", "cyffordd", "gyffordd", "chyffordd"]
+        },
+        "highway/path/bicycle_foot": {
+          "name": "Ffordd Feiciau a Throed"
+        },
+        "highway/path/traffic_island_shared": {
+          "name": "Ynys Draffig Beiciau a Throed"
+        },
+        "highway/path/crossing/informal": {
+          "name": "Croesfan Anffurfiol"
+        },
+        "highway/path/crossing/marked": {
+          "name": "Croesfan Beiciau a Throed â Marciau"
+        },
+        "highway/path/crossing/bicycle_foot": {
+          "name": "Croesfan Beiciau & Troed"
+        },
+        "highway/footway/crossing/informal": {
+          "name": "Croesfan Anffurfiol"
+        },
+        "highway/footway/crossing/marked": {
+          "name": "Croesfan â Marciau"
+        },
+        "highway/footway/crossing/zebra": {
+          "name": "Croesfan â Marciau"
+        },
+        "highway/cycleway/crossing/marked": {
+          "name": "Croesfan Seiclo â Marciau"
+        },
+        "highway/crossing/marked": {
+          "name": "Croesfan â Marciau"
+        },
+        "highway/crossing/zebra": {
+          "name": "Croesfan â Marciau"
+        },
+        "craft/locksmith": {
+          "name": "Gof Cloeon",
+          "terms": ["allwedd", "gloriad", "cloriad", "glo", "chlo", "pic", "pigiwr"]
+        },
+        "craft/tailor": {
+          "name": "Gwniadur"
+        },
+        "climbing/crag": {
+          "name": "Craig Ddringo",
+          "terms": ["clegyr", "clegyrau", "creigiau"]
+        },
+        "climbing/route": {
+          "name": "Ffordd Ddringo",
+          "terms": ["dringo", "craig", "carreg", "cerryg", "clegyr", "clegyrau"]
+        },
+        "building/entrance": {
+          "name": "Mynedfa / Allanfa"
+        },
+        "building/glasshouse": {
+          "name": "Tŷ Gwydr",
+          "terms": ["ty", "tai", "glass", "glas", "gwyrdd", "werdd", "tyfu", "planhigyn", "planhigion", "tomatos", "tomato"]
+        },
+        "building/house/detached": {
+          "name": "Tŷ Sengl",
+          "terms": ["tai", "llety", "teulu", "preswylfa", "preswyl", "trigo", "byw", "fyw", "cyfeiriad", "cartref", "gartref", "ty", "gyfeiriad", "chyfeiriad", "chartref", "gitre", "gatre"]
+        },
+        "building/house/semi-detached": {
+          "name": "Tŷ Pâr",
+          "terms": ["ty", "par", "dwbl", "dybl", "dau", "dwy", "cartref", "teulu"]
+        },
+        "building/house/terrace": {
+          "name": "Rhes Teras"
+        },
+        "boundary/administrative": {
+          "name": "Ffin Gweinyddol",
+          "terms": ["bowndari", "bowndry", "bowndri", "fin", "border", "bordor", "bordar"]
+        },
+        "amenity/bus_station": {
+          "name": "Gorsaf / Terfynfa Fysiau"
+        },
+        "amenity/college": {
+          "name": "Tiroedd Coleg",
+          "terms": ["prifysgol", "israddedig"]
+        },
+        "amenity/coworking_space": {
+          "name": "Ardal Gydweithio"
+        },
+        "amenity/dancing_school": {
+          "name": "Ysgol Ddawnsio",
+          "terms": ["ballet", "dawnsio", "swing", "tango", "walts", "addysgu", "stiwdio"]
+        },
+        "amenity/driving_school": {
+          "name": "Ysgol Gyrru",
+          "terms": ["gyrru", "car", "hgv", "fan", "cerbyd"]
+        },
+        "amenity/embassy": {
+          "name": "Llysgenhadaeth"
+        },
+        "amenity/ferry_terminal": {
+          "name": "Terfynfa Fferi"
+        },
+        "amenity/kindergarten": {
+          "name": "Tiroedd Meithrinfa",
+          "terms": ["kindergarten", "cylch", "meithrin", "cyn ysgol"]
+        },
+        "amenity/language_school": {
+          "name": "Ysgol Iaith",
+          "terms": ["esl", "cymraeg"]
+        },
+        "amenity/music_school": {
+          "name": "Ysgol Gerddoriaeth",
+          "terms": ["cerddoriaeth", "canu", "cerddorol"]
+        },
+        "amenity/nursing_home": {
+          "name": "Cartref Nyrsio",
+          "terms": ["henoed", "pobl hŷn", "nyrsio", "gofal", "hen"]
+        },
+        "amenity/prep_school": {
+          "name": "Ysgol Baratoi / Tiwtora",
+          "terms": ["academaidd", "gwaith cartref", "darllen", "mathemateg", "tiwtora", "ysgrifennu", "sgwennu"]
+        },
+        "amenity/school": {
+          "name": "Tiroedd Ysgol",
+          "terms": ["academi", "ysgol gynradd", "ysgol gyfun", "ysgol uwchradd"]
+        },
+        "amenity/university": {
+          "name": "Tiroedd Prifysgol",
+          "terms": ["coleg", "graddedigion", "phd", "meistr", "bagloriaeth"]
+        },
+        "aerialway/station": {
+          "name": "Gorsaf Lifft Sgïo"
+        },
+        "@templates/contact": {
+          "name": "Pwynt"
+        },
+        "@templates/internet_access": {
+          "name": "Pwynt"
+        },
+        "@templates/poi": {
+          "name": "Pwynt"
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Pwynt"
+        },
+        "@templates/crossing/defaults": {
+          "name": "Pwynt"
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Pwynt"
+        },
+        "@templates/crossing/markings": {
+          "name": "Pwynt"
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Pwynt"
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Pwynt"
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Pwynt"
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Pwynt"
         }
       }
     }

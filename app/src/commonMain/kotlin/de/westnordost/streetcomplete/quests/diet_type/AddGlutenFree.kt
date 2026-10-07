@@ -16,17 +16,17 @@ import de.westnordost.streetcomplete.resources.*
 class AddGlutenFree : OsmFilterQuestType<DietAvailabilityAnswer>() {
 
     override val elementFilter = """
-        nodes, ways with
-        (
-          amenity ~ restaurant|cafe|fast_food|food_court and food != no
-          or amenity ~ pub|nightclub|biergarten|bar and food = yes
-          or shop ~ supermarket|convenience|deli|bakery|pastry
-          or tourism ~ alpine_hut and food != no
-        )
-        and (
-          !diet:gluten_free
-          or diet:gluten_free != only and diet:gluten_free older today -4 years
-        )
+        nodes, ways, relations with
+          (
+            amenity ~ restaurant|cafe|fast_food|food_court and food != no
+            or amenity ~ pub|nightclub|biergarten|bar and food = yes
+            or shop ~ supermarket|convenience|deli|bakery|pastry
+            or tourism = alpine_hut and food != no
+          )
+          and (
+            !diet:gluten_free
+            or diet:gluten_free != only and diet:gluten_free older today -4 years
+          )
     """
     override val changesetComment = "Specify whether places are gluten-free"
     override val wikiLink = "Key:diet:gluten_free"

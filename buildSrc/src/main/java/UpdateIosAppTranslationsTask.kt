@@ -33,7 +33,8 @@ open class UpdateIosAppTranslationsTask : DefaultTask() {
         val translations = HashMap<String, Map<String, String>>()
 
         for (languageTag in languageTags) {
-            val locale = Locale.forLanguageTag(languageTag)
+            val lang = if (languageTag.lowercase() == "en-us") "en" else languageTag
+            val locale = Locale.forLanguageTag(lang)
 
             if (!exportLanguages.any { it == locale }) continue
 
@@ -50,19 +51,37 @@ open class UpdateIosAppTranslationsTask : DefaultTask() {
         // stringId: e.g. "no_location_permission_warning"
         // languageCode: e.g. "zh-Hant"
         // strings: e.g. mapOf("no_location_permission_warning" to "To show your position on the map and download data your vicinity.", …)
-        val strings = XcStrings(
-            strings = strings.mapValues { (iosKey, stringId) ->
-                XcStringEntry(
-                    localizations = translations.mapValuesNotNull { (languageCode, strings) ->
-                        val string = strings[stringId]
-                        if (string != null) XcLocalization(stringUnit = XcStringUnit(value = string))
-                        else null
-                    }
-                )
-            }
+        val stringsByKey = strings.mapValues { (iosKey, stringId) ->
+            XcStringEntry(
+                localizations = translations.mapValuesNotNull { (languageCode, strings) ->
+                    val string = strings[stringId]
+                    if (string != null) XcLocalization(stringUnit = XcStringUnit(value = string))
+                    else null
+                }.toSortedMap()
+            )
+        }.toSortedMap()
+
+        // XCode always adds a default translation for the bundle name. So, let's already add it
+        // in the task, so that XCode doesn't overwrite it.
+        stringsByKey["CFBundleName"] = XcStringEntry(
+            localizations = mapOf("en" to XcLocalization(stringUnit = XcStringUnit(value = "StreetComplete")))
         )
 
-        targetFile.writeText(json.encodeToString(strings))
+        val xcStrings = XcStrings(strings = stringsByKey)
+        val xcStringsJson = json.encodeToString(xcStrings)
+
+        // XCode parses and then overwrites the xcstrings file. It uses a particular syntax:
+        // It sorts all string keys in `strings` alphabetically and then also all language tags in
+        // `localizations` alphabetically.
+        // Furthermore, it puts a space before each colon in associative arrays, e.g.
+        // `"sourceLanguage" : "en",`
+        // so, we adapt to this syntax so that XCode doesn't create actual changes that'd be
+        // commited to the repository.
+
+        val findColons = Regex("^(\\s*\".+\"): ", RegexOption.MULTILINE)
+        targetFile.writeText(xcStringsJson.replace(findColons) { matchResult ->
+            matchResult.groupValues[1] + " : "
+        })
     }
 }
 
@@ -75,6 +94,7 @@ data class XcStrings(
 
 @Serializable
 data class XcStringEntry(
+    val extractionState: String = "manual",
     val localizations: Map<String, XcLocalization>,
 )
 

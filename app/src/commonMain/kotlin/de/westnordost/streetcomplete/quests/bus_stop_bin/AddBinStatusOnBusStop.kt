@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
@@ -17,14 +19,14 @@ class AddBinStatusOnBusStop : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways, relations with
-        (
-          public_transport = platform
-          or (highway = bus_stop and public_transport != stop_position)
-          or highway = hitchhiking
-        )
-        and physically_present != no and naptan:BusStopType != HAR
-        and access !~ no|private
-        and (!bin or bin older today -4 years)
+          (
+            public_transport = platform
+            or (highway = bus_stop and public_transport != stop_position)
+            or highway = hitchhiking
+          )
+          and physically_present != no and naptan:BusStopType != HAR
+          and access !~ no|private
+          and (!bin or bin older today -4 years)
     """
     override val changesetComment = "Specify whether public transport stops have bins"
     override val wikiLink = "Key:bin"
@@ -40,4 +42,12 @@ class AddBinStatusOnBusStop : OsmFilterQuestType<Boolean>() {
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("bin", answer.toYesNo())
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
+            nodes, ways, relations with
+              public_transport = platform
+              or (highway = bus_stop and public_transport != stop_position)
+              or highway = hitchhiking
+        """)
 }

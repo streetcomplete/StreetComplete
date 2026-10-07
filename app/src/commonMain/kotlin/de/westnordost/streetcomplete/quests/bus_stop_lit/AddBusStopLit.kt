@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
@@ -17,20 +19,20 @@ class AddBusStopLit : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways, relations with
-        (
-          public_transport = platform
-          or (highway = bus_stop and public_transport != stop_position)
-        )
-        and physically_present != no and naptan:BusStopType != HAR
-        and access !~ no|private
-        and location !~ underground|indoor
-        and indoor != yes
-        and (!level or level >= 0)
-        and (
-          !lit
-          or lit = no and lit older today -8 years
-          or lit older today -16 years
-        )
+          (
+            public_transport = platform
+            or (highway = bus_stop and public_transport != stop_position)
+          )
+          and physically_present != no and naptan:BusStopType != HAR
+          and access !~ no|private
+          and location !~ underground|indoor
+          and indoor != yes
+          and (!level or level >= 0)
+          and (
+            !lit
+            or lit = no and lit older today -8 years
+            or lit older today -16 years
+          )
     """
     override val changesetComment = "Add whether public transport stops are lit"
     override val wikiLink = "Key:lit"
@@ -46,4 +48,11 @@ class AddBusStopLit : OsmFilterQuestType<Boolean>() {
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("lit", answer.toYesNo())
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
+            nodes, ways, relations with
+              public_transport = platform
+              or (highway = bus_stop and public_transport != stop_position)
+        """)
 }
