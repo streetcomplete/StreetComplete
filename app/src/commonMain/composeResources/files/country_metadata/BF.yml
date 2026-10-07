@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Ecobank, Bank of Africa, UBA]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typee, typec]
 edgeLineStyle: short white dashes
 mobileCountryCode: 613
 noParkingSignStyle: vienna

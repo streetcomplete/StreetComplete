@@ -2,6 +2,7 @@
 atmOperators: [FNB, Stanbic Bank, Zanaco, Standard Chartered, Absa, Ecobank, Access, ZANACO, Stanbic, Access Bank]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeg]
 edgeLineStyle: yellow
 hasLivingStreet: true
 isLeftHandTraffic: true

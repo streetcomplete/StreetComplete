@@ -19,7 +19,7 @@ class AddCampShower : OsmFilterQuestType<Boolean>() {
     /* We only resurvey shower = yes and shower = no, as it might have more detailed
      * values from other editors, and we don't want to damage them */
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           (
             tourism ~ camp_site|alpine_hut|wilderness_hut|caravan_site
             or leisure ~ bathing_place|marina
@@ -29,6 +29,7 @@ class AddCampShower : OsmFilterQuestType<Boolean>() {
             !shower
             or shower older today -4 years and shower ~ yes|no
           )
+          and access !~ private|no
     """
     override val changesetComment = "Specify whether there are showers available"
     override val wikiLink = "Key:shower"
@@ -37,7 +38,13 @@ class AddCampShower : OsmFilterQuestType<Boolean>() {
     override val achievements = listOf(OUTDOORS)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways with tourism ~ camp_site|caravan_site")
+        mapData.filter("""
+            nodes, ways, relations with
+              tourism ~ camp_site|alpine_hut|wilderness_hut|caravan_site
+              or leisure ~ bathing_place|marina
+              or highway = services
+              or amenity = public_bath
+        """)
 
     @Composable
     override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {

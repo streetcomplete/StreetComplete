@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [orange, SGBS, Ecobank, CBEAO]
 defaultSpeedLimitHasUrbanOrRural: false
+domesticSocketTypes: [typee, typec]
 mobileCountryCode: 608
 officialLanguages: [fr, wo, ff]
 orchardProduces: [cashew_nut, guava, mango, mangosteen, orange, tomato, banana, coconut, chilli_pepper, sweet_pepper]

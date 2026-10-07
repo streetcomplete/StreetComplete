@@ -3,6 +3,7 @@ atmOperators: [Banco República, BROU, Santander, Banred, BBVA, Scotiabank, Banc
 centerLineStyle: yellow
 chargingStationOperators: [UTE]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typec, typel, typef]
 mobileCountryCode: 748
 noEntrySignStyle: default
 noParkingSignStyle: mutcd latin

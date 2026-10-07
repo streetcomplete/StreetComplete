@@ -1,8 +1,9 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
-atmOperators: [HSBC, BISB, NBB, Ithmaar Bank, BBK Online, BBK, Kuwait Finance House]
+atmOperators: [HSBC, BISB, BBK, NBB, Kuwait Finance House, Ithmaar Bank, BBK Online]
 centerLineStyle: yellow
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeg]
 hasDailyAlternateSideParkingSign: true
 mobileCountryCode: 426
 noParkingSignStyle: vienna variant

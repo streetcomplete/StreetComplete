@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.resources.*
 class AddHalal : OsmFilterQuestType<DietAvailabilityAnswer>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           (
             amenity ~ restaurant|cafe|fast_food|ice_cream|food_court and food != no
             or shop ~ butcher|supermarket|ice_cream|convenience

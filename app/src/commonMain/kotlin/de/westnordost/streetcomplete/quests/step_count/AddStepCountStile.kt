@@ -22,6 +22,8 @@ class AddStepCountStile : OsmElementQuestType<Int> {
           and stile ~ stepover|ladder
           and access !~ private|no
           and !step_count
+          and !steps
+          and !flat_steps
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """

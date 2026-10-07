@@ -14,6 +14,7 @@ enum class BuildingType(val osmKey: String?, val osmValue: String?) {
     DETACHED        ("building", "detached"),
     SEMI_DETACHED   ("building", "semidetached_house"),
     TERRACE         ("building", "terrace"),
+    TERRACED_HOUSE  ("house", "terraced"),
     HOTEL           ("building", "hotel"),
     DORMITORY       ("building", "dormitory"),
     HOUSEBOAT       ("building", "houseboat"),

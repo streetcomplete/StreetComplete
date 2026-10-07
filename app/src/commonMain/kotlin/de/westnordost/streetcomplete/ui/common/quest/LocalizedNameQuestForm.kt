@@ -50,6 +50,7 @@ fun LocalizedNameQuestForm(
     otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     preferences: Preferences = koinInject(),
     isResurvey: Boolean = false,
+    onClickMap: ((MapClick) -> Boolean) = { false },
 ) {
     val selectableLanguages = remember {
         preferences.getLanguagesWithPreferredFirst(
@@ -58,10 +59,7 @@ fun LocalizedNameQuestForm(
     }
 
     var localizedNames by rememberSerializable(initialLocalizedNames) {
-        mutableStateOf(
-            initialLocalizedNames
-                ?: listOf(LocalizedName(selectableLanguages.firstOrNull().orEmpty(), ""))
-        )
+        mutableStateOf(initialLocalizedNames ?: listOf(LocalizedName("", "")))
     }
 
     var showKeyboardInfo by remember { mutableStateOf(false) }
@@ -89,6 +87,7 @@ fun LocalizedNameQuestForm(
                 confirmNoName = true
             },
         ) },
+        onClickMap = onClickMap
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             if (hint != null) {

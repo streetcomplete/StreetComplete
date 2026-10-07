@@ -29,7 +29,7 @@ class Uploader(
 
     private val listeners = Listeners<UploadProgressSource.Listener>()
 
-    private lateinit var bannedInfo: BannedInfo
+    private var bannedInfo: BannedInfo? = null
 
     private val uploadedChangeRelay = object : OnUploadedChangeListener {
         override fun onUploaded(editType: String, at: LatLon) {
@@ -55,7 +55,7 @@ class Uploader(
             isUploadInProgress = true
             listeners.forEach { it.onStarted() }
 
-            if (!::bannedInfo.isInitialized) {
+            if (bannedInfo == null) {
                 bannedInfo = versionIsBannedChecker.get()
             }
             val banned = bannedInfo

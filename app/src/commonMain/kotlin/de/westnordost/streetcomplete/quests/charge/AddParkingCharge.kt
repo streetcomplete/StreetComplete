@@ -22,7 +22,7 @@ class AddParkingCharge : OsmFilterQuestType<Charge>() {
     override val elementFilter = """
         nodes, ways, relations with amenity = parking
           and access ~ yes|customers|public
-          and fee = yes
+          and (fee = yes or fee:conditional ~ "yes.*")
           and !charge:conditional
           and (!charge or charge older today -18 months)
     """

@@ -31,7 +31,7 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
     override val changesetComment = "Specify road smoothness"
     override val wikiLink = "Key:smoothness"
     override val icon = Res.drawable.quest_street_surface_detail
-    override val title = Res.string.quest_smoothness_road_title
+    override val title = Res.string.quest_smoothness_title
     override val achievements = listOf(CAR, BICYCLIST)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
     override val hint = Res.string.quest_smoothness_hint

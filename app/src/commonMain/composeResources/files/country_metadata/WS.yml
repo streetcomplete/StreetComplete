@@ -2,6 +2,7 @@
 atmOperators: [ANZ, BSP, Samoa Commercial Bank, Bank South Pacific]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typei]
 isLeftHandTraffic: true
 lengthUnits: [foot and inch, meter]
 mobileCountryCode: 549

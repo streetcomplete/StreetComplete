@@ -83,7 +83,7 @@ fun TimePicker(
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
         modifier = modifier,
     ) {
         if (timeFormatElements.before.isNotEmpty()) {

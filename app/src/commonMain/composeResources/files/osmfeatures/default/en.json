@@ -18,7 +18,8 @@
           "name": "Boundary"
         },
         "building_point": {
-          "name": "Building"
+          "name": "Building",
+          "terms": ["structure"]
         },
         "embankment": {
           "name": "Embankment"
@@ -80,7 +81,13 @@
         },
         "area": {
           "name": "Area",
-          "terms": ["polygon"]
+          "terms": ["polygon"],
+          "relation": {
+            "role_labels": {
+              "inner": "Inner",
+              "outer": "Outer"
+            }
+          }
         },
         "barrier": {
           "name": "Barrier"
@@ -252,7 +259,13 @@
           "name": "Enforcement"
         },
         "type/multipolygon": {
-          "name": "Multipolygon"
+          "name": "Multipolygon",
+          "relation": {
+            "role_labels": {
+              "inner": "Inner",
+              "outer": "Outer"
+            }
+          }
         },
         "type/restriction": {
           "name": "Restriction"
@@ -289,14 +302,15 @@
         },
         "type/route/climbing": {
           "name": "Climbing Route",
-          "aliases": ["Climb", "Mountaineering Route"],
-          "terms": ["climbing", "mountain climbing", "rock climbing", "rock climbing route"]
+          "aliases": ["Boulder Problem", "Climb", "Mountaineering Route"],
+          "terms": ["climbing", "mountain climbing", "rock climbing", "rock climbing route", "sport climbing"]
         },
         "type/route/detour": {
           "name": "Detour Route"
         },
         "type/route/ferry": {
-          "name": "Ferry Route"
+          "name": "Ferry Route",
+          "terms": ["boat", "merchant vessel", "ship", "water bus", "water shuttle", "water taxi"]
         },
         "type/route/foot": {
           "name": "Walking Route"
@@ -323,9 +337,6 @@
         },
         "type/route/piste": {
           "name": "Piste / Ski Route"
-        },
-        "type/route/power": {
-          "name": "Power Route"
         },
         "type/route/railway": {
           "name": "Railway Route"
@@ -377,7 +388,15 @@
           "terms": ["maxspeed", "radar", "speed camera"]
         },
         "type/boundary/administrative": {
-          "name": "Administrative Boundary"
+          "name": "Administrative Boundary",
+          "relation": {
+            "role_labels": {
+              "inner": "Inner",
+              "outer": "Outer",
+              "label": "Label",
+              "admin_centre": "Admin Center"
+            }
+          }
         },
         "type/boundary/protected_area": {
           "name": "Protected Area",
@@ -1203,7 +1222,7 @@
         },
         "shop/sports": {
           "name": "Sporting Goods Store",
-          "terms": ["athletics", "fitness", "hobby"]
+          "terms": ["athletics", "equestrian", "fitness", "hobby"]
         },
         "shop/stationery": {
           "name": "Stationery Store",
@@ -1379,6 +1398,10 @@
           "name": "Mooring",
           "terms": ["bollard", "buoy", "dolphin", "pile", "post"]
         },
+        "seamark/offshore_platform": {
+          "name": "Offshore Platform",
+          "terms": ["bore", "drilling rig", "oil rig", "petroleum well", "platform"]
+        },
         "seamark/buoy_lateral/green": {
           "name": "Green Buoy",
           "terms": ["buoy lateral", "cevni", "channel marker", "iala", "lateral buoy", "lateral mark"]
@@ -1403,13 +1426,16 @@
           "terms": ["amusement ride", "theme park"]
         },
         "railway/halt": {
-          "name": "Train Station (Halt / Request)"
+          "name": "Train Station (Halt / Request)",
+          "terms": ["halt", "public transit", "public transportation", "rail", "station", "track", "train", "transit", "transportation", "whistle stop"]
         },
         "railway/platform": {
-          "name": "Train Platform"
+          "name": "Train Platform",
+          "terms": ["platform", "public transit", "public transportation", "rail", "railway platform", "track", "train", "transit", "transportation"]
         },
         "railway/station": {
-          "name": "Train Station"
+          "name": "Train Station",
+          "terms": ["public transit", "public transportation", "rail", "railway station", "station", "terminal", "track", "train", "transit", "transportation"]
         },
         "railway/tram_stop": {
           "name": "Tram Stopping Position"
@@ -1532,16 +1558,16 @@
           "aliases": ["Suspension Railway Track"]
         },
         "public_transport/platform": {
-          "name": "Transit Platform",
-          "terms": ["platform", "public transit", "public transportation", "transit", "transportation"]
+          "name": "Transit Platform"
         },
         "public_transport/platform_point": {
-          "name": "Transit Stop / Platform",
-          "terms": ["platform", "public transit", "public transportation", "transit", "transportation"]
+          "name": "Transit Stop / Platform"
         },
         "public_transport/station": {
-          "name": "Transit Station",
-          "terms": ["public transit", "public transportation", "station", "terminal", "transit", "transportation"]
+          "name": "Transit Station"
+        },
+        "public_transport/stop_position": {
+          "name": "Transit Stopping Location"
         },
         "public_transport/station_aerialway": {
           "name": "Aerialway Station",
@@ -1585,10 +1611,6 @@
         },
         "public_transport/stop_area": {
           "name": "Transit Stop Area"
-        },
-        "public_transport/stop_position": {
-          "name": "Transit Stopping Location",
-          "terms": ["public transit", "public transportation", "transit", "transportation"]
         },
         "public_transport/stop_position_aerialway": {
           "name": "Aerialway Stopping Location",
@@ -1736,7 +1758,7 @@
         },
         "power/tower": {
           "name": "High-Voltage Tower",
-          "terms": ["power", "power tower"]
+          "terms": ["electric", "power", "power tower", "pylon", "transmission tower"]
         },
         "power/transformer": {
           "name": "Transformer"
@@ -1791,6 +1813,14 @@
         "power/generator/method/photovoltaic": {
           "name": "Solar Panel",
           "terms": ["photovoltaic module", "pv module", "sunlight"]
+        },
+        "power/generator/method/solar_thermal_collector": {
+          "name": "Solar Thermal Collector",
+          "terms": ["heating", "solar hot water panel", "solar water heater"]
+        },
+        "power/generator/method/solar_thermal_collector/location/roof": {
+          "name": "Rooftop Solar Thermal Collector",
+          "terms": ["heating", "solar hot water panel", "solar water heater"]
         },
         "power/generator/method/photovoltaic/location/roof": {
           "name": "Rooftop Solar Panel",
@@ -2020,7 +2050,8 @@
           "name": "Physician"
         },
         "office/travel_agent": {
-          "name": "Travel Agency"
+          "name": "Travel Agency",
+          "terms": ["cruises", "flights", "holiday", "hotels", "tickets", "tour operator", "tours", "travel packages", "vacation"]
         },
         "office/yes": {
           "name": "Office (Unspecified Type)"
@@ -2202,7 +2233,8 @@
           "terms": ["utility", "water board"]
         },
         "office/lawyer/notary": {
-          "name": "Notary Office"
+          "name": "Notary Office",
+          "terms": ["clerk", "deeds", "estate", "signature", "wills"]
         },
         "office/government/prosecutor": {
           "name": "Public Prosecutor's Office",
@@ -2359,7 +2391,7 @@
         },
         "natural/stone": {
           "name": "Unattached Stone / Boulder",
-          "terms": ["boulder", "rock", "stone"]
+          "terms": ["boulder", "glacial erratic", "rock", "stone"]
         },
         "natural/strait": {
           "name": "Strait",
@@ -2457,7 +2489,8 @@
           "terms": ["lakelet", "mere", "millpond", "pool", "tarn"]
         },
         "natural/water/reservoir": {
-          "name": "Reservoir"
+          "name": "Reservoir",
+          "terms": ["dam"]
         },
         "natural/water/river": {
           "name": "River Area",
@@ -2500,10 +2533,6 @@
         "military/checkpoint": {
           "name": "Military Checkpoint",
           "terms": ["air force", "army", "base", "force", "guard", "marine", "navy", "troop", "war"]
-        },
-        "military/nuclear_explosion_site": {
-          "name": "Nuclear Explosion Site",
-          "terms": ["atom", "blast", "bomb", "detonation", "nuke", "site", "test"]
         },
         "military/office": {
           "name": "Military Office",
@@ -2679,7 +2708,7 @@
         },
         "man_made/petroleum_well": {
           "name": "Oil Well",
-          "terms": ["drilling rig", "oil derrick", "oil drill", "oil horse", "oil pump", "oil rig", "petroleum well", "pumpjack"]
+          "terms": ["bore", "drilling rig", "oil derrick", "oil drill", "oil horse", "oil pump", "petroleum well", "pumpjack"]
         },
         "man_made/pier": {
           "name": "Pier",
@@ -2709,7 +2738,7 @@
         },
         "man_made/silo": {
           "name": "Silo",
-          "terms": ["corn", "grain", "grain elevator", "wheat"]
+          "terms": ["bulk"]
         },
         "man_made/ski_jump": {
           "name": "Ski Jumping Tower",
@@ -2722,7 +2751,7 @@
         },
         "man_made/street_cabinet": {
           "name": "Street Cabinet",
-          "terms": ["cable tv", "monitoring box", "technical box", "telecommunications", "traffic signal controls"]
+          "terms": ["cable tv", "electrical cabinet", "electricity cabinet", "gas delivery point", "monitoring box", "street lighting cabinet", "technical box", "telecommunications", "traffic signal controls"]
         },
         "man_made/surveillance": {
           "name": "Surveillance",
@@ -2859,6 +2888,10 @@
         "man_made/storage_tank/water": {
           "name": "Water Tank",
           "terms": ["cistern", "water tower"]
+        },
+        "man_made/silo/crop": {
+          "name": "Crop Silo",
+          "terms": ["corn", "grain", "grain elevator", "wheat"]
         },
         "man_made/pipeline/underground": {
           "name": "Underground Pipeline",
@@ -3067,6 +3100,10 @@
         "leisure/sauna": {
           "name": "Sauna"
         },
+        "leisure/schoolyard": {
+          "name": "Schoolyard",
+          "terms": ["blacktop", "recess yard", "school playground"]
+        },
         "leisure/slipway": {
           "name": "Slipway",
           "terms": ["boat landing", "boat launch", "boat ramp"]
@@ -3077,7 +3114,7 @@
         },
         "leisure/sports_centre": {
           "name": "Sports Center / Complex",
-          "terms": ["athletic center", "recreation center", "sports centre", "sports complex"]
+          "terms": ["athletic center", "athletic centre", "recreation center", "recreation centre", "sports centre", "sports complex"]
         },
         "leisure/sports_hall": {
           "name": "Gymnasium",
@@ -3127,7 +3164,8 @@
           "terms": ["athletics track", "decathlon", "foot race", "long distance running", "marathon", "middle distance running", "racetrack", "running", "sprint", "track", "walking"]
         },
         "leisure/track/athletics/running": {
-          "name": "Running Track"
+          "name": "Running Track",
+          "terms": ["athletics track", "decathlon", "foot race", "long distance running", "marathon", "middle distance running", "racetrack", "running", "sprint", "track", "walking"]
         },
         "leisure/track/athletics/javelin_throw": {
           "name": "Javelin Runway",
@@ -3425,19 +3463,15 @@
           "terms": ["asanas", "meditation", "modern yoga", "studio"]
         },
         "landuse/basin": {
-          "name": "Basin"
+          "name": "Basin",
+          "terms": ["detention", "drain", "overflow", "rain", "retention"]
         },
         "landuse/churchyard": {
           "name": "Churchyard"
         },
-        "landuse/farm": {
-          "name": "Farmland"
-        },
-        "landuse/pond": {
-          "name": "Pond"
-        },
         "landuse/reservoir": {
-          "name": "Reservoir"
+          "name": "Reservoir",
+          "terms": ["dam"]
         },
         "landuse/allotments": {
           "name": "Garden Allotments",
@@ -3484,8 +3518,8 @@
           "terms": ["boreal", "cut", "forest", "forestry", "forrest", "lumber", "silviculture", "taiga", "tree", "trees", "woodlands", "woods"]
         },
         "landuse/garages": {
-          "name": "Garage Landuse",
-          "terms": ["parking"]
+          "name": "Garage Land Use",
+          "terms": ["garage landuse", "parking"]
         },
         "landuse/grass": {
           "name": "Grass",
@@ -3648,7 +3682,8 @@
           "terms": ["hotspot", "wi-fi", "wifi"]
         },
         "indoor/corridor_line": {
-          "name": "Indoor Corridor"
+          "name": "Indoor Corridor",
+          "terms": ["gallery", "hall", "hallway", "indoor", "passage", "passageway"]
         },
         "indoor/area": {
           "name": "Indoor Area",
@@ -3714,6 +3749,10 @@
           "name": "Memorial",
           "terms": ["dedicatory", "epitaph", "memory", "monument", "remember", "remembrance", "stolperstein"]
         },
+        "historic/millstone": {
+          "name": "Millstone",
+          "terms": ["grinding stone", "grinding wheel", "grindstone", "mill wheel", "quern", "quernstone"]
+        },
         "historic/monument": {
           "name": "Monument"
         },
@@ -3732,7 +3771,8 @@
           "terms": ["christ", "christian", "cross", "jesus"]
         },
         "historic/wayside_shrine": {
-          "name": "Wayside Shrine"
+          "name": "Wayside Shrine",
+          "terms": ["buddhist", "catholic", "christian", "religion", "religious", "shinto"]
         },
         "historic/wreck": {
           "name": "Shipwreck",
@@ -3761,7 +3801,8 @@
           "terms": ["gentry", "historic country house", "nobility", "representative", "stately home"]
         },
         "highway/bus_stop": {
-          "name": "Bus Stop"
+          "name": "Bus Stop",
+          "terms": ["bus", "platform", "public transit", "public transportation", "transit", "transportation"]
         },
         "highway/raceway_unspecific": {
           "name": "Motorsport Racetrack",
@@ -3949,7 +3990,7 @@
         },
         "highway/street_lamp": {
           "name": "Street Lamp",
-          "terms": ["gaslight", "lamp", "light", "street light", "streetlight"]
+          "terms": ["gaslight", "lamp", "light", "street light", "street lighting", "streetlight"]
         },
         "highway/tertiary": {
           "name": "Tertiary Road",
@@ -4199,11 +4240,11 @@
           "terms": ["baby", "childbirth", "delivery", "labor", "labour", "midwive", "pregnancy", "pregnant"]
         },
         "healthcare/blood_donation": {
-          "name": "Blood Donor Center",
+          "name": "Blood Donation Center",
           "terms": ["apheresis", "blood bank", "blood donation", "blood transfusion", "plasmapheresis", "plateletpheresis", "stem cell donation"]
         },
         "healthcare/counselling": {
-          "name": "Counselling Center",
+          "name": "Counseling Center",
           "terms": ["sex therapist"]
         },
         "healthcare/hospice": {
@@ -4216,7 +4257,7 @@
         },
         "healthcare/midwife": {
           "name": "Midwife",
-          "terms": ["baby", "childbirth", "delivery", "labor", "labour", "pregnancy"]
+          "terms": ["baby", "childbirth", "delivery", "labor", "labour", "maternity", "pregnancy", "pregnant", "women's healthcare"]
         },
         "healthcare/occupational_therapist": {
           "name": "Occupational Therapist",
@@ -4227,7 +4268,8 @@
           "terms": ["eye", "glasses", "lasik", "lenses", "vision"]
         },
         "healthcare/physiotherapist": {
-          "name": "Physiotherapist",
+          "name": "Physical Therapist",
+          "aliases": ["Physiotherapist"],
           "terms": ["physical", "therapist", "therapy"]
         },
         "healthcare/podiatrist": {
@@ -4501,10 +4543,12 @@
           "terms": ["advanced stop box", "asl", "bicycle box", "bike box", "bikebox", "cycle box", "cycle stop marking"]
         },
         "craft/locksmith": {
-          "name": "Locksmith"
+          "name": "Locksmith",
+          "terms": ["key", "lockpick"]
         },
         "craft/tailor": {
-          "name": "Tailor"
+          "name": "Tailor",
+          "terms": ["clothes", "suit"]
         },
         "craft/agricultural_engines": {
           "name": "Agricultural Engines Mechanic",
@@ -4691,8 +4735,8 @@
         },
         "climbing/route": {
           "name": "Climbing Route",
-          "aliases": ["Boulder Problem", "Climb"],
-          "terms": ["climbing", "rock climbing", "rock climbing route", "sport climbing"]
+          "aliases": ["Boulder Problem", "Climb", "Mountaineering Route"],
+          "terms": ["climbing", "mountain climbing", "rock climbing", "rock climbing route", "sport climbing"]
         },
         "climbing/route_bottom": {
           "name": "Climbing Route Start",
@@ -4710,7 +4754,8 @@
           "name": "Bunker"
         },
         "building/entrance": {
-          "name": "Entrance / Exit"
+          "name": "Entrance / Exit",
+          "terms": ["door", "entrance", "exit"]
         },
         "building/glasshouse": {
           "name": "Greenhouse",
@@ -4726,7 +4771,9 @@
           "name": "Allotment House"
         },
         "building/apartments": {
-          "name": "Apartment Building"
+          "name": "Apartment Building",
+          "aliases": ["Condominium"],
+          "terms": ["flats"]
         },
         "building/bakehouse": {
           "name": "Bakehouse"
@@ -4878,7 +4925,8 @@
           "terms": ["double", "duplex", "dwelling", "family", "home", "residence", "twin"]
         },
         "building/service": {
-          "name": "Service Building"
+          "name": "Service Building",
+          "terms": ["equipment", "infrastructure", "transformer", "utility"]
         },
         "building/shed": {
           "name": "Shed",
@@ -4904,6 +4952,9 @@
         },
         "building/temple": {
           "name": "Temple Building"
+        },
+        "building/tent": {
+          "name": "Permanent Tent"
         },
         "building/terrace": {
           "name": "Row of Townhouses",
@@ -5045,8 +5096,8 @@
           "name": "Kissing Gate"
         },
         "barrier/lift_gate": {
-          "name": "Boom Barrier",
-          "terms": ["boom gate", "boom lift", "hinged bar", "lift gate", "pivoted pole"]
+          "name": "Boom Gate",
+          "terms": ["arm barrier", "boom barrier", "boom lift", "hinged bar", "lift gate", "pivoted pole"]
         },
         "barrier/log": {
           "name": "Fallen Tree Obstruction",
@@ -5202,7 +5253,8 @@
           "terms": ["horse training"]
         },
         "amenity/bus_station": {
-          "name": "Bus Station / Terminal"
+          "name": "Bus Station / Terminal",
+          "terms": ["bus", "bus terminal", "public transit", "public transportation", "station", "terminal", "transit", "transportation"]
         },
         "amenity/college": {
           "name": "College Grounds",
@@ -5221,10 +5273,12 @@
           "name": "Driving School"
         },
         "amenity/embassy": {
-          "name": "Embassy"
+          "name": "Embassy",
+          "terms": ["consulate", "diplomatic mission", "foreign mission", "high commission", "permanent mission"]
         },
         "amenity/ferry_terminal": {
-          "name": "Ferry Terminal"
+          "name": "Ferry Terminal",
+          "terms": ["boat", "dock", "ferry", "pier", "public transit", "public transportation", "station", "terminal", "transit", "transportation"]
         },
         "amenity/kindergarten": {
           "name": "Preschool / Kindergarten Grounds",
@@ -5239,7 +5293,8 @@
           "terms": ["school of music"]
         },
         "amenity/nursing_home": {
-          "name": "Nursing Home"
+          "name": "Nursing Home",
+          "terms": ["assisted living", "elderly", "living", "nursing", "old", "retired", "retirement", "retirement home", "senior"]
         },
         "amenity/prep_school": {
           "name": "Test Prep / Tutoring School",
@@ -5324,7 +5379,7 @@
         },
         "amenity/boat_rental": {
           "name": "Boat Rental",
-          "terms": ["boat hire", "canoe", "kayak"]
+          "terms": ["boat hire", "boat livery", "canoe", "dinghy", "houseboat", "jetski", "kayak", "motorboat", "pedalboat", "rowboat", "sailboat", "stand up paddleboard", "stand-up paddleboard", "standup paddleboard", "sup", "yacht"]
         },
         "amenity/boat_storage": {
           "name": "Boat Storage",
@@ -5587,8 +5642,8 @@
           "terms": ["automated postal box", "dropoff", "locker", "mail", "package", "package locker", "packstation", "parcel", "pickup"]
         },
         "amenity/parking": {
-          "name": "Parking Lot",
-          "terms": ["automobile parking", "car lot", "car parking", "rv parking", "truck parking", "vehicle parking"]
+          "name": "Parking",
+          "terms": ["automobile parking", "car lot", "car parking", "rv parking", "surface parking", "truck parking", "vehicle parking"]
         },
         "amenity/parking_entrance": {
           "name": "Parking Garage Entrance / Exit"
@@ -5596,6 +5651,10 @@
         "amenity/parking_space": {
           "name": "Parking Space",
           "terms": ["parking spot", "parking stall"]
+        },
+        "amenity/parking_surface": {
+          "name": "Surface Parking Lot",
+          "terms": ["at-grade parking", "car park", "ground level parking", "open air parking", "parking lot", "surface lot", "surface parking"]
         },
         "amenity/payment_centre": {
           "name": "Payment Center",
@@ -5615,7 +5674,7 @@
         },
         "amenity/place_of_worship": {
           "name": "Place of Worship",
-          "terms": ["abbey", "basilica", "bethel", "cathedral", "chancel", "chantry", "chapel", "church", "fold", "house of god", "house of prayer", "house of worship", "minster", "mission", "mosque", "oratory", "parish", "sacellum", "sanctuary", "shrine", "synagogue", "tabernacle", "temple"]
+          "terms": ["abbey", "basilica", "bethel", "cathedral", "chancel", "chantry", "chapel", "church", "fold", "house of god", "house of prayer", "house of worship", "minster", "mission", "mosque", "oratory", "parish", "religion", "religious", "sacellum", "sanctuary", "shrine", "synagogue", "tabernacle", "temple"]
         },
         "amenity/planetarium": {
           "name": "Planetarium",
@@ -5659,7 +5718,7 @@
         },
         "amenity/ranger_station": {
           "name": "Ranger Station",
-          "terms": ["backcountry office", "permit center", "permit centre", "visitor center", "visitor centre", "warden center", "warden office"]
+          "terms": ["backcountry office", "permit center", "permit centre", "visitor center", "visitor centre", "warden center", "warden centre", "warden office"]
         },
         "amenity/recycling_centre": {
           "name": "Recycling Center",
@@ -5751,7 +5810,7 @@
         },
         "amenity/traffic_park": {
           "name": "Traffic Park",
-          "terms": ["bicycle safety centre", "children's traffic park", "learn to ride centre", "traffic garden", "traffic playground"]
+          "terms": ["bicycle safety center", "bicycle safety centre", "children's traffic park", "learn to ride center", "learn to ride centre", "traffic garden", "traffic playground"]
         },
         "amenity/trolley_bay": {
           "name": "Cart Corral",
@@ -6128,53 +6187,49 @@
           "name": "Brewpub",
           "terms": ["alcohol", "beer", "bier", "booze", "craft brewery", "dive", "drink", "microbrewery", "small batch brewery"]
         },
-        "amenity/post_box/post_box-US": {
-          "name": "Mail Drop Box",
-          "terms": ["drop box", "dropbox", "letter drop", "mail box", "mail collection box", "mail drop", "mail dropoff", "mailbox", "package drop", "pillar box", "pillarbox", "post box", "postal box", "postbox"]
-        },
         "amenity/place_of_worship/buddhist": {
           "name": "Buddhist Temple",
-          "terms": ["dojo", "monastery", "pagoda", "stupa", "temple", "vihara", "zendo"]
+          "terms": ["dojo", "monastery", "pagoda", "religion", "religious", "stupa", "temple", "vihara", "zendo"]
         },
         "amenity/place_of_worship/christian": {
           "name": "Christian Church",
-          "terms": ["abbey", "anglican", "baptist", "basilica", "bethel", "cathedral", "chancel", "chantry", "chapel", "christian", "episcopal", "evangelical", "fold", "house of god", "house of prayer", "house of worship", "latter day saints", "lds", "lutheran", "methodist", "minster", "mission", "mormon", "nondenominational", "oratory", "orthodox", "parish", "pentecostal", "presbyterian", "protestant", "reformed", "roman catholic", "sacellum", "sanctuary", "seventh day adventist", "shrine", "tabernacle", "temple"]
+          "terms": ["abbey", "anglican", "baptist", "basilica", "bethel", "cathedral", "chancel", "chantry", "chapel", "christian", "episcopal", "evangelical", "fold", "house of god", "house of prayer", "house of worship", "latter day saints", "lds", "lutheran", "methodist", "minster", "mission", "mormon", "nondenominational", "oratory", "orthodox", "parish", "pentecostal", "presbyterian", "protestant", "reformed", "religion", "religious", "roman catholic", "sacellum", "sanctuary", "seventh day adventist", "shrine", "tabernacle", "temple"]
         },
         "amenity/place_of_worship/hindu": {
           "name": "Hindu Temple",
-          "terms": ["alayam", "devasthana", "kovil", "kshetram", "mandir", "shrine", "temple"]
+          "terms": ["alayam", "devasthana", "kovil", "kshetram", "mandir", "religion", "religious", "shrine", "temple"]
         },
         "amenity/place_of_worship/jewish": {
           "name": "Jewish Synagogue",
-          "terms": ["jewish"]
+          "terms": ["jewish", "religion", "religious"]
         },
         "amenity/place_of_worship/muslim": {
           "name": "Muslim Mosque",
-          "terms": ["islam", "islamic center", "masjid", "muslim"]
+          "terms": ["islam", "islamic center", "masjid", "muslim", "religion", "religious"]
         },
         "amenity/place_of_worship/shinto": {
           "name": "Shinto Shrine",
-          "terms": ["kami", "torii"]
+          "terms": ["kami", "religion", "religious", "torii"]
         },
         "amenity/place_of_worship/sikh": {
           "name": "Sikh Temple",
-          "terms": ["gurudwara", "temple"]
+          "terms": ["gurudwara", "religion", "religious", "temple"]
         },
         "amenity/place_of_worship/taoist": {
           "name": "Taoist Temple",
-          "terms": ["daoist", "monastery", "temple"]
+          "terms": ["daoist", "monastery", "religion", "religious", "temple"]
         },
         "amenity/place_of_worship/christian/jehovahs_witness": {
           "name": "Kingdom Hall of Jehovah's Witnesses",
-          "terms": ["christian", "church", "house of god", "house of prayer", "house of worship"]
+          "terms": ["christian", "church", "house of god", "house of prayer", "house of worship", "religion", "religious"]
         },
         "amenity/place_of_worship/christian/la_luz_del_mundo": {
           "name": "La Luz del Mundo Temple",
-          "terms": ["christian", "church", "house of god", "house of prayer", "house of worship", "the light of the world church"]
+          "terms": ["christian", "church", "house of god", "house of prayer", "house of worship", "religion", "religious", "the light of the world church"]
         },
         "amenity/place_of_worship/christian/quaker": {
           "name": "Quaker Friends Meeting House",
-          "terms": ["christian", "church", "house of god", "house of prayer", "house of worship"]
+          "terms": ["christian", "church", "house of god", "house of prayer", "house of worship", "religion", "religious"]
         },
         "amenity/parking_space/disabled": {
           "name": "Accessible Parking Space",
@@ -6407,10 +6462,12 @@
           "terms": ["community center"]
         },
         "amenity/community_centre/cultural_centre": {
-          "name": "Cultural Centre"
+          "name": "Cultural Center",
+          "terms": ["cultural centre"]
         },
         "amenity/community_centre/family_centre": {
-          "name": "Family Centre"
+          "name": "Family Center",
+          "terms": ["family centre"]
         },
         "amenity/community_centre/lgbtq": {
           "name": "LGBTQ+ Community Center",
@@ -6443,6 +6500,14 @@
         "amenity/clinic/fertility": {
           "name": "Fertility Clinic",
           "terms": ["egg", "fertility", "ovulation", "reproductive", "sperm"]
+        },
+        "amenity/charging_station/charging_station_bicycle_designated": {
+          "name": "Bicycle Charging Station",
+          "terms": ["charger", "electric bicycle", "electric bike"]
+        },
+        "amenity/charging_station/charging_station_bicycle": {
+          "name": "Bicycle Charging Station",
+          "terms": ["charger", "electric bicycle", "electric bike"]
         },
         "amenity/cafe/bubble_tea": {
           "name": "Bubble Tea Cafe",
@@ -6522,6 +6587,10 @@
         },
         "aeroway/windsock": {
           "name": "Windsock"
+        },
+        "aerialway/station": {
+          "name": "Aerialway Station",
+          "terms": ["aerialway", "cable car", "public transit", "public transportation", "station", "terminal", "transit", "transportation"]
         },
         "aerialway/cable_car": {
           "name": "Cable Car",

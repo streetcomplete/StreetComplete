@@ -206,9 +206,6 @@
           "name": "Đổi tiền",
           "terms": ["đổi tiền", "chuyển đổi tiền tệ", "nơi đổi tiền", "quán đổi tiền", "máy đổi tiền", "trạm đổi tiền", "doi tien", "chuyen doi tien te", "noi doi tien", "quan doi tien", "may doi tien", "tram doi tien"]
         },
-        "amenity/bus_station": {
-          "name": "Ga Xe buýt"
-        },
         "amenity/cafe": {
           "name": "Quán Cà phê/Trà/Chè",
           "terms": ["quán cà phê", "cà phê", "quán café", "quán cafe", "quán trà", "trà", "quán chè", "chè", "quan ca phe", "quan cafe", "ca phe", "quan tra", "tra", "quan che", "che"]
@@ -328,9 +325,6 @@
           "name": "Sân Tập Lái xe",
           "terms": ["sân tập lái xe", "bãi tập lái xe", "sân đào tạo lái xe", "san tap lai xe", "bai tap lai xe", "san dao tao lai xe"]
         },
-        "amenity/embassy": {
-          "name": "Tòa đại sứ"
-        },
         "amenity/events_venue": {
           "name": "Trung tâm Sự kiện",
           "terms": ["trung tâm sự kiện", "trung tâm tiệc", "trung tâm cưới", "trung tâm tiệc cưới", "trung tâm cuộc họp", "trung tâm hội họp", "trung tam su kien", "trung tam tiec", "trung tam cuoi", "trung tam tiec cuoi", "trung tam cuoc hop", "trung tam hoi hop"]
@@ -385,9 +379,6 @@
         "amenity/fast_food/sandwich": {
           "name": "Tiệm Ăn nhanh Bánh mì kẹp",
           "terms": ["tiệm bánh mì kẹp", "tiệm bánh mỳ kẹp", "quán bánh mì kẹp", "quán bánh mỳ kẹp", "nhà hàng bánh mì kẹp", "nhà hàng bánh mỳ kẹp", "quán ăn bánh mì kẹp", "quán ăn bánh mỳ kẹp", "tiệm ăn nhanh bánh mì kẹp", "tiệm ăn nhanh bánh mỳ kẹp", "tiem banh mi kep", "tiem banh my kep", "quan banh mi kep", "quan banh my kep", "nha hang banh mi kep", "nha hang banh my kep", "quan an banh mi kep", "quan an banh my kep", "tiem an nhanh banh mi kep", "tiem an nhanh banh my kep"]
-        },
-        "amenity/ferry_terminal": {
-          "name": "Nhà ga Phà"
         },
         "amenity/fire_station": {
           "name": "Trạm Cứu hỏa",
@@ -493,16 +484,9 @@
           "name": "Câu lạc bộ Giải trí LGBTQ+",
           "terms": ["câu lạc bộ giải trí lgbtq+", "clb giải trí lgbtq+", "câu lạc bộ giải trí lgbtq", "lcb giải trí lgbtq", "câu lạc bộ giải trí lgbtqia", "clb giải trí lgbtqia", "câu lạc bộ giải trí lgbt", "clb giải trí lgbt", "câu lạc bộ giải trí glbtq+", "clb giải trí glbtq+", "câu lạc bộ giải trí lgb", "clb giải trí lgb", "câu lạc bộ giải trí đồng tính luyến ái", "clb giải trí đồng tính luyến ái", "câu lạc bộ giải trí song tính luyến ái", "clb giải trí song tính luyến ái", "câu lạc bộ giải trí chuyển giới", "clb giải trí chuyển giới", "cau lac bo giai tri lgbtq+", "clb giai tri lgbtq+", "cau lac bo giai tri lgbtq", "lcb giai tri lgbtq", "cau lac bo giai tri lgbtqia", "clb giai tri lgbtqia", "cau lac bo giai tri lgbt", "clb giai tri lgbt", "cau lac bo giai tri glbtq+", "clb giai tri glbtq+", "cau lac bo giai tri lgb", "clb giai tri lgb", "cau lac bo giai tri dong tinh luyen ai", "clb giai tri dong tinh luyen ai", "cau lac bo giai tri song tinh luyen ai", "clb giai tri song tinh luyen ai", "cau lac bo giai tri chuyen gioi", "clb giai tri chuyen gioi"]
         },
-        "amenity/nursing_home": {
-          "name": "Viện Dưỡng lão"
-        },
         "amenity/parcel_locker": {
           "name": "Tủ Bưu kiện",
           "terms": ["tủ hàng", "tủ nhận hàng", "tủ gửi hàng", "tủ bưu kiện tủ nhận bưu kiện", "tủ gửi bưu kiện", "tủ đựng bưu kiện", "tủ khóa", "tủ khoá", "bưu kiện", "packstation", "tu hang", "tu nhan hang", "tu gui hang", "tu buu kien", "tu nhan buu kien", "tu gui buu kien", "tu dung buu kien", "tu khoa", "buu kien"]
-        },
-        "amenity/parking": {
-          "name": "Bãi Đậu xe",
-          "terms": ["bãi đậu xe", "sân đậu xe", "đậu xe", "bãi đỗ xe", "sân đỗ xe", "đỗ xe", "bai dau xe", "san dau xe", "dau xe", "bai do xe", "san do xe", "do xe"]
         },
         "amenity/parking/multi-storey": {
           "name": "Bãi Đậu xe Cao tầng",
@@ -1190,13 +1174,6 @@
         "barrier/yes": {
           "name": "Chướng ngại (Kiểu Không rõ)"
         },
-        "boundary": {
-          "name": "Biên giới"
-        },
-        "boundary/administrative": {
-          "name": "Ranh giới Hành chính",
-          "terms": ["biên giới hành chính", "ranh giới hanh chính", "bien gioi hanh chinh", "ranh gioi hanh chinh"]
-        },
         "bridge/support": {
           "name": "Cấu trúc Chống Cầu",
           "terms": ["cấu trúc chống cầu", "cấu trúc đỡ cầu", "cau truc chong cau", "cau truc do cau"]
@@ -1430,9 +1407,6 @@
           "name": "Phần Tòa nhà",
           "terms": ["phần tòa nhà", "phần toà nhà", "bộ phận tòa nhà", "bộ phận toà nhà", "mái nhà", "mái", "nóc nhà", "nóc", "phan toa nha", "bo phan toa nha", "mai nha", "mai", "noc nha", "noc"]
         },
-        "building_point": {
-          "name": "Tòa nhà"
-        },
         "cemetery/grave": {
           "name": "Mộ",
           "terms": ["mộ", "mồ", "mả", "phần mộ", "mo", "ma", "phan mo"]
@@ -1545,9 +1519,6 @@
           "name": "Làm thêm Chìa khóa",
           "terms": ["tiệm làm thêm chìa khóa", "tiệm làm thêm chìa khoá", "cửa hàng làm thêm chìa khóa", "cửa hàng làm thêm chìa khoá", "quầy làm thêm chìa khóa", "quầy làm thêm chìa khoá", "người làm thêm chìa khóa", "người làm thêm chìa khoá", "cờ-lê", "clê", "tiem lam them chia khoa", "cua hang lam them chia khoa", "quay lam them chia khoa", "nguoi lam them chia khoa", "co-le", "cle"]
         },
-        "craft/locksmith": {
-          "name": "Thợ Khóa"
-        },
         "craft/metal_construction": {
           "name": "Xưởng Cắt gọt Kim loại",
           "terms": ["xưởng cắt gọt kim loại", "thợ cắt gọt kim loại", "xưởng mài giũa kim loại", "thợ mài giũa kim loại", "xưởng mài dũa kim loại", "thợ màu dũa kim loại", "xuong cat got kim loai", "tho cat got kim loai", "xuong mai giua kim loai", "tho mai giua kim loai", "xuong mai dua kim loai", "tho mau dua kim loai"]
@@ -1615,9 +1586,6 @@
         "craft/stonemason": {
           "name": "Xây Đá",
           "terms": ["thợ xây đá", "người xây đá", "tho xay da", "nguoi xay da"]
-        },
-        "craft/tailor": {
-          "name": "May Quần áo"
         },
         "craft/tiler": {
           "name": "Lợp Ngói",
@@ -1769,9 +1737,6 @@
           "name": "Nơi Lội qua Sông",
           "terms": ["nơi lội qua sông", "chỗ lội qua sông", "nơi lội qua suối", "chỗ lội qua suối", "nơi cạn", "chỗ cạn", "noi loi qua song", "cho loi qua song", "noi lo qua suoi", "cho loi qua suoi", "noi can", "cho can"]
         },
-        "ford_line": {
-          "name": "Nơi Lội qua Sông"
-        },
         "golf/bunker": {
           "name": "Bẫy Cát",
           "terms": ["bẫy cát", "hố cát", "boongke", "boong-ke", "boong ke", "bunker", "bay cat", "ho cat"]
@@ -1836,14 +1801,6 @@
           "name": "Trung tâm Phụ sản",
           "terms": ["trung tâm phụ sản", "bệnh viện phụ sản", "nhà thương phụ sản", "trung tâm sinh sản", "trung tâm đẻ con", "trung tam phu san", "benh vien phu san", "nha thuong phu san", "trung tam sinh san", "trung tam đẻ con"]
         },
-        "healthcare/blood_donation": {
-          "name": "Trung tâm Hiến máu",
-          "terms": ["trung tâm hiến máu nhân đạo", "trung tâm hmnđ", "tthmnđ", "trạm hiến máu", "trung tam hien mau nhan dao", "trung tam hmnd", "tthmnd", "tram hien mau"]
-        },
-        "healthcare/counselling": {
-          "name": "Văn phòng Tham vấn Tâm lý",
-          "terms": ["văn phòng tham vấn tâm lý", "văn phòng tham vấn tâm lí", "bác sĩ tâm thần", "bác sĩ tâm lý", "bác sĩ tâm lí", "bác sỹ tâm thần", "bác sỹ tâm lý", "phòng khám tâm thần", "phòng khám khoa tâm thần", "phòng khám tâm lý", "phòng khám tâm lí", "van phong tham van tam ly", "van phong tham van tam li", "bac si tam than", "bac si tam ly", "bac si tam li", "bac sy tam than", "bac sy tam ly", "phong kham tam than", "phong kham khoa tam than", "phong kham tam ly", "phong kham tam li"]
-        },
         "healthcare/dentist/orthodontics": {
           "name": "Bác sĩ Chỉnh nha",
           "terms": ["bác sĩ chỉnh nha", "bác sĩ chỉnh hình răng", "bác sĩ chỉnh răng", "bac si chinh nha", "bac si chinh hinh rang", "bac si chinh rang"]
@@ -1867,10 +1824,6 @@
         "healthcare/optometrist": {
           "name": "Đo mắt",
           "terms": ["người đo mắt", "nhân viên đo thị lực", "nhà nhãn khoa", "bác sĩ nhãn khoa", "bác sỹ nhãn khoa", "nguoi do mat", "nhan vien do thi luc", "nha nhan khoa", "bac si nhan khoa", "bac sy nhan khoa"]
-        },
-        "healthcare/physiotherapist": {
-          "name": "Vật lý Trị liệu",
-          "terms": ["vật lý trị liệu", "vật lí trị liệu", "vat ly tri lieu", "vat li tri lieu"]
         },
         "healthcare/podiatrist": {
           "name": "Chữa Chân",
@@ -1905,9 +1858,6 @@
         "highway/bus_guideway": {
           "name": "Đường dẫn Xe buýt",
           "terms": ["đường dẫn xe buýt", "duong dan xe buyt"]
-        },
-        "highway/bus_stop": {
-          "name": "Trạm dừng Xe buýt"
         },
         "highway/construction": {
           "name": "Đường đang Xây dựng",
@@ -2260,9 +2210,6 @@
           "name": "Hành lang trong Nhà",
           "terms": ["hành lang trong nhà", "lối đi trong nhà", "hanh lang trong nha", "loi di trong nha"]
         },
-        "indoor/corridor_line": {
-          "name": "Hành lang trong Nhà"
-        },
         "indoor/door": {
           "name": "Cửa trong Nhà",
           "terms": ["cửa trong nhà", "cửa", "ô cửa", "ngưỡng cửa", "cua trong nha", "cua", "o cua", "nguong cua"]
@@ -2302,9 +2249,6 @@
           "name": "Nuôi trồng Thủy sản",
           "terms": ["nuôi trồng thủy sản", "nuôi trồng thuỷ sản", "nuôi thủy sản", "nuôi thuỷ sản", "trồng thủy sản", "trồng thuỷ sản", "nuoi trong thuy san", "nuoi thuy san", "trong thuy san"]
         },
-        "landuse/basin": {
-          "name": "Lưu vực"
-        },
         "landuse/brownfield": {
           "name": "Đất Bỏ hoang",
           "terms": ["đất bỏ hoang", "dat bo hoang"]
@@ -2324,9 +2268,6 @@
           "name": "Khu vực đang Xây dựng",
           "terms": ["khu vực đang xây dựng", "khu đang xây dựng", "vùng đang xây dựng", "đất đang xây dựng", "công trình xây dựng", "khu vuc dang xay dung", "khu dang xay dung", "vung dang xay dung", "dat dang xay dung", "cong trinh xay dung"]
         },
-        "landuse/farm": {
-          "name": "Đất Nông nghiệp"
-        },
         "landuse/farmland": {
           "name": "Đất Nông nghiệp",
           "terms": ["đất nông nghiệp", "đất trang trại", "đất nông trại", "đồn điền", "điền trang", "sơn trang", "cánh đồng", "dat nong nghiep", "dat trang trai", "dat nong trai", "don dien", "dien trang", "son trang", "canh dong"]
@@ -2342,10 +2283,6 @@
         "landuse/forest": {
           "name": "Rừng Trồng cây",
           "terms": ["rừng trồng cây", "rừng lâm nghiệp", "rừng lâm học", "rung trong cay", "rung lam nghiep", "rung lam hoc"]
-        },
-        "landuse/garages": {
-          "name": "Đất Ga ra",
-          "terms": ["đất ga ra", "đất ga-ra", "đất nhà để xe", "dat ga ra", "dat ga-ra", "dat nha de xe"]
         },
         "landuse/grass": {
           "name": "Cỏ",
@@ -2423,9 +2360,6 @@
           "name": "Vườn ươm",
           "terms": ["vườn ươm", "vuon uom"]
         },
-        "landuse/pond": {
-          "name": "Ao nước"
-        },
         "landuse/quarry": {
           "name": "Mỏ Đá",
           "terms": ["mỏ đá", "nơi lấy đá", "mo da", "noi lay da"]
@@ -2441,9 +2375,6 @@
         "landuse/religious": {
           "name": "Khu vực Tôn giáo",
           "terms": ["khu vực tôn giáo", "khu vuc ton giao"]
-        },
-        "landuse/reservoir": {
-          "name": "Hồ Chứa Nước"
         },
         "landuse/residential": {
           "name": "Đất Dân cư",
@@ -2827,9 +2758,6 @@
           "name": "Đường Đua (Không phải Đua Xe)",
           "terms": ["đường đua", "trường đua", "đường đua ngựa", "đường đua xe đạp", "duong dua", "truong dua", "duong dua ngua", "duong dua xe dap"]
         },
-        "leisure/track/athletics/running": {
-          "name": "Đường Chạy"
-        },
         "leisure/track/cycling": {
           "name": "Đường đua Xe đạp",
           "terms": ["đường đua xe đạp", "đua xe đạp", "trường đua xe đạp", "duong dua xe dap", "dua xe dap", "truong dua xe dap"]
@@ -3127,10 +3055,6 @@
         "military/checkpoint": {
           "name": "Trạm Kiểm soát Quân sự",
           "terms": ["trạm kiểm soát quân sự", "trạm kiểm soát quân đội", "trạm kiểm soát hải quân", "trạm kiểm soát không quân", "tram kiem soat quan su", "tram kiem soat quan doi", "tram kiem soat hai quan", "tram kiem soat khong quan"]
-        },
-        "military/nuclear_explosion_site": {
-          "name": "Nơi Nổ Vũ khí Hạt nhân",
-          "terms": ["nơi nổ vũ khí hạt nhân", "nơi nổ bom hạt nhân", "noi no vu khi hat nhan", "noi no bom hat nhan"]
         },
         "military/office": {
           "name": "Văn phòng Quân sự",
@@ -3474,9 +3398,6 @@
           "name": "Văn phòng Luật sư",
           "terms": ["văn phòng luật sư", "van phong luat su"]
         },
-        "office/lawyer/notary": {
-          "name": "Văn phòng Công chứng"
-        },
         "office/moving_company": {
           "name": "Văn phòng Công ty Chuyển nhà",
           "terms": ["văn phòng công ty chuyển nhà", "văn phòng công ti chuyển nhà", "văn phòng công ty dọn nhà", "văn phòng công ti dọn nhà", "văn phòng dịch vụ chuyển nhà", "văn phòng dịch vụ dọn nhà", "van phong cong ty chuyen nha", "van phong cong ti chuyen nha", "van phong cong ty don nha", "van phong cong ti don nha", "van phong dich vu chuyen nha", "van phong dich vu don nha"]
@@ -3535,9 +3456,6 @@
         "office/therapist": {
           "name": "Văn phòng Trị liệu",
           "terms": ["văn phòng trị liệu", "nhà trị liệu", "bác sĩ chuyên khoa", "bác sỹ chuyên khoa", "thầy thuốc chuyên khoa", "van phong tri lieu", "nha tri lieu", "bac si chuyen khoa", "bac sy chuyen khoa", "thay thuoc chuyen khoa"]
-        },
-        "office/travel_agent": {
-          "name": "Văn phòng Du lịch"
         },
         "office/water_utility": {
           "name": "Văn phòng Nhà cung cấp Nước uống",
@@ -3834,8 +3752,7 @@
           "terms": ["máy biến áp", "may bien ap"]
         },
         "public_transport/platform": {
-          "name": "Bến Phương tiện Công cộng",
-          "terms": ["trạm", "bến", "ke", "ke ga", "phương tiện công cộng", "ptcc", "giao thông công cộng", "gtcc", "tram", "ben", "phuong tien cong cong", "giao thong cong cong"]
+          "name": "Bến Phương tiện Công cộng"
         },
         "public_transport/platform/aerialway": {
           "name": "Bến Cáp treo",
@@ -3908,12 +3825,10 @@
           "terms": ["trạm dừng xe điện bánh hơi", "trạm xe điện bánh hơi", "trạm dừng xe buýt điện", "trạm xe buýt điện", "trạm dừng xe bus điện", "trạm xe bus điện", "điểm dừng xe điện bánh hơi", "điểm dừng xe buýt điện", "điểm dừng xe bus điện", "bến xe điện bánh hơi", "bến xe buýt điện", "bến xe bus điện", "ke xe điện bánh hơi", "ke xe buýt điện", "ke xe bus điện", "tram dung xe dien banh hoi", "tram xe dien banh hoi", "tram dung xe buyt dien", "tram xe buyt dien", "tram dung xe bus dien", "tram xe bus dien", "diem dung xe dien banh hoi", "diem dung xe buyt dien", "diem dung xe bus dien", "ben xe dien banh hoi", "ben xe buyt dien", "ben xe bus dien", "ke xe dien banh hoi", "ke xe buyt dien", "ke xe bus dien"]
         },
         "public_transport/platform_point": {
-          "name": "Trạm dừng/Bến Phương tiện Công cộng",
-          "terms": ["trạm dừng", "trạm", "điểm dừng", "bến", "ke", "ke ga", "phương tiện công cộng", "ptcc", "giao thông công cộng", "gtcc", "tram dung", "tram", "ben", "diem dung", "phuong tien cong cong", "giao thong cong cong"]
+          "name": "Trạm dừng/Bến Phương tiện Công cộng"
         },
         "public_transport/station": {
-          "name": "Nhà ga Phương tiện Công cộng",
-          "terms": ["nhà ga phương tiện công cộng", "nhà ga ptcc", "nhà ga giao thông công cộng", "nhà ga gtcc", "nha ga phuong tien cong cong", "nha ga ptcc", "nha ga giao thong cong cong", "nha ga gtcc"]
+          "name": "Nhà ga Phương tiện Công cộng"
         },
         "public_transport/station_aerialway": {
           "name": "Trạm Cáp treo",
@@ -3960,8 +3875,7 @@
           "terms": ["khu vực đón khách phương tiện công cộng", "khu vực đón khách ptcc", "khu vực đón khách giao thông công cộng", "khu vực đón khách gtcc", "khu vuc don khach phuong tien cong cong", "khu vuc don khach ptcc", "khu vuc don khach giao thong cong cong", "khu vuc don khach gtcc"]
         },
         "public_transport/stop_position": {
-          "name": "Nơi Đón khách Phương tiện Công cộng",
-          "terms": ["nơi đón khách phương tiện công cộng", "nơi đón khách ptcc", "nơi đón khách giao thông công cộng", "nơi đón khách gtcc", "nơi dừng lại", "chỗ đón khách phương tiện công cộng", "chỗ đón khách ptcc", "chỗ đón khách giao thông công cộng", "chỗ đón khách gtcc", "chỗ dừng lại", "noi don khach phuong tien cong cong", "noi don khach ptcc", "noi don khach giao thong cong cong", "noi don khach gtcc", "noi dung lai", "cho don khach phuong tien cong cong", "cho don khach ptcc", "cho don khach giao thong cong cong", "cho don khach gtcc", "cho dung lai"]
+          "name": "Nơi Đón khách Phương tiện Công cộng"
         },
         "public_transport/stop_position_aerialway": {
           "name": "Nơi Đón khách Cáp treo",
@@ -4026,9 +3940,6 @@
           "name": "Đường sắt Leo núi",
           "terms": ["đường sắt leo núi", "đường ray leo núi", "duong sat leo nui", "duong ray leo nui"]
         },
-        "railway/halt": {
-          "name": "Gà xép"
-        },
         "railway/level_crossing": {
           "name": "Điểm giao Đường sắt & Đường xe hơi",
           "terms": ["giao lộ đường sắt và đường xe hơi", "giao lộ đường ray và đường xe hơi", "nút giao đường sắt với đường xe hơi", "giao lo duong sat va duong xe hoi", "giao lo duong ray va duong xe hoi", "nut giao duong sat voi duong xe hoi"]
@@ -4057,9 +3968,6 @@
           "name": "Đường sắt Khổ hẹp",
           "terms": ["đường sắt khổ hẹp", "đường ray khổ hẹp", "đường sắt hẹp", "đường ray hẹp", "duong sat kho hep", "duong ray kho hep", "duong sat hep", "duong ray hep"]
         },
-        "railway/platform": {
-          "name": "Ke ga"
-        },
         "railway/preserved": {
           "name": "Đường sắt Di sản",
           "terms": ["đường sắt di sản", "đường xe lửa di sản", "duong sat di san", "duong xe lua di san"]
@@ -4079,9 +3987,6 @@
         "railway/signal": {
           "name": "Đèn Đường sắt",
           "terms": ["đèn đường sắt", "den duong sat"]
-        },
-        "railway/station": {
-          "name": "Nhà ga"
         },
         "railway/subway": {
           "name": "Đường Tàu điện ngầm",
@@ -4121,10 +4026,6 @@
         "relation": {
           "name": "Quan hệ",
           "terms": ["quan hệ", "liên kệ", "mối quan hệ", "mối liên hệ", "quan he", "lien ke", "moi quan he", "moi lien he"]
-        },
-        "route/ferry": {
-          "name": "Tuyến đường Phà",
-          "terms": ["phà", "chuyến phà", "bến phà", "lộ trình phà", "tuyến đường phà", "đường phà", "pha", "chuyen pha", "ben pha", "lo trinh pha", "tuyen duong pha", "duong pha"]
         },
         "seamark": {
           "name": "Dấu hiệu"
@@ -5099,10 +5000,6 @@
           "name": "Tuyến Đường ống",
           "terms": ["tuyến đường ống", "tuyến ống dẫn", "tuyen duong ong", "tuyen ong dan"]
         },
-        "type/route/power": {
-          "name": "Tuyến đường Dây điện",
-          "terms": ["tuyến đường dây điện", "tuyen duong day dien"]
-        },
         "type/route/railway": {
           "name": "Tuyến Đường sắt",
           "terms": ["tuyến đường sắt", "tuyến đường xe lửa", "tuyến đường tàu hỏa", "tuyến đường tàu hoả", "tuyen duong sat", "tuyen duong xe lua", "tuyen duong tau hoa"]
@@ -5205,6 +5102,202 @@
         "waterway/weir": {
           "name": "Đập Tràn",
           "terms": ["đập tràn", "đập nước thấp", "dap tran", "dap nuoc thap"]
+        },
+        "boundary": {
+          "name": "Ranh giới",
+          "terms": ["biên giới", "ranh giới", "bien gioi", "ranh gioi"]
+        },
+        "building_point": {
+          "name": "Tòa nhà",
+          "terms": ["tòa nhà", "toà nhà", "toa nha"]
+        },
+        "ford_line": {
+          "name": "Nơi Lội qua Sông",
+          "terms": ["nơi lội qua sông", "chỗ lội qua sông", "nơi lội qua suối", "chỗ lội qua suối", "nơi cạn", "chỗ cạn", "noi loi qua song", "cho loi qua song", "noi lo qua suoi", "cho loi qua suoi", "noi can", "cho can"]
+        },
+        "traffic_sign/maxspeed-US-CA-LR": {
+          "name": "Bảng Tốc độ Tối đa",
+          "terms": ["bảng tốc độ tối đa", "biển tốc độ tối đa", "bảng giới hạn tốc độ", "biển giới hạn tốc độ", "bang toc do toi da", "bien toc do toi da", "bang gioi han toc do", "bien gioi han toc do"]
+        },
+        "shop/ice_cream": {
+          "name": "Tiệm Kem",
+          "terms": ["tiệm kem", "cửa hàng kem", "quán kem", "quầy kem", "tiệm cà rem", "cửa hàng cà rem", "quán cà rem", "quầy cà rem", "tiệm cà-rem", "cửa hàng cà-rem", "quán cà-rem", "quầy cà-rem", "tiem kem", "cua hang kem", "quan kem", "quay kem", "tiem ca rem", "cua hang ca rem", "quan ca rem", "quay ca rem", "tiem ca-rem", "cua hang ca-rem", "quan ca-rem", "quay ca-rem"]
+        },
+        "route/ferry": {
+          "name": "Tuyến Phà",
+          "terms": ["tuyến phà", "lộ trình phà", "tuyen pha", "lo trinh pha"]
+        },
+        "railway/halt": {
+          "name": "Gà xép",
+          "terms": ["ga xép", "nhà ga xép", "ga xep", "nha ga xep"]
+        },
+        "railway/platform": {
+          "name": "Ke ga",
+          "terms": ["bến xe lửa", "bến tàu hỏa", "bến tàu hoả", "ke ga", "ben xe lua", "ben tau hoa"]
+        },
+        "railway/station": {
+          "name": "Nhà ga",
+          "terms": ["nhà ga", "nhà ga xe lửa", "nha ga", "nha ga xe lua"]
+        },
+        "office/travel_agent": {
+          "name": "Văn phòng Du lịch",
+          "terms": ["văn phòng du lịch", "công ty du lịch", "công ti du lịch", "cty du lịch", "đại lý du lịch", "đại lí du lịch", "du lịch theo nhóm", "tour", "vé máy bay", "van phong du lich", "cong ty du lich", "cong ti du lich", "cty du lich", "dai ly du lich", "dai li du lich", "du lich theo nhom", "ve may bay"]
+        },
+        "office/lawyer/notary": {
+          "name": "Văn phòng Công chứng",
+          "terms": ["văn phòng công chứng", "công chứng viên", "van phong cong chung", "cong chung vien"]
+        },
+        "natural/wood_point": {
+          "name": "Rừng Thiên nhiên",
+          "terms": ["rừng thiên nhiên", "rừng", "rung thien nhien", "rung"]
+        },
+        "leisure/track/athletics/running": {
+          "name": "Đường Chạy",
+          "terms": ["đường chạy", "đường chạy đua", "đường chạy điền kinh", "duong chay", "duong chay dua", "duong chay dien kinh"]
+        },
+        "landuse/basin": {
+          "name": "Bể",
+          "terms": ["bể", "bể nước", "bể nước mưa", "bồn", "vũng", "be", "be nuoc", "be nuoc mua", "bon", "vung"]
+        },
+        "landuse/reservoir": {
+          "name": "Hồ Chứa Nước",
+          "terms": ["hồ chứa nước", "bể chứa nước", "ho chua nuoc", "be chua nuoc"]
+        },
+        "landuse/industrial/industrial_point": {
+          "name": "Đất Công nghiệp",
+          "terms": ["đất công nghiệp", "khu vực công nghiệp", "vùng công nghiệp nhà máy", "xưởng", "dat cong nghiep", "khu vuc cong nghiep", "vung cong nghiep", "nha may", "xuong"]
+        },
+        "indoor/corridor_line": {
+          "name": "Hành lang trong Nhà",
+          "terms": ["hành lang trong nhà", "lối đi trong nhà", "hanh lang trong nha", "loi di trong nha"]
+        },
+        "highway/bus_stop": {
+          "name": "Trạm dừng Xe buýt",
+          "terms": ["trạm dừng xe buýt", "trạm dừng xe bus", "điểm dừng xe buýt", "điểm dừng xe bus", "tram dung xe buyt", "tram dung xe bus", "diem dung xe buyt", "diem dung xe bus"]
+        },
+        "highway/raceway_unspecific": {
+          "name": "Đường Đua Xe",
+          "terms": ["đường đua xe hơi", "đường đua ô tô", "đường đua ô-tô", "đường đua ôtô", "đường đua xe máy", "trường đua xe hơi", "trường đua ô tô", "trường đua ô-tô", "trường đua ôtô", "trường đua xe máy", "duong dua xe", "truong dua xe", "duong dua xe hoi", "duong dua o to", "duong dua o-to", "duong dua oto", "duong dua xe may", "truong dua xe hoi", "truong dua o to", "truong dua o-to", "truong dua oto", "truong dua xe may"]
+        },
+        "highway/traffic_sign": {
+          "name": "Bảng Giao thông",
+          "terms": ["bảng giao thông", "biển giao thông", "bảng báo giao thông", "biển báo giao thông", "bảng báo hiệu", "biển báo hiệu", "bang giao thong", "bien giao thong", "bang bao giao thong", "bien bao giao thong", "bang bao hieu", "bien bao hieu"]
+        },
+        "highway/motorway_link-US-CA": {
+          "name": "Nhánh Ra vào Đường Cao tốc",
+          "terms": ["đường nhánh cao tốc", "đoạn nhánh cao tốc", "đường nhánh rẽ cao tốc", "đoạn nhánh rẽ cao tốc", "đường nhánh chuyển đường cao tốc", "nhánh chuyển đường cao tốc", "lối ra vào đường cao tốc", "lối ra đường cao tốc", "lối vào đường cao tốc", "nhánh ra đường cao tốc", "nhánh vào đường cao tốc", "đường nối đường cao tốc", "duong nhanh cao toc", "doan nhanh cao toc", "duong nhanh re cao toc", "doan nhanh re cao toc", "duong nhanh chuyen duong cao toc", "nhanh chuyen duong cao toc", "loi ra vao duong cao toc", "loi ra duong cao toc", "loi vao duong cao toc", "nhanh ra duong cao toc", "nhanh vao duong cao toc", "duong noi duong cao toc"]
+        },
+        "highway/primary_link-US-CA": {
+          "name": "Nhánh Ra vào Đường Chính",
+          "terms": ["đường nhánh đường chính", "đường nhánh quốc lộ", "đường nhánh xa lộ", "đoạn nhánh đường chính", "đoạn nhánh quốc lộ", "đoạn nhánh xa lộ", "đường nhánh rẽ đường chính", "đường nhánh rẽ quốc lộ", "đường nhánh rẽ xa lộ", "đoạn nhánh rẽ đường chính", "đoạn nhánh rẽ quốc lộ", "đoạn nhánh rẽ xa lộ", "đường nhánh chuyển đường chính", "đường nhánh chuyển quốc lộ", "đường nhánh chuyển xa lộ", "nhánh chuyển đường chính", "nhánh chuyển quốc lộ", "nhánh chuyển xa lộ", "lối ra vào đường chính", "lối ra vào quốc lộ", "lối ra vào xa lộ", "lối ra đường chính", "lối ra quốc lộ", "lối ra xa lộ", "lối vào đường chính", "lối vào quốc lộ", "lối vào xa lộ", "nhánh ra đường chính", "nhánh ra quốc lộ", "nhánh ra xa lộ", "nhánh vào đường chính", "nhánh vào quốc lộ", "nhánh vào xa lộ", "đường nối đường chính", "đường nối quốc lộ", "đường nối xa lộ", "duong nhanh duong chinh", "duong nhanh quoc lo", "duong nhanh xa lo", "doan nhanh duong chinh", "doan nhanh quoc lo", "doan nhanh xa lo", "duong nhanh re duong chinh", "duong nhanh re quoc lo", "duong nhanh re xa lo", "doan nhanh re duong chinh", "doan nhanh re quoc lo", "doan nhanh re xa lo", "duong nhanh chuyen duong chinh", "duong nhanh chuyen quoc lo", "duong nhanh chuyen xa lo", "nhanh chuyen duong chinh", "nhanh chuyen quoc lo", "nhanh chuyen xa lo", "loi ra vao duong chinh", "loi ra vao quoc lo", "loi ra vao xa lo", "loi ra duong chinh", "loi ra quoc lo", "loi ra xa lo", "loi vao duong chinh", "loi vao quoc lo", "loi vao xa lo", "nhanh ra duong chinh", "nhanh ra quoc lo", "nhanh ra xa lo", "nhanh vao duong chinh", "nhanh vao quoc lo", "nhanh vao xa lo", "duong noi duong chinh", "duong noi quoc lo", "duong noi xa lo"]
+        },
+        "highway/trunk_link-US-CA": {
+          "name": "Nhánh Ra vào Đường Huyết mạch / Xa lộ",
+          "terms": ["nhánh ra vào đường huyết mạch", "đường nhánh đường huyết mạch", "lối ra vào đường huyết mạch", "lối ra đường huyết mạch", "lối vào đường huyết mạch", "đường nối đường huyết mạch", "nhánh ra vào xa lộ", "đường nhánh xa lộ", "lối ra vào xa lộ", "lối ra xa lộ", "lối vào xa lộ", "đường nối xa lộ", "nhánh ra vào đường trục", "đường nhánh đường trục", "lối ra vào đường trục", "lối ra đường trục", "lối vào đường trục", "đường nối đường trục", "nhanh ra vao duong huyet mach", "duong nhanh duong huyet mach", "loi ra vao duong huyet mach", "loi ra duong huyet mach", "loi vao duong huyet mach", "duong noi duong huyet mach", "nhanh ra vao xa lo", "duong nhanh xa lo", "loi ra vao xa lo", "loi ra xa lo", "loi vao xa lo", "duong noi xa lo", "nhanh ra vao duong truc", "duong nhanh duong truc", "loi ra vao duong truc", "loi ra duong truc", "loi vao duong truc", "duong noi duong truc"]
+        },
+        "highway/path/bicycle_foot": {
+          "name": "Đường Đi bộ & Xe đạp",
+          "terms": ["đường đi bộ xe đạp", "đường đi bộ và xe đạp", "đường xe đạp đi bộ", "đường xe đạp và đi bộ", "duong di bo xe dap", "duong di bo va xe dap", "duong xe dap di bo", "duong xe dap va di bo"]
+        },
+        "highway/path/crossing/bicycle_foot": {
+          "name": "Lối Đi bộ & Xe đạp Qua đường",
+          "terms": ["lối đi bộ và xe đạp qua đường", "loi di bo va xe dap qua duong"]
+        },
+        "craft/locksmith": {
+          "name": "Thợ khóa",
+          "terms": ["thợ khóa", "thợ sửa khóa", "thợ khoá", "trợ sửa khoá", "thợ kim khí", "tho khoa", "tho sua khoa", "tho kim khi"]
+        },
+        "craft/tailor": {
+          "name": "Tiệm May",
+          "terms": ["tiệm may", "cửa hàng may", "thợ may", "may quần áo", "tiem may", "cua hang may", "tho may", "may quan ao"]
+        },
+        "building/entrance": {
+          "name": "Cửa Ra vào",
+          "terms": ["lối vào", "cửa ra vào", "cửa ra", "cửa vào", "cổng vào", "loi vao", "cua ra vao", "cua ra", "cua vao", "cong vao"]
+        },
+        "building/glasshouse": {
+          "name": "Nhà kính",
+          "terms": ["nhà kính", "nhà kiếng", "nhà trồng rau", "nhà trồng hoa", "nha kinh", "nha kieng", "nha trong rau", "nha trong hoa"]
+        },
+        "building/house/detached": {
+          "name": "Nhà Tách biệt",
+          "terms": ["nhà tách biệt", "nhà biệt lập", "nha tach biet", "nha biet lap"]
+        },
+        "building/house/semi-detached": {
+          "name": "Nhà Bán tách biệt",
+          "terms": ["nhà bán tách biệt", "nhà bán biệt lập", "nha ban tach biet", "nha ban biet lap"]
+        },
+        "boundary/administrative": {
+          "name": "Ranh giới Hành chính",
+          "terms": ["biên giới hành chính", "ranh giới hành chính", "bien gioi hanh chinh", "ranh gioi hanh chinh"]
+        },
+        "amenity/bus_station": {
+          "name": "Ga Xe buýt",
+          "terms": ["nhà ga xe buýt", "nhà ga xe bus", "nhà ga buýt", "nha ga xe buyt", "nha ga xe bus", "nha ga buyt"]
+        },
+        "amenity/coworking_space": {
+          "name": "Văn phòng Làm việc Chung",
+          "terms": ["văn phòng làm việc chung", "không gian làm việc chung", "van phong lam viec chung", "khong gian lam viec chung"]
+        },
+        "amenity/embassy": {
+          "name": "Đại sứ quán",
+          "terms": ["đại sứ quán", "tòa đại sứ", "toà đại sứ", "dai su quan", "toa dai su"]
+        },
+        "amenity/ferry_terminal": {
+          "name": "Nhà ga Phà",
+          "terms": ["nhà ga phà", "bến phà", "nha ga pha", "ben pha"]
+        },
+        "amenity/nursing_home": {
+          "name": "Viện Dưỡng lão",
+          "terms": ["viện dưỡng lão", "nhà dưỡng lão", "nhà an dưỡng", "nơi an dưỡng", "nhà điều dưỡng", "nhà nghỉ dưỡng", "chăm sóc người già", "vien duong lao", "nha duong lao", "nha an duong", "noi an duong", "nha dieu duong", "nha nghi duong", "cham soc nguoi gia"]
+        },
+        "aerialway/station": {
+          "name": "Trạm Cáp treo",
+          "terms": ["trạm cáp treo", "trạm thang kéo"]
+        },
+        "@templates/contact": {
+          "name": "Địa điểm",
+          "terms": ["địa điểm", "điểm", "dia diem", "diem"]
+        },
+        "@templates/internet_access": {
+          "name": "Địa điểm",
+          "terms": ["địa điểm", "điểm", "dia diem", "diem"]
+        },
+        "@templates/poi": {
+          "name": "Địa điểm",
+          "terms": ["địa điểm", "điểm", "dia diem", "diem"]
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Địa điểm",
+          "terms": ["địa điểm", "điểm", "dia diem", "diem"]
+        },
+        "@templates/crossing/defaults": {
+          "name": "Địa điểm",
+          "terms": ["địa điểm", "điểm", "dia diem", "diem"]
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Địa điểm",
+          "terms": ["địa điểm", "điểm", "dia diem", "diem"]
+        },
+        "@templates/crossing/markings": {
+          "name": "Địa điểm",
+          "terms": ["địa điểm", "điểm", "dia diem", "diem"]
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Địa điểm",
+          "terms": ["địa điểm", "điểm", "dia diem", "diem"]
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Địa điểm",
+          "terms": ["địa điểm", "điểm", "dia diem", "diem"]
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Địa điểm",
+          "terms": ["địa điểm", "điểm", "dia diem", "diem"]
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Địa điểm",
+          "terms": ["địa điểm", "điểm", "dia diem", "diem"]
         }
       }
     }

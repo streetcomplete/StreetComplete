@@ -29,7 +29,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
           as otherwise we assume they don't provide seating (like bakery, wine shop...)
      */
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           (
             amenity ~ bar|cafe|biergarten|restaurant|food_court and (indoor_seating != no or outdoor_seating != no)
             or leisure = outdoor_seating
@@ -44,6 +44,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
           )
           and takeaway != only
           and (!smoking or smoking older today -8 years)
+          and access !~ private|no
     """
     override val changesetComment = "Survey whether smoking is allowed or prohibited"
     override val wikiLink = "Key:smoking"

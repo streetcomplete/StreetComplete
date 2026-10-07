@@ -2,6 +2,7 @@
 atmOperators: [Banco Metropolitano, Banco Popular de Ahorro, Banco de Crédito y Comercio, REDSA, BPA, Cajero Automático, Cajero automático, Cajeros Automáticos, BPP, Cajeros, Cajero, Banco de Credito y Comercio, BANDEC]
 centerLineStyle: yellow
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeb, typea]
 mobileCountryCode: 368
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna

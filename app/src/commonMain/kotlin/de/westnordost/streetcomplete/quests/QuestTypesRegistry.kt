@@ -61,12 +61,12 @@ import de.westnordost.streetcomplete.quests.camping.AddCampPower
 import de.westnordost.streetcomplete.quests.camping.AddCampShower
 import de.westnordost.streetcomplete.quests.camping.AddCaravans
 import de.westnordost.streetcomplete.quests.camping.AddTents
-import de.westnordost.streetcomplete.quests.doctor_type.AddDoctorType
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
 import de.westnordost.streetcomplete.quests.charge.AddParkingCharge
 import de.westnordost.streetcomplete.quests.charging_station_bicycles.AddChargingStationBicycles
 import de.westnordost.streetcomplete.quests.charging_station_access.AddChargingStationMotorcar
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
+import de.westnordost.streetcomplete.quests.socket.AddChargingStationSocket
 import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedBuildingConstruction
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedHighwayConstruction
@@ -82,6 +82,7 @@ import de.westnordost.streetcomplete.quests.diet_type.AddHalal
 import de.westnordost.streetcomplete.quests.diet_type.AddKosher
 import de.westnordost.streetcomplete.quests.diet_type.AddVegan
 import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian
+import de.westnordost.streetcomplete.quests.doctor_type.AddDoctorType
 import de.westnordost.streetcomplete.quests.drinking_water.AddDrinkingWater
 import de.westnordost.streetcomplete.quests.drinking_water_type.AddDrinkingWaterType
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
@@ -95,8 +96,8 @@ import de.westnordost.streetcomplete.quests.fire_hydrant_position.AddFireHydrant
 import de.westnordost.streetcomplete.quests.fire_hydrant_ref.AddFireHydrantRef
 import de.westnordost.streetcomplete.quests.firewood.AddFirewood
 import de.westnordost.streetcomplete.quests.first_aid_kit.AddFirstAidKitLocation
-import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.fuel_service.AddFuelSelfService
+import de.westnordost.streetcomplete.quests.general_access.AddGeneralAccess
 import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
 import de.westnordost.streetcomplete.quests.grit_bin_seasonal.AddGritBinSeasonal
 import de.westnordost.streetcomplete.quests.hairdresser.AddHairdresserCustomers
@@ -135,7 +136,6 @@ import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType
 import de.westnordost.streetcomplete.quests.pitch_lit.AddPitchLit
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
-import de.westnordost.streetcomplete.quests.playground_access.AddPlaygroundAccess
 import de.westnordost.streetcomplete.quests.police_type.AddPoliceType
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes
 import de.westnordost.streetcomplete.quests.postbox_ref.AddPostboxRef
@@ -171,6 +171,7 @@ import de.westnordost.streetcomplete.quests.summit.AddSummitRegister
 import de.westnordost.streetcomplete.quests.surface.AddBeachSurface
 import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface
 import de.westnordost.streetcomplete.quests.surface.AddFootwayPartSurface
+import de.westnordost.streetcomplete.quests.surface.AddMotorcycleParkingSurface
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
 import de.westnordost.streetcomplete.quests.surface.AddPitchSurface
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
@@ -182,12 +183,12 @@ import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingSteps
 import de.westnordost.streetcomplete.quests.toilet_availability.AddToiletAvailability
 import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee
 import de.westnordost.streetcomplete.quests.tourism_information.AddInformationToTourism
-import de.westnordost.streetcomplete.quests.tower_access.AddTowerAccess
 import de.westnordost.streetcomplete.quests.tracktype.AddTracktype
 import de.westnordost.streetcomplete.quests.traffic_calming_type.AddTrafficCalmingType
 import de.westnordost.streetcomplete.quests.traffic_signals_button.AddTrafficSignalsButton
 import de.westnordost.streetcomplete.quests.traffic_signals_sound.AddTrafficSignalsSound
 import de.westnordost.streetcomplete.quests.traffic_signals_vibrate.AddTrafficSignalsVibration
+import de.westnordost.streetcomplete.quests.vending_machine.AddVendingMachineType
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessBusiness
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessOutside
@@ -297,6 +298,7 @@ fun questTypeRegistry(
     // motorcycle parking
     30 to AddMotorcycleParkingCover(),
     31 to AddMotorcycleParkingCapacity(), // counting + number input required but usually well visible
+    200 to AddMotorcycleParkingSurface(),
     180 to AddMotorcycleParkingFee(),
 
     // air pump, may require some checking within a garage forecourt
@@ -322,6 +324,7 @@ fun questTypeRegistry(
     38 to AddCrossing(),
     164 to AddCrossingSignals(),
     39 to AddCrossingIsland(), // can be done at a glance
+    // 40 AddCrossingType(), - removed in https://github.com/streetcomplete/StreetComplete/pull/5471
     163 to AddCrossingMarkings(),
     41 to AddTactilePavingCrosswalk(),
     159 to AddCrossingKerbHeight(),
@@ -334,7 +337,7 @@ fun questTypeRegistry(
 
     46 to AddPoliceType(),
 
-    47 to AddPlaygroundAccess(),
+    // 47 to AddPlaygroundAccess(), - removed in https://github.com/streetcomplete/StreetComplete/pull/7109
 
     191 to AddBeachSurface(),
 
@@ -356,7 +359,7 @@ fun questTypeRegistry(
     55 to AddBicycleBarrierInstallation(),
     56 to AddStileType(),
     57 to AddStepCountStile(), // here to keep stile quest together - this quest will appear in low quest density anyway
-    198 to AddChargingStationMotorcar(),
+    200 to AddChargingStationMotorcar(),
 
     58 to AddBollardType(), // useful for first responders
 
@@ -364,6 +367,7 @@ fun questTypeRegistry(
 
     59 to AddSelfServiceLaundry(),
 
+    195 to AddGeneralAccess(),
     60 to AddGeneralFee(),
 
     61 to AddDrinkingWater(), // used by AnyFinder
@@ -377,7 +381,7 @@ fun questTypeRegistry(
     67 to AddFireHydrantRef(),
 
     160 to AddBbqFuel(),
-    182 to AddTowerAccess(),
+    // 182 to AddTowerAccess(), - removed in https://github.com/streetcomplete/StreetComplete/pull/7109
     185 to AddFirewood(),
     /* ↓ 2.solvable when right in front of it but takes longer to input --------------------- */
 
@@ -393,6 +397,8 @@ fun questTypeRegistry(
     173 to AddBicycleRepairStationServices(),
 
     167 to AddParcelLockerBrand(),
+    // 168 to AddParcelLockerPickup(), - removed in https://github.com/streetcomplete/StreetComplete/commit/bc8fc7907912c507742bdc4f17dcca03ddd49376
+    // 169 to AddParcelLockerMailIn(), - removed in https://github.com/streetcomplete/StreetComplete/commit/bc8fc7907912c507742bdc4f17dcca03ddd49376
 
     // address: usually only visible when just in front + sometimes requires to take "other answer"
     75 to AddHousenumber(getCountryInfoByLocation),
@@ -416,7 +422,10 @@ fun questTypeRegistry(
     // 179 to AddChargingStationBicycleCapacity(), - removed in https://github.com/streetcomplete/StreetComplete/pull/7083/
 
     186 to AddChargingStationBicycles(),
+    198 to AddChargingStationSocket(),
     88 to AddChargingStationOperator(),
+
+    194 to AddVendingMachineType(), // May take some time to find the machine in building with multiple levels
 
     // postboxes (collection times are further up, see comment)
     89 to AddPostboxRoyalCypher(), // can be glanced across the road (if postbox facing the right way)
@@ -432,6 +441,7 @@ fun questTypeRegistry(
     95 to AddMaxPhysicalHeight(arSupportChecker), // same as above, best if it appears right after (if enabled)
     96 to AddRoadName(),
     97 to AddOneway(),
+    // 98 to AddSuspectedOneway(), - removed in https://github.com/streetcomplete/StreetComplete/pull/5725
 
     99 to AddEntrance(),
     100 to AddEntranceReference(),
@@ -450,7 +460,7 @@ fun questTypeRegistry(
     184 to AddAerialwayBicycleAccess(),
     187 to AddOnewayAerialway(),
 
-    103 to AddProhibitedForPedestrians(), // need to understand the pedestrian situation
+    // 103 to AddProhibitedForPedestrians(), - removed in https://github.com/streetcomplete/StreetComplete/issues/7014
 
     104 to MarkCompletedHighwayConstruction(), // need to look the whole way
 
@@ -529,6 +539,8 @@ fun questTypeRegistry(
     137 to AddCycleway(getCountryInfoByLocation), // for any cyclist routers (and cyclist maps)
     181 to AddLaneMarkings(),
     138 to AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
+
+    // 139 to AddShoulder(), - removed in https://github.com/streetcomplete/StreetComplete/commit/2819a8d440fdf33fc1bff178679ae1fcfd739998
 
     140 to AddRoadWidth(arSupportChecker),
     141 to AddRoadSmoothness(),

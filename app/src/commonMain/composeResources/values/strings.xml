@@ -180,7 +180,7 @@
     <string name="quest_move_node_message">You can correct the position by moving the feature.\nMove it now?</string>
     <string name="node_moved_not_far_enough">Please move it further</string>
     <string name="node_moved_too_far">Moved too far. Consider leaving a note</string>
-    <string name="node_moved">Moved by %1$s</string>
+    <string name="node_moved">Moving by %1$s</string>
     <string name="move_node_description">Drag the map to place the feature at the correct position. Use the zoom function and try to be as precise as possible. Please be aware that your displayed location may be less exact than displayed.</string>
 
     <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
@@ -270,7 +270,7 @@
 
     <string name="quest_selection_hint_title">Too much to do?</string>
     <string name="quest_selection_hint_message">Contributing should primarily be fun!\n\nIf you are overwhelmed by the number of quests, you can always fine-tune which quests are displayed to you and in what order in the settings.</string>
-
+    <string name="quest_selection_hint_message_open_settings">Open settings</string>
     <string name="weekly_osm_new_edition_title">New Edition!</string>
     <string name="calendar_new_event_title">New OSM event in your area!</string>
 
@@ -365,7 +365,7 @@
     <!-- Credits screen -->
 
     <string name="credits_author_title">Author and maintainer</string>
-    <string name="credits_main_contributors_title">Main contributors</string>
+    <string name="credits_main_contributors_title">Current main contributors</string>
     <string name="credits_contributors_title">Code contributors</string>
     <string name="credits_contributors">See the &lt;a href="https://github.com/streetcomplete/StreetComplete/graphs/contributors"&gt;complete list on GitHub&lt;/a&gt;.</string>
     <string name="credits_translations_title">Translations</string>
@@ -508,6 +508,7 @@
     <string name="link_backofyourhand_description">How well do you know your area? Test your knowledge by locating streets.</string>
     <string name="link_notesreview_description">Conveniently see, filter and comment on notes created by you and others. Many notes can be solved by putting the information contained in them on the map with iD or JOSM</string>
     <string name="link_transitous_description">Provider-neutral, free, and open-source public transport routing.</string>
+    <string name="link_waymarked_description">Shows marked paths for hiking, cycling, mtb, riding, skating and winter sports.</string>
 
     <!-- Achievement screen -->
 
@@ -679,11 +680,6 @@
     <string name="quest_accessPointRef_answer_assembly_point">It’s an Assembly Point</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">An Assembly Point is where people assemble in case of an emergency. It usually looks similar to this:</string>
 
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians forbidden to walk on this road without a sidewalk here?</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">It is forbidden.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">It is allowed.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Actually, there is a sidewalk.</string>
-
     <string name="quest_address_title">What’s the house number of this building?</string>
     <string name="quest_address_house_number_label">House number:</string>
     <string name="quest_address_house_name_label">House name:</string>
@@ -709,7 +705,7 @@
     <string name="quest_address_street_no_named_streets">It does not belong to a named street…</string>
     <string name="quest_address_street_place_name_label">Place name:</string>
     <string name="quest_address_street_street_name_label">Street name:</string>
-    <string name="quest_address_street_hint2">Tap street on map to select it</string>
+    <string name="quest_address_street_hint2">Tap street on map to select its name.</string>
 
     <string name="quest_aerialway_bicycle_title">Does this aerial lift transport bicycles?</string>
     <string name="quest_aerialway_bicycle_summer">Only in summer</string>
@@ -903,7 +899,7 @@
     <string name="quest_buildingType_residential">Residential</string>
     <string name="quest_buildingType_residential_description">building where people live</string>
     <string name="quest_buildingType_house">House</string>
-    <string name="quest_buildingType_house_description2">non-detached single-family home, e.g. a single row house</string>
+    <string name="quest_buildingType_house_description2">non-detached single-family home</string>
     <string name="quest_buildingType_apartments">Apartment building</string>
     <string name="quest_buildingType_apartments_description">house for multiple families, may have retail outlets on the ground floor</string>
     <string name="quest_buildingType_detached">Detached house</string>
@@ -911,7 +907,9 @@
     <string name="quest_buildingType_semi_detached">Semi-detached house</string>
     <string name="quest_buildingType_semi_detached_description2">adjoined single-family home(s)</string>
     <string name="quest_buildingType_terrace2">Row houses</string>
+    <string name="quest_buildingType_terraced_house">Individual row house</string>
     <string name="quest_buildingType_terrace_description">a linear row of similar single-family homes</string>
+    <string name="quest_buildingType_terraced_house_description">an individual house in a row of similar houses</string>
     <string name="quest_buildingType_hotel">Hotel building</string>
     <string name="quest_buildingType_dormitory">Dormitory building</string>
     <string name="quest_buildingType_houseboat">Houseboat</string>
@@ -1042,6 +1040,23 @@
 
     <string name="quest_charging_station_car_access">Can cars be charged here?</string>
 
+    <string name="quest_charging_station_socket_title">How many sockets does this charging station have?</string>
+    <string name="quest_charging_station_socket_type1">Type 1 (J1772)</string>
+    <string name="quest_charging_station_socket_type1_combo">Type 1 Combo (CCS)</string>
+    <string name="quest_charging_station_socket_type2">Type 2 (Mennekes), no cable</string>
+    <string name="quest_charging_station_socket_type2_cable">Type 2 (Mennekes), with cable</string>
+    <string name="quest_charging_station_socket_type2_combo">Type 2 Combo (CCS)</string>
+    <string name="quest_charging_station_socket_type3a">Type 3A (Scame)</string>
+    <string name="quest_charging_station_socket_type3c">Type 3C (Scame)</string>
+    <string name="quest_charging_station_socket_chademo">CHAdeMO</string>
+    <string name="quest_charging_station_socket_chaoji">ChaoJi (CHAdeMO 3.0)</string>
+    <string name="quest_charging_station_socket_nacs">NACS (Tesla)</string>
+    <string name="quest_charging_station_socket_gb_ac">GB/T (China) - AC</string>
+    <string name="quest_charging_station_socket_gb_dc">GB/T (China) - DC</string>
+    <string name="quest_charging_station_socket_domestic">Any household socket</string>
+    <string name="quest_charging_station_other_socket">Other socket…</string>
+    <string name="quest_charging_station_add_socket">Add socket</string>
+
     <string name="quest_charging_station_operator_title">Who is the operator of this charging station?</string>
 
     <string name="quest_clothes_container_operator_title">Who accepts donations for this clothing bin?</string>
@@ -1154,6 +1169,10 @@
     <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
     <string name="quest_fuelSelfService_title">Does this gas station allow self-service?</string>
 
+    <string name="quest_generalAccess_title">Who may use this?</string>
+    <string name="quest_generalAccess_title2">Who may enter here?</string>
+    <string name="quest_generalAccess_title3">Who may stay here?</string>
+    <string name="quest_generalAccess_hint">Ignore any fees or charges. Whether access requires payment will be asked separately.</string>
     <string name="quest_generalFee_title">Do you need to pay to use this?</string>
     <string name="quest_generalFee_title2">Do you need to pay to enter here?</string>
     <string name="quest_generalFee_title3">Do you need to pay to stay here?</string>
@@ -1428,8 +1447,6 @@
     <string name="quest_placeName_title">What’s the name of this place?</string>
     <string name="quest_placeName_no_name_answer">There is no name sign…</string>
 
-    <string name="quest_playground_access_title2">Who is allowed to use this playground?</string>
-
     <string name="quest_policeType_title">Which type of police station is this?</string>
 
     <string name="quest_postboxCollectionTimes_title">What are the pickup times of this collection box?</string>
@@ -1542,7 +1559,7 @@
     <string name="quest_shop_gone_title">What’s here now instead?</string>
     <string name="quest_shop_gone_vacant_answer">It’s vacant…</string>
     <string name="quest_shop_gone_replaced_answer">A(n)…</string>
-    <string name="quest_shop_gone_replaced_answer_hint2">Type what you are looking for</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Type to search</string>
 
     <string name="quest_shower_hot_water_title">Is there hot water here?</string>
 
@@ -1561,8 +1578,6 @@
     <string name="quest_smoking_separated">Only in separated areas</string>
     <string name="quest_smoking_yes">Yes, everywhere</string>
 
-    <string name="quest_smoothness_square_title">What’s the surface quality of this square?</string>
-    <string name="quest_smoothness_road_title">What’s the surface quality of this road here?</string>
     <string name="quest_smoothness_title">What’s the surface quality here?</string>
     <string name="quest_smoothness_title_excellent">Smooth and even</string>
     <string name="quest_smoothness_title_good">Mostly even</string>
@@ -1715,6 +1730,7 @@
     <string name="quest_toiletAvailability_title">Is there a restroom here?</string>
 
     <string name="quest_toiletsFee_title">Do you have to pay to use this restroom?</string>
+    <string name="quest_toiletsFee_fee_for_non_customers">Only non-customers must pay a fee</string>
 
     <string name="quest_tourism_information_title">What type of tourist information is this?</string>
     <string name="quest_tourism_information_office">Tourist information office</string>
@@ -1729,8 +1745,6 @@
     <string name="quest_tracktype_grade3">Mixture</string>
     <string name="quest_tracktype_grade4">Mostly soft</string>
     <string name="quest_tracktype_grade5">Soft</string>
-
-    <string name="quest_tower_access_title">Who may access this tower? It may be free or paid.</string>
 
     <string name="quest_entrance_reference">What is signed at this entrance?</string>
     <string name="quest_entrance_reference_select_flat_range_and_code">Entrance label and range of flats</string>
@@ -1760,6 +1774,8 @@
 
     <string name="quest_traffic_signals_vibrate_title">Do these traffic lights have a tactile indication for blind people for when it’s safe to cross?</string>
     <string name="quest_traffic_signals_vibrate_description">Hint: Often this is a vibrating button or rotating cone on the underside of the traffic light button case.</string>
+
+    <string name="quest_vending_machine_type">What type of vending machine is this?</string>
 
     <string name="quest_wheelchairAccess_outside_title">Is this place wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">Is the restroom at this place wheelchair accessible?</string>
@@ -1866,6 +1882,7 @@
     <string name="lane_narrowing_traffic_calming_none">No narrowed lane here</string>
     <string name="quest_barrier_opening_width_gate">What is the width of the opening here?</string>
     <string name="quest_barrier_opening_width_bollard">What is the widest gap one can pass through here?</string>
+    <string name="quest_barrier_opening_not_wheelchair_accessible">Not suitable for wheelchairs</string>
 
     <!-- MTB = Mountainbike -->
     <string name="overlay_mtb_scale">MTB difficulty</string>

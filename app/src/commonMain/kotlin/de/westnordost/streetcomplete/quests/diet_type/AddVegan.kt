@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.resources.*
 class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           (
             amenity = ice_cream
             or shop = pastry

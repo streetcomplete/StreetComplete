@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddAirConditioning : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           (
             amenity ~ restaurant|cafe|fast_food|ice_cream|food_court|pub|bar|library|community_centre|youth_centre|ranger_station
             or tourism ~ apartment|hotel

@@ -24,3 +24,4 @@ captures
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
 xcuserdata
+/androidApp/release

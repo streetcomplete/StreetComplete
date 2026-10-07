@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete
 
 import de.westnordost.streetcomplete.ApplicationConstants.MAX_UNDO_HISTORY_AGE
 import de.westnordost.streetcomplete.data.FeedsUpdater
-import de.westnordost.streetcomplete.data.PeriodicCleaner
 import de.westnordost.streetcomplete.data.Preloader
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
@@ -29,12 +28,15 @@ class ApplicationInitializer(
     private val downloadedTilesController: DownloadedTilesController,
     private val prefs: Preferences,
     private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater,
+    private val appLocaleUpdater: AppLocaleUpdater,
 ) {
     private val scope = CoroutineScope(SupervisorJob() + CoroutineName("Application"))
 
     fun initialize() {
 
         setLoggerInstances()
+
+        appLocaleUpdater.start()
 
         resurveyIntervalsUpdater.update()
 

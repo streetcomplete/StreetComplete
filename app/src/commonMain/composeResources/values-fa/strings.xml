@@ -467,7 +467,6 @@
     <string name="underground">زیر زمین</string>
     <string name="quest_sidewalk_value_yes">پیاده‌رو</string>
     <string name="quest_sidewalk_value_no">بدون پیاده‌رو</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">آیا پیاده‌روی عابران در این جاده ممنوع است؟</string>
     <string name="quest_buildingType_title">نوع این ساختمان چیست؟</string>
     <string name="pref_title_theme_select">انتخاب زمینه</string>
     <string name="theme_light">روشن</string>
@@ -667,7 +666,6 @@
     <string name="at_housenumber">شماره خانه %1$s:</string>
     <string name="quest_openingHours_add_off_days">افزودن روزهای حراج</string>
     <string name="quest_openingHours_off_day">روز حراج</string>
-    <string name="quest_cycleway_resurvey_title">آیا اینجا هنوز خط دوچرخه‌سواری وجود دارد؟</string>
     <string name="pref_title_resurvey_intervals">فواصل تکرار بررسی</string>
     <string name="resurvey_intervals_less_often">کمتر بپرسید</string>
     <string name="resurvey_intervals_default">پیشفرض</string>
@@ -883,7 +881,6 @@
     <string name="quest_access_yes">همگانی</string>
     <string name="quest_access_customers">هر کسی که از یک مکان خاص بازدید می‌کند (به عنوان مثال فقط مشتریان)</string>
     <string name="quest_access_private">فقط افراد با مجوز</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">آیا زمان تخلیه این صندوق پستی هنوز درست است؟</string>
     <string name="quest_bicycle_barrier_type_title">محدودیت مسیر دوچرخه از چه نوعی است؟</string>
     <string name="quest_barrier_bicycle_type_diagonal">عبور از یک مسیر خاص</string>
     <string name="quest_barrier_bicycle_type_tilted">گذرگاه باریک، رو به جلو تنگ شونده</string>
@@ -920,8 +917,6 @@
     <string name="quest_fireHydrant_position_sidewalk">در پیاده‌رو</string>
     <string name="quest_fireHydrant_position_parking_lot">در یک پارکینگ</string>
     <string name="quest_generic_hasFeature_yes_leave_note">بله (یادداشت بگذارید)</string>
-    <string name="quest_smoothness_square_title">کیفیت سطح این میدان چگونه است؟</string>
-    <string name="quest_smoothness_road_title">کیفیت سطح این جاده در اینجا چگونه است؟</string>
     <string name="quest_smoothness_title_excellent">صاف و یک‌دست</string>
     <string name="quest_smoothness_title_good">اکثرا حتی</string>
     <string name="quest_smoothness_title_intermediate">کمی دست‌انداز</string>
@@ -974,7 +969,6 @@
     <string name="ar_core_tracking_error_camera_unavailable">برنامهٔ دیگری از دوربین استفاده می‌کند</string>
     <string name="quest_bicycle_parking_type_handlebarholder">نگهدارنده</string>
     <string name="quest_bicycle_parking_access_title2">چه کسی اجازه دارد اینجا دوچرخه پارک کند؟ پارکینگ ممکن است رایگان یا پولی باشد.</string>
-    <string name="quest_playground_access_title2">چه کسانی مجاز به استفاده از این زمین بازی هستند؟</string>
     <string name="ar_measure">اندازه‌گیری</string>
     <string name="ar_core_tracking_error_too_steep_angle">زاویه حاده، کمی فاصله بگیرید</string>
     <string name="default_disabled_msg_no_ar">برای حل این چالش به یک متر نواری نیاز دارید زیرا اندازه‌گیری با دوربین در این دستگاه پشتیبانی نمی‌شود.</string>
@@ -1030,7 +1024,6 @@
     <string name="quest_lit_title">آیا اینجا روشنایی دارد؟</string>
     <string name="quest_openingHours_title">ساعت کاری در اینجا چگونه است؟</string>
     <string name="quest_openingHours_signed_title">آیا ساعت کاری در اینجا نصب شده است؟</string>
-    <string name="quest_openingHours_resurvey_title">این ساعت کاری هنوز صحیح است؟</string>
     <string name="quest_placeName_title">نام این مکان چیست؟</string>
     <string name="quest_shop_type_title2">این چه نوع مغازه‌ای است؟</string>
     <string name="quest_smoking_title2">آیا سیگار کشیدن در اینجا مجاز است؟</string>
@@ -1303,8 +1296,6 @@
     <string name="default_disabled_msg_visible_sign_moped">این نوع جستجو به‌طور پیش‌فرض غیرفعال است، زیرا دسترسی به موتورسیکلت فقط با یک علامت خاص در شروع/پایان یک مسیر دوچرخه‌سواری نشان داده می‌شود.</string>
     <string name="quest_arrow_tutorial">فلش‌های تصویر به سمت جهت‌هایی که مسیر روی نقشه در محل پین مرکزی آن اجرا می‌شود، اشاره می‌کند. سعی کنید نقشه را بچرخانید و آن را دریافت خواهید کرد.</string>
     <string name="info">اطلاعات بیشتر</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">ممنوع است.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">مجاز است.</string>
     <string name="quest_buildingLevels_hint">برای ساختمان‌های شیب‌دار، شمارش سطح از سطح زمین پایین‌ترین سمت شروع می‌شود.
 
 یک سطح زمانی که پنجره‌های آن در پشت بام باشد به عنوان سطح مسقف محسوب می‌شود. پس از آن، سقف‌هایی با سطح سقف صفر لزوماً مسطح نیستند، فقط برای کل سطح به اندازه کافی بلند نیستند.</string>
@@ -1345,7 +1336,6 @@
     <string name="action_messages">نمایش پیام‌ها</string>
     <string name="action_create_new_poi">ایجاد جدید</string>
     <string name="auth_error">خطای مجوز. لطفاً دوباره وارد شوید.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">واقعاً، یک پیاده رو اینجاست.</string>
     <string name="quest_bicycle_repair_station_services_title">چه نوع لوازم دوچرخه در اینجا موجود است؟</string>
     <string name="quest_bicycle_repair_station_pump">پمپ</string>
     <string name="quest_bicycle_repair_station_tools">ابزارهای مختلف</string>
@@ -1430,7 +1420,6 @@
     <string name="quest_bicycle_charging_station_capacity_title">چند دوچرخه را می‌توان همزمان در اینجا شارژ کرد؟</string>
     <string name="quest_charging_station_bicycles_title">دوچرخه‌ها را می‌توان در اینجا شارژ کرد؟</string>
     <string name="quest_charging_station_bicycles_hint">آداپتورهای برق شارژر دوچرخه به پریزهای برق معمولی خانگی وصل می‌شوند.</string>
-    <string name="quest_tower_access_title">چه کسی می‌تواند به این برج دسترسی داشته باشد؟ ممکن است رایگان یا پولی باشد.</string>
     <string name="quest_recycling_type_pet_bottles">بطری‌های PET</string>
     <string name="quest_maxweight_add_sign">اضافه‌کردن علامت</string>
     <string name="quest_maxweight_remove_sign">حذف‌کردن علامت</string>
@@ -1503,4 +1492,16 @@
 در غیر این صورت، می‌توانید صفحه‌کلید دیگری را از فروشگاه برنامه دانلود کنید. در اندروید، شاید بخواهید FlorisBoard یا HeliBoard را امتحان کنید.</string>
     <string name="bicycle_boulevard_is_a2">این یک بلوار دوچرخه است</string>
     <string name="bicycle_boulevard_is_not_a2">این یک بلوار دوچرخه نیست</string>
+    <string name="camera_permission_description">برای ضمیمه کردن عکس به یادداشت‌های نقشه، مجوز دوربین لازم است.</string>
+    <string name="resurvey_title">آیا این هنوز درست است؟</string>
+    <string name="add">اضافه</string>
+    <string name="quest_bothway_aerialway_confirm">آیا مطمئنید که یک نفر می‌تواند از این تله‌کابین در هر دو جهت استفاده کند؟</string>
+    <string name="quest_doctor_type_title">چه پزشکانی در اینجا حضور دارند؟</string>
+    <string name="quest_generalFee_title3">آیا برای اقامت در اینجا باید هزینه پرداخت کنید؟</string>
+    <string name="quest_access_permit">دارندگان مجوز (معمولاً قابل دریافت)</string>
+    <string name="unit_day">روز</string>
+    <string name="unit_hour">ساعت</string>
+    <string name="unit_minute">دقیقه</string>
+    <string name="quest_parking_charge_title">برای پارک کردن در اینجا چقدر باید پرداخت کنید؟</string>
+    <string name="quest_parking_charge_time_unit_label">به ازای هر</string>
 </resources>

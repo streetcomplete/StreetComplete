@@ -473,7 +473,6 @@ StreetComplete 서버에 있는 &lt;a href="https://www.westnordost.de/streetcom
     <string name="underground">지하</string>
     <string name="quest_sidewalk_value_yes">인도</string>
     <string name="quest_sidewalk_value_no">인도 없음</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">이 도로에 보행자 통행이 금지되어 있나요?</string>
     <string name="quest_buildingType_title">무슨 건물인가요?</string>
     <string name="pref_title_theme_select">테마 선택</string>
     <string name="theme_light">밝음</string>
@@ -678,7 +677,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="at_housenumber">건물 번호 %1$s</string>
     <string name="quest_openingHours_add_off_days">휴일 추가</string>
     <string name="quest_openingHours_off_day">휴일</string>
-    <string name="quest_cycleway_resurvey_title">현재 자전거 도로가 아래 형태 그대로인가요?</string>
     <string name="pref_title_resurvey_intervals">재조사 간격</string>
     <string name="resurvey_intervals_less_often">더 가끔 물어보기</string>
     <string name="resurvey_intervals_default">기본값</string>
@@ -891,7 +889,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_access_yes">누구나 가능</string>
     <string name="quest_access_customers">특정 장소에 방문하는 사람 (손님 등)만 가능</string>
     <string name="quest_access_private">권한이 있는 사람만 가능</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">이 우체통의 수거 시각이 아직도 맞나요?</string>
     <string name="quest_bicycle_barrier_type_title">어떤 종류의 자전거 방벽인가요?</string>
     <string name="quest_barrier_bicycle_type_diagonal">대각선 방향</string>
     <string name="quest_barrier_bicycle_type_tilted">좁은 통로, 위로 갈수록 좁아짐</string>
@@ -928,8 +925,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_fireHydrant_position_sidewalk">인도</string>
     <string name="quest_fireHydrant_position_parking_lot">주차 공간</string>
     <string name="quest_generic_hasFeature_yes_leave_note">예 (참고 남기기)</string>
-    <string name="quest_smoothness_square_title">이 광장의 표면 상태가 어떠한가요?</string>
-    <string name="quest_smoothness_road_title">이 도로의 노면 상태가 어떠한가요?</string>
     <string name="quest_smoothness_title_excellent">매끈하고 고름</string>
     <string name="quest_smoothness_title_good">대체로 고름</string>
     <string name="quest_smoothness_title_intermediate">일부 울퉁불퉁함</string>
@@ -982,7 +977,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="ar_core_tracking_error_camera_unavailable">다른 앱이 카메라 사용 중</string>
     <string name="quest_bicycle_parking_type_handlebarholder">핸들 거치대</string>
     <string name="quest_bicycle_parking_access_title2">여기에 자전거를 주차할 수 있는 사람이 누구인가요? 주차 요금은 있을 수도, 없을 수도 있습니다.</string>
-    <string name="quest_playground_access_title2">누가 이 놀이터를 이용할 수 있나요?</string>
     <string name="ar_measure">측정</string>
     <string name="ar_core_tracking_error_too_steep_angle">각도가 너무 가파릅니다, 조금 뒤로 물러나 보세요</string>
     <string name="default_disabled_msg_no_ar">이 기기에서는 카메라를 이용한 측량이 불가능하므로 이 질문을 해결하기 위해서는 줄자가 필요합니다.</string>
@@ -1038,7 +1032,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_lit_title">이곳에 조명이 있나요?</string>
     <string name="quest_openingHours_title">이곳의 영업시간이 언제인가요?</string>
     <string name="quest_openingHours_signed_title">이곳에 영업시간이 표시되어 있나요?</string>
-    <string name="quest_openingHours_resurvey_title">영업시간이 아직 동일하나요?</string>
     <string name="quest_placeName_title">이 장소의 이름이 뭔가요?</string>
     <string name="quest_shop_type_title2">이 상점의 종류가 무엇인가요?</string>
     <string name="quest_smoking_title2">이곳에서 흡연이 가능한가요?</string>
@@ -1311,8 +1304,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="default_disabled_msg_visible_sign_moped">이 질문 유형은 기본적으로 비활성화되어 있는데, 원동기장치자전거의 진입 여부는 자전거 도로의 시작과 끝에 있는 특정 표지판으로만 표시되기 때문입니다.</string>
     <string name="quest_arrow_tutorial">그림의 화살표는 지도의 중심 핀 위치에서 길이 이어지는 방향을 가리킵니다. 지도를 회전해 보면 이해가 될 거예요.</string>
     <string name="info">더 많은 정보 보기</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">보행자의 출입이 통제되어 있습니다.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">보행자의 출입이 가능합니다.</string>
     <string name="quest_buildingLevels_hint">경사면에 있는 건물의 경우 레벨 카운트는 가장 낮은 면의 지상 레벨에서 시작됩니다.
 
 층은 창문이 지붕에 있을 때 지붕 층으로 간주됩니다. 그 결과, 지붕 층이 0인 지붕은 반드시 평평하지는 않지만 전체 층에 충분히 높지는 않습니다.</string>
@@ -1353,7 +1344,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="action_messages">메시지 보이기</string>
     <string name="action_create_new_poi">새로 만들기</string>
     <string name="auth_error">인증 오류. 다시 로그인을 시도하세요.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">실제로는, 보도가 있습니다.</string>
     <string name="quest_bicycle_repair_station_services_title">여기에서 사용할 수 있는 자전거 장비는 무엇인가요?</string>
     <string name="quest_bicycle_repair_station_pump">공기 주입기</string>
     <string name="quest_bicycle_repair_station_tools">다양한 도구</string>
@@ -1437,5 +1427,4 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_bicycle_charging_station_capacity_title">이 충전소에서 최대 몇 대의 자전거가 동시에 충전할 수 있나요?</string>
     <string name="quest_charging_station_bicycles_title">이곳에서 자전거도 충전할 수 있나요?</string>
     <string name="quest_charging_station_bicycles_hint">자전거 충전기 어댑터는 일반 가정용 콘센트에 꽂습니다.</string>
-    <string name="quest_tower_access_title">누가 이 타워에 출입할 수 있나요? 무료일 수도, 유료일 수도 있습니다.</string>
 </resources>

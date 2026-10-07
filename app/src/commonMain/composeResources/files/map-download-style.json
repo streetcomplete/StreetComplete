@@ -1,0 +1,13 @@
+{
+  "version": 8,
+  "sources": {
+    "jawg": {
+      "type": "vector",
+      "tiles": [
+        "https://tile.jawg.io/streets-v2+hillshade-v1/{z}/{x}/{y}.pbf?access-token=mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ"
+      ],
+      "maxzoom": 16
+    }
+  },
+  "layers": []
+}

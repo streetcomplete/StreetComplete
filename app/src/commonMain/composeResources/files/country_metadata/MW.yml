@@ -2,6 +2,7 @@
 atmOperators: [Standard Bank, National Bank, FDH, Ecobank, National Bank of Malawi, NBS Bank, FMB, FDH Bank]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeg]
 edgeLineStyle: yellow
 hasLivingStreet: true
 isLeftHandTraffic: true

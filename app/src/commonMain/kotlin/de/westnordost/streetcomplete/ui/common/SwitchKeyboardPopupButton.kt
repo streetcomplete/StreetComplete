@@ -12,17 +12,20 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Popup
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.ic_keyboard_24
+import de.westnordost.streetcomplete.ui.common.auto_complete_text.DropdownMenuPositionProvider
+import de.westnordost.streetcomplete.ui.common.auto_complete_text.calculateTransformOrigin
 import de.westnordost.streetcomplete.ui.util.rememberScreenAlignmentPopupPositionProvider
 import org.jetbrains.compose.resources.painterResource
 
-/** Popup button to switch keyboard between ABC and 123, displayed in some corner of the screen.
- *
- *  Only works correctly in edge-to-edge. */
+/** Popup button to switch keyboard between ABC and 123, displayed in the same position as a
+ *  dropdown/popup menu. */
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun SwitchKeyboardPopupButton(
@@ -30,7 +33,8 @@ fun SwitchKeyboardPopupButton(
     onChange: (isAbc: Boolean) -> Unit,
     alignment: Alignment = Alignment.BottomStart,
 ) {
-    val popupPositionProvider = rememberScreenAlignmentPopupPositionProvider(alignment)
+    val popupPositionProvider = DropdownMenuPositionProvider(DpOffset.Zero, LocalDensity.current)
+
     Popup(popupPositionProvider) {
         FloatingActionButton(
             onClick = { onChange(!isAbc) },

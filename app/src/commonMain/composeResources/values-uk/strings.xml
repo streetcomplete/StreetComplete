@@ -469,7 +469,6 @@
     <string name="underground">під землею</string>
     <string name="quest_sidewalk_value_yes">тротуар</string>
     <string name="quest_sidewalk_value_no">немає тротуару</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Чи заборонено пішоходам ходити цією дорогою?</string>
     <string name="quest_buildingType_title">Якого типу ця будівля?</string>
     <string name="pref_title_theme_select">Оберіть тему</string>
     <string name="theme_light">Світла</string>
@@ -669,7 +668,6 @@
     <string name="at_housenumber">будинок номер %1$s</string>
     <string name="quest_openingHours_add_off_days">Додати вихідні</string>
     <string name="quest_openingHours_off_day">Вихідні</string>
-    <string name="quest_cycleway_resurvey_title">З велодоріжкою все як і було раніше?</string>
     <string name="pref_title_resurvey_intervals">Інтервал опитувань</string>
     <string name="resurvey_intervals_less_often">Опитувати рідше</string>
     <string name="resurvey_intervals_default">Типово</string>
@@ -881,7 +879,6 @@
     <string name="quest_access_yes">Будь-хто</string>
     <string name="quest_access_customers">Будь-який відвідувач закладу (наприклад, лише клієнти)</string>
     <string name="quest_access_private">Лише особа(-и) з дозволом</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Чи час забору кореспонденції для цієї скриньки все ще вірний?</string>
     <string name="quest_bicycle_barrier_type_title">Який це тип велобар'єру?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Діагональ на шляху</string>
     <string name="quest_barrier_bicycle_type_tilted">Вузький проїзд, менший у напрямку верха</string>
@@ -918,8 +915,6 @@
     <string name="quest_fireHydrant_position_sidewalk">На тротуарі</string>
     <string name="quest_fireHydrant_position_parking_lot">На стоянцi</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Так (залишити нотатку)</string>
-    <string name="quest_smoothness_square_title">Яка якість покриття цієї площі?</string>
-    <string name="quest_smoothness_road_title">Яка якість покриття цієї дороги тут?</string>
     <string name="quest_smoothness_title_excellent">Гладке і рівне</string>
     <string name="quest_smoothness_title_good">Переважно рівне</string>
     <string name="quest_smoothness_title_intermediate">Небагато вибоїн</string>
@@ -972,7 +967,6 @@
     <string name="ar_core_tracking_error_camera_unavailable">Камера використовується іншим застосунком</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Тримач керма</string>
     <string name="quest_bicycle_parking_access_title2">Кому дозволено паркувати тут велосипед? Парковка може бути безкоштовною або платною.</string>
-    <string name="quest_playground_access_title2">Хто може користуватися цим майданчиком?</string>
     <string name="ar_measure">Вимірювання</string>
     <string name="ar_core_tracking_error_too_steep_angle">Занадто гострий кут, відійдіть трохи назад</string>
     <string name="default_disabled_msg_no_ar">Щоб виконати цей квест, вам потрібна рулетка, оскільки вимірювання за допомогою камери не підтримується на цьому пристрої.</string>
@@ -1028,7 +1022,6 @@
     <string name="quest_lit_title">Чи освітлено тут?</string>
     <string name="quest_openingHours_title">Який тут розклад роботи?</string>
     <string name="quest_openingHours_signed_title">Тут написані години роботи?</string>
-    <string name="quest_openingHours_resurvey_title">Цей розклад роботи все ще правильний?</string>
     <string name="quest_placeName_title">Яка назва цього місця?</string>
     <string name="quest_shop_type_title2">Що це за магазин?</string>
     <string name="quest_smoking_title2">Чи дозволено тут палити?</string>
@@ -1301,8 +1294,6 @@
     <string name="default_disabled_msg_visible_sign_moped">Цей тип квесту вимкнено за замовчуванням, оскільки доступ для мопедів позначено спеціальними знаками на початку/кінці велодоріжки.</string>
     <string name="quest_arrow_tutorial">Стрілки на ілюстрації показують на напрямки, в яких проходить шлях на мапі в центральному місці позначки. Спробуйте повернути мапу, і у вас все вийде.</string>
     <string name="info">Більше інформації</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Це заборонено.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Це дозволено.</string>
     <string name="quest_buildingLevels_hint">Для будівель на схилі підрахунок поверхів починається від наземного поверху з найнижчого боку.
 
 Поверх вважається поверхом даху, якщо його вікна знаходяться в даху. Тому дахи з 0 поверхів не обов’язково є плоскими, просто недостатньо високими щоб вмістити поверх.</string>
@@ -1343,7 +1334,6 @@
     <string name="action_messages">Показати повідомлення</string>
     <string name="action_create_new_poi">Створити нову</string>
     <string name="auth_error">Помилка авторизації. Спробуйте знову.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Власне це тротуар.</string>
     <string name="quest_bicycle_repair_station_services_title">Яке велообладнання тут є?</string>
     <string name="quest_bicycle_repair_station_pump">Помпа</string>
     <string name="quest_bicycle_repair_station_tools">Різні інструменти</string>
@@ -1427,7 +1417,6 @@
     <string name="quest_bicycle_charging_station_capacity_title">Скільки велосипедів можна заряджати тут одночасно?</string>
     <string name="quest_charging_station_bicycles_title">Чи можна тут також заряджати велосипеди?</string>
     <string name="quest_charging_station_bicycles_hint">Адаптери живлення для велозарядок підключаються до звичайних розеток.</string>
-    <string name="quest_tower_access_title">Хто може відвідати цю вежу? Це може бути безкоштовно або платно.</string>
     <string name="quest_recycling_type_pet_bottles">ПЕТ пляшки</string>
     <string name="quest_maxweight_add_sign">Додати знак</string>
     <string name="quest_maxweight_remove_sign">Прибрати знак</string>
@@ -1500,4 +1489,16 @@
 Інакше ви можете завантажити іншу клавіатуру в магазині застосунків. На Android ви можете спробувати FlorisBoard чи HeliBoard.</string>
     <string name="bicycle_boulevard_is_a2">Це велобульвар</string>
     <string name="bicycle_boulevard_is_not_a2">Це не велобульвар</string>
+    <string name="camera_permission_description">Щоб додавати фотографії до нотаток на мапі, потрібен дозвіл на доступ до камери.</string>
+    <string name="resurvey_title">Це досі правильно?</string>
+    <string name="add">Додати</string>
+    <string name="quest_bothway_aerialway_confirm">Ви впевнені, що люди можуть їздити на цьому ліфті в обох напрямках?</string>
+    <string name="quest_doctor_type_title">Лікарі яких спеціальностей тут працюють?</string>
+    <string name="quest_generalFee_title3">Чи треба платити за проживання тут?</string>
+    <string name="quest_access_permit">Власники дозволів (зазвичай доступні)</string>
+    <string name="unit_day">день</string>
+    <string name="unit_hour">година</string>
+    <string name="unit_minute">хвилина</string>
+    <string name="quest_parking_charge_title">Скільки потрібно заплатити, щоб паркуватися тут?</string>
+    <string name="quest_parking_charge_time_unit_label">за</string>
 </resources>

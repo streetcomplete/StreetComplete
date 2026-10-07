@@ -132,9 +132,6 @@
           "name": "Geriamas vanduo",
           "terms": ["vanduo", "geriamas vanduo"]
         },
-        "amenity/embassy": {
-          "name": "Ambasada"
-        },
         "amenity/fast_food": {
           "name": "Greitas maistas",
           "terms": ["greitas maistas"]
@@ -186,9 +183,6 @@
         "amenity/nightclub": {
           "name": "Naktinis klubas",
           "terms": ["klubas", "naktinis klubas"]
-        },
-        "amenity/parking": {
-          "name": "Automobilių stovėjimo aikštelė"
         },
         "amenity/parking_space": {
           "name": "Stovėjimo vieta"
@@ -371,13 +365,6 @@
           "name": "Siena",
           "terms": ["siena"]
         },
-        "boundary": {
-          "name": "Riba"
-        },
-        "boundary/administrative": {
-          "name": "Administracinė riba",
-          "terms": ["riba", "administracinė riba", "siena"]
-        },
         "building": {
           "name": "Pastatas",
           "terms": ["pastatas", "namas", "statinys"]
@@ -517,9 +504,6 @@
           "name": "Sandėlis",
           "terms": ["sandėlys"]
         },
-        "building_point": {
-          "name": "Pastatas"
-        },
         "club": {
           "name": "Klubas"
         },
@@ -577,9 +561,6 @@
         "craft/key_cutter": {
           "name": "Raktininkas"
         },
-        "craft/locksmith": {
-          "name": "Šaltkalvis"
-        },
         "craft/painter": {
           "name": "Tapytojas",
           "terms": ["dažytojas", "dailininkas"]
@@ -621,9 +602,6 @@
         "craft/stonemason": {
           "name": "Mūrininkas",
           "terms": ["mūrininkas"]
-        },
-        "craft/tailor": {
-          "name": "Siuvėjas"
         },
         "craft/tinsmith": {
           "name": "Skardininkas"
@@ -670,9 +648,6 @@
         "ford": {
           "name": "Brasta",
           "terms": ["brasta"]
-        },
-        "ford_line": {
-          "name": "Brasta"
         },
         "golf/hole": {
           "name": "Golfo skylė",
@@ -850,9 +825,6 @@
         "landuse/aquaculture": {
           "name": "Akvakultūra"
         },
-        "landuse/basin": {
-          "name": "Vandens telkinys"
-        },
         "landuse/cemetery": {
           "name": "Kapinės",
           "terms": ["kapinės"]
@@ -864,9 +836,6 @@
           "name": "Komercinė zona",
           "terms": ["komercinė zona", "komercinė", "komercija"]
         },
-        "landuse/farm": {
-          "name": "Dirbama žemė"
-        },
         "landuse/farmland": {
           "name": "Dirbama žemė",
           "terms": ["dirbama žemė", "žemdirbystė"]
@@ -874,9 +843,6 @@
         "landuse/farmyard": {
           "name": "Ūkis",
           "terms": ["ūkis", "ūkio sodyba", "ferma"]
-        },
-        "landuse/garages": {
-          "name": "Garažų plotas"
         },
         "landuse/grass": {
           "name": "Ganykla",
@@ -921,15 +887,9 @@
           "name": "Vaismedžių sodas",
           "terms": ["sodas", "vaisių sodas"]
         },
-        "landuse/pond": {
-          "name": "Kūdra"
-        },
         "landuse/quarry": {
           "name": "Karjeras",
           "terms": ["karjeras"]
-        },
-        "landuse/reservoir": {
-          "name": "Rezervuaras"
         },
         "landuse/residential": {
           "name": "Gyvenamoji zona",
@@ -1029,9 +989,6 @@
         "leisure/swimming_pool": {
           "name": "Baseinas",
           "terms": ["baseinas", "maudymosi baseinas"]
-        },
-        "leisure/track/athletics/running": {
-          "name": "Bėgimo takelis"
         },
         "leisure/track/running": {
           "name": "Bėgimo takelis",
@@ -1271,9 +1228,6 @@
         "office/telecommunication": {
           "name": "Telekomunikacijų biuras"
         },
-        "office/travel_agent": {
-          "name": "Kelionių agentūra"
-        },
         "place": {
           "name": "Vietovė"
         },
@@ -1356,9 +1310,6 @@
           "name": "Nebenaudojamas geležinkelis",
           "terms": ["nenaudojamas geležinkelis", "nenaudojami bėgiai"]
         },
-        "railway/station": {
-          "name": "Traukinių stotis"
-        },
         "railway/subway_entrance": {
           "name": "Metro įėjimas",
           "terms": ["įėjimas į metro"]
@@ -1369,10 +1320,6 @@
         "relation": {
           "name": "Ryšys",
           "terms": ["ryšys"]
-        },
-        "route/ferry": {
-          "name": "Kelto maršrutas",
-          "terms": ["kelto maršrutas"]
         },
         "seamark": {
           "name": "Plūduras"
@@ -1806,9 +1753,6 @@
         "type/route/pipeline": {
           "name": "Vamzdyno maršrutas"
         },
-        "type/route/power": {
-          "name": "Energijos maršrutas"
-        },
         "type/route/road": {
           "name": "Kelio maršrutas"
         },
@@ -1856,6 +1800,125 @@
         },
         "waterway/weir": {
           "name": "Užtvanka"
+        },
+        "boundary": {
+          "name": "Riba",
+          "terms": ["riba", "siena"]
+        },
+        "building_point": {
+          "name": "Pastatas",
+          "terms": ["pastatas", "namas", "statinys"]
+        },
+        "ford_line": {
+          "name": "Brasta",
+          "terms": ["brasta"]
+        },
+        "shop/ice_cream": {
+          "name": "Ledų parduotuvė"
+        },
+        "route/ferry": {
+          "name": "Kelto maršrutas",
+          "terms": ["kelto maršrutas"]
+        },
+        "railway/station": {
+          "name": "Traukinių stotis",
+          "terms": ["geležinkleio stotis"]
+        },
+        "office/travel_agent": {
+          "name": "Kelionių agentūra",
+          "terms": ["kelionių agentūra"]
+        },
+        "leisure/track/athletics/running": {
+          "name": "Bėgimo takelis",
+          "terms": ["bėgimo takelis"]
+        },
+        "landuse/basin": {
+          "name": "Vandens telkinys",
+          "terms": ["prūdas", "kūdra", "baseinas"]
+        },
+        "landuse/reservoir": {
+          "name": "Rezervuaras",
+          "terms": ["tvenkinys", "rezervuaras"]
+        },
+        "landuse/industrial/industrial_point": {
+          "name": "Pramoninė zona",
+          "terms": ["pramoninė zona", "pramonė"]
+        },
+        "highway/bus_stop": {
+          "terms": ["stotelė", "autobusų stotelė", "troleibusų stotelė"]
+        },
+        "highway/traffic_sign": {
+          "name": "Eismo ženklas"
+        },
+        "craft/locksmith": {
+          "name": "Raktininkas",
+          "terms": ["šaltkalvis"]
+        },
+        "craft/tailor": {
+          "name": "Siuvėjas",
+          "terms": ["siuvėjas"]
+        },
+        "building/glasshouse": {
+          "name": "Šiltnamis",
+          "terms": ["šiltnamis"]
+        },
+        "building/house/detached": {
+          "name": "Atskirtas pastatas"
+        },
+        "building/house/semi-detached": {
+          "name": "Pusiau atskirtas namas"
+        },
+        "boundary/administrative": {
+          "name": "Administracinė riba",
+          "terms": ["riba", "administracinė riba", "siena"]
+        },
+        "amenity/embassy": {
+          "name": "Ambasada",
+          "terms": ["ambasada", "atstovybė"]
+        },
+        "@templates/contact": {
+          "name": "Taškas",
+          "terms": ["taškas"]
+        },
+        "@templates/internet_access": {
+          "name": "Taškas",
+          "terms": ["taškas"]
+        },
+        "@templates/poi": {
+          "name": "Taškas",
+          "terms": ["taškas"]
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Taškas",
+          "terms": ["taškas"]
+        },
+        "@templates/crossing/defaults": {
+          "name": "Taškas",
+          "terms": ["taškas"]
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Taškas",
+          "terms": ["taškas"]
+        },
+        "@templates/crossing/markings": {
+          "name": "Taškas",
+          "terms": ["taškas"]
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Taškas",
+          "terms": ["taškas"]
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Taškas",
+          "terms": ["taškas"]
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Taškas",
+          "terms": ["taškas"]
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Taškas",
+          "terms": ["taškas"]
         }
       }
     }

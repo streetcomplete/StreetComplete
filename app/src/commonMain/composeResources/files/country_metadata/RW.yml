@@ -3,6 +3,7 @@ atmOperators: [Bank of Kigali, Ecobank, KCB, BK]
 centerLineStyle: white
 chargingStationOperators: [Volkswagen]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeg, typec, typee, typef, universal_abcdefgio]
 edgeLineStyle: yellow
 mobileCountryCode: 635
 noParkingSignStyle: vienna variant

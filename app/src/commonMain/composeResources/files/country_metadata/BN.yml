@@ -2,6 +2,7 @@
 atmOperators: [BIBD, Baiduri Bank, Standard Chartered, TAIB, Maybank]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeg]
 edgeLineStyle: white
 isLeftHandTraffic: true
 mobileCountryCode: 528

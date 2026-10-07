@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [sr-Latn]
-atmOperators: [Payten, Euronet, Euronet Worldwide, Prva Banka CG, CKB, NLB, NLB Banka, Erste Bank, MoneyGet, Hipotekarna banka, CKB Banka, Addiko Bank, Prva Banka, Erste, Crnogorska Komercijalna Banka, Lovćen Banka, ERSTE Bank, Atlas Banka, ckbbanka, Hipotekarna Banka]
-chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
+atmOperators: [Payten, Euronet, Prva Banka CG, Euronet Worldwide, NLB, CKB, NLB Banka, Erste Bank, CKB Banka, Addiko Bank, MoneyGet, Hipotekarna banka, Prva Banka, Erste, Crnogorska Komercijalna Banka, Lovćen Banka, Hipotekarna Banka, ckbbanka, ERSTE Bank, Atlas Banka]
+domesticSocketTypes: [typef, typec]
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

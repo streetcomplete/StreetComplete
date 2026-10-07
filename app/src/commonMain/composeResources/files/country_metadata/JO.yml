@@ -1,8 +1,9 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
-atmOperators: [Capital Bank, Arab Bank, Cairo Amman Bank, Jordan Kuwait Bank, Housing Bank, Jordan Islamic Bank, دائرة الجمارك الأردنية, Salwa Islamic Bank, Islamic International Arab Bank, Bank al Etihad, Bank Al Etihad]
+atmOperators: [Capital Bank, Arab Bank, Cairo Amman Bank, Jordan Kuwait Bank, Housing Bank, Jordan Islamic Bank, دائرة الجمارك الأردنية, Islamic International Arab Bank, Bank al Etihad, Bank Al Etihad]
 centerLineStyle: yellow
 chargingStationOperators: [Tesla, JoPetrol]
+domesticSocketTypes: [universal_ac, universal_abcdefgio]
 hasAdvisorySpeedLimitSign: true
 mobileCountryCode: 416
 noParkingSignStyle: vienna

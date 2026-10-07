@@ -172,9 +172,6 @@
           "name": "Menjalnica",
           "terms": ["menjalnica", "menjava", "devize"]
         },
-        "amenity/bus_station": {
-          "name": "Avtobusna postaja / Terminal"
-        },
         "amenity/cafe": {
           "name": "Kavarna",
           "terms": ["bife", "kava", "bar", "kavarna"]
@@ -221,9 +218,6 @@
         },
         "amenity/community_centre": {
           "name": "Središče skupnosti"
-        },
-        "amenity/community_centre/cultural_centre": {
-          "name": "Kulturno središče / center"
         },
         "amenity/community_centre/youth_centre": {
           "name": "Mladinsko središče / center"
@@ -280,9 +274,6 @@
         "amenity/driver_training": {
           "name": "Poligon šole vožnje"
         },
-        "amenity/embassy": {
-          "name": "Veleposlaništvo"
-        },
         "amenity/events_venue": {
           "name": "Prireditveni prostor"
         },
@@ -301,9 +292,6 @@
         },
         "amenity/fast_food/chinese": {
           "name": "Kitajska hitra hrana"
-        },
-        "amenity/ferry_terminal": {
-          "name": "Trajektni terminal"
         },
         "amenity/fire_station": {
           "name": "Gasilska postaja",
@@ -376,12 +364,6 @@
         "amenity/nightclub": {
           "name": "Nočni klub",
           "terms": ["disko", "diskoteka"]
-        },
-        "amenity/nursing_home": {
-          "name": "Dom za bolniško nego"
-        },
-        "amenity/parking": {
-          "name": "Parkirišče"
         },
         "amenity/parking/multi-storey": {
           "name": "Parkirna hiša",
@@ -811,9 +793,6 @@
           "name": "Vrata \"na poljub\"",
           "terms": ["vrata ki skozi ograjo spustijo le po eno osebo naenkrat"]
         },
-        "barrier/lift_gate": {
-          "name": "Dvižna zapornica"
-        },
         "barrier/log": {
           "name": "Prepreka padlega drevesa"
         },
@@ -838,13 +817,6 @@
         },
         "barrier/wall/noise_barrier": {
           "name": "Zvočna pregrada"
-        },
-        "boundary": {
-          "name": "Meja"
-        },
-        "boundary/administrative": {
-          "name": "Upravne meje",
-          "terms": ["upravna razdelitev"]
         },
         "boundary/hazard": {
           "name": "Nevarno območje"
@@ -908,9 +880,6 @@
         "building/dormitory": {
           "name": "Študentski/Dijaški dom",
           "terms": ["študentski dom", "dijaški dom"]
-        },
-        "building/entrance": {
-          "name": "Vhod / izhod"
         },
         "building/farm": {
           "name": "Kmečka hiša"
@@ -1043,21 +1012,12 @@
         "building_part": {
           "name": "Del zgradbe"
         },
-        "building_point": {
-          "name": "Zgradba"
-        },
         "cemetery/grave": {
           "name": "Grob"
         },
         "cemetery/sector": {
           "name": "Odsek pokopališča",
           "terms": ["odsek pokopališča", "del pokopalošča"]
-        },
-        "climbing/crag": {
-          "name": "Plezalna skalna stena"
-        },
-        "climbing/route": {
-          "name": "Plezalna pot"
         },
         "climbing/route_bottom": {
           "name": "Začetek plezalne poti"
@@ -1151,9 +1111,6 @@
           "name": "Ključavničarstvo",
           "terms": ["izdelava dvojnikov ključev"]
         },
-        "craft/locksmith": {
-          "name": "Ključavničarstvo"
-        },
         "craft/metal_construction": {
           "name": "Kovinarstvo"
         },
@@ -1217,9 +1174,6 @@
         "craft/stonemason": {
           "name": "Klesarstvo",
           "terms": ["klesar"]
-        },
-        "craft/tailor": {
-          "name": "Krojaštvo"
         },
         "craft/tiler": {
           "name": "Keramičar",
@@ -1344,12 +1298,13 @@
           "name": "Plitvina",
           "terms": ["brodenje", "brod"]
         },
-        "ford_line": {
-          "name": "Plitvina"
-        },
         "golf/bunker": {
           "name": "Peščena ovira",
           "terms": ["bunker", "peščena ovira"]
+        },
+        "golf/clubhouse": {
+          "name": "Golfska klubska hiša",
+          "terms": ["golfska klubska hiša", "golf klubska hiša"]
         },
         "golf/fairway": {
           "name": "Čistina",
@@ -1360,8 +1315,8 @@
           "terms": ["golf", "travišče", "zelenica"]
         },
         "golf/hole": {
-          "name": "Luknja",
-          "terms": ["golf luknja"]
+          "name": "Golfska luknja",
+          "terms": ["golfska luknja", "golf luknja"]
         },
         "golf/lateral_water_hazard": {
           "name": "Bočne vodne ovire",
@@ -1395,15 +1350,9 @@
         "healthcare/birthing_center": {
           "name": "Porodnišnica"
         },
-        "healthcare/blood_donation": {
-          "name": "Krvodajalsko središče"
-        },
         "healthcare/hospice": {
           "name": "Hospic",
           "terms": ["umirajoči"]
-        },
-        "healthcare/physiotherapist": {
-          "name": "Fizioterapevt"
         },
         "healthcare/psychotherapist": {
           "name": "Psihoterapevt"
@@ -1566,7 +1515,7 @@
           "name": "Steza za motokros"
         },
         "highway/residential": {
-          "name": "Stanovanjska ulica",
+          "name": "Stanovanjska cesta",
           "terms": ["ulica", "naselje", "ulica v naselju"]
         },
         "highway/rest_area": {
@@ -1746,9 +1695,6 @@
         "indoor/corridor": {
           "name": "Notranji hodnik"
         },
-        "indoor/corridor_line": {
-          "name": "Notranji hodnik"
-        },
         "indoor/door": {
           "name": "Notranja vrata"
         },
@@ -1768,9 +1714,6 @@
         "landuse/aquaculture/fish": {
           "name": "Ribogojnica"
         },
-        "landuse/basin": {
-          "name": "Kotanja"
-        },
         "landuse/cemetery": {
           "name": "Pokopališče",
           "terms": ["navje", "grobišče", "žale", "britof"]
@@ -1787,9 +1730,6 @@
         },
         "landuse/education": {
           "name": "Izobraževalno območje"
-        },
-        "landuse/farm": {
-          "name": "Obdelovalna zemlja"
         },
         "landuse/farmland": {
           "name": "Obdelovalna zemlja",
@@ -1879,9 +1819,6 @@
           "name": "Drevesnica",
           "terms": ["drevesnica", "semenarna", "sadike", "vrtnarija", "vrtnarski center"]
         },
-        "landuse/pond": {
-          "name": "Črpališče iz ribnika"
-        },
         "landuse/quarry": {
           "name": "Kamnolom",
           "terms": ["peskokop"]
@@ -1892,9 +1829,6 @@
         "landuse/recreation_ground": {
           "name": "Rekreacijsko igrišče",
           "terms": ["zemljišče za rekreacijo", "igrišče", "orodja", "telovadba"]
-        },
-        "landuse/reservoir": {
-          "name": "Vodni zbiralnik"
         },
         "landuse/residential": {
           "name": "Stanovanjsko območje",
@@ -2053,9 +1987,6 @@
         "leisure/track": {
           "name": "Tekmovalna steza (neasfaltirana)",
           "terms": ["hipodrom", "kasaška steza", "drsališče (ne moto)", "krožna steza", "velodrom"]
-        },
-        "leisure/track/athletics/running": {
-          "name": "Tekaška steza"
         },
         "leisure/track/cycling": {
           "name": "Kolesarska dirkalna proga"
@@ -2261,9 +2192,6 @@
         },
         "military/bunker": {
           "name": "Vojaško zaklonišče"
-        },
-        "military/nuclear_explosion_site": {
-          "name": "Območje jedrskih poskusov"
         },
         "military/office": {
           "name": "Vojaške pisarne"
@@ -2558,9 +2486,6 @@
           "name": "Pravna pisarna",
           "terms": ["pravni urad", "advokat", "odvetništvo"]
         },
-        "office/lawyer/notary": {
-          "name": "Notarska pisarna"
-        },
         "office/ngo": {
           "name": "Sedež nevladne organizacije",
           "terms": ["nevladna organizacija"]
@@ -2584,9 +2509,6 @@
         },
         "office/translator": {
           "name": "Prevajalska pisarna"
-        },
-        "office/travel_agent": {
-          "name": "Potovalna agencija"
         },
         "pipeline": {
           "name": "Gradnik cevovoda"
@@ -2753,9 +2675,6 @@
         "railway/railway_crossing": {
           "name": "Prehod železniške proge čez železniško progo"
         },
-        "railway/station": {
-          "name": "Železniška postaja"
-        },
         "railway/subway": {
           "name": "Podzemna železniška proga"
         },
@@ -2778,10 +2697,6 @@
         "relation": {
           "name": "Zveza",
           "terms": ["relacija", "povezava", "odnos"]
-        },
-        "route/ferry": {
-          "name": "Trajektna linija",
-          "terms": ["trajekt"]
         },
         "shop": {
           "name": "Trgovina",
@@ -3335,10 +3250,6 @@
         "type/route/piste": {
           "name": "Smučarska proga"
         },
-        "type/route/power": {
-          "name": "Daljnovod",
-          "terms": ["daljnovod", "kablovod"]
-        },
         "type/route/railway": {
           "name": "Železniška proga"
         },
@@ -3424,6 +3335,229 @@
         "waterway/weir": {
           "name": "Zapornica",
           "terms": ["vodna zapornica"]
+        },
+        "boundary": {
+          "name": "Meja",
+          "terms": ["rob"]
+        },
+        "building_point": {
+          "name": "Zgradba",
+          "terms": ["hiša", "objekt", "stavba", "zgradba"]
+        },
+        "ford_line": {
+          "name": "Plitvina",
+          "terms": ["brodenje", "brod"]
+        },
+        "shop/ice_cream": {
+          "name": "Sladoledarna",
+          "terms": ["slaščičarna", "bistro"]
+        },
+        "route/ferry": {
+          "name": "Trajektna linija",
+          "terms": ["trajektna povezava"]
+        },
+        "railway/station": {
+          "name": "Železniška postaja",
+          "terms": ["kolodvor"]
+        },
+        "office/travel_agent": {
+          "name": "Turistična agencija",
+          "terms": ["potovalna agencija", "potovanje", "potovanja", "turizem"]
+        },
+        "office/lawyer/notary": {
+          "name": "Notarska pisarna"
+        },
+        "natural/wood_point": {
+          "name": "Naravni gozd"
+        },
+        "man_made/geoglyph_multilinestring": {
+          "name": "Geoglif"
+        },
+        "leisure/track/athletics/running": {
+          "name": "Tekaška steza"
+        },
+        "landuse/basin": {
+          "name": "Kotanja",
+          "terms": ["usedalnik"]
+        },
+        "landuse/reservoir": {
+          "name": "Vodni zbiralnik",
+          "terms": ["zbiralnik vode", "rezervar", "rezervoar", "zajetje", "vodno zajetje"]
+        },
+        "landuse/military/danger_area_point": {
+          "name": "Območje vojaške nevarnosti"
+        },
+        "landuse/industrial/industrial_point": {
+          "name": "Industrijsko področje",
+          "terms": ["industrijska cona", "industrijsko območje"]
+        },
+        "indoor/corridor_line": {
+          "name": "Notranji hodnik"
+        },
+        "highway/bus_stop": {
+          "terms": ["avtobusna postaja"]
+        },
+        "highway/raceway_unspecific": {
+          "name": "Motoristična dirkalna proga"
+        },
+        "highway/traffic_sign": {
+          "name": "Prometni znak"
+        },
+        "highway/motorway_link-US-CA": {
+          "name": "Avtocestni priključek",
+          "terms": ["priključek", "priključna rampa"]
+        },
+        "highway/primary_link-US-CA": {
+          "name": "Priključek na glavno cesto",
+          "terms": ["priključek na glavno cesto"]
+        },
+        "highway/trunk_link-US-CA": {
+          "name": "Priključek na hitro cesto",
+          "terms": ["priključek na cesto za motorna vozila"]
+        },
+        "highway/path/bicycle_foot": {
+          "name": "Pot za pešce in kolesarje"
+        },
+        "highway/path/crossing/informal": {
+          "name": "Neuraden prehod"
+        },
+        "highway/path/crossing/marked": {
+          "name": "Označen, nenadzorovan prehod za pešce in kolesarje"
+        },
+        "highway/path/crossing/bicycle_foot": {
+          "name": "Prehod za pešce in kolesarje"
+        },
+        "highway/footway/crossing/informal": {
+          "name": "Neuraden prehod"
+        },
+        "highway/footway/crossing/marked": {
+          "name": "Označen, nenadzorovan prehod za pešce"
+        },
+        "highway/footway/crossing/zebra": {
+          "name": "Označen, nenadzorovan prehod za pešce"
+        },
+        "highway/cycleway/crossing/marked": {
+          "name": "Označen, nenadzorovan prehod za kolesarje"
+        },
+        "highway/crossing/marked": {
+          "name": "Označen, nenadzorovan prehod"
+        },
+        "highway/crossing/zebra": {
+          "name": "Označen, nenadzorovan prehod"
+        },
+        "craft/locksmith": {
+          "name": "Ključavničar",
+          "terms": ["ključavničarstvo", "ključar"]
+        },
+        "craft/tailor": {
+          "name": "Krojač",
+          "terms": ["krojač", "oblačila"]
+        },
+        "climbing/route": {
+          "name": "Plezalna pot"
+        },
+        "building/entrance": {
+          "name": "Vhod / izhod"
+        },
+        "building/glasshouse": {
+          "name": "Rastlinjak",
+          "terms": ["rastlinjak", "topla greda"]
+        },
+        "building/house/detached": {
+          "name": "Samostojna hiša"
+        },
+        "building/house/semi-detached": {
+          "name": "Hiša dvojček"
+        },
+        "building/house/terrace": {
+          "name": "Niz vrstnih hiš"
+        },
+        "boundary/administrative": {
+          "name": "Upravna meja",
+          "terms": ["administrativna meja"]
+        },
+        "amenity/bus_station": {
+          "name": "Avtobusna postaja / Terminal"
+        },
+        "amenity/coworking_space": {
+          "name": "Prostor za sodelo"
+        },
+        "amenity/dancing_school": {
+          "name": "Plesna šola"
+        },
+        "amenity/driving_school": {
+          "name": "Šola vožnje"
+        },
+        "amenity/embassy": {
+          "name": "Veleposlaništvo",
+          "terms": ["ambasada", "konzulat"]
+        },
+        "amenity/kindergarten": {
+          "name": "Območje za predšolske / vrtca"
+        },
+        "amenity/language_school": {
+          "name": "Jezikovna šola"
+        },
+        "amenity/music_school": {
+          "name": "Glasbena šola"
+        },
+        "amenity/nursing_home": {
+          "name": "Dom za bolniško nego",
+          "terms": ["dom za ostarele", "dom za nego", "dom za oskrbo", "oskrbovalni dom", "dom za starostnike", "bolnišnični dom"]
+        },
+        "amenity/school": {
+          "name": "Šolsko območje"
+        },
+        "amenity/university": {
+          "name": "Univerzitetno območje"
+        },
+        "aerialway/station": {
+          "name": "Postaja žičnice",
+          "terms": ["žičniška postaja", "postaja gondole"]
+        },
+        "@templates/contact": {
+          "name": "Točka",
+          "terms": ["točka"]
+        },
+        "@templates/internet_access": {
+          "name": "Točka",
+          "terms": ["točka"]
+        },
+        "@templates/poi": {
+          "name": "Točka",
+          "terms": ["točka"]
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Točka",
+          "terms": ["točka"]
+        },
+        "@templates/crossing/defaults": {
+          "name": "Točka",
+          "terms": ["točka"]
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Točka",
+          "terms": ["točka"]
+        },
+        "@templates/crossing/markings": {
+          "name": "Točka",
+          "terms": ["točka"]
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Točka",
+          "terms": ["točka"]
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Točka",
+          "terms": ["točka"]
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Točka",
+          "terms": ["točka"]
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Točka",
+          "terms": ["točka"]
         }
       }
     }

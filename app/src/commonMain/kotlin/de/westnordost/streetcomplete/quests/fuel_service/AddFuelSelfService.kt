@@ -16,10 +16,11 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddFuelSelfService : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           amenity = fuel
           and !self_service
           and !automated
+          and access !~ private|no
     """
     override val changesetComment = "Survey whether fuel stations provide self-service"
     override val wikiLink = "Key:self_service"

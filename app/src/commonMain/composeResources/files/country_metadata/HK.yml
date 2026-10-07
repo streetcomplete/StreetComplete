@@ -3,7 +3,9 @@ advisorySpeedLimitSignStyle: white
 atmOperators: [香港上海滙豐銀行 HSBC, 中國銀行 Bank of China, 恒生銀行 Hang Seng Bank, 渣打銀行 Standard Chartered, 花旗銀行 Citibank, 東亞銀行 Bank of East Asia, HSBC, 中國工商銀行, Standard Chartered Bank]
 centerLineStyle: white
 chargingStationOperators: ['Tesla, Inc.', HKEV, HK Electric, Cornerstone Technologies, Tesla]
+chargingStationSocketTypes: [gb_ac, gb_dc]
 defaultSpeedLimitHasUrbanOrRural: false
+domesticSocketTypes: [typeg]
 edgeLineStyle: two yellow lines
 hasAdvisorySpeedLimitSign: true
 isLeftHandTraffic: true
@@ -11,7 +13,7 @@ mobileCountryCode: 454
 noStoppingLineStyle: double yellow
 officialLanguages: [en, zh]
 orchardProduces: [tomato]
-parcelLockerBrand: [順豐速運 SF Express]
+parcelLockerBrand: [順豐速運 SF Express, 香港郵政 Hongkong Post]
 popularReligions: [chinese_folk, taoist, buddhist]
 postboxesHaveCollectionTimes: true
 postboxesHaveRoyalCypher: true

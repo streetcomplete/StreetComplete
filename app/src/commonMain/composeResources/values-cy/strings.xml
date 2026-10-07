@@ -108,7 +108,7 @@ Cyn uwchlwytho eich newidiadau, mae'r ap yn cadarnhau drwy &lt;a href="https://w
     <string name="quest_surface_value_wood">Pren</string>
     <string name="quest_sidewalk_title">Oes gan y stryd hon balmant?</string>
     <string name="quest_address_title">Beth yw rhif tŷ'r adeilad hwn?</string>
-    <string name="store_listing_short_description">Ap arsylwi OpenStreetMap</string>
+    <string name="store_listing_short_description">Ap tirfesur OpenStreetMap</string>
     <string name="store_listing_full_description">Helpwch ni i wella OpenStreetMap gyda StreetComplete!
 
 Mae'r ap hwn yn dod o hyd i fap data coll yn eich cyffiniau ac yn eu harddangos ar fap fel cwestiynau. Datryswch pob cwestiwn drwy ymweld â'r lleoliad yn bersonol ac ateb cwestiwn syml i ddiweddaru'r map.
@@ -190,7 +190,7 @@ Os nad oes unrhyw arwyddion ar hyd y stryd cyfan sy'n berthnasol i'r adran a aml
     <string name="quest_streetName_answer_cantType">Ni ellir teipio'r symbolau ar yr arwydd</string>
     <string name="quest_streetName_cantType_title">Llunwedd bysellfwrdd ar goll?</string>
     <string name="quest_streetName_menuItem_nolanguage">(amhenodol)</string>
-    <string name="quest_fireHydrant_type_title">Pa fath o hydrant tân yw hwn?</string>
+    <string name="quest_fireHydrant_type_title">Pa fath o ddiffoddydd tân yw hwn?</string>
     <string name="quest_fireHydrant_type_pillar">Colofn</string>
     <string name="quest_fireHydrant_type_underground">Dan ddaear</string>
     <string name="quest_fireHydrant_type_wall">Wal</string>
@@ -256,7 +256,7 @@ Os nad oes unrhyw arwyddion ar hyd y stryd cyfan sy'n berthnasol i'r adran a aml
     <string name="produce_sweet_peppers">Pupurau melys</string>
     <string name="produce_brazil_nuts">Cnau Brasil</string>
     <string name="produce_tung_nuts">Cnau twng</string>
-    <string name="quest_parkingType_title">Pa fath o barcio yw hyn?</string>
+    <string name="quest_parkingType_title">Pa fath o barcio yw hwn?</string>
     <string name="quest_parkingType_surface">Maes parcio</string>
     <string name="quest_parkingType_underground">Garej dan ddaear</string>
     <string name="quest_parkingType_multiStorage">Garej parcio</string>
@@ -289,7 +289,7 @@ Os nad oes unrhyw arwyddion ar hyd y stryd cyfan sy'n berthnasol i'r adran a aml
     <string name="quest_dietType_explanation_vegan">Does gan prydau fegan dim cynnyrch anifail (dim cig, pysgod, dofednod, llaeth, wyau, mêl …).</string>
     <string name="quest_dietType_explanation_vegetarian">Does gan prydau llysieuol dim cig, pysgod na dofednod.</string>
     <string name="quest_dietType_explanation">Atebwch "ie" dim ond os mae'r lle yn darparu dewis cymharol o opsiynau bwyta am y deiet hwn</string>
-    <string name="quest_carWashType_title">Pa fath o golch ceir yw hyn?</string>
+    <string name="quest_carWashType_title">Pa fath o olchdy ceir yw hwn?</string>
     <string name="quest_carWashType_automated">Awtomatig</string>
     <string name="quest_carWashType_selfService">Hunanwasanaeth</string>
     <string name="quest_carWashType_service">Staff yn golchi ceir</string>
@@ -302,13 +302,13 @@ Os nad oes unrhyw arwyddion ar hyd y stryd cyfan sy'n berthnasol i'r adran a aml
     <string name="create_new_note_description">Gallwch chi adael nodyn i dynnu sylw mapwyr eraill at wall yma. Symudwch y map i addasu lleoliad y nodyn:</string>
     <string name="quest_generic_looks_like_this">Yn edrych fel hyn fel arfer:</string>
     <string name="quest_surface_value_metal">Metel</string>
-    <string name="quest_cycleway_title2">A oes lôn feicio neu llwybr beicio yma? Pa fath?</string>
+    <string name="quest_cycleway_title2">Oes lôn feicio neu llwybr beicio yma? Pa fath?</string>
     <string name="quest_bridge_structure_title">Beth yw strwythur y bont hon?</string>
     <string name="quest_internet_access_wlan">Di-Wifr</string>
     <string name="quest_internet_access_wired">Wifr (LAN)</string>
     <string name="quest_internet_access_terminal">Cyfrifiadur gyda mynediad i'r rhyngrwyd</string>
     <string name="quest_internet_access_no">Dim cysylltiad</string>
-    <string name="quest_bench_backrest_title">Oes gan y fainc hon cefnell?</string>
+    <string name="quest_bench_backrest_title">Oes gan y fainc hon gynhalydd cefn?</string>
     <string name="quest_bench_answer_picnic_table">Mae'n bwrdd picnic</string>
     <string name="quest_religion_for_place_of_worship_title">Pa crefydd sy'n cael ei ymarfer yma?</string>
     <string name="quest_religion_christian">Cristnogaeth</string>
@@ -329,17 +329,19 @@ Os nad oes unrhyw arwyddion ar hyd y stryd cyfan sy'n berthnasol i'r adran a aml
     <string name="quest_streetSurface_square_title">Pa fath o arwyneb sydd gan y sgwâr hon?</string>
     <string name="quest_fee_answer_hours">Mae'n dibynnu ar amser a dydd...</string>
     <string name="quest_fee_add_times">Ychwanegu amserau</string>
-    <string name="quest_housenumber_multiple_numbers">Mae ganddi fwy nag un rhif tŷ</string>
+    <string name="quest_housenumber_multiple_numbers">Mae mwy nag un rhif tŷ</string>
     <string name="quest_bicycle_parking_type_shed">Sied</string>
     <string name="quest_bicycle_parking_type_locker">Locer</string>
     <string name="quest_bicycle_parking_type_building">Adeilad</string>
-    <string name="quest_bicycle_parking_type_title">Pa fath o barcio beiciau yw hyn?</string>
+    <string name="quest_bicycle_parking_type_title">Pa fath o barcio beiciau yw hwn?</string>
     <string name="quest_postboxCollectionTimes_title">Beth yw amseroedd casglu'r blwch casglu hwn?</string>
     <string name="quest_collectionTimes_add_times">Ychwanegu amser casglu</string>
     <string name="quest_collectionTimes_answer_no_times_specified">Dim amseroedd penodol</string>
+    <string name="quest_construction_road_title">Ydy'r ffordd hon yn gyflawn?</string>
     <string name="quest_construction_cycleway_title">Ai gorffenedig yw'r trac beicio hwn?</string>
     <string name="quest_construction_footway_title">Ai gorffenedig yw'r llwybr troed hwn?</string>
     <string name="quest_construction_generic_title">Ai gorffenedig yw'r llwybr hwn?</string>
+    <string name="quest_construction_building_title">Ydy'r adeilad hwn yn gyflawn?</string>
     <string name="questList_disabled_in_country">Byth yn cael ei ddangos yn %1$s</string>
     <string name="quest_generic_item_confirmation">Wyt ti'n siŵr na alli ei diffinio yn fwy penodol?</string>
     <string name="quest_generic_hasFeature_no_leave_note">Na (gadael nodyn)</string>
@@ -479,7 +481,7 @@ Os nad oes unrhyw arwyddion ar hyd y stryd cyfan sy'n berthnasol i'r adran a aml
     <string name="title_whats_new">Beth Sy'n Newydd?</string>
     <string name="about_title_rate">Graddio'r ap hwn</string>
     <string name="about_title_donate">Rhoi arian</string>
-    <string name="about_summary_donate">Dangoswch dy werthfawrogiad! ❤️</string>
+    <string name="about_summary_donate">Dangoswch eich gwerthfawrogiad! ❤️</string>
     <string name="about_description_donate">Diolch am ystyried cefnogi'r ap hwn! Er mwyn gweld cyfraniadau cyfredol a gwneud rhodd eich hun, tapiwch ar y platfform perthnasol:</string>
     <string name="confirmation_cancel_prev_download_confirmed">Lawrlwytho yma yn ei le</string>
     <string name="confirmation_cancel_prev_download_cancel">Parhau lawrlwythiad cyfredol</string>
@@ -526,6 +528,7 @@ Os nad oes unrhyw arwyddion ar hyd y stryd cyfan sy'n berthnasol i'r adran a aml
     <string name="link_vespucci_description">Golygydd OSM uwch ar gyfer Android</string>
     <string name="link_ideditor_description">Golygydd OSM syml ar gyfer y porwr. Wedi'i optimeiddio ar gyfer y bwrdd gwaith neu dabledi mawr</string>
     <string name="link_opnvkarte_description">Map o lwybrau a safleoedd trafnidiaeth gyhoeddus</string>
+    <string name="link_wiki_description">Y wiki yw eich pwynt dechrau i bopeth sy'n ymwneud ag OpenStreetMap</string>
     <string name="link_learnosm_description">Newydd i OpenStreetMap? Dyma canllaw i ddechreuwyr</string>
     <string name="link_welcome_mat_description">Gwybodaeth gyffredinol am OpenStreetMap a sut i weithio gydag OSM fel sefydliad</string>
     <string name="link_show_me_the_way_description">Gwylio golygiadau OSM mewn amser real</string>
@@ -534,7 +537,9 @@ Os nad oes unrhyw arwyddion ar hyd y stryd cyfan sy'n berthnasol i'r adran a aml
     <string name="link_openstreetbrowser_description">Map i bori nodweddion OpenStreetMap yn ôl categori</string>
     <string name="link_weeklyosm_description">Newyddion wythnosol am yr hyn sy'n digwydd ym myd OpenStreetMap</string>
     <string name="achievement_first_edit_title">Cwestiwn Cyntaf Wedi'i Ddatrys</string>
-    <string name="achievement_surveyor_title">Syrfëwr</string>
+    <string name="achievement_first_edit_description">Croeso i gymuned OpenStreetMap! Yn eich proffil, gallwch chi weld mwy am bob math o gwestiwn rydych chi wedi'i ddatrys.</string>
+    <string name="achievement_surveyor_title">Tirfesurwr</string>
+    <string name="achievement_surveyor_solved_X">Rydych chi wedi ateb %1$d cwestiwn! Ewch ati i ddatgloi mwy o ddyrchafiadau sy'n cynnwys dolenni i OSM ac apiau a phrosiectau eraill sy'n berthnasol i fapio!</string>
     <string name="achievement_regular_title">Mapiwr Rheolaidd</string>
     <string name="achievement_bicyclist_title">Beiciwr</string>
     <string name="achievement_bicyclist_solved_X">Rydych chi wedi ateb %1$d cwestiwn sy'n helpu beicwyr!</string>
@@ -596,7 +601,7 @@ Cyflawni</string>
     <string name="resurvey_intervals_default">Diofyn</string>
     <string name="resurvey_intervals_more_often">Gofyn yn amlach</string>
     <string name="about_title_translate">Cyfieithu'r ap hwn</string>
-    <string name="about_description_translate">Cyfieithir %1$s fel %2$d%</string>
+    <string name="about_description_translate">Mae'r cyfieithiad %1$s ar %2$d%</string>
     <string name="quest_oneway2_title">A yw hyn yn stryd unffordd? Ym mha gyfeiriad?</string>
     <string name="quest_oneway2_dir">Unffordd yn y cyfeiriad hwn</string>
     <string name="quest_oneway2_no_oneway">Nid yw'n unffordd</string>
@@ -677,7 +682,7 @@ Cyflawni</string>
     <string name="quest_barrier_type_debris_pile">Sbwriel</string>
     <string name="quest_barrier_type_bicycle_barrier">Rhwystr beic</string>
     <string name="quest_barrier_type_swing_gate">Bar llorweddol</string>
-    <string name="quest_policeType_title">Pa fath o orsaf heddlu sydd yma?</string>
+    <string name="quest_policeType_title">Pa fath o orsaf heddlu yw hwn?</string>
     <string name="quest_stile_type_title">Pa fath o gamfa yw hon?</string>
     <string name="pref_title_quests2">Dewis cwestiynau a'r drefn arddangos</string>
     <string name="pref_subtitle_quests">%1$d o %2$d wedi'u galluogi</string>
@@ -743,8 +748,6 @@ Os ydych yn teimlo dan bwysau oherwydd nifer y cwestiynau, gallwch fireinio pa g
     <string name="quest_fireHydrant_position_sidewalk">Ar balmant</string>
     <string name="quest_fireHydrant_position_parking_lot">Mewn lle parcio</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Ie (gadael nodyn)</string>
-    <string name="quest_smoothness_square_title">Beth yw ansawdd arwyneb y sgwâr yma?</string>
-    <string name="quest_smoothness_road_title">Beth yw ansawdd arwyneb y heol yma?</string>
     <string name="quest_smoothness_title_excellent">Esmwyth a llydan</string>
     <string name="quest_smoothness_title_good">Llydan ar y cyfan</string>
     <string name="quest_smoothness_description_good_paved">Dim ond craciau bach, cyweiriadau neu arwyneb ychydig yn anwastad</string>
@@ -763,7 +766,6 @@ Os ydych yn teimlo dan bwysau oherwydd nifer y cwestiynau, gallwch fireinio pa g
     <string name="ar_core_tracking_error_excessive_motion">Mae gormod o symudiad</string>
     <string name="ar_core_tracking_error_camera_unavailable">Defnyddir y camera gan ap arall</string>
     <string name="quest_bicycle_parking_access_title2">Pwy sy'n gallu parcio beic yma? Gall fod am ddim neu â thâl.</string>
-    <string name="quest_playground_access_title2">Pwy sy'n gallu defnyddio'r ardal chwarae hon?</string>
     <string name="ar_measure">Mesuro</string>
     <string name="quest_cycleway_width_title">Pa mor llydan yw'r trac beicio yma?</string>
     <string name="quest_road_width_title">Pa mor llydan yw'r ffordd yma?</string>
@@ -784,7 +786,7 @@ Os ydych yn teimlo dan bwysau oherwydd nifer y cwestiynau, gallwch fireinio pa g
     <string name="quest_smoking_outside">Dim ond mas tu fas</string>
     <string name="quest_smoking_separated">Dim ond mewn ardal wahanol</string>
     <string name="quest_smoking_yes">Oes, ym mhobman</string>
-    <string name="quest_seating_name_title">Pa fath o seddi sydd gan y lle hwn?</string>
+    <string name="quest_seating_name_title">Pa fath o seddi sydd yn y lle hwn?</string>
     <string name="quest_seating_takeaway">Dim seddi (tecawê yn unig)</string>
     <string name="quest_seating_indoor_only">Seddi dan-do yn unig</string>
     <string name="quest_seating_outdoor_only">Seddi awyr agored yn unig</string>
@@ -793,7 +795,7 @@ Os ydych yn teimlo dan bwysau oherwydd nifer y cwestiynau, gallwch fireinio pa g
     <string name="quest_accepts_cash_title2">Ydy arian parod yn cael ei dderbyn yma?</string>
     <string name="quest_address_street_title2">Ar ba stryd yw hyn?</string>
     <string name="quest_baby_changing_table_title2">A oes gan y lle hwn fwrdd newid babi?</string>
-    <string name="quest_busStopBench_title2">Oes mainc gan y safle hwn?</string>
+    <string name="quest_busStopBench_title2">Oes mainc yn y safle hwn?</string>
     <string name="quest_busStopBin_title2">Oes bin sbwriel gan y safle hwn?</string>
     <string name="quest_busStopLit_title2">Oes goleuadau gan y safle hwn?</string>
     <string name="quest_busStopName_title2">Beth yw enw'r safle hwn?</string>
@@ -807,7 +809,6 @@ Os ydych yn teimlo dan bwysau oherwydd nifer y cwestiynau, gallwch fireinio pa g
     <string name="quest_lit_title">Oes yna goleuadau yma?</string>
     <string name="quest_openingHours_title">Beth yw'r oriau agor yma?</string>
     <string name="quest_openingHours_signed_title">Oes arwydd gydag oriau agor yma?</string>
-    <string name="quest_openingHours_resurvey_title">A yw'r oriau agor hyn dal i fod yn gywir?</string>
     <string name="quest_placeName_title">Beth yw enw'r lle hwn?</string>
     <string name="quest_shop_type_title2">Pa fath o siop yw hon?</string>
     <string name="quest_smoking_title2">Allwch chi gael smygu yma?</string>
@@ -823,7 +824,7 @@ Os ydych yn teimlo dan bwysau oherwydd nifer y cwestiynau, gallwch fireinio pa g
     <string name="quest_air_pump_compressor_title">A oes cywasgydd aer ar gael yma?</string>
     <string name="map_btn_create_track">Creu recordiad arllwybr newydd</string>
     <string name="map_btn_stop_track">Stopio recordio arllwybr</string>
-    <string name="quest_bicycle_rental_type_title">Pa fath o rhentu beic yw hwn?</string>
+    <string name="quest_bicycle_rental_type_title">Pa fath o rentu beic yw hwn?</string>
     <string name="quest_bicycle_shop_second_hand_title">A yw beiciau ail-law yn cael eu gwerthu yma?</string>
     <string name="quest_bicycle_shop_second_hand_only_new">Nac ydynt, dim ond rhai newydd</string>
     <string name="quest_bicycle_shop_second_hand_new_and_used">Ydy, wrth ochr rhai newydd</string>
@@ -916,7 +917,10 @@ Hoffech chi ei symud nawr?</string>
     <string name="unknown_surface_title">Math arall o arwyneb</string>
     <string name="overlay_surface">Arwynebau</string>
     <string name="overlay_path_surface_segregated">Torri'n rhannau beicio a cherdded</string>
-    <string name="quest_crossing_title2">A oes croesfan yma?</string>
+    <string name="quest_crossing_title2">Oes croesfan yma?</string>
+    <string name="quest_crossing_yes">Oes, wedi'i bwriadu fel croesfan</string>
+    <string name="quest_crossing_no">Nid yw wedi'i bwriadu fel croesfan, ond mae'n bosibl croesi (e.e. llwybrau anffurfiol)</string>
+    <string name="quest_crossing_prohibited">Nac oes, ni chaniateir croesi neu nid yw'n bosibl</string>
     <string name="quest_hairdresser_title">Pa gwsmeriaid sy'n mynd i'r triniwr gwallt hwn?</string>
     <string name="quest_hairdresser_male_and_female">Pawb</string>
     <string name="quest_hairdresser_female_only">Menywod</string>
@@ -972,11 +976,9 @@ Hoffech chi ei symud nawr?</string>
     <string name="quest_bbq_fuel_gas">Nwy</string>
     <string name="about_description_donate_google_play3">Diolch am ystyried cefnogi'r ap hwn!
 Gallwch ddod o hyd i wybodaeth am roddion ar ein gwefan neu hafan ein prosiect, nid yw Google Play yn ein galluogi i rhoi'r ddolen yn yr ap.</string>
-    <string name="quest_generic_otherAnswers2">Hm…</string>
+    <string name="quest_generic_otherAnswers2">Hmm…</string>
     <string name="quest_moped_access_allowed">Nid oes arwydd</string>
     <string name="info">Rhagor o wybodaeth</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Gwaherddir.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Caniateir.</string>
     <string name="quest_parcel_locker_brand">Beth yw brand y locer parseli hwn?</string>
     <string name="quest_bicycle_parking_type_floor">Ardal ddynodedig</string>
     <string name="action_back">Nôl</string>
@@ -1036,7 +1038,6 @@ Gallwch ddod o hyd i wybodaeth am roddion ar ein gwefan neu hafan ein prosiect, 
     <string name="quest_board_type_rules">Rheolau</string>
     <string name="quest_first_aid_kit_location">Ble mae'r pecyn cymorth cyntaf hwn?</string>
     <string name="quest_charging_station_bicycles_title">Oes modd gwefru beiciau yma, hefyd?</string>
-    <string name="quest_tower_access_title">Pwy sy'n gallu mynd i'r tŵr? Gall fod am ddim neu â thâl.</string>
     <string name="quest_recycling_type_pet_bottles">Poteli PET</string>
     <string name="quest_maxweight_add_sign">Ychwanegu arwydd</string>
     <string name="quest_maxweight_remove_sign">Dileu arwydd</string>
@@ -1044,6 +1045,9 @@ Gallwch ddod o hyd i wybodaeth am roddion ar ein gwefan neu hafan ein prosiect, 
     <string name="pref_title_messages">Negeseuon yn yr Ap</string>
     <string name="pref_title_message_weekly_osm">Rhifynnau newydd o weeklyOSM</string>
     <string name="pref_title_message_changelog">Fersiynau ap newydd</string>
+    <string name="label_block2">bloc dinas</string>
+    <string name="quest_address_answer_block2">Mae'n rhan o floc dinas…</string>
+    <string name="quest_address_answer_no_block2">Nid yw'n rhan o floc dinas…</string>
     <string name="quest_artwork_title">Pa fath o waith celf yw hwn?</string>
     <string name="quest_artwork_graffiti">Graffiti</string>
     <string name="quest_artwork_installation">Gosodiad</string>
@@ -1065,4 +1069,5 @@ Gallwch ddod o hyd i wybodaeth am roddion ar ein gwefan neu hafan ein prosiect, 
     <string name="quest_maxspeed_answer_roadtype_description">Mae'r stryd…</string>
     <string name="quest_maxspeed_answer_roadtype_lit">wedi'i oleuo</string>
     <string name="quest_maxspeed_answer_roadtype_not_lit">heb ei oleuo</string>
+    <string name="quest_parking_charge_time_unit_label">fesul</string>
 </resources>

@@ -30,29 +30,18 @@ class CheckExistence(
         nodes with
           ((
             (
-              amenity = atm
-              or amenity = telephone
+              amenity ~ atm|telephone|parcel_locker|public_bookcase|give_box
               or amenity = vending_machine and vending !~ fuel|parking_tickets|public_transport_tickets
-              or amenity = parcel_locker
-              or amenity = public_bookcase
-              or amenity = give_box
               or barrier = log
             )
             and (${lastChecked(2.0)})
           ) or (
             (
-              amenity = clock
-              or amenity = post_box
-              or leisure = picnic_table
-              or amenity = bbq
-              or amenity = car_sharing
-              or leisure = firepit
+              amenity ~ clock|post_box|bbq|car_sharing|ticket_validator|bicycle_repair_station
+              or leisure ~ firepit|fitness_station|picnic_table
               or (leisure = pitch and sport ~ table_tennis|chess|table_soccer|teqball)
-              or leisure = fitness_station
               or amenity = grit_bin and seasonal = no
               or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
-              or amenity = ticket_validator
-              or amenity = bicycle_repair_station
               or tourism = information and information ~ board|terminal|map
               or advertising ~ column|board|poster_box
               or (highway = emergency_access_point or emergency = access_point) and ref
@@ -68,13 +57,8 @@ class CheckExistence(
             and (${lastChecked(4.0)})
           ) or (
             (
-              amenity = bench
-              or amenity = lounger
-              or amenity = waste_basket
+              amenity ~ bench|lounger|waste_basket|toilets|shower|drinking_water
               or amenity = recycling and recycling_type = container
-              or amenity = toilets
-              or amenity = shower
-              or amenity = drinking_water
               or man_made = planter
             )
             and (${lastChecked(6.0)})
