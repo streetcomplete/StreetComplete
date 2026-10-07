@@ -359,7 +359,7 @@ fun questTypeRegistry(
     55 to AddBicycleBarrierInstallation(),
     56 to AddStileType(),
     57 to AddStepCountStile(), // here to keep stile quest together - this quest will appear in low quest density anyway
-    200 to AddChargingStationMotorcar(),
+    201 to AddChargingStationMotorcar(),
 
     58 to AddBollardType(), // useful for first responders
 
