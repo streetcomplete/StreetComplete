@@ -64,8 +64,7 @@ import de.westnordost.streetcomplete.quests.camping.AddTents
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
 import de.westnordost.streetcomplete.quests.charge.AddParkingCharge
 import de.westnordost.streetcomplete.quests.charging_station_bicycles.AddChargingStationBicycles
-import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationBicycleCapacity
-import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationCapacity
+import de.westnordost.streetcomplete.quests.charging_station_access.AddChargingStationMotorcar
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
 import de.westnordost.streetcomplete.quests.socket.AddChargingStationSocket
 import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
@@ -418,9 +417,10 @@ fun questTypeRegistry(
 
     86 to AddClothingBinOperator(),
 
+    // 87 to AddChargingStationCapacity(), - replaced in https://github.com/streetcomplete/StreetComplete/pull/7083/
+    // 179 to AddChargingStationBicycleCapacity(), - removed in https://github.com/streetcomplete/StreetComplete/pull/7083/
+    201 to AddChargingStationMotorcar(),
     186 to AddChargingStationBicycles(),
-    87 to AddChargingStationCapacity(),  // after question for bicycles because user has possibility to answer that it is only for bicycles
-    179 to AddChargingStationBicycleCapacity(),
     198 to AddChargingStationSocket(),
     88 to AddChargingStationOperator(),
 
