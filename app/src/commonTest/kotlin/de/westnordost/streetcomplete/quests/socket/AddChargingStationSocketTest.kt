@@ -140,6 +140,26 @@ class AddChargingStationSocketTest {
             )
         )
     }
+
+    @Test fun `when any type2 is defined also tag the other`() {
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("socket:type2", "1"),
+                StringMapEntryAdd("socket:type2_cable", "no"),
+                StringMapEntryAdd("check_date:socket", nowAsCheckDateString())
+            ),
+            questType.answerApplied(mapOf(TYPE2 to 1))
+        )
+
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("socket:type2", "no"),
+                StringMapEntryAdd("socket:type2_cable", "3"),
+                StringMapEntryAdd("check_date:socket", nowAsCheckDateString())
+            ),
+            questType.answerApplied(mapOf(TYPE2_CABLE to 3))
+        )
+    }
 }
 
 private fun chargingStation(vararg tags: Pair<String, String>) = node(

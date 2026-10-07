@@ -16,9 +16,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_charger_socket
-import de.westnordost.streetcomplete.resources.quest_charging_station_socket_title
+import de.westnordost.streetcomplete.quests.socket.ChargingStationSocket.*
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
@@ -86,6 +85,15 @@ class AddChargingStationSocket : OsmElementQuestType<Map<ChargingStationSocket, 
         geometry: ElementGeometry,
         timestampEdited: Long
     ) {
+        // first, if any type2 (with cable or not) was within the answers, implicitly define
+        // the other as well
+        // https://community.openstreetmap.org/t/charging-station-sockets-type2-cable/141530
+        val answer = answer.toMutableMap()
+        if (answer.containsKey(TYPE2) || answer.containsKey(TYPE2_CABLE)) {
+            answer[TYPE2] = answer[TYPE2] ?: 0
+            answer[TYPE2_CABLE] = answer[TYPE2_CABLE] ?: 0
+        }
+
         // remove deprecated/ambiguous keys
         for (socket in INVALID_CHARGING_STATION_SOCKETS) {
             tags.remove("socket:$socket")
