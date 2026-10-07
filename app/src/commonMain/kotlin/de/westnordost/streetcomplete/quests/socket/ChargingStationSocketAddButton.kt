@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.DropdownMenu
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -17,7 +18,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.DropdownButton
+import de.westnordost.streetcomplete.ui.common.Button2
+import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -25,49 +27,91 @@ import org.jetbrains.compose.resources.stringResource
 /** Dropdown button to select a [ChargingStationSocket] from a list of sockets */
 @Composable
 fun ChargingStationSocketAddButton(
-    selectableSockets: List<ChargingStationSocket>,
+    selectableSockets: Set<ChargingStationSocket>,
+    commonSockets: List<ChargingStationSocket>,
     onSelect: (ChargingStationSocket) -> Unit,
     showEuLabels: Boolean,
     domesticSocketIcon: DrawableResource?,
     modifier: Modifier = Modifier,
 ) {
     var showAddDropdown by remember { mutableStateOf(false) }
+    var showAllSockets by remember { mutableStateOf(false) }
 
-    DropdownButton(
-        items = selectableSockets,
-        onSelectedItem = onSelect,
-        modifier = modifier,
-        enabled = selectableSockets.isNotEmpty(),
-        itemContent = { socket ->
-            val icon = if (socket == ChargingStationSocket.DOMESTIC && domesticSocketIcon != null) {
-                domesticSocketIcon
-            } else {
-                socket.icon
+    val shownSockets = remember(showAllSockets, commonSockets) {
+        val sockets = if (showAllSockets) {
+            ChargingStationSocket.entries.toMutableList().apply {
+                // common sockets come first
+                removeAll(commonSockets)
+                addAll(0, commonSockets)
             }
-            Row(
-                modifier = Modifier.padding(vertical = 2.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = Modifier.size(48.dp)
-                ) {
-                    Icon(
-                        painter = painterResource(icon),
-                        contentDescription = null,
+        } else {
+            commonSockets
+        }
+        sockets.filter { it in selectableSockets }
+    }
+
+    Box(modifier) {
+        Button2(onClick = {
+            showAddDropdown = true
+            showAllSockets = false
+        }) {
+            Text(stringResource(Res.string.quest_charging_station_add_socket))
+        }
+        DropdownMenu(
+            expanded = showAddDropdown,
+            onDismissRequest = { showAddDropdown = false },
+        ) {
+            for (socket in shownSockets) {
+                DropdownMenuItem(onClick = { showAddDropdown = false; onSelect(socket) }) {
+                    ChargingStationSocketDropdownMenuItemContent(
+                        socket = socket,
+                        domesticSocketIcon = domesticSocketIcon,
+                        showEuLabels = showEuLabels,
+                        modifier = Modifier.padding(vertical = 2.dp)
                     )
                 }
-                if (showEuLabels) {
-                    ChargingStationSocketEuLabels(socket)
+            }
+            if (!showAllSockets) {
+                DropdownMenuItem(onClick = { showAllSockets = true }) {
+                    Text(stringResource(Res.string.quest_charging_station_other_socket))
                 }
-                Text(
-                    text = stringResource(socket.title),
-                    style = MaterialTheme.typography.body2,
-                )
             }
         }
+    }
+}
+
+@Composable
+private fun ChargingStationSocketDropdownMenuItemContent(
+    socket: ChargingStationSocket,
+    domesticSocketIcon: DrawableResource?,
+    showEuLabels: Boolean,
+    modifier: Modifier = Modifier,
+) {
+    val icon = if (socket == ChargingStationSocket.DOMESTIC && domesticSocketIcon != null) {
+        domesticSocketIcon
+    } else {
+        socket.icon
+    }
+    Row(
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Text(stringResource(Res.string.quest_charging_station_add_socket))
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier.size(48.dp)
+        ) {
+            Icon(
+                painter = painterResource(icon),
+                contentDescription = null,
+            )
+        }
+        if (showEuLabels) {
+            ChargingStationSocketEuLabels(socket)
+        }
+        Text(
+            text = stringResource(socket.title),
+            style = MaterialTheme.typography.body2,
+        )
     }
 }

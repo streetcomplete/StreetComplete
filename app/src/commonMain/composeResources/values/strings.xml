@@ -1056,6 +1056,7 @@
     <string name="quest_charging_station_socket_gb_ac">GB/T (China) - AC</string>
     <string name="quest_charging_station_socket_gb_dc">GB/T (China) - DC</string>
     <string name="quest_charging_station_socket_domestic">Any household socket</string>
+    <string name="quest_charging_station_other_socket">Other socket…</string>
     <string name="quest_charging_station_add_socket">Add socket</string>
 
     <string name="quest_charging_station_operator_title">Who is the operator of this charging station?</string>

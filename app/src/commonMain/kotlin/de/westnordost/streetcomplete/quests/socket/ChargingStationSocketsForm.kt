@@ -23,11 +23,14 @@ import org.jetbrains.compose.resources.stringResource
 fun ChargingStationSocketsForm(
     sockets: Map<ChargingStationSocket, Int?>,
     onSocketsChanged: (Map<ChargingStationSocket, Int?>) -> Unit,
+    commonSockets: List<ChargingStationSocket>,
     modifier: Modifier = Modifier,
     domesticSocketIcon: DrawableResource? = null,
     showEuLabels: Boolean = false
 ) {
-    val selectableSockets = remember(sockets.keys) { ChargingStationSocket.entries - sockets.keys }
+    val selectableSockets = remember(sockets.keys) {
+        ChargingStationSocket.entries.toSet() - sockets.keys
+    }
     Column(
         modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -64,6 +67,7 @@ fun ChargingStationSocketsForm(
         }
         ChargingStationSocketAddButton(
             selectableSockets = selectableSockets,
+            commonSockets = commonSockets,
             onSelect = { socket ->
                 onSocketsChanged(sockets.toMutableMap().also { it[socket] = null })
             },

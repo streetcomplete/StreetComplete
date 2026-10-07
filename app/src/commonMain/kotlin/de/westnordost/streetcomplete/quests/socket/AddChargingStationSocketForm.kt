@@ -21,10 +21,9 @@ fun AddChargingStationSocketForm(
     element: Element,
     countryInfo: CountryInfo,
 ) {
-    val defaultSockets = remember(countryInfo) {
-        countryInfo.chargingStationSocketTypes
-            .mapNotNull { ChargingStationSocket.of(it) }
-            .associateWith { null }
+    val commonSockets = remember(countryInfo) {
+        countryInfo.chargingStationSocketTypes.mapNotNull { ChargingStationSocket.of(it) } +
+        ChargingStationSocket.DOMESTIC // domestic socket is always common
     }
     val domesticSocketIcon = remember(countryInfo) {
         countryInfo.domesticSocketTypes.firstNotNullOfOrNull {
@@ -34,8 +33,7 @@ fun AddChargingStationSocketForm(
     val showEuLabels = remember(countryInfo) { countryInfo.isInEu }
 
     val initialSockets = remember(element) {
-        val sockets = parseChargingStationSockets(element.tags)
-        if (sockets.isNotEmpty()) sockets else defaultSockets
+        parseChargingStationSockets(element.tags)
     }
 
     var sockets by rememberSerializable(initialSockets) { mutableStateOf(initialSockets) }
@@ -53,6 +51,7 @@ fun AddChargingStationSocketForm(
         ChargingStationSocketsForm(
             sockets = sockets,
             onSocketsChanged = { sockets = it },
+            commonSockets = commonSockets,
             domesticSocketIcon = domesticSocketIcon,
             showEuLabels = showEuLabels
         )
