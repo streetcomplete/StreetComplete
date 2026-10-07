@@ -37,7 +37,7 @@ fun ChargingStationSocketAddButton(
     var showAddDropdown by remember { mutableStateOf(false) }
     var showAllSockets by remember { mutableStateOf(false) }
 
-    val shownSockets = remember(showAllSockets, commonSockets) {
+    val shownSockets = remember(showAllSockets, commonSockets, selectableSockets) {
         val sockets = if (showAllSockets) {
             ChargingStationSocket.entries.toMutableList().apply {
                 // common sockets come first
