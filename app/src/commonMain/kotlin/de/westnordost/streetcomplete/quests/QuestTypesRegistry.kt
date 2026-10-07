@@ -421,7 +421,7 @@ fun questTypeRegistry(
     186 to AddChargingStationBicycles(),
     87 to AddChargingStationCapacity(),  // after question for bicycles because user has possibility to answer that it is only for bicycles
     179 to AddChargingStationBicycleCapacity(),
-    200 to AddChargingStationSocket(),
+    198 to AddChargingStationSocket(),
     88 to AddChargingStationOperator(),
 
     194 to AddVendingMachineType(), // May take some time to find the machine in building with multiple levels
