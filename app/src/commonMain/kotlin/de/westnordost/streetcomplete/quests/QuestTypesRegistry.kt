@@ -359,7 +359,6 @@ fun questTypeRegistry(
     55 to AddBicycleBarrierInstallation(),
     56 to AddStileType(),
     57 to AddStepCountStile(), // here to keep stile quest together - this quest will appear in low quest density anyway
-    201 to AddChargingStationMotorcar(),
 
     58 to AddBollardType(), // useful for first responders
 
@@ -420,7 +419,7 @@ fun questTypeRegistry(
 
     // 87 to AddChargingStationCapacity(), - replaced in https://github.com/streetcomplete/StreetComplete/pull/7083/
     // 179 to AddChargingStationBicycleCapacity(), - removed in https://github.com/streetcomplete/StreetComplete/pull/7083/
-
+    201 to AddChargingStationMotorcar(),
     186 to AddChargingStationBicycles(),
     198 to AddChargingStationSocket(),
     88 to AddChargingStationOperator(),
