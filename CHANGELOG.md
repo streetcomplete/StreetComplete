@@ -4,7 +4,7 @@
 
 ### General
 
-- add back button to dismissable onboarding screens (#7209)
+- add back button to dismissible onboarding screens (#7209)
 - allow swiping between steps on all onboarding screens (#7198)
 - other small improvements (#7228, #7221…), thanks @Amaanprobably
 - back button on the bottom sheet title is now shown when the bottom sheet almost fills the whole screen (#7218)
@@ -107,8 +107,8 @@ But this is not all! @sargunv also took the last remaining steps for a fully wor
 
 ## v64.0-alpha1
 
-🍏 This update brings huge changes, albeit they should be mostly invisible. I re-did the UI for all 
-quest forms, a side effect of the migration to a multiplatform UI framework. An iOS version of the 
+🍏 This update brings huge changes, albeit they should be mostly invisible. I re-did the UI for all
+quest forms, a side effect of the migration to a multiplatform UI framework. An iOS version of the
 app has now come within reach! (#6842).
 @kiliankoe (#6989), @maxwellward (#7033), @sargunv (#7123, #7124) helped a bit, too.
 
