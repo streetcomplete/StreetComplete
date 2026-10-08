@@ -1036,7 +1036,7 @@
     <string name="quest_carWashType_service">Staff cleans car</string>
 
     <string name="quest_charging_station_bicycles_title">Can bicycles be charged here?</string>
-    <string name="quest_charging_station_bicycles_hint2">Some of the sockets here can be used to charge bicycles. Check if charging bicycles is prohibited, by for example, signs, or being in a car only area.</string>
+    <string name="quest_charging_station_bicycles_hint2">Some of the sockets here can be used to charge bicycles. Check whether charging bicycles is prohibited, for example by signs or because the area is for cars only.</string>
 
     <string name="quest_charging_station_car_access">Can cars be charged here?</string>
 
