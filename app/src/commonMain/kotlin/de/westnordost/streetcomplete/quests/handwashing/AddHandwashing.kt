@@ -22,7 +22,7 @@ class AddHandwashing : OsmFilterQuestType<Boolean>() {
           and !toilets:handwashing
           and access !~ private|no
     """
-    override val changesetComment = "Survey availability of handwashing capabilites"
+    override val changesetComment = "Survey availability of handwashing capabilities"
     override val wikiLink = "Key:toilets:handwashing"
     override val icon = Res.drawable.quest_washing_hands
     override val title = Res.string.quest_handwashing_title
