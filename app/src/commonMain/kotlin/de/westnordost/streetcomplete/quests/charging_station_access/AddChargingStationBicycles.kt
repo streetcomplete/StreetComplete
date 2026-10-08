@@ -26,18 +26,9 @@ class AddChargingStationBicycles : OsmFilterQuestType<Boolean>() {
           and !bicycle
           and access !~ private|no
           and (
-             socket:as3112 = yes or socket:as3112 > 0
-             or socket:bosch_3pin = yes or socket:bosch_3pin > 0
-             or socket:domestic = yes or socket:domestic > 0
-             or socket:nema_5_15 = yes or socket:nema_5_15 > 0
-             or socket:nema_5_20 = yes or socket:nema_5_20 > 0
-             or socket:ropd = yes or socket:ropd > 0
-             or socket:schuko = yes or socket:schuko > 0
-             or socket:sev1011_t23 = yes or socket:sev1011_t23 > 0
-             or socket:shimano_steps_5pin = yes or socket:shimano_steps_5pin > 0
-             or socket:typec = yes or socket:typec > 0
-             or socket:typee = yes or socket:typee > 0
-             or socket:xlr_3pin_cable = yes or socket:xlr_3pin_cable > 0
+            ${socketsEligibleForBicycleCharging.joinToString(" or ") {
+                "socket:$it = yes or socket:$it > 0"
+            }}
           )
     """
     override val changesetComment = "Specify whether bicycles can be charged at charging stations"
@@ -59,3 +50,34 @@ class AddChargingStationBicycles : OsmFilterQuestType<Boolean>() {
         tags["bicycle"] = answer.toYesNo()
     }
 }
+
+private val socketsEligibleForBicycleCharging = listOf(
+    // specifically for bicycles
+    "bosch_3pin",
+    "bosch_5pin",
+    "bosch_smart",
+    "ropd",
+    "shimano_steps_5pin",
+    "xlr_3pin_cable",
+
+    // USB-C can deliver quite some watts
+    "socket:device:USB-C",
+
+    // domestic. Barrel without bottom. Just the used ones according to taginfo
+    "domestic",
+    "typea", "nema_1_15",
+    "typeb", "nema_5_15", "nema_5_20",
+    "typec",
+    "typed",
+    "typee",
+    "typef", "schuko",
+    "typeg", "bs1363",
+    "typeh",
+    "typei", "as3112",
+    "typej", "sev1011_t13", "sev1011_t23",
+    "typek",
+    "typeL", "cei23_50_s_11",
+    "typem",
+    "typen",
+    "typeo",
+)
