@@ -135,12 +135,12 @@ fun LoginScreen(
                     modifier = Modifier.fillMaxSize(),
                     captureBackPresses = true,
                     navigator = webViewNavigator,
-                    onCreated = {
+                    onCreated = fun() {
                         val settings = webViewState.webSettings
                         settings.isJavaScriptEnabled = true
                         settings.customUserAgentString = ApplicationConstants.USER_AGENT
                         settings.supportZoom = false
-                    } as () -> Unit,
+                    },
                 )
             }
         } else if (state is RetrievingAccessToken || state is LoggedIn) {
