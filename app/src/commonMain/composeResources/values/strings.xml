@@ -1428,6 +1428,7 @@
 
     <string name="quest_parking_charge_title">How much do you need to pay to park here?</string>
     <string name="quest_parking_charge_time_unit_label">per</string>
+    <string name="quest_parking_charge_answer_no_fee">There is no fee at all</string>
 
     <string name="quest_parkingType_title">What kind of parking is this?</string>
     <string name="quest_parkingType_surface">Parking lot</string>
