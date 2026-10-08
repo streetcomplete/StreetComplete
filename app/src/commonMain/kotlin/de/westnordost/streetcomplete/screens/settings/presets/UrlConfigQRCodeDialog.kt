@@ -14,11 +14,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalClipboardManager
-import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.platform.Clipboard
+import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.PreviewLightDark
@@ -29,6 +30,7 @@ import de.westnordost.streetcomplete.ui.common.ToastPopup
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 import io.github.alexzhirkevich.qrose.rememberQrCodePainter
+import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -36,7 +38,8 @@ fun UrlConfigQRCodeDialog(
     onDismissRequest: () -> Unit,
     url: String,
 ) {
-    val clipboardManager = LocalClipboardManager.current
+    val clipboard = LocalClipboard.current
+    val coroutineScope = rememberCoroutineScope()
 
     val qrCode = rememberQrCodePainter(url)
     var showUrlCopied by remember { mutableStateOf(false) }
@@ -63,8 +66,10 @@ fun UrlConfigQRCodeDialog(
                     label = { Text(stringResource(Res.string.urlconfig_as_url)) },
                     trailingIcon = {
                         IconButton(onClick = {
-                            clipboardManager.setText(AnnotatedString(url))
-                            showUrlCopied = true
+                            coroutineScope.launch {
+                                clipboard.setPlainText(url)
+                                showUrlCopied = true
+                            }
                         }) {
                             CopyIcon()
                         }
