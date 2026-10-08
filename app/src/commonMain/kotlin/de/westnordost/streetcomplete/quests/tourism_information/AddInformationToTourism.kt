@@ -22,7 +22,7 @@ class AddInformationToTourism : OsmFilterQuestType<TourismInformation>() {
         nodes, ways with
           tourism = information and !information
     """
-    override val changesetComment = "Specify type of tourist informations"
+    override val changesetComment = "Specify type of tourist information"
     override val wikiLink = "Tag:tourism=information"
     override val icon = Res.drawable.quest_information
     override val title = Res.string.quest_tourism_information_title
