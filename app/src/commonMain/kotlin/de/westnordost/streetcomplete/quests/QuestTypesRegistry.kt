@@ -63,7 +63,7 @@ import de.westnordost.streetcomplete.quests.camping.AddCaravans
 import de.westnordost.streetcomplete.quests.camping.AddTents
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
 import de.westnordost.streetcomplete.quests.charge.AddParkingCharge
-import de.westnordost.streetcomplete.quests.charging_station_bicycles.AddChargingStationBicycles
+import de.westnordost.streetcomplete.quests.charging_station_access.AddChargingStationBicycles
 import de.westnordost.streetcomplete.quests.charging_station_access.AddChargingStationMotorcar
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
 import de.westnordost.streetcomplete.quests.socket.AddChargingStationSocket
