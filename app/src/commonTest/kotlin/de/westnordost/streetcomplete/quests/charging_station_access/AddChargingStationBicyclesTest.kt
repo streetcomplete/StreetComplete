@@ -1,6 +1,5 @@
-package de.westnordost.streetcomplete.quests.charging_station_bicycles
+package de.westnordost.streetcomplete.quests.charging_station_access
 
-import de.westnordost.streetcomplete.quests.charging_station_access.AddChargingStationBicycles
 import de.westnordost.streetcomplete.testutils.node
 import kotlin.test.Test
 import kotlin.test.assertFalse
