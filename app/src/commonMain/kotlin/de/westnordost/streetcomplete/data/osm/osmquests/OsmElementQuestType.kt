@@ -70,8 +70,7 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      * level than the quest the user is answering? For example: stores on a different level could
      * overload the map, so they are hidden, while cables are shown.
      */
-    val getHighlightHideElementsOnDifferentLevel: Boolean
-        get() = true
+    val hideHighlightedElementsOnDifferentLevel: Boolean get() = true
 
     /** The radius in which certain elements should be shown (see getHighlightedElements).
      *  30m is the default because this is about "across this large street". There shouldn't be

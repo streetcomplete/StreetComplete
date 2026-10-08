@@ -144,7 +144,7 @@ class MainBottomSheetViewModelImpl(
         quest.type.getHighlightedElements(element, mapData).mapNotNull { other ->
             // Highlight nearby elements only on the same level and layer.
             if (element == other) return@mapNotNull null
-            if(quest.type.getHighlightHideElementsOnDifferentLevel) {
+            if(quest.type.hideHighlightedElementsOnDifferentLevel) {
                 if (!levels.levelsIntersect(parseLevelsOrNull(other.tags))) return@mapNotNull null
                 if (element.tags["layer"] != other.tags["layer"]) return@mapNotNull null
             }

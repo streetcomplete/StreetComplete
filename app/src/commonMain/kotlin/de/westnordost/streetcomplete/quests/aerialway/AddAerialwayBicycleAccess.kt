@@ -57,7 +57,7 @@ class AddAerialwayBicycleAccess : OsmFilterQuestType<AerialwayBicycleAccessAnswe
         }
     }
 
-    override val getHighlightHideElementsOnDifferentLevel = false
+    override val hideHighlightedElementsOnDifferentLevel = false
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes, ways with aerialway".toElementFilterExpression())
