@@ -30,6 +30,7 @@ class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterialAnswer>() {
     override val icon = Res.drawable.quest_power
     override val title = Res.string.quest_powerPolesMaterial_title
     override val achievements = listOf(BUILDING)
+    override val getHighlightHideElementsOnDifferentLevel = false
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("""

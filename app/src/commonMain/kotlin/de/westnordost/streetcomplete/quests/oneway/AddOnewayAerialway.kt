@@ -38,6 +38,8 @@ class AddOnewayAerialway : OsmElementQuestType<OnewayAnswer> {
     override fun isApplicableTo(element: Element): Boolean =
         elementFilter.matches(element)
 
+    override val getHighlightHideElementsOnDifferentLevel = false
+
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes, ways with aerialway".toElementFilterExpression())
 

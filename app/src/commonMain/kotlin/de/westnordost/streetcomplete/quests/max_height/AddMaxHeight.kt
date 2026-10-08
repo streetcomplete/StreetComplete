@@ -168,6 +168,8 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
         }
     }
 
+    override val getHighlightHideElementsOnDifferentLevel = false
+
     override fun getHighlightedElements(
         element: Element,
         mapData: MapDataWithGeometry
