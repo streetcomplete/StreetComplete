@@ -88,7 +88,7 @@ fun GeometryMarkersLayers(markers: Collection<Marker>, haloColor: Color, mapImag
         textSize = const(16.sp),
         textFont = const(listOf("Roboto Bold")),
         textAnchor = const(SymbolAnchor.Top),
-        textOffset = textOffset(0.em, 1.em),
+        textOffset = textOffset(0.dp, 19.dp),
         textOptional = const(true),
     )
 }

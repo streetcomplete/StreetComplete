@@ -78,8 +78,8 @@ fun StyleableOverlayLabelLayer(
         textFont = const(listOf("Roboto Regular")),
         textAnchor = const(SymbolAnchor.Top),
         textOffset = switch(
-            condition(feature.has("icon"), textOffset(0.em, 1.em)),
-            fallback = textOffset(0.em, 0.em)
+            condition(feature.has("icon"), textOffset(0.dp, 19.dp)),
+            fallback = textOffset(0.dp, 0.dp)
         ),
         textSize = const(16.sp),
         textOptional = const(true),
