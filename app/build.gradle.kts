@@ -2,11 +2,12 @@ import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.BOOLEAN
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 import dev.mokkery.MockMode
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.targets.native.tasks.KotlinNativeSimulatorTest
 import java.io.FileWriter
 
 
 /** App version name, code and flavor */
-val appVersionName = "64.0-alpha2"
+val appVersionName = "64.0-alpha3"
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
@@ -38,7 +39,7 @@ plugins {
     id("org.jetbrains.compose")
     id("com.codingfeline.buildkonfig") version "0.23.0"
     // keep in sync with Kotlin version! See https://mokkery.dev/docs/Setup/#compatibility
-    id("dev.mokkery") version "3.4.2"
+    id("dev.mokkery") version "3.5.0"
     id("org.jetbrains.kotlin.plugin.allopen") version "2.4.20"
 }
 
@@ -118,7 +119,13 @@ kotlin {
         }
     }
 
+    applyDefaultHierarchyTemplate()
+
     sourceSets {
+        val jvmAndroidMain = create("jvmAndroidMain") { dependsOn(commonMain.get()) }
+        val nonAndroidMain = create("nonAndroidMain") { dependsOn(commonMain.get()) }
+        val mobileMain = create("mobileMain") { dependsOn(commonMain.get()) }
+
         commonMain {
             dependencies {
                 // Kotlin
@@ -133,7 +140,6 @@ kotlin {
                 implementation("io.insert-koin:koin-core")
                 implementation("io.insert-koin:koin-compose")
                 implementation("io.insert-koin:koin-compose-viewmodel")
-                implementation("io.insert-koin:koin-androidx-compose-navigation")
 
                 // Logging
                 implementation("co.touchlab:kermit:2.2.0")
@@ -145,7 +151,7 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.1")
 
                 // location
-                implementation("org.maplibre.compose:location:0.18.0")
+                implementation("org.maplibre.compose:location:0.19.0")
 
                 // SQLite
                 implementation("androidx.sqlite:sqlite:2.7.1")
@@ -189,8 +195,9 @@ kotlin {
                 implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.12.1")
 
                 // UI Navigation
-                implementation("org.jetbrains.compose.ui:ui-backhandler:1.12.1")
-                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.2")
+                implementation("org.jetbrains.androidx.navigationevent:navigationevent-compose:1.1.0")
+                implementation("org.jetbrains.androidx.navigation3:navigation3-ui:1.1.2")
+                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-navigation3:2.11.0")
 
                 // UI ViewModel
                 implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.11.0")
@@ -198,7 +205,7 @@ kotlin {
                 // UI widgets
 
                 // Map
-                implementation("org.maplibre.compose:maplibre-compose:0.18.0")
+                implementation("org.maplibre.compose:maplibre-compose:0.19.0")
 
                 // non-lazy grid
                 // NOTE: might replace with
@@ -219,10 +226,12 @@ kotlin {
                 implementation("com.ionspin.kotlin:bignum:0.3.10")
 
                 // taking a photo (, picking an image from gallery, ...)
-                implementation("io.github.vinceglb:filekit-dialogs-compose:0.14.2")
+                implementation("io.github.vinceglb:filekit-dialogs-compose:0.16.0")
             }
         }
         androidMain {
+            dependsOn(jvmAndroidMain)
+            dependsOn(mobileMain)
             dependencies {
                 // Dependency injection
                 implementation("io.insert-koin:koin-android")
@@ -241,13 +250,15 @@ kotlin {
                 implementation("io.ktor:ktor-client-android:3.5.2")
 
                 // map
-                implementation("org.maplibre.compose:maplibre-compose-runtime-opengl-android:0.18.0")
+                implementation("org.maplibre.compose:maplibre-compose-runtime-opengl-android:0.19.0")
 
                 // required to @Preview composables in Android Studio
                 runtimeOnly("androidx.compose.ui:ui-tooling:1.12.1")
             }
         }
         iosMain {
+            dependsOn(nonAndroidMain)
+            dependsOn(mobileMain)
             dependencies {
                 // HTTP client
                 implementation("io.ktor:ktor-client-darwin:3.5.2")
@@ -281,6 +292,15 @@ dependencies {
     androidRuntimeClasspath("org.jetbrains.compose.ui:ui-tooling:1.12.1")
     // see comment in android.compileOptions.isCoreLibraryDesugaringEnabled
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
+}
+
+// run tests in a fixed time zone so that results don't depend on the host's time zone
+tasks.withType<Test>().configureEach {
+    systemProperty("user.timezone", "UTC")
+}
+tasks.withType<KotlinNativeSimulatorTest>().configureEach {
+    // simctl passes SIMCTL_CHILD_-prefixed variables on to the simulated process
+    environment("SIMCTL_CHILD_TZ", "UTC")
 }
 
 tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
@@ -382,8 +402,8 @@ tasks.register<UpdateIosAppTranslationsTask>("updateIosTranslations") {
     targetFile = projectDir.resolve("../iosApp/iosApp/InfoPlist.xcstrings")
     languageCodes = bcp47ExportLanguages
     strings = mapOf(
-        "NSLocationWhenInUseUsageDescription" to "no_location_permission_warning",
         "NSCameraUsageDescription" to "camera_permission_description",
+        "NSLocationWhenInUseUsageDescription" to "no_location_permission_warning",
     )
 }
 

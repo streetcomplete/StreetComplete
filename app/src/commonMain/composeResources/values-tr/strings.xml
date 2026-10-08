@@ -752,7 +752,7 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="quest_surface_value_clay">Kil</string>
     <string name="quest_surface_value_artificial_turf">Suni çim</string>
     <string name="quest_bicycle_parking_fee_title">Buraya bisiklet park etmek için ödeme yapmanız gerekiyor mu?</string>
-    <string name="quest_buildingType_house_description2">müstakil olmayan tek aileli ev, örn. tek sıralı ev</string>
+    <string name="quest_buildingType_house_description2">müstakil olmayan tek aileli ev</string>
     <string name="quest_drinking_water_potable_signed">İçmek için uygun (İşaretli)</string>
     <string name="quest_drinking_water_not_potable_signed">İçmek için uygun değil (İşaretli)</string>
     <string name="quest_postboxRoyalCypher_title">Bu posta kutusundaki kraliyet kodu nedir?</string>

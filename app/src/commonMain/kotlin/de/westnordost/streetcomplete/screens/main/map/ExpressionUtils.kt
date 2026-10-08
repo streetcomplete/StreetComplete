@@ -31,10 +31,10 @@ import kotlin.math.PI
 import kotlin.math.cos
 
 fun fadeInAtZoom(start: Float, range: Float = 1f, endOpacity: Float = 1f) =
-    byZoom(start to 0f, start+range to endOpacity)
+    byZoom(start to 0f, start + range to endOpacity)
 
 fun fadeOutAtZoom(start: Float, range: Float = 1f, startOpacity: Float = 1f) =
-    byZoom(start to startOpacity, start+range to 0f)
+    byZoom(start to startOpacity, start + range to 0f)
 
 @JvmName("byZoomFloat")
 fun byZoom(vararg stops: Pair<Number, Float>) =

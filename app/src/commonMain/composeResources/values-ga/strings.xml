@@ -753,7 +753,7 @@ Má tá aon lána bus ann, fág nóta ina ionad sin, le do thoil.</string>
     <string name="quest_surface_value_clay">Cré</string>
     <string name="quest_surface_value_artificial_turf">Féar saorga (msh. Astroturf)</string>
     <string name="quest_bicycle_parking_fee_title">An gá íoc chun rothar a pháirceáil anseo?</string>
-    <string name="quest_buildingType_house_description2">teach aontheaghlacha nach bhfuil scoite, msh. teach amháin sa sraith</string>
+    <string name="quest_buildingType_house_description2">teach aontheaghlacha nach bhfuil scoite</string>
     <string name="quest_drinking_water_potable_signed">Is féidir a ól (ar chomhartha)</string>
     <string name="quest_drinking_water_not_potable_signed">Ní féidir a ól (ar chomhartha)</string>
     <string name="quest_postboxRoyalCypher_title">Cén monagram ríoga atá scríofa ar an mbosca poist seo?</string>

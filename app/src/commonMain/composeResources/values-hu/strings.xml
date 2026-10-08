@@ -753,7 +753,7 @@ Ha vannak buszok számára fenntartott sávok is, akkor inkább írj jegyzetet.<
     <string name="quest_surface_value_clay">Salak</string>
     <string name="quest_surface_value_artificial_turf">Műfű</string>
     <string name="quest_bicycle_parking_fee_title">Fizetős ez a kerékpárparkoló?</string>
-    <string name="quest_buildingType_house_description2">nem magában álló családi ház, pl. sorház része</string>
+    <string name="quest_buildingType_house_description2">nem magában álló családi ház</string>
     <string name="quest_drinking_water_potable_signed">Biztonságosan iható (jelzett)</string>
     <string name="quest_drinking_water_not_potable_signed">Nem iható biztonságosan (jelzett)</string>
     <string name="quest_postboxRoyalCypher_title">Milyen királyi monogram található ezen a postaládán?</string>

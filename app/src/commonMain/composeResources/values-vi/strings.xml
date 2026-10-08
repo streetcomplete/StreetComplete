@@ -749,7 +749,7 @@ Nếu có bất kỳ làn đường nào dành riêng cho xe buýt, vui lòng đ
     <string name="quest_surface_value_clay">Đất sét</string>
     <string name="quest_surface_value_artificial_turf">Cỏ nhân tạo</string>
     <string name="quest_bicycle_parking_fee_title">Bạn có phải trả phí để đỗ xe đạp ở đây không?</string>
-    <string name="quest_buildingType_house_description2">nhà ở gia đình đơn lẻ không tách biệt, ví dụ như nhà một dãy</string>
+    <string name="quest_buildingType_house_description2">nhà ở gia đình đơn lẻ không tách biệt</string>
     <string name="quest_drinking_water_potable_signed">An toàn để uống (đã ký)</string>
     <string name="quest_drinking_water_not_potable_signed">Không an toàn để uống (đã ký)</string>
     <string name="quest_postboxRoyalCypher_title">Mã số hoàng gia trên hộp thư này là gì?</string>

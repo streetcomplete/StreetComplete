@@ -70,26 +70,21 @@ fun List<LocalizedName>.applyTo(tags: Tags) {
         }
     }
 
-    // language is only specified explicitly in OSM (usually) if there is more than one name specified
-    if (size == 1) {
-        tags["name"] = first().name.trim()
-    } else {
-        for (entry in this) {
-            val language = entry.languageTag
-            val name = entry.name.trim()
-            val key = when (language) {
-                "" -> "name"
-                "international" -> "int_name"
-                else -> "name:$language"
-            }
-            tags[key] = name
+    for (entry in this) {
+        val language = entry.languageTag
+        val name = entry.name.trim()
+        val key = when (language) {
+            "" -> "name"
+            "international" -> "int_name"
+            else -> "name:$language"
         }
+        tags[key] = name
+    }
 
-        // but if there is more than one language, ensure that a "main" name is also specified
-        if (find { it.languageTag == "" } == null) {
-            // use the name specified in the topmost row for that
-            tags["name"] = first().name.trim()
-        }
+    // if there is more than one language, ensure that a "main" name is also specified
+    if (find { it.languageTag == "" } == null) {
+        // use the name specified in the topmost row for that
+        tags["name"] = first().name.trim()
     }
 }
 

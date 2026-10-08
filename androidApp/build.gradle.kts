@@ -14,8 +14,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 25
         targetSdk = 37
-        versionCode = 6400
-        versionName = "64.0-alpha2"
+        versionCode = 6402
+        versionName = "64.0-alpha3"
 
         // no x86: the MapLibre Compose runtime has no x86 build, and other native libraries must
         // not make the app installable where the map cannot run

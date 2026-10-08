@@ -1,6 +1,8 @@
 ![StreetComplete](.github/images/feature_graphic.png)
 
-StreetComplete is an easy to use editor of OpenStreetMap data available for Android. It can be used without any OpenStreetMap-specific knowledge. It asks simple questions, with answers directly used to edit and improve OpenStreetMap data. The app is aimed at users who do not know anything about OSM tagging schemes but still want to contribute to OpenStreetMap.
+### >>> [Test on iOS TestFlight now!](https://testflight.apple.com/join/K1u3eUU5)
+
+StreetComplete is an easy to use editor of OpenStreetMap data available for Android and iOS. It can be used without any OpenStreetMap-specific knowledge. It asks simple questions, with answers directly used to edit and improve OpenStreetMap data. The app is aimed at users who do not know anything about OSM tagging schemes but still want to contribute to OpenStreetMap.
 
 StreetComplete automatically looks for nearby places where a survey is needed and shows them as quest markers on its map. Each of these quests can then be solved on site by answering a simple question. For example, tapping on a marker may show the question "What is the name of this road?", with a text field to answer it.
 More examples are shown in the screenshots below.
@@ -15,7 +17,7 @@ To make the app easy to use, quests are limited to those answerable by asking si
 
 ## Screenshots
 
-<img src="metadata/en/images/phoneScreenshots/screenshot1.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot2.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot3.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot4.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot5.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot6.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot7.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot8.png" width="240"/>
+<img src="metadata/en/images/phoneScreenshots/1_quests.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/2_cycleway.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/3_surface.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/4_places.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/5_note.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/6_collection_times.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/7_parking.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/8_statistics.png" width="240"/>
 
 ## Download
 

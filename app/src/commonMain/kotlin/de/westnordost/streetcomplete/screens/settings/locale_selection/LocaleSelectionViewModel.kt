@@ -36,6 +36,8 @@ class LocaleSelectionViewModelImpl(
             selectableLocales.value = res
                 .readYaml<List<String>>("files/languages.yml")
                 .map { Locale(it) }
+                // Apple canonicalizes aliases such as "no" to "nb", making these locales equal.
+                .distinct()
         }
     }
 

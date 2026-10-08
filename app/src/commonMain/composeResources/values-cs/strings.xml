@@ -1496,7 +1496,7 @@ Jinak si můžete v obchodě s aplikacemi stáhnout jinou klávesnici. Na Androi
     <string name="bicycle_boulevard_is_a2">Je to cyklobulvár</string>
     <string name="bicycle_boulevard_is_not_a2">Není to cyklobulvár</string>
     <string name="camera_permission_description">K přidávání fotografií k mapovým poznámkám je potřeba oprávnění pro fotoaparát.</string>
-    <string name="resurvey_title">Je tohle stále správně?</string>
+    <string name="resurvey_title">Je toto stále správně?</string>
     <string name="add">Přidat</string>
     <string name="quest_bothway_aerialway_confirm">Opravu může člověk jet tímto výtahem oběma směry?</string>
     <string name="quest_doctor_type_title">Jací lékaři jsou tu přítomni?</string>
@@ -1507,4 +1507,15 @@ Jinak si můžete v obchodě s aplikacemi stáhnout jinou klávesnici. Na Androi
     <string name="unit_minute">minuta</string>
     <string name="quest_parking_charge_title">Kolik se tu musí platit za parkování?</string>
     <string name="quest_parking_charge_time_unit_label">za</string>
+    <string name="quest_generalAccess_title">Kdo může toto používat?</string>
+    <string name="quest_generalAccess_title2">Kdo sem může vstoupit?</string>
+    <string name="quest_generalAccess_title3">Kdo tu může pobývat?</string>
+    <string name="quest_generalAccess_hint">Ignorujte jakékoli poplatky. Zda přístup vyžaduje platbu, se aplikace bude ptát samostatně.</string>
+    <string name="quest_toiletsFee_fee_for_non_customers">Platí se poplatek, kromě zákazníků</string>
+    <string name="quest_vending_machine_type">Jaký druh prodejního automatu je tohle?</string>
+    <string name="quest_selection_hint_message_open_settings">Otevřít nastavení</string>
+    <string name="link_waymarked_description">Ukazuje značené trasy pro pěší turistiku, cyklistiku, horská kola, jízdu na koni, kolečkové brusle a zimní sporty.</string>
+    <string name="quest_buildingType_terraced_house">Samostatný řadový dům</string>
+    <string name="quest_buildingType_terraced_house_description">samostatný dům v řadě podobných domů</string>
+    <string name="quest_barrier_opening_not_wheelchair_accessible">Nevhodné pro vozíčkáře</string>
 </resources>

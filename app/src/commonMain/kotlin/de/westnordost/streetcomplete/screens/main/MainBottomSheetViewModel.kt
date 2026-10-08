@@ -21,7 +21,6 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
-import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
@@ -30,6 +29,7 @@ import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.map.getIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.ui.common.quest.Marker
@@ -39,6 +39,7 @@ import de.westnordost.streetcomplete.util.math.enlargedBy
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.withContext
+import org.jetbrains.compose.resources.DrawableResource
 
 @Stable
 abstract class MainBottomSheetViewModel : ViewModel() {
@@ -208,6 +209,7 @@ sealed interface ShownBottomSheet {
     ) : ShownBottomSheet {
         override val position get() = quest.position
         override val geometry get() = quest.geometry
+        override val icon get() = quest.type.icon
     }
 
     data class OsmNoteQuest(
@@ -216,6 +218,7 @@ sealed interface ShownBottomSheet {
     ) : ShownBottomSheet {
         override val position get() = quest.position
         override val geometry get() = quest.geometry
+        override val icon get() = quest.type.icon
     }
 
     data class Overlay(
@@ -224,6 +227,7 @@ sealed interface ShownBottomSheet {
         override val geometry: ElementGeometry?,
     ) : ShownBottomSheet {
         override val position get() = geometry?.center
+        override val icon get() = overlay.icon
     }
 
     data class CreateOsmNote(
@@ -231,8 +235,10 @@ sealed interface ShownBottomSheet {
     ) : ShownBottomSheet {
         override val position get() = null
         override val geometry get() = null
+        override val icon get() = Res.drawable.quest_create_note
     }
 
     val position: LatLon?
     val geometry: ElementGeometry?
+    val icon: DrawableResource
 }

@@ -1,6 +1,73 @@
 # Changelog
 
-## 64.0-alpha2
+## vNext
+
+### General
+
+- Add back button to dismissible onboarding screens (#7209)
+- Allow swiping between steps on all onboarding screens (#7198)
+- Other small improvements (#7228, #7221…), thanks @Amaanprobably
+- Back button on the bottom sheet title is now shown when the bottom sheet almost fills the whole screen (#7218)
+
+### New Quests
+
+- _"What’s the surface here?"_ - asked for motorcycle parkings (#7237, #6999, #6829), by @Amaanprobably, @ontheair81
+- _"How many sockets does this charging station have?"_ (#6732, #5164), thanks @mcliquid
+
+### Quest & overlay improvements
+
+- Add tap hint for street side select UI (#7215), by @sargunv
+- Localized names: if user explicitly specifies a language, also explicitly tag it that way (#7161)
+
+### Fixes
+
+- Fix logs screen didn't reliably scroll to bottom when new logs arrived (#7233), by @sargunv
+
+### Changes and fixes for earlier v64.0-alphas
+
+- Fix switch-keyboard button now not hidden below keyboard on iOS, show it just above text input field instead (#7208, #6852)
+- Fix crash when scrolling around in building overlay (#7214), by @sargunv
+- Fix crash in language selection screen in iOS (#7210, #7213), by @sargunv
+- Fix note forms were not closeable by clicking on map (#7216)
+- Fix map click just above forms was not registered as clicking on map (#7216)
+- Fix per-app language setting was overwritten on each start of the app on iOS (#7203, #7213), by @sargunv
+- Fix settings screen background turning black on Android 7 (#7175), by @sargunv
+- Add reference number: Fix answer "nothing visible" didn't do anything
+- Fix quest header was duplicated for non-resurvey quests that had a note
+
+## v64.0-alpha3
+
+### General
+
+- Support predictive back gesture (#7113), by @sargunv
+- Other minor UI improvements
+- Reduce yank when animating between screens (#7194, #7193…), by @Amaanprobably, @sargunv
+- Show button on map to return to currently focused element (#7195)
+
+### Fixes
+
+- Fix rendering issue in parking overlay form
+- Fix avatar image didn't appear immediately after login
+
+### Quest improvements
+
+- Other minor improvements (#7182, #7187, #7201), thanks @paulklie
+
+### Changes and fixes for earlier v64.0-alphas
+
+- Map now works on iOS 15.5 (#7193), by @sargunv
+- Dismiss quest, overlay and note forms by clicking on the map (#7179, #7202, …), by @paulklie
+- Only show drag handle on bottom sheets if the can actually be dragged up
+- Fix crash in cycleway overlay and board type quest on iOS (#7184)
+- Fix rare crash in opening hours and collection times form
+- Fix cycleway form would in rare circumstances detect changes when there were none
+- Fix cycleway form would not recognize resurvey of cycleways as resurvey
+- Made overlay elements clickable easier (#7178), thanks @sargunv
+- Fix new-address pin was also displayed when editing existing opening hours (#7183)
+- Fix zoomed in geometry of focused element was not fully in view (regression of #7135)
+- Make buttons in quest answer button bar a little bigger (#7190)
+
+## v64.0-alpha2
 
 🍎 After v64.0-alpha1, this update brings huge changes AGAIN, which again should be mostly
 invisible! @sargunv and I ported the map and any interaction with it to a multiplatform UI framework
@@ -9,34 +76,39 @@ invisible! @sargunv and I ported the map and any interaction with it to a multip
 But this is not all! @sargunv also took the last remaining steps for a fully working iOS version! (#7125)
 
 ### General
+
 - Increase size of time picker in dialogs (#7144), by @Amaanprobably
 
 ### Quest improvements
-- Step count: Don't ask if step count are given already in another form (#7136, #7137), by @paulklie
+
+- Step count: Don't ask if step count is given already in another form (#7136, #7137, #7168), by @paulklie, @peternewman
 - Sidewalk surface: Upgrade ambiguous to explicit tagging correctly (#7138, #7139), by @Amaanprobably
 - Barrier opening: Add answer option "not suitable for wheelchairs" (#7127), by @kmpoppe
-- Level of things: Don't ask for things whose location non-indoor location is already known (#7114)
-- Buildings: Can not select "terraced house" (#7159), by @Amaanprobably
-- Other small improvements (#7164, #7170, #7165), by @paulklie, 
+- Level of things: Don't ask for things whose location is already known to be non-indoor (#7114)
+- Buildings: Can now select "terraced house" (#7159), by @Amaanprobably
+- Other small improvements (#7164, #7170, #7165), by @paulklie
 
 ### Overlay improvements
+
 - Buildings overlay: Buildings are now shown in 3D again (#7153), by @paulklie
 
 ### Fixes
+
 - Fix zoom animation was sometimes interrupted by the map following the user's position (#5860), by @sargunv
 - Fix selected language was sometimes overwritten by system default language (#5942), by @sargunv
 
-### Changes and fixes for 64.0-alpha1
+### Changes and fixes for v64.0-alpha1
+
 - Quest peek height is now relative to available screen height (#7135), by @mcliquid
 - Parking charge: Also ask when there's not always a fee (#7133)
 - Keyboard would sometimes obscure the quest form (#7107), by @sargunv
 - Fix several small issues related to the map (#7152, #7108), by @sargunv
-- Small visual fixes (#7132, #7130)
+- Small visual fixes (#7132, #7130, #7176)
 
-## 64.0-alpha1
+## v64.0-alpha1
 
-🍏 This update brings huge changes, albeit they should be mostly invisible. I re-did the UI for all 
-quest forms, a side effect of the migration to a multiplatform UI framework. An iOS version of the 
+🍏 This update brings huge changes, albeit they should be mostly invisible. I re-did the UI for all
+quest forms, a side effect of the migration to a multiplatform UI framework. An iOS version of the
 app has now come within reach! (#6842).
 @kiliankoe (#6989), @maxwellward (#7033), @sargunv (#7123, #7124) helped a bit, too.
 
@@ -65,7 +137,7 @@ app has now come within reach! (#6842).
 - UI now prevents possibility to create duplicate notes (#4853)
 - Context menus now appear at less wrong positions (#6665)
 - "Are you sure?" dialog had poor contrast in dark mode (#6753)
-- Fix rare crash in places overlay (#6648) 
+- Fix rare crash in places overlay (#6648), and another (#5809)
 - Quest form used to not have padding for the camera notch (#6764)
 - Internet access: "none" option was not exclusive (#7016)
 - Fix formatting of links in notes (#7048)

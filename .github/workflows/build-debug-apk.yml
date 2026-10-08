@@ -31,11 +31,11 @@ jobs:
         run: ./gradlew assembleDebug -Papp.streetcomplete.debug=true
 
       - name: Rename APK
-        run: mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/StreetComplete-debug-$COMMIT_SHA.apk
+        run: mv androidApp/build/outputs/apk/debug/androidApp-debug.apk androidApp/build/outputs/apk/debug/StreetComplete-debug-$COMMIT_SHA.apk
 
       - name: Archive APK
         uses: actions/upload-artifact@v4
         with:
           name: StreetComplete-debug-apk-${{ env.COMMIT_SHA }}
-          path: app/build/outputs/apk/debug/*.apk
+          path: androidApp/build/outputs/apk/debug/*.apk
           retention-days: 30

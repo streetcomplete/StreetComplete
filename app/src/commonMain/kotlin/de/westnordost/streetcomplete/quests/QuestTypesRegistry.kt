@@ -61,13 +61,12 @@ import de.westnordost.streetcomplete.quests.camping.AddCampPower
 import de.westnordost.streetcomplete.quests.camping.AddCampShower
 import de.westnordost.streetcomplete.quests.camping.AddCaravans
 import de.westnordost.streetcomplete.quests.camping.AddTents
-import de.westnordost.streetcomplete.quests.doctor_type.AddDoctorType
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
 import de.westnordost.streetcomplete.quests.charge.AddParkingCharge
 import de.westnordost.streetcomplete.quests.charging_station_bicycles.AddChargingStationBicycles
-import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationBicycleCapacity
-import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationCapacity
+import de.westnordost.streetcomplete.quests.charging_station_access.AddChargingStationMotorcar
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
+import de.westnordost.streetcomplete.quests.socket.AddChargingStationSocket
 import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedBuildingConstruction
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedHighwayConstruction
@@ -83,6 +82,7 @@ import de.westnordost.streetcomplete.quests.diet_type.AddHalal
 import de.westnordost.streetcomplete.quests.diet_type.AddKosher
 import de.westnordost.streetcomplete.quests.diet_type.AddVegan
 import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian
+import de.westnordost.streetcomplete.quests.doctor_type.AddDoctorType
 import de.westnordost.streetcomplete.quests.drinking_water.AddDrinkingWater
 import de.westnordost.streetcomplete.quests.drinking_water_type.AddDrinkingWaterType
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
@@ -171,6 +171,7 @@ import de.westnordost.streetcomplete.quests.summit.AddSummitRegister
 import de.westnordost.streetcomplete.quests.surface.AddBeachSurface
 import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface
 import de.westnordost.streetcomplete.quests.surface.AddFootwayPartSurface
+import de.westnordost.streetcomplete.quests.surface.AddMotorcycleParkingSurface
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
 import de.westnordost.streetcomplete.quests.surface.AddPitchSurface
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
@@ -297,6 +298,7 @@ fun questTypeRegistry(
     // motorcycle parking
     30 to AddMotorcycleParkingCover(),
     31 to AddMotorcycleParkingCapacity(), // counting + number input required but usually well visible
+    200 to AddMotorcycleParkingSurface(),
     180 to AddMotorcycleParkingFee(),
 
     // air pump, may require some checking within a garage forecourt
@@ -415,9 +417,11 @@ fun questTypeRegistry(
 
     86 to AddClothingBinOperator(),
 
+    // 87 to AddChargingStationCapacity(), - replaced in https://github.com/streetcomplete/StreetComplete/pull/7083/
+    // 179 to AddChargingStationBicycleCapacity(), - removed in https://github.com/streetcomplete/StreetComplete/pull/7083/
+    201 to AddChargingStationMotorcar(),
     186 to AddChargingStationBicycles(),
-    87 to AddChargingStationCapacity(),  // after question for bicycles because user has possibility to answer that it is only for bicycles
-    179 to AddChargingStationBicycleCapacity(),
+    198 to AddChargingStationSocket(),
     88 to AddChargingStationOperator(),
 
     194 to AddVendingMachineType(), // May take some time to find the machine in building with multiple levels
@@ -455,7 +459,7 @@ fun questTypeRegistry(
     184 to AddAerialwayBicycleAccess(),
     187 to AddOnewayAerialway(),
 
-    //103 to AddProhibitedForPedestrians(), - removed in https://github.com/streetcomplete/StreetComplete/issues/7014
+    // 103 to AddProhibitedForPedestrians(), - removed in https://github.com/streetcomplete/StreetComplete/issues/7014
 
     104 to MarkCompletedHighwayConstruction(), // need to look the whole way
 

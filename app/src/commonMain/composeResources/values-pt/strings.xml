@@ -753,7 +753,7 @@ Se houver vias reservadas para autocarros, por favor, deixe uma nota.</string>
     <string name="quest_surface_value_clay">Argila</string>
     <string name="quest_surface_value_artificial_turf">Relva artificial</string>
     <string name="quest_bicycle_parking_fee_title">Este estacionamento de bicicletas é pago?</string>
-    <string name="quest_buildingType_house_description2">casa unifamiliar com pelo menos 1 parede não independente, por ex. uma casa única numa série de casas em banda (2 ou mais casas)</string>
+    <string name="quest_buildingType_house_description2">casa unifamiliar não independente</string>
     <string name="quest_drinking_water_potable_signed">Potável (assinalado)</string>
     <string name="quest_drinking_water_not_potable_signed">Não potável (assinalado)</string>
     <string name="quest_postboxRoyalCypher_title">Qual é a cifra real desta caixa de correio?</string>

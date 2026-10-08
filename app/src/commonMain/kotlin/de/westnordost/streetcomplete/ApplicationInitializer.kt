@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete
 
 import de.westnordost.streetcomplete.ApplicationConstants.MAX_UNDO_HISTORY_AGE
 import de.westnordost.streetcomplete.data.FeedsUpdater
-import de.westnordost.streetcomplete.data.PeriodicCleaner
 import de.westnordost.streetcomplete.data.Preloader
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController

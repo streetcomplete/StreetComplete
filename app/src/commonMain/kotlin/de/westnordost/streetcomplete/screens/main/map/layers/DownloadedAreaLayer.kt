@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toPosition
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import org.maplibre.spatialk.geojson.Polygon
 import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.image
@@ -19,6 +18,7 @@ import org.maplibre.compose.layers.FillLayer
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
+import org.maplibre.spatialk.geojson.Polygon
 
 /** Displays which areas have (not) been downloaded. Adds a hatching to the whole world except the
  *  downloaded areas. */

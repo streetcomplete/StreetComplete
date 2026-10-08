@@ -750,7 +750,7 @@ Jika ada lajur yang digunakan khusus untuk bus, harap meninggalkan catatan saja.
     <string name="quest_surface_value_clay">Tanah liat</string>
     <string name="quest_surface_value_artificial_turf">Rumput palsu</string>
     <string name="quest_bicycle_parking_fee_title">Apakah kamu perlu membayar untuk memarkir sepeda di sini?</string>
-    <string name="quest_buildingType_house_description2">rumah tinggal tunggal yang menempel dengan bangunan lain, cth. satu unit rumah deret/rumah toko.</string>
+    <string name="quest_buildingType_house_description2">rumah tinggal tunggal yang menempel dengan bangunan lain</string>
     <string name="quest_drinking_water_potable_signed">Aman untuk diminum (tertanda)</string>
     <string name="quest_drinking_water_not_potable_signed">Tak aman untuk diminum (tertanda)</string>
     <string name="quest_postboxRoyalCypher_title">Apa sandi kerajaan di kotak pos ini?</string>

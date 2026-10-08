@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Slovenská sporiteľňa, Všeobecná úverová banka, ČSOB, Tatra banka, Prima banka, UniCredit, Poštová banka, Euronet, Kvakomat, VÚB banka, Bitcoinmat.sk, 365.bank, Fio banka, Raiffeisen banka, ATM Point, Kvakomat by KvaPay, Bitcoinmat, Bitomat, Bitcoinmat.org, wBTCb, ATM point]
-chargingStationOperators: [Západoslovenská energetika, GreenWay, ejoin, Lidl, GreenWay Infrastructure, ZSE Drive, Tesla, evmapa, Specialized, MOL, od našich, 'Sharengo/4 SALE,s.r.o', VSE, Shell Recharge, OMV, ebajk connect, OMV Slovensko, Mesto Prešov, LEDEOS, Billa, Slovnaft, NabiBajk, Ionity, GTIS Charging SK s.r.o., EVlink, Cykloregión Liptov, Antik Telecom, ABB, 'ejoin, s.r.o.', ebajkonnect, ebajkconnect, Mesto Košice, Ledeos, Kaufland, Hedin AUtomotive Slovakia s.r.o., GreenWay Slovensko s.r.o., Farmárska reštaurácia, BMW T.O.B., Antik]
+atmOperators: [Slovenská sporiteľňa, Všeobecná úverová banka, ČSOB, Tatra banka, Prima banka, UniCredit, Poštová banka, Euronet, VÚB banka, Kvakomat, Bitcoinmat.sk, 365.bank, Fio banka, Raiffeisen banka, ATM Point, Kvakomat by KvaPay, Bitcoinmat, Bitomat, Bitcoinmat.org, wBTCb, ATM point]
+chargingStationOperators: [Západoslovenská energetika, GreenWay, ejoin, Lidl, GreenWay Infrastructure, ZSE Drive, Tesla, OMV Slovensko, evmapa, Specialized, MOL, od našich, 'Sharengo/4 SALE,s.r.o', VSE, Shell Recharge, NabiBajk, LEDEOS, ebajk connect, Mesto Prešov, Billa, Slovnaft, Ionity, GTIS Charging SK s.r.o., EVlink, Cykloregión Liptov, Antik Telecom, AgeVolt, ABB, 'ejoin, s.r.o.', ebajkonnect, ebajkconnect, U dobrého pastiera, Mesto Košice, Ledeos, Kaufland, Hedin AUtomotive Slovakia s.r.o., GreenWay Slovensko s.r.o., Farmárska reštaurácia, BMW T.O.B., Antik]
 chargingStationSocketTypes: [type2_cable, type2, type2_combo]
 clothesContainerOperators: [Ekocharita, HUMANA, Humana, EKOCHARITA, 'KOSIT, a.s.', Nadácia ECO, TextilEco, 'Marius Pedersen,a.s.', Marius Pedersen, ECO textil, 'T+T, a. s.', Ekotextil]
 defaultSpeedLimitHasUrbanOrRural: true
@@ -14,7 +14,7 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 231
 officialLanguages: [sk]
 orchardProduces: [grape, apple, walnut, plum, tomato, peach, strawberry, chilli_pepper, sweet_pepper, apricot, hop, pear, blueberry, cherry, raspberry]
-parcelLockerBrand: [Z-Box, AlzaBox, Packeta, balíkovo box, GLS Balíkomat, BalíkoBOX, DPD Pickup Station, GLS, balíkovo, GymBeam Box, Balíkovo, DPD Pickup Box, tamburi, dpd, Penguin Box, Dr. Max, DPD, Pilulka Box]
+parcelLockerBrand: [Z-Box, AlzaBox, Packeta, balíkovo box, GLS Balíkomat, BalíkoBOX, DPD Pickup Station, GLS, balíkovo, GymBeam Box, tamburi, Balíkovo, DPD Pickup Box, dpd, Penguin Box, Dr. Max, DPD, Pilulka Box]
 postboxesHaveCollectionTimes: true
 postboxesHaveRef: true
 slowZoneLabelPosition: top

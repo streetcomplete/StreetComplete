@@ -747,7 +747,7 @@
     <string name="quest_surface_value_clay">കളിമണ്ണ്</string>
     <string name="quest_surface_value_artificial_turf">കൃത്രിമ ടർഫ്</string>
     <string name="quest_bicycle_parking_fee_title">ഇവിടെ സൈക്കിൾ പാർക്ക് ചെയ്യാൻ പണം നൽകണോ?</string>
-    <string name="quest_buildingType_house_description2">സ്വതന്ത്രമല്ലാത്ത ഒറ്റകുടുംബ വീട് (ഉദാ: ഒരു റോ ഹൗസ്)</string>
+    <string name="quest_buildingType_house_description2">സ്വതന്ത്രമല്ലാത്ത ഒറ്റകുടുംബ വീട്</string>
     <string name="quest_drinking_water_potable_signed">കുടിക്കാൻ സുരക്ഷിതം (ബോർഡ് സഹിതം)</string>
     <string name="quest_drinking_water_not_potable_signed">കുടിക്കാൻ സുരക്ഷിതമല്ല (ബോർഡ് സഹിതം)</string>
     <string name="quest_postboxRoyalCypher_title">ഈ പോസ്റ്റ്ബോക്സിലെ രാജകീയ ചിഹ്നം എന്താണ്?</string>

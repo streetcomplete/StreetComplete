@@ -753,7 +753,7 @@ Jeśli jakieś pasy są zarezerwowane dla autobusów, utwórz notatkę.</string>
     <string name="quest_surface_value_clay">Glina</string>
     <string name="quest_surface_value_artificial_turf">Sztuczna trawa</string>
     <string name="quest_bicycle_parking_fee_title">Czy parkując tutaj rower, musisz uiścić opłatę?</string>
-    <string name="quest_buildingType_house_description2">inny dom jednorodzinny (niebędący wolnostojącym)</string>
+    <string name="quest_buildingType_house_description2">inny dom jednorodzinny</string>
     <string name="quest_drinking_water_potable_signed">Zdatne do picia (oznaczone)</string>
     <string name="quest_drinking_water_not_potable_signed">Niezdatne do picia (oznaczone)</string>
     <string name="quest_postboxRoyalCypher_title">Jaki monogram królewski jest na tej skrzynce pocztowej?</string>

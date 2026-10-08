@@ -753,7 +753,7 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus.</string>
     <string name="quest_surface_value_clay">Savi</string>
     <string name="quest_surface_value_artificial_turf">Tekonurmi</string>
     <string name="quest_bicycle_parking_fee_title">Maksaako polkupyörän pysäköiminen täällä?</string>
-    <string name="quest_buildingType_house_description2">Yhdistetty yhden perheen koti, kuten yksittäinen rivitaloasunto</string>
+    <string name="quest_buildingType_house_description2">Yhdistetty yhden perheen koti</string>
     <string name="quest_drinking_water_potable_signed">Turvallista (merkitty)</string>
     <string name="quest_drinking_water_not_potable_signed">Ei turvallista (merkitty)</string>
     <string name="quest_postboxRoyalCypher_title">Mikä on tämän postilaatikon kuninkaallinen monogrammi?</string>

@@ -751,7 +751,7 @@
     <string name="quest_surface_value_clay">黏土</string>
     <string name="quest_surface_value_artificial_turf">人造草坪</string>
     <string name="quest_bicycle_parking_fee_title">在这停放自行车需要付费吗？</string>
-    <string name="quest_buildingType_house_description2">非独栋单户住宅（例如：联排别墅中的一户）</string>
+    <string name="quest_buildingType_house_description2">非独栋单户住宅</string>
     <string name="quest_drinking_water_potable_signed">可安全饮用（已标明）</string>
     <string name="quest_drinking_water_not_potable_signed">不能安全饮用（已标明）</string>
     <string name="quest_postboxRoyalCypher_title">这个邮筒的官方标志是什么？</string>

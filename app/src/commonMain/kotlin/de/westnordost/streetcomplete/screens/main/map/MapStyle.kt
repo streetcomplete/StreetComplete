@@ -61,10 +61,11 @@ fun MapStyle(
     belowLabelsContent: @Composable @MaplibreComposable () -> Unit = {},
     aboveLabelsContent: @Composable @MaplibreComposable () -> Unit = {},
 ) {
-    val osmAttribution = stringResource(Res.string.map_attribution_osm)
+    // unicode 00a0 = no break space
+    val osmAttribution = stringResource(Res.string.map_attribution_osm).replaceFirst("© ", "©\u00a0")
     val attributionHtml = remember(osmAttribution) {
         "<a href='https://www.openstreetmap.org/copyright'>$osmAttribution</a> " +
-        "<a href='https://jawg.io?utm_medium=map&utm_source=attribution'>&copy; JawgMaps</a>"
+        "<a href='https://jawg.io?utm_medium=map&utm_source=attribution'>©\u00a0JawgMaps</a>"
     }
     val source = rememberVectorTileSource(
         tiles = listOf(MapTiles.URL_TEMPLATE),
@@ -609,7 +610,6 @@ private fun LabelLayers(
         textPadding = textPadding,
     )
 }
-
 
 @Composable @MaplibreComposable
 private fun RoadLayer(

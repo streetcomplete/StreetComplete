@@ -34,8 +34,7 @@ import kotlinx.io.files.SystemFileSystem
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import org.koin.dsl.onClose
-import org.maplibre.compose.location.IosLocationProvider
-import org.maplibre.compose.location.IosSystemSettingsLauncher
+import org.maplibre.compose.location.AppleLocationProvider
 import org.maplibre.compose.location.LocationProvider
 import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.MapRuntimeOptions
@@ -114,7 +113,7 @@ val iosModule = module {
 
     // location
 
-    single<LocationProvider> { IosLocationProvider() } onClose { it?.close() }
+    single<LocationProvider> { AppleLocationProvider() } onClose { it?.close() }
 
     // settings
 

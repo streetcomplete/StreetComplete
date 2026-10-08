@@ -752,7 +752,7 @@ Se invece qualche corsia è riservata ai bus per favore lascia un commento.</str
     <string name="quest_surface_value_clay">Argilla</string>
     <string name="quest_surface_value_artificial_turf">Erba sintetica</string>
     <string name="quest_bicycle_parking_fee_title">Si paga per parcheggiare la bici qui?</string>
-    <string name="quest_buildingType_house_description2">casa unifamiliare non indipendente, per esempio una casa a schiera</string>
+    <string name="quest_buildingType_house_description2">casa unifamiliare non indipendente</string>
     <string name="quest_drinking_water_potable_signed">È sicura da bere (è scritto così)</string>
     <string name="quest_drinking_water_not_potable_signed">Non sicura da bere (è scritto così)</string>
     <string name="quest_postboxRoyalCypher_title">Quale monogramma reale è presente su questa cassetta postale?</string>
@@ -1001,7 +1001,7 @@ Altrimenti puoi lasciare una nota (con una foto).</string>
     <string name="quest_seating_indoor_only">Solo all'interno</string>
     <string name="quest_seating_outdoor_only">Solo all'esterno</string>
     <string name="quest_seating_indoor_and_outdoor">Sia all'interno che all'esterno</string>
-    <string name="no_camera_permission_toast">Accesso alla fotocamera mancante</string>
+    <string name="no_camera_permission_toast">Permessi fotocamera mancanti</string>
     <string name="quest_accepts_cash_title2">Sono accettati pagamenti in contanti qui?</string>
     <string name="quest_address_street_title2">In quale strada si trova?</string>
     <string name="quest_airConditioning_title">È presente l'aria condizionata in questo locale?</string>
@@ -1413,7 +1413,7 @@ Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tett
     <string name="quest_board_type_rules">Regole</string>
     <string name="quest_firewood_provided_title">Viene fornita legna da ardere?</string>
     <string name="quest_first_aid_kit_location">Dove si trova questo kit di pronto soccorso?</string>
-    <string name="quest_lane_markings_title">Questa strada è dotata di segnaletica orizzontale?</string>
+    <string name="quest_lane_markings_title">Questa strada ha delle linee per delimitare le corsie?</string>
     <string name="quest_level_thing_title">A quale livello numerico si trova questa cosa?</string>
     <string name="quest_bicycle_charging_station_capacity_title">Quante biciclette possono essere caricate qui nello stesso momento?</string>
     <string name="quest_charging_station_bicycles_title">Le biciclette possono essere caricate qui?</string>
@@ -1467,13 +1467,24 @@ Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tett
     <string name="quest_maxspeed_type_description">Il limite di velocità è dato da...</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit2">Cartello limite di velocità</string>
     <string name="quest_maxspeed_answer_roadtype_description">La strada è...</string>
-    <string name="quest_maxspeed_answer_roadtype_urban">Area di lavoro</string>
-    <string name="quest_maxspeed_answer_roadtype_rural">Fuori area di lavori</string>
+    <string name="quest_maxspeed_answer_roadtype_urban">Centro abitato</string>
+    <string name="quest_maxspeed_answer_roadtype_rural">Fuori dal centro abitato</string>
     <string name="quest_maxspeed_answer_roadtype_lit">illuminato</string>
     <string name="quest_maxspeed_answer_roadtype_not_lit">non illuminato</string>
     <string name="quest_maxspeed_answer_roadtype_dual_carriageway">Strada a due corsie non illuminata</string>
     <string name="quest_board_type_tourism">Turismo (topic multipli)</string>
     <string name="quest_lanes_answer_oneLaneOnly">Solo una corsia contrassegnata</string>
     <string name="quest_shop_gone_replaced_answer_hint2">Digita quello che stai cercando</string>
+    <string name="link_gomap_description">Editor OSM avanzato per iOS</string>
+    <string name="quest_place_vacant_type_title">Questo luogo è ancora vuoto?</string>
+    <string name="about_title">Riguardo a %1$s</string>
+    <string name="leave_note_quest_context_hint">Non so rispondere “%1$s”:</string>
     <string name="quest_leave_new_note_track_delete_title">Vuoi eliminare la registrazione di questa traccia?</string>
+    <string name="camera_permission_description">Sono richiesti i permessi della fotocamera per allegare foto alle note della mappa.</string>
+    <string name="resurvey_title">È ancora corretto?</string>
+    <string name="add">Aggiungi</string>
+    <string name="quest_generalAccess_title">Chi può usarlo?</string>
+    <string name="quest_generalAccess_title2">Chi può entrarci?</string>
+    <string name="quest_generalAccess_title3">Chi può stare qui?</string>
+    <string name="quest_vending_machine_type">Che tipo di distributore automatico è?</string>
 </resources>

@@ -7,7 +7,6 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.graphics.painter.Painter
 import de.westnordost.streetcomplete.resources.*
-import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
 /** Draws a (quest) pin */
