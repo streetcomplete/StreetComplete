@@ -132,7 +132,7 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
 
                 // Atomics, Locks, Synchronization
-                // Aparently only necessary as long as https://github.com/Kotlin/kotlinx-atomicfu/issues/145 is not solved
+                // Apparently only necessary as long as https://github.com/Kotlin/kotlinx-atomicfu/issues/145 is not solved
                 implementation("org.jetbrains.kotlinx:atomicfu:0.33.0")
 
                 // Dependency injection
