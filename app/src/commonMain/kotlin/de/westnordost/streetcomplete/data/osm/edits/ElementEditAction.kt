@@ -21,7 +21,7 @@ interface ElementEditAction {
     /** Using the given map data repository (if necessary) and the id provider (if this action
      *  creates new elements), this function should return all updated elements this action produces
      *  when applied to the given element.
-     *  @throws ConflictException when a conflict occured when trying to apply the changes
+     *  @throws ConflictException when a conflict occurred when trying to apply the changes
      *  @throws IllegalArgumentException if any of the created changes contain invalid data (e.g. if
      *          key or value of any OSM tag is too long)
      */

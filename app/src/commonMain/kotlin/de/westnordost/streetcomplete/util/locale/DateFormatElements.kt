@@ -67,7 +67,7 @@ data class DateFormatElements(
 
 enum class DateComponent { Year, Month, Day }
 
-/** Find the first occurence of the given [string] in this string.*/
+/** Find the first occurrence of the given [string] in this string.*/
 private fun String.find(string: String): IntRange? {
     val startIndex = indexOf(string)
     if (startIndex == -1) return null
