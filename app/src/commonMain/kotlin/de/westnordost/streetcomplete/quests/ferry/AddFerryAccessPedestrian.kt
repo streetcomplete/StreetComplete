@@ -54,4 +54,10 @@ class AddFerryAccessPedestrian : OsmElementQuestType<Boolean> {
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["foot"] = answer.toYesNo()
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
+            ways, relations with
+                route = ferry
+        """)
 }

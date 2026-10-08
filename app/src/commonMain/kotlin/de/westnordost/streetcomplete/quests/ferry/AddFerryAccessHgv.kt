@@ -78,4 +78,10 @@ class AddFerryAccessHgv : OsmElementQuestType<FerryHgvAccess> {
                 tags["hgv:signed"] = "no"
         }
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
+            ways, relations with
+                route = ferry
+        """)
 }

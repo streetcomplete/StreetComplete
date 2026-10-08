@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory
 import de.westnordost.streetcomplete.osm.opening_hours.isSupported
 import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
@@ -140,6 +141,7 @@ mapOf(
             or tower:type = observation and fee = yes
             or leisure = garden and fee = yes
             or leisure = park and fee = yes
+            or building ~ ${BuildingTypeCategory.CIVIC.children.joinToString("|")}
         )
     )
     """

@@ -76,4 +76,10 @@ class AddFerryAccessBicycle : OsmElementQuestType<FerryBicycleAccess> {
                 tags["bicycle:signed"] = "no"
         }
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
+            ways, relations with
+                route = ferry
+        """)
 }
