@@ -76,7 +76,7 @@ open class UpdateIosAppTranslationsTask : DefaultTask() {
         // Furthermore, it puts a space before each colon in associative arrays, e.g.
         // `"sourceLanguage" : "en",`
         // so, we adapt to this syntax so that XCode doesn't create actual changes that'd be
-        // commited to the repository.
+        // committed to the repository.
 
         val findColons = Regex("^(\\s*\".+\"): ", RegexOption.MULTILINE)
         targetFile.writeText(xcStringsJson.replace(findColons) { matchResult ->

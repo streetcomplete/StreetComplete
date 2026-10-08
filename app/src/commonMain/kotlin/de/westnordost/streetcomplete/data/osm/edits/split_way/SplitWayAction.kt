@@ -185,7 +185,7 @@ private fun removeTagsThatArePotentiallyWrongAfterSplit(tags: MutableMap<String,
 //region Update relations
 
 /** Updates all relations that are referenced by the original way for when that way is split up
- *  into the the list of new ways. Returns the updated relations */
+ *  into the list of new ways. Returns the updated relations */
 private fun getUpdatedRelations(
     originalWay: Way,
     newWays: List<Way>,

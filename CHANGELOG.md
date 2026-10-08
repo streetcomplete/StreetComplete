@@ -8,32 +8,38 @@
 - Allow swiping between steps on all onboarding screens (#7198)
 - Other small improvements (#7228, #7221…), thanks @Amaanprobably
 - Back button on the bottom sheet title is now shown when the bottom sheet almost fills the whole screen (#7218)
+- Monochrome POI icons with halo don't visually clump together on the map anymore when they are too close together, thanks @sargunv
 
 ### New Quests
 
 - _"What’s the surface here?"_ - asked for motorcycle parkings (#7237, #6999, #6829), by @Amaanprobably, @ontheair81
 - _"How many sockets does this charging station have?"_ (#6732, #5164), thanks @mcliquid
+- _"Can cars be charged here?"_ (#7083, also #7098), by @paulklie. This and the above quest replace the quests that ask if and how many cars / bicycles can be charged at a charging station
 
 ### Quest & overlay improvements
 
 - Add tap hint for street side select UI (#7215), by @sargunv
 - Localized names: if user explicitly specifies a language, also explicitly tag it that way (#7161)
+- Other small improvements (#7217, #7245), by @paulklie
 
 ### Fixes
 
+- Opening hours: Fix crash when editing times like 26:00 (#7246)
 - Fix logs screen didn't reliably scroll to bottom when new logs arrived (#7233), by @sargunv
+- Postbox collection times: Fix always asked whether to discard changes on exit even when nothing was input
+- Parking Fee: Fix never asked whether to discard changes on exit
 
 ### Changes and fixes for earlier v64.0-alphas
 
-- Fix switch-keyboard button now not hidden below keyboard on iOS, show it just above text input field instead (#7208, #6852)
 - Fix crash when scrolling around in building overlay (#7214), by @sargunv
 - Fix crash in language selection screen in iOS (#7210, #7213), by @sargunv
 - Fix note forms were not closeable by clicking on map (#7216)
+- Fix switch-keyboard button now not hidden below keyboard on iOS, show it just above text input field instead (#7208, #6852)
 - Fix map click just above forms was not registered as clicking on map (#7216)
 - Fix per-app language setting was overwritten on each start of the app on iOS (#7203, #7213), by @sargunv
 - Fix settings screen background turning black on Android 7 (#7175), by @sargunv
-- Add reference number: Fix answer "nothing visible" didn't do anything
 - Fix quest header was duplicated for non-resurvey quests that had a note
+- Reference number: Fix answer "nothing visible" didn't do anything
 
 ## v64.0-alpha3
 

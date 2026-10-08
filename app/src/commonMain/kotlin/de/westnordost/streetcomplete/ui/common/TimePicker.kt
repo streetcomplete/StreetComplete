@@ -52,6 +52,13 @@ class TimePickerState(
     }
 
     init {
+        if (allowAfterMidnight) {
+            require(initialHour in 0..24) { "hour must be within 0..24 but was $initialHour" }
+        } else {
+            require(initialHour in 0..<24) { "hour must be within 0..<24 but was $initialHour" }
+        }
+        require(initialMinute in 0..<60) { "minute must be within 0..59 but was $initialMinute" }
+
         selectableHours = (
             if (is12Hour) (1..12)
             else if (allowAfterMidnight) (0..24)

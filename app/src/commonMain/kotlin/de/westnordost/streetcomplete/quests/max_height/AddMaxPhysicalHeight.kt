@@ -95,6 +95,8 @@ class AddMaxPhysicalHeight(
         }
     }
 
+    override val hideHighlightedElementsOnDifferentLevel = false
+
     override fun getHighlightedElements(
         element: Element,
         mapData: MapDataWithGeometry

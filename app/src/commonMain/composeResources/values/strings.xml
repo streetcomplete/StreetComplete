@@ -1035,8 +1035,8 @@
     <string name="quest_carWashType_selfService">Self-service</string>
     <string name="quest_carWashType_service">Staff cleans car</string>
 
-    <string name="quest_charging_station_bicycles_title">Can bicycles be charged here, too?</string>
-    <string name="quest_charging_station_bicycles_hint">Bicycle charger power adapters plug into normal household sockets.</string>
+    <string name="quest_charging_station_bicycles_title">Can bicycles be charged here?</string>
+    <string name="quest_charging_station_bicycles_hint2">Some of the sockets here can be used to charge bicycles. Check whether charging bicycles is prohibited, for example by signs or because the area is for cars only.</string>
 
     <string name="quest_charging_station_car_access">Can cars be charged here?</string>
 
@@ -1428,6 +1428,7 @@
 
     <string name="quest_parking_charge_title">How much do you need to pay to park here?</string>
     <string name="quest_parking_charge_time_unit_label">per</string>
+    <string name="quest_parking_charge_answer_no_fee">There is no fee at all</string>
 
     <string name="quest_parkingType_title">What kind of parking is this?</string>
     <string name="quest_parkingType_surface">Parking lot</string>

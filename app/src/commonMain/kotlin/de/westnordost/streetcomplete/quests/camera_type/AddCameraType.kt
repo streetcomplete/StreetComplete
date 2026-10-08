@@ -29,6 +29,7 @@ class AddCameraType : OsmFilterQuestType<CameraType>() {
     override val icon = Res.drawable.quest_surveillance_camera
     override val title = Res.string.quest_camera_type_title
     override val achievements = listOf(CITIZEN)
+    override val hideHighlightedElementsOnDifferentLevel = false
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("""

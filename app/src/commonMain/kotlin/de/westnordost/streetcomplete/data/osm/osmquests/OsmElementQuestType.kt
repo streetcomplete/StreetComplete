@@ -17,7 +17,7 @@ import kotlin.jvm.JvmInline
  *  A quest type referring to one OSM element specifies via the [getApplicableElements] and
  *  [isApplicableTo] methods for which OSM elements a quest of this type should be created.
  *  Quest types that do not require complex filters that depend on the geometry of surrounding
- *  elements subclass [OsmFilterQuestType][de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType]
+ *  elements subclass [OsmFilterQuestType][OsmFilterQuestType]
  */
 interface OsmElementQuestType<T> : QuestType, ElementEditType {
 
@@ -65,6 +65,12 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      *  provide context for the given element. For example, nearby benches should be shown when
      *  answering a question for a bench so the user knows which of the benches is meant. */
     fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry): Sequence<Element> = emptySequence()
+
+    /** Should elements returned by getHighlightedElements be hidden if they are on a different
+     * level than the quest the user is answering? For example: stores on a different level could
+     * overload the map, so they are hidden, while cables are shown.
+     */
+    val hideHighlightedElementsOnDifferentLevel: Boolean get() = true
 
     /** The radius in which certain elements should be shown (see getHighlightedElements).
      *  30m is the default because this is about "across this large street". There shouldn't be
