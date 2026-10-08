@@ -29,7 +29,7 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeTable
 import de.westnordost.streetcomplete.util.logs.Log
 
 object StreetCompleteDatabaseConfigurator : DatabaseConfigurator {
-    override val version = 21
+    override val version = 22
 
     override fun onCreate(db: Database) {
         // OSM notes
@@ -261,9 +261,13 @@ object StreetCompleteDatabaseConfigurator : DatabaseConfigurator {
             db.exec(CalendarEventsTable.CREATE)
         }
         if (oldVersion < 21) {
-            db.deleteQuest("AddPlaygroundAccess");
+            db.deleteQuest("AddPlaygroundAccess")
             db.deleteQuest("AddProhibitedForPedestrians")
-            db.deleteQuest("AddTowerAccess");
+            db.deleteQuest("AddTowerAccess")
+        }
+        if (oldVersion < 22) {
+            db.deleteQuest("AddChargingStationCapacity")
+            db.deleteQuest("AddChargingStationBicycleCapacity")
         }
     }
 }

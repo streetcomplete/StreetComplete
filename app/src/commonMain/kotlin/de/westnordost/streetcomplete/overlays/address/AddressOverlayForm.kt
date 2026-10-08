@@ -1,14 +1,12 @@
 package de.westnordost.streetcomplete.overlays.address
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.center
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -49,9 +47,9 @@ import de.westnordost.streetcomplete.ui.common.Pin
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
-import de.westnordost.streetcomplete.ui.common.quest.OnMap
-import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
+import de.westnordost.streetcomplete.ui.common.quest.MapClick
+import de.westnordost.streetcomplete.ui.common.quest.OnMap
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.isArea
@@ -118,21 +116,6 @@ fun AddressOverlayForm(
     var addEntrance by rememberSaveable { mutableStateOf(true) }
 
     var confirmRemoveAddress by remember { mutableStateOf(false) }
-
-    val mapClick = LocalLastMapClick.current
-    LaunchedEffect(mapClick) {
-        if (mapClick != null) {
-            // only allow selection of street when that field is actually displayed
-            if (address.streetOrPlace !is StreetName) return@LaunchedEffect
-
-            val name = nameSuggestionsSource
-                .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
-                .firstOrNull()
-                ?.find { it.languageTag.isEmpty() }
-                ?.name
-                ?.let { address = address.copy(streetOrPlace = StreetName(it)) }
-        }
-    }
 
     @Composable
     fun createOtherAnswers(): List<AnswerItem> {
@@ -249,11 +232,31 @@ fun AddressOverlayForm(
             // never show house number, as it already is shown in the form
             element?.let { nameAndLocationLabel(it, featureDictionary, showHouseNumber = false) },
         pinContent = {
-            if (positionOnWay == null) {
+            if (element == null && positionOnWay == null) {
                 Pin(iconPainter = painterResource(Res.drawable.quest_housenumber))
             }
         },
-        otherAnswers = ::createOtherAnswers
+        otherAnswers = ::createOtherAnswers,
+        onClickMap = { mapClick: MapClick ->
+            // Do not consume event if the street name is not displayed
+            if (address.streetOrPlace !is StreetName) {
+                false
+            } else {
+                val suggestedNames = nameSuggestionsSource
+                    .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
+                    .firstOrNull()
+
+                // Do not consume event if the user did not hit a road
+                if (suggestedNames != null) {
+                    suggestedNames.find { it.languageTag.isEmpty() }
+                        ?.name
+                        ?.let { address = address.copy(streetOrPlace = StreetName(it)) }
+                    true
+                } else {
+                    false
+                }
+            }
+        },
     ) {
         AddressForm(
             value = address,

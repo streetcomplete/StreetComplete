@@ -188,8 +188,8 @@ Om det inte finns några skyltar längs hela vägen som gäller för den markera
     <string name="quest_wheelchairAccess_limited_description_public_transport">Delvis innebär att det inte krävs mer än ett enda ankelhögt trappsteg för att komma åt det.</string>
     <string name="quest_recycling_type_title">Vilken typ av återvinningsstation är det här?</string>
     <string name="recycling_centre">Återvinningscentral</string>
-    <string name="overground_recycling_container">Godsbehållare</string>
-    <string name="underground_recycling_container">Underjordisk godsbehållare</string>
+    <string name="overground_recycling_container">Sopbehållare</string>
+    <string name="underground_recycling_container">Underjordisk sopbehållare</string>
     <string name="quest_streetName_answer_cantType">Bokstäverna på skylten kan inte skrivas</string>
     <string name="quest_streetName_cantType_title">Saknas tangentbordslayout?</string>
     <string name="quest_streetName_menuItem_nolanguage">(ospecificerad)</string>
@@ -509,8 +509,8 @@ Dela den nu?</string>
     <string name="quest_recycling_type_plastic">Vilka plaster som helst</string>
     <string name="quest_recycling_type_shoes">Skor</string>
     <string name="quest_recycling_type_electric_appliances">Elektriska apparater</string>
-    <string name="quest_recycling_type_plastic_bottles">Endast plastflaskor</string>
-    <string name="quest_recycling_type_plastic_packaging">Endast plastförpackningar</string>
+    <string name="quest_recycling_type_plastic_bottles">Plastflaskor</string>
+    <string name="quest_recycling_type_plastic_packaging">Alla plastförpackningar</string>
     <string name="quest_recycling_type_scrap_metal">Metallskrot</string>
     <string name="quest_recycling_type_any_glass">Vilket glas som helst</string>
     <string name="quest_recycling_glass_title">Kan bara glasflaskor och burkar återvinnas här eller alla typer av glas?</string>
@@ -725,7 +725,7 @@ nivåer</string>
     <string name="quest_lanes_answer_noLanes">Inga markerade körfält</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Den har ett gemensamt svängfält i mitten</string>
     <string name="quest_address_answer_no_housenumber_message2b">Är detta rätt?</string>
-    <string name="quest_maxheight_below_bridge_title">Vad är maxhöjden under bron?</string>
+    <string name="quest_maxheight_below_bridge_title">Mät höjden under den markerade bron (eller annan konstruktion).</string>
     <string name="quest_maxheight_split_way_hint">Denna fråga ställs också för vägar som går under broar, tak, rör etc.
 Om det inte gäller hela vägen, överväg att svara "%1$s".</string>
     <string name="quest_tactile_paving_kerb_title">Finns det taktil beläggning på denna trottoarkant här?</string>
@@ -754,15 +754,15 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
     <string name="quest_surface_value_clay">Lera</string>
     <string name="quest_surface_value_artificial_turf">Konstgräs</string>
     <string name="quest_bicycle_parking_fee_title">Kostar det att parkera en cykel här?</string>
-    <string name="quest_buildingType_house_description2">icke-friliggande enfamiljshus, t.ex. ett enskilt radhus</string>
+    <string name="quest_buildingType_house_description2">icke-friliggande enfamiljshus</string>
     <string name="quest_drinking_water_potable_signed">Drickbart (skyltat)</string>
     <string name="quest_drinking_water_not_potable_signed">Inte drickbart (skyltat)</string>
     <string name="quest_postboxRoyalCypher_title">Vad har den här brevlådan för kungligt monogram?</string>
     <string name="quest_postboxRoyalCypher_type_none">Det finns inget monogram</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Skottlands krona</string>
     <string name="quest_buildingType_fire_station">Brandstation</string>
-    <string name="quest_recycling_type_beverage_cartons">Endast dryckeskartonger</string>
-    <string name="team_mode">Gruppläge</string>
+    <string name="quest_recycling_type_beverage_cartons">Dryckeskartonger</string>
+    <string name="team_mode">Gå till Gruppläge</string>
     <string name="team_mode_exit">Avsluta gruppläget</string>
     <string name="team_mode_description">När man i en grupp tillsammans kartlägger samma område kan man använda gruppläget för att dela upp uppdrag mellan alla gruppmedlemmar.
 Var och en i gruppen kommer då att se olika uppdrag.</string>
@@ -877,7 +877,7 @@ Om du blir överväldigad av alla tillgängliga uppdrag kan du alltid ställa in
     <string name="quest_traffic_calming_type_rumble_strip">Räfflor</string>
     <string name="quest_surface_value_concrete_lanes">Betongkörspår</string>
     <string name="quest_fireHydrant_diameter_title">Vilken diameter står angiven för denna brandpost?</string>
-    <string name="quest_diet_answer_no_food">Ingen mat</string>
+    <string name="quest_diet_answer_no_food">Där serveras ingen mat</string>
     <string name="short_no_answer_on_button">Nej</string>
     <string name="restore_confirmation">Återställ</string>
     <string name="restore_dialog_message">Återställ alla dolda uppdrag?</string>
@@ -1104,7 +1104,7 @@ Du kan också lämna en anteckning (med bild).</string>
     <string name="quest_entrance_reference_flat_range_label">Lägenhetsnr:</string>
     <string name="quest_entrance_reference_flat_range_to">till</string>
     <string name="default_disabled_msg_overlay">Uppdragstypen är inaktiverad som standard eftersom det finns en lagervy där det går mycket snabbare och enklare att lägga in data.</string>
-    <string name="quest_camp_drinking_water_title">Finns det gratis tillgång till dricksvatten för campare här?</string>
+    <string name="quest_camp_drinking_water_title">Finns det gratis dricksvatten tillgängligt för gästerna här?</string>
     <string name="quest_camp_shower_title">Finns det duschar här?</string>
     <string name="quest_camp_power_supply_title">Finns det några eluttag för gäster?</string>
     <string name="quest_camp_type_backcountry">Vildmarkscamping (inga faciliteter)</string>
@@ -1466,4 +1466,26 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="link_gomap_description">Avancerad OSM-redigerare för iOS</string>
     <string name="quest_place_vacant_type_title">Den här lokalen har stått tom. Vad finns här nu?</string>
     <string name="quest_surface_value_laterite">Laterit</string>
+    <string name="bicycle_boulevard_is_a2">Det är en cykelboulevard</string>
+    <string name="bicycle_boulevard_is_not_a2">Det är ingen cykelboulevard</string>
+    <string name="camera_permission_description">Kameratillstånd krävs för att kunna bifoga foton till kartanteckningar.</string>
+    <string name="resurvey_title">Stämmer det fortfarande?</string>
+    <string name="add">Lägg till</string>
+    <string name="quest_doctor_type_title">Vilka läkare finns här?</string>
+    <string name="quest_generalFee_title3">Måste man betala för att bo här?</string>
+    <string name="quest_access_permit">Innehavare av tillstånd (som i regel kan erhållas)</string>
+    <string name="unit_day">dag</string>
+    <string name="unit_hour">timme</string>
+    <string name="unit_minute">minut</string>
+    <string name="quest_parking_charge_title">Hur mycket kostar det att parkera här?</string>
+    <string name="quest_parking_charge_time_unit_label">per</string>
+    <string name="quest_generalAccess_title">Vem får använda detta?</string>
+    <string name="quest_generalAccess_title2">Vem får komma in här?</string>
+    <string name="quest_generalAccess_title3">Vem får bo här?</string>
+    <string name="quest_generalAccess_hint">Bortse från eventuella avgifter eller kostnader. Du kommer att få en separat fråga om huruvida åtkomsten kräver betalning.</string>
+    <string name="quest_toiletsFee_fee_for_non_customers">Endast icke-kunder måste betala en avgift</string>
+    <string name="quest_vending_machine_type">Vilken typ av automat är det här?</string>
+    <string name="quest_selection_hint_message_open_settings">Öppna inställningar</string>
+    <string name="quest_buildingType_terraced_house">Individuellt radhus</string>
+    <string name="quest_barrier_opening_not_wheelchair_accessible">Inte lämpligt för rullstolar</string>
 </resources>

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.board_type
 
 import de.westnordost.streetcomplete.quests.board_type.BoardType.*
 import de.westnordost.streetcomplete.resources.*
+import kotlinx.serialization.Serializable
 import org.jetbrains.compose.resources.StringResource
 
 sealed interface BoardTypeAnswer {
@@ -9,6 +10,7 @@ sealed interface BoardTypeAnswer {
     data class BoardTypes(val boardTypes: Set<BoardType>) : BoardTypeAnswer
 }
 
+@Serializable
 enum class BoardType(val osmValue: String) {
     HISTORY("history"),
     GEOLOGY("geology"),

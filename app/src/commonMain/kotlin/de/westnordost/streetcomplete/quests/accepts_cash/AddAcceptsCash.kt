@@ -44,6 +44,9 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
           )
           and !payment:cash and !payment:coins and !payment:notes and payment:others != no
           and (name or brand or noname = yes or name:signed = no)
+          and (!seasonal or seasonal = no)
+          and fee != no
+          and access !~ private|no
     """
 
     override val changesetComment = "Survey whether payment with cash is accepted"

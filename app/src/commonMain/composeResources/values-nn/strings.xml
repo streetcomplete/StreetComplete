@@ -738,7 +738,7 @@ Viss nokre av felta er reine bussfelt, legg heller att ein merknad.</string>
     <string name="quest_surface_value_clay">Leire</string>
     <string name="quest_surface_value_artificial_turf">Kunst­gras</string>
     <string name="quest_bicycle_parking_fee_title">Kostar det noko å parkera syklar her?</string>
-    <string name="quest_buildingType_house_description2">ikkje-frittståande bustadhus for éin familie, for eksempel eitt av fleire rekkjehus</string>
+    <string name="quest_buildingType_house_description2">ikkje-frittståande bustadhus for éin familie</string>
     <string name="quest_drinking_water_potable_signed">Trygt å drikka (ifølgje skilt)</string>
     <string name="quest_drinking_water_not_potable_signed">Ikkje trygt å drikka (ifølgje skilt)</string>
     <string name="quest_postboxRoyalCypher_title">Kva kongeleg monogram står på denne postkassen?</string>

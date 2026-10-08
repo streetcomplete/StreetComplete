@@ -36,6 +36,7 @@ import org.maplibre.compose.expressions.dsl.sp
 import org.maplibre.compose.expressions.dsl.textOffset
 import org.maplibre.compose.expressions.dsl.zoom
 import org.maplibre.compose.expressions.value.TranslateAnchor
+import org.maplibre.compose.interaction.ClickEvent
 import org.maplibre.compose.interaction.ClickResult
 import org.maplibre.compose.layers.CircleLayer
 import org.maplibre.compose.layers.SymbolLayer
@@ -87,7 +88,7 @@ fun PinsLayers(
     val currentOnZoomToCluster by rememberUpdatedState(onZoomToCluster)
     val currentOnClickPin by rememberUpdatedState(onClickPin)
 
-    fun onClickClusterFeature(features: List<Feature<Geometry, JsonObject?>>): ClickResult {
+    fun ClickEvent.onClickClusterFeature(features: List<Feature<Geometry, JsonObject?>>): ClickResult {
         val feature = features.firstOrNull() ?: return ClickResult.Pass
         val currentHandle = mapState.style.sources[source] ?: return ClickResult.Pass
         coroutineScope.launch {
@@ -102,7 +103,7 @@ fun PinsLayers(
         return ClickResult.Consume
     }
 
-    fun onClick(features: List<Feature<Geometry, JsonObject?>>): ClickResult {
+    fun ClickEvent.onClick(features: List<Feature<Geometry, JsonObject?>>): ClickResult {
         val properties = features.firstOrNull()?.properties ?: return ClickResult.Pass
         return currentOnClickPin(properties)
     }
@@ -125,7 +126,7 @@ fun PinsLayers(
         textOffset = textOffset(0.em, 0.1.em),
         textAllowOverlap = const(true),
         textIgnorePlacement = const(true),
-        onClick = ::onClickClusterFeature,
+        onClick = ClickEvent::onClickClusterFeature,
     )
     CircleLayer(
         id = "pin-dot-layer",
@@ -161,7 +162,7 @@ fun PinsLayers(
         iconOffset = const(DpOffset((-4.5).dp, (-34.5).dp)),
         iconAllowOverlap = const(false),
         iconIgnorePlacement = const(false),
-        onClick = ::onClick,
+        onClick = ClickEvent::onClick,
     )
 }
 

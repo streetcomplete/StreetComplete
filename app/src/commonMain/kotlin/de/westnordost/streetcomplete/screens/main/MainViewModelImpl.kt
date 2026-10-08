@@ -24,14 +24,11 @@ import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.preferences.Autosync
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
 import de.westnordost.streetcomplete.data.quest.AutoSyncer
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
-import de.westnordost.streetcomplete.data.urlconfig.UrlConfig
-import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterController
@@ -44,7 +41,6 @@ import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toPosition
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
-import de.westnordost.streetcomplete.util.parseGeoUri
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.channels.awaitClose
@@ -67,8 +63,6 @@ import kotlin.reflect.KClass
 class MainViewModelImpl(
     private val crashReportHolder: CrashReportHolder,
     private val errorReportBuilder: ErrorReportBuilder,
-    private val urlConfigController: UrlConfigController,
-    private val editTypePresetsSource: EditTypePresetsSource,
     private val uploadController: UploadController,
     private val uploadProgressSource: UploadProgressSource,
     private val downloadController: DownloadController,
@@ -131,48 +125,6 @@ class MainViewModelImpl(
     override suspend fun createErrorReport(error: Exception): String =
         withContext(Dispatchers.IO) { errorReportBuilder.createErrorReport(error) }
 
-    /* start parameters */
-    override fun setUri(uri: String) {
-        launch {
-            urlConfig.value = parseShownUrlConfig(uri)
-
-            val geo = parseGeoUri(uri)
-            if (geo != null) {
-                val zoom = if (geo.zoom == null || geo.zoom < 14) 18.0 else geo.zoom
-                val pos = LatLon(geo.latitude, geo.longitude)
-
-                geoUri.value = CameraPosition(target = pos.toPosition(), bearing = 0.0, tilt = 0.0, zoom = zoom)
-            }
-        }
-    }
-
-    private suspend fun parseShownUrlConfig(uri: String): ShownUrlConfig? {
-        val config = urlConfigController.parse(uri) ?: return null
-        val alreadyExists = withContext(Dispatchers.IO) {
-            config.presetName == null || editTypePresetsSource.getByName(config.presetName) != null
-        }
-        return ShownUrlConfig(urlConfig = config, alreadyExists = alreadyExists)
-    }
-
-    override val urlConfig = MutableStateFlow<ShownUrlConfig?>(null)
-
-    override fun applyUrlConfig(config: UrlConfig) {
-        launch(Dispatchers.IO) {
-            urlConfigController.apply(config)
-        }
-    }
-
-    override val geoUri = MutableStateFlow<CameraPosition?>(null)
-
-    override fun consumeGeoUri() {
-        geoUri.value = null
-    }
-
-    /* intro */
-
-    override var hasShownTutorial: Boolean
-        get() = prefs.hasShownTutorial
-        set(value) { prefs.hasShownTutorial = value }
 
     /* HUD */
     override var showZoomButtons: StateFlow<Boolean> = callbackFlow {
@@ -236,9 +188,8 @@ class MainViewModelImpl(
         awaitClose { selectedOverlayController.removeListener(listener) }
     }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, selectedOverlayController.selectedOverlay)
 
-    override var hasShownOverlaysTutorial: Boolean
+    override val hasShownOverlaysTutorial: Boolean
         get() = prefs.hasShownOverlaysTutorial
-        set(value) { prefs.hasShownOverlaysTutorial = value }
 
     override fun selectOverlay(overlay: Overlay?) {
         launch(Dispatchers.IO) {
@@ -252,10 +203,6 @@ class MainViewModelImpl(
     override var teamModeChanged: Boolean = false
     override val indexInTeam = MutableStateFlow(teamModeQuestFilterController.indexInTeam)
 
-    override fun enableTeamMode(teamSize: Int, indexInTeam: Int) {
-        launch(Dispatchers.IO) { teamModeQuestFilterController.enableTeamMode(teamSize, indexInTeam) }
-    }
-
     override fun disableTeamMode() {
         launch(Dispatchers.IO) { teamModeQuestFilterController.disableTeamMode() }
     }
@@ -267,7 +214,9 @@ class MainViewModelImpl(
         val bbox = if (areaInSqKm < ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM) {
             val radius = sqrt(1_000_000 * ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM / PI)
             center.enclosingBoundingBox(radius)
-        } else tilesBounds
+        } else {
+            tilesBounds
+        }
         downloadController.download(bbox, true)
         return true
     }

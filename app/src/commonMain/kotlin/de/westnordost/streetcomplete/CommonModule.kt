@@ -160,6 +160,8 @@ import de.westnordost.streetcomplete.data.weeklyosm.WeeklyOsmUpdater
 import de.westnordost.streetcomplete.overlays.overlaysRegistry
 import de.westnordost.streetcomplete.quests.questTypeRegistry
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.screens.MainNavViewModel
+import de.westnordost.streetcomplete.screens.MainNavViewModelImpl
 import de.westnordost.streetcomplete.screens.about.ChangelogViewModel
 import de.westnordost.streetcomplete.screens.about.ChangelogViewModelImpl
 import de.westnordost.streetcomplete.screens.about.CreditsViewModel
@@ -174,6 +176,8 @@ import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewMod
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModelImpl
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModelImpl
+import de.westnordost.streetcomplete.screens.main.teammode.TeamModeViewModel
+import de.westnordost.streetcomplete.screens.main.teammode.TeamModeViewModelImpl
 import de.westnordost.streetcomplete.screens.main.map.sources.EditHistoryPinsSource
 import de.westnordost.streetcomplete.screens.main.map.sources.MapQuestPinsSource
 import de.westnordost.streetcomplete.screens.main.map.sources.StyleableOverlaySource
@@ -191,8 +195,10 @@ import de.westnordost.streetcomplete.screens.settings.presets.EditTypePresetsVie
 import de.westnordost.streetcomplete.screens.settings.presets.EditTypePresetsViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.quest_selection.QuestSelectionViewModel
 import de.westnordost.streetcomplete.screens.settings.quest_selection.QuestSelectionViewModelImpl
-import de.westnordost.streetcomplete.screens.user.UserViewModel
-import de.westnordost.streetcomplete.screens.user.UserViewModelImpl
+import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialViewModel
+import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialViewModelImpl
+import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialViewModel
+import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialViewModelImpl
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementsViewModel
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementsViewModelImpl
 import de.westnordost.streetcomplete.screens.user.edits.EditStatisticsViewModel
@@ -229,10 +235,12 @@ val OSM_API_URL = if (USE_TEST_API) OSM_API_URL_TEST else OSM_API_URL_LIVE
 private const val STATISTICS_BACKEND_URL = "https://streetcomplete.app/statistics/"
 
 val commonModule = module {
+    viewModel { AppViewModel(get(), get()) }
+    single { AppLocaleUpdater(get()) }
 
     //region basic configuration
 
-    factory { ApplicationInitializer(get(), get(), get(), get(), get(), get(), get()) }
+    factory { ApplicationInitializer(get(), get(), get(), get(), get(), get(), get(), get()) }
 
     single { HttpClient {
         defaultRequest {
@@ -250,7 +258,7 @@ val commonModule = module {
 
     factory { Cleaner(get(), get(), get(), get(), get(), get(), get()) }
     factory { CacheTrimmer(get(), get()) }
-    factory { Preloader(get(named("CountryBoundariesLazy")), get(named("FeatureDictionaryLazy"))) }
+    factory { Preloader(get(named("CountryBoundariesLazy")), get(named("FeatureDictionaryLazy")), get(), get()) }
 
     //endregion
 
@@ -597,9 +605,11 @@ val commonModule = module {
     viewModel<MainViewModel> {
         MainViewModelImpl(
             get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
-            get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
+            get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
         )
     }
+
+    viewModel<MainNavViewModel> { MainNavViewModelImpl(get(), get(), get()) }
 
     viewModel<EditHistoryViewModel> {
         EditHistoryViewModelImpl(get(), get())
@@ -618,6 +628,11 @@ val commonModule = module {
 
     viewModel<ArMeasureViewModel> { ArMeasureViewModelImpl(get(), get()) }
 
+    viewModel<TeamModeViewModel> { TeamModeViewModelImpl(get(), get()) }
+
+    viewModel<IntroTutorialViewModel> { IntroTutorialViewModelImpl(get()) }
+    viewModel<OverlaysTutorialViewModel> { OverlaysTutorialViewModelImpl(get()) }
+
     //endregion
 
     //region user screen view models
@@ -633,8 +648,6 @@ val commonModule = module {
     viewModel<LinksViewModel> { LinksViewModelImpl(get(), get()) }
 
     viewModel<AchievementsViewModel> { AchievementsViewModelImpl(get(), get()) }
-
-    viewModel<UserViewModel> { UserViewModelImpl(get()) }
 
     //endregion
 

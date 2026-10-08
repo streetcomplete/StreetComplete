@@ -754,7 +754,7 @@ Razmislite tudi o odgovoru “%1$s”, če izbira ne velja za celoten označeni 
     <string name="quest_surface_value_clay">Glina</string>
     <string name="quest_surface_value_artificial_turf">Umetna trava</string>
     <string name="quest_bicycle_parking_fee_title">Ali morate plačati za parkiranje koles?</string>
-    <string name="quest_buildingType_house_description2">nesamostojna enodružinska hiša - ena izmed vrstnih hiš</string>
+    <string name="quest_buildingType_house_description2">nesamostojna enodružinska hiša</string>
     <string name="quest_drinking_water_potable_signed">Pitna (označeno)</string>
     <string name="quest_drinking_water_not_potable_signed">Ni pitna (označeno)</string>
     <string name="quest_postboxRoyalCypher_title">Kater kraljevi grb je na tem poštnem nabiralniku?</string>

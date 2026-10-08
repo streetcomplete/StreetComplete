@@ -106,7 +106,6 @@ class MainSheetState internal constructor(
 
     fun close() {
         selection = null
-        shownEdit = null
         formMarkers = null
         formMapOverlay = null
         lastMapClick = null

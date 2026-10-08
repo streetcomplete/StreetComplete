@@ -755,7 +755,7 @@ If any lanes are reserved for buses, please leave a note instead.</string>
     <string name="quest_surface_value_clay">Clay court</string>
     <string name="quest_surface_value_artificial_turf">Astroturf</string>
     <string name="quest_bicycle_parking_fee_title">Do you have to pay to park a bicycle here?</string>
-    <string name="quest_buildingType_house_description2">non-detached single-family home, e.g. a single terraced house</string>
+    <string name="quest_buildingType_house_description2">non-detached single-family home</string>
     <string name="quest_drinking_water_potable_signed">Drinking water (with a sign)</string>
     <string name="quest_drinking_water_not_potable_signed">Non-potable water (with a sign)</string>
     <string name="quest_postboxRoyalCypher_title">What’s the royal cypher on this postbox?</string>
@@ -1480,7 +1480,7 @@ For example 1,3 or 2b,4,6.</string>
     <string name="quest_maxspeed_answer_roadtype_dual_carriageway">Not lit and dual carriageway</string>
     <string name="quest_board_type_tourism">Tourism (multiple topics)</string>
     <string name="quest_lanes_answer_oneLaneOnly">One marked lane only</string>
-    <string name="quest_shop_gone_replaced_answer_hint2">Type what you are looking for</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Type to search</string>
     <string name="link_gomap_description">Advanced OSM editor for iOS</string>
     <string name="link_terraink_description">Create beautiful customised posters of a city or neighbourhood</string>
     <string name="quest_place_vacant_type_title">This place has been vacant. What’s here now?</string>
@@ -1508,4 +1508,15 @@ Otherwise, you can download another keyboard in the app store. On Android, you m
     <string name="unit_minute">minute</string>
     <string name="quest_parking_charge_title">How much do you need to pay to park here?</string>
     <string name="quest_parking_charge_time_unit_label">per</string>
+    <string name="quest_generalAccess_title">Who may use this?</string>
+    <string name="quest_generalAccess_title2">Who may enter here?</string>
+    <string name="quest_generalAccess_title3">Who may stay here?</string>
+    <string name="quest_generalAccess_hint">Ignore any fees or charges. Whether access requires payment will be asked separately.</string>
+    <string name="quest_toiletsFee_fee_for_non_customers">Only non-customers must pay a fee</string>
+    <string name="quest_vending_machine_type">What type of vending machine is this?</string>
+    <string name="quest_selection_hint_message_open_settings">Open settings</string>
+    <string name="link_waymarked_description">Shows marked paths for hiking, cycling, mtb, riding, skating and winter sports.</string>
+    <string name="quest_buildingType_terraced_house">Individual terraced house</string>
+    <string name="quest_buildingType_terraced_house_description">an individual house in a row of similar houses</string>
+    <string name="quest_barrier_opening_not_wheelchair_accessible">Not suitable for wheelchairs</string>
 </resources>

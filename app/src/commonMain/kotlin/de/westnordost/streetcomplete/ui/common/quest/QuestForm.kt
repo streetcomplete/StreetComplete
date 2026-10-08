@@ -13,13 +13,12 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -30,6 +29,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Action.*
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
+import de.westnordost.streetcomplete.ui.common.NonPredictiveBackHandler
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
 import de.westnordost.streetcomplete.ui.theme.defaultTextLinkStyles
@@ -48,6 +48,8 @@ import org.koin.compose.koinInject
  *  bubble, then finally the speech bubble containing the center-aligned [content] padded with a
  *  [contentPadding] (if there is any content) and an OK button to confirm the input. If
  *  [isResurvey] is true an additional title "Is this still correct" is added.
+ *  [onClickMap] is called when map is clicked/tapped, can be used to override default behavior
+ *  (closing the quest form). Return true when event is consumed/handled by the quest form.
  *
  *  **This composable requires the `LocalQuestType` composition local to be set!**
  *
@@ -59,6 +61,7 @@ fun QuestForm(
     isComplete: Boolean,
     onClickOk: () -> Unit,
     modifier: Modifier = Modifier,
+    onClickMap: ((MapClick) -> Boolean) = { false },
     featureDictionary: FeatureDictionary = koinInject(),
     hasChanges: Boolean = isComplete,
     title: String = stringResource(LocalQuestType.current!!.title),
@@ -87,6 +90,7 @@ fun QuestForm(
         otherAnswers = otherAnswers,
         contentPadding = contentPadding,
         modifier = modifier,
+        onClickMap = onClickMap,
         content = content,
         isResurvey = isResurvey,
     )
@@ -108,6 +112,7 @@ fun QuestForm(
     on: (Action) -> Unit,
     answers: List<AnswerItem>,
     modifier: Modifier = Modifier,
+    onClickMap: ((MapClick) -> Boolean) = { false },
     featureDictionary: FeatureDictionary = koinInject(),
     title: String = stringResource(LocalQuestType.current!!.title),
     isResurvey: Boolean = false,
@@ -135,12 +140,12 @@ fun QuestForm(
         otherAnswers = otherAnswers,
         contentPadding = contentPadding,
         modifier = modifier,
+        onClickMap = onClickMap,
         content = content,
         isResurvey = isResurvey,
     )
 }
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 private fun QuestForm(
     on: (Action) -> Unit,
@@ -157,6 +162,7 @@ private fun QuestForm(
     otherAnswers: @Composable () -> List<AnswerItem>,
     contentPadding: PaddingValues,
     modifier: Modifier = Modifier,
+    onClickMap: ((MapClick) -> Boolean) = { false },
     mapDataWithEditsSource: MapDataWithEditsSource = koinInject(),
     content: @Composable (BoxScope.() -> Unit)?,
 ) {
@@ -164,11 +170,20 @@ private fun QuestForm(
 
     var confirmDiscard by remember { mutableStateOf(false) }
 
-    BackHandler {
+    fun dismiss() {
         if (hasChanges) {
             confirmDiscard = true
         } else {
             on(Action.Dismiss)
+        }
+    }
+
+    NonPredictiveBackHandler { dismiss() }
+
+    val lastMapClick = LocalLastMapClick.current
+    LaunchedEffect(lastMapClick) {
+        if (lastMapClick != null) {
+            if (!onClickMap(lastMapClick)) dismiss()
         }
     }
 
@@ -204,6 +219,7 @@ private fun QuestForm(
     }
 
     BottomSheetFormScaffold(
+        onDismissRequest = ::dismiss,
         header = {
             if (isResurvey) {
                 CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.titleLarge) {
@@ -216,7 +232,7 @@ private fun QuestForm(
         note = if (note != null || isResurvey) {
             {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    questHeader()
+                    if (isResurvey) questHeader()
                     if (note != null) ObjectNote(text = note)
                 }
             }

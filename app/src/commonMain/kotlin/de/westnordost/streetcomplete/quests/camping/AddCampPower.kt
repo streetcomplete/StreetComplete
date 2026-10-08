@@ -24,6 +24,7 @@ class AddCampPower : OsmFilterQuestType<Boolean>() {
             !power_supply
             or power_supply older today -4 years and power_supply ~ yes|no
           )
+          and access !~ private|no
     """
     override val changesetComment = "Specify whether there is electricity available"
     override val wikiLink = "Key:power_supply"

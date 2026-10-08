@@ -25,8 +25,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialScreen
-import de.westnordost.streetcomplete.ui.common.AnimatedScreenVisibility
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.NextScreenIcon
 import de.westnordost.streetcomplete.ui.common.OpenInBrowserIcon
@@ -43,11 +41,11 @@ fun AboutScreen(
     onClickCredits: () -> Unit,
     onClickPrivacyStatement: () -> Unit,
     onClickLogs: () -> Unit,
+    onClickIntroTutorial: () -> Unit,
     onClickBack: () -> Unit,
     appStoreInfo: AppStoreInfo = koinInject()
 ) {
     var showDonateDialog by remember { mutableStateOf(false) }
-    var showIntroTutorial by remember { mutableStateOf(false) }
 
     val uriHandler = LocalUriHandler.current
 
@@ -98,7 +96,7 @@ fun AboutScreen(
             PreferenceCategory(stringResource(Res.string.about_category_help)) {
                 Preference(
                     name = stringResource(Res.string.about_title_intro),
-                    onClick = { showIntroTutorial = true },
+                    onClick = onClickIntroTutorial,
                 )
 
                 Preference(
@@ -170,17 +168,10 @@ fun AboutScreen(
             )
         }
     }
-
-    AnimatedScreenVisibility(showIntroTutorial) {
-        IntroTutorialScreen(
-            onDismissRequest = { showIntroTutorial = false },
-            dismissOnBackPress = true
-        )
-    }
 }
 
 @Preview
 @Composable
 private fun AboutScreenPreview() {
-    AboutScreen({}, {}, {}, {}, {})
+    AboutScreen({}, {}, {}, {}, {}, {})
 }

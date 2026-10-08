@@ -10,14 +10,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import androidx.compose.ui.unit.center
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.LengthUnit
@@ -26,6 +23,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
+import de.westnordost.streetcomplete.ui.common.NonPredictiveBackHandler
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
 import de.westnordost.streetcomplete.ui.common.quest.OnMap
@@ -42,7 +40,6 @@ import kotlin.math.atan2
 import kotlin.math.sqrt
 
 /** Form that lets the user move an OSM node.  */
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun MoveNodeForm(
     onConfirmed: (position: LatLon) -> Unit,
@@ -67,13 +64,15 @@ fun MoveNodeForm(
 
     var confirmDiscard by remember { mutableStateOf(false) }
 
-    BackHandler {
+    fun dismiss() {
         if (mapPosition != node.position) {
             confirmDiscard = true
         } else {
             onDismiss()
         }
     }
+
+    NonPredictiveBackHandler { dismiss() }
     // an arrow from the node to the crosshair, i.e. to where it would be moved
     OnMap {
         val mapState = checkNotNull(LocalMapState.current)
@@ -92,11 +91,12 @@ fun MoveNodeForm(
 
     Box(modifier = modifier.fillMaxSize()) {
         BottomSheetFormScaffold(
+            onDismissRequest = ::dismiss,
             content = {
                 MoveNodeFormContent(
                     distance = distance,
                     displayUnit = displayUnit,
-                    onClickCancel = onDismiss,
+                    onClickCancel = ::dismiss,
                 )
             },
             fab = {

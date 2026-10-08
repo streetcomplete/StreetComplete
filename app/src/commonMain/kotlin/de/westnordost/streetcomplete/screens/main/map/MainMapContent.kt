@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -38,9 +38,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
+import org.maplibre.compose.camera.CameraUpdate
 import org.maplibre.compose.interaction.ClickResult
-import org.maplibre.compose.map.LocalMapState
 import org.maplibre.compose.location.LocationMeasurement
+import org.maplibre.compose.map.LocalMapState
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
@@ -92,12 +93,18 @@ internal fun MainMapContent(
     }
     val styledElements: Collection<StyledElement> = if (showOverlay && showOverlayAtZoom) {
         viewModel.styleableElements.collectAsStateWithLifecycle().value
-    } else emptyList()
+    } else {
+        emptyList()
+    }
 
     val scope = rememberCoroutineScope()
     fun <T : Any> select(key: T?, onSelect: (T) -> Unit): ClickResult =
-        if (key == null || !isSelectable) ClickResult.Pass
-        else { onSelect(key); ClickResult.Consume }
+        if (key == null || !isSelectable) {
+            ClickResult.Pass
+        } else {
+            onSelect(key)
+            ClickResult.Consume
+        }
     val onClickPin: (JsonObject) -> ClickResult = when (pinsMode) {
         PinsMode.Quests -> { properties -> select(viewModel.getQuestKey(properties), onClickQuest) }
         PinsMode.EditHistory -> { properties -> select(viewModel.getEditKey(properties), onClickEdit) }
@@ -115,7 +122,7 @@ internal fun MainMapContent(
     val selectedOverlayElement = shownBottomSheet as? ShownBottomSheet.Overlay
 
     val languages = LocaleList.current.localeList.map { it.language }.distinct()
-    val colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light
+    val colors = if (MaterialTheme.colors.isLight) MapColors.Light else MapColors.Night
 
     val mapImages = rememberMapImages(mapState)
     val overlayIcons = remember(styledElements) {
@@ -199,7 +206,7 @@ internal fun MainMapContent(
                 mapImages = mapImages,
                 onClickPin = onClickPin,
                 onZoomToCluster = { zoom ->
-                    scope.launch { mapState.animateCameraPosition(mapState.cameraPosition.copy(zoom = zoom)) }
+                    scope.launch { mapState.animateCamera(CameraUpdate(zoom = zoom)) }
                 }
             )
 

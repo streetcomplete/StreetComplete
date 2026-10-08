@@ -18,6 +18,9 @@ data class MaxStay(
     fun isComplete(): Boolean =
         duration != null && timeRestriction?.isComplete() != false
 
+    fun isEmpty(): Boolean =
+        duration == null && timeRestriction?.isEmpty() != false
+
     fun isTooLong(): Boolean {
         val changes = StringMapChangesBuilder(emptyMap())
         applyTo(changes)

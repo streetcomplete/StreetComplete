@@ -1,0 +1,27 @@
+<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#a)">
+    <path d="M-2.5 23.146h12.75v-7.497L3.5 11.15l-6 4.498z" fill="#c4aea0"/>
+    <path d="M2 8.9h-3v4.498h3z" fill="#c4aea0"/>
+    <path d="M7.1 17.152h-3v5.998h3z" fill="#b29a8d"/>
+    <path d="M2.75 17.903H-1v3h3.75z" fill="#967c73"/>
+    <path d="M2.75 17.152H-1v.75h3.75z" fill="#b29a8d"/>
+    <path d="m-4 16.402 7.5-6.377 6.6 6.5" stroke="#ad6262" stroke-width="2.25"/>
+    <path d="M22.3 23.146h12.75v-7.497L28.3 11.15l-6 4.498z" fill="#c4aea0"/>
+    <path d="M26.8 8.9h-3v4.498h3z" fill="#c4aea0"/>
+    <path d="M31.5 17.152h-3v5.998h3z" fill="#b29a8d"/>
+    <path d="M27.25 17.903H23.5v3h3.75z" fill="#967c73"/>
+    <path d="M27.25 17.152H23.5v.75h3.75z" fill="#b29a8d"/>
+    <path d="m21 17.525 7-7.5 8.55 6.377" stroke="#ad6262" stroke-width="2.25"/>
+    <path d="M9.625 23.146h12.75v-7.497l-6.75-4.498-6 4.498z" fill="#deb486"/>
+    <path d="M14.125 8.9h-3v4.498h3z" fill="#deb486"/>
+    <path d="M19 17.152h-3v5.998h3z" fill="#c08268"/>
+    <path d="M14.75 17.903H11v3h3.75z" fill="#95685e"/>
+    <path d="M14.75 17.152H11v.75h3.75z" fill="#c08268"/>
+    <path d="m8.5 16.5 7.125-6.475 7.375 7" stroke="#c84747" stroke-width="2.25"/>
+  </g>
+  <defs>
+    <clipPath id="a">
+      <path fill="#fff" d="M0 0h32v32H0z"/>
+    </clipPath>
+  </defs>
+</svg>

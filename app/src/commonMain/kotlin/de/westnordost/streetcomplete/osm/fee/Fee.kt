@@ -15,6 +15,11 @@ sealed interface Fee {
         is Yes ->  timeRestriction?.isComplete() != false
     }
 
+    fun isEmpty(): Boolean = when (this) {
+        No -> false
+        is Yes -> timeRestriction?.isEmpty() != false
+    }
+
     fun isTooLong(): Boolean {
         val changes = StringMapChangesBuilder(emptyMap())
         applyTo(changes)

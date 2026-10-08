@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -127,11 +128,11 @@ internal class LocalizedNameTest {
         )
     }
 
-    @Test fun `apply one name only drops language tag`() {
+    @Test fun `apply one language specific adds language specific tag`() {
         assertEquals(
             setOf(
                 StringMapEntryAdd("name", "1"),
-                StringMapEntryDelete("name:de", "hoho"),
+                StringMapEntryModify("name:de", "hoho", "1"),
             ),
             listOf(LocalizedName("de", "1")).appliedTo(mapOf("name:de" to "hoho")),
         )

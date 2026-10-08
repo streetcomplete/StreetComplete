@@ -15,9 +15,9 @@
     <string name="quest_generic_confirmation_title">Σίγουρα;</string>
     <string name="quest_generic_confirmation_yes">Ναι, σίγουρα</string>
     <string name="quest_generic_confirmation_no">Θα το ελέγξω</string>
-    <string name="quest_leave_new_note_title">Μήπως να αφήσεις κάποια σημείωση;</string>
+    <string name="quest_leave_new_note_title">Μήπως να αφήσετε κάποια σημείωση;</string>
     <string name="quest_leave_new_note_description">Μπορείς να αφήσεις μία δημόσια σημείωση στη θέση αυτή για επίλυση από κάποιον άλλο χαρτογράφο ή εναλλακτικά να αποκρύψεις την αποστολή μόνο για εσένα</string>
-    <string name="quest_leave_new_note_yes">Άφησε σημείωση</string>
+    <string name="quest_leave_new_note_yes">Αφήστε σημείωση</string>
     <string name="quest_leave_new_note_no">Απόκρυψη</string>
     <string name="quest_streetName_title">Ποιο είναι το όνομα αυτού του δρόμου;</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Μερικές φορές η πινακίδα της οδού βρίσκεται μόνο στο ένα άκρο του δρόμου. Επίσης, λάβε υπόψη ότι μπορεί να μην υπάρχουν επιπλέον πινακίδες δρόμου για πλαϊνές οδούς που ανήκουν σε μεγαλύτερο δρόμο. Συνήθως, κάθε οδός με σπίτια έχει ένα όνομα.</string>
@@ -1495,4 +1495,10 @@
     <string name="unit_minute">λεπτό</string>
     <string name="quest_parking_charge_title">Πόσο πρέπει να πληρώσετε για να παρκάρετε εδώ;</string>
     <string name="quest_parking_charge_time_unit_label">κάθε</string>
+    <string name="quest_generalAccess_title">Ποιός μπορεί να το χρησιμοποιήσει αυτό;</string>
+    <string name="quest_generalAccess_title2">Ποιός μπορεί να εισέλθει εδώ;</string>
+    <string name="quest_generalAccess_title3">Ποιός μπορεί να μείνει εδώ;</string>
+    <string name="quest_generalAccess_hint">Αγνοήστε οποιαδήποτε χρέωση. Εάν η πρόσβαση απαιτεί πληρωμή, θα ερωτηθεί ξεχωριστά.</string>
+    <string name="quest_toiletsFee_fee_for_non_customers">Μόνο μη-πελάτες πρέπει να πληρώσουν αντίτιμο</string>
+    <string name="quest_vending_machine_type">Τι τύπου αυτόματος πωλητής είναι αυτό;</string>
 </resources>

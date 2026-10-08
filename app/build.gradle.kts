@@ -2,11 +2,12 @@ import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.BOOLEAN
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 import dev.mokkery.MockMode
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.targets.native.tasks.KotlinNativeSimulatorTest
 import java.io.FileWriter
 
 
 /** App version name, code and flavor */
-val appVersionName = "64.0-alpha1"
+val appVersionName = "64.0-alpha3"
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
@@ -32,14 +33,14 @@ val poEditorProjectId = "97843"
 
 plugins {
     id("org.jetbrains.kotlin.multiplatform")
-    id("org.jetbrains.kotlin.plugin.serialization") version "2.4.0"
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.4.20"
     id("org.jetbrains.kotlin.plugin.compose")
     id("com.android.kotlin.multiplatform.library")
     id("org.jetbrains.compose")
-    id("com.codingfeline.buildkonfig") version "0.22.0"
+    id("com.codingfeline.buildkonfig") version "0.23.0"
     // keep in sync with Kotlin version! See https://mokkery.dev/docs/Setup/#compatibility
-    id("dev.mokkery") version "3.4.2"
-    id("org.jetbrains.kotlin.plugin.allopen") version "2.4.0"
+    id("dev.mokkery") version "3.5.0"
+    id("org.jetbrains.kotlin.plugin.allopen") version "2.4.20"
 }
 
 repositories {
@@ -118,7 +119,13 @@ kotlin {
         }
     }
 
+    applyDefaultHierarchyTemplate()
+
     sourceSets {
+        val jvmAndroidMain = create("jvmAndroidMain") { dependsOn(commonMain.get()) }
+        val nonAndroidMain = create("nonAndroidMain") { dependsOn(commonMain.get()) }
+        val mobileMain = create("mobileMain") { dependsOn(commonMain.get()) }
+
         commonMain {
             dependencies {
                 // Kotlin
@@ -133,10 +140,9 @@ kotlin {
                 implementation("io.insert-koin:koin-core")
                 implementation("io.insert-koin:koin-compose")
                 implementation("io.insert-koin:koin-compose-viewmodel")
-                implementation("io.insert-koin:koin-androidx-compose-navigation")
 
                 // Logging
-                implementation("co.touchlab:kermit:2.1.0")
+                implementation("co.touchlab:kermit:2.2.0")
 
                 // settings
                 implementation("com.russhwolf:multiplatform-settings:1.3.0")
@@ -145,21 +151,21 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.1")
 
                 // location
-                implementation("org.maplibre.compose:location:0.17.0")
+                implementation("org.maplibre.compose:location:0.19.0")
 
                 // SQLite
-                implementation("androidx.sqlite:sqlite:2.7.0")
-                implementation("androidx.sqlite:sqlite-bundled:2.7.0")
+                implementation("androidx.sqlite:sqlite:2.7.1")
+                implementation("androidx.sqlite:sqlite-bundled:2.7.1")
 
                 // HTTP client
-                implementation("io.ktor:ktor-client-core:3.5.1")
-                implementation("io.ktor:ktor-client-encoding:3.5.1")
+                implementation("io.ktor:ktor-client-core:3.5.2")
+                implementation("io.ktor:ktor-client-encoding:3.5.2")
                 // SHA256 hashing, used during OAuth authentication
                 implementation("org.kotlincrypto.hash:sha2:0.8.0")
 
                 // XML
-                implementation("io.github.pdvrieze.xmlutil:core:1.0.1")
-                implementation("io.github.pdvrieze.xmlutil:core-io:1.0.1")
+                implementation("io.github.pdvrieze.xmlutil:core:1.0.2")
+                implementation("io.github.pdvrieze.xmlutil:core-io:1.0.2")
 
                 // YAML
                 implementation("com.charleskorn.kaml:kaml:0.104.0")
@@ -181,24 +187,25 @@ kotlin {
                 implementation("de.westnordost:osm-opening-hours:0.4.0")
 
                 // UI (Compose)
-                implementation("org.jetbrains.compose.runtime:runtime:1.12.0")
-                implementation("org.jetbrains.compose.foundation:foundation:1.12.0")
-                implementation("org.jetbrains.compose.material:material:1.12.0")
-                implementation("org.jetbrains.compose.ui:ui:1.12.0")
-                implementation("org.jetbrains.compose.components:components-resources:1.12.0")
-                implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.12.0")
+                implementation("org.jetbrains.compose.runtime:runtime:1.12.1")
+                implementation("org.jetbrains.compose.foundation:foundation:1.12.1")
+                implementation("org.jetbrains.compose.material:material:1.12.1")
+                implementation("org.jetbrains.compose.ui:ui:1.12.1")
+                implementation("org.jetbrains.compose.components:components-resources:1.12.1")
+                implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.12.1")
 
                 // UI Navigation
-                implementation("org.jetbrains.compose.ui:ui-backhandler:1.12.0")
-                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.2")
+                implementation("org.jetbrains.androidx.navigationevent:navigationevent-compose:1.1.0")
+                implementation("org.jetbrains.androidx.navigation3:navigation3-ui:1.1.2")
+                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-navigation3:2.11.0")
 
                 // UI ViewModel
-                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.10.0")
+                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.11.0")
 
                 // UI widgets
 
                 // Map
-                implementation("org.maplibre.compose:maplibre-compose:0.17.0")
+                implementation("org.maplibre.compose:maplibre-compose:0.19.0")
 
                 // non-lazy grid
                 // NOTE: might replace with
@@ -213,24 +220,22 @@ kotlin {
                 implementation("io.github.kevinnzou:compose-webview-multiplatform:2.0.3")
 
                 // sharing presets/settings via QR Code
-                implementation("io.github.alexzhirkevich:qrose:1.1.2")
+                implementation("io.github.alexzhirkevich:qrose:1.3.0")
 
                 // for encoding information for the URL configuration (QR code)
                 implementation("com.ionspin.kotlin:bignum:0.3.10")
 
                 // taking a photo (, picking an image from gallery, ...)
-                implementation("io.github.vinceglb:filekit-dialogs-compose:0.14.1")
+                implementation("io.github.vinceglb:filekit-dialogs-compose:0.16.0")
             }
         }
         androidMain {
+            dependsOn(jvmAndroidMain)
+            dependsOn(mobileMain)
             dependencies {
                 // Dependency injection
                 implementation("io.insert-koin:koin-android")
                 implementation("io.insert-koin:koin-androidx-workmanager")
-
-                // Android stuff
-                implementation("com.google.android.material:material:1.14.0")
-                implementation("androidx.appcompat:appcompat:1.7.1")
 
                 // Compose
                 implementation("androidx.activity:activity-compose:1.13.0")
@@ -239,36 +244,38 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.11.0")
 
                 // scheduling background jobs
-                implementation("androidx.work:work-runtime-ktx:2.11.2")
+                implementation("androidx.work:work-runtime-ktx:2.12.0")
 
                 // HTTP Client
-                implementation("io.ktor:ktor-client-android:3.5.1")
+                implementation("io.ktor:ktor-client-android:3.5.2")
 
                 // map
-                implementation("org.maplibre.compose:maplibre-compose-runtime-opengl-android:0.17.0")
+                implementation("org.maplibre.compose:maplibre-compose-runtime-opengl-android:0.19.0")
 
                 // required to @Preview composables in Android Studio
-                runtimeOnly("androidx.compose.ui:ui-tooling:1.10.0")
+                runtimeOnly("androidx.compose.ui:ui-tooling:1.12.1")
             }
         }
         iosMain {
+            dependsOn(nonAndroidMain)
+            dependsOn(mobileMain)
             dependencies {
                 // HTTP client
-                implementation("io.ktor:ktor-client-darwin:3.5.1")
+                implementation("io.ktor:ktor-client-darwin:3.5.2")
             }
         }
         commonTest {
             dependencies {
                 implementation(kotlin("test"))
 
-                implementation("io.ktor:ktor-client-mock:3.5.1")
-                implementation("androidx.sqlite:sqlite-bundled:2.7.0")
+                implementation("io.ktor:ktor-client-mock:3.5.2")
+                implementation("androidx.sqlite:sqlite-bundled:2.7.1")
             }
         }
         getByName("androidHostTest") {
             dependencies {
                 // without it, :app:testAndroidHostTest throws java.lang.UnsatisfiedLinkError for sqliteJni
-                implementation("androidx.sqlite:sqlite-bundled-jvm:2.7.0")
+                implementation("androidx.sqlite:sqlite-bundled-jvm:2.7.1")
             }
         }
     }
@@ -282,9 +289,18 @@ compose {
 }
 
 dependencies {
-    androidRuntimeClasspath("org.jetbrains.compose.ui:ui-tooling:1.12.0")
+    androidRuntimeClasspath("org.jetbrains.compose.ui:ui-tooling:1.12.1")
     // see comment in android.compileOptions.isCoreLibraryDesugaringEnabled
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
+}
+
+// run tests in a fixed time zone so that results don't depend on the host's time zone
+tasks.withType<Test>().configureEach {
+    systemProperty("user.timezone", "UTC")
+}
+tasks.withType<KotlinNativeSimulatorTest>().configureEach {
+    // simctl passes SIMCTL_CHILD_-prefixed variables on to the simulated process
+    environment("SIMCTL_CHILD_TZ", "UTC")
 }
 
 tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
@@ -386,8 +402,8 @@ tasks.register<UpdateIosAppTranslationsTask>("updateIosTranslations") {
     targetFile = projectDir.resolve("../iosApp/iosApp/InfoPlist.xcstrings")
     languageCodes = bcp47ExportLanguages
     strings = mapOf(
-        "NSLocationWhenInUseUsageDescription" to "no_location_permission_warning",
         "NSCameraUsageDescription" to "camera_permission_description",
+        "NSLocationWhenInUseUsageDescription" to "no_location_permission_warning",
     )
 }
 

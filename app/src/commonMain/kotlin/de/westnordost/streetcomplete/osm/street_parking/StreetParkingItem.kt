@@ -96,8 +96,6 @@ private fun StreetParking.PositionAndOrientation.painter(isUpsideDown: Boolean, 
             carPainters = carPainters,
             isUpsideDown = isUpsideDown,
             randomSeed = randomSeed,
-            // show left and right side staggered to each other
-            phase = if (isRightSide) 0.5f else 0f,
         )
     }
 }

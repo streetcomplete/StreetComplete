@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.data
 
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.meta.get
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
@@ -15,13 +18,18 @@ import kotlinx.coroutines.withContext
 class Preloader(
     private val countryBoundaries: Lazy<CountryBoundaries>,
     private val featuresDictionary: Lazy<FeatureDictionary>,
+    private val countryInfos: CountryInfos,
+    private val preferences: Preferences,
 ) {
 
     suspend fun preload() {
         val time = nowAsEpochMilliseconds()
         coroutineScope {
             // country boundaries are necessary latest for when a quest is opened or on a download
-            launch { preloadCountryBoundaries() }
+            launch {
+                preloadCountryBoundaries()
+                preloadCountryInfos()
+            }
             // names dictionary is necessary when displaying an element that has no name or
             // when downloading the place name quest (etc)
             launch { preloadFeatureDictionary() }
@@ -42,6 +50,13 @@ class Preloader(
         countryBoundaries.value
         val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
         Log.i(TAG, "Loaded country boundaries in ${seconds.format(1)}s")
+    }
+
+    private suspend fun preloadCountryInfos() = withContext(Dispatchers.IO) {
+        val time = nowAsEpochMilliseconds()
+        countryInfos.get(countryBoundaries.value, preferences.mapPosition)
+        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
+        Log.i(TAG, "Loaded country infos in ${seconds.format(1)}s")
     }
 
     companion object {

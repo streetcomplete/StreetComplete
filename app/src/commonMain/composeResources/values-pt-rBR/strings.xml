@@ -753,7 +753,7 @@ Se alguma faixa for reservada para ônibus, deixe uma nota.</string>
     <string name="quest_surface_value_clay">Argila</string>
     <string name="quest_surface_value_artificial_turf">Relva artificial</string>
     <string name="quest_bicycle_parking_fee_title">Precisa pagar para estacionar uma bicicleta aqui?</string>
-    <string name="quest_buildingType_house_description2">casa unifamiliar não independente, p. ex. uma casa geminada singular</string>
+    <string name="quest_buildingType_house_description2">casa unifamiliar não independente</string>
     <string name="quest_drinking_water_potable_signed">Seguro para beber (assinado)</string>
     <string name="quest_drinking_water_not_potable_signed">Não é seguro beber (assinado)</string>
     <string name="quest_postboxRoyalCypher_title">Qual é a cifra real nesta caixa de correio?</string>
