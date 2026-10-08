@@ -67,7 +67,7 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
     fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry): Sequence<Element> = emptySequence()
 
     /** Should elements returned by getHighlightedElements be hidden if they are on a different
-     * level than the quest the user is answering. For example: stores on a different level could
+     * level than the quest the user is answering? For example: stores on a different level could
      * overload the map, so they are hidden, while cables are shown.
      */
     val getHighlightHideElementsOnDifferentLevel: Boolean
