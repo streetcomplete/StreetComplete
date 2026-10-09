@@ -297,11 +297,10 @@ private fun createRemoveAddressElementEditAction(element: Element): ElementEditA
             tagChanges.remove(tag.key)
         }
     }
-    // only add noaddress for areas (=buildings) because that's how it is defined in the wiki.
-    // Address nodes will be deleted or the address removed (see above)
-    if (element.isArea()) {
-        tagChanges["noaddress"] = "yes"
-    }
+    // Don't tag noaddress=yes here, because the user might just want to remove the address in
+    // order to tag the address on one or several nodes after that.
+    // If not, the housenumber quest will pop up again (when the user exits the address overlay and
+    // for other users) if the building is a building for which the housenumber quest is asked.
 
     return UpdateElementTagsAction(element, tagChanges.create())
 }
