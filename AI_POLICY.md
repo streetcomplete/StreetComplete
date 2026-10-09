@@ -9,7 +9,7 @@ As the human in the loop, you are responsible for every line of code contributed
 Good contributions made with AI assistance are indistinguishable from contributions made without AI assistance by skilled software developers.
 
 This means that if you wouldn't be able to produce the contribution without the use of AI, you likely lack the knowledge to properly judge whether the output is adequate and of high quality.
-In that case, don't contribute with code. It would be rude and disrespectful to offload potentially low-effort, unqualified work since it puts the burden of validation on the maintainers. Instead, you can describe your use case (that you might have wanted to solve by directly contributing a PR) in an issue or discuss your idea in the forum.
+In that case, don't contribute with code. It would be rude and disrespectful to offload potentially unqualified work since it puts the burden of validation on the maintainers. Instead, you can describe your use case (that you might have wanted to solve by directly contributing a PR) in an issue or discuss your idea in the forum.
 
 
 ### No AI in conversation
