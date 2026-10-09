@@ -247,7 +247,8 @@ kotlin {
                 implementation("androidx.work:work-runtime-ktx:2.12.0")
 
                 // HTTP Client
-                implementation("io.ktor:ktor-client-android:3.5.2")
+                // cio, not android, because of https://youtrack.jetbrains.com/issue/KTOR-9848
+                implementation("io.ktor:ktor-client-cio:3.5.2")
 
                 // map
                 implementation("org.maplibre.compose:maplibre-compose-runtime-opengl-android:0.19.0")
