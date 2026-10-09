@@ -29,6 +29,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.overlays.Action
 import de.westnordost.streetcomplete.data.overlays.Edit
 import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.osm.ALL_PATHS
@@ -52,7 +53,6 @@ import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.OnMap
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.ktx.toPosition
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
@@ -273,7 +273,10 @@ fun AddressOverlayForm(
     if (confirmRemoveAddress) {
         AreYouSureDialog(
             onDismissRequest = { confirmRemoveAddress = false },
-            onConfirmed = { on(Edit(createRemoveAddressElementEditAction(element!!))) }
+            onConfirmed = {
+                val action = createRemoveAddressElementEditAction(element!!)
+                on(if (action != null) Edit(action) else Action.Dismiss)
+            }
         )
     }
 }
@@ -287,7 +290,7 @@ private var lastStreetName: String? = null
 
 private var lastWasPlaceName: Boolean = false
 
-private fun createRemoveAddressElementEditAction(element: Element): ElementEditAction {
+internal fun createRemoveAddressElementEditAction(element: Element): ElementEditAction? {
     if (element is Node && element.tags.all { isAddressTag(it.key, it.value) }) {
         return DeletePoiNodeAction(element)
     }
@@ -297,11 +300,7 @@ private fun createRemoveAddressElementEditAction(element: Element): ElementEditA
             tagChanges.remove(tag.key)
         }
     }
-    // only add noaddress for areas (=buildings) because that's how it is defined in the wiki.
-    // Address nodes will be deleted or the address removed (see above)
-    if (element.isArea()) {
-        tagChanges["noaddress"] = "yes"
-    }
+    if (!tagChanges.hasChanges) return null
 
     return UpdateElementTagsAction(element, tagChanges.create())
 }
