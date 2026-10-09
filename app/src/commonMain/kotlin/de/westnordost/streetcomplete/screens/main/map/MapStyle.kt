@@ -31,7 +31,6 @@ import org.maplibre.compose.layers.CircleLayer
 import org.maplibre.compose.layers.FillLayer
 import org.maplibre.compose.layers.LineLayer
 import org.maplibre.compose.layers.SymbolLayer
-import org.maplibre.compose.sources.TileSetOptions
 import org.maplibre.compose.sources.VectorSource
 import org.maplibre.compose.sources.rememberVectorTileSource
 import org.maplibre.compose.util.DpPadding
@@ -69,8 +68,10 @@ fun MapStyle(
     }
     val source = rememberVectorTileSource(
         tiles = listOf(MapTiles.URL_TEMPLATE),
-        options = TileSetOptions(maxZoom = MapTiles.MAX_ZOOM, attributionHtml = attributionHtml)
-    )
+    ) {
+        maxZoom = MapTiles.MAX_ZOOM
+        this.attributionHtml = attributionHtml
+    }
 
     val paths = remember(colors) {
         RoadType(

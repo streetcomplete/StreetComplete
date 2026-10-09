@@ -86,16 +86,16 @@ class MainViewModelImpl(
 ) : MainViewModel() {
 
     override val initialCamera get() = CameraPosition(
-        target = prefs.mapPosition.toPosition(), bearing = prefs.mapRotation,
-        tilt = prefs.mapTilt, zoom = prefs.mapZoom,
+        center = prefs.mapPosition.toPosition(), bearing = prefs.mapRotation,
+        pitch = prefs.mapTilt, zoom = prefs.mapZoom,
     )
     override val initiallyFollowing get() = prefs.mapIsFollowing
     override val initiallyNavigating get() = prefs.mapIsNavigationMode
 
     override fun saveCamera(camera: CameraPosition, following: Boolean, navigating: Boolean) {
-        prefs.mapPosition = camera.target.toLatLon()
+        prefs.mapPosition = camera.center.toLatLon()
         prefs.mapRotation = camera.bearing
-        prefs.mapTilt = camera.tilt
+        prefs.mapTilt = camera.pitch
         prefs.mapZoom = camera.zoom
         prefs.mapIsFollowing = following
         prefs.mapIsNavigationMode = navigating

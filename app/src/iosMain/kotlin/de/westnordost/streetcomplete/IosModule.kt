@@ -37,8 +37,8 @@ import org.koin.dsl.onClose
 import org.maplibre.compose.location.AppleLocationProvider
 import org.maplibre.compose.location.LocationProvider
 import org.maplibre.compose.map.MapRuntime
-import org.maplibre.compose.map.MapRuntimeOptions
 import org.maplibre.compose.map.createMapRuntime
+import org.maplibre.compose.offline.offlineStorage
 import platform.Foundation.NSApplicationSupportDirectory
 import platform.Foundation.NSBundle
 import platform.Foundation.NSCachesDirectory
@@ -138,11 +138,11 @@ val iosModule = module {
             error = null
         )!!
         val cacheFile = Path(appSupportUrl.path!!, "maplibre-cache.db")
-        createMapRuntime(MapRuntimeOptions(cacheFile = cacheFile))
+        createMapRuntime { this.cacheFile = cacheFile }
     } onClose { it?.close() }
 
     factory<MapTilesDownloader> {
-        MapLibreMapTilesDownloader(get<MapRuntime>().offlineManager, UIScreen.mainScreen.scale.toFloat())
+        MapLibreMapTilesDownloader(get<MapRuntime>().offlineStorage, UIScreen.mainScreen.scale.toFloat())
     }
 
     // background jobs

@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toPosition
 import org.maplibre.compose.camera.CameraAnimation
+import org.maplibre.compose.camera.CameraFit
 import org.maplibre.compose.camera.CameraUpdate
 import org.maplibre.compose.map.MapState
 import org.maplibre.compose.util.DpPadding
@@ -45,18 +46,21 @@ fun MapState.offsetInWindow(position: LatLon, mapOrigin: Offset, density: Densit
 /** Zoom to the given [geometry]. */
 suspend fun MapState.animateTo(geometry: ElementGeometry, padding: DpPadding) {
     val camera = cameraPosition
-    val fitted = cameraForGeometry(geometry.toGeometry(), camera.bearing, camera.tilt, cameraPadding = padding)
+    val fitted = cameraForGeometry(
+        geometry.toGeometry(),
+        CameraFit(bearing = camera.bearing, pitch = camera.pitch, cameraPadding = padding),
+    )
     // zoom in a bit less than fully to keep a margin around the element, and not too far for points
     val targetZoom = min(fitted.zoom - 0.5, 19.0)
     val zoomDiff = abs(camera.zoom - targetZoom)
     animateCamera(
         update = CameraUpdate(
-            target = fitted.target,
+            center = fitted.center,
             // only zoom if the difference is big enough
             zoom = if (zoomDiff > 0.5) targetZoom else null,
             padding = padding,
         ),
         // more animation duration for longer zooms
-        animation = CameraAnimation.Ease(maxOf(450, (zoomDiff * 450).roundToInt()).milliseconds),
+        animation = CameraAnimation.Ease { duration = maxOf(450, (zoomDiff * 450).roundToInt()).milliseconds },
     )
 }

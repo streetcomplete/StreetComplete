@@ -66,7 +66,7 @@ class MainMapCameraState internal constructor(
             if (position != null) {
                 map.animateCamera(
                     update = CameraUpdate(
-                        target = position.toPosition(),
+                        center = position.toPosition(),
                         zoom = if (map.cameraPosition.zoom < 17.0) LOCATE_ZOOM else null
                     ),
                     animation = LocateAnimation
@@ -79,7 +79,7 @@ class MainMapCameraState internal constructor(
         animateToPositionIfFollowing(position, bearing)
     }
 
-    /** Turn navigation mode either on or off. When turned off, resets tilt back to 0 but not
+    /** Turn navigation mode either on or off. When turned off, resets pitch back to 0 but not
      *  bearing. */
     suspend fun setNavigationMode(value: Boolean, position: LatLon?, bearing: Double?) {
         if (mode !is CameraMode.Browsing) return
@@ -88,7 +88,7 @@ class MainMapCameraState internal constructor(
         if (value) {
             animateToPositionIfFollowing(position, bearing)
         } else {
-            map.animateCamera(CameraUpdate(tilt = 0.0), SnapAnimation)
+            map.animateCamera(CameraUpdate(pitch = 0.0), SnapAnimation)
         }
     }
 
@@ -121,10 +121,10 @@ class MainMapCameraState internal constructor(
         zoomedYet = true
         map.animateCamera(
             update = CameraUpdate(
-                target = position.toPosition(),
+                center = position.toPosition(),
                 zoom = zoom,
                 bearing = if (isNavigationMode) bearing else null,
-                tilt = if (isNavigationMode) 60.0 else null,
+                pitch = if (isNavigationMode) 60.0 else null,
                 // browsing has no sheet padding
                 padding = DpPadding.Zero,
             ),
@@ -132,14 +132,14 @@ class MainMapCameraState internal constructor(
         )
     }
 
-    /** Resets bearing and tilt to 0, i.e. north-up, no tilt */
+    /** Resets bearing and pitch to 0, i.e. north-up, no pitch */
     suspend fun resetCompass() {
-        // Navigation mode continuously sets bearing and tilt, so pressing the compass button
+        // Navigation mode continuously sets bearing and pitch, so pressing the compass button
         // signals the user's intent to stop that
         if (mode is CameraMode.Browsing) {
             isNavigationMode = false
         }
-        map.animateCamera(CameraUpdate(bearing = 0.0, tilt = 0.0), SnapAnimation)
+        map.animateCamera(CameraUpdate(bearing = 0.0, pitch = 0.0), SnapAnimation)
     }
 
     /** Stop the camera from following the position while a sheet is open. */
@@ -157,7 +157,7 @@ class MainMapCameraState internal constructor(
     suspend fun focus(position: LatLon, padding: DpPadding) {
         rememberPositionBeforeSheet()
         map.animateCamera(
-            update = CameraUpdate(target = position.toPosition(), padding = padding),
+            update = CameraUpdate(center = position.toPosition(), padding = padding),
             animation = SnapAnimation
         )
     }
@@ -173,7 +173,7 @@ class MainMapCameraState internal constructor(
     fun setPadding(padding: DpPadding) {
         val camera = map.cameraPosition
         map.setCameraPosition(camera.copy(
-            target = map.positionAtCenter(padding)?.toPosition() ?: camera.target,
+            center = map.positionAtCenter(padding)?.toPosition() ?: camera.center,
             padding = padding,
         ))
     }
@@ -188,12 +188,12 @@ class MainMapCameraState internal constructor(
         if (isFollowingPosition && position != null) {
             animateToPositionIfFollowing(position, bearing)
         } else if (sheet.previous != null) {
-            // when restoring, keep the user's current bearing and tilt because also rotating and
+            // when restoring, keep the user's current bearing and pitch because also rotating and
             // tilting back to where the camera was when the sheet was opened would be too
             // distracting and obstrusive
             map.animateCamera(
                 update = CameraUpdate(
-                    target = sheet.previous.target,
+                    center = sheet.previous.center,
                     zoom = sheet.previous.zoom,
                     padding = DpPadding.Zero,
                 ),
@@ -216,15 +216,15 @@ class MainMapCameraState internal constructor(
         private const val LOCATE_ZOOM = 18.0
 
         /** Camera animation when animating the user's location */
-        private val LocateAnimation = CameraAnimation.Ease(600.milliseconds)
+        private val LocateAnimation = CameraAnimation.Ease { duration = 600.milliseconds }
 
-        /** Camera animation when animating the tilt or bearing */
-        private val SnapAnimation = CameraAnimation.Ease(300.milliseconds)
+        /** Camera animation when animating the pitch or bearing */
+        private val SnapAnimation = CameraAnimation.Ease { duration = 300.milliseconds }
 
         /** Camera animation when animating the zoom. Duration depends on how much is zoomed */
-        private fun zoomAnimation(zoomDiff: Double) = CameraAnimation.Ease(
-            maxOf(300, (abs(zoomDiff) * 300).roundToInt()).milliseconds
-        )
+        private fun zoomAnimation(zoomDiff: Double) = CameraAnimation.Ease {
+            duration = maxOf(300, (abs(zoomDiff) * 300).roundToInt()).milliseconds
+        }
     }
 }
 

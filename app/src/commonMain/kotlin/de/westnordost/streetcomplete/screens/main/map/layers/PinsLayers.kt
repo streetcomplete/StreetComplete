@@ -73,16 +73,16 @@ fun PinsLayers(
         value = withContext(Dispatchers.Default) { pins.map { it.toGeoJsonFeature() } }
     }
     val options = remember {
-        GeoJsonOptions(
-            cluster = true,
-            clusterMaxZoom = CLUSTER_MAX_ZOOM,
-            clusterRadius = 55,
-        )
+        GeoJsonOptions {
+            cluster = true
+            clusterMaxZoom = CLUSTER_MAX_ZOOM
+            clusterRadius = 55
+        }
     }
 
     val source = rememberGeoJsonSource(
         data = GeoJsonData.Features(FeatureCollection(features)),
-        options = options
+        from = options
     )
 
     val currentOnZoomToCluster by rememberUpdatedState(onZoomToCluster)
@@ -93,7 +93,7 @@ fun PinsLayers(
         val currentHandle = mapState.style.sources[source] ?: return ClickResult.Pass
         coroutineScope.launch {
             val zoom = try {
-                currentHandle.getClusterExpansionZoom(feature)
+                currentHandle.getClusterExpansionZoom(feature) ?: return@launch
             } catch (e: StyleHandleException) {
                 if (mapState.style.sources[source] !== currentHandle) return@launch
                 throw e

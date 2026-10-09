@@ -42,8 +42,8 @@ import org.koin.dsl.onClose
 import org.maplibre.compose.location.AndroidLocationProvider
 import org.maplibre.compose.location.LocationProvider
 import org.maplibre.compose.map.MapRuntime
-import org.maplibre.compose.map.MapRuntimeOptions
 import org.maplibre.compose.map.createMapRuntime
+import org.maplibre.compose.offline.offlineStorage
 
 private const val COMPOSE_FILES_DIR = "composeResources/de.westnordost.streetcomplete.resources/files"
 
@@ -113,7 +113,7 @@ val androidModule = module {
         // the MapLibre Android SDK default instead of the MapLibre Compose one, to keep offline data
         // from before v64
         val cacheFile = Path(androidContext().filesDir.path, "mbgl-offline.db")
-        createMapRuntime(MapRuntimeOptions(cacheFile = cacheFile))
+        createMapRuntime { this.cacheFile = cacheFile }
     } onClose { it?.close() }
 
     // background jobs
@@ -129,7 +129,7 @@ val androidModule = module {
 
     factory<MapTilesDownloader> {
         MapLibreMapTilesDownloader(
-            get<MapRuntime>().offlineManager,
+            get<MapRuntime>().offlineStorage,
             androidContext().resources.displayMetrics.density
         )
     }

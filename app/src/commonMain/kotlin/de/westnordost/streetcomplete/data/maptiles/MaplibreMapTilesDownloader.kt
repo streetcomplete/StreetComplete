@@ -11,14 +11,14 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.mapNotNull
 import org.maplibre.compose.offline.DownloadProgress
 import org.maplibre.compose.offline.DownloadStatus
-import org.maplibre.compose.offline.OfflineManager
-import org.maplibre.compose.offline.OfflineManagerState
 import org.maplibre.compose.offline.OfflinePack
 import org.maplibre.compose.offline.OfflinePackDefinition
+import org.maplibre.compose.offline.OfflineStorage
+import org.maplibre.compose.offline.OfflineStorageState
 import kotlin.coroutines.cancellation.CancellationException
 
 class MapLibreMapTilesDownloader(
-    private val manager: OfflineManager,
+    private val manager: OfflineStorage,
     private val pixelRatio: Float,
 ) : MapTilesDownloader {
 
@@ -30,8 +30,8 @@ class MapLibreMapTilesDownloader(
                     // Only tiles need downloading; glyphs and images are packaged with the app.
                     styleUrl = Res.getUri("files/map-download-style.json"),
                     bounds = bbox.toGeoJsonBoundingBox(),
-                    minZoom = 0,
-                    maxZoom = MapTiles.MAX_ZOOM,
+                    minZoom = 0.0,
+                    maxZoom = MapTiles.MAX_ZOOM.toDouble(),
                     pixelRatio = pixelRatio,
                 ),
                 // store timestamp as metadata for deleting areas older than X
@@ -54,7 +54,7 @@ class MapLibreMapTilesDownloader(
                     Log.w(TAG, "Offline download failed (${finalState.reason}): ${finalState.message}")
                 is DownloadProgress.TileLimitExceeded ->
                     Log.w(TAG, "Offline tile limit ${finalState.limit} was exceeded")
-                DownloadProgress.Unknown -> Unit // not a finished state
+                else -> Unit // not a finished state
             }
         } catch (error: Exception) {
             try {
@@ -101,12 +101,13 @@ class MapLibreMapTilesDownloader(
 }
 
 /** Waits until the manager has read its stored packs, then returns them */
-private suspend fun OfflineManager.awaitPacks(): Set<OfflinePack> =
+private suspend fun OfflineStorage.awaitPacks(): Set<OfflinePack> =
     state.mapNotNull {
         when (it) {
-            OfflineManagerState.Loading -> null
-            is OfflineManagerState.Ready -> it.packs
-            is OfflineManagerState.Failed -> throw it.cause
+            OfflineStorageState.Loading -> null
+            is OfflineStorageState.Ready -> it.packs
+            is OfflineStorageState.Failed -> throw it.cause
+            else -> null
         }
     }.first()
 
@@ -114,5 +115,5 @@ private val DownloadProgress.isFinished: Boolean get() = when (this) {
     is DownloadProgress.Healthy -> status == DownloadStatus.Complete
     is DownloadProgress.Error,
     is DownloadProgress.TileLimitExceeded -> true
-    DownloadProgress.Unknown -> false
+    else -> false
 }
