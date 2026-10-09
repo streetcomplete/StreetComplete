@@ -125,7 +125,7 @@ Anything generated with LLM ("AI") must be marked as such. This warning must be 
 
 LLM-generated content not reviewed and checked by human must not be submitted.
 
-Content violating this rules is a spam and will be treated as such.
+Content violating this rules is spam and will be treated as such.
 
 ## StreetComplete-related projects
 
