@@ -84,11 +84,15 @@ class MapImages internal constructor(
     ) {
         snapshotFlow { map.style.loadState }.first { it == StyleLoadState.Ready }
         mutex.withLock {
+            val images = mutableMapOf<String, ResolvedStyleImage>()
             for ((icon, painter) in icons) {
+                // the style was replaced meanwhile; the next call adds the images again
+                if (map.style.loadState != StyleLoadState.Ready) return
                 val id = getId(icon) ?: continue
                 if (map.style.images[id] != null) continue
-                map.style.images.set(id, create(icon, painter))
+                images[id] = create(icon, painter)
             }
+            if (images.isNotEmpty()) map.style.images.setAll(images)
         }
     }
 
