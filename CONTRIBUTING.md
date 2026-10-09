@@ -119,6 +119,14 @@ Materials in [`res/documentation`](res/documentation) also may be useful, it inc
 - [Checklist for creating a release](res/documentation/creating%20new%20release.md)
 - [Presentation discussing data model allowing offline editing, undo, splitting ways and resolving edit conflicts](res/documentation/how-it-handles%20edits.odp)
 
+### LLMs
+
+Anything generated with LLM ("AI") must be marked as such. This warning must be placed at the beginning, not at the end of the long text.
+
+LLM-generated content not reviewed and checked by human must not be submitted.
+
+Content violating this rules is a spam and will be treated as such.
+
 ## StreetComplete-related projects
 
 ### Dependencies
