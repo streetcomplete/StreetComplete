@@ -18,7 +18,6 @@ import org.maplibre.compose.camera.CameraUpdate
 import org.maplibre.compose.map.MapState
 import org.maplibre.compose.util.DpPadding
 import kotlin.math.abs
-import kotlin.math.roundToInt
 import kotlin.time.Duration.Companion.milliseconds
 
 @Composable
@@ -223,7 +222,7 @@ class MainMapCameraState internal constructor(
 
         /** Camera animation when animating the zoom. Duration depends on how much is zoomed */
         private fun zoomAnimation(zoomDiff: Double) = CameraAnimation.Ease {
-            duration = maxOf(300, (abs(zoomDiff) * 300).roundToInt()).milliseconds
+            duration = (300.milliseconds * abs(zoomDiff)).coerceAtLeast(300.milliseconds)
         }
     }
 }

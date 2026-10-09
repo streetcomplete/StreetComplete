@@ -16,7 +16,6 @@ import org.maplibre.compose.map.MapState
 import org.maplibre.compose.util.DpPadding
 import kotlin.math.abs
 import kotlin.math.min
-import kotlin.math.roundToInt
 import kotlin.time.Duration.Companion.milliseconds
 
 /** The position shown at the center of the map area inside the given [padding], e.g. where the
@@ -62,7 +61,7 @@ suspend fun MapState.animateTo(geometry: ElementGeometry, padding: DpPadding) {
         ),
         // more animation duration for longer zooms
         animation = CameraAnimation.Ease {
-            duration = maxOf(450, (zoomDiff * 450).roundToInt()).milliseconds
+            duration = (450.milliseconds * zoomDiff).coerceAtLeast(450.milliseconds)
         },
     )
 }
