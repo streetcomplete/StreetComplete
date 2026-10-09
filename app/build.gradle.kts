@@ -43,11 +43,6 @@ plugins {
     id("org.jetbrains.kotlin.plugin.allopen") version "2.4.20"
 }
 
-repositories {
-    google()
-    mavenCentral()
-}
-
 buildkonfig {
     packageName = "de.westnordost.streetcomplete"
     objectName = "BuildConfig"
