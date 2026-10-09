@@ -61,6 +61,8 @@ suspend fun MapState.animateTo(geometry: ElementGeometry, padding: DpPadding) {
             padding = padding,
         ),
         // more animation duration for longer zooms
-        animation = CameraAnimation.Ease { duration = maxOf(450, (zoomDiff * 450).roundToInt()).milliseconds },
+        animation = CameraAnimation.Ease {
+            duration = maxOf(450, (zoomDiff * 450).roundToInt()).milliseconds
+        },
     )
 }

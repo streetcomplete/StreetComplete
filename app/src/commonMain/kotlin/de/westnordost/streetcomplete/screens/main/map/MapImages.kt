@@ -29,7 +29,6 @@ import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.map.MapState
 import org.maplibre.compose.map.ResolvedStyleImage
 import org.maplibre.compose.map.StyleLoadState
-import org.maplibre.compose.style.StyleHandleException
 import kotlin.math.min
 
 @Composable
@@ -88,13 +87,7 @@ class MapImages internal constructor(
             for ((icon, painter) in icons) {
                 val id = getId(icon) ?: continue
                 if (map.style.images[id] != null) continue
-                val image = create(icon, painter)
-                try {
-                    map.style.images.set(id, image)
-                } catch (e: StyleHandleException) {
-                    // the style was replaced meanwhile; the next call adds the image again
-                    return
-                }
+                map.style.images.set(id, create(icon, painter))
             }
         }
     }

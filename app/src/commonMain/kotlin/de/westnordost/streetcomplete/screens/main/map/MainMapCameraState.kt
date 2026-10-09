@@ -79,7 +79,7 @@ class MainMapCameraState internal constructor(
         animateToPositionIfFollowing(position, bearing)
     }
 
-    /** Turn navigation mode either on or off. When turned off, resets pitch back to 0 but not
+    /** Turn navigation mode either on or off. When turned off, resets tilt back to 0 but not
      *  bearing. */
     suspend fun setNavigationMode(value: Boolean, position: LatLon?, bearing: Double?) {
         if (mode !is CameraMode.Browsing) return
@@ -132,9 +132,9 @@ class MainMapCameraState internal constructor(
         )
     }
 
-    /** Resets bearing and pitch to 0, i.e. north-up, no pitch */
+    /** Resets bearing and tilt to 0, i.e. north-up, no tilt */
     suspend fun resetCompass() {
-        // Navigation mode continuously sets bearing and pitch, so pressing the compass button
+        // Navigation mode continuously sets bearing and tilt, so pressing the compass button
         // signals the user's intent to stop that
         if (mode is CameraMode.Browsing) {
             isNavigationMode = false
@@ -188,7 +188,7 @@ class MainMapCameraState internal constructor(
         if (isFollowingPosition && position != null) {
             animateToPositionIfFollowing(position, bearing)
         } else if (sheet.previous != null) {
-            // when restoring, keep the user's current bearing and pitch because also rotating and
+            // when restoring, keep the user's current bearing and tilt because also rotating and
             // tilting back to where the camera was when the sheet was opened would be too
             // distracting and obstrusive
             map.animateCamera(
@@ -218,7 +218,7 @@ class MainMapCameraState internal constructor(
         /** Camera animation when animating the user's location */
         private val LocateAnimation = CameraAnimation.Ease { duration = 600.milliseconds }
 
-        /** Camera animation when animating the pitch or bearing */
+        /** Camera animation when animating the tilt or bearing */
         private val SnapAnimation = CameraAnimation.Ease { duration = 300.milliseconds }
 
         /** Camera animation when animating the zoom. Duration depends on how much is zoomed */

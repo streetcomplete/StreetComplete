@@ -44,6 +44,7 @@ import org.maplibre.compose.location.LocationProvider
 import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.createMapRuntime
 import org.maplibre.compose.offline.offlineStorage
+import org.maplibre.compose.util.ExperimentalMaplibreComposeApi
 
 private const val COMPOSE_FILES_DIR = "composeResources/de.westnordost.streetcomplete.resources/files"
 
@@ -112,8 +113,8 @@ val androidModule = module {
     single<MapRuntime> {
         // the MapLibre Android SDK default instead of the MapLibre Compose one, to keep offline data
         // from before v64
-        val cacheFile = Path(androidContext().filesDir.path, "mbgl-offline.db")
-        createMapRuntime { this.cacheFile = cacheFile }
+        @OptIn(ExperimentalMaplibreComposeApi::class)
+        createMapRuntime { cacheFile = Path(androidContext().filesDir.path, "mbgl-offline.db") }
     } onClose { it?.close() }
 
     // background jobs

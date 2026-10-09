@@ -18,19 +18,18 @@ import org.maplibre.compose.offline.OfflineStorageState
 import kotlin.coroutines.cancellation.CancellationException
 
 class MapLibreMapTilesDownloader(
-    private val manager: OfflineStorage,
+    private val storage: OfflineStorage,
     private val pixelRatio: Float,
 ) : MapTilesDownloader {
 
     override suspend fun download(bbox: BoundingBox) {
         var pack: OfflinePack? = null
         try {
-            pack = manager.create(
+            pack = storage.create(
                 definition = OfflinePackDefinition.TilePyramid(
                     // Only tiles need downloading; glyphs and images are packaged with the app.
                     styleUrl = Res.getUri("files/map-download-style.json"),
                     bounds = bbox.toGeoJsonBoundingBox(),
-                    minZoom = 0.0,
                     maxZoom = MapTiles.MAX_ZOOM.toDouble(),
                     pixelRatio = pixelRatio,
                 ),
@@ -38,7 +37,7 @@ class MapLibreMapTilesDownloader(
                 metadata = nowAsEpochMilliseconds().toString().encodeToByteArray(),
             )
             val startedAt = nowAsEpochMilliseconds()
-            manager.resume(pack)
+            storage.resume(pack)
 
             val finalState = pack.downloadProgress.first { it.isFinished }
             when (finalState) {
@@ -58,7 +57,7 @@ class MapLibreMapTilesDownloader(
             }
         } catch (error: Exception) {
             try {
-                pack?.let { manager.pause(it) }
+                pack?.let { storage.pause(it) }
             } catch (pauseError: Exception) {
                 error.addSuppressed(pauseError)
             }
@@ -71,10 +70,10 @@ class MapLibreMapTilesDownloader(
 
     override suspend fun deleteOld(time: Long) {
         try {
-            for (pack in manager.awaitPacks()) {
+            for (pack in storage.awaitPacks()) {
                 val packTime = pack.metadata.value?.decodeToString()?.toLongOrNull()
                 if (packTime == null || packTime < time) {
-                    manager.delete(pack)
+                    storage.delete(pack)
                 }
             }
         } catch (error: CancellationException) {
@@ -86,8 +85,8 @@ class MapLibreMapTilesDownloader(
 
     override suspend fun clear() {
         try {
-            for (pack in manager.awaitPacks()) { manager.delete(pack) }
-            manager.clearAmbientCache()
+            for (pack in storage.awaitPacks()) { storage.delete(pack) }
+            storage.clearAmbientCache()
         } catch (error: CancellationException) {
             throw error
         } catch (error: Exception) {
@@ -100,14 +99,13 @@ class MapLibreMapTilesDownloader(
     }
 }
 
-/** Waits until the manager has read its stored packs, then returns them */
+/** Waits until the storage has read its stored packs, then returns them */
 private suspend fun OfflineStorage.awaitPacks(): Set<OfflinePack> =
     state.mapNotNull {
         when (it) {
-            OfflineStorageState.Loading -> null
             is OfflineStorageState.Ready -> it.packs
             is OfflineStorageState.Failed -> throw it.cause
-            else -> null
+            else -> null // still loading
         }
     }.first()
 

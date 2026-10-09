@@ -39,6 +39,7 @@ import org.maplibre.compose.location.LocationProvider
 import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.createMapRuntime
 import org.maplibre.compose.offline.offlineStorage
+import org.maplibre.compose.util.ExperimentalMaplibreComposeApi
 import platform.Foundation.NSApplicationSupportDirectory
 import platform.Foundation.NSBundle
 import platform.Foundation.NSCachesDirectory
@@ -137,8 +138,8 @@ val iosModule = module {
             create = true,
             error = null
         )!!
-        val cacheFile = Path(appSupportUrl.path!!, "maplibre-cache.db")
-        createMapRuntime { this.cacheFile = cacheFile }
+        @OptIn(ExperimentalMaplibreComposeApi::class)
+        createMapRuntime { cacheFile = Path(appSupportUrl.path!!, "maplibre-cache.db") }
     } onClose { it?.close() }
 
     factory<MapTilesDownloader> {

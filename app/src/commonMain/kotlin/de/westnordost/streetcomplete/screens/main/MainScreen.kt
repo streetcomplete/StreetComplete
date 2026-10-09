@@ -410,7 +410,8 @@ fun MainScreen(
     }
 
     LaunchedEffect(headingProvider) {
-        headingProvider.updates(HeadingRequest { minimumInterval = 33.milliseconds }).collect { headingMeasurement ->
+        val request = HeadingRequest { minimumInterval = 33.milliseconds }
+        headingProvider.updates(request).collect { headingMeasurement ->
             heading = (headingMeasurement.bearing - Bearing.North).inDegrees.toFloat()
         }
     }
@@ -436,7 +437,7 @@ fun MainScreen(
                         LocationUnavailableReason.ServicesDisabled -> LocationState.ALLOWED
                         LocationUnavailableReason.TemporarilyUnavailable -> LocationState.SEARCHING
                         LocationUnavailableReason.PermissionDenied -> LocationState.DENIED
-                        else -> null
+                        else -> null // unsupported or unclassified
                     }
 
                     tracks.clear()
