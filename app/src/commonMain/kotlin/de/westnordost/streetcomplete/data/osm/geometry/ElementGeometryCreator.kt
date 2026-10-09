@@ -96,7 +96,8 @@ class ElementGeometryCreator {
         rings.addAll(inner)
 
         /* only use first ring that is not a hole if there are multiple
-           this is the same behavior as Leaflet or Tangram */
+           this is the same behavior as Leaflet or Tangram.
+           Holes are ignored, so the marker may lie inside a hole */
         return ElementPolygonsGeometry(rings, outer.first().interiorPointOfPolygon())
     }
 
