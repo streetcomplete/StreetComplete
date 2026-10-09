@@ -102,6 +102,10 @@ Always remember to pay attention to [the quest guidelines](https://github.com/st
 
 See also [this far more detailed guide to making a new quest](CONTRIBUTING_A_NEW_QUEST.md).
 
+### AI policy
+
+See [AI policy](https://github.com/streetcomplete/StreetComplete/blob/master/AI_POLICY.md).
+
 ### Code style
 
 Inheritance and class hierarchy should be avoided if possible. It is preferable to extract shared code to helper file such as [KerbUtil.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/osm/kerb/KerbUtil.kt).
