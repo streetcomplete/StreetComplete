@@ -1,0 +1,29 @@
+name: AgentScan
+
+on:
+  pull_request_target:
+    types:
+      - opened
+  issues:
+    types:
+      - opened
+
+jobs:
+  agentscan:
+    runs-on: ubuntu-slim
+    timeout-minutes: 10
+    permissions:
+      pull-requests: write
+      issues: write
+      contents: read
+    steps:
+      - name: AgentScan
+        uses: MatteoGabriele/agentscan-action@8112fb79b33fafb8506159df20129a34209ac410 # v2.5.0
+        with:
+          scan-pull-requests: true
+          scan-issues: true
+          trusted-author-associations: "owner,member"
+          mode: labels
+          label-community-flagged: "AI assisted"
+          label-mixed: "AI assisted"
+          label-automation: "AI assisted"
