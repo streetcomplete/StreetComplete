@@ -14,7 +14,7 @@ In that case, don't contribute with code. It would be rude and disrespectful to 
 
 ### No AI in conversation
 
-All communication must remain a conversation between humans. Write in your own words, from your own understanding. 
+All communication, including PR descriptions, must remain a conversation between humans. Write in your own words, from your own understanding. 
 Don't paraphrase AI output. Be concise and write, what matters.
 
 Don't let an AI translate your text to English. You can also just post in the language you are most comfortable in to write and rely on translation tools of others to interpret your words.
