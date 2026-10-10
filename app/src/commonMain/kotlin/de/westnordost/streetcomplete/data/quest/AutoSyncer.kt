@@ -109,7 +109,11 @@ class AutoSyncer(
             }
         }
         coroutineScope.launch {
-            val request = LocationRequest(LocationAccuracy.High, 30.seconds, 100.meters)
+            val request = LocationRequest {
+                accuracy = LocationAccuracy.High
+                minimumInterval = 30.seconds
+                minimumDistance = 100.meters
+            }
             locationProvider.updates(request).collect { locationEvent ->
                 if (locationEvent is LocationEvent.Update) {
                     val (position, accuracy) = locationEvent.measurement
