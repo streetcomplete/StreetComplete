@@ -14,7 +14,7 @@ In that case, don't contribute with code. It would be rude and disrespectful to 
 
 ### No AI in conversation
 
-All communication, including PR descriptions, must remain a conversation between humans. Write in your own words, from your own understanding. 
+All communication, including PR descriptions after you marked them ready for review, must remain a conversation between humans. Write in your own words, from your own understanding. 
 Don't paraphrase AI output. Be concise and write what matters. We value clear, human communication over perfect grammar or spelling.
 
 
