@@ -29,6 +29,7 @@ import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementsTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
@@ -105,6 +106,10 @@ fun ShowQuestFormsScreen(
                         }
                         is UpdateElementTagsAction -> {
                             val tagging = action.changes.changes.joinToString("\n")
+                            message = "Tagging\n$tagging"
+                        }
+                        is UpdateElementsTagsAction -> {
+                            val tagging = action.actions.flatMap { it.changes.changes }.joinToString("\n")
                             message = "Tagging\n$tagging"
                         }
                     }

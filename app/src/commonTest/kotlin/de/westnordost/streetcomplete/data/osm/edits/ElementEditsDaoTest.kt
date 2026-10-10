@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementsTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -55,6 +56,14 @@ class ElementEditsDaoTest : StreetCompleteDatabaseTestCase() {
 
     @Test fun addGet_UpdateElementTagsEdit() {
         val edit = updateTags()
+        dao.put(edit)
+        assertNotNull(edit.id)
+        val dbEdit = dao.get(edit.id)
+        assertEquals(edit, dbEdit)
+    }
+
+    @Test fun addGet_UpdateElementsTagsEdit() {
+        val edit = updateTagsOfSeveralElements()
         dao.put(edit)
         assertNotNull(edit.id)
         val dbEdit = dao.get(edit.id)
@@ -251,6 +260,20 @@ private fun updateTags(
             StringMapEntryDelete("f", "g"),
         ))
     ),
+    false
+)
+
+private fun updateTagsOfSeveralElements(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
+    0,
+    TEST_QUEST_TYPE,
+    geom,
+    "survey",
+    timestamp,
+    isSynced,
+    UpdateElementsTagsAction(listOf(
+        UpdateElementTagsAction(node, StringMapChanges(listOf(StringMapEntryAdd("a", "b")))),
+        UpdateElementTagsAction(Node(2, p), StringMapChanges(listOf(StringMapEntryAdd("c", "d")))),
+    )),
     false
 )
 
