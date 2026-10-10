@@ -147,8 +147,10 @@
 
     <string name="quest_leave_new_note_title">Leave a note instead?</string>
     <string name="quest_leave_new_note_description">You can leave a public note for other mappers to resolve at this location, or hide this quest for yourself only</string>
+    <string name="quest_leave_new_note_description_disable">Alternatively, you can disable all quests of this type. This can be changed again in the settings.</string>
     <string name="quest_leave_new_note_yes">Leave note</string>
     <string name="quest_leave_new_note_no">Hide</string>
+    <string name="quest_leave_new_note_disable_quest">Disable</string>
     <string name="quest_leave_new_note_as_answer">In this case, you need to leave a note in which you explain the situation.</string>
 
 
