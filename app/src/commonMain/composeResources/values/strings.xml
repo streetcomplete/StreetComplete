@@ -1081,6 +1081,7 @@
     <string name="quest_crossing_hint">An informal trail crossing a road:</string>
 
     <string name="quest_cycleway_title2">Is there a bicycle lane or path here? What type?</string>
+    <string name="quest_cycleway_direction_title">Does a sign indicate two-way cycling here? If not, which direction do cyclists go?</string>
     <string name="quest_cycleway_value_track">protected bicycle lane or bicycle path</string>
     <string name="quest_cycleway_value_lane">bicycle lane</string>
     <string name="quest_cycleway_value_none">none</string>
@@ -1105,6 +1106,8 @@
     <string name="quest_cyclewayPartSurface_title">What’s the surface of the bicycle path here?</string>
 
     <string name="quest_cycleway_width_title">How wide is the bicycle path here?</string>
+
+    <string name="default_disabled_msg_cycleway">This quest type is disabled by default because the user potentially needs to walk to the next intersection to see that sign, and that may be a little far.</string>
 
     <string name="quest_dietType_glutenfree_name_title">Are gluten-free products offered here?</string>
     <string name="quest_dietType_explanation_glutenfree">Preparing gluten-free products requires knowledge, as common spices and sauces may contain gluten. Gluten-free food would be explicitly labeled as such.</string>
