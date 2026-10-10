@@ -392,7 +392,7 @@ fun questTypeRegistry(
     73 to AddBikeRentalCapacity(), // less ambiguous than bike parking
     74 to AddBikeParkingCapacity(), // used by cycle map layer on osm.org, OsmAnd
 
-    198 to AddLockable(),
+    202 to AddLockable(),
 
     173 to AddBicycleRepairStationServices(),
 
