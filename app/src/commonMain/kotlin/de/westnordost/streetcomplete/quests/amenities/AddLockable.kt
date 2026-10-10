@@ -32,7 +32,7 @@ class AddLockable : OsmFilterQuestType<Boolean>() {
 
     override val changesetComment = "Specify whether charging stations can be locked"
     override val wikiLink = "Key:lockable"
-    override val icon = Res.drawable.quest_access
+    override val icon = Res.drawable.quest_lock_power
     override val title = Res.string.quest_lockable_title
     override val achievements = listOf(BICYCLIST)
 
