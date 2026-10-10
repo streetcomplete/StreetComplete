@@ -235,10 +235,10 @@ private fun StringWithCursor.parseElementFilter(): ElementFilter {
     val operator = parseOperatorWithSurroundingSpaces() ?: return HasKey(key)
 
     if (operator == OLDER) {
-        return TagOlderThan(key, parseDateFilter())
+        return CombineFilters(HasKey(key), TagOlderThan(key, parseDateFilter()))
     }
     if (operator == NEWER) {
-        return TagNewerThan(key, parseDateFilter())
+        return CombineFilters(HasKey(key), TagNewerThan(key, parseDateFilter()))
     }
 
     if (operator in KEY_VALUE_OPERATORS) {
