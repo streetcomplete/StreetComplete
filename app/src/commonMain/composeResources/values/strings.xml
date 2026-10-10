@@ -1235,6 +1235,8 @@
 
     <string name="quest_lit_title">Is it lit here?</string>
 
+    <string name="quest_lockable_title">Can you lock this while charging?</string>
+
     <string name="quest_maxheight_title">Measure the maximum height here.</string>
     <string name="quest_maxheight_below_bridge_title">Measure the height below the highlighted bridge (or other structure).</string>
     <string name="quest_maxheight_sign_title">What height limit is indicated here?</string>

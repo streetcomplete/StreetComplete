@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.bike_parking_cover
+package de.westnordost.streetcomplete.quests.amenities
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
@@ -14,26 +14,30 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddBikeParkingCover : OsmFilterQuestType<Boolean>() {
+class AddLockable : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           (
-            amenity = bicycle_parking
-            or amenity = charging_station and bicycle ~ yes|designated and lockable = no and motorcar = no
+            amenity = device_charging_station
+            or (
+                amenity = charging_station
+                and motorcar = no
+                and ~bicycle|scooter ~ yes|designated
+            )
           )
+          and !lockable
           and access !~ private|no
-          and !covered
-          and bicycle_parking !~ shed|lockers|building
     """
-    override val changesetComment = "Specify bicycle parkings covers"
-    override val wikiLink = "Tag:amenity=bicycle_parking"
-    override val icon = Res.drawable.quest_bicycle_parking_cover
-    override val title = Res.string.quest_bicycleParkingCoveredStatus_title
+
+    override val changesetComment = "Specify whether charging stations can be locked"
+    override val wikiLink = "Key:lockable"
+    override val icon = Res.drawable.quest_lock_power
+    override val title = Res.string.quest_lockable_title
     override val achievements = listOf(BICYCLIST)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways with amenity = bicycle_parking")
+        mapData.filter("nodes, ways with amenity ~ device_charging_station|charging_station")
 
     @Composable
     override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
@@ -41,6 +45,6 @@ class AddBikeParkingCover : OsmFilterQuestType<Boolean>() {
     }
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["covered"] = answer.toYesNo()
+        tags["lockable"] = answer.toYesNo()
     }
 }
