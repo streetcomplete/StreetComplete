@@ -24,9 +24,9 @@ dependencies {
     implementation(project(":app"))
     implementation(compose.desktop.currentOs)
     implementation("io.insert-koin:koin-core:4.2.2")
-    implementation("org.maplibre.compose:maplibre-compose:0.19.0")
+    implementation("org.maplibre.compose:maplibre-compose:0.20.0")
     implementation("io.github.vinceglb:filekit-core:0.16.0")
-    runtimeOnly("org.maplibre.compose:maplibre-compose-runtime-$mapBackend-$hostOs-$hostArch:0.19.0")
+    runtimeOnly("org.maplibre.compose:maplibre-compose-runtime-$mapBackend-$hostOs-$hostArch:0.20.0")
 }
 
 compose.desktop {

@@ -46,8 +46,9 @@ import org.koin.dsl.onClose
 import org.maplibre.compose.location.LocationProvider
 import org.maplibre.compose.location.createDefaultLocationProvider
 import org.maplibre.compose.map.MapRuntime
-import org.maplibre.compose.map.MapRuntimeOptions
 import org.maplibre.compose.map.createMapRuntime
+import org.maplibre.compose.offline.offlineStorage
+import org.maplibre.compose.util.ExperimentalMaplibreComposeApi
 import java.awt.GraphicsEnvironment
 import java.util.prefs.Preferences
 
@@ -128,13 +129,14 @@ val desktopModule = module {
     // map
 
     single<MapRuntime> {
-        createMapRuntime(MapRuntimeOptions(cacheFile = Path(FileKit.filesDir.path, "maplibre-cache.db")))
+        @OptIn(ExperimentalMaplibreComposeApi::class)
+        createMapRuntime { cacheFile = Path(FileKit.filesDir.path, "maplibre-cache.db") }
     } onClose { it?.close() }
 
     factory<MapTilesDownloader> {
         val density = GraphicsEnvironment.getLocalGraphicsEnvironment()
             .defaultScreenDevice.defaultConfiguration.defaultTransform.scaleX.toFloat()
-        MapLibreMapTilesDownloader(get<MapRuntime>().offlineManager, density)
+        MapLibreMapTilesDownloader(get<MapRuntime>().offlineStorage, density)
     }
 
     // background jobs
