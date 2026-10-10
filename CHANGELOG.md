@@ -1,6 +1,6 @@
 # Changelog
 
-## vNext
+## v64.0-beta1
 
 ### General
 
@@ -15,15 +15,18 @@
 - _"What’s the surface here?"_ - asked for motorcycle parkings (#7237, #6999, #6829), by @Amaanprobably, @ontheair81
 - _"How many sockets does this charging station have?"_ (#6732, #5164), thanks @mcliquid
 - _"Can cars be charged here?"_ (#7083, also #7098), by @paulklie. This and the above quest replace the quests that ask if and how many cars / bicycles can be charged at a charging station
+- _"Can you lock this while charging?"_, asked bicycle charging stations etc. (#7189), by @paulklie
 
 ### Quest & overlay improvements
 
 - Add tap hint for street side select UI (#7215), by @sargunv
 - Localized names: if user explicitly specifies a language, also explicitly tag it that way (#7161)
-- Other small improvements (#7217, #7245), by @paulklie
+- Addresses: Don't tag `noaddress=yes` when removing an address (#7145)
+- Other small improvements (#7217, #7245, …), thanks @paulklie
 
 ### Fixes
 
+- Fix crash on Android when downloading more areas in quick succession (#7051)
 - Opening hours: Fix crash when editing times like 26:00 (#7246)
 - Fix logs screen didn't reliably scroll to bottom when new logs arrived (#7233), by @sargunv
 - Postbox collection times: Fix always asked whether to discard changes on exit even when nothing was input
@@ -40,6 +43,16 @@
 - Fix settings screen background turning black on Android 7 (#7175), by @sargunv
 - Fix quest header was duplicated for non-resurvey quests that had a note
 - Reference number: Fix answer "nothing visible" didn't do anything
+- Fix rare crash in opening hours and collection times form
+- Now possible again to switch directly between different elements in the overlay
+
+### Changes and fixes for earlier v64.0-alphas, related to map display
+
+- Fix pin icons didn't reload correctly when returning from another screen (#7241), by @sargunv
+- Fix map-related crash on Android (#7220), by @sargunv
+- Made usage of map generally less janky, by @sargunv
+- Made overlay elements clickable even easier, by @sargunv
+- On iOS, the quick zoom (tap, then press and drag) zooms in when you drag up, like in Apple Maps (#7238), by @sargunv
 
 ## v64.0-alpha3
 
