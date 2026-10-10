@@ -710,7 +710,6 @@
     <string name="quest_buildingType_abandoned_description">αχρησιμοποίητο κτήριο του οποίου η αρχική λειτουργία ή σκοπός είναι άγνωστη</string>
     <string name="quest_buildingType_ruins">Ερείπια</string>
     <string name="quest_buildingType_ruins_description">εγκαταλελειμμένο, ερειπωμένο και μη αναγνωρίσιμο κτήριο</string>
-    <string name="quest_charging_station_capacity_title">Πόσα αυτοκίνητα μπορούν να φορτιστούν ταυτόχρονα σε αυτόν τον σταθμό φόρτισης;</string>
     <string name="link_disaster_ninja_description">Χάρτης που δείχνει τις πρόσφατες φυσικές καταστροφές, ενδιαφέρουσες για τους ανθρωπιστικούς χαρτογράφους. Επίσης, δείχνει πολλά ενδιαφέροντα στατιστικά στοιχεία για να αναλύσετε πόσο καλά χαρτογραφημένα και ενημερωμένα μέρη είναι.</string>
     <string name="quest_lanes_title">Πόσες λωρίδες για αυτοκίνητα έχει αυτός ο δρόμος;</string>
     <string name="quest_lanes_answer_noLanes">Χωρίς διαγραμμίσεις</string>
@@ -1408,9 +1407,7 @@
     <string name="quest_first_aid_kit_location">Πού βρίσκεται αυτό το κουτί πρώτων βοηθειών;</string>
     <string name="quest_lane_markings_title">Έχει ο δρόμος διαγραμμίσεις λωρίδων;</string>
     <string name="quest_level_thing_title">Σε ποιό επίπεδο αριθμητικά βρίσκεται αυτό;</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Πόσα ποδήλατα μπορούν να φορτιστούν εδώ ταυτόχρονα;</string>
     <string name="quest_charging_station_bicycles_title">Μπορεί να φορτιστούν και ποδήλατα εδώ;</string>
-    <string name="quest_charging_station_bicycles_hint">Τα φις ρεύματος των ποδηλάτων μπορούν να συνδεθούν σε κανονικές οικιακές πρίζες.</string>
     <string name="quest_recycling_type_pet_bottles">Φιάλες PET</string>
     <string name="quest_maxweight_add_sign">Προσθήκη πινακίδας</string>
     <string name="quest_maxweight_remove_sign">Αφαίρεση πινακίδας</string>
@@ -1501,4 +1498,9 @@
     <string name="quest_generalAccess_hint">Αγνοήστε οποιαδήποτε χρέωση. Εάν η πρόσβαση απαιτεί πληρωμή, θα ερωτηθεί ξεχωριστά.</string>
     <string name="quest_toiletsFee_fee_for_non_customers">Μόνο μη-πελάτες πρέπει να πληρώσουν αντίτιμο</string>
     <string name="quest_vending_machine_type">Τι τύπου αυτόματος πωλητής είναι αυτό;</string>
+    <string name="quest_selection_hint_message_open_settings">Άνοιγμα ρυθμίσεων</string>
+    <string name="link_waymarked_description">Εμφανίζει σημασμένα μονοπάτια για πεζοπορία, ποδηλασία, ορειβατική ποδηλασία, ιππασία, πατίνια και χειμερινά σπορ.</string>
+    <string name="quest_buildingType_terraced_house">Αυτοτελής κατοικία σε σειρά</string>
+    <string name="quest_buildingType_terraced_house_description">ένα αυτοτελές σπίτι σε μα σειρά όμοιων σπιτιών</string>
+    <string name="quest_barrier_opening_not_wheelchair_accessible">Όχι κατάλληλο για αναπηρικά αμαξίδια</string>
 </resources>

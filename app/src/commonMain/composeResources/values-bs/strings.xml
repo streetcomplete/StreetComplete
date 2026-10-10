@@ -717,7 +717,6 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="quest_buildingType_abandoned_description">zgrada koja se ne koristi, a čija je izvorna funkcija ili namjena nepoznata</string>
     <string name="quest_buildingType_ruins">Ruševine</string>
     <string name="quest_buildingType_ruins_description">zapuštena i uništena zgrada koju nije moguće identificirati</string>
-    <string name="quest_charging_station_capacity_title">Koliko se automobila može istovremeno puniti na ovoj stanici za punjenje?</string>
     <string name="link_disaster_ninja_description">Karta koja prikazuje nedavne prirodne katastrofe, zanimljiva za kartografe humanitarnih organizacija. Također, prikazuje mnoštvo zanimljivih statističkih podataka za analizu koliko su dobro kartirana i ažurirana mjesta.</string>
     <string name="quest_lanes_title">Koliko traka za automobile ima ova cesta?</string>
     <string name="quest_lanes_answer_noLanes">Nema označenih traka</string>

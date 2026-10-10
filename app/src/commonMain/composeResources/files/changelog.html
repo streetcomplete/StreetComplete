@@ -1,4 +1,60 @@
 <!-- Do not edit! This file was generated automatically from CHANGELOG.md via UpdateChangelogTask -->
+<h2>v64.0-beta1</h2>
+<p>👋 Hey there, betatesters on Android! You are not alone anymore, you are now joined by betatesters on iOS (TestFlight).
+This is the first beta version of StreetComplete available for both Android and iOS!</p>
+<p>Tell your friends!</p>
+<h3>General</h3>
+<ul>
+<li>Add back button to dismissible onboarding screens (<a href="https://github.com/streetcomplete/StreetComplete/issues/7209">#7209</a>)</li>
+<li>Allow swiping between steps on all onboarding screens (<a href="https://github.com/streetcomplete/StreetComplete/issues/7198">#7198</a>)</li>
+<li>Other small improvements (<a href="https://github.com/streetcomplete/StreetComplete/issues/7228">#7228</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7221">#7221</a>…), thanks <a href="https://github.com/Amaanprobably">Amaanprobably</a></li>
+<li>Back button on the bottom sheet title is now shown when the bottom sheet almost fills the whole screen (<a href="https://github.com/streetcomplete/StreetComplete/issues/7218">#7218</a>)</li>
+<li>Monochrome POI icons with halo don't visually clump together on the map anymore when they are too close together, thanks <a href="https://github.com/sargunv">sargunv</a></li>
+</ul>
+<h3>New Quests</h3>
+<ul>
+<li><em>&quot;What’s the surface here?&quot;</em> - asked for motorcycle parkings (<a href="https://github.com/streetcomplete/StreetComplete/issues/7237">#7237</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6999">#6999</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6829">#6829</a>), by <a href="https://github.com/Amaanprobably">Amaanprobably</a>, <a href="https://github.com/ontheair81">ontheair81</a></li>
+<li><em>&quot;How many sockets does this charging station have?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/6732">#6732</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/5164">#5164</a>), thanks <a href="https://github.com/mcliquid">mcliquid</a></li>
+<li><em>&quot;Can cars be charged here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/7083">#7083</a>, also <a href="https://github.com/streetcomplete/StreetComplete/issues/7098">#7098</a>), by <a href="https://github.com/paulklie">paulklie</a>. This and the above quest replace the quests that ask if and how many cars / bicycles can be charged at a charging station</li>
+<li><em>&quot;Can you lock this while charging?&quot;</em>, asked for bicycle charging stations etc. (<a href="https://github.com/streetcomplete/StreetComplete/issues/7189">#7189</a>), by <a href="https://github.com/paulklie">paulklie</a></li>
+</ul>
+<h3>Quest &amp; overlay improvements</h3>
+<ul>
+<li>Add tap hint for street side select UI (<a href="https://github.com/streetcomplete/StreetComplete/issues/7215">#7215</a>), by <a href="https://github.com/sargunv">sargunv</a></li>
+<li>Localized names: if user explicitly specifies a language, also explicitly tag it that way (<a href="https://github.com/streetcomplete/StreetComplete/issues/7161">#7161</a>)</li>
+<li>Addresses: Don't tag <code>noaddress=yes</code> when removing an address (<a href="https://github.com/streetcomplete/StreetComplete/issues/7145">#7145</a>)</li>
+<li>Other small improvements (<a href="https://github.com/streetcomplete/StreetComplete/issues/7217">#7217</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7245">#7245</a>, …), thanks <a href="https://github.com/paulklie">paulklie</a></li>
+</ul>
+<h3>Fixes</h3>
+<ul>
+<li>Fix crash on Android when downloading more areas in quick succession (<a href="https://github.com/streetcomplete/StreetComplete/issues/7051">#7051</a>)</li>
+<li>Opening hours: Fix crash when editing times like 26:00 (<a href="https://github.com/streetcomplete/StreetComplete/issues/7246">#7246</a>) (yeah, that's valid OSM syntax!)</li>
+<li>Fix logs screen didn't reliably scroll to bottom when new logs arrived (<a href="https://github.com/streetcomplete/StreetComplete/issues/7233">#7233</a>), by <a href="https://github.com/sargunv">sargunv</a></li>
+<li>Postbox collection times: Fix always asked whether to discard changes on exit even when nothing was input</li>
+<li>Parking Fee: Fix never asked whether to discard changes on exit</li>
+</ul>
+<h3>Changes and fixes for earlier v64.0-alphas</h3>
+<ul>
+<li>Fix crash when scrolling around in building overlay (<a href="https://github.com/streetcomplete/StreetComplete/issues/7214">#7214</a>), by <a href="https://github.com/sargunv">sargunv</a></li>
+<li>Fix crash in language selection screen in iOS (<a href="https://github.com/streetcomplete/StreetComplete/issues/7210">#7210</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7213">#7213</a>), by <a href="https://github.com/sargunv">sargunv</a></li>
+<li>Fix note forms were not closeable by clicking on map (<a href="https://github.com/streetcomplete/StreetComplete/issues/7216">#7216</a>)</li>
+<li>Fix switch-keyboard button now not hidden below keyboard on iOS, show it just above text input field instead (<a href="https://github.com/streetcomplete/StreetComplete/issues/7208">#7208</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6852">#6852</a>)</li>
+<li>Fix map click just above forms was not registered as clicking on map (<a href="https://github.com/streetcomplete/StreetComplete/issues/7216">#7216</a>)</li>
+<li>Fix per-app language setting was overwritten on each start of the app on iOS (<a href="https://github.com/streetcomplete/StreetComplete/issues/7203">#7203</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7213">#7213</a>), by <a href="https://github.com/sargunv">sargunv</a></li>
+<li>Fix settings screen background turning black on Android 7 (<a href="https://github.com/streetcomplete/StreetComplete/issues/7175">#7175</a>), by <a href="https://github.com/sargunv">sargunv</a></li>
+<li>Fix quest header was duplicated for non-resurvey quests that had a note</li>
+<li>Reference number: Fix answer &quot;nothing visible&quot; didn't do anything</li>
+<li>Fix rare crash in opening hours and collection times form</li>
+<li>Now possible again to switch directly between different elements in the overlay</li>
+</ul>
+<h3>Changes and fixes for earlier v64.0-alphas, related to map display</h3>
+<ul>
+<li>Fix pin icons didn't reload correctly when returning from another screen (<a href="https://github.com/streetcomplete/StreetComplete/issues/7241">#7241</a>), by <a href="https://github.com/sargunv">sargunv</a></li>
+<li>Fix map-related crash on Android (<a href="https://github.com/streetcomplete/StreetComplete/issues/7220">#7220</a>), by <a href="https://github.com/sargunv">sargunv</a></li>
+<li>Made usage of map generally less janky, by <a href="https://github.com/sargunv">sargunv</a></li>
+<li>Made overlay elements clickable even easier, by <a href="https://github.com/sargunv">sargunv</a></li>
+<li>On iOS, the quick zoom (tap, then press and drag) zooms in when you drag up, like in Apple Maps (<a href="https://github.com/streetcomplete/StreetComplete/issues/7238">#7238</a>), by <a href="https://github.com/sargunv">sargunv</a></li>
+</ul>
 <h2>v64.0-alpha3</h2>
 <h3>General</h3>
 <ul>
@@ -16,7 +72,7 @@
 <ul>
 <li>Other minor improvements (<a href="https://github.com/streetcomplete/StreetComplete/issues/7182">#7182</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7187">#7187</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7201">#7201</a>), thanks <a href="https://github.com/paulklie">paulklie</a></li>
 </ul>
-<h3>Changes and fixes for v64.0-alpha</h3>
+<h3>Changes and fixes for earlier v64.0-alphas</h3>
 <ul>
 <li>Map now works on iOS 15.5 (<a href="https://github.com/streetcomplete/StreetComplete/issues/7193">#7193</a>), by <a href="https://github.com/sargunv">sargunv</a></li>
 <li>Dismiss quest, overlay and note forms by clicking on the map (<a href="https://github.com/streetcomplete/StreetComplete/issues/7179">#7179</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7202">#7202</a>, …), by <a href="https://github.com/paulklie">paulklie</a></li>
@@ -66,8 +122,8 @@ invisible! <a href="https://github.com/sargunv">sargunv</a> and I ported the map
 <li>Small visual fixes (<a href="https://github.com/streetcomplete/StreetComplete/issues/7132">#7132</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7130">#7130</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7176">#7176</a>)</li>
 </ul>
 <h2>v64.0-alpha1</h2>
-<p>🍏 This update brings huge changes, albeit they should be mostly invisible. I re-did the UI for all 
-quest forms, a side effect of the migration to a multiplatform UI framework. An iOS version of the 
+<p>🍏 This update brings huge changes, albeit they should be mostly invisible. I re-did the UI for all
+quest forms, a side effect of the migration to a multiplatform UI framework. An iOS version of the
 app has now come within reach! (<a href="https://github.com/streetcomplete/StreetComplete/issues/6842">#6842</a>).
 <a href="https://github.com/kiliankoe">kiliankoe</a> (<a href="https://github.com/streetcomplete/StreetComplete/issues/6989">#6989</a>), <a href="https://github.com/maxwellward">maxwellward</a> (<a href="https://github.com/streetcomplete/StreetComplete/issues/7033">#7033</a>), <a href="https://github.com/sargunv">sargunv</a> (<a href="https://github.com/streetcomplete/StreetComplete/issues/7123">#7123</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7124">#7124</a>) helped a bit, too.</p>
 <h3>General</h3>

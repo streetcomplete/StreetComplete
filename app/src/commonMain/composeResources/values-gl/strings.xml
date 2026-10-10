@@ -717,7 +717,6 @@ logros</string>
     <string name="quest_buildingType_abandoned_description">edificio en desuso cuxa función ou propósito orixinal é descoñecido</string>
     <string name="quest_buildingType_ruins">Ruínas</string>
     <string name="quest_buildingType_ruins_description">edificio abandonado, en ruinas e inidentificable</string>
-    <string name="quest_charging_station_capacity_title">Cantos coches se poden cargar aquí ó mesmo tempo?</string>
     <string name="link_disaster_ninja_description">Mapa que amosa desastres naturais recentes, interesante para os cartógrafos humanitarios. Tamén amosa moitas estatísticas interesantes para analizar que tan ben cartografados e actualizados están os lugares.</string>
     <string name="quest_lanes_title">Cantos carrís para vehículos ten esta estrada?</string>
     <string name="quest_lanes_answer_noLanes">Carrís sen marcar</string>
@@ -1413,9 +1412,7 @@ Un andar conta como andar do tellado se as súas fiestras están no tellado. Pol
     <string name="quest_first_aid_kit_location">Onde se atopa este equipo de primeiros auxilios?</string>
     <string name="quest_lane_markings_title">Ten esta etrada liñas de carril pintadas?</string>
     <string name="quest_level_thing_title">A que número de nivel está localizado isto?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Cantas bicicletas se poden cargar aquí ao mesmo tempo?</string>
     <string name="quest_charging_station_bicycles_title">Pódense cargar tamén bicicletas aquí?</string>
-    <string name="quest_charging_station_bicycles_hint">Os adaptadores do cargador de bicicletas conéctanse aos enchufes habituais nas casas.</string>
     <string name="quest_recycling_type_pet_bottles">Botellas PET</string>
     <string name="quest_maxweight_add_sign">Engadir sinal</string>
     <string name="quest_maxweight_remove_sign">Retirar sinal</string>

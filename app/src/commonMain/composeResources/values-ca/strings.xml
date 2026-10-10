@@ -717,7 +717,6 @@ d'acompliment</string>
     <string name="quest_buildingType_abandoned_description">edifici no utilitzat amb un propòsit o funció original desconegut</string>
     <string name="quest_buildingType_ruins">Runes</string>
     <string name="quest_buildingType_ruins_description">edifici abandonat, ruïnós i no identificable</string>
-    <string name="quest_charging_station_capacity_title">Quants cotxes es poden carregar en aquesta estació de forma simultània?</string>
     <string name="link_disaster_ninja_description">Mapa que mostra desastres naturals recents, interessant per als cartògrafs humanitaris. A més, mostra moltes estadístiques interessants per analitzar com de ben mapejats i actualitzats són els llocs.</string>
     <string name="quest_lanes_title">Quants carrils per cotxes té aquesta carretera?</string>
     <string name="quest_lanes_answer_noLanes">Sense carrils marcats</string>
@@ -1425,9 +1424,7 @@ Un pis compta com a teulada quan les seves finestres són a la teulada. En conse
     <string name="quest_first_aid_kit_location">On es troba aquest kit de primers auxilis?</string>
     <string name="quest_lane_markings_title">Aquesta carretera té marques de carril?</string>
     <string name="quest_level_thing_title">En quin número de nivell es troba això?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Quantes bicicletes es poden carregar aquí alhora?</string>
     <string name="quest_charging_station_bicycles_title">També es poden carregar bicicletes aquí?</string>
-    <string name="quest_charging_station_bicycles_hint">Els adaptadors de carregador de bicicletes es connecten a endolls domèstics normals.</string>
     <string name="quest_recycling_type_pet_bottles">Ampolles PET</string>
     <string name="quest_maxweight_add_sign">Afegiu signe</string>
     <string name="quest_maxweight_remove_sign">Elimineu signe</string>

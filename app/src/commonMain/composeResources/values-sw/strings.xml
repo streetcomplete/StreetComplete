@@ -703,7 +703,6 @@ Ikiwa hakuna ishara kwenye barabara nzima zinazotumika kwa sehemu iliyoangaziwa,
     <string name="quest_buildingType_abandoned_description">jengo lisilotumika ambalo kazi yake ya awali au madhumuni yake hayajajuulikana</string>
     <string name="quest_buildingType_ruins">Magofu</string>
     <string name="quest_buildingType_ruins_description">jengo lililoharibika, lililotenggwa na lisilotambulika</string>
-    <string name="quest_charging_station_capacity_title">Je, ni magari mangapi yanaweza kubadilishwa hapa kwa wakati mmoja?</string>
     <string name="link_disaster_ninja_description">Ramani inayoonyesha majanga asilia ya hivi majuzi, ya kuvutia kwa wachora ramani wa kibinadamu. Pia, huonyesha takwimu nyingi za kuvutia za kuchanganua jinsi maeneo yalivyopangwa vizuri na kusasishwa.</string>
     <string name="quest_lanes_title">Je, barabara hii ina njia ngapi za magari?</string>
     <string name="quest_lanes_answer_noLanes">Hakuna vichochoro vilivyowekwa alama</string>

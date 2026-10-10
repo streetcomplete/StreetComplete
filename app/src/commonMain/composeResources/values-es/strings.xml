@@ -711,7 +711,6 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_buildingType_abandoned_description">edificio en desuso cuya función o propósito original se desconoce</string>
     <string name="quest_buildingType_ruins">Ruinas</string>
     <string name="quest_buildingType_ruins_description">edificio abandonado, en ruinas e irreconocible</string>
-    <string name="quest_charging_station_capacity_title">¿Cuántos vehículos pueden cargarse aquí al mismo tiempo?</string>
     <string name="link_disaster_ninja_description">Mapa que muestra desastres naturales recientes, interesante para los cartógrafos humanitarios. Además, muestra muchas estadísticas interesantes para analizar la calidad y el nivel de actualización de los datos.</string>
     <string name="quest_lanes_title">¿Cuántos carriles de tráfico rodado tiene esta vía?</string>
     <string name="quest_lanes_answer_noLanes">Los carriles están sin marcar</string>
@@ -1410,9 +1409,7 @@ La planta de arriba cuenta como «tejado» si el tejado tiene ventanas. Por lo q
     <string name="quest_first_aid_kit_location">¿Dónde se encuentra este botiquín de primeros auxilios?</string>
     <string name="quest_lane_markings_title">¿Este camino tiene marcas de carril?</string>
     <string name="quest_level_thing_title">¿En qué planta se encuentra esto?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">¿Cuántas bicicletas se pueden cargar aquí al mismo tiempo?</string>
     <string name="quest_charging_station_bicycles_title">¿Se pueden cargar bicicletas aquí también?</string>
-    <string name="quest_charging_station_bicycles_hint">Los adaptadores de corriente para cargadores de bicicletas se enchufan en tomas de corriente domésticas normales.</string>
     <string name="quest_recycling_type_pet_bottles">Botellas PET</string>
     <string name="quest_maxweight_add_sign">Agregar señal</string>
     <string name="quest_maxweight_remove_sign">Remover señal</string>

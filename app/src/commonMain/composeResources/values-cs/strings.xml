@@ -721,7 +721,6 @@ Pamatujte, že tato aplikace se zeptá na číslo budovy až po určení jejího
     <string name="quest_buildingType_abandoned_description">nevyužívaná budova, jejíž původní funkce nebo účel není znám</string>
     <string name="quest_buildingType_ruins">Ruina</string>
     <string name="quest_buildingType_ruins_description">opuštěná, zničená a neidentifikovatelná budova</string>
-    <string name="quest_charging_station_capacity_title">Kolik vozidel může být na této dobíjecí stanici najednou dobíjeno?</string>
     <string name="link_disaster_ninja_description">Mapa, která zobrazuje aktuální přírodní katastrofy, zajímavá pro humanitární mapéry. Dále jsou tu zajímavé statistiky, podle kterých lze analyzovat, jak jsou místa dobře zmapovaná a aktuální.</string>
     <string name="quest_lanes_title">Kolik jízdních pruhů pro auta má tato cesta?</string>
     <string name="quest_lanes_answer_noLanes">Bez vyznačených pruhů</string>
@@ -1420,9 +1419,7 @@ Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Te
     <string name="quest_first_aid_kit_location">Kde se nachází tato lékárnička?</string>
     <string name="quest_lane_markings_title">Má tato cesta značení jízdních pruhů?</string>
     <string name="quest_level_thing_title">Na kterém podlaží se nachází tato věc?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Kolik jízdních kol tu lze současně nabíjet?</string>
     <string name="quest_charging_station_bicycles_title">Lze tu nabíjet i jízdní kola?</string>
-    <string name="quest_charging_station_bicycles_hint">Adaptéry pro nabíjení jízdních kol se zapojují do běžné zásuvky jako v domácnosti.</string>
     <string name="quest_recycling_type_pet_bottles">Láhve PET</string>
     <string name="quest_maxweight_add_sign">Přidat značku</string>
     <string name="quest_maxweight_remove_sign">Odebrat značku</string>
@@ -1518,4 +1515,23 @@ Jinak si můžete v obchodě s aplikacemi stáhnout jinou klávesnici. Na Androi
     <string name="quest_buildingType_terraced_house">Samostatný řadový dům</string>
     <string name="quest_buildingType_terraced_house_description">samostatný dům v řadě podobných domů</string>
     <string name="quest_barrier_opening_not_wheelchair_accessible">Nevhodné pro vozíčkáře</string>
+    <string name="quest_charging_station_bicycles_hint2">Některé zásuvky tu lze použít k nabíjení elektrokol. Zjistěte, zda je tu nabíjení kol zakázáno, například značkami nebo protože je tato oblast jen pro auta.</string>
+    <string name="quest_charging_station_car_access">Lze tu nabíjet auta?</string>
+    <string name="quest_charging_station_socket_title">Kolik zásuvek má tato nabíjecí stanice?</string>
+    <string name="quest_charging_station_socket_type1">Typ 1 (J1772)</string>
+    <string name="quest_charging_station_socket_type1_combo">Typ 1 Combo (CCS)</string>
+    <string name="quest_charging_station_socket_type2">Typ 2 (Mennekes), bez kabelu</string>
+    <string name="quest_charging_station_socket_type2_cable">Typ 2 (Mennekes), s kabelem</string>
+    <string name="quest_charging_station_socket_type2_combo">Typ 2 Combo (CCS)</string>
+    <string name="quest_charging_station_socket_type3a">Typ 3A (Scame)</string>
+    <string name="quest_charging_station_socket_type3c">Typ 3C (Scame)</string>
+    <string name="quest_charging_station_socket_chademo">CHAdeMO</string>
+    <string name="quest_charging_station_socket_chaoji">ChaoJi (CHAdeMO 3.0)</string>
+    <string name="quest_charging_station_socket_nacs">NACS (Tesla)</string>
+    <string name="quest_charging_station_socket_gb_ac">GB/T (Čína) – AC</string>
+    <string name="quest_charging_station_socket_gb_dc">GB/T (Čína) – DC</string>
+    <string name="quest_charging_station_socket_domestic">Jakákoli domácí zásuvka</string>
+    <string name="quest_charging_station_other_socket">Jiná zásuvka…</string>
+    <string name="quest_charging_station_add_socket">Přidat zásuvku</string>
+    <string name="quest_parking_charge_answer_no_fee">Není tu vůbec žádný poplatek</string>
 </resources>

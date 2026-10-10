@@ -716,7 +716,6 @@
     <string name="quest_buildingType_abandoned_description">功能或用途不明的闲置建筑</string>
     <string name="quest_buildingType_ruins">废墟</string>
     <string name="quest_buildingType_ruins_description">废弃，严重受损和无法辨认的建筑</string>
-    <string name="quest_charging_station_capacity_title">这座充电站能给几台车同时充电？</string>
     <string name="link_disaster_ninja_description">显示近期自然灾害的地图，对人道主义地图绘制者来说很有意思。此外，还显示了许多有趣的统计数据，以分析各地方的地图绘制情况和最新的情况。</string>
     <string name="quest_lanes_title">这条路有几条车道？</string>
     <string name="quest_lanes_answer_noLanes">无标线车道</string>
@@ -1415,9 +1414,7 @@
     <string name="quest_first_aid_kit_location">这个急救箱位于哪里？</string>
     <string name="quest_lane_markings_title">这条道路是否有车道标线？</string>
     <string name="quest_level_thing_title">这个设施位于第几层？</string>
-    <string name="quest_bicycle_charging_station_capacity_title">这里可以同时给多少辆自行车充电？</string>
     <string name="quest_charging_station_bicycles_title">自行车也可以在这里充电吗？</string>
-    <string name="quest_charging_station_bicycles_hint">自行车充电器电源适配器可插入的普通家用插座。</string>
     <string name="quest_recycling_type_pet_bottles">PET塑料瓶</string>
     <string name="quest_maxweight_add_sign">添加标记</string>
     <string name="quest_maxweight_remove_sign">去除标记</string>

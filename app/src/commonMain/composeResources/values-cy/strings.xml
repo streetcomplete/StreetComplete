@@ -478,7 +478,7 @@ Os nad oes unrhyw arwyddion ar hyd y stryd cyfan sy'n berthnasol i'r adran a aml
     <string name="quest_recycling_glass_title">A ellir ailgylchu dim ond poteli a jariau gwydr yma, neu unrhyw fath o wydr?</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">Mathau o wydr sydd ddim yn aml yn dderbyniol: gwydr wedi'i dempro, cwareli ffenest, bylbiau golau neu ddrychau.</string>
     <string name="about_title_changelog">Fersiwn</string>
-    <string name="title_whats_new">Beth Sy'n Newydd?</string>
+    <string name="title_whats_new">Beth sy'n newydd?</string>
     <string name="about_title_rate">Graddio'r ap hwn</string>
     <string name="about_title_donate">Rhoi arian</string>
     <string name="about_summary_donate">Dangoswch eich gwerthfawrogiad! ❤️</string>
@@ -579,6 +579,7 @@ Cyflawni</string>
     <string name="quest_address_street_place_name_label">Enw lle:</string>
     <string name="quest_recycling_type_cooking_oil">Olew Coginio</string>
     <string name="quest_recycling_type_engine_oil">Olew Injan</string>
+    <string name="link_graphhopper_description">Injan cyfeirio hyblyg</string>
     <string name="about_title_sponsors">Noddwyr</string>
     <string name="quest_board_type_history">Hanes</string>
     <string name="quest_board_type_geology">Geoleg</string>
@@ -605,8 +606,10 @@ Cyflawni</string>
     <string name="quest_oneway2_title">A yw hyn yn stryd unffordd? Ym mha gyfeiriad?</string>
     <string name="quest_oneway2_dir">Unffordd yn y cyfeiriad hwn</string>
     <string name="quest_oneway2_no_oneway">Nid yw'n unffordd</string>
+    <string name="quest_steps_incline_title">Pa gyfeiriad sy'n mynd i fyny yma?</string>
     <string name="quest_steps_incline_up">Y ffordd hon i fyny</string>
     <string name="quest_step_count_title">Faint o risiau sydd yma?</string>
+    <string name="quest_traffic_signals_sound_title">Oes sŵn sy'n chwarae ar gyfer pobl ddall yma?</string>
     <string name="quest_railway_crossing_barrier_none2">Dim rhwystrau</string>
     <string name="quest_steps_ramp_none">Dim ramp (y gellir ei ddefnyddio)</string>
     <string name="quest_steps_ramp_bicycle">Ramp beic</string>
@@ -630,7 +633,6 @@ Cyflawni</string>
     <string name="quest_buildingType_historic">Hanesyddol</string>
     <string name="quest_buildingType_abandoned">Gadawedig</string>
     <string name="quest_buildingType_ruins">Adfeilion</string>
-    <string name="quest_charging_station_capacity_title">Faint o geir sy'n gallu cael eu gwefru yma ar yr un pryd?</string>
     <string name="quest_address_answer_no_housenumber_message2b">A yw hyn yn gywir?</string>
     <string name="quest_tactile_paving_kerb_title">A oes palmant cyffyrddol ar y cwrb hwn?</string>
     <string name="quest_kerb_height_title">Beth yw uchder y cwrb hwn?</string>
@@ -854,9 +856,11 @@ Os ydych yn teimlo dan bwysau oherwydd nifer y cwestiynau, gallwch fireinio pa g
     <string name="lit_value_automatic">Wedi'i oleuo pan fydd rhywun yn mynd heibio</string>
     <string name="overlay_sidewalk">Palmantau</string>
     <string name="quest_generic_answer_is_indoors">Mae'n dan-do</string>
+    <string name="quest_entrance_reference_select_flat_range_only">Ystod y fflatiau</string>
     <string name="quest_entrance_reference_select_code_only">Label mynedfa</string>
     <string name="quest_entrance_reference_reference_label">Label mynedfa:</string>
     <string name="quest_entrance_reference_flat_range_to">i</string>
+    <string name="quest_camp_drinking_water_title">Oes dŵr yfed ar gael am ddim i westeion yma?</string>
     <string name="quest_camp_shower_title">Oes yna gawodydd yma?</string>
     <string name="street_parking_street_width">Lled y stryd: %1$s</string>
     <string name="overlay_street_parking">Parcio ochr stryd</string>
@@ -911,6 +915,7 @@ Hoffech chi ei symud nawr?</string>
     <string name="cycleway_reverse_direction_warning">Mae trac beicio sydd yn mynd yn y cyfeiriad arall yn anaml iawn.</string>
     <string name="separate_cycleway_path">Trac neu thrywydd</string>
     <string name="quest_fireHydrant_type_pipe">Pibell</string>
+    <string name="quest_traffic_signals_sound_description">Awgrym: Edrychwch am seinyddion. Ni ellir cychwyn pob sŵn gyda botwm.</string>
     <string name="quest_presets_duplicate">Dyblygu</string>
     <string name="quest_surface_value_mud">Mwd parhaol</string>
     <string name="quest_wheelchairAccessPat_noToilet">Nid oes toiledau yma</string>
@@ -957,6 +962,7 @@ Hoffech chi ei symud nawr?</string>
     <string name="label_log_older_than">I</string>
     <string name="label_log_message_contains">Neges yn cynnwys</string>
     <string name="title_logs_filters">Hidlo negeseuon</string>
+    <string name="pref_title_quests_restore_hidden_summary">Nifer y cwestiynau a guddiwyd: %1$d</string>
     <string name="link_every_door_description">Golygydd POI pwerus ar gyfer Android ac iOS</string>
     <string name="quest_disable_action">Analluogi</string>
     <string name="quest_disable_title">Analluogi'r math hwn o gwestiwn?</string>
@@ -1043,6 +1049,7 @@ Gallwch ddod o hyd i wybodaeth am roddion ar ein gwefan neu hafan ein prosiect, 
     <string name="quest_maxweight_remove_sign">Dileu arwydd</string>
     <string name="weekly_osm_new_edition_title">Rhifyn Newydd!</string>
     <string name="pref_title_messages">Negeseuon yn yr Ap</string>
+    <string name="pref_title_message_achievements">Dyrchafiadau wedi'u datgloi</string>
     <string name="pref_title_message_weekly_osm">Rhifynnau newydd o weeklyOSM</string>
     <string name="pref_title_message_changelog">Fersiynau ap newydd</string>
     <string name="label_block2">bloc dinas</string>
@@ -1069,5 +1076,16 @@ Gallwch ddod o hyd i wybodaeth am roddion ar ein gwefan neu hafan ein prosiect, 
     <string name="quest_maxspeed_answer_roadtype_description">Mae'r stryd…</string>
     <string name="quest_maxspeed_answer_roadtype_lit">wedi'i oleuo</string>
     <string name="quest_maxspeed_answer_roadtype_not_lit">heb ei oleuo</string>
+    <string name="quest_board_type_tourism">Twristiaeth (nifer o bynciau)</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Teipiwch i chwilio</string>
+    <string name="about_title">Ynglŷn â %1$s</string>
+    <string name="leave_note_quest_context_hint">Ni ellir ateb “%1$s”:</string>
+    <string name="leave_note_overlay_context_hint">Yng nghyd-destun troshaen “%1$s”:</string>
+    <string name="unchanged_tag_action_title">Cadarnhawyd %1$s</string>
+    <string name="add">Ychwanegu</string>
+    <string name="unit_day">diwrnod</string>
+    <string name="unit_hour">awr</string>
+    <string name="quest_parking_charge_title">Faint sydd angen ei dalu i barcio yma?</string>
     <string name="quest_parking_charge_time_unit_label">fesul</string>
+    <string name="quest_selection_hint_message_open_settings">Agor gosodiadau</string>
 </resources>

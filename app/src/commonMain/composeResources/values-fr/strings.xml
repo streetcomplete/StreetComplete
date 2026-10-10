@@ -719,7 +719,6 @@ accomplis</string>
     <string name="quest_buildingType_abandoned_description">bâtiment inutilisé dont la fonction originelle est inconnue</string>
     <string name="quest_buildingType_ruins">Ruines</string>
     <string name="quest_buildingType_ruins_description">bâtiment abandonné, en ruines et non identifiable</string>
-    <string name="quest_charging_station_capacity_title">Combien de véhicules peuvent être chargés simultanément à ce point de recharge ?</string>
     <string name="link_disaster_ninja_description">Carte montrant les catastrophes naturelles récentes, d’intérêt pour les cartographes humanitaires, ainsi que plusieurs statistiques intéressantes pour analyser l’état de la cartographie (récence, avancement, …)</string>
     <string name="quest_lanes_title">Combien y a-t-il de voies pour voitures sur cette route ?</string>
     <string name="quest_lanes_answer_noLanes">Pas de voies peintes</string>
@@ -1418,9 +1417,7 @@ Par exemple, 1,3 ou 2b,4,6.</string>
     <string name="quest_first_aid_kit_location">Où se trouve ce kit de premier secours ?</string>
     <string name="quest_lane_markings_title">Cette route a-t-elle des lignes peintes ?</string>
     <string name="quest_level_thing_title">À quel étage se trouve cet objet ?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Combien de vélos peuvent être rechargés ici en même temps ?</string>
     <string name="quest_charging_station_bicycles_title">Les vélos électriques peuvent-ils être également rechargés ici ?</string>
-    <string name="quest_charging_station_bicycles_hint">Les adaptateurs secteur pour chargeurs de vélo se branchent sur les prises domestiques standard.</string>
     <string name="quest_recycling_type_pet_bottles">Bouteilles en PET</string>
     <string name="quest_maxweight_add_sign">Ajouter un panneau</string>
     <string name="quest_maxweight_remove_sign">Supprimer un panneau</string>

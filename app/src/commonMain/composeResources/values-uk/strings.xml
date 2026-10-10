@@ -715,7 +715,6 @@
     <string name="quest_buildingType_abandoned_description">будівля, що не використовується, первісна функція чи мета якої не відома</string>
     <string name="quest_buildingType_ruins">Руїни</string>
     <string name="quest_buildingType_ruins_description">занедбана, зруйнована будівля, яку неможливо визначити</string>
-    <string name="quest_charging_station_capacity_title">Скільки автомобілів можна зарядити на цій зарядній станції одночасно?</string>
     <string name="link_disaster_ninja_description">Мапа, що показує нещодавні природні катастрофи, цікава для гуманітарних картографів. Також вона показує багато цікавої статистики, завдяки якій можна проаналізувати як добре замаплене місце або наскільки свіжі дані.</string>
     <string name="quest_lanes_title">Скильки на цій дорозі смуг для авто?</string>
     <string name="quest_lanes_answer_noLanes">Немає розмічених смуг</string>
@@ -1414,9 +1413,7 @@
     <string name="quest_first_aid_kit_location">Де знаходиться ця аптечка першої допомоги?</string>
     <string name="quest_lane_markings_title">Чи є на цій дорозі розмітка смуг?</string>
     <string name="quest_level_thing_title">На якому поверсі знаходиться ця річ?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Скільки велосипедів можна заряджати тут одночасно?</string>
     <string name="quest_charging_station_bicycles_title">Чи можна тут також заряджати велосипеди?</string>
-    <string name="quest_charging_station_bicycles_hint">Адаптери живлення для велозарядок підключаються до звичайних розеток.</string>
     <string name="quest_recycling_type_pet_bottles">ПЕТ пляшки</string>
     <string name="quest_maxweight_add_sign">Додати знак</string>
     <string name="quest_maxweight_remove_sign">Прибрати знак</string>
@@ -1501,4 +1498,5 @@
     <string name="unit_minute">хвилина</string>
     <string name="quest_parking_charge_title">Скільки потрібно заплатити, щоб паркуватися тут?</string>
     <string name="quest_parking_charge_time_unit_label">за</string>
+    <string name="quest_buildingType_terraced_house">Окремий будинок у ряді таунхаузів</string>
 </resources>

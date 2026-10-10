@@ -719,7 +719,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingType_abandoned_description">役割や役目が不明な使用されていない建物</string>
     <string name="quest_buildingType_ruins">廃墟</string>
     <string name="quest_buildingType_ruins_description">遺棄された建物</string>
-    <string name="quest_charging_station_capacity_title">この充電ステーションでは一度に何台の車を充電できますか?</string>
     <string name="link_disaster_ninja_description">最近の自然災害を示す地図で、人道支援マッパーにとって興味深いものです。また、 は、場所がどの程度適切にマッピングされ、最新のものであるかを分析するための多くの興味深い統計を示しています。</string>
     <string name="quest_lanes_title">この道路は何車線ありますか？</string>
     <string name="quest_lanes_answer_noLanes">車線分けなし</string>

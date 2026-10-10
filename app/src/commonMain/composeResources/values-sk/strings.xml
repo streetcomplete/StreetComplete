@@ -714,7 +714,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_buildingType_abandoned_description">nevyužívaná budova, ktorej pôvodná funkcia alebo účel nie je známy</string>
     <string name="quest_buildingType_ruins">Ruina</string>
     <string name="quest_buildingType_ruins_description">opustená, zničená a neidentifikovateľná budova</string>
-    <string name="quest_charging_station_capacity_title">Koľko vozidiel môže byť na tejto dobíjacej stanici naraz dobíjaných?</string>
     <string name="link_disaster_ninja_description">Mapa, ktorá zobrazuje aktuálne prírodné katastrofy, zaujímavá pre humanitárnych maperov. Ďalej sú tu zaujímavé štatistiky, podľa ktorých je možné analyzovať, ako sú miesta dobre zmapovaná a aktuálne.</string>
     <string name="quest_lanes_title">Koľko jazdných pruhov pre autá má táto cesta?</string>
     <string name="quest_lanes_answer_noLanes">Bez vyznačených pruhov</string>
@@ -1406,7 +1405,6 @@ Poschodie sa počíta ako strešné, ak má okna v streche. Podobne, strechy bez
     <string name="quest_aerialway_bicycle_summer">Iba v lete</string>
     <string name="quest_board_type_rules">Pravidlá</string>
     <string name="quest_lane_markings_title">Má táto cesta vodorovné dopravné značenie?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Koľko bicyklov sa tu dá nabíjať súčasne?</string>
     <string name="quest_charging_station_bicycles_title">Dajú sa tu nabíjať aj bicykle?</string>
     <string name="quest_recycling_type_pet_bottles">PET flaše</string>
     <string name="quest_artwork_title">Aký to je druh umeleckého diela?</string>

@@ -719,7 +719,6 @@ nivåer</string>
     <string name="quest_buildingType_abandoned_description">ubrukt bygning med ukjent original bruksområde</string>
     <string name="quest_buildingType_ruins">Ruiner</string>
     <string name="quest_buildingType_ruins_description">Ødelagt, falleferdig eller uidentifiserbar bygning</string>
-    <string name="quest_charging_station_capacity_title">Hvor mange biler kan lades samtidig ved denne ladestasjonen?</string>
     <string name="link_disaster_ninja_description">Kart som viser naturkatastrofer som nettopp har skjedd, som er nyttig for humanitære formål. Viser også mye interessant statistikk om hvor god kartlagt steder er og hvor godt oppdaterte kartene er.</string>
     <string name="quest_lanes_title">Hvor mange felt for biler har denne veien?</string>
     <string name="quest_lanes_answer_noLanes">Ingen oppmerkede kjørefelt</string>

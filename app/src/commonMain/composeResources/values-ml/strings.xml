@@ -713,7 +713,6 @@
     <string name="quest_buildingType_abandoned_description">ഉപയോഗിക്കാത്ത ഈ കെട്ടിടത്തിന്റെ യഥാർത്ഥ പ്രവർത്തനം അല്ലെങ്കിൽ ഉദ്ദേശ്യം അജ്ഞാതമാണ്</string>
     <string name="quest_buildingType_ruins">അവശിഷ്ടങ്ങൾ</string>
     <string name="quest_buildingType_ruins_description">ഉപയോഗശൂന്യമായതും നശിപ്പിക്കപ്പെട്ടതും തിരിച്ചറിയാൻ സാധിക്കാത്തതുമായ കെട്ടിടം</string>
-    <string name="quest_charging_station_capacity_title">ഈ ചാർജിംഗ് സ്റ്റേഷനിൽ ഒരേ സമയം എത്ര കാറുകൾ വരെ ചാർജ്ജ് ചെയ്യാം ?</string>
     <string name="link_disaster_ninja_description">സമീപകാലത്തെ പ്രകൃതി ദുരന്തങ്ങൾ കാണിക്കുന്ന മാപ്പ്, ഹ്യുമാനിറ്റേറിയൻ മാപ്പർമാർക്ക് താൽപര്യമുള്ളതാണ്. കൂടാതെ, മാപ്പ് ചെയ്തതും പരിഷ്കരിച്ചതും  അപഗ്രഥനം ചെയ്യാനുള്ള രസകരമായ സ്ഥിതിവിവരക്കണക്കുകളും കാണിക്കുന്നു.</string>
     <string name="quest_lanes_title">ഈ റോഡിൽ കാറുകൾക്കായി എത്ര വരികൾ ഉണ്ട്</string>
     <string name="quest_lanes_answer_noLanes">അടയാളപ്പെടുത്തിയ പാതകളൊന്നുമില്ല</string>
@@ -1405,9 +1404,7 @@
     <string name="quest_first_aid_kit_location">ഈ ഫസ്റ്റ് എയ്ഡ് കിറ്റ് എവിടെയാണ് സ്ഥിതി ചെയ്യുന്നത്?</string>
     <string name="quest_lane_markings_title">ഈ റോഡിൽ ലെയിൻ അടയാളങ്ങൾ ഉണ്ടോ?</string>
     <string name="quest_level_thing_title">ഈ വസ്തു ഏത് നിലയിലാണ് സ്ഥിതി ചെയ്യുന്നത്?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">ഇവിടെ ഒരേസമയം എത്ര സൈക്കിളുകൾ ചാർജ് ചെയ്യാം?</string>
     <string name="quest_charging_station_bicycles_title">ഇവിടെ സൈക്കിളുകളും ചാർജ് ചെയ്യാനാകുമോ?</string>
-    <string name="quest_charging_station_bicycles_hint">സൈക്കിൾ ചാർജർ പവർ അഡാപ്റ്ററുകൾ സാധാരണ ഗൃഹ സോക്കറ്റുകളിൽ 插് ചെയ്യാം.</string>
     <string name="quest_recycling_type_pet_bottles">PET ബോട്ടിലുകൾ</string>
     <string name="quest_maxweight_add_sign">ബോർഡ് ചേർക്കുക</string>
     <string name="quest_maxweight_remove_sign">ബോർഡ് നീക്കം ചെയ്യുക</string>

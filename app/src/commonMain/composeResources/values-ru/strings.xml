@@ -720,7 +720,6 @@
     <string name="quest_buildingType_abandoned_description">неиспользуемое здание, первоначальная функция или назначение которого неизвестны</string>
     <string name="quest_buildingType_ruins">Руины</string>
     <string name="quest_buildingType_ruins_description">заброшенное, разрушенное и неопознаваемое здание</string>
-    <string name="quest_charging_station_capacity_title">Сколько автомобилей можно заряжать на этой зарядной станции одновременно?</string>
     <string name="link_disaster_ninja_description">Карта показывающая недавние стихийные бедствия, полезно для гуманитарных картографов. Также отображает много интересной статистики о том насколько хорошо некоторые места картографированы.</string>
     <string name="quest_lanes_title">Сколько полос имеет эта дорога?</string>
     <string name="quest_lanes_answer_noLanes">Нет размеченных полос движения</string>
@@ -1420,9 +1419,7 @@
     <string name="quest_first_aid_kit_location">Где находится эта аптечка?</string>
     <string name="quest_lane_markings_title">Есть ли у этой дороги разметка?</string>
     <string name="quest_level_thing_title">На каком уровне это расположено?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Сколько велосипедов можно заряжать здесь одновременно?</string>
     <string name="quest_charging_station_bicycles_title">Можно ли здесь также заряжать велосипеды?</string>
-    <string name="quest_charging_station_bicycles_hint">Адаптеры питания для велосипедных зарядных устройств подключаются к обычным бытовым розеткам.</string>
     <string name="quest_recycling_type_pet_bottles">Пластиковые бутылки</string>
     <string name="quest_maxweight_add_sign">Добавить знак</string>
     <string name="quest_maxweight_remove_sign">Убрать знак</string>
@@ -1431,13 +1428,29 @@
     <string name="pref_title_message_achievements">Разблокирование достижения</string>
     <string name="pref_title_message_weekly_osm">Новые выпуски еженедельника OSM</string>
     <string name="pref_title_message_changelog">Новые версии приложения</string>
+    <string name="label_block2">городской квартал</string>
     <string name="quest_artwork_sculpture">Скульптура</string>
     <string name="quest_artwork_statue">Статуя</string>
+    <string name="quest_artwork_mural">Фреска</string>
     <string name="quest_artwork_graffiti">Граффити</string>
     <string name="quest_artwork_installation">Инсталляция</string>
     <string name="quest_artwork_bust">Бюст</string>
     <string name="quest_artwork_stone">Камень</string>
     <string name="quest_artwork_painting">Картина</string>
+    <string name="quest_artwork_architecture">Архитектура</string>
     <string name="quest_artwork_mosaic">Мозаика</string>
+    <string name="quest_artwork_relief">Рельеф</string>
     <string name="quest_artwork_fountain">Фонтан</string>
+    <string name="quest_camp_cabin_title">Есть ли здесь домики, в которых можно остановиться?</string>
+    <string name="quest_camp_caravan_title">Можно ли здесь разбить лагерь в автодоме или кемпере?</string>
+    <string name="quest_ferry_bicycle_title">Разрешено провозить велосипеды на этом пароме?</string>
+    <string name="quest_openingHours_add_time">Добавить время</string>
+    <string name="quest_openingHours_chooseStartTimeTitle">Выбрать время начала</string>
+    <string name="quest_openingHours_chooseEndTimeTitle">Выбрать время конца</string>
+    <string name="quest_openingHours_chooseTimeTitle">Выбрать время</string>
+    <string name="quest_openingHours_from">из %1$s</string>
+    <string name="quest_openingHours_until_late">%1$s до позднего вечера</string>
+    <string name="quest_collectionTimes_answer_time_points">В определённое время</string>
+    <string name="dialog_dont_notify_again2">Отписаться</string>
+    <string name="quest_leave_new_note_photo_delete">Удалить</string>
 </resources>

@@ -714,7 +714,6 @@ thành tích</string>
     <string name="quest_buildingType_abandoned_description">tòa nhà không được sử dụng mà chức năng hoặc mục đích ban đầu không rõ</string>
     <string name="quest_buildingType_ruins">Đống đổ nát</string>
     <string name="quest_buildingType_ruins_description">tòa nhà bị bỏ hoang, đổ nát và không thể nhận dạng</string>
-    <string name="quest_charging_station_capacity_title">Có bao nhiêu xe có thể sạc cùng lúc ở đây?</string>
     <string name="link_disaster_ninja_description">Bản đồ hiển thị các thảm họa thiên nhiên gần đây, thú vị cho những người lập bản đồ nhân đạo. Ngoài ra, còn hiển thị nhiều số liệu thống kê thú vị để phân tích mức độ cập nhật và lập bản đồ của các địa điểm.</string>
     <string name="quest_lanes_title">Đường này có bao nhiêu làn dành cho ô tô?</string>
     <string name="quest_lanes_answer_noLanes">Không có làn có đánh dấu</string>
@@ -1223,7 +1222,6 @@ Dữ liệu bị thiếu luôn được hiển thị bằng màu đỏ.</string>
     <string name="ok">OK</string>
     <string name="cancel">Hủy</string>
     <string name="quest_lane_markings_title">Đường này có vạch kẻ chia làn không?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Có thể sạc cùng lúc bao nhiêu xe đạp ở đây?</string>
     <string name="quest_charging_station_bicycles_title">Có thể sạc xe đạp ở đây không?</string>
     <string name="quest_maxweight_add_sign">Thêm biển báo</string>
     <string name="quest_maxweight_remove_sign">Loại bỏ biển báo</string>

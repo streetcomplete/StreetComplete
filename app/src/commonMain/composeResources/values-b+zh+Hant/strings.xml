@@ -716,7 +716,6 @@
     <string name="quest_buildingType_abandoned_description">未使用的建築，原先使用目的不明或不知道特定目的 </string>
     <string name="quest_buildingType_ruins">廢墟</string>
     <string name="quest_buildingType_ruins_description">廢棄，廢墟和身份不明的建築</string>
-    <string name="quest_charging_station_capacity_title">同一時間在這一充電站有幾台車能同時充電？</string>
     <string name="link_disaster_ninja_description">人道救援圖客感興趣，呈現最近自然災害下更新的地圖。另外，也會顯示分析關於這一帶畫得多完善，或是地圖夠新等有趣的統計數據。</string>
     <string name="quest_lanes_title">這條路允行車輛通行的車道數多少？</string>
     <string name="quest_lanes_answer_noLanes">無標線車道</string>
@@ -1413,9 +1412,7 @@
     <string name="quest_first_aid_kit_location">這裡的急救包在那裡？</string>
     <string name="quest_lane_markings_title">這條路有標線嗎？</string>
     <string name="quest_level_thing_title">這東西位於那個樓層號碼？</string>
-    <string name="quest_bicycle_charging_station_capacity_title">這邊同一時間可以充幾台單車的電？</string>
     <string name="quest_charging_station_bicycles_title">這裡是否也可以為單單充電嗎？</string>
-    <string name="quest_charging_station_bicycles_hint">單車充電座能夠插入一般家戶插座。</string>
     <string name="quest_recycling_type_pet_bottles">PET瓶罐</string>
     <string name="quest_maxweight_add_sign">新增告示牌</string>
     <string name="quest_maxweight_remove_sign">移除告示牌</string>

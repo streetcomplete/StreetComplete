@@ -7,7 +7,7 @@ import java.io.FileWriter
 
 
 /** App version name, code and flavor */
-val appVersionName = "64.0-alpha3"
+val appVersionName = "64.0-beta1"
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
