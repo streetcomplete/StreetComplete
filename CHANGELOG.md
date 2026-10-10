@@ -1,5 +1,11 @@
 # Changelog
 
+## v64.0-beta2
+
+Argh, of course there would be one critical bug that slips through.
+
+- Fix opening hours quest would show up for *any* barrier, amongst other things (#7267) (regression of #6732)
+
 ## v64.0-beta1
 
 👋 Hey there, betatesters on Android! You are not alone anymore, you are now joined by betatesters on iOS (TestFlight).
