@@ -61,6 +61,9 @@ buildkonfig {
                 buildConfigField(STRING, "PLATFORM", "ios")
             }
         }
+        create("desktop") {
+            buildConfigField(STRING, "PLATFORM", "desktop")
+        }
     }
 }
 
@@ -112,6 +115,10 @@ kotlin {
             baseName = "StreetComplete"
             isStatic = true
         }
+    }
+
+    jvm("desktop") {
+        compilerOptions.jvmTarget.set(JvmTarget.JVM_25)
     }
 
     applyDefaultHierarchyTemplate()
@@ -211,9 +218,6 @@ kotlin {
                 // reorderable lists (raw Compose API is pretty complicated)
                 implementation("sh.calvin.reorderable:reorderable:3.1.0")
 
-                // multiplatform webview (for login via OAuth)
-                implementation("io.github.kevinnzou:compose-webview-multiplatform:2.0.3")
-
                 // sharing presets/settings via QR Code
                 implementation("io.github.alexzhirkevich:qrose:1.3.0")
 
@@ -223,6 +227,10 @@ kotlin {
                 // taking a photo (, picking an image from gallery, ...)
                 implementation("io.github.vinceglb:filekit-dialogs-compose:0.16.0")
             }
+        }
+        mobileMain.dependencies {
+            // multiplatform webview (for login via OAuth)
+            implementation("io.github.kevinnzou:compose-webview-multiplatform:2.0.3")
         }
         androidMain {
             dependsOn(jvmAndroidMain)
@@ -258,6 +266,17 @@ kotlin {
             dependencies {
                 // HTTP client
                 implementation("io.ktor:ktor-client-darwin:3.5.2")
+            }
+        }
+        getByName("desktopMain") {
+            dependsOn(jvmAndroidMain)
+            dependsOn(nonAndroidMain)
+            dependencies {
+                // Kotlin
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.11.0")
+
+                // HTTP client
+                implementation("io.ktor:ktor-client-cio:3.5.2")
             }
         }
         commonTest {
