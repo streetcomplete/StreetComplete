@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
@@ -59,4 +60,7 @@ class AddBicycleIncline : OsmElementQuestType<BicycleInclineAnswer> {
 
     override fun applyAnswerTo(answer: BicycleInclineAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) =
         answer.applyTo(tags)
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("ways with mtb:scale:uphill")
 }

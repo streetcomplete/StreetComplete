@@ -4,10 +4,12 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
 
@@ -49,4 +51,7 @@ class AddInternetAccess : OsmFilterQuestType<Set<InternetAccess>>() {
     override fun applyAnswerTo(answer: Set<InternetAccess>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("internet_access", answer.joinToString(";") { it.osmValue })
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 }
