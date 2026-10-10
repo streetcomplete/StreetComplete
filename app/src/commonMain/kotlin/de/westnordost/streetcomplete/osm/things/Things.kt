@@ -11,6 +11,9 @@ fun Element.isThingOrDisusedThing(): Boolean =
 fun Element.isThing(): Boolean =
     IS_THING_EXPRESSION.matches(this)
 
+fun Element.addCheckDateThing(): Boolean =
+    ADD_CHECK_DATE_EXPRESSION.matches(this)
+
 fun Element.isDisusedThing(): Boolean =
     this.asIfItWasnt("disused")?.let { IS_THING_EXPRESSION.matches(it) } == true
 
@@ -308,3 +311,133 @@ val POPULAR_THING_FEATURE_IDS = listOf(
     // "information/guidepost",       // 0.6M
     // "tourism/information/board",   // 0.3M
 )
+
+private val ADD_CHECK_DATE_EXPRESSION by lazy {
+    val tags = mapOf(
+        "amenity" to listOf(
+            "bicycle_parking",
+            "bicycle_rental",
+            "bicycle_repair_station",
+            "bicycle_wash",
+            "boat_sharing",
+            "car_sharing",
+            "charging_station",
+            "compressed_air",
+            "grit_bin",
+            "motorcycle_parking",
+            "ticket_validator",
+            "vacuum_cleaner",
+
+            // financial
+            "atm",
+            "payment_terminal",
+
+            // healthcare
+            "baby_hatch",
+
+            // entertainment, arts & culture
+            "public_bookcase",
+
+            // public service
+            "post_box",
+
+            // facilities & others
+            "baking_oven",
+            "bbq",
+            "binoculars",
+            "device_charging_station",
+            "dog_toilet",
+            "dressing_room",
+            "drinking_water",
+            "food_sharing",
+            "give_box",
+            "karaoke_box",
+            "kitchen",
+            "library_dropoff",
+            "locker",
+            "luggage_locker",
+            "parcel_locker",
+            "photo_booth",
+            "security_booth",
+            "shelter",
+            "shower",
+            "telephone",
+            "toilets",
+            "vending_machine",
+            "water_point",
+            "watering_place",
+
+            // waste management
+            "sanitary_dump_station",
+
+            // animals
+            "feeding_place",
+            "game_feeding",
+            "hunting_stand",
+        ),
+        "emergency" to listOf(
+            "assembly_point",
+            "defibrillator",
+            "fire_alarm_box",
+            "fire_lookout",
+            "fire_service_inlet",
+            "first_aid_kit",
+            "landing_site",
+            "life_ring",
+            "lifeguard",
+            "phone",
+            "siren",
+        ),
+        "highway" to listOf(
+            "cyclist_waiting_aid",
+            "emergency_access_point",
+            "hitchhiking",
+            "trailhead",
+        ),
+        "leisure" to listOf(
+            "bird_hide",
+            "firepit",
+            "fitness_station",
+            "hot_tub",
+            "outdoor_seating",
+            "wildlife_hide",
+        ),
+        "man_made" to listOf(
+            "charge_point",
+            "cross",
+            "dolphin",
+            "dovecote",
+            "insect_hotel",
+            "maypole",
+            "monitoring_station",
+            "nesting_site",
+            "snow_cannon",
+            "surveillance",
+            "video_wall",
+            "water_tap",
+        ),
+        "seamark:type" to listOf(
+            "buoy_isolated_danger",
+            "buoy_lateral",
+            "mooring",
+            "buoy_safe_water",
+        ),
+        "waterway" to listOf(
+            "sanitary_dump_station",
+            "milestone",
+            "water_point",
+        ),
+    )
+        .map { it.key + " ~ " + it.value.joinToString("|") }
+        .joinToString("\n    or ")
+
+    """
+        nodes, ways, relations with
+        $tags
+        or attraction
+        or disc_golf
+        or fitness_station
+        or leisure = pitch and sport ~ chess|table_soccer|table_tennis|teqball
+        or playground
+    """.toElementFilterExpression()
+}
