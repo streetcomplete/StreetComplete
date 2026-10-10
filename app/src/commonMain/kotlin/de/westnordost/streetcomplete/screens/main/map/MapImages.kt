@@ -29,7 +29,6 @@ import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.map.MapState
 import org.maplibre.compose.map.ResolvedStyleImage
 import org.maplibre.compose.map.StyleLoadState
-import org.maplibre.compose.style.StyleHandleException
 import kotlin.math.min
 
 @Composable
@@ -85,17 +84,15 @@ class MapImages internal constructor(
     ) {
         snapshotFlow { map.style.loadState }.first { it == StyleLoadState.Ready }
         mutex.withLock {
+            val images = mutableMapOf<String, ResolvedStyleImage>()
             for ((icon, painter) in icons) {
+                // the style was replaced meanwhile; the next call adds the images again
+                if (map.style.loadState != StyleLoadState.Ready) return
                 val id = getId(icon) ?: continue
                 if (map.style.images[id] != null) continue
-                val image = create(icon, painter)
-                try {
-                    map.style.images.set(id, image)
-                } catch (e: StyleHandleException) {
-                    // the style was replaced meanwhile; the next call adds the image again
-                    return
-                }
+                images[id] = create(icon, painter)
             }
+            if (images.isNotEmpty()) map.style.images.setAll(images)
         }
     }
 

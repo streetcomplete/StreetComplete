@@ -54,7 +54,7 @@ class MainNavViewModelImpl(
                 val zoom = if (geo.zoom == null || geo.zoom < 14) 18.0 else geo.zoom
                 val pos = LatLon(geo.latitude, geo.longitude)
 
-                geoUri.value = CameraPosition(target = pos.toPosition(), bearing = 0.0, tilt = 0.0, zoom = zoom)
+                geoUri.value = CameraPosition(center = pos.toPosition(), bearing = 0.0, pitch = 0.0, zoom = zoom)
             }
         }
     }

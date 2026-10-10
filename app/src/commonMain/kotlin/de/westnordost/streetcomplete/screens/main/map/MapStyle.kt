@@ -31,7 +31,6 @@ import org.maplibre.compose.layers.CircleLayer
 import org.maplibre.compose.layers.FillLayer
 import org.maplibre.compose.layers.LineLayer
 import org.maplibre.compose.layers.SymbolLayer
-import org.maplibre.compose.sources.TileSetOptions
 import org.maplibre.compose.sources.VectorSource
 import org.maplibre.compose.sources.rememberVectorTileSource
 import org.maplibre.compose.util.DpPadding
@@ -63,14 +62,12 @@ fun MapStyle(
 ) {
     // unicode 00a0 = no break space
     val osmAttribution = stringResource(Res.string.map_attribution_osm).replaceFirst("© ", "©\u00a0")
-    val attributionHtml = remember(osmAttribution) {
-        "<a href='https://www.openstreetmap.org/copyright'>$osmAttribution</a> " +
-        "<a href='https://jawg.io?utm_medium=map&utm_source=attribution'>©\u00a0JawgMaps</a>"
+    val source = rememberVectorTileSource(listOf(MapTiles.URL_TEMPLATE)) {
+        maxZoom = MapTiles.MAX_ZOOM
+        attributionHtml =
+            "<a href='https://www.openstreetmap.org/copyright'>$osmAttribution</a> " +
+            "<a href='https://jawg.io?utm_medium=map&utm_source=attribution'>©\u00a0JawgMaps</a>"
     }
-    val source = rememberVectorTileSource(
-        tiles = listOf(MapTiles.URL_TEMPLATE),
-        options = TileSetOptions(maxZoom = MapTiles.MAX_ZOOM, attributionHtml = attributionHtml)
-    )
 
     val paths = remember(colors) {
         RoadType(

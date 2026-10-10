@@ -18,7 +18,6 @@ import org.maplibre.compose.camera.CameraUpdate
 import org.maplibre.compose.map.MapState
 import org.maplibre.compose.util.DpPadding
 import kotlin.math.abs
-import kotlin.math.roundToInt
 import kotlin.time.Duration.Companion.milliseconds
 
 @Composable
@@ -66,7 +65,7 @@ class MainMapCameraState internal constructor(
             if (position != null) {
                 map.animateCamera(
                     update = CameraUpdate(
-                        target = position.toPosition(),
+                        center = position.toPosition(),
                         zoom = if (map.cameraPosition.zoom < 17.0) LOCATE_ZOOM else null
                     ),
                     animation = LocateAnimation
@@ -88,7 +87,7 @@ class MainMapCameraState internal constructor(
         if (value) {
             animateToPositionIfFollowing(position, bearing)
         } else {
-            map.animateCamera(CameraUpdate(tilt = 0.0), SnapAnimation)
+            map.animateCamera(CameraUpdate(pitch = 0.0), SnapAnimation)
         }
     }
 
@@ -121,10 +120,10 @@ class MainMapCameraState internal constructor(
         zoomedYet = true
         map.animateCamera(
             update = CameraUpdate(
-                target = position.toPosition(),
+                center = position.toPosition(),
                 zoom = zoom,
                 bearing = if (isNavigationMode) bearing else null,
-                tilt = if (isNavigationMode) 60.0 else null,
+                pitch = if (isNavigationMode) 60.0 else null,
                 // browsing has no sheet padding
                 padding = DpPadding.Zero,
             ),
@@ -139,7 +138,7 @@ class MainMapCameraState internal constructor(
         if (mode is CameraMode.Browsing) {
             isNavigationMode = false
         }
-        map.animateCamera(CameraUpdate(bearing = 0.0, tilt = 0.0), SnapAnimation)
+        map.animateCamera(CameraUpdate(bearing = 0.0, pitch = 0.0), SnapAnimation)
     }
 
     /** Stop the camera from following the position while a sheet is open. */
@@ -157,7 +156,7 @@ class MainMapCameraState internal constructor(
     suspend fun focus(position: LatLon, padding: DpPadding) {
         rememberPositionBeforeSheet()
         map.animateCamera(
-            update = CameraUpdate(target = position.toPosition(), padding = padding),
+            update = CameraUpdate(center = position.toPosition(), padding = padding),
             animation = SnapAnimation
         )
     }
@@ -173,7 +172,7 @@ class MainMapCameraState internal constructor(
     fun setPadding(padding: DpPadding) {
         val camera = map.cameraPosition
         map.setCameraPosition(camera.copy(
-            target = map.positionAtCenter(padding)?.toPosition() ?: camera.target,
+            center = map.positionAtCenter(padding)?.toPosition() ?: camera.center,
             padding = padding,
         ))
     }
@@ -193,7 +192,7 @@ class MainMapCameraState internal constructor(
             // distracting and obstrusive
             map.animateCamera(
                 update = CameraUpdate(
-                    target = sheet.previous.target,
+                    center = sheet.previous.center,
                     zoom = sheet.previous.zoom,
                     padding = DpPadding.Zero,
                 ),
@@ -216,15 +215,15 @@ class MainMapCameraState internal constructor(
         private const val LOCATE_ZOOM = 18.0
 
         /** Camera animation when animating the user's location */
-        private val LocateAnimation = CameraAnimation.Ease(600.milliseconds)
+        private val LocateAnimation = CameraAnimation.Ease { duration = 600.milliseconds }
 
         /** Camera animation when animating the tilt or bearing */
-        private val SnapAnimation = CameraAnimation.Ease(300.milliseconds)
+        private val SnapAnimation = CameraAnimation.Ease { duration = 300.milliseconds }
 
         /** Camera animation when animating the zoom. Duration depends on how much is zoomed */
-        private fun zoomAnimation(zoomDiff: Double) = CameraAnimation.Ease(
-            maxOf(300, (abs(zoomDiff) * 300).roundToInt()).milliseconds
-        )
+        private fun zoomAnimation(zoomDiff: Double) = CameraAnimation.Ease {
+            duration = (300.milliseconds * abs(zoomDiff)).coerceAtLeast(300.milliseconds)
+        }
     }
 }
 
