@@ -356,6 +356,7 @@ quest/
     bicycle_repair_amenity.svg
     bicycle_second_hand.svg
     bicycleway.svg
+    bicycleway_bidirectional.svg     Amaan Qureshi, License: CC-BY-SA 4.0
     bicycleway_surface.svg
     bicycleway_surface_detail.svg
     bicycleway_width.svg
