@@ -122,6 +122,10 @@ fun ShowQuestFormsScreen(
                     message = "Hiding quest"
                     shownQuestType = null
                 },
+                onDisableQuest = {
+                    message = "Disabling quest type"
+                    shownQuestType = null
+                },
                 questType = questType,
                 element = viewModel.mockElement,
                 geometry = viewModel.mockGeometry,

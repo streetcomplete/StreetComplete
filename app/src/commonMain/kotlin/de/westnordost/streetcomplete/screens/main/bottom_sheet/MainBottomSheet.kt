@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.quests.note_comments.AddNoteCommentForm
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_create_note
@@ -41,6 +42,7 @@ fun MainBottomSheet(
     onDismiss: () -> Unit,
     onSolved: (icon: DrawableResource, position: LatLon) -> Unit,
     onHideQuest: (QuestKey) -> Unit,
+    onDisableQuest: (QuestType) -> Unit,
     isSurvey: (ElementGeometry) -> Boolean,
     onSubmitEdit: (ElementEditType, ElementGeometry, ElementEditAction) -> Unit,
     onCommentNote: (Note, String?, List<String>) -> Unit,
@@ -130,6 +132,10 @@ fun MainBottomSheet(
                         shownBottomSheet.element.type,
                         shownBottomSheet.element.id, shownBottomSheet.quest.type.name)
                     onHideQuest(key)
+                    onDismiss()
+                },
+                onDisableQuest = {
+                    onDisableQuest(shownBottomSheet.quest.type)
                     onDismiss()
                 },
                 questType = shownBottomSheet.quest.type,
