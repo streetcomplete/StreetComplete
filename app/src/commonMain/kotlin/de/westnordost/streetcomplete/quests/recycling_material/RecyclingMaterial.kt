@@ -60,5 +60,15 @@ enum class RecyclingMaterial(val value: String) {
             nd(COOKING_OIL)
             nd(ENGINE_OIL)
         } }
+
+        fun parseRecyclingMaterials(tags: Map<String, String>): Set<RecyclingMaterial> {
+            val initialSelectedItems = mutableSetOf<RecyclingMaterial>()
+            for (type in entries) {
+                if (tags["recycling:${type.value}"] == "yes") {
+                    initialSelectedItems += type
+                }
+            }
+            return initialSelectedItems
+        }
     }
 }

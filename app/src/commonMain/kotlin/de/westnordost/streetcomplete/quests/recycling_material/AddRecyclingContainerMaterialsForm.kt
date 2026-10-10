@@ -10,6 +10,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -20,6 +21,7 @@ import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.screens.settings.presets.EditTypePresetSelection
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.item_select.ItemsSelectGrid
@@ -32,14 +34,16 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun AddRecyclingContainerMaterialsForm(
     on: (QuestAction<RecyclingContainerMaterialsAnswer>) -> Unit,
+    presetSelection: Set<RecyclingMaterial>
 ) {
-    var selectedItems by rememberSerializable { mutableStateOf(emptySet<RecyclingMaterial>()) }
+    var selectedItems by rememberSerializable { mutableStateOf(presetSelection) }
 
     var confirmJustTrash by remember { mutableStateOf(false) }
 
     QuestForm(
         on = on,
         isComplete = selectedItems.isNotEmpty(),
+        isResurvey = presetSelection.isNotEmpty(),
         onClickOk = { on(Answer(RecyclingMaterials(selectedItems))) },
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_recycling_materials_answer_waste)) {
