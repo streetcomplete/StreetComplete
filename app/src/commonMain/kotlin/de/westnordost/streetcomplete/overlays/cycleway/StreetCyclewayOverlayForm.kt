@@ -171,8 +171,7 @@ fun StreetCyclewayOverlayForm(
             originalBicycleBoulevard != bicycleBoulevard ||
             originalBicycleInPedestrianStreet != bicycleInPedestrianStreet,
         hasChanges =
-            cycleways.left != originalCycleway.left ||
-            cycleways.right != originalCycleway.right ||
+            cycleways != originalCycleway ||
             originalBicycleBoulevard != bicycleBoulevard ||
             originalBicycleInPedestrianStreet != bicycleInPedestrianStreet,
         onClickOk = {

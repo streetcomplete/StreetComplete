@@ -25,6 +25,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.ui.LocalAppLocale
 import de.westnordost.streetcomplete.ui.common.TextField2
 import de.westnordost.streetcomplete.ui.common.TextFieldStyle
 import de.westnordost.streetcomplete.ui.common.colors
@@ -65,7 +66,7 @@ fun DecimalInput(
     contentPadding: PaddingValues = style.getContentPadding(label != null),
 ) {
     val acceptedDecimalSeparators = remember { setOf('.', ',', '٫') }
-    val formatter = remember(locale, maxIntegerDigits, maxFractionDigits) {
+    val formatter = remember(locale, LocalAppLocale.current, maxIntegerDigits, maxFractionDigits) {
         NumberFormatter(
             locale = locale,
             maxIntegerDigits = maxIntegerDigits,

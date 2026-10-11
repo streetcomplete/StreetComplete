@@ -1,18 +1,23 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 585506
-  linesOfInterfaceMarkupChanged: 175046
-  assetFilesChanged: 2304
+  linesOfCodeChanged: 629558
+  linesOfInterfaceMarkupChanged: 177268
+  assetFilesChanged: 2787
+- name: "Flo Edelmann"
+  githubUsername: "FloEdelmann"
+  linesOfCodeChanged: 26789
+  linesOfInterfaceMarkupChanged: 3788
+  assetFilesChanged: 152
+- name: "Sargun Vohra"
+  githubUsername: "sargunv"
+  linesOfCodeChanged: 22885
+  linesOfInterfaceMarkupChanged: 103
+  assetFilesChanged: 12
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
   linesOfCodeChanged: 22353
   linesOfInterfaceMarkupChanged: 5233
   assetFilesChanged: 636
-- name: "Flo Edelmann"
-  githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 21820
-  linesOfInterfaceMarkupChanged: 3733
-  assetFilesChanged: 152
 - name: "Helium314"
   githubUsername: "Helium314"
   linesOfCodeChanged: 18609
@@ -33,6 +38,11 @@
   linesOfCodeChanged: 3763
   linesOfInterfaceMarkupChanged: 607
   assetFilesChanged: 72
+- name: "arthedain"
+  githubUsername: "paulklie"
+  linesOfCodeChanged: 3602
+  linesOfInterfaceMarkupChanged: 380
+  assetFilesChanged: 62
 - name: "arrival-spring"
   githubUsername: "arrival-spring"
   linesOfCodeChanged: 3308
@@ -45,11 +55,6 @@
 - name: "riQQ"
   githubUsername: "riQQ"
   linesOfCodeChanged: 2366
-- name: "arthedain"
-  githubUsername: "paulklie"
-  linesOfCodeChanged: 2357
-  linesOfInterfaceMarkupChanged: 203
-  assetFilesChanged: 58
 - name: "YoshiRulz"
   githubUsername: "YoshiRulz"
   linesOfCodeChanged: 2078
@@ -79,7 +84,7 @@
   linesOfInterfaceMarkupChanged: 62
 - name: "Kai Michael Poppe"
   githubUsername: "kmpoppe"
-  linesOfCodeChanged: 987
+  linesOfCodeChanged: 1056
   linesOfInterfaceMarkupChanged: 869
   assetFilesChanged: 44
 - name: "David Dean"
@@ -93,7 +98,7 @@
   assetFilesChanged: 12
 - name: "Peter Newman"
   githubUsername: "peternewman"
-  linesOfCodeChanged: 911
+  linesOfCodeChanged: 912
 - name: "Lars Toenning"
   githubUsername: "ltoenning"
   linesOfCodeChanged: 860
@@ -116,12 +121,12 @@
   linesOfInterfaceMarkupChanged: 259
 - name: "mcliquid"
   githubUsername: "mcliquid"
-  linesOfCodeChanged: 611
+  linesOfCodeChanged: 617
   linesOfInterfaceMarkupChanged: 592
   assetFilesChanged: 14
 - name: "Enno Hermann"
   githubUsername: "eginhard"
-  linesOfCodeChanged: 524
+  linesOfCodeChanged: 537
 - name: "Quirin Gebert"
   githubUsername: "qugebert"
   linesOfCodeChanged: 444
@@ -144,6 +149,16 @@
 - name: "Irakliy Kukava"
   githubUsername: "irakliy01"
   linesOfCodeChanged: 302
+- name: "Marek Krug"
+  githubUsername: "marekkrug"
+  linesOfCodeChanged: 276
+  linesOfInterfaceMarkupChanged: 64
+  assetFilesChanged: 1
+- name: "esilja"
+  githubUsername: "esilja"
+  linesOfCodeChanged: 275
+  linesOfInterfaceMarkupChanged: 139
+  assetFilesChanged: 1
 - name: "Alexis Lecanu"
   githubUsername: "ravenfeld"
   linesOfCodeChanged: 264
@@ -156,16 +171,21 @@
 - name: "darken"
   githubUsername: "d4rken"
   linesOfCodeChanged: 230
+- name: "Amaan Qureshi"
+  githubUsername: "Amaanprobably"
+  linesOfCodeChanged: 229
+  linesOfInterfaceMarkupChanged: 322
+  assetFilesChanged: 6
 - name: "errol pais"
   githubUsername: "errolpais"
   linesOfCodeChanged: 227
   linesOfInterfaceMarkupChanged: 90
+- name: "Kilian Koeltzsch"
+  githubUsername: "kiliankoe"
+  linesOfCodeChanged: 191
 - name: "Filip Czaplicki"
   githubUsername: "starsep"
   linesOfCodeChanged: 190
-- name: "Kilian Koeltzsch"
-  githubUsername: "kiliankoe"
-  linesOfCodeChanged: 188
 - name: "wouter van der plas"
   githubUsername: "wvanderp"
   linesOfCodeChanged: 178
@@ -271,6 +291,9 @@
   githubUsername: "SMUsamaShah"
   linesOfCodeChanged: 39
   linesOfInterfaceMarkupChanged: 30
+- name: "Max Ward"
+  githubUsername: "maxwellward"
+  linesOfCodeChanged: 38
 - name: "burrscurr"
   githubUsername: "burrscurr"
   linesOfCodeChanged: 28
@@ -347,6 +370,9 @@
 - name: "rolag"
   githubUsername: "rolag"
   linesOfCodeChanged: 6
+- name: "Andrew Harvey"
+  githubUsername: "andrewharvey"
+  linesOfCodeChanged: 5
 - name: "Sam Smith"
   githubUsername: "sams96"
   linesOfCodeChanged: 5
@@ -378,9 +404,6 @@
 - name: "Guillaume Rischard"
   githubUsername: "grischard"
   linesOfCodeChanged: 3
-- name: "Andrew Harvey"
-  githubUsername: "andrewharvey"
-  linesOfCodeChanged: 2
 - name: "dokutan"
   githubUsername: "dokutan"
   linesOfCodeChanged: 2
@@ -411,9 +434,6 @@
 - name: "Christian Paul"
   githubUsername: "jaller94"
   linesOfCodeChanged: 2
-- name: "Sonja Emilie Hoffmann"
-  githubUsername: "esilja"
-  linesOfCodeChanged: 1
 - name: "bxl-forever"
   githubUsername: "bxl-forever"
   linesOfCodeChanged: 1

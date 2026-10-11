@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.osm.any
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk_surface.SidewalkSurface
+import de.westnordost.streetcomplete.osm.sidewalk_surface.parseSidewalksSurface
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
@@ -54,8 +55,10 @@ fun AddSidewalkSurfaceForm(
             emptyList()
         }
     }
-
-    var sidewalkSurfaces by rememberSerializable(element) { mutableStateOf(Sides<Surface>(null, null)) }
+    val existingSidewalkSurface = remember(element) { parseSidewalksSurface(element.tags)?.value }
+    var sidewalkSurfaces by rememberSerializable(element) {
+        mutableStateOf(existingSidewalkSurface ?: Sides<Surface>(null, null))
+    }
 
     QuestForm(
         on = on,
@@ -70,6 +73,8 @@ fun AddSidewalkSurfaceForm(
             }
             on(Answer(SidewalkSurfaceAnswer.Surfaces(SidewalkSurface(sidewalkSurfaces))))
         },
+        isResurvey =
+            existingSidewalkSurface != null,
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_sidewalk_answer_different)) {
                 on(Answer(SidewalkSurfaceAnswer.SidewalkIsDifferent))

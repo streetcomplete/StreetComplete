@@ -111,6 +111,7 @@ building/
     bunker.svg
     car.svg                     modified from Twemoji: U+1F698
     carport.svg                 parts taken from Twemoji: U+1F698
+    cathedral.svg               Amaan Qureshi, License: CC-BY-SA 4.0
     civic.svg
     college.svg
     detached.svg
@@ -135,6 +136,7 @@ building/
     kiosk.svg
     office.svg
     other.svg
+    pagoda.svg                  Amaan Qureshi, License: CC-BY 4.0
     parking.svg                 parts taken from Twemoji: U+1F698
     retail.svg
     roof.svg
@@ -149,6 +151,7 @@ building/
     storage_tank.svg
     temple.svg
     terrace.svg
+    terraced_house.svg          Amaan Qureshi, modified terrace.svg, License: CC-BY-SA 4.0
     toilets.svg
     train_station.svg           modified from Twemoji: U+1F689
     transportation.svg          modified from Twemoji: U+1F68D
@@ -159,8 +162,63 @@ building levels/
     building_levels_icon.svg
     building_levels_illustration.svg
 
+domestic socket/
+    as3112.svg
+    bs1363.svg
+    cei23_50_s_11.svg
+    cei23_50_s_17.svg
+    nema_1_15.svg
+    nema_14_50.svg
+    nema_5_15.svg
+    nema_5_20.svg
+    schuko.svg
+    sev1011_t13.svg
+    sev1011_t15.svg
+    sev1011_t23.svg
+    sev1011_t25.svg
+    typea.svg
+    typeb.svg
+    typec.svg
+    typed.svg
+    typee.svg
+    typef.svg
+    typeg.svg
+    typeh.svg
+    typei.svg
+    typek.svg
+    typeL.svg
+    typem.svg
+    typen.svg
+    typeo.svg
+    universal_abcdefgio.svg
+    universal_abco.svg
+    universal_ac.svg
+    universal_ci.svg
+    universal_dm.svg
+    universal_lf.svg
+    universal_l.svg
+
 charging station capacity/
     electric_car.svg            parts taken from Twemoji: U+1F698 and U+1F50C
+
+charging station socket/
+    chademo.svg                 modified from https://commons.wikimedia.org/wiki/File:CHAdeMO_connector.svg, CC-BY-SA 4.0
+    chaoji.svg                  modified from https://commons.wikimedia.org/wiki/File:ChaoJi_connector.svg, CC-BY-SA 4.0
+    domestic.svg                mcliquid
+    nacs.svg
+    type1.svg                   modified from https://commons.wikimedia.org/wiki/File:J1772_connector.svg, CC-BY-SA 4.0
+    type1_combo.svg             modified from https://commons.wikimedia.org/wiki/File:J1772_connector.svg, CC-BY-SA 4.0
+    type2.svg
+    type2_combo.svg
+    type3a.svg                  modified from https://commons.wikimedia.org/wiki/File:IEC_62196_Types_3A-3C.svg, CC-BY-SA 4.0
+    type3c.svg                  modified from https://commons.wikimedia.org/wiki/File:IEC_62196_Types_3A-3C.svg, CC-BY-SA 4.0
+    eu_labels/
+        c_black.svg             EU alternative fuels identifier, public domain
+        c_white.svg             EU alternative fuels identifier, public domain
+        k_black.svg             EU alternative fuels identifier, public domain
+        l_black.svg             EU alternative fuels identifier, public domain
+        m_black.svg             EU alternative fuels identifier, public domain
+        n_black.svg             EU alternative fuels identifier, public domain
 
 cycleway/
     bus_lane.svg
@@ -241,6 +299,7 @@ laurel_wreath/
 
 links/
     link_neis_one.svg
+    openinframap.svg               bsd-3-clause      Russ Garrett
 
 living street/
     default.svg                                      Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
@@ -328,6 +387,7 @@ quest/
     charger_operator.svg             parts taken from Twemoji: U+1FAF4
     car_charger_capacity.svg         parts taken from Twemoji: U+1F698 and U+1F50C
     charger.svg                      parts taken from Twemoji: U+1F50C
+    charger_socket.svg               mcliquid, parts taken from Twemoji: U+1F50C
     caravan.svg
     card.svg
     cash.svg
@@ -365,6 +425,7 @@ quest/
     leaf.svg
     level.svg
     level_thing.svg
+    lock_power.svg                  Amaan Qureshi, License: CC-BY-SA 4.0
     mail.svg
     mail_ref.svg
     max_width.svg
@@ -378,6 +439,7 @@ quest/
     motorcycle_parking.svg
     motorcycle_parking_capacity.svg
     motorcycle_parking_cover.svg
+    motorcycle_parking_surface.svg   Amaan Qureshi, modified motorcycle_parking.svg, License: CC-BY-SA 4.0
     mtb.svg
     museum.svg
     no_bicycles.svg
@@ -409,6 +471,7 @@ quest/
     playground.svg
     poo.svg                          modified from Twemoji: U+1f4a9
     power.svg
+    power_line.svg                   Amaan Qureshi, License: CC-BY-SA 4.0
     quest.svg
     railway.svg
     recycling.svg                    modified from Twemoji: U+267B

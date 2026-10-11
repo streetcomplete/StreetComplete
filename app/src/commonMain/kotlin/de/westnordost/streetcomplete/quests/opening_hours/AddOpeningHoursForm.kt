@@ -92,7 +92,7 @@ fun AddOpeningHoursForm(
                 onClickOk = { on(Answer(RegularOpeningHours(openingHours))) },
                 hasChanges =
                     (originalOpeningHours ?: HierarchicOpeningHours()) != openingHours
-                    && openingHours.monthsList.isNotEmpty(),
+                    && !openingHours.isEmpty(),
                 otherAnswers = { listOf(
                     AnswerItem(stringResource(Res.string.quest_openingHours_no_sign)) {
                         confirmNoSign = true

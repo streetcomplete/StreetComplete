@@ -28,6 +28,7 @@ class AddCampDrinkingWater : OsmFilterQuestType<Boolean>() {
             !drinking_water and !water_point
             or drinking_water older today -4 years and drinking_water ~ yes|no
           )
+          and access !~ private|no
     """
     override val changesetComment = "Specify whether there is drinking water"
     override val wikiLink = "Key:drinking_water"

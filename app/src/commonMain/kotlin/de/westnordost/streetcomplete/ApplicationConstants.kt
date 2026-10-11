@@ -39,9 +39,6 @@ object ApplicationConstants {
     /** the duration after which logs won't be attached to the crash report */
     const val DO_NOT_ATTACH_LOG_TO_CRASH_REPORT_AFTER = 5L * 60 * 1000 // 5 minutes in ms
 
-    /** Time to wait until a changeset is closed after no more edits are added to that changeset */
-    const val CLOSE_CHANGESETS_AFTER_INACTIVITY_OF = 20L * 60 * 1000 // 20min
-
     /** Maximum distance to the location of the edit last added to the current changeset for it to
      *  be included in that same changeset. Otherwise, a new changeset will be opened for that */
     const val CHANGESET_MAX_LAST_EDIT_DISTANCE = 5000 // 5km

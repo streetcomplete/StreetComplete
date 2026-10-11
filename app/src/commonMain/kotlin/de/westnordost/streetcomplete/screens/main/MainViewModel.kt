@@ -1,16 +1,13 @@
 package de.westnordost.streetcomplete.screens.main
 
-import androidx.compose.ui.geometry.Offset
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.urlconfig.UrlConfig
-import de.westnordost.streetcomplete.screens.main.controls.LocationState
-import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import org.maplibre.compose.camera.CameraPosition
 import kotlin.reflect.KClass
 
 // not @Stable, as not all fields are StateFlows or immutable
@@ -24,15 +21,10 @@ abstract class MainViewModel : ViewModel() {
     abstract suspend fun createErrorReport(error: Exception): String
 
     /* start parameters */
-    abstract fun setUri(uri: String)
-
-    abstract val urlConfig: StateFlow<ShownUrlConfig?>
-    abstract fun applyUrlConfig(config: UrlConfig)
-    abstract val geoUri: StateFlow<CameraPosition?>
-    abstract fun consumeGeoUri() // probably only necessary while not fully converted to Compose yet
-
-    /* intro */
-    abstract var hasShownTutorial: Boolean
+    abstract val initialCamera: CameraPosition
+    abstract val initiallyFollowing: Boolean
+    abstract val initiallyNavigating: Boolean
+    abstract fun saveCamera(camera: CameraPosition, following: Boolean, navigating: Boolean)
 
     /* HUD */
     abstract var showZoomButtons: StateFlow<Boolean>
@@ -47,7 +39,7 @@ abstract class MainViewModel : ViewModel() {
     abstract val selectedOverlay: StateFlow<Overlay?>
     abstract val overlays: StateFlow<List<Overlay>>
 
-    abstract var hasShownOverlaysTutorial: Boolean
+    abstract val hasShownOverlaysTutorial: Boolean
 
     abstract fun selectOverlay(overlay: Overlay?)
 
@@ -55,7 +47,6 @@ abstract class MainViewModel : ViewModel() {
     abstract val isTeamMode: StateFlow<Boolean>
     abstract var teamModeChanged: Boolean
     abstract val indexInTeam: StateFlow<Int>
-    abstract fun enableTeamMode(teamSize: Int, indexInTeam: Int)
     abstract fun disableTeamMode()
 
     /* uploading, downloading */
@@ -73,26 +64,11 @@ abstract class MainViewModel : ViewModel() {
     abstract fun finishRequestingLogin()
 
     abstract fun upload()
-    abstract fun download(bbox: BoundingBox)
+    /** returns false if the area is too big to download */
+    abstract fun download(displayedArea: BoundingBox, center: LatLon): Boolean
 
     /* stars */
     abstract val starsCount: StateFlow<Int>
     abstract val isShowingStarsCurrentWeek: StateFlow<Boolean>
     abstract fun toggleShowingCurrentWeek()
-
-    // NOTE: currently filled from MainActivity (communication to compose view), i.e. the source of
-    //       truth is actually the MapFragment
-    abstract val locationState: MutableStateFlow<LocationState?>
-    abstract val mapCamera: MutableStateFlow<CameraPosition?>
-    abstract val metersPerDp: MutableStateFlow<Double>
-    abstract val displayedPosition: MutableStateFlow<Offset?>
-
-    abstract val isFollowingPosition: MutableStateFlow<Boolean>
-    abstract val isNavigationMode: MutableStateFlow<Boolean>
-
-    abstract val isRecordingTracks: MutableStateFlow<Boolean>
-
-    abstract val userHasMovedCamera: MutableStateFlow<Boolean>
 }
-
-data class ShownUrlConfig(val urlConfig: UrlConfig, val alreadyExists: Boolean)

@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.bus_stop_name
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -14,8 +13,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.osm.localized_name.parseLocalizedNames
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
 import de.westnordost.streetcomplete.ui.common.quest.LocalizedNameQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
@@ -31,22 +30,24 @@ fun AddBusStopNameForm(
         parseLocalizedNames(element.tags)
     ) }
 
-    val mapClick = LocalLastMapClick.current
-    LaunchedEffect(mapClick) {
-        if (mapClick != null) {
-            nameSuggestionsSource
-                .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, busStopsWithNamesFilter)
-                .firstOrNull()
-                ?.let { initialLocalizedNames = it }
-        }
-    }
-
     LocalizedNameQuestForm(
         on = on,
         countryInfo = countryInfo,
         initialLocalizedNames = initialLocalizedNames,
         hint = {
             Text(stringResource(Res.string.quest_streetName_abbreviation_instruction))
+        },
+        onClickMap = { mapClick: MapClick ->
+            val suggestedNames = nameSuggestionsSource
+                .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, busStopsWithNamesFilter)
+                .firstOrNull()
+
+            if (suggestedNames != null) {
+                initialLocalizedNames = suggestedNames
+                true
+            } else {
+                false
+            }
         },
     )
 }

@@ -2,11 +2,12 @@ import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.BOOLEAN
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 import dev.mokkery.MockMode
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.targets.native.tasks.KotlinNativeSimulatorTest
 import java.io.FileWriter
 
 
 /** App version name, code and flavor */
-val appVersionName = "64.0-alpha1"
+val appVersionName = "64.0-beta2"
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
@@ -20,7 +21,7 @@ val bcp47ExportLanguages = setOf(
 
 /** Version of the iD presets to use
  *  see https://github.com/openstreetmap/id-tagging-schema/releases for latest version */
-val presetsVersion = "v7.0.1"
+val presetsVersion = "v7.2.0"
 
 /** Version of the Name Suggestion Index to use
  *  see https://github.com/osmlab/name-suggestion-index/tags for latest version (without leading "v"
@@ -32,19 +33,14 @@ val poEditorProjectId = "97843"
 
 plugins {
     id("org.jetbrains.kotlin.multiplatform")
-    id("org.jetbrains.kotlin.plugin.serialization") version "2.4.0"
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.4.20"
     id("org.jetbrains.kotlin.plugin.compose")
     id("com.android.kotlin.multiplatform.library")
     id("org.jetbrains.compose")
-    id("com.codingfeline.buildkonfig") version "0.22.0"
+    id("com.codingfeline.buildkonfig") version "0.23.0"
     // keep in sync with Kotlin version! See https://mokkery.dev/docs/Setup/#compatibility
-    id("dev.mokkery") version "3.4.2"
-    id("org.jetbrains.kotlin.plugin.allopen") version "2.4.0"
-}
-
-repositories {
-    google()
-    mavenCentral()
+    id("dev.mokkery") version "3.5.0"
+    id("org.jetbrains.kotlin.plugin.allopen") version "2.4.20"
 }
 
 buildkonfig {
@@ -118,14 +114,20 @@ kotlin {
         }
     }
 
+    applyDefaultHierarchyTemplate()
+
     sourceSets {
+        val jvmAndroidMain = create("jvmAndroidMain") { dependsOn(commonMain.get()) }
+        val nonAndroidMain = create("nonAndroidMain") { dependsOn(commonMain.get()) }
+        val mobileMain = create("mobileMain") { dependsOn(commonMain.get()) }
+
         commonMain {
             dependencies {
                 // Kotlin
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
 
                 // Atomics, Locks, Synchronization
-                // Aparently only necessary as long as https://github.com/Kotlin/kotlinx-atomicfu/issues/145 is not solved
+                // Apparently only necessary as long as https://github.com/Kotlin/kotlinx-atomicfu/issues/145 is not solved
                 implementation("org.jetbrains.kotlinx:atomicfu:0.33.0")
 
                 // Dependency injection
@@ -133,10 +135,9 @@ kotlin {
                 implementation("io.insert-koin:koin-core")
                 implementation("io.insert-koin:koin-compose")
                 implementation("io.insert-koin:koin-compose-viewmodel")
-                implementation("io.insert-koin:koin-androidx-compose-navigation")
 
                 // Logging
-                implementation("co.touchlab:kermit:2.1.0")
+                implementation("co.touchlab:kermit:2.2.0")
 
                 // settings
                 implementation("com.russhwolf:multiplatform-settings:1.3.0")
@@ -145,21 +146,21 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.1")
 
                 // location
-                implementation("org.maplibre.compose:location:0.16.0")
+                implementation("org.maplibre.compose:location:0.20.0")
 
                 // SQLite
-                implementation("androidx.sqlite:sqlite:2.7.0")
-                implementation("androidx.sqlite:sqlite-bundled:2.7.0")
+                implementation("androidx.sqlite:sqlite:2.7.1")
+                implementation("androidx.sqlite:sqlite-bundled:2.7.1")
 
                 // HTTP client
-                implementation("io.ktor:ktor-client-core:3.5.1")
-                implementation("io.ktor:ktor-client-encoding:3.5.1")
+                implementation("io.ktor:ktor-client-core:3.5.2")
+                implementation("io.ktor:ktor-client-encoding:3.5.2")
                 // SHA256 hashing, used during OAuth authentication
                 implementation("org.kotlincrypto.hash:sha2:0.8.0")
 
                 // XML
-                implementation("io.github.pdvrieze.xmlutil:core:1.0.1")
-                implementation("io.github.pdvrieze.xmlutil:core-io:1.0.1")
+                implementation("io.github.pdvrieze.xmlutil:core:1.0.2")
+                implementation("io.github.pdvrieze.xmlutil:core-io:1.0.2")
 
                 // YAML
                 implementation("com.charleskorn.kaml:kaml:0.104.0")
@@ -181,21 +182,25 @@ kotlin {
                 implementation("de.westnordost:osm-opening-hours:0.4.0")
 
                 // UI (Compose)
-                implementation("org.jetbrains.compose.runtime:runtime:1.12.0")
-                implementation("org.jetbrains.compose.foundation:foundation:1.12.0")
-                implementation("org.jetbrains.compose.material:material:1.12.0")
-                implementation("org.jetbrains.compose.ui:ui:1.12.0")
-                implementation("org.jetbrains.compose.components:components-resources:1.12.0")
-                implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.12.0")
+                implementation("org.jetbrains.compose.runtime:runtime:1.12.1")
+                implementation("org.jetbrains.compose.foundation:foundation:1.12.1")
+                implementation("org.jetbrains.compose.material:material:1.12.1")
+                implementation("org.jetbrains.compose.ui:ui:1.12.1")
+                implementation("org.jetbrains.compose.components:components-resources:1.12.1")
+                implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.12.1")
 
                 // UI Navigation
-                implementation("org.jetbrains.compose.ui:ui-backhandler:1.12.0")
-                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.2")
+                implementation("org.jetbrains.androidx.navigationevent:navigationevent-compose:1.1.0")
+                implementation("org.jetbrains.androidx.navigation3:navigation3-ui:1.1.2")
+                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-navigation3:2.11.0")
 
                 // UI ViewModel
-                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.10.0")
+                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.11.0")
 
                 // UI widgets
+
+                // Map
+                implementation("org.maplibre.compose:maplibre-compose:0.20.0")
 
                 // non-lazy grid
                 // NOTE: might replace with
@@ -210,25 +215,22 @@ kotlin {
                 implementation("io.github.kevinnzou:compose-webview-multiplatform:2.0.3")
 
                 // sharing presets/settings via QR Code
-                implementation("io.github.alexzhirkevich:qrose:1.1.2")
+                implementation("io.github.alexzhirkevich:qrose:1.3.0")
 
                 // for encoding information for the URL configuration (QR code)
                 implementation("com.ionspin.kotlin:bignum:0.3.10")
 
                 // taking a photo (, picking an image from gallery, ...)
-                implementation("io.github.vinceglb:filekit-dialogs-compose:0.14.1")
+                implementation("io.github.vinceglb:filekit-dialogs-compose:0.16.0")
             }
         }
         androidMain {
-            kotlin.srcDirs(layout.buildDirectory.dir("generated/androidMain/kotlin"))
+            dependsOn(jvmAndroidMain)
+            dependsOn(mobileMain)
             dependencies {
                 // Dependency injection
                 implementation("io.insert-koin:koin-android")
                 implementation("io.insert-koin:koin-androidx-workmanager")
-
-                // Android stuff
-                implementation("com.google.android.material:material:1.14.0")
-                implementation("androidx.appcompat:appcompat:1.7.1")
 
                 // Compose
                 implementation("androidx.activity:activity-compose:1.13.0")
@@ -237,36 +239,39 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.11.0")
 
                 // scheduling background jobs
-                implementation("androidx.work:work-runtime-ktx:2.11.2")
+                implementation("androidx.work:work-runtime-ktx:2.12.0")
 
                 // HTTP Client
-                implementation("io.ktor:ktor-client-android:3.5.1")
+                // cio, not android, because of https://youtrack.jetbrains.com/issue/KTOR-9848
+                implementation("io.ktor:ktor-client-cio:3.5.2")
 
-                // map and location
-                implementation("org.maplibre.gl:android-sdk-opengl:13.3.1")
+                // map
+                implementation("org.maplibre.compose:maplibre-compose-runtime-opengl-android:0.20.0")
 
                 // required to @Preview composables in Android Studio
-                runtimeOnly("androidx.compose.ui:ui-tooling:1.10.0")
+                runtimeOnly("androidx.compose.ui:ui-tooling:1.12.1")
             }
         }
         iosMain {
+            dependsOn(nonAndroidMain)
+            dependsOn(mobileMain)
             dependencies {
                 // HTTP client
-                implementation("io.ktor:ktor-client-darwin:3.5.1")
+                implementation("io.ktor:ktor-client-darwin:3.5.2")
             }
         }
         commonTest {
             dependencies {
                 implementation(kotlin("test"))
 
-                implementation("io.ktor:ktor-client-mock:3.5.1")
-                implementation("androidx.sqlite:sqlite-bundled:2.7.0")
+                implementation("io.ktor:ktor-client-mock:3.5.2")
+                implementation("androidx.sqlite:sqlite-bundled:2.7.1")
             }
         }
         getByName("androidHostTest") {
             dependencies {
                 // without it, :app:testAndroidHostTest throws java.lang.UnsatisfiedLinkError for sqliteJni
-                implementation("androidx.sqlite:sqlite-bundled-jvm:2.7.0")
+                implementation("androidx.sqlite:sqlite-bundled-jvm:2.7.1")
             }
         }
     }
@@ -280,9 +285,18 @@ compose {
 }
 
 dependencies {
-    androidRuntimeClasspath("org.jetbrains.compose.ui:ui-tooling:1.12.0")
+    androidRuntimeClasspath("org.jetbrains.compose.ui:ui-tooling:1.12.1")
     // see comment in android.compileOptions.isCoreLibraryDesugaringEnabled
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
+}
+
+// run tests in a fixed time zone so that results don't depend on the host's time zone
+tasks.withType<Test>().configureEach {
+    systemProperty("user.timezone", "UTC")
+}
+tasks.withType<KotlinNativeSimulatorTest>().configureEach {
+    // simctl passes SIMCTL_CHILD_-prefixed variables on to the simulated process
+    environment("SIMCTL_CHILD_TZ", "UTC")
 }
 
 tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
@@ -365,7 +379,7 @@ tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     languageCodes = bcp47ExportLanguages
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
-    targetFiles = { projectDir.resolve("/src/commonMain/composeResources/values-$it/strings.xml") }
+    targetFiles = { projectDir.resolve("src/commonMain/composeResources/values-$it/strings.xml") }
 }
 
 tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleteness") {
@@ -384,8 +398,8 @@ tasks.register<UpdateIosAppTranslationsTask>("updateIosTranslations") {
     targetFile = projectDir.resolve("../iosApp/iosApp/InfoPlist.xcstrings")
     languageCodes = bcp47ExportLanguages
     strings = mapOf(
-        "NSLocationWhenInUseUsageDescription" to "no_location_permission_warning",
         "NSCameraUsageDescription" to "camera_permission_description",
+        "NSLocationWhenInUseUsageDescription" to "no_location_permission_warning",
     )
 }
 
@@ -393,13 +407,6 @@ tasks.register<UpdateChangelogTask>("updateChangelog") {
     group = "streetcomplete"
     sourceFile = rootDir.resolve("CHANGELOG.md")
     targetFile = projectDir.resolve("src/commonMain/composeResources/files/changelog.html")
-}
-
-tasks.register<UpdateMapStyleTask>("updateMapStyle") {
-    group = "streetcomplete"
-    targetDir = projectDir.resolve("src/androidMain/assets/map_theme")
-    apiKey = "mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ"
-    mapStyleBranch = "master"
 }
 
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
@@ -423,51 +430,6 @@ tasks.register("copyDefaultStringsToEnStrings") {
     }
 }
 
-// necessary as long as map hasn't been converted to compose yet
-tasks.register<CopyIconsTask>("copyIconsToAndroid") {
-    group = "streetcomplete"
-    sourceDir = projectDir.resolve("src/commonMain/composeResources/drawable")
-    targetDir = projectDir.resolve("build/generated/androidMain/res/drawable")
-    filter = {
-        // quest pins, icons for overlays
-        it.startsWith("quest_") ||
-        it.startsWith("building_") ||
-        it.startsWith("preset_") ||
-        it == "sport_volleyball.xml" ||
-        it == "religion_christian.xml" ||
-        it == "religion_jewish.xml" ||
-        it == "religion_muslim.xml" ||
-        it == "address_dot.xml" ||
-        it == "none.png" ||
-        // icons for base map
-        it == "pin_shadow.png" ||
-        it == "location_nyan.png" ||
-        it == "scissors_cut.xml" ||
-        it == "scissors.xml" ||
-        it == "track_nyan.png" ||
-        it == "track_nyan_record.png" ||
-        it == "downloaded_area_hatching.xml" ||
-        it == "location_shadow.xml" ||
-        it == "location_view_direction.xml" ||
-        it == "pin.xml" ||
-        it == "pin_circle.xml"
-    }
-    indexFile = projectDir.resolve("build/generated/androidMain/kotlin/de/westnordost/streetcomplete/view/IconIndex.kt")
-}
-
-tasks.register<CopyStringsTask>("copyStringsToAndroid") {
-    group = "streetcomplete"
-    sourceDir = projectDir.resolve("src/commonMain/composeResources")
-    targetDir = projectDir.resolve("build/generated/androidMain/res")
-}
-
-project.afterEvaluate {
-    tasks.named("androidPreBuild") {
-        dependsOn(tasks.named("copyIconsToAndroid"))
-        dependsOn(tasks.named("copyStringsToAndroid"))
-    }
-}
-
 tasks.register<JavaExec>("printQuestFiltersAsOverpassQL") {
     group = "utils"
 
@@ -486,10 +448,4 @@ tasks.register<JavaExec>("openingHoursParsingStatistics") {
     classpath = testTask.get().classpath
 
     mainClass.set("de.westnordost.streetcomplete.OpeningHoursParsingStatisticsKt")
-}
-
-androidComponents {
-    onVariants { variant ->
-        variant.sources.res?.addStaticSourceDirectory(layout.buildDirectory.dir("generated/androidMain/res").get().asFile.absolutePath)
-    }
 }

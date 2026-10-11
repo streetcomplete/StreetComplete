@@ -26,6 +26,7 @@ class AddDrinkingWaterType : OsmFilterQuestType<DrinkingWaterType>() {
           and (!intermittent or intermittent = no)
           and (!seasonal or seasonal = no)
           and !man_made and !natural and !fountain and !pump
+          and access !~ private|no
     """
 
     override val changesetComment = "Specify drinking water types"

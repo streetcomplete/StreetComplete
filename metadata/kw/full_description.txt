@@ -1,1 +1,5 @@
-Gweres gwellhe OpenStreetMap gans StreetComplete! An app ma a gav data mappa fyllel yn agas ogas ha diskwedhes war'n mappa avel hwithransow. Gorthebi pub hwithrans gans ow vysytya an tyller war-lown hag ow korthebi govyn sempel rag nowedhi an mappa. An kedhlow hwi a ynworr yw keworrys distowgh dhe OpenStreetMap y'th hanow, heb res dhe dhevnydhya chanjyell aral.
+Gweres gwellhe OpenStreetMap gans StreetComplete!
+
+An app ma a gav data mappa fyllel yn agas ogas ha diskwedhes war'n mappa avel hwithransow. Gorthebi pub hwithrans gans ow vysytya an tyller war-lown hag ow korthebi govyn sempel rag nowedhi an mappa.
+
+An kedhlow hwi a ynworr yw keworrys distowgh dhe OpenStreetMap y'th hanow, heb res dhe dhevnydhya chanjyell aral.

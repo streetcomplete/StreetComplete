@@ -34,6 +34,7 @@ class BuildingTypeParserKtTest {
     }
 
     @Test fun `parse houses with alternative tagging scheme`() {
+        assertEquals(TERRACED_HOUSE, createBuildingType(mapOf("building" to "house", "house" to "terraced")))
         assertEquals(HOUSE, createBuildingType(mapOf("building" to "house")))
         assertEquals(BUNGALOW, createBuildingType(mapOf("building" to "house", "house" to "bungalow")))
         assertEquals(DETACHED, createBuildingType(mapOf("building" to "house", "house" to "detached")))

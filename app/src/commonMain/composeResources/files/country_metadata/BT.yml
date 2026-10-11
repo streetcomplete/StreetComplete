@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [en]
 atmOperators: [Bank of Bhutan, Bhutan National Bank, BOB, BNB, Tashi Bank, PNB, Druk PNB, BoB ATM, BoB, Bank Of Bhutan, BNB ATM, BDBL ATM, BDBL]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typed, typem, typec, universal_dm]
 isLeftHandTraffic: true
 mobileCountryCode: 402
 noParkingSignStyle: vienna variant

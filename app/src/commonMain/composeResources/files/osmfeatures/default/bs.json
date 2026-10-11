@@ -96,9 +96,6 @@
           "name": "Voda za piće",
           "terms": ["voda za piće", "pitka voda"]
         },
-        "amenity/embassy": {
-          "name": "Ambasada"
-        },
         "amenity/fast_food": {
           "name": "Fast Food",
           "terms": ["fast food", "restoran brze hrane"]
@@ -245,13 +242,6 @@
           "name": "Zid",
           "terms": ["zid", "zidić", "bedem"]
         },
-        "boundary": {
-          "name": "Granica"
-        },
-        "boundary/administrative": {
-          "name": "Admninistrativna granica",
-          "terms": ["administrativna granica", "administrativna linija"]
-        },
         "building": {
           "name": "Građevina",
           "terms": ["zgrada", "građevina", "kuća"]
@@ -282,9 +272,6 @@
         "building/residential": {
           "name": "Stambena zgrada",
           "terms": ["stambena zgrada", "zgrada za stanovanje"]
-        },
-        "building_point": {
-          "name": "Građevina"
         },
         "craft/beekeeper": {
           "name": "Pčelar"
@@ -322,9 +309,6 @@
         "craft/key_cutter": {
           "name": "Izrada ključeva"
         },
-        "craft/locksmith": {
-          "name": "Bravar"
-        },
         "craft/photographer": {
           "name": "Fotograf"
         },
@@ -339,9 +323,6 @@
         },
         "craft/stonemason": {
           "name": "Klesar"
-        },
-        "craft/tailor": {
-          "name": "Krojač"
         },
         "craft/window_construction": {
           "name": "Izrada prozora"
@@ -549,9 +530,6 @@
           "name": "Hram pored puta",
           "terms": ["znamenje kraj puta", "kapelica"]
         },
-        "landuse/basin": {
-          "name": "Sliv"
-        },
         "landuse/cemetery": {
           "name": "Groblje",
           "terms": ["groblje", "greblje", "mezarje"]
@@ -580,15 +558,9 @@
           "name": "Voćnjak",
           "terms": ["voćnjak", "uzgoj voća"]
         },
-        "landuse/pond": {
-          "name": "Ribnjak"
-        },
         "landuse/quarry": {
           "name": "Rudnik",
           "terms": ["kamenolom", "vađenje kamena"]
-        },
-        "landuse/reservoir": {
-          "name": "Rezervoar"
         },
         "landuse/vineyard": {
           "name": "Vinograd",
@@ -848,9 +820,6 @@
           "name": "Ured telekoma",
           "terms": ["ured telekoma", "ured telekom operatera", "kancelarija telekom operatera"]
         },
-        "office/travel_agent": {
-          "name": "Putnička agencija"
-        },
         "place": {
           "name": "Mjesto"
         },
@@ -931,10 +900,6 @@
         "relation": {
           "name": "Relacija",
           "terms": ["relacija", "odnos objekata u skupu"]
-        },
-        "route/ferry": {
-          "name": "Trajektna ruta",
-          "terms": ["trajektna ruta", "ruta trajekta"]
         },
         "shop": {
           "name": "Prodavnica",
@@ -1206,10 +1171,6 @@
           "name": "Cjevovodna ruta",
           "terms": ["cjevovodna trasa", "cjevovodna ruta"]
         },
-        "type/route/power": {
-          "name": "Energetska ruta",
-          "terms": ["trasa napajanja", "ruta napajanja"]
-        },
         "type/route/road": {
           "name": "Cestovna ruta",
           "terms": ["cestovna trasa", "cestovna ruta"]
@@ -1257,6 +1218,104 @@
         "waterway/weir": {
           "name": "Ustava",
           "terms": ["ustava", "barijera preko rijeke"]
+        },
+        "boundary": {
+          "name": "Granica",
+          "terms": ["granica", "linija", "linija razgraničenja"]
+        },
+        "building_point": {
+          "name": "Građevina",
+          "terms": ["zgrada", "građevina", "kuća"]
+        },
+        "route/ferry": {
+          "name": "Trajektna ruta",
+          "terms": ["trajektna trasa", "trajektna ruta"]
+        },
+        "office/travel_agent": {
+          "name": "Putnička agencija",
+          "terms": ["putnička agencija", "turistička agencija"]
+        },
+        "landuse/basin": {
+          "name": "Sliv",
+          "terms": ["sliv", "bazen"]
+        },
+        "landuse/reservoir": {
+          "name": "Rezervoar",
+          "terms": ["rezervoar", "spremište vode"]
+        },
+        "highway/bus_stop": {
+          "terms": ["autobuska stanica", "autobusko stajalište"]
+        },
+        "highway/motorway_link-US-CA": {
+          "name": "Poveznica na autoput",
+          "terms": ["poveznica na autoput", "poveznica na autocestu"]
+        },
+        "highway/primary_link-US-CA": {
+          "name": "Primarna poveznica",
+          "terms": ["primarna poveznica", "poveznica na primarnu cestu"]
+        },
+        "highway/trunk_link-US-CA": {
+          "name": "Poveznica na brzu cestu",
+          "terms": ["poveznica na brzu cestu", "poveznica na državnu cestu"]
+        },
+        "craft/locksmith": {
+          "name": "Bravar",
+          "terms": ["bravar", "kopiranje ključeva", "bravarija"]
+        },
+        "craft/tailor": {
+          "name": "Krojač"
+        },
+        "boundary/administrative": {
+          "name": "Admninistrativna granica",
+          "terms": ["administrativna granica", "administrativna linija"]
+        },
+        "amenity/embassy": {
+          "name": "Ambasada",
+          "terms": ["ambasada", "konzulat", "predstavništvo strane zemlje"]
+        },
+        "@templates/contact": {
+          "name": "Tačka",
+          "terms": ["tačka"]
+        },
+        "@templates/internet_access": {
+          "name": "Tačka",
+          "terms": ["tačka"]
+        },
+        "@templates/poi": {
+          "name": "Tačka",
+          "terms": ["tačka"]
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Tačka",
+          "terms": ["tačka"]
+        },
+        "@templates/crossing/defaults": {
+          "name": "Tačka",
+          "terms": ["tačka"]
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Tačka",
+          "terms": ["tačka"]
+        },
+        "@templates/crossing/markings": {
+          "name": "Tačka",
+          "terms": ["tačka"]
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Tačka",
+          "terms": ["tačka"]
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Tačka",
+          "terms": ["tačka"]
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Tačka",
+          "terms": ["tačka"]
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Tačka",
+          "terms": ["tačka"]
         }
       }
     }

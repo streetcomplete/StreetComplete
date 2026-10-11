@@ -48,6 +48,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import de.westnordost.streetcomplete.data.osmcal.CalendarEvent
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.LocalAppLocale
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.util.ktx.format
@@ -74,7 +75,7 @@ fun CalendarEventDialog(
         appear.animateTo(1f, tween(600, easing = LinearOutSlowInEasing))
     }
 
-    val dateFormatter = remember { LocalDateFormatter(style = DateTimeFormatStyle.Medium) }
+    val dateFormatter = remember(LocalAppLocale.current) { LocalDateFormatter(style = DateTimeFormatStyle.Medium) }
     val dateTime = event.startDate.toLocalDateTime()
     val formattedDateWithoutYear = dateFormatter
         .format(dateTime.date)

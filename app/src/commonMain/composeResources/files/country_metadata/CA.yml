@@ -1,7 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 advisorySpeedLimitSignStyle: yellow
 centerLineStyle: yellow
-chargingStationSocketTypes: [type1, type1_combo, chademo, nacs]
+chargingStationSocketTypes: [nacs, type1, type1_combo]
+domesticSocketTypes: [nema_5_15, nema_1_15, nema_5_20, nema_14_50]
 hasAdvisorySpeedLimitSign: true
 hasCenterLeftTurnLane: true
 hasLivingStreet: false

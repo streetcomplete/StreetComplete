@@ -48,7 +48,6 @@ class AddToiletsFee : OsmFilterQuestType<ToiletFeeAnswer>() {
                 },
             ) }
         )
-
     }
 
     override fun applyAnswerTo(answer: ToiletFeeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

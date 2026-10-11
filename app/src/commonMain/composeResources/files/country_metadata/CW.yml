@@ -2,5 +2,6 @@
 atmOperators: [MCB, Banco di Caribe, RBC, MCB Bank, ACU]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeb, typea, typef]
 officialLanguages: [nl, pap, en]
 popularSports: [baseball]

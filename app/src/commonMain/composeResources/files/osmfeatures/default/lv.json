@@ -81,9 +81,6 @@
         "amenity/bureau_de_change": {
           "name": "Valūtas Maiņa"
         },
-        "amenity/bus_station": {
-          "name": "Autobusu pietura / Terminālis"
-        },
         "amenity/cafe": {
           "name": "Kafejnīca",
           "terms": ["bistro", "krogs", "kafija", "tēja"]
@@ -157,9 +154,6 @@
         "amenity/drinking_water": {
           "name": "Dzeramūdens"
         },
-        "amenity/embassy": {
-          "name": "Vēstniecība"
-        },
         "amenity/fast_food": {
           "name": "Ātrās ēdināšanas iestāde",
           "terms": ["restorāns", "līdzņemšana"]
@@ -170,9 +164,6 @@
         "amenity/fast_food/sandwich": {
           "name": "Ātrās ēdināšanas sviestmaižu kafejnīca",
           "terms": ["ātrās ēdināšanas sviestmaižu restorāns"]
-        },
-        "amenity/ferry_terminal": {
-          "name": "Prāmju termināls"
         },
         "amenity/fire_station": {
           "name": "Ugunsdzēsēju stacija",
@@ -227,10 +218,6 @@
         "amenity/parcel_locker": {
           "name": "Pakomāts"
         },
-        "amenity/parking": {
-          "name": "Stāvvieta",
-          "terms": ["auto", "mašīnas", "stāvvieta", "stāvēšana", "apstāšanās", "pieturvieta"]
-        },
         "amenity/parking/multi-storey": {
           "name": "Daudzlīmeņu Stāvvieta",
           "terms": ["garāža", "daudzstāvu", "stāvi", "ēka", "autostāvieta"]
@@ -248,7 +235,7 @@
           "name": "Autostāvvietas vieta invalīdiem"
         },
         "amenity/pharmacy": {
-          "name": "Aptiekas lete"
+          "name": "Aptieka"
         },
         "amenity/place_of_worship": {
           "name": "Dievnams",
@@ -412,6 +399,9 @@
           "name": "Veternārārsts",
           "terms": ["klīnika", "veterniārā", "dzīvienku", "veterinārais ārsts"]
         },
+        "amenity/veterinary_pharmacy": {
+          "name": "Veterinārā aptieka"
+        },
         "amenity/waste/dog_excrement": {
           "name": "Suņu ekskrementu tvertne",
           "terms": ["tvertne", "kaste", "suņu", "kaku", "maisiņu", "atkritumu"]
@@ -524,9 +514,6 @@
           "name": "Dubultveramie vārti",
           "terms": ["dubultie", "abpusējie", "dubultvārti"]
         },
-        "barrier/lift_gate": {
-          "name": "Paceļamā barjera"
-        },
         "barrier/retaining_wall": {
           "name": "Stiprinājuma siena"
         },
@@ -541,13 +528,6 @@
         },
         "barrier/yes": {
           "name": "Barjera (neprecizēts veids)"
-        },
-        "boundary": {
-          "name": "Robeža"
-        },
-        "boundary/administrative": {
-          "name": "Administratīvā robeža",
-          "terms": ["robeža", "novadu robeža", "administratīvā teritorija"]
         },
         "building": {
           "name": "Ēka"
@@ -670,9 +650,6 @@
         "building_part": {
           "name": "Ēkas daļa"
         },
-        "building_point": {
-          "name": "Ēka"
-        },
         "club": {
           "name": "Klubs"
         },
@@ -718,9 +695,6 @@
         "craft/key_cutter": {
           "name": "Atslēdznieks"
         },
-        "craft/locksmith": {
-          "name": "Atslēdznieks"
-        },
         "craft/metal_construction": {
           "name": "Metālstrādnieks"
         },
@@ -749,9 +723,6 @@
         },
         "craft/shoemaker": {
           "name": "Kurpnieks"
-        },
-        "craft/tailor": {
-          "name": "Šuvējs"
         },
         "craft/window_construction": {
           "name": "Logu izgatavošana"
@@ -821,13 +792,13 @@
         "entrance/main": {
           "name": "Galvenā ieeja"
         },
+        "entrance/shop": {
+          "name": "Veikala ieeja"
+        },
         "entrance/staircase": {
           "name": "Kāpņutelpas ieeja"
         },
         "ford": {
-          "name": "Brasls"
-        },
-        "ford_line": {
           "name": "Brasls"
         },
         "golf/hole": {
@@ -835,9 +806,6 @@
         },
         "healthcare/birthing_center": {
           "name": "Dzemdību nams"
-        },
-        "healthcare/blood_donation": {
-          "name": "Asinsdonoru Centrs"
         },
         "healthcare/laboratory": {
           "name": "Medicīnas Labrotorija"
@@ -850,9 +818,6 @@
         },
         "highway/bridleway": {
           "name": "Jāšanas ceļš"
-        },
-        "highway/bus_stop": {
-          "name": "Autobusu pietura"
         },
         "highway/construction": {
           "name": "Būvniecībā esošs ceļš"
@@ -1041,9 +1006,6 @@
         "indoor/corridor": {
           "name": "Iekštelpu koridors"
         },
-        "indoor/corridor_line": {
-          "name": "Iekštelpu koridors"
-        },
         "indoor/wall": {
           "name": "Iekštelpu siena"
         },
@@ -1052,9 +1014,6 @@
         },
         "landuse/allotments": {
           "name": "Mazdārziņš"
-        },
-        "landuse/basin": {
-          "name": "Baseins"
         },
         "landuse/brownfield": {
           "name": "Degradēta teritorija"
@@ -1069,9 +1028,6 @@
         "landuse/construction": {
           "name": "Būvlaukums"
         },
-        "landuse/farm": {
-          "name": "Lauksaimniecības teritorija"
-        },
         "landuse/farmland": {
           "name": "Lauksaimniecības zeme / aramzeme"
         },
@@ -1084,9 +1040,6 @@
         },
         "landuse/forest": {
           "name": "Mežsaimniecības mežs"
-        },
-        "landuse/garages": {
-          "name": "Garāžu zeme"
         },
         "landuse/grass": {
           "name": "Zālājs"
@@ -1118,14 +1071,8 @@
         "landuse/military/base/navy": {
           "name": "Ūdensspēku bāze"
         },
-        "landuse/pond": {
-          "name": "Dīķis"
-        },
         "landuse/quarry": {
           "name": "Karjers"
-        },
-        "landuse/reservoir": {
-          "name": "Ūdenstilpne"
         },
         "landuse/residential": {
           "name": "Dzīvojamā apbūve"
@@ -1330,9 +1277,6 @@
         "military/bunker": {
           "name": "Militārais Bunkurs"
         },
-        "military/nuclear_explosion_site": {
-          "name": "Atomsprādziena zona"
-        },
         "natural/bare_rock": {
           "name": "Pliks Akmens"
         },
@@ -1464,9 +1408,6 @@
         "office/insurance": {
           "name": "Apdrošināšanas birojs"
         },
-        "office/lawyer/notary": {
-          "name": "Notāru birojs"
-        },
         "office/notary": {
           "name": "Notāru birojs"
         },
@@ -1478,9 +1419,6 @@
         },
         "office/therapist": {
           "name": "Terapieta birojs"
-        },
-        "office/travel_agent": {
-          "name": "Ceļojumu aģentūra"
         },
         "place": {
           "name": "Vieta"
@@ -1624,9 +1562,6 @@
         },
         "railway/railway_crossing": {
           "name": "Dzelzceļa-dzelzceļa šķērsojums"
-        },
-        "railway/station": {
-          "name": "Dzelzceļa stacija"
         },
         "railway/subway": {
           "name": "Metro sliežu ceļš"
@@ -1854,6 +1789,9 @@
         "shop/paint": {
           "name": "Krāsu veikals"
         },
+        "shop/pastry": {
+          "name": "Saldumu veikals"
+        },
         "shop/pawnbroker": {
           "name": "Lombards"
         },
@@ -2066,6 +2004,142 @@
         },
         "waterway/waterfall": {
           "name": "Ūdenskritums"
+        },
+        "boundary": {
+          "name": "Robeža"
+        },
+        "building_point": {
+          "name": "Ēka"
+        },
+        "ford_line": {
+          "name": "Brasls"
+        },
+        "type/multipolygon": {},
+        "shop/ice_cream": {
+          "name": "Saldējuma Veikals",
+          "terms": ["sorbejs", "saldēts"]
+        },
+        "railway/station": {
+          "name": "Stacija"
+        },
+        "office/travel_agent": {
+          "name": "Ceļojumu aģentūra"
+        },
+        "office/lawyer/notary": {
+          "name": "Notāru birojs"
+        },
+        "natural/wood_point": {
+          "name": "Dabisks mežs"
+        },
+        "landuse/basin": {
+          "name": "Baseins"
+        },
+        "landuse/reservoir": {
+          "name": "Ūdenstilpne"
+        },
+        "landuse/industrial/industrial_point": {
+          "name": "Rūpniecības zona"
+        },
+        "indoor/corridor_line": {
+          "name": "Iekštelpu koridors"
+        },
+        "highway/bus_stop": {
+          "name": "Autobusu pietura"
+        },
+        "highway/motorway_link-US-CA": {
+          "name": "Ātrgaitas šosejas pieslēgums"
+        },
+        "highway/primary_link-US-CA": {
+          "name": "Galvenā ceļa pieslēgums"
+        },
+        "highway/trunk_link-US-CA": {
+          "name": "Maģistrālā ceļa pieslēgums"
+        },
+        "highway/path/bicycle_foot": {
+          "name": "Velosipēdu un gājēju ceļš"
+        },
+        "highway/footway/crossing/marked": {
+          "name": "Marķēta šķērsošanas vieta"
+        },
+        "highway/footway/crossing/zebra": {
+          "name": "Marķēta šķērsošanas vieta"
+        },
+        "highway/crossing/marked": {
+          "name": "Marķēta šķērsošanas vieta"
+        },
+        "highway/crossing/zebra": {
+          "name": "Marķēta šķērsošanas vieta"
+        },
+        "craft/locksmith": {
+          "name": "Atslēdznieks"
+        },
+        "craft/tailor": {
+          "name": "Šuvējs"
+        },
+        "building/entrance": {
+          "name": "Ieeja/Izeja"
+        },
+        "building/glasshouse": {
+          "name": "Siltumnīca",
+          "terms": ["augi", "stikls"]
+        },
+        "boundary/administrative": {
+          "name": "Administratīvā robeža",
+          "terms": ["robeža", "novadu robeža", "administratīvā teritorija"]
+        },
+        "amenity/bus_station": {
+          "name": "Autobusu stacija / Terminālis"
+        },
+        "amenity/dancing_school": {
+          "name": "Deju skola"
+        },
+        "amenity/driving_school": {
+          "name": "Autoskola"
+        },
+        "amenity/embassy": {
+          "name": "Vēstniecība"
+        },
+        "amenity/ferry_terminal": {
+          "name": "Prāmju termināls"
+        },
+        "amenity/kindergarten": {
+          "name": "Bērnudārza teritorija"
+        },
+        "amenity/school": {
+          "name": "Skolas teritorija"
+        },
+        "@templates/contact": {
+          "name": "Punkts"
+        },
+        "@templates/internet_access": {
+          "name": "Punkts"
+        },
+        "@templates/poi": {
+          "name": "Punkts"
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Punkts"
+        },
+        "@templates/crossing/defaults": {
+          "name": "Punkts"
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Punkts"
+        },
+        "@templates/crossing/markings": {
+          "name": "Punkts"
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Punkts"
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Punkts"
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Punkts"
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Punkts"
         }
       }
     }

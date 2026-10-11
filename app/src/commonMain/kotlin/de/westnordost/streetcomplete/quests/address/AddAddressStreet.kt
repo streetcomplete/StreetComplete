@@ -51,7 +51,6 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName> {
     // In Japan, housenumbers usually have block numbers, not streets
     override val enabledInCountries = AllCountriesExcept("JP")
     override val achievements = listOf(POSTMAN)
-    override val hint = Res.string.quest_streetName_hint
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val excludedWayNodeIds = mapData.ways

@@ -25,7 +25,10 @@ class AddFerryAccessHgv : OsmElementQuestType<FerryHgvAccess> {
 
     private val filter by lazy { """
         ways, relations with
-          route = ferry and !hgv and !hgv:signed
+          route = ferry
+          and !hgv
+          and !hgv:signed
+          and motor_vehicle != no
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify ferry access for hgv"

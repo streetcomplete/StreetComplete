@@ -147,6 +147,15 @@
       "aerialway": "rope_tow"
     }
   },
+  "aerialway/station": {
+    "icon": "temaki-gondola_lift",
+    "geometry": ["point", "vertex", "area"],
+    "tags": {
+      "aerialway": "station"
+    },
+    "matchScore": 0.95,
+    "searchable": false
+  },
   "aerialway/t-bar": {
     "icon": "temaki-t_bar_lift",
     "geometry": ["line"],
@@ -256,7 +265,7 @@
     }
   },
   "aeroway/terminal": {
-    "icon": "maki-airport",
+    "icon": "pinhead-airport_terminal",
     "geometry": ["point", "area"],
     "tags": {
       "aeroway": "terminal"
@@ -530,8 +539,27 @@
       "amenity": "charging_station"
     }
   },
+  "amenity/charging_station/charging_station_bicycle": {
+    "icon": "temaki-electronic",
+    "geometry": ["point", "vertex", "area"],
+    "tags": {
+      "amenity": "charging_station",
+      "bicycle": "yes",
+      "motorcar": "no"
+    }
+  },
+  "amenity/charging_station/charging_station_bicycle_designated": {
+    "icon": "temaki-electronic",
+    "geometry": ["point", "vertex", "area"],
+    "tags": {
+      "amenity": "charging_station",
+      "bicycle": "designated",
+      "motorcar": "no"
+    },
+    "searchable": false
+  },
   "amenity/childcare": {
-    "icon": "fas-child-reaching",
+    "icon": "pinhead-baby",
     "geometry": ["point", "area"],
     "tags": {
       "amenity": "childcare"
@@ -778,7 +806,7 @@
     }
   },
   "amenity/doctors/cardiology": {
-    "icon": "maki-doctor",
+    "icon": "pinhead-heart_with_greek_cross",
     "geometry": ["point", "area"],
     "tags": {
       "amenity": "doctors",
@@ -843,7 +871,7 @@
     }
   },
   "amenity/doctors/gynaecology": {
-    "icon": "maki-doctor",
+    "icon": "fas-venus",
     "geometry": ["point", "area"],
     "tags": {
       "amenity": "doctors",
@@ -856,7 +884,7 @@
     }
   },
   "amenity/doctors/haematology": {
-    "icon": "maki-doctor",
+    "icon": "maki-blood-bank",
     "geometry": ["point", "area"],
     "tags": {
       "amenity": "doctors",
@@ -882,7 +910,7 @@
     }
   },
   "amenity/doctors/nephrology": {
-    "icon": "maki-doctor",
+    "icon": "pinhead-kidneys",
     "geometry": ["point", "area"],
     "tags": {
       "amenity": "doctors",
@@ -934,7 +962,7 @@
     }
   },
   "amenity/doctors/ophthalmology": {
-    "icon": "maki-doctor",
+    "icon": "fas-eye",
     "geometry": ["point", "area"],
     "tags": {
       "amenity": "doctors",
@@ -1012,7 +1040,7 @@
     }
   },
   "amenity/doctors/podiatry": {
-    "icon": "maki-doctor",
+    "icon": "pinhead-foot",
     "geometry": ["point", "area"],
     "tags": {
       "amenity": "doctors",
@@ -1051,7 +1079,7 @@
     }
   },
   "amenity/doctors/pulmonology": {
-    "icon": "maki-doctor",
+    "icon": "fas-lungs",
     "geometry": ["point", "area"],
     "tags": {
       "amenity": "doctors",
@@ -1136,7 +1164,7 @@
     }
   },
   "amenity/dojo": {
-    "icon": "maki-pitch",
+    "icon": "pinhead-person_wearing_martial_arts_belt_front_kicking",
     "geometry": ["point", "area"],
     "tags": {
       "amenity": "dojo"
@@ -1201,7 +1229,7 @@
     }
   },
   "amenity/fast_food/bagel": {
-    "icon": "maki-fast-food",
+    "icon": "pinhead-bagel_seeded",
     "geometry": ["point", "area"],
     "tags": {
       "amenity": "fast_food",
@@ -1344,8 +1372,7 @@
       "amenity": "ferry_terminal"
     },
     "matchScore": 0.95,
-    "searchable": false,
-    "replacement": "public_transport/station_ferry"
+    "searchable": false
   },
   "amenity/fire_station": {
     "icon": "maki-fire-station",
@@ -1465,7 +1492,7 @@
     }
   },
   "amenity/kindergarten": {
-    "icon": "temaki-school",
+    "icon": "fas-children",
     "geometry": ["area", "point"],
     "tags": {
       "amenity": "kindergarten"
@@ -1516,7 +1543,7 @@
     }
   },
   "amenity/library_dropoff": {
-    "icon": "maki-library",
+    "icon": "pinhead-book_with_bookmark_in_slot",
     "geometry": ["point", "vertex"],
     "tags": {
       "amenity": "library_dropoff"
@@ -1702,6 +1729,14 @@
       "parking_space": "disabled"
     },
     "matchScore": 0.95
+  },
+  "amenity/parking_surface": {
+    "icon": "temaki-car_parked",
+    "geometry": ["area", "point", "vertex"],
+    "tags": {
+      "amenity": "parking",
+      "parking": "surface"
+    }
   },
   "amenity/payment_centre": {
     "icon": "temaki-money_hand",
@@ -1933,7 +1968,7 @@
     }
   },
   "amenity/public_bookcase": {
-    "icon": "maki-library",
+    "icon": "pinhead-open_book_under_roof",
     "geometry": ["point", "area"],
     "tags": {
       "amenity": "public_bookcase"
@@ -2162,7 +2197,7 @@
     }
   },
   "amenity/restaurant/steakhouse": {
-    "icon": "maki-slaughterhouse",
+    "icon": "temaki-meat",
     "geometry": ["point", "area"],
     "tags": {
       "amenity": "restaurant",
@@ -2217,7 +2252,7 @@
     }
   },
   "amenity/school": {
-    "icon": "temaki-school",
+    "icon": "maki-school",
     "geometry": ["area", "point"],
     "tags": {
       "amenity": "school"
@@ -2466,7 +2501,7 @@
     }
   },
   "amenity/ticket_validator": {
-    "icon": "temaki-vending_tickets",
+    "icon": "pinhead-ticket_in_slot",
     "geometry": ["point", "vertex"],
     "tags": {
       "amenity": "ticket_validator"
@@ -2848,7 +2883,19 @@
     "tags": {
       "area": "yes"
     },
-    "matchScore": 0.1
+    "matchScore": 0.1,
+    "relation": {
+      "reference": "multipolygon",
+      "allowDuplicateMembers": false,
+      "members": [{
+        "role": "inner",
+        "geometry": ["line", "area"]
+      }, {
+        "role": "outer",
+        "geometry": ["line", "area"],
+        "min": 1
+      }]
+    }
   },
   "area/footway": {
     "geometry": ["area"],
@@ -3908,6 +3955,14 @@
     },
     "matchScore": 0.5
   },
+  "building/tent": {
+    "icon": "pinhead-wall_tent",
+    "geometry": ["area"],
+    "tags": {
+      "building": "tent"
+    },
+    "matchScore": 0.5
+  },
   "building/terrace": {
     "icon": "temaki-row_houses",
     "geometry": ["area"],
@@ -4330,7 +4385,7 @@
     }
   },
   "craft/sculptor": {
-    "icon": "maki-art-gallery",
+    "icon": "pinhead-classical_statue",
     "geometry": ["point", "area"],
     "tags": {
       "craft": "sculptor"
@@ -4485,7 +4540,7 @@
     }
   },
   "education/kindergarten": {
-    "icon": "temaki-school",
+    "icon": "fas-children",
     "geometry": ["area", "point"],
     "tags": {
       "education": "kindergarten"
@@ -4529,7 +4584,7 @@
     }
   },
   "education/school": {
-    "icon": "temaki-school",
+    "icon": "maki-school",
     "geometry": ["area", "point"],
     "tags": {
       "education": "school"
@@ -4668,7 +4723,7 @@
     }
   },
   "emergency/life_ring": {
-    "icon": "fas-life-ring",
+    "icon": "pinhead-life_ring",
     "geometry": ["point", "vertex"],
     "tags": {
       "emergency": "life_ring"
@@ -4686,7 +4741,7 @@
     }
   },
   "emergency/lifeguard": {
-    "icon": "fas-life-ring",
+    "icon": "pinhead-person_sitting_on_lifeguard_stand_above_water",
     "geometry": ["point", "area"],
     "tags": {
       "emergency": "lifeguard"
@@ -4978,7 +5033,7 @@
     }
   },
   "healthcare/audiologist": {
-    "icon": "maki-hospital",
+    "icon": "temaki-ear",
     "geometry": ["point", "area"],
     "tags": {
       "healthcare": "audiologist"
@@ -5061,7 +5116,7 @@
     }
   },
   "healthcare/podiatrist": {
-    "icon": "maki-hospital",
+    "icon": "pinhead-foot",
     "geometry": ["point", "area"],
     "tags": {
       "healthcare": "podiatrist"
@@ -6115,6 +6170,13 @@
       "memorial": "plaque"
     }
   },
+  "historic/millstone": {
+    "icon": "roentgen-circle_with_dot",
+    "geometry": ["point", "vertex"],
+    "tags": {
+      "historic": "millstone"
+    }
+  },
   "historic/monument": {
     "icon": "maki-monument",
     "geometry": ["point", "vertex", "area"],
@@ -6352,14 +6414,6 @@
       "landuse": "education"
     },
     "matchScore": 0.9
-  },
-  "landuse/farm": {
-    "icon": "maki-farm",
-    "geometry": ["point", "area"],
-    "tags": {
-      "landuse": "farm"
-    },
-    "searchable": false
   },
   "landuse/farmland": {
     "icon": "fas-tractor",
@@ -6629,14 +6683,6 @@
     "tags": {
       "landuse": "plant_nursery"
     }
-  },
-  "landuse/pond": {
-    "icon": "maki-water",
-    "geometry": ["area"],
-    "tags": {
-      "landuse": "pond"
-    },
-    "searchable": false
   },
   "landuse/quarry": {
     "icon": "temaki-pick_hammer",
@@ -7126,7 +7172,7 @@
     }
   },
   "leisure/miniature_golf": {
-    "icon": "temaki-golf_green",
+    "icon": "pinhead-person_swinging_golf_club_beside_windmill",
     "geometry": ["area", "point"],
     "tags": {
       "leisure": "miniature_golf"
@@ -7192,7 +7238,7 @@
     }
   },
   "leisure/pitch/archery": {
-    "icon": "temaki-archery",
+    "icon": "pinhead-target_with_archery_arrow_at_bullseye",
     "geometry": ["area", "point"],
     "tags": {
       "leisure": "pitch",
@@ -7584,6 +7630,13 @@
     "geometry": ["point", "area"],
     "tags": {
       "leisure": "sauna"
+    }
+  },
+  "leisure/schoolyard": {
+    "icon": "pinhead-person_running_after_person",
+    "geometry": ["area"],
+    "tags": {
+      "leisure": "schoolyard"
     }
   },
   "leisure/slipway": {
@@ -8353,6 +8406,14 @@
       "man_made": "silo"
     }
   },
+  "man_made/silo/crop": {
+    "icon": "temaki-silo",
+    "geometry": ["point", "area"],
+    "tags": {
+      "man_made": "silo",
+      "content": "crop"
+    }
+  },
   "man_made/ski_jump": {
     "icon": "temaki-ski_jumping",
     "geometry": ["point", "area"],
@@ -8691,13 +8752,6 @@
       "military": "checkpoint"
     }
   },
-  "military/nuclear_explosion_site": {
-    "icon": "maki-danger",
-    "geometry": ["point", "vertex", "area"],
-    "tags": {
-      "military": "nuclear_explosion_site"
-    }
-  },
   "military/office": {
     "icon": "temaki-military",
     "geometry": ["point", "area"],
@@ -8763,7 +8817,7 @@
     }
   },
   "natural/cave_entrance": {
-    "icon": "maki-triangle",
+    "icon": "pinhead-cave",
     "geometry": ["point", "vertex", "area"],
     "tags": {
       "natural": "cave_entrance"
@@ -9246,7 +9300,7 @@
     "searchable": false
   },
   "office/adoption_agency": {
-    "icon": "maki-suitcase",
+    "icon": "fas-hands-holding-child",
     "geometry": ["point", "area"],
     "tags": {
       "office": "adoption_agency"
@@ -9600,7 +9654,7 @@
     "searchable": false
   },
   "office/union": {
-    "icon": "maki-suitcase",
+    "icon": "fas-hand-back-fist",
     "geometry": ["point", "area"],
     "tags": {
       "office": "union"
@@ -9745,7 +9799,7 @@
     }
   },
   "place/farm": {
-    "icon": "maki-farm",
+    "icon": "maki-triangle-stroked",
     "geometry": ["point", "area"],
     "tags": {
       "place": "farm"
@@ -9900,7 +9954,7 @@
     }
   },
   "playground/cushion": {
-    "icon": "maki-playground",
+    "icon": "temaki-cushion",
     "geometry": ["point", "area"],
     "tags": {
       "playground": "cushion"
@@ -9928,7 +9982,7 @@
     }
   },
   "playground/map": {
-    "icon": "temaki-compass",
+    "icon": "pinhead-africa",
     "geometry": ["point", "area"],
     "tags": {
       "playground": "map"
@@ -9942,7 +9996,7 @@
     }
   },
   "playground/pump": {
-    "icon": "temaki-water",
+    "icon": "temaki-well_pump_manual",
     "geometry": ["point"],
     "tags": {
       "playground": "pump"
@@ -9977,7 +10031,7 @@
     }
   },
   "playground/slide": {
-    "icon": "roentgen-slide",
+    "icon": "temaki-slide2",
     "geometry": ["point", "line", "area"],
     "tags": {
       "playground": "slide"
@@ -10162,6 +10216,27 @@
       "generator:method": "photovoltaic",
       "generator:type": "solar_photovoltaic_panel",
       "generator:output:electricity": "*",
+      "location": "roof"
+    }
+  },
+  "power/generator/method/solar_thermal_collector": {
+    "icon": "fas-solar-panel",
+    "geometry": ["area", "point", "vertex"],
+    "tags": {
+      "power": "generator",
+      "generator:method": "thermal",
+      "generator:source": "solar",
+      "generator:type": "solar_thermal_collector"
+    }
+  },
+  "power/generator/method/solar_thermal_collector/location/roof": {
+    "icon": "fas-solar-panel",
+    "geometry": ["area", "point", "vertex"],
+    "tags": {
+      "power": "generator",
+      "generator:method": "thermal",
+      "generator:source": "solar",
+      "generator:type": "solar_thermal_collector",
       "location": "roof"
     }
   },
@@ -10431,7 +10506,8 @@
     "tags": {
       "public_transport": "platform"
     },
-    "matchScore": 0.6
+    "matchScore": 0.6,
+    "searchable": false
   },
   "public_transport/platform/aerialway": {
     "icon": "temaki-board_gondola_lift",
@@ -10639,7 +10715,8 @@
     "tags": {
       "public_transport": "platform"
     },
-    "matchScore": 0.6
+    "matchScore": 0.6,
+    "searchable": false
   },
   "public_transport/station": {
     "icon": "temaki-transit",
@@ -10647,15 +10724,13 @@
     "tags": {
       "public_transport": "station"
     },
-    "matchScore": 0.2
+    "matchScore": 0.2,
+    "searchable": false
   },
   "public_transport/station_aerialway": {
-    "icon": "temaki-gondola_lift",
+    "icon": "temaki-board_gondola_lift",
     "geometry": ["point", "vertex", "area"],
     "tags": {
-      "aerialway": "station"
-    },
-    "addTags": {
       "public_transport": "station",
       "aerialway": "station"
     }
@@ -10784,7 +10859,8 @@
     "tags": {
       "public_transport": "stop_position"
     },
-    "matchScore": 0.2
+    "matchScore": 0.2,
+    "searchable": false
   },
   "public_transport/stop_position_aerialway": {
     "icon": "temaki-gondola_lift",
@@ -11092,7 +11168,8 @@
     "geometry": ["point", "vertex", "area"],
     "tags": {
       "railway": "wash"
-    }
+    },
+    "matchScore": 0.9
   },
   "railway/tram": {
     "icon": "temaki-tram",
@@ -11218,6 +11295,21 @@
     "geometry": ["point"],
     "tags": {
       "seamark:type": "mooring"
+    }
+  },
+  "seamark/offshore_platform": {
+    "icon": "maki-harbor",
+    "geometry": ["point", "vertex", "area"],
+    "tags": {
+      "seamark:type": "platform"
+    },
+    "addTags": {
+      "seamark:type": "platform",
+      "man_made": "offshore_platform"
+    },
+    "removeTags": {
+      "seamark:type": "*",
+      "man_made": "offshore_platform"
     }
   },
   "shop": {
@@ -11464,21 +11556,21 @@
     }
   },
   "shop/charity": {
-    "icon": "maki-shop",
+    "icon": "pinhead-shopping_bag_with_heart",
     "geometry": ["point", "area"],
     "tags": {
       "shop": "charity"
     }
   },
   "shop/cheese": {
-    "icon": "fas-cheese",
+    "icon": "pinhead-cheese_wedge",
     "geometry": ["point", "area"],
     "tags": {
       "shop": "cheese"
     }
   },
   "shop/chemist": {
-    "icon": "fas-shopping-basket",
+    "icon": "pinhead-tube_and_toothbrush",
     "geometry": ["point", "area"],
     "tags": {
       "shop": "chemist"
@@ -11687,7 +11779,7 @@
     }
   },
   "shop/esoteric": {
-    "icon": "maki-shop",
+    "icon": "pinhead-crystal_ball_on_sphere_stand",
     "geometry": ["point", "area"],
     "tags": {
       "shop": "esoteric"
@@ -11908,7 +12000,7 @@
     "searchable": false
   },
   "shop/honey": {
-    "icon": "fas-jar",
+    "icon": "pinhead-honeycomb",
     "geometry": ["point", "area"],
     "tags": {
       "shop": "honey"
@@ -12289,7 +12381,7 @@
     }
   },
   "shop/second_hand": {
-    "icon": "fas-hand-holding-hand",
+    "icon": "pinhead-shopping_bag_with_arrows_recirculating",
     "geometry": ["point", "area"],
     "tags": {
       "shop": "second_hand"
@@ -12616,7 +12708,7 @@
     }
   },
   "tourism/artwork/bust": {
-    "icon": "fas-user-alt",
+    "icon": "pinhead-bust_on_plinth",
     "geometry": ["point", "vertex"],
     "tags": {
       "tourism": "artwork",
@@ -12934,7 +13026,7 @@
     }
   },
   "traffic_calming/cushion": {
-    "icon": "temaki-speed_hump",
+    "icon": "roentgen-traffic_cushion",
     "geometry": ["vertex"],
     "tags": {
       "traffic_calming": "cushion"
@@ -12962,7 +13054,7 @@
     }
   },
   "traffic_calming/mini_bumps": {
-    "icon": "temaki-speed_bump",
+    "icon": "roentgen-mini_bumps",
     "tags": {
       "traffic_calming": "mini_bumps"
     },
@@ -13041,6 +13133,32 @@
     "tags": {
       "type": "boundary",
       "boundary": "administrative"
+    },
+    "relation": {
+      "reference": "boundary",
+      "allowDuplicateMembers": false,
+      "members": [{
+        "role": "inner",
+        "geometry": ["line", "area"]
+      }, {
+        "role": "outer",
+        "geometry": ["line", "area"],
+        "min": 1
+      }, {
+        "role": "label",
+        "geometry": ["point", "vertex"],
+        "matchTags": [{
+          "place": "*"
+        }],
+        "max": 1
+      }, {
+        "role": "admin_centre",
+        "geometry": ["point", "vertex"],
+        "matchTags": [{
+          "place": "*"
+        }],
+        "max": 1
+      }]
     }
   },
   "type/boundary/protected_area": {
@@ -13291,14 +13409,6 @@
     "tags": {
       "type": "route",
       "route": "piste"
-    }
-  },
-  "type/route/power": {
-    "icon": "iD-power-line",
-    "geometry": ["relation"],
-    "tags": {
-      "type": "route",
-      "route": "power"
     }
   },
   "type/route/railway": {

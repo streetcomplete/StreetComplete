@@ -1,1 +1,5 @@
-Hëlleft fir OpenStreetMap mat StreetComplete besser ze maachen! Dës App fënnt Kaartendonnéeën an Ärer Ëmgéigend, déi feelen, a weist se op enger Kaart als Aufgaben un. Jiddwer Aufgab kann doduerch geléist ginn, datt Dir op d'Plaz gitt an eng einfach Fro beäntwert fir d'Kaart ze aktualiséieren. D'Informatioun, déi Dir agitt, gëtt dann direkt ënner Ärem Numm op OpenStreetMap gesat, ouni datt Dir en aneren Editeur benotze musst.
+Hëlleft fir OpenStreetMap mat StreetComplete besser ze maachen!
+
+Dës App fënnt Kaartendonnéeën an Ärer Ëmgéigend, déi feelen, a weist se op enger Kaart als Aufgaben un. Jiddwer Aufgab kann doduerch geléist ginn, datt Dir op d'Plaz gitt an eng einfach Fro beäntwert fir d'Kaart ze aktualiséieren.
+
+D'Informatioun, déi Dir agitt, gëtt dann direkt ënner Ärem Numm op OpenStreetMap gesat, ouni datt Dir en aneren Editeur benotze musst.

@@ -2,6 +2,7 @@
 atmOperators: [FNB, Bank Windhoek, Standard Bank, Nedbank, FNB Namibia, FNB ATM, First National Bank]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typem, typec, typen]
 edgeLineStyle: yellow
 hasLivingStreet: true
 isLeftHandTraffic: true

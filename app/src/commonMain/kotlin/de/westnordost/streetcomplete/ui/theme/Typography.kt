@@ -24,6 +24,11 @@ val Typography.extraLargeInput get() = h3.copy(
     textAlign = TextAlign.Center
 )
 
+/** For an input field that is the main element on the screen */
+val Typography.veryLargeInput get() = h4.copy(
+    textAlign = TextAlign.Center
+)
+
 /** For an input field that is amongst a few input elements on the screen */
 val Typography.largeInput get() = h5.copy(
     textAlign = TextAlign.Center

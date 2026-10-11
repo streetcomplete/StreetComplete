@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.screens.about.logs
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,17 +30,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.logs.LogsFilters
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
-import de.westnordost.streetcomplete.ui.ktx.isScrolledToEnd
-import io.github.vinceglb.filekit.dialogs.compose.rememberShareFileLauncher
+import de.westnordost.streetcomplete.ui.common.FloatingActionButton
+import de.westnordost.streetcomplete.ui.util.rememberShareFileLauncher
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -46,19 +52,28 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun LogsScreen(
     viewModel: LogsViewModel,
+    filters: LogsFilters,
     onClickFilters: () -> Unit,
     onClickBack: () -> Unit,
 ) {
-    val logs by viewModel.logs.collectAsState()
-    val filters by viewModel.filters.collectAsState()
+    val logs by remember(filters) { viewModel.getLogs(filters) }.collectAsState(emptyList())
     val filtersCount = remember(filters) { filters.count() }
 
     val listState = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
     val shareFileLauncher = rememberShareFileLauncher()
 
-    LaunchedEffect(logs.size) {
-        if (listState.isScrolledToEnd) listState.scrollToItem(logs.size)
+    // Follow new logs if the previously last log is visible, i.e. the user didn't scroll up.
+    // Checking whether the list is scrolled to the end now doesn't work, as the list may have
+    // already been laid out with the new logs at this point
+    var previousLogsCount by remember { mutableIntStateOf(0) }
+    val logsCount = logs.size
+    LaunchedEffect(logsCount) {
+        val lastVisibleIndex = listState.layoutInfo.visibleItemsInfo.lastOrNull()?.index
+        if (lastVisibleIndex == null || lastVisibleIndex >= previousLogsCount - 1) {
+            listState.scrollToItem(logsCount)
+        }
+        previousLogsCount = logsCount
     }
 
     Column(Modifier.fillMaxSize()) {
@@ -80,7 +95,7 @@ fun LogsScreen(
                 }
                 IconButton(onClick = {
                     coroutineScope.launch {
-                        shareFileLauncher.launch(viewModel.createLogsFile())
+                        shareFileLauncher(viewModel.createLogsFile(logs))
                     }
                 }) {
                     Icon(
@@ -90,20 +105,43 @@ fun LogsScreen(
                 }
             }
         )
-        if (logs.isEmpty()) {
-            CenteredLargeTitleHint(stringResource(Res.string.no_search_results))
-        } else {
+        Box {
             val insets = WindowInsets.safeDrawing.only(
                 WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
             ).asPaddingValues()
-            LazyColumn(
-                state = listState,
-                contentPadding = insets,
-                modifier = Modifier.consumeWindowInsets(insets)
+
+            if (logs.isEmpty()) {
+                CenteredLargeTitleHint(stringResource(Res.string.no_search_results))
+            } else {
+                LazyColumn(
+                    state = listState,
+                    contentPadding = insets,
+                    modifier = Modifier.consumeWindowInsets(insets)
+                ) {
+                    itemsIndexed(logs) { index, item ->
+                        if (index > 0) Divider()
+                        LogsRow(item, modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
+                    }
+                }
+            }
+            androidx.compose.animation.AnimatedVisibility(
+                visible = listState.canScrollForward,
+                enter = fadeIn(),
+                exit = fadeOut(),
+                modifier = Modifier.align(Alignment.BottomEnd)
             ) {
-                itemsIndexed(logs) { index, item ->
-                    if (index > 0) Divider()
-                    LogsRow(item, modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
+                FloatingActionButton(
+                    onClick = {
+                        coroutineScope.launch { listState.animateScrollToItem(logs.size) }
+                    },
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .padding(insets)
+                ) {
+                    Icon(
+                        painter = painterResource(Res.drawable.ic_arrow_down_24),
+                        contentDescription = "↓"
+                    )
                 }
             }
         }

@@ -43,6 +43,7 @@ import org.jetbrains.compose.resources.stringResource
 fun MainMenuDialog(
     onDismissRequest: () -> Unit,
     onClickProfile: () -> Unit,
+    onClickLogin: () -> Unit,
     onClickSettings: () -> Unit,
     onClickAbout: () -> Unit,
     onClickDownload: () -> Unit,
@@ -70,13 +71,19 @@ fun MainMenuDialog(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    BigMenuButton(
-                        onClick = { onDismissRequest(); onClickProfile() },
-                        icon = { Icon(painterResource(Res.drawable.ic_profile_48), null) },
-                        text = stringResource(
-                            if (isLoggedIn) Res.string.user_profile else Res.string.user_login
-                        ),
-                    )
+                    if (isLoggedIn) {
+                        BigMenuButton(
+                            onClick = { onDismissRequest(); onClickProfile() },
+                            icon = { Icon(painterResource(Res.drawable.ic_profile_48), null) },
+                            text = stringResource(Res.string.user_profile),
+                        )
+                    } else {
+                        BigMenuButton(
+                            onClick = { onDismissRequest(); onClickLogin() },
+                            icon = { Icon(painterResource(Res.drawable.ic_profile_48), null) },
+                            text = stringResource(Res.string.user_login),
+                        )
+                    }
                     BigMenuButton(
                         onClick = { onDismissRequest(); onClickSettings() },
                         icon = { Icon(painterResource(Res.drawable.ic_settings_48), null) },
@@ -196,6 +203,7 @@ private fun PreviewMainMenuDialog() {
     MainMenuDialog(
         onDismissRequest = {},
         onClickProfile = {},
+        onClickLogin = {},
         onClickSettings = {},
         onClickAbout = {},
         onClickDownload = {},

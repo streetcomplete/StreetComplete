@@ -53,17 +53,12 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun LoginScreen(
     viewModel: LoginViewModel,
-    launchAuth: Boolean,
     onClickBack: () -> Unit
 ) {
     val state by viewModel.loginState.collectAsState()
     val unsyncedChangesCount by viewModel.unsyncedChangesCount.collectAsState()
     var showCommunicationError by remember { mutableStateOf(false) }
     var showPermissionsError by remember { mutableStateOf(false) }
-
-    LaunchedEffect(launchAuth) {
-        if (launchAuth) viewModel.startLogin()
-    }
 
     // handle error state: just show message once and return to login state
     LaunchedEffect(state) {
@@ -140,12 +135,12 @@ fun LoginScreen(
                     modifier = Modifier.fillMaxSize(),
                     captureBackPresses = true,
                     navigator = webViewNavigator,
-                    onCreated = {
+                    onCreated = fun() {
                         val settings = webViewState.webSettings
                         settings.isJavaScriptEnabled = true
                         settings.customUserAgentString = ApplicationConstants.USER_AGENT
                         settings.supportZoom = false
-                    } as () -> Unit,
+                    },
                 )
             }
         } else if (state is RetrievingAccessToken || state is LoggedIn) {

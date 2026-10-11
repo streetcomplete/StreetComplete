@@ -20,6 +20,7 @@ class AddCaravans : OsmFilterQuestType<Boolean>() {
         nodes, ways, relations with
           tourism = camp_site
           and !caravans
+          and access !~ private|no
     """
     override val changesetComment = "Survey whether one can camp with caravans here"
     override val wikiLink = "Key:caravans"

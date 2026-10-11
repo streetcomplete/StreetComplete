@@ -58,9 +58,6 @@
         "amenity/bureau_de_change": {
           "name": "Moneta trukea"
         },
-        "amenity/bus_station": {
-          "name": "Autobus geltoki / Terminal"
-        },
         "amenity/cafe": {
           "name": "Kafetegi"
         },
@@ -117,9 +114,6 @@
           "name": "Edateko ur iturria",
           "terms": ["iturria", "ura", "txorrota", "edangarria"]
         },
-        "amenity/embassy": {
-          "name": "Enbaxada"
-        },
         "amenity/fast_food": {
           "name": "Janari azkarra"
         },
@@ -168,12 +162,6 @@
         },
         "amenity/nightclub": {
           "name": "Klub"
-        },
-        "amenity/nursing_home": {
-          "name": "Zahar-egoitza"
-        },
-        "amenity/parking": {
-          "name": "Aparkalekua"
         },
         "amenity/parking/multi-storey": {
           "name": "Maila anitzeko aparkaleku"
@@ -373,9 +361,6 @@
         "barrier/wall": {
           "name": "Pareta"
         },
-        "boundary": {
-          "name": "Muga"
-        },
         "building": {
           "name": "Eraikina"
         },
@@ -477,9 +462,6 @@
         "building/warehouse": {
           "name": "Biltegia"
         },
-        "building_point": {
-          "name": "Eraikina"
-        },
         "club": {
           "name": "Klub"
         },
@@ -492,9 +474,6 @@
         },
         "craft/gardener": {
           "name": "Lorezain"
-        },
-        "craft/locksmith": {
-          "name": "Sarrailagintza"
         },
         "craft/painter": {
           "name": "Margolari"
@@ -530,13 +509,6 @@
         },
         "entrance/shop": {
           "name": "Dendarako sarrera"
-        },
-        "healthcare/physiotherapist": {
-          "name": "Fisioterapeuta",
-          "terms": ["fisioterapeuta", "masajea", "masaia", "fisioterapia"]
-        },
-        "highway/bus_stop": {
-          "name": "Autobus geltokia"
         },
         "highway/busway": {
           "name": "Autobusen bidea"
@@ -596,9 +568,6 @@
         },
         "landuse/industrial/scrap_yard": {
           "name": "Txatarra metaketa"
-        },
-        "landuse/pond": {
-          "name": "Urmael"
         },
         "landuse/residential": {
           "name": "Bizitegi-eremua"
@@ -699,9 +668,6 @@
         "office/government/register_office": {
           "name": "Erregistro bulegoa"
         },
-        "office/lawyer/notary": {
-          "name": "Notario bulegoa"
-        },
         "office/ngo": {
           "name": "GKE bulegoa",
           "terms": ["gke bulegoa", "gobernuz kanpoko erakundea", "elkartea"]
@@ -719,9 +685,6 @@
         },
         "office/telecommunication": {
           "name": "Telekomunikazio bulegoa"
-        },
-        "office/travel_agent": {
-          "name": "Bidai-agentzia"
         },
         "place": {
           "name": "Leku"
@@ -912,6 +875,89 @@
         },
         "waterway/waterfall": {
           "name": "Ur-jauzia"
+        },
+        "boundary": {
+          "name": "Muga"
+        },
+        "building_point": {
+          "name": "Eraikina"
+        },
+        "type/multipolygon": {},
+        "shop/ice_cream": {
+          "name": "Izozki denda"
+        },
+        "office/travel_agent": {
+          "name": "Bidai-agentzia"
+        },
+        "office/lawyer/notary": {
+          "name": "Notario bulegoa"
+        },
+        "highway/bus_stop": {
+          "name": "Autobus geltokia"
+        },
+        "highway/traffic_sign": {
+          "name": "Trafiko seinalea"
+        },
+        "highway/path/bicycle_foot": {
+          "name": "Bizikleta eta oinezko-bidea"
+        },
+        "highway/path/crossing/bicycle_foot": {
+          "name": "Bizikleta eta oinezkoen pasabidea"
+        },
+        "craft/locksmith": {
+          "name": "Sarrailagintza",
+          "terms": ["sarrailagilea", "sarrailak", "giltzak"]
+        },
+        "building/entrance": {
+          "name": "Sarrera/Irteera"
+        },
+        "building/glasshouse": {
+          "name": "Negutegia"
+        },
+        "amenity/bus_station": {
+          "name": "Autobus geltoki / Terminal"
+        },
+        "amenity/coworking_space": {
+          "name": "Coworking espazioa"
+        },
+        "amenity/embassy": {
+          "name": "Enbaxada"
+        },
+        "amenity/nursing_home": {
+          "name": "Zahar-egoitza"
+        },
+        "@templates/contact": {
+          "name": "Puntua"
+        },
+        "@templates/internet_access": {
+          "name": "Puntua"
+        },
+        "@templates/poi": {
+          "name": "Puntua"
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Puntua"
+        },
+        "@templates/crossing/defaults": {
+          "name": "Puntua"
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Puntua"
+        },
+        "@templates/crossing/markings": {
+          "name": "Puntua"
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Puntua"
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Puntua"
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Puntua"
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Puntua"
         }
       }
     }

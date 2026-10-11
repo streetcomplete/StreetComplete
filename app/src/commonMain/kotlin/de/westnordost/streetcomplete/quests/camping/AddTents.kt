@@ -20,6 +20,7 @@ class AddTents : OsmFilterQuestType<Boolean>() {
         nodes, ways, relations with
           tourism ~ caravan_site|camp_site
           and !tents
+          and access !~ private|no
     """
     override val changesetComment = "Survey whether tents may be used here"
     override val wikiLink = "Key:tents"

@@ -20,21 +20,19 @@ class StreetParkingPainter(
     private val backgroundPainter: Painter?,
     private val isUpsideDown: Boolean,
     private val randomSeed: Int,
-    private val phase: Float = 0f,
 ) : Painter() {
     private val omittedCarIndices = getOmittedCarIndices(parkingOrientation, parkingPosition)
 
     override fun DrawScope.onDraw() {
         val width = size.width
         val height = size.height
-        val startY = (if (phase <= 0f) 0f else phase - 1f) * height
         val random = Random(randomSeed)
 
         scale(scaleX = 1f, scaleY = if (isUpsideDown) -1f else +1f) {
             // drawing the street background
             if (backgroundPainter != null) {
                 val backgroundHeight = backgroundPainter.intrinsicSize.height / backgroundPainter.intrinsicSize.width * width
-                var y = startY
+                var y = 0f
                 while (y < height) {
                     if (backgroundHeight <= 0f) break
                     translate(top = y) {
@@ -51,7 +49,7 @@ class StreetParkingPainter(
             val carSpacingY = (2 * width / carCount)
 
             // drawing the cars
-            var carY = startY
+            var carY = 0f
             var i = 0
             while (carY < height) {
                 if (i % carCount !in omittedCarIndices) {

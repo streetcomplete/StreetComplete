@@ -2,7 +2,9 @@ package de.westnordost.streetcomplete.osm.bicycle_boulevard
 
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.bicycle_boulevard.BicycleBoulevard.*
+import kotlinx.serialization.Serializable
 
+@Serializable
 enum class BicycleBoulevard { YES, NO }
 
 fun parseBicycleBoulevard(tags: Map<String, String>): BicycleBoulevard =

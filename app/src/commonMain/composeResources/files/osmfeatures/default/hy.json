@@ -50,9 +50,6 @@
         "building": {
           "name": "Շինություն"
         },
-        "building_point": {
-          "name": "Շինություն"
-        },
         "highway/crossing": {
           "name": "Անցում (հետիոտնի)"
         },
@@ -79,6 +76,43 @@
         },
         "relation": {
           "name": "Յարաբերութիւն"
+        },
+        "building_point": {
+          "name": "Շինություն"
+        },
+        "type/multipolygon": {},
+        "@templates/contact": {
+          "name": "Կետ"
+        },
+        "@templates/internet_access": {
+          "name": "Կետ"
+        },
+        "@templates/poi": {
+          "name": "Կետ"
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Կետ"
+        },
+        "@templates/crossing/defaults": {
+          "name": "Կետ"
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Կետ"
+        },
+        "@templates/crossing/markings": {
+          "name": "Կետ"
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Կետ"
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Կետ"
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Կետ"
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Կետ"
         }
       }
     }

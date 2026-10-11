@@ -26,6 +26,7 @@ import de.westnordost.osm_opening_hours.model.TimeIntervals
 import de.westnordost.osm_opening_hours.model.TimeSpan
 import de.westnordost.osm_opening_hours.model.TimesSelector
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.LocalAppLocale
 import de.westnordost.streetcomplete.util.locale.DateTimeFormatStyle
 import de.westnordost.streetcomplete.util.locale.LocalTimeFormatter
 import kotlinx.datetime.LocalTime
@@ -72,7 +73,7 @@ private fun TimesSelector.toLocalizedString(
     layoutDirection: LayoutDirection = Ltr,
     locale: Locale? = null,
 ): String {
-    val timeFormatter = remember(locale) {
+    val timeFormatter = remember(locale, LocalAppLocale.current) {
         LocalTimeFormatter(locale = locale, style = DateTimeFormatStyle.Short)
     }
     return when (this) {

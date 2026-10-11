@@ -160,6 +160,8 @@ import de.westnordost.streetcomplete.data.weeklyosm.WeeklyOsmUpdater
 import de.westnordost.streetcomplete.overlays.overlaysRegistry
 import de.westnordost.streetcomplete.quests.questTypeRegistry
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.screens.MainNavViewModel
+import de.westnordost.streetcomplete.screens.MainNavViewModelImpl
 import de.westnordost.streetcomplete.screens.about.ChangelogViewModel
 import de.westnordost.streetcomplete.screens.about.ChangelogViewModelImpl
 import de.westnordost.streetcomplete.screens.about.CreditsViewModel
@@ -172,12 +174,19 @@ import de.westnordost.streetcomplete.screens.main.MainViewModel
 import de.westnordost.streetcomplete.screens.main.MainViewModelImpl
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModelImpl
+import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
+import de.westnordost.streetcomplete.screens.main.map.MainMapViewModelImpl
+import de.westnordost.streetcomplete.screens.main.teammode.TeamModeViewModel
+import de.westnordost.streetcomplete.screens.main.teammode.TeamModeViewModelImpl
+import de.westnordost.streetcomplete.screens.main.map.sources.EditHistoryPinsSource
+import de.westnordost.streetcomplete.screens.main.map.sources.MapQuestPinsSource
+import de.westnordost.streetcomplete.screens.main.map.sources.StyleableOverlaySource
 import de.westnordost.streetcomplete.screens.settings.SettingsViewModel
 import de.westnordost.streetcomplete.screens.settings.SettingsViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsViewModel
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsViewModelImpl
-import de.westnordost.streetcomplete.screens.settings.language_selection.LanguageSelectionViewModel
-import de.westnordost.streetcomplete.screens.settings.language_selection.LanguageSelectionViewModelImpl
+import de.westnordost.streetcomplete.screens.settings.locale_selection.LocaleSelectionViewModel
+import de.westnordost.streetcomplete.screens.settings.locale_selection.LocaleSelectionViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.messages.MessageSelectionViewModel
 import de.westnordost.streetcomplete.screens.settings.messages.MessageSelectionViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.overlay_selection.OverlaySelectionViewModel
@@ -186,8 +195,10 @@ import de.westnordost.streetcomplete.screens.settings.presets.EditTypePresetsVie
 import de.westnordost.streetcomplete.screens.settings.presets.EditTypePresetsViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.quest_selection.QuestSelectionViewModel
 import de.westnordost.streetcomplete.screens.settings.quest_selection.QuestSelectionViewModelImpl
-import de.westnordost.streetcomplete.screens.user.UserViewModel
-import de.westnordost.streetcomplete.screens.user.UserViewModelImpl
+import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialViewModel
+import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialViewModelImpl
+import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialViewModel
+import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialViewModelImpl
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementsViewModel
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementsViewModelImpl
 import de.westnordost.streetcomplete.screens.user.edits.EditStatisticsViewModel
@@ -224,10 +235,12 @@ val OSM_API_URL = if (USE_TEST_API) OSM_API_URL_TEST else OSM_API_URL_LIVE
 private const val STATISTICS_BACKEND_URL = "https://streetcomplete.app/statistics/"
 
 val commonModule = module {
+    viewModel { AppViewModel(get(), get()) }
+    single { AppLocaleUpdater(get()) }
 
     //region basic configuration
 
-    factory { ApplicationInitializer(get(), get(), get(), get(), get(), get(), get()) }
+    factory { ApplicationInitializer(get(), get(), get(), get(), get(), get(), get(), get()) }
 
     single { HttpClient {
         defaultRequest {
@@ -245,7 +258,7 @@ val commonModule = module {
 
     factory { Cleaner(get(), get(), get(), get(), get(), get(), get()) }
     factory { CacheTrimmer(get(), get()) }
-    factory { Preloader(get(named("CountryBoundariesLazy")), get(named("FeatureDictionaryLazy"))) }
+    factory { Preloader(get(named("CountryBoundariesLazy")), get(named("FeatureDictionaryLazy")), get(), get()) }
 
     //endregion
 
@@ -361,12 +374,12 @@ val commonModule = module {
     factory { OpenChangesetsDao(get()) }
     factory { EditElementsDao(get()) }
 
-    single { OpenChangesetsManager(get(), get(), get(), get()) }
+    single { OpenChangesetsManager(get(), get()) }
 
     single { ElementEditsUploader(get(), get(), get(), get(), get(), get()) }
 
     single<ElementEditsSource> { get<ElementEditsController>() }
-    single<ElementEditsController> { ElementEditsControllerImpl(get(), get(), get(), get()) }
+    single<ElementEditsController> { ElementEditsControllerImpl(get(), get(), get()) }
     single<MapDataWithEditsSource> { MapDataWithEditsSourceImpl(get(), get(), get()) }
 
     factory { CreatedElementsDao(get()) }
@@ -452,7 +465,7 @@ val commonModule = module {
         lazy { get<FeatureDictionary>() }
     }
 
-    single { SurveyChecker() }
+    single { SurveyChecker(get()) }
 
     //endregion
 
@@ -592,19 +605,33 @@ val commonModule = module {
     viewModel<MainViewModel> {
         MainViewModelImpl(
             get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
-            get(), get(), get(), get(), get(), get(), get(), get(), get(),
+            get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
         )
     }
+
+    viewModel<MainNavViewModel> { MainNavViewModelImpl(get(), get(), get()) }
 
     viewModel<EditHistoryViewModel> {
         EditHistoryViewModelImpl(get(), get())
     }
 
+    viewModel<MainMapViewModel> {
+        MainMapViewModelImpl(get(), get(), get(), get())
+    }
+    factory { MapQuestPinsSource(get(), get(), get()) }
+    factory { EditHistoryPinsSource(get()) }
+    factory { StyleableOverlaySource(get(), get()) }
+
     viewModel<MainBottomSheetViewModel> {
-        MainBottomSheetViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get())
+        MainBottomSheetViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(named("FeatureDictionaryLazy")))
     }
 
     viewModel<ArMeasureViewModel> { ArMeasureViewModelImpl(get(), get()) }
+
+    viewModel<TeamModeViewModel> { TeamModeViewModelImpl(get(), get()) }
+
+    viewModel<IntroTutorialViewModel> { IntroTutorialViewModelImpl(get()) }
+    viewModel<OverlaysTutorialViewModel> { OverlaysTutorialViewModelImpl(get()) }
 
     //endregion
 
@@ -622,8 +649,6 @@ val commonModule = module {
 
     viewModel<AchievementsViewModel> { AchievementsViewModelImpl(get(), get()) }
 
-    viewModel<UserViewModel> { UserViewModelImpl(get()) }
-
     //endregion
 
     //region about screen view models
@@ -638,7 +663,7 @@ val commonModule = module {
 
     viewModel<SettingsViewModel> { SettingsViewModelImpl(get(), get(), get(), get(), get(), get(), get()) }
     viewModel<OverlaySelectionViewModel> { OverlaySelectionViewModelImpl(get(), get(), get()) }
-    viewModel<LanguageSelectionViewModel> { LanguageSelectionViewModelImpl(get(), get()) }
+    viewModel<LocaleSelectionViewModel> { LocaleSelectionViewModelImpl(get(), get()) }
     viewModel<EditTypePresetsViewModel> { EditTypePresetsViewModelImpl(get(), get(), get(), get()) }
     viewModel<MessageSelectionViewModel> { MessageSelectionViewModelImpl(get()) }
     viewModel<QuestSelectionViewModel> { QuestSelectionViewModelImpl(get(), get(), get(), get(), get(named("CountryBoundariesLazy")), get()) }

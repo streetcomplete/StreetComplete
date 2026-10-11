@@ -25,6 +25,40 @@
         },
         "point": {
           "name": "ബിന്ദു"
+        },
+        "type/multipolygon": {},
+        "@templates/contact": {
+          "name": "ബിന്ദു"
+        },
+        "@templates/internet_access": {
+          "name": "ബിന്ദു"
+        },
+        "@templates/poi": {
+          "name": "ബിന്ദു"
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "ബിന്ദു"
+        },
+        "@templates/crossing/defaults": {
+          "name": "ബിന്ദു"
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "ബിന്ദു"
+        },
+        "@templates/crossing/markings": {
+          "name": "ബിന്ദു"
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "ബിന്ദു"
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "ബിന്ദു"
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "ബിന്ദു"
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "ബിന്ദു"
         }
       }
     }

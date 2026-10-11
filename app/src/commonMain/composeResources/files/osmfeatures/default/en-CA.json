@@ -2,123 +2,584 @@
   "en-CA": {
     "presets": {
       "presets": {
+        "aeroway/aerodrome": {
+          "name": "Airport",
+          "terms": ["aeroway", "airplane", "jet", "plane", "aerodrome"]
+        },
+        "aeroway/helipad": {
+          "name": "Helipad",
+          "terms": ["helicopter", "heliport"]
+        },
+        "amenity": {
+          "name": "Amenity"
+        },
         "amenity/arts_centre": {
-          "name": "Arts Centre"
+          "name": "Arts Centre",
+          "terms": ["community arts", "cultural center", "performance venue", "theater space", "theatre space", "arts center"]
+        },
+        "amenity/bank": {
+          "name": "Bank",
+          "terms": ["check", "deposit", "financial", "fund", "investment", "repository", "reserve", "safe", "savings", "stock", "treasury", "trust", "vault", "credit union"]
+        },
+        "amenity/bar": {
+          "name": "Bar",
+          "terms": ["beer", "bier", "booze", "cocktails", "dive", "drink", "pub", "tavern"]
+        },
+        "amenity/cafe": {
+          "name": "Cafe",
+          "terms": ["bistro", "coffee", "espresso", "latte", "tea"]
+        },
+        "amenity/cinema": {
+          "name": "Movie Theatre",
+          "terms": ["drive-in", "film", "flick", "imax", "movie", "multiplex", "picture", "screen", "show", "theater", "cinema"]
         },
         "amenity/clinic/dialysis": {
-          "name": "Dialysis Centre"
+          "name": "Dialysis Centre",
+          "terms": ["dialysis clinic", "kidney dialysis", "dialysis center"]
         },
         "amenity/community_centre": {
-          "name": "Community Centre"
+          "name": "Community Centre",
+          "terms": ["event", "hall", "community center"]
         },
         "amenity/community_centre/lgbtq": {
-          "name": "LGBTQ+ Community Centre"
+          "name": "LGBTQ+ Community Centre",
+          "terms": ["lgb event", "lgb hall", "lgbt event", "lgbt hall", "lgbtq event", "lgbtq hall", "lgbtq+ community center"]
         },
         "amenity/community_centre/youth_centre": {
-          "name": "Youth Centre"
+          "name": "Youth Centre",
+          "terms": ["youth club", "youth center"]
         },
         "amenity/conference_centre": {
-          "name": "Convention Centre"
+          "name": "Convention Centre",
+          "terms": ["auditorium", "exhibition", "exposition", "lecture", "conference center", "convention center"]
         },
         "amenity/dive_centre": {
-          "name": "Dive Centre"
+          "name": "Dive Centre",
+          "terms": ["diving", "scuba", "dive center"]
         },
         "amenity/doctors/paediatrics": {
-          "name": "Paediatrician"
+          "name": "Paediatrician",
+          "terms": ["adolescents", "children", "infants", "paediatrics", "pediatrician"]
         },
         "amenity/exhibition_centre": {
-          "name": "Exposition Centre"
+          "name": "Exposition Centre",
+          "terms": ["convention center", "expo", "fair", "trade exhibition", "trade fair", "trade show", "tradeshow", "exhibition center", "exposition center"]
         },
-        "amenity/parking": {
-          "name": "Parking Lot"
+        "amenity/fast_food": {
+          "name": "Fast Food",
+          "terms": ["drive thru", "drive-through", "food truck", "restaurant", "takeaway", "takeout"]
+        },
+        "amenity/fast_food/bagel": {
+          "name": "Bagel Fast Food",
+          "terms": ["breakfast", "lox"]
+        },
+        "amenity/fast_food/burger": {
+          "name": "Burger Fast Food",
+          "terms": ["breakfast", "dine", "dining", "dinner", "drive-in", "eat", "french fries", "grill", "lunch", "table"]
+        },
+        "amenity/fast_food/chicken": {
+          "name": "Chicken Fast Food",
+          "terms": ["breakfast", "canteen", "dine", "dining", "dinner", "drive-in", "eat", "fried chicken", "grill", "lunch", "table"]
+        },
+        "amenity/fast_food/chinese": {
+          "name": "Chinese Fast Food",
+          "terms": ["dim sum"]
+        },
+        "amenity/fast_food/donut": {
+          "name": "Donut Fast Food",
+          "terms": ["breakfast", "brunch", "cafe", "canteen", "coffee", "dine", "diner", "dining", "donut", "doughnut", "eat", "lunch", "table"]
+        },
+        "amenity/fast_food/fish_and_chips": {
+          "name": "Fish & Chips Fast Food",
+          "terms": ["breakfast", "cafe", "café", "dine", "dining", "dinner", "drive-in", "eat", "french fries", "grill", "lunch", "table"]
+        },
+        "amenity/fast_food/hot_dog": {
+          "name": "Hot Dog Fast Food",
+          "terms": ["ballpark", "frank", "frankfurter", "hotdog stand", "sandwich", "sausage", "wiener"]
+        },
+        "amenity/fast_food/ice_cream": {
+          "name": "Ice Cream Fast Food"
+        },
+        "amenity/fast_food/indian": {
+          "name": "Indian Fast Food",
+          "terms": ["breakfast", "chaat", "dinner", "dosa", "eat", "lassi", "lunch", "momos", "paneer tikka", "pani puri", "pav bhaji", "samosa", "vada pav"]
+        },
+        "amenity/fast_food/juice": {
+          "name": "Juice Fast Food",
+          "terms": ["beverages", "cafe", "café", "fruit drinks", "juice bar", "shakes", "smoothies"]
+        },
+        "amenity/fast_food/kebab": {
+          "name": "Kebab Fast Food",
+          "terms": ["bar", "breakfast", "cafe", "café", "canteen", "dine", "dining", "dinner", "doner kebab", "drive-in", "döner kebab", "eat", "grill", "lunch", "table"]
+        },
+        "amenity/fast_food/mexican": {
+          "name": "Mexican Fast Food",
+          "terms": ["breakfast", "burritos", "dine", "dining", "dinner", "drive-in", "eat", "enchiladas", "fajitas", "grill", "lunch", "nachos", "quesadillas", "salsa", "table", "tacos", "tamales", "tortillas"]
+        },
+        "amenity/fast_food/pizza": {
+          "name": "Pizza Fast Food",
+          "terms": ["deep dish", "dine", "dining", "dinner", "drive-in", "eat", "lunch", "slice", "table", "thin crust"]
+        },
+        "amenity/fast_food/sandwich": {
+          "name": "Sandwich Fast Food",
+          "terms": ["breakfast", "cafe", "café", "deli", "deli sandwich", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "meat", "table"]
+        },
+        "amenity/fast_food/sushi": {
+          "name": "Sushi Fast Food",
+          "terms": ["breakfast", "canteen", "dine", "dining", "dinner", "drive thru", "drive-in", "drive-through", "eat", "food truck", "lunch", "restaurant", "table", "takeaway", "takeout"]
+        },
+        "amenity/fast_food/wings": {
+          "name": "Chicken Wings Fast Food",
+          "terms": ["chicken", "dine", "dining", "dinner", "eat", "lunch", "table"]
+        },
+        "amenity/fuel": {
+          "name": "Gas Station",
+          "terms": ["biodiesel", "cng", "diesel", "fuel", "gasoline", "lng", "petrol", "propane"]
+        },
+        "amenity/grave_yard": {
+          "name": "Graveyard",
+          "terms": ["burial ground", "cemetary", "cemetery", "churchyard", "columbarium", "grave yard", "mausoleum", "tomb"]
+        },
+        "amenity/library": {
+          "name": "Library",
+          "terms": ["book", "public library", "reading"]
         },
         "amenity/payment_centre": {
-          "name": "Payment Centre"
+          "name": "Payment Centre",
+          "terms": ["bill pay", "cash", "check", "currency", "finance", "money", "tax pay", "payment center"]
+        },
+        "amenity/police": {
+          "name": "Police",
+          "terms": ["badge", "constable", "constabulary", "cop", "detective", "enforcement", "fed", "law", "officer", "patrol"]
+        },
+        "amenity/pub": {
+          "name": "Pub",
+          "terms": ["alcohol", "bar", "beer", "bier", "booze", "dive", "drink", "tavern"]
         },
         "amenity/recycling_centre": {
-          "name": "Recycling Centre"
+          "name": "Recycling Centre",
+          "terms": ["bottle", "can", "dump", "garbage", "glass", "recycle", "rubbish", "scrap", "trash", "recycling center"]
+        },
+        "amenity/restaurant": {
+          "name": "Restaurant",
+          "terms": ["bar", "brasserie", "breakfast", "cafe", "café", "canteen", "coffee", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "table"]
+        },
+        "amenity/restaurant/american": {
+          "name": "American Restaurant",
+          "terms": ["bar", "breakfast", "cafe", "café", "canteen", "coffee", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "table"]
+        },
+        "amenity/restaurant/asian": {
+          "name": "Asian Restaurant",
+          "terms": ["bar", "breakfast", "cafe", "café", "canteen", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "table"]
+        },
+        "amenity/restaurant/barbecue": {
+          "name": "Barbecue Restaurant",
+          "terms": ["bar", "bbq", "canteen", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "table", "barbeque restaurant"]
+        },
+        "amenity/restaurant/chinese": {
+          "name": "Chinese Restaurant",
+          "terms": ["bar", "breakfast", "cafe", "café", "canteen", "dim sum", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "table"]
+        },
+        "amenity/restaurant/french": {
+          "name": "French Restaurant",
+          "terms": ["bar", "breakfast", "cafe", "café", "canteen", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "table"]
+        },
+        "amenity/restaurant/georgian": {
+          "name": "Georgian Restaurant",
+          "terms": ["bar", "breakfast", "dine", "dining", "dinner", "drive-in", "eat", "lunch", "table"]
+        },
+        "amenity/restaurant/german": {
+          "name": "German Restaurant",
+          "terms": ["bar", "breakfast", "cafe", "café", "canteen", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "table"]
+        },
+        "amenity/restaurant/greek": {
+          "name": "Greek Restaurant",
+          "terms": ["bar", "breakfast", "cafe", "café", "canteen", "dine", "dining", "dinner", "drive-in", "eat", "grill", "gyros", "lunch", "olives", "pitas", "table"]
+        },
+        "amenity/restaurant/hotpot": {
+          "name": "Hot Pot Restaurant",
+          "terms": ["beijing", "budae jjigae", "canton", "chhnang pleurng", "china", "fondue", "guangdong", "hotpot", "jeongol", "jjigae", "kimchi jjigae", "lau", "mu kratha", "nabemono", "peking", "shabu shabu", "sichaun", "sin jum", "sukiyaki", "teochew", "teoswa", "yao hon"]
+        },
+        "amenity/restaurant/indian": {
+          "name": "Indian Restaurant",
+          "terms": ["bar", "biryani", "breakfast", "butter chicken", "chaat", "curry", "dal makhni", "dine", "dining", "dinner", "dosa", "eat", "garlic naan", "grill", "lassi", "lunch", "paneer tikka", "roti", "samosa", "thali"]
+        },
+        "amenity/restaurant/italian": {
+          "name": "Italian Restaurant",
+          "terms": ["bar", "breakfast", "cafe", "café", "canteen", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "pasta", "pizza", "table"]
+        },
+        "amenity/restaurant/japanese": {
+          "name": "Japanese Restaurant",
+          "terms": ["bar", "breakfast", "cafe", "café", "canteen", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "table"]
+        },
+        "amenity/restaurant/korean": {
+          "name": "Korean Restaurant",
+          "terms": ["bar", "breakfast", "cafe", "café", "canteen", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "table"]
+        },
+        "amenity/restaurant/mexican": {
+          "name": "Mexican Restaurant",
+          "terms": ["bar", "breakfast", "burritos", "dine", "dining", "dinner", "drive-in", "eat", "enchiladas", "fajitas", "grill", "lunch", "nachos", "quesadillas", "salsa", "table", "tacos", "tamales", "tortillas"]
+        },
+        "amenity/restaurant/noodle": {
+          "name": "Noodle Restaurant",
+          "terms": ["bar", "breakfast", "cafe", "café", "canteen", "cellophane noodles", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "rice noodles", "soba noodles", "soup", "table"]
+        },
+        "amenity/restaurant/pizza": {
+          "name": "Pizza Restaurant",
+          "terms": ["bar", "deep dish", "dine", "dining", "dinner", "drive-in", "eat", "lunch", "slice", "table", "thin crust", "pizzeria"]
+        },
+        "amenity/restaurant/ramen": {
+          "name": "Ramen Restaurant",
+          "terms": ["japanese", "noodles", "ramen-ten", "ramen-ya", "soup", "ramen shop"]
+        },
+        "amenity/restaurant/seafood": {
+          "name": "Seafood Restaurant",
+          "terms": ["bar", "breakfast", "cafe", "café", "clams", "crab", "crustaceans", "dine", "dining", "dinner", "drive-in", "eat", "fish", "grill", "lobsters", "lunch", "molluscs", "octopus", "oysters", "shellfish", "shrimp", "squid", "table"]
+        },
+        "amenity/restaurant/spanish": {
+          "name": "Spanish Restaurant",
+          "terms": ["bar", "breakfast", "cafe", "café", "canteen", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "table"]
+        },
+        "amenity/restaurant/sushi": {
+          "name": "Sushi Restaurant",
+          "terms": ["bar", "breakfast", "cafe", "café", "canteen", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "table"]
+        },
+        "amenity/restaurant/thai": {
+          "name": "Thai Restaurant",
+          "terms": ["bar", "breakfast", "cafe", "café", "canteen", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "table"]
+        },
+        "amenity/restaurant/turkish": {
+          "name": "Turkish Restaurant",
+          "terms": ["bar", "breakfast", "cafe", "café", "canteen", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "table"]
+        },
+        "amenity/restaurant/ukrainian": {
+          "name": "Ukrainian Restaurant",
+          "terms": ["bar", "breakfast", "dine", "dining", "dinner", "drive-in", "eat", "lunch", "table"]
+        },
+        "amenity/restaurant/vietnamese": {
+          "name": "Vietnamese Restaurant",
+          "terms": ["bar", "breakfast", "cafe", "café", "canteen", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "table"]
         },
         "amenity/social_facility/day_care": {
-          "name": "Social Services Day Care / Day Centre"
+          "name": "Social Services Day Care / Day Centre",
+          "terms": ["social services day care / day center"]
         },
         "amenity/telephone": {
-          "name": "Telephone"
+          "name": "Telephone",
+          "terms": ["pay phone", "payphone", "phone", "phone booth", "public phone", "public telephone"]
         },
         "amenity/theatre/type/amphi": {
-          "name": "Amphitheatre"
+          "name": "Amphitheatre",
+          "terms": ["ampi", "greek", "open air", "outdoor", "amphitheater"]
         },
         "amenity/toilets": {
-          "name": "Washroom"
+          "name": "Washroom",
+          "terms": ["head", "latrine", "outhouse", "privy", "public restroom", "public toilet", "w.c.", "water closet", "wc", "toilets", "bathroom", "lavatory", "restroom"]
+        },
+        "building": {
+          "name": "Building",
+          "terms": ["structure"]
         },
         "building/grandstand": {
-          "name": "Grandstand"
+          "name": "Grandstand",
+          "terms": ["bleachers", "stand", "stands", "tribune"]
         },
         "cycleway/asl": {
-          "name": "Bike Box"
+          "name": "Bike Box",
+          "terms": ["advanced stop box", "asl", "bicycle box", "bikebox", "cycle box", "cycle stop marking", "advanced stop line"]
+        },
+        "healthcare/birthing_center": {
+          "name": "Birthing Centre",
+          "terms": ["baby", "childbirth", "delivery", "labor", "labour", "midwive", "pregnancy", "pregnant", "birthing center"]
+        },
+        "healthcare/counselling": {
+          "name": "Counselling Centre",
+          "terms": ["sex therapist", "counseling center"]
+        },
+        "healthcare/physiotherapist": {
+          "name": "Physiotherapist",
+          "terms": ["physical", "therapist", "therapy", "physical therapist"]
+        },
+        "highway/crossing": {
+          "name": "Crossing",
+          "terms": ["crosswalk", "foot path crossing", "pedestrian crossing"]
+        },
+        "highway/crossing/informal": {
+          "name": "Informal Crossing"
+        },
+        "highway/crossing/traffic_signals": {
+          "name": "Crossing With Pedestrian Signals",
+          "terms": ["bicycle crossing (lights)", "crosswalk (lights)", "pedestrian crossing (lights)", "pedestrian traffic lights", "pedestrian traffic signals"]
+        },
+        "highway/crossing/uncontrolled": {
+          "name": "Marked Crossing",
+          "terms": ["crosswalk", "marked crosswalk", "marked foot path crossing", "marked pedestrian crosswalk", "zebra crossing"]
+        },
+        "highway/cycleway/bicycle_foot": {
+          "name": "Cycle & Foot Path",
+          "terms": ["bicycle and foot path", "bike and pedestrian path", "green way", "greenway", "mixed-use trail", "multi-use path", "multi-use trail", "rail trail", "segregated trail", "shared path", "shared use path"]
+        },
+        "highway/cycleway/crossing": {
+          "name": "Cycle Crossing"
+        },
+        "highway/cycleway/crossing/bicycle_foot": {
+          "name": "Cycle & Foot Crossing",
+          "terms": ["bicycle and foot crosswalk", "bike and pedestrian crossing", "cycleway", "cycling", "cyclist"]
+        },
+        "highway/cycleway/crossing/traffic_signals": {
+          "name": "Cycle Crossing With Traffic Signals",
+          "terms": ["bicycle crossing", "bike crossing", "cycle path crossing", "cycleway crossing"]
+        },
+        "highway/cycleway/crossing/uncontrolled": {
+          "name": "Marked Cycle Crossing",
+          "terms": ["crossride", "bicycle crossing", "bike crossing", "cycle crosswalk", "cycle path crossing", "cycleway crossing"]
+        },
+        "highway/cycleway/crossing/unmarked": {
+          "name": "Unmarked Cycle Crossing",
+          "terms": ["bicycle crossing", "bike crossing", "cycle path crossing", "cycleway crossing"]
+        },
+        "highway/cycleway/traffic_island": {
+          "name": "Cycle Refuge Island",
+          "terms": ["crossing island", "crosswalk island", "traffic island", "pedestrian island"]
+        },
+        "highway/cycleway/traffic_island_shared": {
+          "name": "Cycle & Foot Refuge Island",
+          "terms": ["crossing island", "crosswalk island", "traffic island", "pedestrian island"]
         },
         "highway/footway/crossing": {
-          "name": "Crosswalk"
+          "name": "Crosswalk",
+          "terms": ["foot path crossing", "pedestrian crossing"]
+        },
+        "highway/footway/crossing/traffic_signals": {
+          "name": "Crosswalk With Pedestrian Signals",
+          "terms": ["crosswalk (lights)", "pedestrian crossing (lights)", "pedestrian traffic lights", "pedestrian traffic signals", "crossing with pedestrian signals"]
         },
         "highway/footway/crossing/uncontrolled": {
-          "name": "Marked Crosswalk"
+          "name": "Marked Crossing",
+          "terms": ["crosswalk", "marked crosswalk", "marked foot path crossing", "marked pedestrian crosswalk", "zebra crossing"]
         },
         "highway/footway/crossing/unmarked": {
-          "name": "Unmarked Crosswalk"
+          "name": "Unmarked Crossing",
+          "terms": ["unmarked crosswalk", "unmarked foot path crossing", "unmarked pedestrian crossing"]
         },
         "highway/footway/informal": {
           "name": "Informal Foot Path"
         },
+        "highway/footway/sidewalk": {
+          "name": "Sidewalk",
+          "terms": ["pavement", "sidepath"]
+        },
+        "highway/motorway": {
+          "name": "Motorway",
+          "terms": ["autobahn", "expressway", "freeway", "highway", "interstate", "parkway", "road", "street", "thruway", "turnpike"]
+        },
+        "highway/path": {
+          "name": "Path",
+          "terms": ["hike", "hiking", "trackway", "trail", "walk"]
+        },
+        "highway/path/crossing": {
+          "name": "Cycle & Foot Crossing"
+        },
+        "highway/path/crossing/traffic_signals": {
+          "name": "Cycle & Foot Crossing With Pedestrian Signals"
+        },
+        "highway/path/crossing/uncontrolled": {
+          "name": "Marked Cycle & Foot Crossing"
+        },
+        "highway/path/crossing/unmarked": {
+          "name": "Unmarked Cycle & Foot Crossing"
+        },
+        "highway/steps": {
+          "name": "Steps",
+          "terms": ["staircase", "stairs", "stairway"]
+        },
         "highway/tertiary_link": {
-          "name": "Tertiary Link"
+          "name": "Tertiary Link",
+          "terms": ["off ramp", "on ramp", "ramp", "road", "street"]
+        },
+        "historic/monument": {
+          "name": "Monument"
+        },
+        "landuse/cemetery": {
+          "name": "Cemetery",
+          "terms": ["burial ground", "cemetary", "churchyard", "columbarium", "grave yard", "graveyard", "mausoleum", "tomb"]
+        },
+        "landuse/farmyard": {
+          "name": "Farmyard",
+          "terms": ["barnyard", "cattleyard", "feeding", "feedlot", "feedyard", "livestock"]
+        },
+        "landuse/grass": {
+          "name": "Grass",
+          "terms": ["field", "green", "lawn", "managed grass", "mown grass", "turf"]
+        },
+        "landuse/meadow": {
+          "name": "Meadow",
+          "terms": ["grazing", "hay field", "pasture"]
+        },
+        "landuse/orchard": {
+          "name": "Orchard",
+          "terms": ["fruit"]
+        },
+        "landuse/quarry": {
+          "name": "Quarry",
+          "terms": ["aggregate quarry", "open pit mine", "sand mine", "sand pit", "sand quarry", "sandpit"]
+        },
+        "landuse/vineyard": {
+          "name": "Vineyard",
+          "terms": ["grape", "wine"]
+        },
+        "leisure/adult_gaming_centre": {
+          "name": "Adult Gaming Centre",
+          "terms": ["gambling", "slot machine", "adult gaming center"]
         },
         "leisure/bleachers": {
-          "name": "Bleachers"
+          "name": "Bleachers",
+          "terms": ["bench", "crowd", "seat", "seating", "sports", "stand", "stands"]
         },
         "leisure/fitness_centre": {
-          "name": "Gym / Fitness Centre"
+          "name": "Gym / Fitness Centre",
+          "terms": ["gym", "health", "leisure", "pilates", "studio", "gym / fitness center"]
+        },
+        "leisure/horse_riding": {
+          "name": "Horseback Riding Centre",
+          "terms": ["equestrian center", "equestrian facility", "horse farm", "horse park", "horse ranch", "horse riding", "horse riding center", "horse riding facility", "riding facility", "riding stables", "stables", "horseback riding center"]
+        },
+        "leisure/indoor_play": {
+          "name": "Indoor Play Centre",
+          "terms": ["ball pit", "children's play center", "indoor playground", "indoor play center"]
+        },
+        "leisure/park": {
+          "name": "Park",
+          "terms": ["esplanade", "estate", "forest", "garden", "grass", "green", "grounds", "lawn", "lot", "meadow", "parkland", "place", "playground", "plaza", "pleasure garden", "recreation area", "square", "tract", "village green", "woodland"]
+        },
+        "leisure/playground": {
+          "name": "Playground",
+          "terms": ["jungle gym", "play area"]
+        },
+        "leisure/sports_centre": {
+          "name": "Sports Centre / Complex",
+          "terms": ["athletic center", "athletic centre", "recreation center", "recreation centre", "sports centre", "sports complex", "sports center / complex"]
+        },
+        "man_made/lighthouse": {
+          "name": "Lighthouse"
+        },
+        "man_made/pier": {
+          "name": "Pier",
+          "terms": ["berth", "dock", "jetty", "landing", "promenade", "wharf"]
         },
         "office/union": {
-          "name": "Labour Union Office"
+          "name": "Labour Union Office",
+          "terms": ["trade union", "union office", "labor union office"]
         },
         "place/neighbourhood": {
-          "name": "Neighbourhood"
+          "name": "Neighbourhood",
+          "terms": ["neighborhood"]
         },
         "public_transport/platform/bus_tram_point": {
-          "name": "Streetcar & Bus Stop"
+          "name": "Streetcar & Bus Stop",
+          "terms": ["bus", "light rail", "platform", "public transit", "public transportation", "rail", "streetcar", "track", "tram", "transit", "transportation", "trolley", "tram & bus stop"]
         },
         "public_transport/platform/tram": {
-          "name": "Streetcar Platform"
+          "name": "Streetcar Platform",
+          "terms": ["electric", "light rail", "platform", "public transit", "public transportation", "rail", "streetcar", "track", "tram", "transit", "transportation", "trolley", "tram platform"]
         },
         "public_transport/platform/tram_point": {
-          "name": "Streetcar Stop / Platform"
+          "name": "Streetcar Stop / Platform",
+          "terms": ["electric", "light rail", "platform", "public transit", "public transportation", "rail", "streetcar", "track", "tram", "transit", "transportation", "trolley", "tram stop / platform"]
         },
         "public_transport/station_tram": {
-          "name": "Streetcar Station"
+          "name": "Streetcar Station",
+          "terms": ["electric", "light rail", "public transit", "public transportation", "rail", "station", "streetcar", "terminal", "track", "tram", "transit", "transportation", "trolley", "tram station"]
         },
         "public_transport/stop_position_tram": {
-          "name": "Streetcar Stopping Location"
+          "name": "Streetcar Stopping Location",
+          "terms": ["electric", "light rail", "public transit", "public transportation", "rail", "streetcar", "track", "tram", "transit", "transportation", "trolley", "tram stopping location"]
         },
         "railway/tram": {
-          "name": "Streetcar Track"
+          "name": "Streetcar Track",
+          "terms": ["electric street railway", "light rail", "trolley track", "tramway", "tram track"]
         },
         "railway/tram_crossing": {
-          "name": "Streetcar-Path Crossing"
+          "name": "Streetcar-Path Crossing",
+          "terms": ["crossing", "grade crossing", "level crossing", "path tram crossing", "pedestrian crossing", "streetcar crossing", "tram path crossing", "tramway crossing", "trolley crossing", "tram-path crossing"]
         },
         "railway/tram_level_crossing": {
-          "name": "Streetcar-Road Crossing"
+          "name": "Streetcar-Road Crossing",
+          "terms": ["crossing", "grade crossing", "level crossing", "pedestrian crossing", "road tram crossing", "streetcar crossing", "tram road crossing", "tramway crossing", "trolley crossing", "tram-road crossing"]
         },
         "railway/tram_stop": {
-          "name": "Streetcar Stopping Position"
+          "name": "Streetcar Stopping Position",
+          "terms": ["tram stopping position"]
+        },
+        "shop/garden_centre": {
+          "name": "Garden Centre",
+          "terms": ["landscape", "mulch", "nursery", "plant nursery", "retail plant nursery", "shrub", "tree", "garden center"]
         },
         "telecom/data_center": {
-          "name": "Data Centre"
+          "name": "Data Centre",
+          "terms": ["computer systems storage", "information technology", "server farm", "telecommunications", "the cloud", "data center"]
         },
         "tourism/information/visitor_centre": {
-          "name": "Visitor Centre"
+          "name": "Visitor Centre",
+          "terms": ["visitors center", "visitors information center", "welcome center", "visitor center"]
+        },
+        "type/boundary/administrative": {
+          "relation": {
+            "role_labels": {
+              "admin_centre": "Admin Centre"
+            }
+          }
         },
         "type/route/tram": {
-          "name": "Streetcar Route"
-        }
+          "name": "Streetcar Route",
+          "terms": ["tram route"]
+        },
+        "building_point": {
+          "name": "Building",
+          "terms": ["structure"]
+        },
+        "highway/path/bicycle_foot": {
+          "name": "Cycle & Foot Path",
+          "terms": ["bicycle and foot path", "bike and pedestrian path", "green way", "greenway", "mixed-use trail", "multi-use path", "multi-use trail", "rail trail", "segregated trail", "shared path", "shared use path"]
+        },
+        "highway/path/traffic_island_shared": {
+          "name": "Cycle & Foot Refuge Island",
+          "terms": ["crossing island", "crosswalk island", "traffic island", "pedestrian island"]
+        },
+        "highway/path/crossing/informal": {
+          "name": "Informal Crossing"
+        },
+        "highway/path/crossing/marked": {
+          "name": "Marked Cycle & Foot Crossing"
+        },
+        "highway/path/crossing/bicycle_foot": {
+          "name": "Cycle & Foot Crossing",
+          "terms": ["bicycle and foot crosswalk", "bike and pedestrian crossing", "cycleway", "cycling", "cyclist"]
+        },
+        "highway/footway/crossing/informal": {
+          "name": "Informal Crossing"
+        },
+        "highway/footway/crossing/marked": {
+          "name": "Marked Crossing",
+          "terms": ["crosswalk", "marked crosswalk", "marked foot path crossing", "marked pedestrian crosswalk", "zebra crossing"]
+        },
+        "highway/footway/crossing/zebra": {
+          "name": "Marked Crossing",
+          "terms": ["crosswalk", "marked crosswalk", "marked foot path crossing", "marked pedestrian crosswalk", "zebra crossing"]
+        },
+        "highway/cycleway/crossing/marked": {
+          "name": "Marked Cycle Crossing",
+          "terms": ["crossride", "bicycle crossing", "bike crossing", "cycle crosswalk", "cycle path crossing", "cycleway crossing"]
+        },
+        "highway/crossing/marked": {
+          "name": "Marked Crossing",
+          "terms": ["crosswalk", "marked crosswalk", "marked foot path crossing", "marked pedestrian crosswalk", "zebra crossing"]
+        },
+        "highway/crossing/zebra": {
+          "name": "Marked Crossing",
+          "terms": ["crosswalk", "marked crosswalk", "marked foot path crossing", "marked pedestrian crosswalk", "zebra crossing"]
+        },
+        "boundary/administrative": {}
       }
     }
   }

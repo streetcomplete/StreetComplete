@@ -2,5 +2,6 @@
 atmOperators: [La Banque Postale, BNP Paribas, Crédit Mutuel, BRED]
 centerLineStyle: white
 chargingStationOperators: [Green Technologie, EZDrive]
+domesticSocketTypes: [typee, typec]
 edgeLineStyle: short white dashes
 officialLanguages: [fr]

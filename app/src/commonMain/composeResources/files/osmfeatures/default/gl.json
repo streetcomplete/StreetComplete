@@ -214,9 +214,6 @@
           "name": "Troco de divisas",
           "terms": ["troco", "cambio", "divisa", "moeda"]
         },
-        "amenity/bus_station": {
-          "name": "Estación de autobuses"
-        },
         "amenity/cafe": {
           "name": "Cafetaría",
           "terms": ["cafetaría", "café", "bar", "tetería", "cafetería"]
@@ -326,9 +323,6 @@
           "name": "Fonte de auga potábel",
           "terms": ["fonte", "auga", "potábel", "bebíbel", "beber", "potable", "bebible", "manantial", "manancial", "fontana", "fontanal", "hontanar", "venero", "bebedero"]
         },
-        "amenity/embassy": {
-          "name": "Embaixada"
-        },
         "amenity/events_venue": {
           "name": "Lugar de eventos"
         },
@@ -374,9 +368,6 @@
         },
         "amenity/fast_food/sandwich": {
           "name": "Comida rápida: Sandwiches"
-        },
-        "amenity/ferry_terminal": {
-          "name": "Terminal de transbordadores"
         },
         "amenity/fire_station": {
           "name": "Parque de bombeiros",
@@ -472,13 +463,6 @@
         "amenity/nightclub/lgbtq": {
           "name": "Discoteca LGBTQ+",
           "terms": ["discoteca gay", "discoteca lésbica", "discoteca lgbtq", "discoteca lgbt", "discoteca lgb"]
-        },
-        "amenity/nursing_home": {
-          "name": "Residencia de anciáns"
-        },
-        "amenity/parking": {
-          "name": "Aparcadoiro de automóbiles",
-          "terms": ["aparcadoiro", "parking", "aparcamento", "estacionamento"]
         },
         "amenity/parking/multi-storey": {
           "name": "Aparcadoiro multinivel"
@@ -1076,13 +1060,6 @@
         "barrier/wall/noise_barrier": {
           "name": "Barreira acústica"
         },
-        "boundary": {
-          "name": "Límite"
-        },
-        "boundary/administrative": {
-          "name": "Límite administrativo",
-          "terms": ["límite administrativo", "fronteira", "termo", "termo municipal", "término municipal"]
-        },
         "bridge/support": {
           "name": "Piar de ponte",
           "terms": ["columna", "pilastra", "peitoril", "soporte", "puente", "ponte", "piar", "suporte", "pilar"]
@@ -1268,9 +1245,6 @@
         "building_part": {
           "name": "Parte de edificio"
         },
-        "building_point": {
-          "name": "Edificio"
-        },
         "club": {
           "name": "Clube"
         },
@@ -1370,9 +1344,6 @@
           "name": "Copiado de chaves",
           "terms": ["cerralleiro", "chaves", "copia"]
         },
-        "craft/locksmith": {
-          "name": "Cerralleiro"
-        },
         "craft/painter": {
           "name": "Pintor"
         },
@@ -1431,9 +1402,6 @@
         "craft/stonemason": {
           "name": "Canteiro",
           "terms": ["albanel", "canteiro", "pedra"]
-        },
-        "craft/tailor": {
-          "name": "Xastre"
         },
         "craft/tiler": {
           "name": "Alicatador",
@@ -1528,9 +1496,6 @@
           "name": "Vao",
           "terms": ["vao", "vado", "paso", "cruce", "cruzamento", "gual"]
         },
-        "ford_line": {
-          "name": "Vao"
-        },
         "golf/bunker": {
           "name": "Trampa de Area"
         },
@@ -1583,9 +1548,6 @@
         "healthcare/birthing_center": {
           "name": "Centro de parto"
         },
-        "healthcare/blood_donation": {
-          "name": "Doación de sangue"
-        },
         "healthcare/dentist/orthodontics": {
           "name": "Ortodoncista"
         },
@@ -1604,9 +1566,6 @@
         },
         "healthcare/optometrist": {
           "name": "Optometrista"
-        },
-        "healthcare/physiotherapist": {
-          "name": "Fisioterapeuta"
         },
         "healthcare/podiatrist": {
           "name": "Podólogo"
@@ -1631,9 +1590,6 @@
         },
         "highway/bus_guideway": {
           "name": "Bus guiado"
-        },
-        "highway/bus_stop": {
-          "name": "Parada de bus"
         },
         "highway/corridor": {
           "name": "Corredor interior",
@@ -1978,9 +1934,6 @@
           "name": "Corredor interior",
           "terms": ["corredor", "pasillo"]
         },
-        "indoor/corridor_line": {
-          "name": "Corredor interior"
-        },
         "indoor/door": {
           "name": "Porta interior"
         },
@@ -2016,9 +1969,6 @@
           "name": "Acuicultura",
           "terms": ["cría", "crianza", "cultivo", "marisco", "peixes", "pescado", "alga", "algas", "orgo", "orgos", "ouco", "oucos", "granxa", "mar", "auga"]
         },
-        "landuse/basin": {
-          "name": "Cunca"
-        },
         "landuse/brownfield": {
           "name": "Soar urbanizado abandonado",
           "terms": ["terreo"]
@@ -2038,9 +1988,6 @@
           "name": "Área de construción",
           "terms": ["edificio", "excavadora", "sitio de construción", "zona de construción", "grúa", "guindastre", "demolición", "desarrollo", "infraestrutura", "construción", "desenvolvemento", "área de construción", "area", "zona en construcion", "área en construcion", "área", "zona"]
         },
-        "landuse/farm": {
-          "name": "Terra de labradío"
-        },
         "landuse/farmland": {
           "name": "Terra de labradío",
           "terms": ["cultivo", "terra de cultivo", "leira", "veiga", "agro", "eido", "pasto", "agricultura", "varcia", "plantación", "labrada", "plantío"]
@@ -2056,10 +2003,6 @@
         "landuse/forest": {
           "name": "Bosque xestionado",
           "terms": ["talla", "tala", "bosque", "madeira", "árbore", "arbore", "monte"]
-        },
-        "landuse/garages": {
-          "name": "Zona de garaxes privados",
-          "terms": ["terreo", "garaxe", "almacenamento", "almacenaxe", "cocheiras", "cocheira", "área", "area", "uso da terra", "soar", "solar"]
         },
         "landuse/grass": {
           "name": "Céspede",
@@ -2123,9 +2066,6 @@
           "name": "Viveiro de plantas",
           "terms": ["viveiro", "invernadoiro", "xardinaría", "plantas"]
         },
-        "landuse/pond": {
-          "name": "Estanque"
-        },
         "landuse/quarry": {
           "name": "Canteira",
           "terms": ["canteira", "pedra", "minaría", "mina", "rocha", "minerais", "pedreira", "arguina"]
@@ -2138,9 +2078,6 @@
         },
         "landuse/religious": {
           "name": "Área relixiosa"
-        },
-        "landuse/reservoir": {
-          "name": "Encoro"
         },
         "landuse/residential": {
           "name": "Área residencial",
@@ -2407,9 +2344,6 @@
         },
         "leisure/track": {
           "name": "Pista de competición (non motorizada)"
-        },
-        "leisure/track/athletics/running": {
-          "name": "Pista de carreiras"
         },
         "leisure/track/cycling": {
           "name": "Circuíto de ciclismo"
@@ -2699,9 +2633,6 @@
         "military/checkpoint": {
           "name": "Posto de control militar"
         },
-        "military/nuclear_explosion_site": {
-          "name": "Lugar de probas nucleares"
-        },
         "military/office": {
           "name": "Oficina militar"
         },
@@ -2985,9 +2916,6 @@
           "name": "Bufete",
           "terms": ["bufete", "avogados", "legal"]
         },
-        "office/lawyer/notary": {
-          "name": "Notaría"
-        },
         "office/moving_company": {
           "name": "Oficina de empresa de mudanzas"
         },
@@ -3033,9 +2961,6 @@
         },
         "office/therapist": {
           "name": "Oficina de terapeuta"
-        },
-        "office/travel_agent": {
-          "name": "Axencia de viaxes"
         },
         "office/water_utility": {
           "name": "Oficina de servizos públicos de auga",
@@ -3246,8 +3171,7 @@
           "name": "Transformador"
         },
         "public_transport/platform": {
-          "name": "Plataforma de transporte público",
-          "terms": ["plataforma", "andén", "transporte público", "transporte"]
+          "name": "Plataforma de transporte público"
         },
         "public_transport/platform/aerialway": {
           "name": "Plataforma de vía aérea"
@@ -3312,8 +3236,7 @@
           "terms": ["autobús", "eléctrico", "plataforma", "transporte público", "tranvía", "sen rieles", "trolley", "trolebús", "transporte", "bus", "trollei", "trole", "sen raís", "parada"]
         },
         "public_transport/platform_point": {
-          "name": "Parada / Plataforma de transporte público",
-          "terms": ["plataforma", "transporte público", "tránsito", "transporte", "parada"]
+          "name": "Parada / Plataforma de transporte público"
         },
         "public_transport/station": {
           "name": "Estación de transporte público"
@@ -3354,8 +3277,7 @@
           "terms": ["transporte público", "parada", "punto de detención"]
         },
         "public_transport/stop_position": {
-          "name": "Ubicación de parada de transporte público",
-          "terms": ["punto detención", "transporte público", "tránsito", "transporte", "aéreo", "autobús", "ferry", "tren lixeiro", "tranvía", "tren", "monorraíl", "metro", "trolebús", "parada", "bus", "ferri"]
+          "name": "Ubicación de parada de transporte público"
         },
         "public_transport/stop_position_aerialway": {
           "name": "Lugar de parada de vía aérea",
@@ -3417,9 +3339,6 @@
         "railway/funicular": {
           "name": "Vía de funicular"
         },
-        "railway/halt": {
-          "name": "Estación de trens (Halt / Request)"
-        },
         "railway/level_crossing": {
           "name": "Paso a nivel (estrada)",
           "terms": ["ferrocarril", "tren", "estrada"]
@@ -3444,9 +3363,6 @@
         "railway/narrow_gauge": {
           "name": "Ferrovía estreita"
         },
-        "railway/platform": {
-          "name": "Plataforma de trens"
-        },
         "railway/preserved": {
           "name": "Ferrovía histórica"
         },
@@ -3464,9 +3380,6 @@
         },
         "railway/signal": {
           "name": "Sinal ferroviario"
-        },
-        "railway/station": {
-          "name": "Estación de trens"
         },
         "railway/subway": {
           "name": "Vía de metro"
@@ -3501,10 +3414,6 @@
         "relation": {
           "name": "Relación",
           "terms": ["relación", "ligazón", "vínculo", "asociación"]
-        },
-        "route/ferry": {
-          "name": "Liña de transbordadores",
-          "terms": ["ruta", "rota", "liña", "ferry", "ferri", "buque", "transbordador", "lancha", "embarcación", "trasbordador", "barco"]
         },
         "seamark": {
           "name": "Sinal náutico"
@@ -4290,10 +4199,6 @@
           "name": "Ruta de tubaxe",
           "terms": ["ruta", "rota", "tubería", "tubaría", "gasoduto", "oleoduto", "conduto", "cañería", "duto", "ducto", "tubaxe", "tubo"]
         },
-        "type/route/power": {
-          "name": "Ruta de rede eléctrica",
-          "terms": ["liña de alta tensión", "cable", "cabo", "electricidade", "enerxía", "rede elećtrica", "liña electrica", "ruta"]
-        },
         "type/route/road": {
           "name": "Ruta de estrada"
         },
@@ -4393,6 +4298,195 @@
         "waterway/weir": {
           "name": "Vaira",
           "terms": ["vaira", "presa", "represa", "encalco", "encoro", "vertedoiro", "hidráulico", "aliviadoiro hidráulico", "dique", "pequena represa"]
+        },
+        "boundary": {
+          "name": "Límite",
+          "terms": ["fronteira", "raia"]
+        },
+        "building_point": {
+          "name": "Edificio",
+          "terms": ["edificio", "casa", "inmóbel", "vivenda", "inmoble"]
+        },
+        "ford_line": {
+          "name": "Vao",
+          "terms": ["vao", "vado", "paso", "cruce", "cruzamento", "gual"]
+        },
+        "traffic_sign/maxspeed-US-CA-LR": {
+          "name": "Sinal de límite da velocidade"
+        },
+        "shop/ice_cream": {
+          "name": "Xeadaría",
+          "terms": ["nevería", "xeado", "sorbete", "neve", "granizado", "raspadillo", "frozen", "yogur", "iogur", "copas", "tarta xeada", "postre", "sobremesa", "xeadería", "xeadaría", "xeados", "xeaderia", "xeadaria"]
+        },
+        "route/ferry": {
+          "name": "Liña de transbordadores",
+          "terms": ["ruta", "rota", "liña", "ferri", "itinerario", "rumbo", "dirección", "traxecto", "ferry", "transbordador", "buque", "barco"]
+        },
+        "railway/halt": {
+          "name": "Estación de tren (Parada / A demanda)"
+        },
+        "railway/platform": {
+          "name": "Plataforma de trens"
+        },
+        "railway/station": {
+          "name": "Estación de trens"
+        },
+        "office/travel_agent": {
+          "name": "Axencia de viaxes"
+        },
+        "office/lawyer/notary": {
+          "name": "Notaría",
+          "terms": ["notaría", "notario"]
+        },
+        "natural/wood_point": {
+          "name": "Bosque natural",
+          "terms": ["bosque", "fraga", "foresta", "monte", "árbores", "bosque natural", "madeira natural", "floresta"]
+        },
+        "leisure/track/athletics/running": {
+          "name": "Pista de atletismo"
+        },
+        "landuse/basin": {
+          "name": "Cunca",
+          "terms": ["cunca", "auga"]
+        },
+        "landuse/reservoir": {
+          "name": "Encoro",
+          "terms": ["encoro", "presa", "embalse", "estanque", "encalco", "represa", "vaira"]
+        },
+        "landuse/industrial/industrial_point": {
+          "name": "Área industrial",
+          "terms": ["área industrial", "parque industrial", "industria", "fábrica", "area industrial", "terreo industrial", "poligono", "polígono", "fabrica", "fábricas", "industrial", "zona industrial"]
+        },
+        "indoor/corridor_line": {
+          "name": "Corredor interior",
+          "terms": ["corredor", "pasillo"]
+        },
+        "highway/bus_stop": {
+          "name": "Parada de bus",
+          "terms": ["autobús", "bus", "colectivo", "plataforma", "transporte público", "parada"]
+        },
+        "highway/raceway_unspecific": {
+          "name": "Pista de carreiras de automobilismo"
+        },
+        "highway/traffic_sign": {
+          "name": "Sinal de tráfico"
+        },
+        "highway/motorway_link-US-CA": {
+          "name": "Ligazón da autoestrada",
+          "terms": ["autovía", "autoestrada", "ligazón", "enlace", "entrada", "saída", "acceso", "autopista"]
+        },
+        "highway/primary_link-US-CA": {
+          "name": "Ligazón da estrada primaria"
+        },
+        "highway/trunk_link-US-CA": {
+          "name": "Ligazón da estrada principal"
+        },
+        "highway/path/bicycle_foot": {
+          "name": "Senda ciclista e peonil"
+        },
+        "highway/path/crossing/marked": {
+          "name": "Paso marcado para peóns e bicicletas"
+        },
+        "highway/path/crossing/bicycle_foot": {
+          "name": "Paso de peóns e de pista de ciclismo",
+          "terms": ["peonil", "peonal", "ciclista", "ciclismo", "bicicleta"]
+        },
+        "highway/footway/crossing/marked": {
+          "name": "Paso peonil marcado",
+          "terms": ["paso de peóns marcado", "peonil", "peonal"]
+        },
+        "highway/footway/crossing/zebra": {
+          "name": "Paso peonil marcado",
+          "terms": ["paso de peóns marcado", "peonil", "peonal"]
+        },
+        "highway/cycleway/crossing/marked": {
+          "name": "Paso de bicicletas marcado",
+          "terms": ["paso de bicicleta", "cruzamento de carril bici", "cruzamento de ciclovía", "cruzamento de bicicleta", "cruzamento de bici", "cruzamento de senda ciclista"]
+        },
+        "highway/crossing/marked": {
+          "name": "Paso de peóns marcado"
+        },
+        "highway/crossing/zebra": {
+          "name": "Paso de peóns marcado"
+        },
+        "craft/locksmith": {
+          "name": "Cerralleiro",
+          "terms": ["cerralleiro", "zarralleiro", "cerraxeiro", "chaves", "duplicado de chaves", "copia de chaves", "cerrallería", "cerrallaría", "cerrallaria", "cerralleria", "cerrajeria"]
+        },
+        "craft/tailor": {
+          "name": "Xastraría",
+          "terms": ["xastre", "sastre", "obradoiro de cosedura", "cosedura", "confección", "taller de costura", "costura", "xastrería", "xastraría", "xastraria", "xastreria", "obradoiro de costura", "taller de sastrería", "sastrería"]
+        },
+        "building/entrance": {
+          "name": "Entrada / Saída",
+          "terms": ["entrada", "saída", "porta", "saida", "acceso"]
+        },
+        "building/glasshouse": {
+          "name": "Invernadoiro"
+        },
+        "building/house/detached": {
+          "name": "Casa illada"
+        },
+        "building/house/semi-detached": {
+          "name": "Casa apegada",
+          "terms": ["adosada", "adosado", "pegado", "pegada", "contínua"]
+        },
+        "boundary/administrative": {
+          "name": "Límite administrativo",
+          "terms": ["límite administrativo", "fronteira", "termo", "termo municipal", "término municipal"]
+        },
+        "amenity/bus_station": {
+          "name": "Estación de autobuses"
+        },
+        "amenity/coworking_space": {
+          "name": "Espacio de cotraballo"
+        },
+        "amenity/embassy": {
+          "name": "Embaixada",
+          "terms": ["embaixada", "consulado", "consul"]
+        },
+        "amenity/ferry_terminal": {
+          "name": "Terminal de transbordadores"
+        },
+        "amenity/nursing_home": {
+          "name": "Residencia de Anciáns",
+          "terms": ["xeriátrico", "asilo", "residencia de maiores", "centro de coidados"]
+        },
+        "aerialway/station": {
+          "name": "Estación de vía aérea"
+        },
+        "@templates/contact": {
+          "name": "Punto"
+        },
+        "@templates/internet_access": {
+          "name": "Punto"
+        },
+        "@templates/poi": {
+          "name": "Punto"
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Punto"
+        },
+        "@templates/crossing/defaults": {
+          "name": "Punto"
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Punto"
+        },
+        "@templates/crossing/markings": {
+          "name": "Punto"
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Punto"
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Punto"
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Punto"
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Punto"
         }
       }
     }

@@ -80,7 +80,7 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
 
     @Test fun `tag older x days`() {
         val date = dateDaysAgo(14f).toCheckDateString()
-        check("nodes with surface older today -14 days", "node[surface](if: " +
+        check("nodes with surface older today -14 days", "node(if: " +
                 "date(timestamp()) < date('$date') ||" +
                 "date(t['surface:check_date']) < date('$date') ||" +
                 "date(t['check_date:surface']) < date('$date') ||" +
@@ -93,7 +93,7 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
 
     @Test fun `tag newer x days`() {
         val date = dateDaysAgo(14f).toCheckDateString()
-        check("nodes with surface newer today - 14 days", "node[surface](if: " +
+        check("nodes with surface newer today - 14 days", "node(if: " +
                 "date(timestamp()) > date('$date') ||" +
                 "date(t['surface:check_date']) > date('$date') ||" +
                 "date(t['check_date:surface']) > date('$date') ||" +

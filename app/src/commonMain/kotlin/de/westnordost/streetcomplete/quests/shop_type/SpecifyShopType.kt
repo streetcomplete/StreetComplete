@@ -35,6 +35,7 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
           and !craft
           and !healthcare
           and !office
+          and access !~ private|no
     """
     override val changesetComment = "Survey shop types"
     override val wikiLink = "Key:shop"

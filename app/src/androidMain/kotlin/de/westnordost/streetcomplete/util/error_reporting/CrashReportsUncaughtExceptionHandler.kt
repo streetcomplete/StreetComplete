@@ -15,7 +15,7 @@ class CrashReportsUncaughtExceptionHandler(
     private var defaultUncaughtExceptionHandler: Thread.UncaughtExceptionHandler? = null
 
     fun install(): Boolean {
-        val installerPackageName = context.packageManager.getInstallerPackageName(context.packageName)
+        val installerPackageName = getInstallerPackageName()
         // developer. Don't need this functionality (it might even interfere with unit tests)
         if (installerPackageName == null) return false
         // don't need this for google play users: they have their own crash reports
@@ -26,6 +26,14 @@ class CrashReportsUncaughtExceptionHandler(
         Thread.setDefaultUncaughtExceptionHandler(this)
         return true
     }
+
+    @Suppress("DEPRECATION")
+    private fun getInstallerPackageName(): String? =
+        if (android.os.Build.VERSION.SDK_INT >= 30) {
+            context.packageManager.getInstallSourceInfo(context.packageName).installingPackageName
+        } else {
+            context.packageManager.getInstallerPackageName(context.packageName)
+        }
 
     override fun uncaughtException(thread: Thread, error: Throwable) {
         val report = errorReportBuilder.createErrorReport(error, thread.name)

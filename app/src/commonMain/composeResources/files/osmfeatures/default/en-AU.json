@@ -3,81 +3,135 @@
     "presets": {
       "presets": {
         "advertising/poster_box": {
-          "terms": ["lollylop", "snowshoe", "city light"]
+          "terms": ["lollylop", "snowshoe", "city light", "ad", "advertising", "spam"]
         },
         "aerialway/zip_line": {
-          "name": "Flying Fox"
+          "name": "Flying Fox",
+          "terms": ["aerialway", "canopy", "foefie slide", "gravity propelled aerial ropeslide", "tyrolean traverse", "zip-line", "zipline", "zipwire", "zip wire", "aerial runway", "zip line"]
+        },
+        "aeroway/aerodrome": {
+          "name": "Airport",
+          "terms": ["aeroway", "airplane", "jet", "plane", "aerodrome"]
+        },
+        "aeroway/helipad": {
+          "name": "Helipad",
+          "terms": ["helicopter", "heliport"]
         },
         "aeroway/jet_bridge": {
-          "name": "Aerobridge"
+          "name": "Aerobridge",
+          "terms": ["air jetty", "finger", "gangway", "jet way", "jetbridge", "pbb", "portal", "terminal gate connector", "jet bridge", "skybridge", "airbirdge", "airgate", "airtube", "passenger boarding bridge", "jetway"]
         },
         "allotments/plot": {
-          "name": "Individual Allotment Plot"
+          "name": "Individual Allotment Plot",
+          "terms": ["community garden plot"]
+        },
+        "amenity": {
+          "name": "Amenity"
         },
         "amenity/arts_centre": {
-          "name": "Arts Centre"
+          "name": "Arts Centre",
+          "terms": ["community arts", "cultural center", "performance venue", "theater space", "theatre space", "arts center"]
+        },
+        "amenity/bank": {
+          "name": "Bank",
+          "terms": ["check", "deposit", "financial", "fund", "investment", "repository", "reserve", "safe", "savings", "stock", "treasury", "trust", "vault", "credit union"]
+        },
+        "amenity/bar": {
+          "name": "Bar",
+          "terms": ["beer", "bier", "booze", "cocktails", "dive", "drink", "pub", "tavern"]
+        },
+        "amenity/bench": {
+          "name": "Bench",
+          "terms": ["chair", "seat"]
         },
         "amenity/bicycle_parking/building": {
-          "name": "Bicycle Parking Building"
+          "name": "Bicycle Parking Building",
+          "terms": ["bike parking station", "cycle parking", "cycling", "multi-storey bicycle park", "multi-storey bike park", "bicycle parking garage"]
         },
         "amenity/cafe": {
           "name": "Café",
-          "terms": ["bistro", "coffee", "tea", "cafe"]
+          "terms": ["bistro", "coffee", "tea", "cafe", "espresso", "latte"]
         },
         "amenity/cafe/bubble_tea": {
           "name": "Bubble Tea Shop",
-          "terms": ["boba", "bubble milk tea", "pearl milk tea", "taiwanese tea drink", "tapioca", "pearl tea", "boba drink", "cafe"]
+          "terms": ["boba", "bubble milk tea", "pearl milk tea", "taiwanese tea drink", "tapioca", "pearl tea", "boba drink", "cafe", "bubble tea cafe"]
         },
         "amenity/cafe/coffee_shop": {
           "name": "Cafe",
-          "terms": ["americano", "cold brew", "brew", "cafe", "café", "caffe", "caffè", "cappuccino", "cocoa", "coffee shop", "drip", "espresso", "flat white", "hot drinks", "latte", "macchiato", "tea"]
+          "terms": ["americano", "cold brew", "brew", "cafe", "café", "caffe", "caffè", "cappuccino", "cocoa", "coffee shop", "drip", "espresso", "flat white", "hot drinks", "latte", "macchiato", "tea", "coffeehouse"]
+        },
+        "amenity/cinema": {
+          "name": "Cinema",
+          "terms": ["drive-in", "film", "flick", "imax", "movie", "multiplex", "picture", "screen", "show", "theater"]
         },
         "amenity/clinic/dialysis": {
-          "name": "Dialysis Centre"
+          "name": "Dialysis Centre",
+          "terms": ["dialysis clinic", "kidney dialysis", "dialysis center"]
         },
         "amenity/community_centre": {
-          "name": "Community Centre"
+          "name": "Community Centre",
+          "terms": ["event", "hall", "community center"]
         },
         "amenity/community_centre/lgbtq": {
-          "name": "LGBTQ+ Community Centre"
+          "name": "LGBTQ+ Community Centre",
+          "terms": ["lgb event", "lgb hall", "lgbt event", "lgbt hall", "lgbtq event", "lgbtq hall", "lgbtq+ community center"]
         },
         "amenity/community_centre/youth_centre": {
-          "name": "Youth Centre"
+          "name": "Youth Centre",
+          "terms": ["youth club", "youth center"]
         },
         "amenity/conference_centre": {
-          "name": "Convention Centre"
+          "name": "Convention Centre",
+          "terms": ["auditorium", "exhibition", "exposition", "lecture", "conference center", "convention center"]
+        },
+        "amenity/courthouse": {
+          "name": "Courthouse",
+          "terms": ["judicial", "justice", "law court"]
         },
         "amenity/dive_centre": {
-          "name": "Dive Centre"
+          "name": "Dive Centre",
+          "terms": ["diving", "scuba", "dive center"]
         },
         "amenity/doctors/general": {
-          "name": "General Practitioner"
+          "name": "General Practitioner",
+          "terms": ["family doctor", "family physician", "family practitioner", "gp", "primary care physician"]
         },
         "amenity/doctors/haematology": {
-          "name": "Haematologist"
+          "name": "Haematologist",
+          "terms": ["anemia", "blood", "bone marrow", "haematology", "leukemia", "lymphoma", "hematologist"]
         },
         "amenity/exhibition_centre": {
-          "name": "Exposition Centre"
+          "name": "Exposition Centre",
+          "terms": ["convention center", "expo", "fair", "trade exhibition", "trade fair", "trade show", "tradeshow", "exhibition center", "exposition center"]
         },
         "amenity/fast_food/donut": {
-          "name": "Doughnut Fast Food"
+          "name": "Doughnut Fast Food",
+          "terms": ["breakfast", "brunch", "cafe", "canteen", "coffee", "dine", "diner", "dining", "donut", "doughnut", "eat", "lunch", "table", "donut fast food"]
         },
         "amenity/fuel": {
           "name": "Service Station",
-          "terms": ["service station", "petrol station"],
+          "terms": ["service station", "petrol station", "biodiesel", "cng", "diesel", "fuel", "gasoline", "lng", "petrol", "propane", "gas station"],
           "aliases": ["Petrol Station"]
         },
+        "amenity/grave_yard": {
+          "name": "Graveyard",
+          "terms": ["burial ground", "cemetary", "cemetery", "churchyard", "columbarium", "grave yard", "mausoleum", "tomb"]
+        },
         "amenity/ice_cream/frozen_yogurt": {
-          "name": "Frozen Yoghurt Shop"
+          "name": "Frozen Yoghurt Shop",
+          "terms": ["frogurt", "froyo", "frozen yoghurt", "ice cream", "yoghurt", "yogurt", "frozen yogurt shop"]
         },
         "amenity/internet_cafe": {
           "name": "Internet Café",
           "terms": ["cybercafe", "taxiphone", "teleboutique", "coffee", "cafe", "net", "lanhouse", "internet cafe"]
         },
-        "amenity/parking": {
-          "name": "Car Park",
-          "terms": ["automobile parking", "car lot", "parking lot", "car parking", "rv parking", "truck parking", "vehicle parking"],
-          "aliases": ["Parking Lot"]
+        "amenity/library": {
+          "name": "Library",
+          "terms": ["book", "public library", "reading"]
+        },
+        "amenity/marketplace": {
+          "name": "Marketplace",
+          "terms": ["bazaar"]
         },
         "amenity/parking/multi-storey": {
           "name": "Multistorey Car Park",
@@ -85,105 +139,170 @@
         },
         "amenity/parking/park_ride": {
           "name": "Park & Ride Car Park",
-          "aliases": ["Commuter Car Park"]
+          "aliases": ["Commuter Car Park"],
+          "terms": ["commuter parking lot", "incentive parking lot", "metro parking lot", "p+r", "park and pool lot", "park and ride lot", "public transit parking lot", "public transport parking lot", "train parking lot", "park & ride lot"]
         },
         "amenity/parking_entrance": {
           "name": "Car Park Building Entrance / Exit",
-          "terms": ["parking garage entrace/exit", "parking garage entrace", "parking garage exit", "carpark entrance", "car park entrance"]
+          "terms": ["parking garage entrace/exit", "parking garage entrace", "parking garage exit", "carpark entrance", "car park entrance", "parking garage entrance / exit"]
         },
         "amenity/payment_centre": {
-          "name": "Payment Centre"
+          "name": "Payment Centre",
+          "terms": ["bill pay", "cash", "check", "currency", "finance", "money", "tax pay", "payment center"]
         },
         "amenity/pharmacy": {
-          "name": "Pharmacy"
+          "name": "Pharmacy",
+          "terms": ["apothecary", "chemist", "dispensary", "drug store", "drugstore", "medicine", "prescription", "pharmacy counter"]
+        },
+        "amenity/police": {
+          "name": "Police",
+          "terms": ["badge", "constable", "constabulary", "cop", "detective", "enforcement", "fed", "law", "officer", "patrol"]
         },
         "amenity/post_box": {
-          "name": "Post Box"
+          "name": "Post Box",
+          "terms": ["drop box", "dropbox", "letter drop", "mail box", "mail collection box", "mail drop", "mail dropoff", "mailbox", "package drop", "pillar box", "pillarbox", "postal box", "postbox", "mail drop box"]
+        },
+        "amenity/pub": {
+          "name": "Pub",
+          "terms": ["alcohol", "bar", "beer", "bier", "booze", "dive", "drink", "tavern"]
         },
         "amenity/public_bookcase": {
-          "terms": ["street library"]
+          "terms": ["street library", "book exchange shelf", "book sharing", "book swap", "bookcrossing", "community bookshelf", "library", "little free library", "share a book", "sharing books", "sidewalk library"]
         },
         "amenity/ranger_station": {
-          "name": "Park Ranger Office"
+          "name": "Park Ranger Office",
+          "terms": ["backcountry office", "permit center", "permit centre", "visitor center", "visitor centre", "warden center", "warden centre", "warden office", "ranger station"]
         },
         "amenity/recycling_centre": {
-          "name": "Recycling Centre"
+          "name": "Recycling Centre",
+          "terms": ["bottle", "can", "dump", "garbage", "glass", "recycle", "rubbish", "scrap", "trash", "recycling center"]
+        },
+        "amenity/restaurant": {
+          "name": "Restaurant",
+          "terms": ["bar", "brasserie", "breakfast", "cafe", "café", "canteen", "coffee", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "table"]
         },
         "amenity/restaurant/barbecue": {
           "name": "Barbeque Restaurant",
           "terms": ["barbecue restaurant", "barbeque restaurant", "bar", "bbq", "canteen", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "table"]
         },
         "amenity/sanitary_dump_station": {
-          "name": "Caravan Toilet Disposal"
+          "name": "Caravan Toilet Disposal",
+          "terms": ["camper", "cdp", "chemical toilet", "ctdp", "dump station", "elsan", "motor home", "sanitary", "rv toilet disposal"]
         },
         "amenity/shelter/public_transport": {
-          "name": "Public Transport Shelter"
+          "name": "Public Transport Shelter",
+          "terms": ["bus stop", "metro stop", "public transit shelter", "tram stop shelter", "waiting", "transit shelter"]
         },
         "amenity/social_centre": {
-          "name": "Social Centre"
+          "name": "Social Centre",
+          "terms": ["community center", "community hall", "event", "fraternal", "fraternity", "hall", "organization", "professional", "society", "sorority", "union", "vetern", "social center"]
+        },
+        "amenity/social_facility/day_care": {
+          "name": "Social Services Day Care / Day Centre",
+          "terms": ["social services day care / day center"]
         },
         "amenity/social_facility/group_home": {
           "name": "Retirement Home",
-          "terms": ["old", "senior", "living", "care home", "assisted living", "elderly", "retirement", "retire", "aged care", "aged"]
+          "terms": ["old", "senior", "living", "care home", "assisted living", "elderly", "retirement", "retire", "aged care", "aged", "retired", "elderly group home"]
         },
         "amenity/taxi": {
-          "name": "Taxi Rank"
+          "name": "Taxi Rank",
+          "terms": ["cab", "taxi stand"]
+        },
+        "amenity/telephone": {
+          "name": "Telephone",
+          "terms": ["pay phone", "payphone", "phone", "phone booth", "public phone", "public telephone"]
         },
         "amenity/theatre": {
-          "name": "Theatre"
+          "name": "Theatre",
+          "terms": ["musical", "performance", "play", "theater"]
         },
         "amenity/theatre/type/amphi": {
-          "name": "Amphitheatre"
+          "name": "Amphitheatre",
+          "terms": ["ampi", "greek", "open air", "outdoor", "amphitheater"]
         },
         "amenity/toilets": {
           "name": "Toilets",
-          "aliases": ["Bathroom", "Lavatory", "Water Closet", "Restroom"]
+          "aliases": ["Bathroom", "Lavatory", "Water Closet", "Restroom"],
+          "terms": ["head", "latrine", "outhouse", "privy", "public restroom", "public toilet", "w.c.", "water closet", "wc", "bathroom", "lavatory", "restroom"]
         },
         "amenity/trolley_bay": {
-          "name": "Trolley Bay"
+          "name": "Trolley Bay",
+          "terms": ["carriage return", "cart return", "shopping cart", "cart corral"]
         },
         "amenity/vacuum_cleaner": {
-          "name": "Vehicle Vacuum Cleaning Station"
+          "name": "Vehicle Vacuum Cleaning Station",
+          "terms": ["car vacuum cleaner", "car wash", "carvac", "suction", "vacuum cleaning station"]
         },
         "amenity/vehicle_inspection": {
           "terms": ["car inspection", "mot test", "mot centre"]
         },
         "amenity/vending_machine/elongated_coin": {
-          "name": "Elongated Coin Vending Machine"
+          "name": "Elongated Coin Vending Machine",
+          "terms": ["coin", "crush", "elongated", "flatten", "penny", "souvenir", "flat coin vending machine"]
         },
         "amenity/vending_machine/excrement_bags": {
           "name": "Dog Poo Bag Dispenser",
-          "terms": ["poo", "excrement bags", "poop", "waste", "dog", "animal", "pet"]
+          "terms": ["poo", "excrement bags", "poop", "waste", "dog", "animal", "pet", "excrement bag dispenser"]
         },
         "amenity/vending_machine/feminine_hygiene": {
           "terms": ["condom", "tampon", "pad", "woman", "women", "menstrual hygiene products", "personal care", "rubber"]
         },
         "amenity/vending_machine/fuel": {
-          "name": "Fuel vending machine"
+          "name": "Fuel vending machine",
+          "terms": ["biodiesel", "cng", "diesel", "fuel", "gasoline", "lng", "petrol", "propane", "gas vending machine"]
         },
         "amenity/vending_machine/public_transport_tickets": {
-          "name": "Public Transport Ticket Vending Machine"
+          "name": "Public Transport Ticket Vending Machine",
+          "terms": ["public transport tickets", "transit ticket vending machine"]
         },
         "amenity/vending_machine/sweets": {
           "name": "Sweets Vending Machine",
-          "terms": ["sweets", "candy", "lollies"]
+          "terms": ["sweets", "candy", "lollies", "gumball", "candy vending machine"]
         },
         "amenity/waste_basket": {
-          "name": "Rubbish Bin"
+          "name": "Rubbish Bin",
+          "terms": ["bin", "garbage", "litter", "rubbish", "trash", "waste basket", "trash can"]
         },
         "amenity/waste_disposal": {
-          "name": "Skip Bin"
+          "name": "Skip Bin",
+          "terms": ["garbage", "litter", "rubbish", "trash", "waste disposal", "garbage dumpster"]
         },
         "amenity/water_point": {
           "terms": ["water faucet", "water point", "water tap", "water source", "water spigot", "rv drinking water", "campervan drinking water"]
         },
         "amenity/watering_place": {
-          "terms": ["trough"]
+          "terms": ["trough", "livestock water"]
         },
         "amenity/weighbridge": {
           "name": "Weighbridge",
           "terms": ["weigh station", "truck scale"],
           "aliases": ["Truck Scale"]
+        },
+        "barrier": {
+          "name": "Barrier"
+        },
+        "barrier/block": {
+          "name": "Block"
+        },
+        "barrier/bollard": {
+          "name": "Bollard"
+        },
+        "barrier/ditch": {
+          "name": "Trench",
+          "terms": ["ha-ha", "ditch"]
+        },
+        "barrier/entrance": {
+          "name": "Entrance"
+        },
+        "barrier/fence": {
+          "name": "Fence"
+        },
+        "barrier/gate": {
+          "name": "Gate"
+        },
+        "barrier/hedge": {
+          "name": "Hedge"
         },
         "barrier/kerb": {
           "name": "Kerb",
@@ -199,80 +318,112 @@
         },
         "barrier/kerb/raised": {
           "name": "Raised Kerb",
-          "terms": ["raised curb"]
+          "terms": ["raised curb", "step"]
         },
         "barrier/kerb/rolled": {
           "name": "Rolled Kerb",
-          "terms": ["rolled curb"]
+          "terms": ["rolled curb", "gutter"]
         },
-        "barrier/lift_gate": {
-          "name": "Lift gate"
+        "barrier/stile": {
+          "name": "Stile"
+        },
+        "barrier/wall": {
+          "name": "Wall"
+        },
+        "building": {
+          "name": "Building",
+          "terms": ["structure"]
         },
         "building/apartments": {
-          "terms": ["flat building", "flats"]
+          "terms": ["flat building", "flats", "condominium"]
         },
         "building/detached": {
-          "terms": ["freestanding house"]
+          "terms": ["freestanding house", "dwelling", "family", "home", "residence", "single"]
         },
         "building/house/terraced": {
-          "name": "Terraced house"
+          "name": "Terraced House",
+          "terms": ["brownstone", "dwelling", "family", "home", "residence", "row home", "terrace", "townhome", "row house", "townhouse"]
         },
         "building/kindergarten": {
-          "name": "Preschool Building"
+          "name": "Preschool Building",
+          "terms": ["kindergarden", "kindergarten", "pre-school", "preschool / kindergarten building"]
         },
         "building/pavilion": {
           "terms": ["sports", "pavilion"]
         },
         "building/riding_hall": {
           "name": "Indoor Horse Riding Arena",
-          "aliases": ["Indoor Riding Arena", "Horse Riding Hall"]
+          "aliases": ["Indoor Riding Arena", "Horse Riding Hall"],
+          "terms": ["equestrian arena", "equestrian indoor arena", "horse riding", "indoor arena", "indoor riding", "indoor ring", "longeing hall", "horse riding hall", "horseback riding hall", "indoor horse arena", "indoor horse riding ring", "indoor horseback riding ring", "indoor riding arena", "indoor riding ring", "indoor horseback riding arena"]
         },
         "building/static_caravan": {
-          "name": "Static Caravan"
+          "name": "Static Caravan",
+          "terms": ["house trailer", "manufactured home", "prefabricated home", "residential caravan", "static mobile home", "trailer home", "mobile home"]
         },
         "building/terrace": {
-          "name": "Terraced Houses"
+          "name": "Terraced Houses",
+          "terms": ["brownstone", "dwelling", "family", "home", "residence", "row home", "row house", "terrace", "townhome", "row of townhouses"]
+        },
+        "building/train_station": {
+          "name": "Railway Station Building",
+          "terms": ["halt", "railway station", "terminal", "train station building"]
+        },
+        "building/transportation": {
+          "name": "Transport Building",
+          "terms": ["transportation building"]
         },
         "club/sport": {
           "terms": ["athletics club", "sporting club", "sports association", "sports society", "sport club"]
         },
         "craft/confectionery": {
-          "terms": ["sweets", "candy", "lollies"]
+          "terms": ["sweets", "candy", "lollies", "sweet"]
         },
         "emergency/fire_hose": {
           "terms": ["fire hose reel", "fhr", "riser", "dry riser", "standpipe", "stand pipe"]
         },
         "emergency/fire_service_inlet": {
-          "name": "Fire Hydrant Booster"
+          "name": "Fire Hydrant Booster",
+          "terms": ["building hydrant inlet", "charged riser", "dry riser inlet", "dry standpipe", "fdc", "fire service inlet", "fire sprinkler inlet", "riser inlet", "standpipe", "wet riser inlet", "wet standpipe", "fire department connection"]
         },
         "entrance/emergency_ward_entrance": {
-          "name": "Emergency Department Entrance"
+          "name": "Emergency Department Entrance",
+          "terms": ["accident & emergency department", "casualty department", "ed", "emergency department", "emergency room", "emergency ward", "er", "ew", "emergency room entrance"]
         },
         "golf/bunker": {
-          "name": "Golf Bunker"
+          "name": "Golf Bunker",
+          "terms": ["hazard", "bunker", "sand trap"]
         },
         "healthcare/birthing_center": {
-          "name": "Birthing Centre"
+          "name": "Birthing Centre",
+          "terms": ["baby", "childbirth", "delivery", "labor", "labour", "midwive", "pregnancy", "pregnant", "birthing center"]
         },
         "healthcare/blood_donation": {
-          "name": "Blood Donor Centre"
+          "name": "Blood Donation Centre",
+          "terms": ["apheresis", "blood bank", "blood donation", "blood transfusion", "plasmapheresis", "plateletpheresis", "stem cell donation", "blood donation center"]
         },
         "healthcare/counselling": {
-          "name": "Counselling Centre"
+          "name": "Counselling Centre",
+          "terms": ["sex therapist", "counseling center"]
+        },
+        "healthcare/physiotherapist": {
+          "name": "Physiotherapist",
+          "terms": ["physical", "therapist", "therapy", "physical therapist"]
         },
         "highway/bridleway": {
-          "name": "Bridleway"
+          "name": "Bridleway",
+          "terms": ["equestrian", "horse", "trail", "bridle path"]
         },
         "highway/cycleway/bicycle_foot": {
           "name": "Shared Path",
-          "terms": ["cycle & foot path", "bicycle and foot path", "bike and pedestrian path", "green way", "greenway", "mixed-use trail", "multi-use trail", "segregated trail", "shared path", "shared use path", "rail trail"]
+          "terms": ["cycle & foot path", "bicycle and foot path", "bike and pedestrian path", "green way", "greenway", "mixed-use trail", "multi-use trail", "segregated trail", "shared path", "shared use path", "rail trail", "multi-use path"]
         },
         "highway/cycleway/crossing/bicycle_foot": {
           "name": "Shared Path Crossing",
           "terms": ["cycle & foot crossing", "bicycle and foot crosswalk", "bike and pedestrian crossing", "cycleway", "cycling", "cyclist"]
         },
         "highway/cycleway/traffic_island_shared": {
-          "name": "Shared Path Refuge Island"
+          "name": "Shared Path Refuge Island",
+          "terms": ["crossing island", "crosswalk island", "traffic island", "pedestrian island", "cycle & foot refuge island"]
         },
         "highway/elevator": {
           "name": "Lift",
@@ -283,7 +434,8 @@
           "terms": ["inclined elevator", "cable railway"]
         },
         "highway/escape": {
-          "name": "Escape Lane"
+          "name": "Escape Lane",
+          "terms": ["emergency escape ramp", "runaway truck lane", "truck arrester bed", "runaway truck ramp"]
         },
         "highway/footway": {
           "name": "Walkway",
@@ -291,11 +443,12 @@
           "aliases": ["Footpath"]
         },
         "highway/footway/access_aisle": {
-          "terms": ["access aisle", "accessible van loading zone", "disabled parking access zone", "parking access zone", "parking lot aisle", "striped zone", "tow zone", "tow-away zone", "towaway zone", "wheelchair aisle"]
+          "terms": ["access aisle", "accessible van loading zone", "disabled parking access zone", "parking access zone", "parking lot aisle", "striped zone", "tow zone", "tow-away zone", "towaway zone", "wheelchair aisle", "handicap parking access zone"]
         },
         "highway/footway/informal": {
           "name": "Informal Walkway",
-          "aliases": ["Informal Footpath"]
+          "aliases": ["Informal Footpath"],
+          "terms": ["informal foot path"]
         },
         "highway/footway/sidewalk": {
           "name": "Footpath (alongside a road)",
@@ -303,100 +456,195 @@
         },
         "highway/give_way": {
           "name": "Give Way Sign",
-          "terms": ["yield", "sign"]
+          "terms": ["yield", "sign", "give way", "yield sign"]
         },
         "highway/living_street": {
           "name": "Living Street",
           "aliases": ["Shared Zone"]
         },
         "highway/milestone": {
-          "name": "Road Milestone"
+          "name": "Road Milestone",
+          "terms": ["mile marker", "mile post", "mile stone", "mileage marker", "milemarker", "milepost", "highway milestone"]
+        },
+        "highway/motorway": {
+          "name": "Motorway",
+          "terms": ["autobahn", "expressway", "freeway", "highway", "interstate", "parkway", "road", "street", "thruway", "turnpike"]
+        },
+        "highway/path": {
+          "name": "Path",
+          "terms": ["hike", "hiking", "trackway", "trail", "walk"]
         },
         "highway/path/crossing": {
-          "name": "Path Crossing"
+          "name": "Path Crossing",
+          "terms": ["cycle & foot crossing"]
         },
         "highway/path/crossing/traffic_signals": {
-          "name": "Path Crossing With Pedestrian Signals"
+          "name": "Path Crossing With Pedestrian Signals",
+          "terms": ["cycle & foot crossing with pedestrian signals"]
+        },
+        "highway/steps": {
+          "name": "Steps",
+          "terms": ["staircase", "stairs", "stairway"]
         },
         "highway/street_lamp": {
           "name": "Street Light",
-          "terms": ["streetlamp", "street lamp", "lamp", "light", "gaslight"]
+          "terms": ["streetlamp", "street lamp", "lamp", "light", "gaslight", "street lighting", "streetlight"]
         },
         "highway/track": {
           "name": "Track / Land-Access Road",
-          "terms": ["fire trail"],
+          "terms": ["fire trail", "4wd", "4x4", "agricultural road", "atv", "carriage road", "dirt road", "double track", "farm road", "fire road", "forest road", "forestry road", "four wheel drive", "haul road", "haulage road", "high-clearance", "jeep", "logging road", "mining road", "off-road", "offroad", "overgrown", "primitive", "quad", "ranch road", "rut", "two track", "two-track", "unmaintained", "vehicular trail", "woods road", "land-access road", "track road"],
           "aliases": ["Fire Trail", "Management Trail"]
         },
         "highway/traffic_signals": {
           "name": "Traffic Lights",
           "terms": ["light", "stoplight", "traffic light", "traffic signals"]
         },
+        "historic/castle": {
+          "name": "Castle"
+        },
+        "historic/memorial": {
+          "name": "Memorial",
+          "terms": ["dedicatory", "epitaph", "memory", "monument", "remember", "remembrance", "stolperstein"]
+        },
+        "historic/monument": {
+          "name": "Monument"
+        },
+        "historic/ruins": {
+          "name": "Ruins"
+        },
         "indoor/elevator": {
-          "name": "Indoor Lift Shaft"
+          "name": "Indoor Lift Shaft",
+          "terms": ["elevator", "lift", "indoor elevator shaft"]
         },
         "landuse/allotments": {
-          "name": "Allotment Garden"
+          "name": "Allotment Garden",
+          "terms": ["allotment", "community garden", "garden", "garden allotments"]
+        },
+        "landuse/cemetery": {
+          "name": "Cemetery",
+          "terms": ["burial ground", "cemetary", "churchyard", "columbarium", "grave yard", "graveyard", "mausoleum", "tomb"]
+        },
+        "landuse/farmyard": {
+          "name": "Farmyard",
+          "terms": ["barnyard", "cattleyard", "feeding", "feedlot", "feedyard", "livestock"]
+        },
+        "landuse/grass": {
+          "name": "Grass",
+          "terms": ["field", "green", "lawn", "managed grass", "mown grass", "turf"]
         },
         "landuse/harbour": {
-          "name": "Harbour"
+          "name": "Harbour",
+          "terms": ["boat", "harbor"]
+        },
+        "landuse/meadow": {
+          "name": "Meadow",
+          "terms": ["grazing", "hay field", "pasture"]
         },
         "landuse/military/range": {
-          "terms": ["shooting range", "shooting", "range", "gun", "army", "military", "defence force"]
+          "terms": ["shooting range", "shooting", "range", "gun", "army", "military", "defence force", "air force", "base", "fight", "fire", "force", "guard", "marine", "navy", "rifle", "sniper", "train", "troop", "war"]
+        },
+        "landuse/orchard": {
+          "name": "Orchard",
+          "terms": ["fruit"]
+        },
+        "landuse/quarry": {
+          "name": "Quarry",
+          "terms": ["aggregate quarry", "open pit mine", "sand mine", "sand pit", "sand quarry", "sandpit"]
         },
         "landuse/residential/apartments": {
-          "name": "Apartment Complex"
+          "name": "Apartment Complex",
+          "terms": ["flat", "residence", "tenement"]
+        },
+        "landuse/vineyard": {
+          "name": "Vineyard",
+          "terms": ["grape", "wine"]
         },
         "leisure/adult_gaming_centre": {
-          "name": "Adult Gaming Centre"
+          "name": "Adult Gaming Centre",
+          "terms": ["gambling", "slot machine", "adult gaming center"]
         },
         "leisure/bandstand": {
           "terms": ["bandstand"]
         },
         "leisure/bleachers": {
-          "name": "Stands"
+          "name": "Stands",
+          "terms": ["bench", "crowd", "seat", "seating", "sports", "stand", "bleachers"]
         },
         "leisure/fitness_centre": {
-          "name": "Gym / Fitness Centre"
+          "name": "Gym / Fitness Centre",
+          "terms": ["gym", "health", "leisure", "pilates", "studio", "gym / fitness center"]
         },
         "leisure/fitness_station": {
-          "name": "Outdoor Exercise Equipment"
+          "name": "Outdoor Exercise Equipment",
+          "terms": ["exercise", "fitness", "gym", "street fitness", "calisthenics park", "fitness station", "outdoor gym", "street workout", "trim trail", "outdoor fitness station"]
+        },
+        "leisure/garden": {
+          "name": "Garden",
+          "terms": ["flowers", "fruits", "herbs", "plants", "vegetables"]
         },
         "leisure/horse_riding": {
-          "name": "Horseback Riding Centre"
+          "name": "Horseback Riding Centre",
+          "terms": ["equestrian center", "equestrian facility", "horse farm", "horse park", "horse ranch", "horse riding", "horse riding center", "horse riding facility", "riding facility", "riding stables", "stables", "horseback riding center"]
         },
         "leisure/indoor_play": {
-          "name": "Indoor Play Centre"
+          "name": "Indoor Play Centre",
+          "terms": ["ball pit", "children's play center", "indoor playground", "indoor play center"]
+        },
+        "leisure/marina": {
+          "name": "Marina",
+          "terms": ["boats", "docks", "harbor", "harbour", "moorings", "yachts"]
+        },
+        "leisure/park": {
+          "name": "Park",
+          "terms": ["esplanade", "estate", "forest", "garden", "grass", "green", "grounds", "lawn", "lot", "meadow", "parkland", "place", "playground", "plaza", "pleasure garden", "recreation area", "square", "tract", "village green", "woodland"]
         },
         "leisure/pitch/athletics": {
-          "name": "Athletics Pitch"
+          "name": "Athletics Pitch",
+          "terms": ["track & field pitch"]
         },
         "leisure/pitch/equestrian": {
-          "name": "Horse Riding / Rodeo Arena"
+          "name": "Horse Riding / Rodeo Arena",
+          "terms": ["arena", "dressage", "dressage arena", "dressage ring", "equestrian arena", "horse", "horse exercising", "horse riding", "horse riding ring", "horse training", "horseback", "horseback riding", "horseback riding arena", "jumping arena", "jumping ring", "longeing", "pen", "polo", "riding", "riding ring", "ring", "rodeo", "round pen", "horseback riding ring", "horseback riding / rodeo arena"]
         },
         "leisure/pitch/rugby_league": {
-          "name": "Rugby League Pitch"
+          "name": "Rugby League Pitch",
+          "terms": ["rugby league field"]
         },
         "leisure/pitch/rugby_union": {
-          "name": "Rugby Union Pitch"
+          "name": "Rugby Union Pitch",
+          "terms": ["rugby union field"]
         },
         "leisure/pitch/soccer": {
-          "name": "Soccer Field"
+          "name": "Soccer Field",
+          "terms": ["football"]
         },
         "leisure/pitch/table_soccer": {
-          "name": "Table Football Table"
+          "name": "Table Football Table",
+          "terms": ["kicker", "table football", "table soccer", "tecball", "foosball table"]
+        },
+        "leisure/playground": {
+          "name": "Playground",
+          "terms": ["jungle gym", "play area"]
         },
         "leisure/slipway": {
-          "name": "Boat Ramp"
+          "name": "Boat Ramp",
+          "terms": ["boat landing", "boat launch", "slipway"]
         },
         "leisure/sports_centre": {
-          "name": "Sports Centre / Complex"
+          "name": "Sports Centre / Complex",
+          "terms": ["athletic center", "athletic centre", "recreation center", "recreation centre", "sports centre", "sports complex", "sports center / complex"]
         },
         "leisure/sports_centre/horse_racing": {
           "name": "Horse Racecourse",
-          "aliases": ["Hippodrome"]
+          "aliases": ["Hippodrome"],
+          "terms": ["equestrian race course", "gallop", "horse race", "horse race betting", "horse racing", "horseracing", "race course", "racecourse", "hippodrome", "horse race course"]
+        },
+        "leisure/stadium": {
+          "name": "Stadium"
         },
         "leisure/track/athletics": {
-          "name": "Athletics runway"
+          "name": "Athletics runway",
+          "terms": ["track & field runway"]
         },
         "man_made/fuel_pump": {
           "name": "Fuel Pump",
@@ -404,419 +652,744 @@
         },
         "man_made/groyne": {
           "name": "Groyne",
-          "terms": ["groin"]
+          "terms": ["groin", "wing dam", "wing dyke", "spur dyke"]
+        },
+        "man_made/lighthouse": {
+          "name": "Lighthouse"
+        },
+        "man_made/pier": {
+          "name": "Pier",
+          "terms": ["berth", "dock", "jetty", "landing", "promenade", "wharf"]
         },
         "man_made/survey_point": {
-          "name": "Survey Marker"
+          "name": "Survey Marker",
+          "terms": ["geodetic mark", "geodetic point", "triangulation pillar", "trig point", "trig station", "trigonometrical station", "survey point"]
+        },
+        "natural/bay": {
+          "name": "Bay",
+          "terms": ["bight", "cove", "estuary", "fjord", "gulf", "inlet", "sea", "sound"]
+        },
+        "natural/beach": {
+          "name": "Beach",
+          "terms": ["shore"]
         },
         "natural/cape": {
-          "terms": ["point"]
+          "terms": ["point", "bay", "coastline", "erosion", "headland", "peninsula", "promontory"]
+        },
+        "natural/cliff": {
+          "name": "Cliff",
+          "terms": ["crag", "escarpment", "rock face", "scarp"]
+        },
+        "natural/coastline": {
+          "name": "Coastline",
+          "terms": ["shore"]
+        },
+        "natural/glacier": {
+          "name": "Glacier",
+          "terms": ["ice", "snow"]
+        },
+        "natural/grassland": {
+          "name": "Grassland",
+          "terms": ["field", "prairie", "savanna"]
+        },
+        "natural/heath": {
+          "name": "Heath",
+          "terms": ["moor", "moorland", "shrubland"]
+        },
+        "natural/peak": {
+          "name": "Peak",
+          "terms": ["acme", "aiguille", "alp", "climax", "crest", "crown", "hill", "mount", "mountain", "pinnacle", "summit", "tip", "top"]
+        },
+        "natural/scrub": {
+          "name": "Scrub",
+          "terms": ["bush", "shrubs"]
+        },
+        "natural/spring": {
+          "name": "Spring",
+          "terms": ["aquifer", "hydro", "seep", "water source"]
+        },
+        "natural/tree": {
+          "name": "Tree",
+          "terms": ["bole", "trunk"]
+        },
+        "natural/water": {
+          "name": "Water"
+        },
+        "natural/water/lake": {
+          "name": "Lake",
+          "terms": ["lakelet", "loch", "mere"]
+        },
+        "natural/water/pond": {
+          "name": "Pond",
+          "terms": ["lakelet", "mere", "millpond", "pool", "tarn"]
+        },
+        "natural/water/reservoir": {
+          "name": "Reservoir",
+          "terms": ["dam"]
+        },
+        "natural/wetland": {
+          "name": "Wetland",
+          "terms": ["bog", "fen", "marsh", "mire", "moor", "muskeg", "peatland", "quagmire", "reedbed", "saltmarsh", "swamp", "tidalflat", "wet meadow"]
         },
         "natural/wetland/mangrove": {
           "terms": ["mangrove"]
         },
+        "office": {
+          "name": "Office",
+          "terms": ["administration"]
+        },
         "office/association": {
-          "name": "Nonprofit Organisation Office"
+          "name": "Nonprofit Organisation Office",
+          "terms": ["association", "non-profit", "nonprofit", "organization", "society", "nonprofit organization office"]
         },
         "office/employment_agency": {
           "terms": ["job", "career", "careers", "vocational", "vocation", "occupation"]
         },
         "office/estate_agent": {
-          "name": "Real Estate Agent"
+          "name": "Real Estate Agent",
+          "terms": ["estate agent", "real estate", "real estate office"]
         },
         "office/it": {
-          "terms": ["computer", "information", "software", "technology", "tech", "it", "ict", "information technology"]
+          "terms": ["computer", "information", "software", "technology", "tech", "it", "ict", "information technology", "it office"]
         },
         "office/union": {
-          "name": "Union Office"
+          "name": "Union Office",
+          "terms": ["trade union", "labor union office"]
+        },
+        "place": {
+          "name": "Place"
+        },
+        "place/hamlet": {
+          "name": "Hamlet"
+        },
+        "place/island": {
+          "name": "Island",
+          "terms": ["archipelago", "atoll", "bar", "cay", "isle", "islet", "key", "reef"]
+        },
+        "place/locality": {
+          "name": "Locality"
         },
         "place/neighbourhood": {
-          "name": "Neighbourhood"
+          "name": "Neighbourhood",
+          "terms": ["neighborhood"]
         },
         "place/suburb": {
-          "name": "Suburb"
+          "name": "Suburb",
+          "terms": ["boro", "borough", "quarter", "borough / suburb"]
+        },
+        "place/village": {
+          "name": "Village"
         },
         "playground/slide": {
           "name": "Slide",
           "aliases": ["Slippery Dip"]
         },
         "playground/zipwire": {
-          "name": "Playground Flying Fox"
+          "name": "Playground Flying Fox",
+          "terms": ["zip wire", "zipline", "zipwire", "play zip line"]
         },
         "power/line": {
-          "name": "High Voltage Power Line"
+          "name": "High Voltage Power Line",
+          "terms": ["electric power transmission line", "high tension line", "high voltage line", "power line"]
+        },
+        "power/transformer": {
+          "name": "Transformer"
         },
         "public_transport/platform": {
-          "name": "Public Transport Platform"
+          "name": "Public Transport Platform",
+          "terms": ["transit platform"]
         },
         "public_transport/platform/subway": {
           "name": "Metro Train Platform",
-          "terms": ["metro", "platform", "public transit", "public transportation", "rail", "subway", "track", "transit", "transportation", "underground", "tube"]
+          "terms": ["metro", "platform", "public transit", "public transportation", "rail", "subway", "track", "transit", "transportation", "underground", "tube", "subway platform"]
         },
         "public_transport/platform/subway_point": {
-          "name": "Metro Train Stop / Platform"
+          "name": "Metro Train Stop / Platform",
+          "terms": ["subway stop / platform"]
         },
         "public_transport/platform_point": {
-          "name": "Public Transport Stop / Platform"
+          "name": "Public Transport Stop / Platform",
+          "terms": ["transit stop / platform"]
         },
         "public_transport/station": {
-          "name": "Public Transport Station"
+          "name": "Public Transport Station",
+          "terms": ["transit station"]
         },
         "public_transport/station_subway": {
-          "name": "Metro Train Station"
+          "name": "Metro Train Station",
+          "terms": ["metro", "public transit", "public transportation", "rail", "station", "subway", "terminal", "track", "transit", "transportation", "underground", "subway station"]
         },
         "public_transport/stop_area": {
-          "name": "Public Transport Stop Area"
+          "name": "Public Transport Stop Area",
+          "terms": ["transit stop area"]
         },
         "public_transport/stop_position": {
-          "name": "Public Transport Stopping Location"
+          "name": "Public Transport Stopping Location",
+          "terms": ["transit stopping location"]
         },
         "public_transport/stop_position_subway": {
-          "name": "Metro Train Stopping Location"
+          "name": "Metro Train Stopping Location",
+          "terms": ["metro", "public transit", "public transportation", "rail", "subway", "track", "transit", "transportation", "underground", "subway stopping location"]
         },
         "railway/rail": {
-          "terms": ["railway"]
+          "terms": ["railway", "permanent way", "rail", "rail line", "track", "railway track", "railroad track"]
         },
         "railway/subway": {
-          "name": "Metro Train Track"
+          "name": "Metro Train Track",
+          "terms": ["metro", "transit", "underground railway", "subway track"]
         },
         "railway/subway_entrance": {
-          "name": "Metro Train Entrance"
+          "name": "Metro Train Entrance",
+          "terms": ["metro", "transit", "subway entrance"]
         },
         "shop/alcohol": {
           "name": "Bottle Shop (Alcohol Shop)",
-          "terms": ["alcohol", "beer", "booze", "wine", "bottle shop", "bottle o"]
+          "terms": ["alcohol", "beer", "booze", "wine", "bottle shop", "bottle o", "liquor store"]
         },
         "shop/appliance": {
-          "name": "Appliance Shop"
+          "name": "Appliance Shop",
+          "terms": ["air conditioner", "appliance", "dishwasher", "dryer", "freezer", "fridge", "grill", "kitchen", "oven", "refrigerator", "stove", "washer", "washing machine", "white goods", "appliance store"]
         },
         "shop/art": {
-          "name": "Art Shop"
+          "name": "Art Shop",
+          "terms": ["art", "exhibition", "gallery", "art store"]
         },
         "shop/baby_goods": {
-          "name": "Baby Goods Shop"
+          "name": "Baby Goods Shop",
+          "terms": ["infant", "newborn", "toddler", "baby goods store"]
+        },
+        "shop/bakery": {
+          "name": "Bakery",
+          "terms": ["bakeshop", "bread", "cakes", "rolls"]
         },
         "shop/bathroom_furnishing": {
-          "name": "Bathroom Furnishing Shop"
+          "name": "Bathroom Furnishing Shop",
+          "terms": ["bathroom fixtures", "bathroom furnishing store"]
         },
         "shop/beverages": {
-          "name": "Beverages Shop"
+          "name": "Beverages Shop",
+          "terms": ["drinks", "beverage store"]
         },
         "shop/boat": {
-          "name": "Boat Shop"
+          "name": "Boat Shop",
+          "terms": ["fishing boat", "hobby", "jetski", "motorboat", "rowboat", "sailboat", "vessel", "watercraft", "boat store"]
         },
         "shop/books": {
-          "name": "Bookshop"
+          "name": "Bookshop",
+          "terms": ["hobby", "bookseller", "book store", "book shop", "book seller", "bookstore"]
+        },
+        "shop/boutique": {
+          "name": "Boutique"
         },
         "shop/brewing_supplies": {
-          "name": "Brewing Supply Shop"
+          "name": "Brewing Supply Shop",
+          "terms": ["brew shop", "hobby", "homebrew supply store", "brewing supply store"]
+        },
+        "shop/butcher": {
+          "name": "Butcher",
+          "terms": ["beef", "chicken", "lamb", "meat", "pork", "butcher shop", "pork store", "butchery"]
         },
         "shop/camera": {
-          "name": "Camera Equipment Shop"
+          "name": "Camera Equipment Shop",
+          "terms": ["camera", "film", "lens", "photo", "camera equipment store"]
         },
         "shop/car_parts": {
-          "name": "Car Parts Shop"
+          "name": "Car Parts Shop",
+          "terms": ["automobile", "automotive", "car parts store"]
         },
         "shop/caravan": {
-          "name": "Caravan Dealership"
+          "name": "Caravan Dealership",
+          "terms": ["auto", "camper", "recreational vehicle", "rv dealership"]
         },
         "shop/carpet": {
-          "name": "Carpet Shop"
+          "name": "Carpet Shop",
+          "terms": ["rug", "carpet store"]
         },
         "shop/catalogue": {
-          "name": "Catalogue Shop"
+          "name": "Catalogue Shop",
+          "terms": ["catalog shop"]
         },
         "shop/charity": {
-          "name": "Charity Shop"
+          "name": "Charity Shop",
+          "terms": ["nonprofit", "op shop", "thrift", "charity store"]
         },
         "shop/cheese": {
           "name": "Cheese Shop",
-          "terms": ["cheesemonger"]
+          "terms": ["cheesemonger", "cheese store"]
         },
         "shop/chemist": {
           "name": "Pharmacy",
-          "terms": ["chemist"]
+          "terms": ["chemist", "apothecary", "beauty", "dispensary", "drug store", "gift", "hair", "medicine", "prescription", "tooth", "drugstore"]
         },
         "shop/chocolate": {
           "name": "Chocolate Shop",
-          "terms": ["chocolatier"]
+          "terms": ["chocolatier", "cocoa", "confectionery", "chocolate store"]
         },
         "shop/clothes": {
-          "name": "Clothing Shop"
+          "name": "Clothing Shop",
+          "terms": ["apparel", "blouses", "boutique", "bras", "clothes", "dresses", "fashion", "outfits", "pants", "shirts", "shorts", "skirts", "slacks", "socks", "suits", "underwear", "clothing store"]
         },
         "shop/clothes/second_hand": {
-          "name": "Secondhand Clothing Shop"
+          "name": "Secondhand Clothing Shop",
+          "terms": ["blouses", "clothes", "consignment", "dresses", "pants", "preowned", "second hand", "shirts", "shorts", "skirts", "slacks", "suits", "used", "vintage", "secondhand clothing store"]
         },
         "shop/clothes/suits": {
-          "name": "Suit shop"
+          "name": "Suit shop",
+          "terms": ["businessman", "necktie", "tie", "suits store"]
         },
         "shop/clothes/underwear": {
-          "name": "Underwear Shop"
+          "name": "Underwear Shop",
+          "terms": ["boutique", "boxers", "bras", "brassieres", "briefs", "dessous", "fashion", "lingerie", "panties", "slips", "socks", "stockings", "underclothes", "undergarments", "underpants", "undies", "underwear store"]
         },
         "shop/clothes/wedding": {
-          "name": "Wedding Clothes Shop"
+          "name": "Wedding Clothes Shop",
+          "terms": ["boutique", "bridal", "bride", "bridegroom", "bridesmaid", "groom", "groomsman", "marriage outfits", "tuxedo", "wedding dress", "wedding gown", "wedding clothes store"]
         },
         "shop/clothes/workwear": {
-          "name": "Workwear Shop"
+          "name": "Workwear Shop",
+          "terms": ["craftsman", "safety footwear", "workwear store"]
         },
         "shop/coffee": {
-          "name": "Coffee Ingredients Store"
+          "name": "Coffee Ingredients Store",
+          "terms": ["cafe", "espresso", "latte", "coffee store"]
         },
         "shop/computer": {
-          "name": "Computer Shop"
+          "name": "Computer Shop",
+          "terms": ["desktop", "hardware", "laptop", "operating system", "software", "computer store"]
         },
         "shop/confectionery": {
           "name": "Sweet Shop",
-          "terms": ["sweets", "candy", "lollies"]
+          "terms": ["sweets", "candy", "lollies", "fudge", "lollipop", "sugar", "sweet", "candy shop", "confectionery store", "candy store"]
         },
         "shop/convenience": {
           "name": "Convenience Store",
-          "terms": ["dairy", "superette", "convenience store", "convenience shop", "corner store", "corner shop"]
+          "terms": ["dairy", "superette", "convenience store", "convenience shop", "corner store", "corner shop", "mini-market", "mini-mart", "bodega"]
         },
         "shop/copyshop": {
-          "name": "Copyshop"
+          "name": "Copyshop",
+          "terms": ["print", "scan", "copy shop", "copy store"]
         },
         "shop/cosmetics": {
-          "name": "Cosmetics Shop"
+          "name": "Cosmetics Shop",
+          "terms": ["make-up", "makeup", "cosmetics store"]
         },
         "shop/craft": {
-          "name": "Arts & Crafts Shop"
+          "name": "Arts & Crafts Shop",
+          "terms": ["art", "canvas", "crafting", "crafts", "draw", "frame", "handicraft", "hobby", "paint", "paper", "pencil", "wood", "arts & crafts store"]
         },
         "shop/curtain": {
-          "name": "Curtain Shop"
+          "name": "Curtain Shop",
+          "terms": ["drape", "drapery", "window", "curtain store"]
         },
         "shop/dairy": {
-          "name": "Milk Product Shop"
+          "name": "Milk Product Shop",
+          "terms": ["cheese", "egg", "milk", "dairy store"]
         },
         "shop/deli": {
-          "name": "Delicatessen"
+          "name": "Delicatessen",
+          "terms": ["charcuterie", "cold cuts", "deli", "specialty food store", "gourmet food store", "fine food store", "gourmet food shop"]
         },
         "shop/doityourself": {
-          "name": "DIY Shop"
+          "name": "DIY Shop",
+          "terms": ["craft", "diy", "do it yourself", "hardware", "hobby", "home improvement", "tools", "diy store"]
         },
         "shop/electrical": {
-          "name": "Electrical Equipment Shop"
+          "name": "Electrical Equipment Shop",
+          "terms": ["cable", "electric", "fan", "led", "lighting", "power", "wire", "electrical equipment store"]
         },
         "shop/electronics": {
-          "name": "Electronics Shop"
+          "name": "Electronics Shop",
+          "terms": ["appliance", "audio", "blueray", "camera", "computer", "consumer electronics", "dvd", "gadgets", "home theater", "phone", "radio", "smartphone", "speaker", "tv", "video", "electronics store"]
         },
         "shop/erotic": {
-          "name": "Erotic Shop"
+          "name": "Erotic Shop",
+          "terms": ["18+", "porn", "sex", "erotic store"]
         },
         "shop/erotic/lgbtq": {
-          "name": "LGBTQ+ Erotic Shop"
+          "name": "LGBTQ+ Erotic Shop",
+          "terms": ["18+", "porn", "sex", "lgbtq+ erotic store"]
         },
         "shop/fabric": {
-          "name": "Fabric Shop"
+          "name": "Fabric Shop",
+          "terms": ["sew", "textile", "textiles", "fabric store"]
         },
         "shop/farm": {
-          "name": "Farm Shop"
+          "name": "Farm Shop",
+          "terms": ["baked goods", "fresh food", "fruits", "greengrocer", "orchard", "organics", "vegetables", "farm stand", "produce stand"]
         },
         "shop/fashion": {
-          "name": "Fashion Shop"
+          "name": "Fashion Shop",
+          "terms": ["fashion store"]
         },
         "shop/fashion_accessories": {
-          "name": "Fashion Accessories Shop"
+          "name": "Fashion Accessories Shop",
+          "terms": ["bag", "cologne", "fragrance", "hat", "jewelry", "perfume", "purse", "scarf", "sunglasses", "umbrella", "wallet", "watch", "fashion accessories store"]
         },
         "shop/fireplace": {
-          "name": "Fireplace Shop"
+          "name": "Fireplace Shop",
+          "terms": ["fireplace", "masonry heater", "stove", "fireplace store"]
+        },
+        "shop/florist": {
+          "name": "Florist",
+          "terms": ["bouquet", "flower", "flowers"]
         },
         "shop/frozen_food": {
-          "name": "Frozen Food Shop"
+          "name": "Frozen Food Shop",
+          "terms": ["frozen food store"]
         },
         "shop/furniture": {
-          "name": "Furniture Shop"
+          "name": "Furniture Shop",
+          "terms": ["chair", "couch", "interior", "sofa", "table", "furniture store"]
         },
         "shop/games": {
-          "name": "Tabletop Game Shop"
+          "name": "Tabletop Game Shop",
+          "terms": ["board game", "card game", "dice game", "game shop", "hobby", "larp", "live action role-playing game", "miniature wargame", "role-playing", "strategy game", "wargame", "tabletop game store"]
         },
         "shop/garden_centre": {
-          "name": "Garden Centre"
+          "name": "Garden Centre",
+          "terms": ["landscape", "mulch", "nursery", "plant nursery", "retail plant nursery", "shrub", "tree", "garden center"]
         },
         "shop/general": {
-          "name": "General Shop"
+          "name": "General Shop",
+          "terms": ["small-town store", "village shop", "general merchant store", "general merchandise store", "general dealer", "general store"]
+        },
+        "shop/greengrocer": {
+          "name": "Greengrocer",
+          "terms": ["fruit", "produce", "vegetable", "produce store", "produce shop"]
         },
         "shop/hairdresser": {
-          "terms": ["barber"]
+          "terms": ["barber", "haircut", "hair salon", "hair stylist"]
         },
         "shop/hairdresser_supply": {
-          "name": "Hairdresser Supply Shop"
+          "name": "Hairdresser Supply Shop",
+          "terms": ["barber", "conditioner", "razor", "shampoo", "shaver", "hairdresser supply store"]
         },
         "shop/hardware": {
-          "name": "Hardware Shop"
+          "name": "Hardware Shop",
+          "terms": ["craft", "diy", "do it yourself", "hardware", "home improvement", "tools", "hardware store"]
         },
         "shop/health_food": {
-          "name": "Health Food Shop"
+          "name": "Health Food Shop",
+          "terms": ["groceries", "nutritional", "organic", "raw food", "unprocessed", "vegan", "vegetarian", "vitamins", "wholefood", "health food store"]
         },
         "shop/hearing_aids": {
-          "name": "Hearing Aids Shop"
+          "name": "Hearing Aids Shop",
+          "terms": ["hearing aids store"]
         },
         "shop/hifi": {
-          "name": "Hifi Shop"
+          "name": "Hifi Shop",
+          "terms": ["audio", "hi-fi", "high fidelity", "speakers", "stereo", "video", "hifi store"]
         },
         "shop/honey": {
-          "name": "Honey Shop"
+          "name": "Honey Shop",
+          "terms": ["honey store"]
         },
         "shop/houseware": {
-          "terms": ["homeware", "kitchenware", "linen", "crockery"]
+          "terms": ["homeware", "kitchenware", "linen", "crockery", "cookware", "home", "home goods", "household goods store"]
         },
         "shop/interior_decoration": {
-          "name": "Interior Decoration Shop"
+          "name": "Interior Decoration Shop",
+          "terms": ["interior decoration store"]
         },
         "shop/jewelry": {
-          "name": "Jewellery Store"
+          "name": "Jewellery Store",
+          "terms": ["bracelet", "diamond", "earrings", "gem", "gold", "jeweler", "jeweller", "jewellery", "necklace", "pins", "ring", "silver", "jewelry shop", "jewelry store"]
         },
         "shop/kitchen": {
-          "name": "Kitchen Design Shop"
+          "name": "Kitchen Design Shop",
+          "terms": ["cabinets", "countertops", "sinks", "kitchen design store"]
         },
         "shop/leather": {
-          "name": "Leather Shop"
+          "name": "Leather Shop",
+          "terms": ["leather store"]
         },
         "shop/lighting": {
-          "name": "Lighting Shop"
+          "name": "Lighting Shop",
+          "terms": ["fluorescent lighting", "lamps", "leds", "light fixtures", "lightbulbs", "lighting store"]
         },
         "shop/mall": {
           "name": "Shopping Centre",
-          "terms": ["mall", "shopping center"]
+          "terms": ["mall", "shopping center", "shopping", "shopping mall"]
         },
         "shop/medical_supply": {
-          "name": "Medical Supply Shop"
+          "name": "Medical Supply Shop",
+          "terms": ["medical supply store"]
         },
         "shop/military_surplus": {
-          "name": "Military Surplus Shop"
+          "name": "Military Surplus Shop",
+          "terms": ["armor", "army surplus", "army-navy store", "navy surplus", "tactical gear", "war surplus shop", "weapons", "military surplus store"]
         },
         "shop/mobile_phone": {
-          "name": "Mobile Phone Shop"
+          "name": "Mobile Phone Shop",
+          "terms": ["cell phone", "smartphone", "mobile phone store"]
         },
         "shop/music": {
-          "name": "Music Shop"
+          "name": "Music Shop",
+          "terms": ["casette", "casette store", "cd store", "cds", "compact discs", "hobby", "record store", "tape cassettes", "vinyl records", "music store"]
         },
         "shop/musical_instrument": {
-          "name": "Musical Instrument Shop"
+          "name": "Musical Instrument Shop",
+          "terms": ["accordion", "brass instruments", "cello", "clarinet", "drum", "flute", "guitar", "hobby", "keyboard", "piano", "saxophone", "trumpet", "violin", "musical instrument store"]
         },
         "shop/newsagent": {
-          "name": "Newsagency"
+          "name": "Newsagency",
+          "terms": ["newspaper / magazine shop", "newsstand"]
         },
         "shop/nutrition_supplements": {
-          "name": "Nutrition Supplements Shop"
+          "name": "Nutrition Supplements Shop",
+          "terms": ["health", "protein", "supplement", "vitamin", "nutrition supplements store"]
         },
         "shop/outdoor": {
-          "name": "Outdoors Shop"
+          "name": "Outdoors Shop",
+          "terms": ["camping", "climbing", "hiking", "hobby", "outdoor equipment", "outdoor supplies", "outfitter", "outdoors store"]
         },
         "shop/paint": {
-          "name": "Paint Shop"
+          "name": "Paint Shop",
+          "terms": ["paint store"]
         },
         "shop/party": {
-          "name": "Party Supply Shop"
+          "name": "Party Supply Shop",
+          "terms": ["balloons", "costumes", "decorations", "invitations", "party supply store"]
         },
         "shop/pasta": {
-          "name": "Pasta Shop"
+          "name": "Pasta Shop",
+          "terms": ["fresh pasta", "ravioli", "spaghetti", "pasta store"]
         },
         "shop/pawnbroker": {
-          "name": "Pawnbroker"
+          "name": "Pawnbroker",
+          "terms": ["collateral", "loan", "secondhand", "pawn shop", "pawnshop"]
         },
         "shop/perfumery": {
-          "name": "Perfume Shop"
+          "name": "Perfume Shop",
+          "terms": ["cologne", "fragrance", "perfume", "perfume store"]
         },
         "shop/pet": {
-          "name": "Pet Shop"
+          "name": "Pet Shop",
+          "terms": ["animal", "cat", "dog", "fish", "kitten", "puppy", "reptile", "pet store"]
         },
         "shop/photo": {
-          "name": "Photography Shop"
+          "name": "Photography Shop",
+          "terms": ["camera", "film", "lens", "photo", "photography store"]
         },
         "shop/pottery": {
-          "name": "Pottery Shop"
+          "name": "Pottery Shop",
+          "terms": ["ceramic", "pot", "vase", "pottery store"]
         },
         "shop/printer_ink": {
-          "name": "Printer Ink Shop"
+          "name": "Printer Ink Shop",
+          "terms": ["copier ink", "fax ink", "ink cartridges", "toner", "printer ink store"]
         },
         "shop/pyrotechnics": {
-          "name": "Fireworks Shop"
+          "name": "Fireworks Shop",
+          "terms": ["fireworks", "fireworks store"]
         },
         "shop/religion": {
-          "name": "Religious Shop"
+          "name": "Religious Shop",
+          "terms": ["religious store"]
         },
         "shop/rice": {
-          "name": "Rice Shop"
+          "name": "Rice Shop",
+          "terms": ["rice store"]
         },
         "shop/second_hand": {
-          "name": "Secondhand shop"
+          "name": "Secondhand shop",
+          "terms": ["preowned", "resale", "second-hand", "used", "vintage", "thrift shop", "consignment store", "resale shop", "thrift store"]
         },
         "shop/shoes": {
-          "name": "Shoe Shop"
+          "name": "Shoe Shop",
+          "terms": ["boots", "cleats", "clogs", "footwear", "heels", "loafers", "oxfords", "sandals", "slippers", "sneakers", "shoe store"]
         },
         "shop/sports": {
-          "name": "Sporting Goods Shop"
+          "name": "Sporting Goods Shop",
+          "terms": ["athletics", "equestrian", "fitness", "hobby", "sporting goods store"]
         },
         "shop/stationery": {
-          "name": "Stationery Shop"
+          "name": "Stationery Shop",
+          "terms": ["card", "paper", "stationary", "office supply store", "stationery store"]
+        },
+        "shop/supermarket": {
+          "name": "Supermarket",
+          "terms": ["food market", "grocery", "grocery store", "market", "shop", "store"]
         },
         "shop/swimming_pool": {
-          "name": "Pool Supply Shop"
+          "name": "Pool Supply Shop",
+          "terms": ["hot tub equipment store", "hot tub maintenance store", "hot tub supply store", "pool shop", "pool store", "swimming pool equipment store", "swimming pool installation store", "swimming pool maintenance store", "swimming pool supply shop", "pool supply store"]
         },
         "shop/tea": {
-          "name": "Tea Shop (Retail)"
+          "name": "Tea Shop (Retail)",
+          "terms": ["tea store"]
         },
         "shop/telecommunication": {
-          "name": "Telecom Retail Shop"
+          "name": "Telecom Retail Shop",
+          "terms": ["communication", "internet service provider", "isp", "network", "telephone", "voice", "telecom retail store"]
         },
         "shop/toys": {
-          "name": "Toy Shop"
+          "name": "Toy Shop",
+          "terms": ["games", "hobby", "teddy", "toy store"]
         },
         "shop/tyres": {
-          "name": "Tyre Shop"
+          "name": "Tyre Shop",
+          "terms": ["tire store"]
         },
         "shop/vacuum_cleaner": {
-          "name": "Vacuum Cleaner Shop"
+          "name": "Vacuum Cleaner Shop",
+          "terms": ["vacuum cleaner store"]
         },
         "shop/variety_store": {
-          "name": "Discount shop"
+          "name": "Discount shop",
+          "terms": ["five and dime", "five and ten", "dollar store", "variety store", "discount store"]
         },
         "shop/video": {
-          "name": "Video/DVD Shop"
+          "name": "Video/DVD Shop",
+          "terms": ["dvd", "hobby", "vhs", "video casette", "video cassette", "video store"]
         },
         "shop/video_games": {
-          "name": "Video Games Shop"
+          "name": "Video Games Shop",
+          "terms": ["hobby", "video game store"]
         },
         "shop/wholesale": {
-          "name": "Wholesale Shop / Cash & Carry"
+          "name": "Wholesale Shop / Cash & Carry",
+          "terms": ["cash and carry", "warehouse club", "wholesale store"]
         },
         "shop/window_blind": {
-          "name": "Window Blind Shop"
+          "name": "Window Blind Shop",
+          "terms": ["window blind store"]
         },
         "telecom/data_center": {
-          "name": "Data Centre"
+          "name": "Data Centre",
+          "terms": ["computer systems storage", "information technology", "server farm", "telecommunications", "the cloud", "data center"]
         },
         "tourism/apartment": {
-          "name": "Holiday Apartment"
+          "name": "Holiday Apartment",
+          "terms": ["airbnb", "b & b", "b and b", "b&b", "bed and breakfast", "bnb", "holiday rental", "lodging", "overnight accommodations", "vacation rental", "guest apartment / condo"]
+        },
+        "tourism/artwork": {
+          "name": "Artwork",
+          "terms": ["mural", "sculpture", "statue"]
         },
         "tourism/camp_site": {
-          "name": "Camp Site"
+          "name": "Camp Site",
+          "terms": ["camp ground", "camp pitch", "campers", "campsite", "caravans", "mobile homes", "recreational vehicles", "rv", "tenting", "campground"]
         },
         "tourism/caravan_site": {
-          "name": "Caravan Site"
+          "name": "Caravan Site",
+          "terms": ["camper", "motor home", "rv park"]
         },
         "tourism/chalet": {
-          "terms": ["bach", "crib"]
+          "terms": ["bach", "crib", "chalet", "holiday cabin", "holiday home", "lodge", "lodging", "overnight accommodations", "vacation cabin", "vacation home"]
+        },
+        "tourism/hostel": {
+          "name": "Hostel",
+          "terms": ["backpacker", "bunk beds", "dormitories", "dorms", "lodging", "overnight accommodations", "youth hostel"]
+        },
+        "tourism/hotel": {
+          "name": "Hotel",
+          "terms": ["concierge", "inn", "lodge", "lodging", "overnight accommodations", "suite"]
+        },
+        "tourism/information": {
+          "name": "Information"
+        },
+        "tourism/information/visitor_centre": {
+          "name": "Visitor Centre",
+          "terms": ["visitors center", "visitors information center", "welcome center", "visitor center"]
+        },
+        "tourism/motel": {
+          "name": "Motel",
+          "terms": ["lodging", "motor hotel", "overnight accommodations"]
+        },
+        "tourism/museum": {
+          "name": "Museum",
+          "terms": ["archaeological", "archeological", "art", "art museum", "cultural", "excavation", "exhibition", "foundation", "gallery", "hall", "history", "institution", "nature", "painting", "photograph", "science", "sculpture", "technology"]
         },
         "tourism/viewpoint": {
-          "name": "Lookout"
+          "name": "Lookout",
+          "terms": ["overlook", "scenery", "scenic", "vantage point", "vista", "viewpoint"]
+        },
+        "tourism/zoo": {
+          "name": "Zoo",
+          "terms": ["animal"]
+        },
+        "type/boundary/administrative": {
+          "relation": {
+            "role_labels": {
+              "admin_centre": "Admin Centre"
+            }
+          }
         },
         "type/public_transport/stop_area_group": {
-          "name": "Public Transport Stop Area Group"
+          "name": "Public Transport Stop Area Group",
+          "terms": ["transit stop area group"]
         },
         "type/restriction/no_straight_on": {
-          "name": "No Straight On"
+          "name": "No Straight On",
+          "terms": ["no straight ahead"]
         },
         "type/restriction/only_straight_on": {
-          "name": "Straight On Only"
+          "name": "Straight On Only",
+          "terms": ["straight ahead only"]
         },
         "type/route/horse": {
-          "name": "Horse Riding Route"
+          "name": "Horse Riding Route",
+          "terms": ["horse trail", "riding route", "trail riding", "horseback riding route"]
         },
         "type/route/subway": {
-          "name": "Metro Train Route"
-        }
+          "name": "Metro Train Route",
+          "terms": ["subway route"]
+        },
+        "waterway/canal": {
+          "name": "Canal",
+          "terms": ["headrace", "irrigation", "spillway", "tailrace", "waterpower"]
+        },
+        "waterway/dam": {
+          "name": "Dam Wall",
+          "terms": ["dam"]
+        },
+        "waterway/ditch": {
+          "name": "Ditch"
+        },
+        "waterway/drain": {
+          "name": "Drain"
+        },
+        "waterway/river": {
+          "name": "River",
+          "terms": ["beck", "branch", "brook", "course", "creek", "estuary", "rill", "rivulet", "run", "runnel", "stream", "tributary", "watercourse"]
+        },
+        "waterway/stream": {
+          "name": "Stream",
+          "terms": ["beck", "branch", "brook", "burn", "course", "creek", "current", "drift", "flood", "flow", "freshet", "race", "rill", "rindle", "rivulet", "run", "runnel", "rush", "spate", "spritz", "surge", "tide", "torrent", "tributary", "watercourse"]
+        },
+        "waterway/weir": {
+          "name": "Weir",
+          "terms": ["low-head dam", "low-rise dam", "wier"]
+        },
+        "building_point": {
+          "name": "Building",
+          "terms": ["structure"]
+        },
+        "landuse/reservoir": {
+          "name": "Reservoir",
+          "terms": ["dam"]
+        },
+        "highway/path/bicycle_foot": {
+          "name": "Shared Path",
+          "terms": ["cycle & foot path", "bicycle and foot path", "bike and pedestrian path", "green way", "greenway", "mixed-use trail", "multi-use trail", "segregated trail", "shared path", "shared use path", "rail trail", "multi-use path"]
+        },
+        "highway/path/traffic_island_shared": {
+          "name": "Shared Path Refuge Island",
+          "terms": ["crossing island", "crosswalk island", "traffic island", "pedestrian island", "cycle & foot refuge island"]
+        },
+        "highway/path/crossing/bicycle_foot": {
+          "name": "Shared Path Crossing",
+          "terms": ["cycle & foot crossing", "bicycle and foot crosswalk", "bike and pedestrian crossing", "cycleway", "cycling", "cyclist"]
+        },
+        "building/house/detached": {
+          "terms": ["freestanding house", "dwelling", "family", "home", "residence", "single"]
+        },
+        "building/house/terrace": {
+          "name": "Terraced Houses",
+          "terms": ["brownstone", "dwelling", "family", "home", "residence", "row home", "row house", "terrace", "townhome", "row of townhouses"]
+        },
+        "boundary/administrative": {}
       }
     }
   }

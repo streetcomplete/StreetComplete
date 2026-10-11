@@ -15,7 +15,7 @@ interface TracksApiClient {
      * @param description optional description text
      * @param tags optional tags for the trace
      *
-     * @throws AuthorizationException if not logged in or not not authorized to upload traces
+     * @throws AuthorizationException if not logged in or not authorized to upload traces
      *                                (scope "write_gpx")
      * @throws ConnectionException if a temporary network connection problem occurs
      *

@@ -95,14 +95,8 @@
         "amenity/drinking_water": {
           "name": "Apă de Băut"
         },
-        "amenity/embassy": {
-          "name": "Ambasadă"
-        },
         "amenity/fast_food": {
           "name": "Fast Food"
-        },
-        "amenity/ferry_terminal": {
-          "name": "Terminal de Bac"
         },
         "amenity/fire_station": {
           "name": "Pompieri"
@@ -139,9 +133,6 @@
         },
         "amenity/nightclub": {
           "name": "Club de Noapte"
-        },
-        "amenity/parking": {
-          "name": "Parcare"
         },
         "amenity/parking_space": {
           "name": "Loc de Parcare"
@@ -296,12 +287,6 @@
         "barrier/wall": {
           "name": "Zid"
         },
-        "boundary": {
-          "name": "Graniță"
-        },
-        "boundary/administrative": {
-          "name": "Graniță Administrativă"
-        },
         "building": {
           "name": "Clădire"
         },
@@ -434,9 +419,6 @@
         "building_part": {
           "name": "Parte de clădire"
         },
-        "building_point": {
-          "name": "Clădire"
-        },
         "club": {
           "name": "Club"
         },
@@ -485,17 +467,11 @@
         "ford": {
           "name": "Vad"
         },
-        "ford_line": {
-          "name": "Vad"
-        },
         "golf/fairway": {
           "name": "Drum Maritim"
         },
         "golf/tee": {
           "name": "Casa de Ceai"
-        },
-        "healthcare/blood_donation": {
-          "name": "Centru de Donație de Sânge"
         },
         "highway/corridor": {
           "name": "Coridor Interior"
@@ -614,17 +590,11 @@
         "indoor/corridor": {
           "name": "Coridor Interior"
         },
-        "indoor/corridor_line": {
-          "name": "Coridor Interior"
-        },
         "junction": {
           "name": "Juncție"
         },
         "landuse/aquaculture": {
           "name": "Acvacultură"
-        },
-        "landuse/basin": {
-          "name": "Bazin"
         },
         "landuse/cemetery": {
           "name": "Cimitir"
@@ -634,9 +604,6 @@
         },
         "landuse/commercial": {
           "name": "Zonă Comercială"
-        },
-        "landuse/farm": {
-          "name": "Teren Agricol"
         },
         "landuse/farmland": {
           "name": "Teren Agricol"
@@ -670,12 +637,6 @@
         },
         "landuse/military/range": {
           "name": "Gamă Militară"
-        },
-        "landuse/pond": {
-          "name": "Iaz"
-        },
-        "landuse/reservoir": {
-          "name": "Rezervor"
         },
         "landuse/residential": {
           "name": "Zonă Rezidențială"
@@ -866,9 +827,6 @@
         "military/bunker": {
           "name": "Munker Militar"
         },
-        "military/nuclear_explosion_site": {
-          "name": "Sit de Explozie Nucleară"
-        },
         "military/office": {
           "name": "Oficiu Militar"
         },
@@ -995,9 +953,6 @@
         "office/lawyer": {
           "name": "Cabinet de Avocatură"
         },
-        "office/lawyer/notary": {
-          "name": "Notar"
-        },
         "office/ngo": {
           "name": "Oficiu NGO"
         },
@@ -1021,9 +976,6 @@
         },
         "office/translator": {
           "name": "Birou de traduceri"
-        },
-        "office/travel_agent": {
-          "name": "Agenție de Călătorii"
         },
         "place": {
           "name": "Loc"
@@ -1105,9 +1057,6 @@
         },
         "relation": {
           "name": "Relație"
-        },
-        "route/ferry": {
-          "name": "Rută de Bac"
         },
         "shop": {
           "name": "Magazin"
@@ -1480,9 +1429,6 @@
         "type/route/pipeline": {
           "name": "Rută de Conducte"
         },
-        "type/route/power": {
-          "name": "Rută de Energie"
-        },
         "type/route/road": {
           "name": "Rută de Stadă"
         },
@@ -1522,6 +1468,102 @@
         },
         "waterway/waterfall": {
           "name": "Cascadă"
+        },
+        "boundary": {
+          "name": "Graniță"
+        },
+        "building_point": {
+          "name": "Clădire"
+        },
+        "ford_line": {
+          "name": "Vad"
+        },
+        "shop/ice_cream": {
+          "name": "Magazin de Înghețată"
+        },
+        "route/ferry": {
+          "name": "Rută de Bac"
+        },
+        "office/travel_agent": {
+          "name": "Agenție de Călătorii"
+        },
+        "office/lawyer/notary": {
+          "name": "Notar"
+        },
+        "landuse/basin": {
+          "name": "Bazin"
+        },
+        "landuse/reservoir": {
+          "name": "Rezervor"
+        },
+        "landuse/industrial/industrial_point": {
+          "name": "Zonă Industrială"
+        },
+        "indoor/corridor_line": {
+          "name": "Coridor Interior"
+        },
+        "highway/motorway_link-US-CA": {
+          "name": "Intrare în Autostradă"
+        },
+        "highway/primary_link-US-CA": {
+          "name": "Intrare în Drum Principal"
+        },
+        "highway/trunk_link-US-CA": {
+          "name": "Intrare în Drum Expres"
+        },
+        "building/entrance": {
+          "name": "Intrare / Ieșire"
+        },
+        "building/glasshouse": {
+          "name": "Seră"
+        },
+        "building/house/detached": {
+          "name": "Casă Detașată"
+        },
+        "building/house/semi-detached": {
+          "name": "Casă Semi-detașată"
+        },
+        "boundary/administrative": {
+          "name": "Graniță Administrativă"
+        },
+        "amenity/embassy": {
+          "name": "Ambasadă"
+        },
+        "amenity/ferry_terminal": {
+          "name": "Terminal de Bac"
+        },
+        "@templates/contact": {
+          "name": "Punct"
+        },
+        "@templates/internet_access": {
+          "name": "Punct"
+        },
+        "@templates/poi": {
+          "name": "Punct"
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Punct"
+        },
+        "@templates/crossing/defaults": {
+          "name": "Punct"
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Punct"
+        },
+        "@templates/crossing/markings": {
+          "name": "Punct"
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Punct"
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Punct"
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Punct"
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Punct"
         }
       }
     }

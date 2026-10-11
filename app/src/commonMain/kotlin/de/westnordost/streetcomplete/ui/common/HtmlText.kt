@@ -6,7 +6,8 @@ import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.produceState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
@@ -17,6 +18,8 @@ import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.util.toAnnotatedString
 import de.westnordost.streetcomplete.util.html.HtmlNode
 import de.westnordost.streetcomplete.util.html.tryParseHtml
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 @Composable
 fun HtmlText(
@@ -30,18 +33,24 @@ fun HtmlText(
     inlineContent: Map<String, InlineTextContent> = mapOf(),
     onTextLayout: (TextLayoutResult) -> Unit = {},
 ) {
-    val htmlNodes = remember(html) { tryParseHtml(html) }
-    HtmlText(
-        html = htmlNodes,
-        modifier = modifier,
-        style = style,
-        overflow = overflow,
-        softWrap = softWrap,
-        maxLines = maxLines,
-        minLines = minLines,
-        inlineContent = inlineContent,
-        onTextLayout = onTextLayout,
-    )
+    val htmlNodes by produceState<List<HtmlNode>?>(null, html) {
+        value = withContext(Dispatchers.Default) {
+            tryParseHtml(html)
+        }
+    }
+    htmlNodes?.let {
+        HtmlText(
+            html = it,
+            modifier = modifier,
+            style = style,
+            overflow = overflow,
+            softWrap = softWrap,
+            maxLines = maxLines,
+            minLines = minLines,
+            inlineContent = inlineContent,
+            onTextLayout = onTextLayout,
+        )
+    }
 }
 
 @Composable
