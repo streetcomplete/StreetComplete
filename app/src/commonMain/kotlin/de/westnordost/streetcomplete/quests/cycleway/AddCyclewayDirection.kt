@@ -48,9 +48,11 @@ class AddCyclewayDirection : OsmFilterQuestType<OnewayAnswer>() {
     }
 
     override fun applyAnswerTo(answer: OnewayAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        val key = if (tags["highway"] == "cycleway" &&
-            tags["foot"] !in setOf("yes", "designated") &&
-            tags["segregated"] != "yes"
+        val key = if (
+            tags["highway"] == "cycleway"
+            && tags["foot"] != "yes"
+            && tags["foot"] != "designated"
+            && tags["segregated"] != "yes"
         ) {
             "oneway"
         } else {
