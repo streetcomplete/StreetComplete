@@ -103,7 +103,7 @@ class AddEntranceReference : OsmElementQuestType<EntranceReferenceAnswer> {
     }
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter ("""nodes with entrance""".toElementFilterExpression() )
+        mapData.filter("nodes with entrance")
 
     @Composable
     override fun Form(on: (QuestAction<EntranceReferenceAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {

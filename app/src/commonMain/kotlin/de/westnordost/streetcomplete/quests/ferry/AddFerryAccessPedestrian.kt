@@ -56,8 +56,5 @@ class AddFerryAccessPedestrian : OsmElementQuestType<Boolean> {
     }
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("""
-            ways, relations with
-                route = ferry
-        """)
+        mapData.filter("ways, relations with route = ferry")
 }

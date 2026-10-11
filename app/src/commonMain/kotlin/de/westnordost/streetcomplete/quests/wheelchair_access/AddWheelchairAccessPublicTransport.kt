@@ -42,5 +42,9 @@ class AddWheelchairAccessPublicTransport : OsmFilterQuestType<WheelchairAccess>(
     }
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways, relations with amenity = bus_station or railway ~ station|subway_entrance")
+        mapData.filter("""
+            nodes, ways, relations with
+              amenity = bus_station
+              or railway ~ station|subway_entrance
+        """)
 }

@@ -35,5 +35,5 @@ class AddIsBuildingUnderground : OsmFilterQuestType<Boolean>() {
     }
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter (elementFilter )
+        mapData.filter(elementFilter)
 }

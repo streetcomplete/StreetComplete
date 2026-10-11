@@ -104,7 +104,7 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
     }
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter ("""nodes with entrance""".toElementFilterExpression() )
+        mapData.filter("nodes with entrance")
 }
 
 private fun Relation.getMultipolygonNodeIds(mapData: MapDataWithGeometry): List<Long> {
