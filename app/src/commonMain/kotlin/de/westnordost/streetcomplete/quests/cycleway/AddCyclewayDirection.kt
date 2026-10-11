@@ -19,10 +19,24 @@ class AddCyclewayDirection : OsmFilterQuestType<OnewayAnswer>() {
     override val elementFilter = """
         ways with
           highway ~ path|footway|cycleway
-          and (footway = sidewalk or is_sidepath = yes)
-          and bicycle ~ yes|designated
+          and (
+            footway = sidewalk
+            or path = sidewalk
+            or is_sidepath = yes
+            or footway = sidepath
+            or path = sidepath
+            or cycleway = sidepath
+          )
+          and (
+            bicycle ~ yes|designated
+            or (highway = cycleway and !bicycle)
+          )
           and !oneway
           and !oneway:bicycle
+          and !oneway:conditional
+          and !oneway:bicycle:conditional
+          and !bicycle:forward
+          and !bicycle:backward
           and area != yes
           and junction != roundabout
           and access !~ private|no
@@ -35,7 +49,10 @@ class AddCyclewayDirection : OsmFilterQuestType<OnewayAnswer>() {
     override val achievements = listOf(BICYCLIST)
     override val hint = Res.string.quest_arrow_tutorial
     override val defaultDisabledMessage = Res.string.default_disabled_msg_cycleway
-    override val enabledInCountries = NoCountriesExcept("DE", "AT", "DK", "NL", "FI", "NO")
+    /**
+     * Country selection based on the research and sources in [issue #4827](https://github.com/streetcomplete/StreetComplete/issues/4827#issuecomment-6113562219).
+     */
+    override val enabledInCountries = NoCountriesExcept("DE", "DK", "NL", "FI", "NO", "BE", "HR")
 
     @Composable
     override fun Form(

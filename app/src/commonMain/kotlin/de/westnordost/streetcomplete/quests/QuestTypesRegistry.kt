@@ -540,7 +540,6 @@ fun questTypeRegistry(
     135 to AddRoadSurface(), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style... - sometimes requires way to be split
     136 to AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
     137 to AddCycleway(getCountryInfoByLocation), // for any cyclist routers (and cyclist maps)
-    203 to AddCyclewayDirection(),
     181 to AddLaneMarkings(),
     138 to AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
 
@@ -554,6 +553,7 @@ fun questTypeRegistry(
     // footways
     143 to AddPathSurface(), // used by OSM Carto, BRouter, OsmAnd, OSRM, graphhopper...
     144 to AddCyclewaySegregation(), // Cyclosm, Valhalla, Bike Citizens Bicycle Navigation...
+    203 to AddCyclewayDirection(),
     145 to AddFootwayPartSurface(),
     146 to AddCyclewayPartSurface(),
     147 to AddSidewalkSurface(),
