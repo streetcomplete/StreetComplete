@@ -18,6 +18,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
@@ -34,16 +35,17 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun AddRecyclingContainerMaterialsForm(
     on: (QuestAction<RecyclingContainerMaterialsAnswer>) -> Unit,
-    presetSelection: Set<RecyclingMaterial>
+    element: Element
 ) {
-    var selectedItems by rememberSerializable { mutableStateOf(presetSelection) }
+    var selectedItems by remember(element) { mutableStateOf(parseRecyclingMaterials(element.tags)) }
+    val resurvey = remember(element) { selectedItems.isNotEmpty() }
 
     var confirmJustTrash by remember { mutableStateOf(false) }
 
     QuestForm(
         on = on,
         isComplete = selectedItems.isNotEmpty(),
-        isResurvey = presetSelection.isNotEmpty(),
+        isResurvey = resurvey,
         onClickOk = { on(Answer(RecyclingMaterials(selectedItems))) },
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_recycling_materials_answer_waste)) {
