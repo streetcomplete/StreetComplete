@@ -15,7 +15,7 @@ class AddWheelchairAccessPublicTransport : OsmFilterQuestType<WheelchairAccess>(
 
     override val elementFilter = """
         nodes, ways, relations with
-          (amenity = bus_station or railway ~ station|subway_entrance)
+          (amenity ~ bus_station|ferry_terminal or railway ~ station|subway_entrance)
           and access !~ no|private
           and (
             !wheelchair
