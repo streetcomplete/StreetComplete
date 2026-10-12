@@ -20,12 +20,8 @@ class AddCyclewayDirection : OsmFilterQuestType<OnewayAnswer>() {
         ways with
           highway ~ path|footway|cycleway
           and (
-            footway = sidewalk
-            or path = sidewalk
+            ~footway|cycleway|path ~ sidewalk|sidepath
             or is_sidepath = yes
-            or footway = sidepath
-            or path = sidepath
-            or cycleway = sidepath
           )
           and (
             bicycle ~ yes|designated
