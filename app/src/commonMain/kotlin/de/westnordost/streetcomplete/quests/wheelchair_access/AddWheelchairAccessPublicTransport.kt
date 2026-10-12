@@ -18,8 +18,7 @@ class AddWheelchairAccessPublicTransport : OsmFilterQuestType<WheelchairAccess>(
           (
             amenity ~ bus_station|ferry_terminal
             or railway = subway_entrance
-            or
-            (
+            or (
               railway ~ station|halt
               and public_transport
             )
