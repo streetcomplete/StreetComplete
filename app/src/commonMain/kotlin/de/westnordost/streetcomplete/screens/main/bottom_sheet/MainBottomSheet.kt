@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.resources.quest_create_note
 import de.westnordost.streetcomplete.screens.main.ShownBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.CreateNoteForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.overlay.OverlayFormContainer
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.quest.OsmQuestFormContainer
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.quest.QuestFormList
 import de.westnordost.streetcomplete.ui.common.dialogs.SurveyConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.MapOverlayContent
@@ -100,41 +100,47 @@ fun MainBottomSheet(
             )
         }
         is ShownBottomSheet.OsmQuest -> {
-            OsmQuestFormContainer(
+            QuestFormList(
+                quests = shownBottomSheet.quests,
+                element = shownBottomSheet.element,
                 onDismiss = onDismiss,
-                onEdit = { action ->
-                    if (SuppressSurveyConfirmation || isSurvey(shownBottomSheet.quest.geometry)) {
+                onEdit = { quest, action, onAnswered ->
+                    if (SuppressSurveyConfirmation || isSurvey(quest.geometry)) {
                         onSubmitEdit(
-                            shownBottomSheet.quest.type,
-                            shownBottomSheet.quest.geometry,
+                            quest.type,
+                            quest.geometry,
                             action
                         )
-                        onSolved(shownBottomSheet.quest.type.icon, shownBottomSheet.quest.position)
-                        onDismiss()
+                        onSolved(quest.type.icon, quest.position)
+                        onAnswered()
                     } else {
-                        confirmEdit = PendingEdit(shownBottomSheet.quest.type, shownBottomSheet.quest.geometry, action)
+                        confirmEdit = PendingEdit(
+                            elementEditType = quest.type,
+                            geometry = quest.geometry,
+                            elementEditAction = action,
+                            icon = quest.type.icon,
+                            position = quest.position,
+                            onConfirmed = onAnswered,
+                        )
                     }
                 },
-                onLeaveNote = { noteText, noteImagePaths ->
+                onLeaveNote = { quest, noteText, noteImagePaths ->
                     onCreateNote(
-                        shownBottomSheet.quest.geometry.center,
+                        quest.geometry.center,
                         noteText,
                         noteImagePaths,
                         null,
                     )
-                    onSolved(shownBottomSheet.quest.type.icon, shownBottomSheet.quest.position)
-                    onDismiss()
+                    onSolved(quest.type.icon, quest.position)
                 },
-                onHideQuest = {
+                onHideQuest = { quest ->
                     val key = OsmQuestKey(
                         shownBottomSheet.element.type,
-                        shownBottomSheet.element.id, shownBottomSheet.quest.type.name)
+                        shownBottomSheet.element.id,
+                        quest.type.name
+                    )
                     onHideQuest(key)
-                    onDismiss()
                 },
-                questType = shownBottomSheet.quest.type,
-                element = shownBottomSheet.element,
-                geometry = shownBottomSheet.quest.geometry,
                 mapPosition = mapPosition,
                 mapRotation = mapRotation,
                 mapTilt = mapTilt,
@@ -198,7 +204,11 @@ fun MainBottomSheet(
                     pendingEdit.geometry,
                     pendingEdit.elementEditAction
                 )
-                onDismiss()
+                if (pendingEdit.icon != null && pendingEdit.position != null) {
+                    onSolved(pendingEdit.icon, pendingEdit.position)
+                }
+                pendingEdit.onConfirmed()
+                confirmEdit = null
             },
             onToggleDontShowAgain = { SuppressSurveyConfirmation = it }
         )
@@ -209,6 +219,9 @@ private data class PendingEdit(
     val elementEditType: ElementEditType,
     val geometry: ElementGeometry,
     val elementEditAction: ElementEditAction,
+    val icon: DrawableResource? = null,
+    val position: LatLon? = null,
+    val onConfirmed: () -> Unit = {},
 )
 
 private var SuppressSurveyConfirmation = false
