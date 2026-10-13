@@ -52,6 +52,10 @@ const val DESKTOP_APP_ID = "de.westnordost.streetcomplete.desktop"
 
 /** Services for the local development launcher; metadata is read directly from the checkout. */
 val desktopModule = module {
+    // TODO desktop: compose resources are packaged in the jar, but osmfeatures can only read presets
+    //      from the file system (or Android assets), so they are read directly from the checkout
+    //      for now. Read them via Res once osmfeatures accepts a ResourceAccessAdapter, see
+    //      https://github.com/westnordost/osmfeatures/pull/34
     val resourcesDir = Path(requireNotNull(System.getProperty("streetcomplete.resources")))
 
     // metadata
