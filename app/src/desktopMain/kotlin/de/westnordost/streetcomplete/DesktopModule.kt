@@ -23,7 +23,7 @@ import de.westnordost.streetcomplete.screens.about.AppStoreInfo
 import de.westnordost.streetcomplete.screens.about.DesktopAppStoreInfo
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
-import de.westnordost.streetcomplete.util.error_reporting.EmptyCrashReportHolder
+import de.westnordost.streetcomplete.util.error_reporting.CrashReportsUncaughtExceptionHandler
 import de.westnordost.streetcomplete.util.sound.DesktopSoundEffectPlayer
 import de.westnordost.streetcomplete.util.sound.SoundEffectPlayer
 import io.github.vinceglb.filekit.FileKit
@@ -68,7 +68,10 @@ val desktopModule = module {
 
     // error reporting
 
-    single<CrashReportHolder> { EmptyCrashReportHolder }
+    single {
+        CrashReportsUncaughtExceptionHandler(get(), Path(FileKit.filesDir.path, "crashreport.txt"))
+    }
+    single<CrashReportHolder> { get<CrashReportsUncaughtExceptionHandler>() }
 
     // database
 
