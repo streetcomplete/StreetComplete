@@ -41,7 +41,7 @@ reorderable = "3.1.0"
 qrose = "1.3.0"
 bignum = "0.3.10"
 filekit = "0.16.0"
-composeWebview = "2.0.3"
+composeWebview = "1.0.3"
 
 # Android
 # The Jetpack Compose version that the Compose Multiplatform version above depends on, which
@@ -193,7 +193,7 @@ filekit-dialogsCompose = { module = "io.github.vinceglb:filekit-dialogs-compose"
 filekit-core = { module = "io.github.vinceglb:filekit-core", version.ref = "filekit" }
 
 # Webview for OAuth login
-compose-webview = { module = "io.github.kevinnzou:compose-webview-multiplatform", version.ref = "composeWebview" }
+compose-webview = { module = "dev.nucleusframework:composewebview", version.ref = "composeWebview" }
 
 # Scheduling background jobs (Android)
 androidx-work-runtime = { module = "androidx.work:work-runtime-ktx", version.ref = "work" }
