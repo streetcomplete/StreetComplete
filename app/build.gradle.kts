@@ -225,11 +225,10 @@ kotlin {
 
                 // taking a photo (, picking an image from gallery, ...)
                 implementation(libs.filekit.dialogsCompose)
+
+                // multiplatform webview (for login via OAuth)
+                implementation(libs.compose.webview)
             }
-        }
-        mobileMain.dependencies {
-            // multiplatform webview (for login via OAuth)
-            implementation(libs.compose.webview)
         }
         androidMain {
             dependsOn(jvmAndroidMain)
