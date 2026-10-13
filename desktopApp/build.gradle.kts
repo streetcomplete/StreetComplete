@@ -52,13 +52,19 @@ compose.desktop {
                 bundleID = "de.westnordost.streetcomplete.desktop"
                 entitlementsFile.set(file("entitlements.plist"))
                 runtimeEntitlementsFile.set(file("entitlements.plist"))
-                // TODO macOS: these strings are not localized, see UpdateIosAppTranslationsTask
+                // TODO macOS: these strings are copied from no_location_permission_warning in
+                //      strings.xml, and only in English. Translations are in values-*/strings.xml,
+                //      but would need to be added to the .app bundle as
+                //      <lang>.lproj/InfoPlist.strings, which compose.desktop doesn't support.
+                //      (For iOS, see UpdateIosAppTranslationsTask)
+                val locationDescription = "Precise location permission is needed to show your " +
+                    "position on the map and download data in your vicinity."
                 infoPlist {
                     extraKeysRawXml = """
                         <key>NSLocationWhenInUseUsageDescription</key>
-                        <string>StreetComplete uses your location to display nearby quests.</string>
+                        <string>$locationDescription</string>
                         <key>NSLocationUsageDescription</key>
-                        <string>StreetComplete uses your location to display nearby quests.</string>
+                        <string>$locationDescription</string>
                     """.trimIndent()
                 }
             }
