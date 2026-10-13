@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.rememberWindowState
+import de.westnordost.streetcomplete.data.DesktopPeriodicCleaner
 import de.westnordost.streetcomplete.data.preferences.Theme
 import de.westnordost.streetcomplete.ui.theme.rememberAppTheme
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportsUncaughtExceptionHandler
@@ -21,6 +22,7 @@ import org.koin.core.context.stopKoin
 import org.maplibre.compose.desktop.ProvideMapPresentationHost
 import streetcomplete.desktopapp.generated.resources.Res
 import streetcomplete.desktopapp.generated.resources.app_icon
+import kotlin.system.exitProcess
 
 fun main(args: Array<String>) {
     // appId is the directory name within the system locations for FileKit.filesDir / cacheDir:
@@ -34,6 +36,8 @@ fun main(args: Array<String>) {
     Runtime.getRuntime().addShutdownHook(Thread { stopKoin() })
     koin.get<CrashReportsUncaughtExceptionHandler>().install()
     koin.get<ApplicationInitializer>().initialize()
+    // the OS may start the app just to run a scheduled task, then the UI is not shown
+    if (koin.get<DesktopPeriodicCleaner>().runIfScheduled(args)) exitProcess(0)
     nucleusApplication(args) {
         val theme = rememberAppTheme()
         NucleusDecoratedWindowTheme(isDark = theme.isDark) {
