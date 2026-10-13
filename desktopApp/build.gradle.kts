@@ -44,6 +44,7 @@ compose.desktop {
         }
         nativeDistributions {
             packageName = "StreetCompleteDev"
+            // TODO desktop: sync with versionName in androidApp and MARKETING_VERSION in iosApp
             packageVersion = "1.0.0"
             modules("java.prefs", "jdk.unsupported")
             macOS {
