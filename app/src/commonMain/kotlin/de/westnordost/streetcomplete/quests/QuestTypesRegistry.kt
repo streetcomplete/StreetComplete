@@ -553,9 +553,9 @@ fun questTypeRegistry(
     // footways
     143 to AddPathSurface(), // used by OSM Carto, BRouter, OsmAnd, OSRM, graphhopper...
     144 to AddCyclewaySegregation(), // Cyclosm, Valhalla, Bike Citizens Bicycle Navigation...
-    203 to AddCyclewayDirection(),
     145 to AddFootwayPartSurface(),
     146 to AddCyclewayPartSurface(),
+    203 to AddCyclewayDirection(),
     147 to AddSidewalkSurface(),
     148 to AddCyclewayWidth(arSupportChecker), // should be after cycleway segregation
 

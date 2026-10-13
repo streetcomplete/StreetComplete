@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.oneway.AddOnewayForm
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer
-import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 
@@ -45,10 +44,16 @@ class AddCyclewayDirection : OsmFilterQuestType<OnewayAnswer>() {
     override val achievements = listOf(BICYCLIST)
     override val hint = Res.string.quest_arrow_tutorial
     override val defaultDisabledMessage = Res.string.default_disabled_msg_cycleway
-    /**
-     * Country selection based on the research and sources in [issue #4827](https://github.com/streetcomplete/StreetComplete/issues/4827#issuecomment-6113562219).
-     */
-    override val enabledInCountries = NoCountriesExcept("DE", "DK", "NL", "FI", "NO", "BE", "HR")
+
+    override val enabledInCountries = NoCountriesExcept(
+        "DE", // https://www.gesetze-im-internet.de/stvo_2013/__2.html, https://www.bonn.de/themen-entdecken/verkehr-mobilitaet/radverkehr-regeln-und-rechte.php
+        "DK", // https://www.retsinformation.dk/eli/lta/2026/118/pdf
+        "NL", // https://wiki.openstreetmap.org/wiki/NL:Cycleway
+        "FI", // https://www.liikenneturva.fi/en/road-safety/cycling, https://www.traficom.fi/files/media/publication/Traficom_Py%C3%B6r%C3%A4ilij%C3%A4n_Liikennes%C3%A4%C3%A4nt%C3%B6opas_FI.pdf
+        "NO", // https://www.vegvesen.no/en/traffic-information/traffic-safety/norwegian-traffic-rules/traffic-rules-for-cyclists/
+        "BE", // https://www.politie.be/5353/vragen/verkeerstips/mag-je-op-een-fietspad-steeds-in-twee-richtingen-rijden
+        "HR"  // https://www.zakon.hr/z/78/zakon-o-sigurnosti-prometa-na-cestama
+    )
 
     @Composable
     override fun Form(
@@ -71,10 +76,6 @@ class AddCyclewayDirection : OsmFilterQuestType<OnewayAnswer>() {
         } else {
             "oneway:bicycle"
         }
-        tags[key] = when (answer) {
-            FORWARD -> "yes"
-            BACKWARD -> "-1"
-            NO_ONEWAY -> "no"
-        }
+        tags[key] = answer.osmValue
     }
 }
