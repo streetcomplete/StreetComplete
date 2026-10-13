@@ -33,11 +33,13 @@ compose.desktop {
     application {
         mainClass = "de.westnordost.streetcomplete.MainKt"
         jvmArgs += listOf(
+            // see https://maplibre-compose.pages.dev/maplibre-compose/platform-setup/#java-and-native-access
             "--enable-native-access=ALL-UNNAMED",
             "-Dstreetcomplete.resources=${rootProject.file("app/src/commonMain/composeResources/files")}",
         )
         if (hostOs == "macos") {
-            // Ad-hoc signing changes native library hashes in the local app bundle.
+            // the .app bundle (see below) is signed, which changes LWJGL's native libraries, see
+            // https://maplibre-compose.pages.dev/maplibre-compose/platform-setup/#signed-packages
             jvmArgs += "-Dorg.lwjgl.util.NoHashChecks=true"
         }
         nativeDistributions {
@@ -48,6 +50,7 @@ compose.desktop {
                 bundleID = "de.westnordost.streetcomplete.desktop"
                 entitlementsFile.set(file("entitlements.plist"))
                 runtimeEntitlementsFile.set(file("entitlements.plist"))
+                // TODO macOS: these strings are not localized, see UpdateIosAppTranslationsTask
                 infoPlist {
                     extraKeysRawXml = """
                         <key>NSLocationWhenInUseUsageDescription</key>

@@ -7,36 +7,30 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.Cleaner
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.DatabaseImpl
+import de.westnordost.streetcomplete.data.DesktopPeriodicCleaner
 import de.westnordost.streetcomplete.data.PeriodicCleaner
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseConfigurator
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.connection.NetworkCapabilities
+import de.westnordost.streetcomplete.data.download.DesktopDownloadController
 import de.westnordost.streetcomplete.data.download.DownloadController
-import de.westnordost.streetcomplete.data.download.Downloader
 import de.westnordost.streetcomplete.data.initialize
 import de.westnordost.streetcomplete.data.maptiles.MapLibreMapTilesDownloader
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
-import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.upload.DesktopUploadController
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.screens.about.AppStoreInfo
+import de.westnordost.streetcomplete.screens.about.DesktopAppStoreInfo
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
 import de.westnordost.streetcomplete.util.error_reporting.EmptyCrashReportHolder
+import de.westnordost.streetcomplete.util.sound.DesktopSoundEffectPlayer
 import de.westnordost.streetcomplete.util.sound.SoundEffectPlayer
 import io.github.vinceglb.filekit.FileKit
 import io.github.vinceglb.filekit.cacheDir
 import io.github.vinceglb.filekit.filesDir
 import io.github.vinceglb.filekit.path
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.cancelAndJoin
-import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.job
-import kotlinx.coroutines.launch
 import kotlinx.io.buffered
 import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
@@ -93,10 +87,7 @@ val desktopModule = module {
 
     // app store info
 
-    single<AppStoreInfo> { object : AppStoreInfo {
-        override fun getRatingUri(): String? = null
-        override fun disallowsInAppDonationLinks(): Boolean = false
-    } }
+    single<AppStoreInfo> { DesktopAppStoreInfo }
 
     // AR
 
@@ -116,9 +107,7 @@ val desktopModule = module {
 
     // sound
 
-    single<SoundEffectPlayer> { object : SoundEffectPlayer {
-        override fun play(resourcePath: String) {}
-    } }
+    single<SoundEffectPlayer> { DesktopSoundEffectPlayer() }
 
     // connection
 
@@ -141,31 +130,11 @@ val desktopModule = module {
 
     // background jobs
 
-    // Login is disabled; edits remain in the local database for inspecting quest behavior.
-    single<UploadController> { object : UploadController {
-        override fun upload(isUserInitiated: Boolean) {}
-    } }
+    single<UploadController> { DesktopUploadController() }
 
-    single<DownloadController> {
-        val downloader = get<Downloader>()
-        // Downloader already logs errors and notifies its listeners
-        val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main + CoroutineExceptionHandler { _, _ -> })
-        var job: Job? = null
-        object : DownloadController {
-            override fun download(bbox: BoundingBox, isUserInitiated: Boolean) {
-                scope.launch {
-                    // like on Android: a user-initiated download replaces the current one, others don't
-                    val previous = job
-                    if (!isUserInitiated && previous?.isActive == true) return@launch
-                    job = currentCoroutineContext().job
-                    previous?.cancelAndJoin()
-                    downloader.download(bbox, isUserInitiated)
-                }
-            }
-        }
-    }
+    single<DownloadController> { DesktopDownloadController(get()) } onClose { (it as? DesktopDownloadController)?.close() }
 
-    single<PeriodicCleaner> { object : PeriodicCleaner {
-        override fun enqueue() { get<Cleaner>().cleanOld() }
-    } }
+    single { DesktopPeriodicCleaner { get<Cleaner>().cleanOld() } } onClose { it?.close() }
+
+    single<PeriodicCleaner> { get<DesktopPeriodicCleaner>() }
 }

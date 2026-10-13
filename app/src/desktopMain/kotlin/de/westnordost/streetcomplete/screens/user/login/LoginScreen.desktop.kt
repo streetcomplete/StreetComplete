@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import org.jetbrains.compose.resources.stringResource
 
+// TODO desktop: login not implemented, could use https://github.com/NucleusFramework/ComposeNativeWebview
 @Composable
 actual fun LoginScreen(viewModel: LoginViewModel, onClickBack: () -> Unit) {
     Column {
