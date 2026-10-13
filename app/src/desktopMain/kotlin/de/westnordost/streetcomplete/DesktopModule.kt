@@ -143,7 +143,7 @@ val desktopModule = module {
 
     // background jobs
 
-    single<UploadController> { DesktopUploadController() }
+    single<UploadController> { DesktopUploadController(get()) } onClose { (it as? DesktopUploadController)?.close() }
 
     single<DownloadController> { DesktopDownloadController(get()) } onClose { (it as? DesktopDownloadController)?.close() }
 
