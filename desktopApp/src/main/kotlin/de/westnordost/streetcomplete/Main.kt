@@ -1,16 +1,22 @@
 package de.westnordost.streetcomplete
 
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import androidx.compose.ui.window.rememberWindowState
+import androidx.compose.ui.window.v2.Window
+import androidx.compose.ui.window.v2.rememberWindowState
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportsUncaughtExceptionHandler
 import io.github.vinceglb.filekit.FileKit
+import org.jetbrains.compose.resources.painterResource
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.maplibre.compose.desktop.ProvideMapPresentationHost
 import org.maplibre.compose.desktop.rememberAwtComposeMapPresentationHost
+import streetcomplete.desktopapp.generated.resources.Res
+import streetcomplete.desktopapp.generated.resources.app_icon
 
+@OptIn(ExperimentalComposeUiApi::class)
 fun main() {
     // appId is the directory name within the system locations for FileKit.filesDir / cacheDir:
     // - macOS: ~/Library/Application Support/<appId> / ~/Library/Caches/<appId>
@@ -25,8 +31,10 @@ fun main() {
         application(exitProcessOnExit = false) {
             Window(
                 onCloseRequest = ::exitApplication,
+                state = rememberWindowState(),
                 title = "StreetComplete — Development",
-                state = rememberWindowState(width = 1200.dp, height = 800.dp),
+                icon = painterResource(Res.drawable.app_icon),
+                minSize = DpSize(320.dp, 320.dp),
             ) {
                 ProvideMapPresentationHost(rememberAwtComposeMapPresentationHost(window)) {
                     App(uri = null, onConsumedUri = {})

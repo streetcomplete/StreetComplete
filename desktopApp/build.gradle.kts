@@ -23,9 +23,18 @@ val mapBackend = if (hostOs == "macos") "metal" else "vulkan"
 dependencies {
     implementation(project(":app"))
     implementation(compose.desktop.currentOs)
+
+    // Dependency injection
     implementation("io.insert-koin:koin-core:4.2.2")
-    implementation("org.maplibre.compose:maplibre-compose:0.20.0")
+
+    // Compose
+    implementation("org.jetbrains.compose.components:components-resources:1.12.1")
+
+    // File access
     implementation("io.github.vinceglb:filekit-core:0.16.0")
+
+    // Map
+    implementation("org.maplibre.compose:maplibre-compose:0.20.0")
     runtimeOnly("org.maplibre.compose:maplibre-compose-runtime-$mapBackend-$hostOs-$hostArch:0.20.0")
 }
 
