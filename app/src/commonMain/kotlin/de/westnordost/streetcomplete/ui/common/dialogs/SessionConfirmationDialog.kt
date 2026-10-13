@@ -15,26 +15,32 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.*
+import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
-/** Asks user if he was really on-site */
+/**
+ * Shows a confirmation dialog with an option to suppress future
+ * confirmations for the remainder of the session.
+ */
 @Composable
-fun SurveyConfirmationDialog(
+fun SessionConfirmationDialog(
     onDismissRequest: () -> Unit,
     onConfirmed: () -> Unit,
     onToggleDontShowAgain: (Boolean) -> Unit,
+    title: StringResource,
+    note: StringResource? = null,
     modifier: Modifier = Modifier,
 ) {
     var dontShowAgain by remember { mutableStateOf(false) }
     ConfirmationDialog(
         onDismissRequest = onDismissRequest,
         onConfirmed = onConfirmed,
-        title = { Text(stringResource(Res.string.quest_source_dialog_title)) },
+        title = { Text(stringResource(title)) },
         text = {
             Column(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                Text(stringResource(Res.string.quest_source_dialog_note))
+                note?.let{Text(stringResource(it))}
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Switch(
                         checked = dontShowAgain,

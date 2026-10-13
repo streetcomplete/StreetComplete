@@ -18,13 +18,12 @@ import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.quests.note_comments.AddNoteCommentForm
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_create_note
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.ShownBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.CreateNoteForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.overlay.OverlayFormContainer
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.quest.OsmQuestFormContainer
-import de.westnordost.streetcomplete.ui.common.dialogs.SurveyConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.SessionConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.MapOverlayContent
 import de.westnordost.streetcomplete.ui.common.quest.Marker
@@ -58,6 +57,8 @@ fun MainBottomSheet(
     modifier: Modifier = Modifier
 ) {
     var confirmEdit by remember { mutableStateOf<PendingEdit?>(null) }
+    var confirmDisableQuest by remember { mutableStateOf(false) }
+    var questTypeToDisable by remember { mutableStateOf<QuestType?>(null) }
 
     when (shownBottomSheet) {
         is ShownBottomSheet.CreateOsmNote -> {
@@ -135,8 +136,14 @@ fun MainBottomSheet(
                     onDismiss()
                 },
                 onDisableQuest = {
-                    onDisableQuest(shownBottomSheet.quest.type)
-                    onDismiss()
+                    val questType = shownBottomSheet.quest.type
+                    if (SuppressDisableQuestConfirmation) {
+                        onDisableQuest(questType)
+                        onDismiss()
+                    } else {
+                        questTypeToDisable = questType
+                        confirmDisableQuest = true
+                    }
                 },
                 questType = shownBottomSheet.quest.type,
                 element = shownBottomSheet.element,
@@ -196,7 +203,7 @@ fun MainBottomSheet(
     }
 
     confirmEdit?.let { pendingEdit ->
-        SurveyConfirmationDialog(
+        SessionConfirmationDialog(
             onDismissRequest = { confirmEdit = null },
             onConfirmed = {
                 onSubmitEdit(
@@ -206,7 +213,27 @@ fun MainBottomSheet(
                 )
                 onDismiss()
             },
-            onToggleDontShowAgain = { SuppressSurveyConfirmation = it }
+            onToggleDontShowAgain = { SuppressSurveyConfirmation = it },
+            title = Res.string.quest_source_dialog_title,
+            note = Res.string.quest_source_dialog_note
+        )
+    }
+
+    if (confirmDisableQuest) {
+        SessionConfirmationDialog(
+            onDismissRequest = {
+                confirmDisableQuest = false
+                questTypeToDisable = null
+            },
+            onConfirmed = {
+                val questType = checkNotNull(questTypeToDisable)
+                confirmDisableQuest = false
+                questTypeToDisable = null
+                onDisableQuest(questType)
+                onDismiss()
+            },
+            onToggleDontShowAgain = { SuppressDisableQuestConfirmation = it },
+            title = Res.string.quest_disable_confirmation_title
         )
     }
 }
@@ -218,3 +245,5 @@ private data class PendingEdit(
 )
 
 private var SuppressSurveyConfirmation = false
+
+private var SuppressDisableQuestConfirmation = false
