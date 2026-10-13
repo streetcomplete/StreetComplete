@@ -1,0 +1,92 @@
+plugins {
+    id("org.jetbrains.kotlin.jvm")
+    id("org.jetbrains.kotlin.plugin.compose")
+    id("org.jetbrains.compose")
+}
+
+kotlin {
+    jvmToolchain(25)
+}
+
+val hostOs = when {
+    System.getProperty("os.name").startsWith("Mac") -> "macos"
+    System.getProperty("os.name").startsWith("Windows") -> "windows"
+    else -> "linux"
+}
+val hostArch = when (System.getProperty("os.arch")) {
+    "aarch64", "arm64" -> "arm64"
+    "amd64", "x86_64" -> "x64"
+    else -> error("Unsupported desktop architecture: ${System.getProperty("os.arch")}")
+}
+val mapBackend = if (hostOs == "macos") "metal" else "vulkan"
+
+dependencies {
+    implementation(project(":app"))
+    implementation(compose.desktop.currentOs)
+
+    // Dependency injection
+    implementation("io.insert-koin:koin-core:4.2.2")
+
+    // Compose
+    implementation("org.jetbrains.compose.components:components-resources:1.12.1")
+
+    // File access
+    implementation("io.github.vinceglb:filekit-core:0.16.0")
+
+    // Map
+    implementation("org.maplibre.compose:maplibre-compose:0.20.0")
+    runtimeOnly("org.maplibre.compose:maplibre-compose-runtime-$mapBackend-$hostOs-$hostArch:0.20.0")
+}
+
+compose.desktop {
+    application {
+        mainClass = "de.westnordost.streetcomplete.MainKt"
+        jvmArgs += listOf(
+            // see https://maplibre-compose.pages.dev/maplibre-compose/platform-setup/#java-and-native-access
+            "--enable-native-access=ALL-UNNAMED",
+            "-Dstreetcomplete.resources=${rootProject.file("app/src/commonMain/composeResources/files")}",
+        )
+        if (hostOs == "macos") {
+            // the .app bundle (see below) is signed, which changes LWJGL's native libraries, see
+            // https://maplibre-compose.pages.dev/maplibre-compose/platform-setup/#signed-packages
+            jvmArgs += "-Dorg.lwjgl.util.NoHashChecks=true"
+        }
+        nativeDistributions {
+            packageName = "StreetCompleteDev"
+            // TODO desktop: sync with versionName in androidApp and MARKETING_VERSION in iosApp
+            packageVersion = "1.0.0"
+            modules("java.prefs", "jdk.unsupported")
+            macOS {
+                // keep in sync with DESKTOP_APP_ID in DesktopModule.kt
+                bundleID = "de.westnordost.streetcomplete.desktop"
+                entitlementsFile.set(file("entitlements.plist"))
+                runtimeEntitlementsFile.set(file("entitlements.plist"))
+                // TODO macOS: these strings are copied from no_location_permission_warning in
+                //      strings.xml, and only in English. Translations are in values-*/strings.xml,
+                //      but would need to be added to the .app bundle as
+                //      <lang>.lproj/InfoPlist.strings, which compose.desktop doesn't support.
+                //      (For iOS, see UpdateIosAppTranslationsTask)
+                val locationDescription = "Precise location permission is needed to show your " +
+                    "position on the map and download data in your vicinity."
+                infoPlist {
+                    extraKeysRawXml = """
+                        <key>NSLocationWhenInUseUsageDescription</key>
+                        <string>$locationDescription</string>
+                        <key>NSLocationUsageDescription</key>
+                        <string>$locationDescription</string>
+                    """.trimIndent()
+                }
+            }
+        }
+    }
+}
+
+// Launch a local .app on macOS, as Core Location usage descriptions are read from the app bundle.
+if (hostOs == "macos") {
+    tasks.configureEach {
+        if (name == "run") {
+            enabled = false
+            dependsOn("runDistributable")
+        }
+    }
+}
