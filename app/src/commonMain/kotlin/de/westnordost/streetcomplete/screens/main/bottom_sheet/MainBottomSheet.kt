@@ -57,7 +57,6 @@ fun MainBottomSheet(
     modifier: Modifier = Modifier
 ) {
     var confirmEdit by remember { mutableStateOf<PendingEdit?>(null) }
-    var confirmDisableQuest by remember { mutableStateOf(false) }
     var questTypeToDisable by remember { mutableStateOf<QuestType?>(null) }
 
     when (shownBottomSheet) {
@@ -142,7 +141,6 @@ fun MainBottomSheet(
                         onDismiss()
                     } else {
                         questTypeToDisable = questType
-                        confirmDisableQuest = true
                     }
                 },
                 questType = shownBottomSheet.quest.type,
@@ -205,7 +203,8 @@ fun MainBottomSheet(
     confirmEdit?.let { pendingEdit ->
         SessionConfirmationDialog(
             onDismissRequest = { confirmEdit = null },
-            onConfirmed = {
+            onConfirmed = { dontShowAgain ->
+                SuppressSurveyConfirmation = dontShowAgain
                 onSubmitEdit(
                     pendingEdit.elementEditType,
                     pendingEdit.geometry,
@@ -213,26 +212,19 @@ fun MainBottomSheet(
                 )
                 onDismiss()
             },
-            onToggleDontShowAgain = { SuppressSurveyConfirmation = it },
             title = Res.string.quest_source_dialog_title,
             note = Res.string.quest_source_dialog_note
         )
     }
 
-    if (confirmDisableQuest) {
+    questTypeToDisable?.let { questType ->
         SessionConfirmationDialog(
-            onDismissRequest = {
-                confirmDisableQuest = false
-                questTypeToDisable = null
-            },
-            onConfirmed = {
-                val questType = checkNotNull(questTypeToDisable)
-                confirmDisableQuest = false
-                questTypeToDisable = null
+            onDismissRequest = { questTypeToDisable = null },
+            onConfirmed = { dontShowAgain ->
+                SuppressDisableQuestConfirmation = dontShowAgain
                 onDisableQuest(questType)
                 onDismiss()
             },
-            onToggleDontShowAgain = { SuppressDisableQuestConfirmation = it },
             title = Res.string.quest_disable_confirmation_title
         )
     }

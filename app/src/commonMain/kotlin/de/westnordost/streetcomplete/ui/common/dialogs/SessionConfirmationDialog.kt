@@ -25,8 +25,7 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun SessionConfirmationDialog(
     onDismissRequest: () -> Unit,
-    onConfirmed: () -> Unit,
-    onToggleDontShowAgain: (Boolean) -> Unit,
+    onConfirmed: (dontShowAgain: Boolean) -> Unit,
     title: StringResource,
     note: StringResource? = null,
     modifier: Modifier = Modifier,
@@ -34,20 +33,17 @@ fun SessionConfirmationDialog(
     var dontShowAgain by remember { mutableStateOf(false) }
     ConfirmationDialog(
         onDismissRequest = onDismissRequest,
-        onConfirmed = onConfirmed,
+        onConfirmed = { onConfirmed(dontShowAgain) },
         title = { Text(stringResource(title)) },
         text = {
             Column(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                note?.let{ Text(stringResource(it)) }
+                note?.let { Text(stringResource(it)) }
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Switch(
                         checked = dontShowAgain,
-                        onCheckedChange = {
-                            dontShowAgain = it
-                            onToggleDontShowAgain(it)
-                        },
+                        onCheckedChange = { dontShowAgain = it },
                     )
                     Text(
                         text = stringResource(Res.string.dialog_session_dont_show_again),
