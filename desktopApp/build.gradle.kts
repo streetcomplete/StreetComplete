@@ -21,8 +21,7 @@ val hostArch = when (System.getProperty("os.arch")) {
 }
 val mapBackend = if (hostOs == "macos") "metal" else "vulkan"
 // a development build of Nucleus 3.0, as it fixes some issues with maplibre-compose. Update to 3.0
-// once released, see https://github.com/maplibre/maplibre-compose/pull/1808
-// (keep in sync with the plugin version in the root build.gradle.kts)
+// once released
 val nucleusVersion = "3.0.0-dev-202610121021"
 
 dependencies {

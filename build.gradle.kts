@@ -8,7 +8,6 @@ plugins {
     id("com.android.library") version "9.2.1" apply false
     id("com.android.kotlin.multiplatform.library") version "9.2.1" apply false
     id("org.jetbrains.compose") version "1.12.1" apply false
-    // keep in sync with nucleusVersion in desktopApp/build.gradle.kts
     id("dev.nucleusframework") version "3.0.0-dev-202610121021" apply false
 }
 
