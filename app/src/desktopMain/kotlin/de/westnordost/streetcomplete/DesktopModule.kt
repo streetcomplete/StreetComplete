@@ -46,6 +46,10 @@ import org.maplibre.compose.util.ExperimentalMaplibreComposeApi
 import java.awt.GraphicsEnvironment
 import java.util.prefs.Preferences
 
+/** Identifies the desktop app to the system, e.g. for the app's data directories and settings.
+ *  Keep in sync with bundleID in desktopApp/build.gradle.kts */
+const val DESKTOP_APP_ID = "de.westnordost.streetcomplete.desktop"
+
 /** Services for the local development launcher; metadata is read directly from the checkout. */
 val desktopModule = module {
     val resourcesDir = Path(requireNotNull(System.getProperty("streetcomplete.resources")))
@@ -105,7 +109,7 @@ val desktopModule = module {
     // settings
 
     single<ObservableSettings> {
-        PreferencesSettings(Preferences.userRoot().node("de/westnordost/streetcomplete/desktop"))
+        PreferencesSettings(Preferences.userRoot().node(DESKTOP_APP_ID.replace('.', '/')))
     }
 
     // sound

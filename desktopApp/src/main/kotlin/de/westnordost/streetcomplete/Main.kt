@@ -17,7 +17,7 @@ fun main() {
     // - Linux: $XDG_DATA_HOME/<appId> / $XDG_CACHE_HOME/<appId>
     //          (or ~/.local/share/<appId> / ~/.cache/<appId>)
     // - Windows: %APPDATA%\<appId> / %LOCALAPPDATA%\<appId>\Cache
-    FileKit.init(appId = "StreetComplete-desktop")
+    FileKit.init(appId = DESKTOP_APP_ID)
     val koin = startKoin { modules(desktopModule, commonModule) }.koin
     koin.get<CrashReportsUncaughtExceptionHandler>().install()
     koin.get<ApplicationInitializer>().initialize()

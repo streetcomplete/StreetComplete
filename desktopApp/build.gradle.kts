@@ -48,6 +48,7 @@ compose.desktop {
             packageVersion = "1.0.0"
             modules("java.prefs", "jdk.unsupported")
             macOS {
+                // keep in sync with DESKTOP_APP_ID in DesktopModule.kt
                 bundleID = "de.westnordost.streetcomplete.desktop"
                 entitlementsFile.set(file("entitlements.plist"))
                 runtimeEntitlementsFile.set(file("entitlements.plist"))
