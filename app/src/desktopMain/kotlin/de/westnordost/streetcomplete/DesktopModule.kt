@@ -122,6 +122,8 @@ val desktopModule = module {
 
     // connection
 
+    // TODO desktop: always reports an unmetered internet connection, could use
+    //      https://nucleusframework.dev/en/docs/os/system-info/ for that later.
     single<ActiveNetworkConnection> { object : ActiveNetworkConnection {
         override val capabilities = flowOf(NetworkCapabilities(hasInternet = true, isMetered = false))
     } }
