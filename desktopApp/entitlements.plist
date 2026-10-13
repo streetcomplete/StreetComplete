@@ -2,13 +2,24 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>com.apple.security.personal-information.location</key>
-    <true/>
+    <!-- Compose Desktop's default entitlements, needed by the JVM. They must be repeated here
+         because a custom entitlements file replaces the defaults, see
+         https://github.com/JetBrains/compose-multiplatform/blob/bdd8e879b2fc4960934a99959d82400c96b7c590/gradle-plugins/compose/src/main/resources/default-entitlements.plist -->
+
+    <!-- https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.security.cs.allow-jit -->
     <key>com.apple.security.cs.allow-jit</key>
     <true/>
+    <!-- https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.security.cs.allow-unsigned-executable-memory -->
     <key>com.apple.security.cs.allow-unsigned-executable-memory</key>
     <true/>
+    <!-- https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.security.cs.disable-library-validation -->
     <key>com.apple.security.cs.disable-library-validation</key>
+    <true/>
+
+    <!-- StreetComplete's entitlements -->
+
+    <!-- https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.security.personal-information.location -->
+    <key>com.apple.security.personal-information.location</key>
     <true/>
 </dict>
 </plist>
