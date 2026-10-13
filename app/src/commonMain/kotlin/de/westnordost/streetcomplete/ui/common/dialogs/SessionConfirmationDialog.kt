@@ -40,7 +40,7 @@ fun SessionConfirmationDialog(
             Column(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                note?.let{Text(stringResource(it))}
+                note?.let{ Text(stringResource(it)) }
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Switch(
                         checked = dontShowAgain,
