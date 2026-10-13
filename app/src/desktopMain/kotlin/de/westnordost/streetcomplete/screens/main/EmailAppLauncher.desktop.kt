@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.screens.main
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.util.logs.Log
+import io.ktor.http.encodeURLParameter
 import java.awt.Desktop
 import java.io.IOException
 import java.net.URI
-import java.net.URLEncoder
 
 @Composable
 actual fun rememberEmailAppLauncher(): EmailAppLauncher = object : EmailAppLauncher {
@@ -15,8 +15,8 @@ actual fun rememberEmailAppLauncher(): EmailAppLauncher = object : EmailAppLaunc
 
     override fun compose(email: String, subject: String?, body: String?) {
         val params = listOfNotNull(
-            subject?.let { "subject=${encode(it)}" },
-            body?.let { "body=${encode(it)}" },
+            subject?.let { "subject=${it.encodeURLParameter()}" },
+            body?.let { "body=${it.encodeURLParameter()}" },
         )
         val query = if (params.isEmpty()) "" else params.joinToString("&", prefix = "?")
         try {
@@ -26,7 +26,3 @@ actual fun rememberEmailAppLauncher(): EmailAppLauncher = object : EmailAppLaunc
         }
     }
 }
-
-// URLEncoder is for application/x-www-form-urlencoded, mailto URIs need %20 instead of +
-private fun encode(s: String): String =
-    URLEncoder.encode(s, Charsets.UTF_8).replace("+", "%20")
