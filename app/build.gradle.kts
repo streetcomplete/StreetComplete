@@ -272,9 +272,6 @@ kotlin {
             dependsOn(jvmAndroidMain)
             dependsOn(nonAndroidMain)
             dependencies {
-                // Kotlin
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.11.0")
-
                 // HTTP client
                 implementation("io.ktor:ktor-client-cio:3.5.2")
             }
