@@ -66,6 +66,7 @@ nucleus.application {
     }
     nativeDistributions {
         packageName = "StreetCompleteDev"
+        protocol("StreetComplete", "streetcomplete", "geo")
         // TODO desktop: sync with versionName in androidApp and MARKETING_VERSION in iosApp
         packageVersion = "1.0.0"
         modules("java.prefs", "jdk.unsupported")
