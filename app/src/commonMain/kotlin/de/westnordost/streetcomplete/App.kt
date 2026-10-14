@@ -9,6 +9,7 @@ import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.data.preferences.Theme
 import de.westnordost.streetcomplete.screens.MainNavHost
 import de.westnordost.streetcomplete.ui.theme.AppTheme
+import de.westnordost.streetcomplete.ui.theme.rememberAppTheme
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -16,8 +17,8 @@ fun App(
     uri: String?,
     onConsumedUri: () -> Unit,
     viewModel: AppViewModel = koinViewModel(),
+    theme: Theme = rememberAppTheme(),
 ) {
-    val theme by viewModel.theme.collectAsState()
     val locale by viewModel.locale.collectAsState()
     val keepScreenOn by viewModel.keepScreenOn.collectAsState()
     AppEnvironment(locale, theme, keepScreenOn) {
