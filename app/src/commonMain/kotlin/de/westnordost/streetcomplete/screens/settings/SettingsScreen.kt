@@ -17,6 +17,7 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Switch
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.TriStateCheckbox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -24,6 +25,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
@@ -202,9 +204,18 @@ fun SettingsScreen(
 
                 Preference(
                     name = stringResource(Res.string.pref_title_zoom_buttons),
-                    onClick = { viewModel.setShowZoomButtons(!showZoomButtons) },
+                    onClick = {
+                        viewModel.setShowZoomButtons(if (showZoomButtons == true) false else true)
+                    },
                 ) {
-                    Switch(checked = showZoomButtons, onCheckedChange = null)
+                    TriStateCheckbox(
+                        state = when (showZoomButtons) {
+                            true -> ToggleableState.On
+                            false -> ToggleableState.Off
+                            null -> ToggleableState.Indeterminate
+                        },
+                        onClick = null
+                    )
                 }
 
                 Preference(
