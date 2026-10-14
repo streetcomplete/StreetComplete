@@ -27,8 +27,14 @@ class TestQuestFilters {
         val mapData = TestMapDataWithGeometry(emptyList())
 
         for (questType in elementQuestTypes) {
-            val highlightedElements = questType.getHighlightedElements(element, mapData)
-            highlightedElements.toList()
+            try {
+                val highlightedElements = questType.getHighlightedElements(element, mapData)
+                highlightedElements.toList()
+            }
+            catch (exception : Exception)
+            {
+                throw exception
+            }
         }
     }
 }

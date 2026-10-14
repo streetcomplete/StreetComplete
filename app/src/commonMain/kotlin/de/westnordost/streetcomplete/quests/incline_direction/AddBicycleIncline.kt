@@ -60,7 +60,4 @@ class AddBicycleIncline : OsmElementQuestType<BicycleInclineAnswer> {
 
     override fun applyAnswerTo(answer: BicycleInclineAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) =
         answer.applyTo(tags)
-
-    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("ways with mtb:scale:uphill")
 }
