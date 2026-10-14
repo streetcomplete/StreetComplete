@@ -114,6 +114,9 @@ class AddHousenumber(
         val areasWithAddressesOnOutline = mapData.ways
             .asSequence()
             .filter { it.isArea() }
+            // we check small areas first, because smaller areas should "consume" address nodes,
+            // or in other words, address nodes on outlines are associated to the smallest area
+            // they are part of
             .map { area ->
                 val geom = mapData.getGeometry(area.type, area.id) as? ElementPolygonsGeometry
                 val size = geom?.polygons?.measuredMultiPolygonArea() ?: 0.0
