@@ -17,6 +17,7 @@ data class UrlConfig(
 )
 
 private const val URL = "https://streetcomplete.app/s"
+private const val HTTP_URL = "http://streetcomplete.app/s"
 private const val URL2 = "streetcomplete://s"
 
 private const val PARAM_NAME = "n"
@@ -35,6 +36,7 @@ fun parseConfigUrl(
 ): UrlConfig? {
     val length = when {
         url.startsWith("$URL?", ignoreCase = true) -> URL.length + 1
+        url.startsWith("$HTTP_URL?", ignoreCase = true) -> HTTP_URL.length + 1
         url.startsWith("$URL2?", ignoreCase = true) -> URL2.length + 1
         else -> return null
     }
