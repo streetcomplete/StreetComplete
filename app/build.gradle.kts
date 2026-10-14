@@ -32,15 +32,14 @@ val nsiVersion = "7.2.20260530"
 val poEditorProjectId = "97843"
 
 plugins {
-    id("org.jetbrains.kotlin.multiplatform")
-    id("org.jetbrains.kotlin.plugin.serialization") version "2.4.20"
-    id("org.jetbrains.kotlin.plugin.compose")
-    id("com.android.kotlin.multiplatform.library")
-    id("org.jetbrains.compose")
-    id("com.codingfeline.buildkonfig") version "0.23.0"
-    // keep in sync with Kotlin version! See https://mokkery.dev/docs/Setup/#compatibility
-    id("dev.mokkery") version "3.5.0"
-    id("org.jetbrains.kotlin.plugin.allopen") version "2.4.20"
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.android.multiplatformLibrary)
+    alias(libs.plugins.compose.multiplatform)
+    alias(libs.plugins.buildkonfig)
+    alias(libs.plugins.mokkery)
+    alias(libs.plugins.kotlin.allopen)
 }
 
 buildkonfig {
@@ -131,133 +130,133 @@ kotlin {
         commonMain {
             dependencies {
                 // Kotlin
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
+                implementation(libs.kotlinx.coroutines.core)
 
                 // Atomics, Locks, Synchronization
                 // Apparently only necessary as long as https://github.com/Kotlin/kotlinx-atomicfu/issues/145 is not solved
-                implementation("org.jetbrains.kotlinx:atomicfu:0.33.0")
+                implementation(libs.kotlinx.atomicfu)
 
                 // Dependency injection
-                implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.2.2"))
-                implementation("io.insert-koin:koin-core")
-                implementation("io.insert-koin:koin-compose")
-                implementation("io.insert-koin:koin-compose-viewmodel")
+                implementation(project.dependencies.platform(libs.koin.bom))
+                implementation(libs.koin.core)
+                implementation(libs.koin.compose)
+                implementation(libs.koin.composeViewmodel)
 
                 // Logging
-                implementation("co.touchlab:kermit:2.2.0")
+                implementation(libs.kermit)
 
                 // settings
-                implementation("com.russhwolf:multiplatform-settings:1.3.0")
+                implementation(libs.multiplatform.settings)
 
                 // I/O
-                implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.1")
+                implementation(libs.kotlinx.io)
 
                 // location
-                implementation("org.maplibre.compose:location:0.20.0")
+                implementation(libs.maplibre.location)
 
                 // SQLite
-                implementation("androidx.sqlite:sqlite:2.7.1")
-                implementation("androidx.sqlite:sqlite-bundled:2.7.1")
+                implementation(libs.androidx.sqlite)
+                implementation(libs.androidx.sqliteBundled)
 
                 // HTTP client
-                implementation("io.ktor:ktor-client-core:3.5.2")
-                implementation("io.ktor:ktor-client-encoding:3.5.2")
+                implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.encoding)
                 // SHA256 hashing, used during OAuth authentication
-                implementation("org.kotlincrypto.hash:sha2:0.8.0")
+                implementation(libs.kotlincrypto.sha2)
 
                 // XML
-                implementation("io.github.pdvrieze.xmlutil:core:1.0.2")
-                implementation("io.github.pdvrieze.xmlutil:core-io:1.0.2")
+                implementation(libs.xmlutil.core)
+                implementation(libs.xmlutil.coreIo)
 
                 // YAML
-                implementation("com.charleskorn.kaml:kaml:0.104.0")
+                implementation(libs.kaml)
 
                 // JSON
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.11.0")
+                implementation(libs.kotlinx.serialization.json)
+                implementation(libs.kotlinx.serialization.jsonIo)
 
                 // Date / time
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.8.0")
+                implementation(libs.kotlinx.datetime)
 
                 // finding in which country we are for country-specific logic
-                implementation("de.westnordost:countryboundaries:3.0.0")
+                implementation(libs.countryboundaries)
 
                 // finding OSM features
-                implementation("de.westnordost:osmfeatures:8.0.0")
+                implementation(libs.osmfeatures)
 
                 // opening hours parser
-                implementation("de.westnordost:osm-opening-hours:0.4.0")
+                implementation(libs.osm.openingHours)
 
                 // UI (Compose)
-                implementation("org.jetbrains.compose.runtime:runtime:1.12.1")
-                implementation("org.jetbrains.compose.foundation:foundation:1.12.1")
-                implementation("org.jetbrains.compose.material:material:1.12.1")
-                implementation("org.jetbrains.compose.ui:ui:1.12.1")
-                implementation("org.jetbrains.compose.components:components-resources:1.12.1")
-                implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.12.1")
+                implementation(libs.compose.runtime)
+                implementation(libs.compose.foundation)
+                implementation(libs.compose.material)
+                implementation(libs.compose.ui)
+                implementation(libs.compose.resources)
+                implementation(libs.compose.uiToolingPreview)
 
                 // UI Navigation
-                implementation("org.jetbrains.androidx.navigationevent:navigationevent-compose:1.1.0")
-                implementation("org.jetbrains.androidx.navigation3:navigation3-ui:1.1.2")
-                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-navigation3:2.11.0")
+                implementation(libs.androidx.navigationevent.compose)
+                implementation(libs.androidx.navigation3.ui)
+                implementation(libs.androidx.lifecycle.viewmodelNavigation3)
 
                 // UI ViewModel
-                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.11.0")
+                implementation(libs.androidx.lifecycle.viewmodelCompose)
 
                 // UI widgets
 
                 // Map
-                implementation("org.maplibre.compose:maplibre-compose:0.20.0")
+                implementation(libs.maplibre.compose)
 
                 // non-lazy grid
                 // NOTE: might replace with
                 // https://developer.android.com/develop/ui/compose/layouts/adaptive/grid
                 // when that API is not experimental anymore
-                implementation("com.cheonjaeung.compose.grid:grid:2.8.0")
+                implementation(libs.compose.grid)
 
                 // reorderable lists (raw Compose API is pretty complicated)
-                implementation("sh.calvin.reorderable:reorderable:3.1.0")
+                implementation(libs.reorderable)
 
                 // sharing presets/settings via QR Code
-                implementation("io.github.alexzhirkevich:qrose:1.3.0")
+                implementation(libs.qrose)
 
                 // for encoding information for the URL configuration (QR code)
-                implementation("com.ionspin.kotlin:bignum:0.3.10")
+                implementation(libs.bignum)
 
                 // taking a photo (, picking an image from gallery, ...)
-                implementation("io.github.vinceglb:filekit-dialogs-compose:0.16.0")
+                implementation(libs.filekit.dialogsCompose)
             }
         }
         mobileMain.dependencies {
             // multiplatform webview (for login via OAuth)
-            implementation("io.github.kevinnzou:compose-webview-multiplatform:2.0.3")
+            implementation(libs.compose.webview)
         }
         androidMain {
             dependsOn(jvmAndroidMain)
             dependsOn(mobileMain)
             dependencies {
                 // Dependency injection
-                implementation("io.insert-koin:koin-android")
-                implementation("io.insert-koin:koin-androidx-workmanager")
+                implementation(libs.koin.android)
+                implementation(libs.koin.androidxWorkmanager)
 
                 // Compose
-                implementation("androidx.activity:activity-compose:1.13.0")
+                implementation(libs.androidx.activity.compose)
 
                 // Kotlin
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.11.0")
+                implementation(libs.kotlinx.coroutines.android)
 
                 // scheduling background jobs
-                implementation("androidx.work:work-runtime-ktx:2.12.0")
+                implementation(libs.androidx.work.runtime)
 
                 // HTTP Client
                 // cio, not android, because of https://youtrack.jetbrains.com/issue/KTOR-9848
-                implementation("io.ktor:ktor-client-cio:3.5.2")
+                implementation(libs.ktor.client.cio)
 
                 // map
-                implementation("org.maplibre.compose:maplibre-compose-runtime-opengl-android:0.20.0")
+                implementation(libs.maplibre.runtime.android)
 
                 // required to @Preview composables in Android Studio
-                runtimeOnly("androidx.compose.ui:ui-tooling:1.12.1")
+                runtimeOnly(libs.androidx.compose.uiTooling)
             }
         }
         iosMain {
@@ -265,7 +264,7 @@ kotlin {
             dependsOn(mobileMain)
             dependencies {
                 // HTTP client
-                implementation("io.ktor:ktor-client-darwin:3.5.2")
+                implementation(libs.ktor.client.darwin)
             }
         }
         getByName("desktopMain") {
@@ -273,24 +272,24 @@ kotlin {
             dependsOn(nonAndroidMain)
             dependencies {
                 // Kotlin
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.11.0")
+                implementation(libs.kotlinx.coroutines.swing)
 
                 // HTTP client
-                implementation("io.ktor:ktor-client-cio:3.5.2")
+                implementation(libs.ktor.client.cio)
             }
         }
         commonTest {
             dependencies {
-                implementation(kotlin("test"))
+                implementation(libs.kotlin.test)
 
-                implementation("io.ktor:ktor-client-mock:3.5.2")
-                implementation("androidx.sqlite:sqlite-bundled:2.7.1")
+                implementation(libs.ktor.client.mock)
+                implementation(libs.androidx.sqliteBundled)
             }
         }
         getByName("androidHostTest") {
             dependencies {
                 // without it, :app:testAndroidHostTest throws java.lang.UnsatisfiedLinkError for sqliteJni
-                implementation("androidx.sqlite:sqlite-bundled-jvm:2.7.1")
+                implementation(libs.androidx.sqliteBundledJvm)
             }
         }
     }
@@ -304,9 +303,9 @@ compose {
 }
 
 dependencies {
-    androidRuntimeClasspath("org.jetbrains.compose.ui:ui-tooling:1.12.1")
+    androidRuntimeClasspath(libs.compose.uiTooling)
     // see comment in android.compileOptions.isCoreLibraryDesugaringEnabled
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
+    coreLibraryDesugaring(libs.desugar.jdkLibs)
 }
 
 // run tests in a fixed time zone so that results don't depend on the host's time zone
