@@ -112,17 +112,21 @@ class AddHousenumber(
          *     or on a vertex on its outline */
 
         val areasWithAddressesOnOutline = mapData.ways
+            .asSequence()
             .filter { it.isArea() }
-            .sortedBy {
-                // we check small areas first, because smaller areas should "consume" address nodes,
-                // or in other words, address nodes on outlines are associated to the smallest area
-                // they are part of
-                val geom = mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry
+            // we check small areas first, because smaller areas should "consume" address nodes,
+            // or in other words, address nodes on outlines are associated to the smallest area
+            // they are part of
+            .map { area ->
+                val geom = mapData.getGeometry(area.type, area.id) as? ElementPolygonsGeometry
                 val size = geom?.polygons?.measuredMultiPolygonArea() ?: 0.0
-                size
+                area to size
             }
+            .sortedBy { (_, size) -> size }
+            .map { (area, _) -> area }
             .filter { it.consumeAnyContainedNode(addressNodeIds, mapData) }
             .mapNotNull { mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry }
+            .toList()
 
         val areasWithAddresses = mapData
             .filter { nonBuildingAreasWithAddressFilter.matches(it) }
