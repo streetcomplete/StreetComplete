@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.osm.address
 
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.address.AddressNumberAndName
 import kotlinx.serialization.Serializable
 
 @Serializable

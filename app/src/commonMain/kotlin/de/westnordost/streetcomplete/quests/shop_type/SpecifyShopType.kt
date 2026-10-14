@@ -9,33 +9,33 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.places.applyReplacePlaceTo
 import de.westnordost.streetcomplete.osm.applyTo
+import de.westnordost.streetcomplete.osm.places.applyReplacePlaceTo
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
-import de.westnordost.streetcomplete.osm.removeCheckDates
 import de.westnordost.streetcomplete.osm.places.removePlaceRelatedTags
+import de.westnordost.streetcomplete.osm.removeCheckDates
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.getNameLabel
 
 class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
 
     override val elementFilter = """
-        nodes, ways with (
-         shop ~ yes|hobby
-         and !man_made
-         and !historic
-         and !military
-         and !power
-         and !tourism
-         and !attraction
-         and !amenity
-         and !leisure
-         and !aeroway
-         and !railway
-         and !craft
-         and !healthcare
-         and !office
-        )
+        nodes, ways with
+          shop ~ yes|hobby
+          and !man_made
+          and !historic
+          and !military
+          and !power
+          and !tourism
+          and !attraction
+          and !amenity
+          and !leisure
+          and !aeroway
+          and !railway
+          and !craft
+          and !healthcare
+          and !office
+          and access !~ private|no
     """
     override val changesetComment = "Survey shop types"
     override val wikiLink = "Key:shop"

@@ -13,9 +13,9 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.opening_hours.isSupported
 import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
+import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
@@ -117,8 +117,7 @@ mapOf(
 ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") + "\n" + """
     )
     and (!opening_hours or opening_hours older today -1 years)
-    and
-    (
+    and (
         name
         or brand
         or noname = yes
@@ -164,15 +163,15 @@ mapOf(
     )
     """
     private val filter by lazy { """
-        nodes, ways with
-        (
+        nodes, ways, relations with
+          (
             $namedFilterFragment
             or $unnamedFilterFragment
             or $updateFilterFragment
-        )
-        and access !~ private|no
-        and street_vendor != yes
-        and opening_hours:signed != no
+          )
+          and access !~ private|no
+          and street_vendor != yes
+          and opening_hours:signed != no
     """.toElementFilterExpression() }
 
     override val changesetComment = "Survey opening hours"

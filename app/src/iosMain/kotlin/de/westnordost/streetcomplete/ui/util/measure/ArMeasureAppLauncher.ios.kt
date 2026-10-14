@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 
 @Composable
-actual fun rememberArMeasureAppLauncher(): ArMeasureAppLauncher {
-    return object : ArMeasureAppLauncher {
+actual fun rememberArMeasureAppLauncher(): ArMeasureAppLauncher =
+    object : ArMeasureAppLauncher {
         override fun measure(
             lengthUnit: LengthUnit,
             measureVertical: Boolean,
@@ -61,7 +61,6 @@ actual fun rememberArMeasureAppLauncher(): ArMeasureAppLauncher {
              */
         }
     }
-}
 
 /*
 object ArMeasureAppResultManager {

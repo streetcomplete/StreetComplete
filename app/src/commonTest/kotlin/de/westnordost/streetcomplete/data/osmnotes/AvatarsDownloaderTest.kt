@@ -2,10 +2,9 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import de.westnordost.streetcomplete.data.user.UserApiClient
 import de.westnordost.streetcomplete.data.user.UserInfo
-import dev.mokkery.mock
 import dev.mokkery.answering.returns
-import dev.mokkery.every
 import dev.mokkery.everySuspend
+import dev.mokkery.mock
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respondError

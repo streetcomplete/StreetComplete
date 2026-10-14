@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.Overlay
@@ -42,9 +41,9 @@ class SidewalkOverlay : Overlay {
         // footways etc, just to highlight e.g. separately mapped sidewalks. However, it is also
         // possible to add sidewalks to them. At least in NL, cycleways with sidewalks actually exist
         mapData.filter("""
-            ways with (
+            ways with
               highway ~ footway|steps|path|bridleway|cycleway
-            ) and area != yes
+              and area != yes
         """).map { it to getFootwayStyle(it).copy(disabled = true) }
 
     @Composable

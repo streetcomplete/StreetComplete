@@ -8,17 +8,17 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
-import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 
 class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
 
     override val elementFilter = """
         nodes with
-        amenity = post_box
-        and !ref and noref != yes and ref:signed != no and !~"ref:.*"
+          amenity = post_box
+          and !ref and noref != yes and ref:signed != no and !~"ref:.*"
     """
     override val changesetComment = "Specify postbox refs"
     override val wikiLink = "Tag:amenity=post_box"

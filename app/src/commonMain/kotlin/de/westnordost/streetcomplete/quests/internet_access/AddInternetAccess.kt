@@ -4,32 +4,34 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
 
 class AddInternetAccess : OsmFilterQuestType<Set<InternetAccess>>() {
 
     override val elementFilter = """
-        nodes, ways with
-        (
-          amenity ~ library|community_centre|youth_centre|hospital|ranger_station
-          or tourism ~ hotel|guest_house|motel|hostel|alpine_hut|apartment|resort|caravan_site|chalet|wilderness_hut
-          or tourism = camp_site and backcountry != yes and camp_site != basic
-          or aeroway = terminal
-          or shop ~ mall|department_store
-          or tourism = information and information ~ office|visitor_center
-          or leisure = marina
-        )
-        and access !~ no|private
-        and (
-          !internet_access
-          or internet_access = yes
-          or internet_access older today -2 years
-        )
+        nodes, ways, relations with
+          (
+            amenity ~ library|community_centre|youth_centre|hospital|ranger_station
+            or tourism ~ hotel|guest_house|motel|hostel|alpine_hut|apartment|resort|caravan_site|chalet|wilderness_hut
+            or tourism = camp_site and backcountry != yes and camp_site != basic
+            or aeroway = terminal
+            or shop ~ mall|department_store
+            or tourism = information and information ~ office|visitor_center
+            or leisure = marina
+          )
+          and access !~ no|private
+          and (
+            !internet_access
+            or internet_access = yes
+            or internet_access older today -2 years
+          )
     """
     /* Asked less often than for example opening hours because this quest is only asked for
        tendentially larger places which are less likely to change often */
@@ -49,4 +51,7 @@ class AddInternetAccess : OsmFilterQuestType<Set<InternetAccess>>() {
     override fun applyAnswerTo(answer: Set<InternetAccess>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("internet_access", answer.joinToString(";") { it.osmValue })
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 }

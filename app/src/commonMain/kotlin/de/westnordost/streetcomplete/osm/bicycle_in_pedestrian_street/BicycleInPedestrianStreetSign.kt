@@ -53,7 +53,7 @@ fun BicycleInPedestrianStreetDesignatedSign(modifier: Modifier = Modifier) {
 /** Composable that represents a sign designating this street as a "bicycle boulevard": A road
  *  that is designated for bicyclists where other road users are (sometimes) also allowed */
 @Composable
-fun BicycleBoulevardSign(modifier: Modifier = Modifier, ) {
+fun BicycleBoulevardSign(modifier: Modifier = Modifier) {
     RectangularSign(
         modifier = modifier,
         color = TrafficSignColor.Blue

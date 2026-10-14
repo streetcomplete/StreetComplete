@@ -64,11 +64,11 @@ class AddRoadSurfaceTest {
         assertFalse(questType.isApplicableTo(way(nodes = listOf(1, 2, 3), tags = mapOf(*pairs))))
     }
 
-    @Test fun `not applicable where very poor tracktype and surface match is suspicious, but not conflicting`() {
+    @Test fun `not applicable where very poor tracktype and surface match is suspicious but not conflicting`() {
         assertIsNotApplicable("highway" to "track", "surface" to "gravel", "tracktype" to "grade5")
     }
 
-    @Test fun `not applicable where tracktype and very good surface match is suspicious, but not conflicting`() {
+    @Test fun `not applicable where tracktype and very good surface match is suspicious but not conflicting`() {
         assertIsNotApplicable("highway" to "track", "surface" to "asphalt", "tracktype" to "grade2")
     }
 }

@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -37,13 +36,14 @@ class StreetParkingOverlay : Overlay {
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, OverlayStyle>> =
         // roads
         mapData.filter("""
-            ways with highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|service
-            and area != yes
+            ways with
+              highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|service
+              and area != yes
         """).map { it to getStreetParkingStyle(it) } +
         // separate parking
         mapData.filter("""
             nodes, ways, relations with
-            amenity = parking
+              amenity = parking
         """).map {
             val style =
                 if (it is Node) parkingLotPointStyle.copy(disabled = true)
@@ -53,8 +53,8 @@ class StreetParkingOverlay : Overlay {
         // chokers
         mapData.filter("""
             nodes with
-            traffic_calming ~ "(choker|chicane|island|choked_.*)"
-            or crossing:island = yes
+              traffic_calming ~ "(choker|chicane|island|choked_.*)"
+              or crossing:island = yes
         """).mapNotNull {
             val style = getNarrowingTrafficCalmingStyle(it)
             if (style != null) it to style else null
@@ -69,13 +69,11 @@ class StreetParkingOverlay : Overlay {
     ) {
         if (element != null && element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes") {
             StreetParkingOverlayForm(on, element, geometry, countryInfo)
-        }
-        else if (element == null || parseNarrowingTrafficCalming(element.tags) != null) {
+        } else if (element == null || parseNarrowingTrafficCalming(element.tags) != null) {
             LaneNarrowingTrafficCalmingForm(on, element, geometry)
         }
     }
 }
-
 
 private val streetParkingTaggingNotExpected by lazy { """
     ways with

@@ -4,7 +4,6 @@ import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.util.ktx.getDisplayName
 import kotlinx.datetime.LocalDate
 
-
 /** Date format symbols used in a locale */
 data class DateFormatElements(
     /** Date component order */
@@ -68,7 +67,7 @@ data class DateFormatElements(
 
 enum class DateComponent { Year, Month, Day }
 
-/** Find the first occurence of the given [string] in this string.*/
+/** Find the first occurrence of the given [string] in this string.*/
 private fun String.find(string: String): IntRange? {
     val startIndex = indexOf(string)
     if (startIndex == -1) return null

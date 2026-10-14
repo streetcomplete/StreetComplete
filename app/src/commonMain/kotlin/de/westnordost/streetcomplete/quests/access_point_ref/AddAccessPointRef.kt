@@ -14,11 +14,11 @@ class AddAccessPointRef : OsmFilterQuestType<AccessPointRefAnswer>() {
 
     override val elementFilter = """
         nodes with
-        (
-          highway = emergency_access_point
-          or emergency = access_point
-        )
-        and !name and !ref and noref != yes and ref:signed != no and !~"ref:.*"
+          (
+            highway = emergency_access_point
+            or emergency = access_point
+          )
+          and !name and !ref and noref != yes and ref:signed != no and !~"ref:.*"
     """
     override val changesetComment = "Determine emergency access point refs"
     override val wikiLink = "Key:ref"

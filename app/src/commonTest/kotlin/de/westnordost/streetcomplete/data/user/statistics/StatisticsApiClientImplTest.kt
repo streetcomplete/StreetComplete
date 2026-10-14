@@ -44,7 +44,7 @@ class StatisticsApiClientImplTest {
             currentWeekRank = 50,
             currentWeekTypes = listOf(EditTypeStatistics("Abc", 4)),
             currentWeekCountries = listOf(CountryStatistics("FR", 1, 123)),
-            activeDates = listOf(LocalDate(2000,12,10)),
+            activeDates = listOf(LocalDate(2000, 12, 10)),
             activeDatesRange = 100,
             isAnalyzing = false,
             lastUpdate = Instant.parse("2007-12-03T10:15:30+01:00").toEpochMilliseconds()

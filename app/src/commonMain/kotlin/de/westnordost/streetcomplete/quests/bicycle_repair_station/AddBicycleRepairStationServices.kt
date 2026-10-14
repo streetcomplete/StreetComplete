@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.bicycle_repair_station
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -22,16 +23,15 @@ class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStat
 
     override val elementFilter = """
         nodes, ways with
-        amenity = bicycle_repair_station
-        and
-        (
-          !service:bicycle:pump
-          or !service:bicycle:stand
-          or !service:bicycle:tools
-          or !service:bicycle:chain_tool
-          or older today -2 years
-        )
-        and access !~ private|no
+          amenity = bicycle_repair_station
+          and (
+            !service:bicycle:pump
+            or !service:bicycle:stand
+            or !service:bicycle:tools
+            or !service:bicycle:chain_tool
+            or older today -2 years
+          )
+          and access !~ private|no
     """
 
     override val changesetComment = "Specify features of bicycle repair stations"
@@ -42,17 +42,22 @@ class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStat
 
     @Composable
     override fun Form(on: (QuestAction<Set<BicycleRepairStationService>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        val initialSelectedItems = remember(element) {
+            parseBicycleRepairStationService(element.tags)
+        }
+
         ItemsSelectQuestForm(
             on = on,
             items = BicycleRepairStationService.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            initialSelectedItems = initialSelectedItems,
         )
     }
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("""
             nodes, ways with
-            amenity ~ bicycle_repair_station|compressed_air
+              amenity ~ bicycle_repair_station|compressed_air
         """)
 
     override fun applyAnswerTo(answer: Set<BicycleRepairStationService>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

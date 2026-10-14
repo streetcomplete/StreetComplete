@@ -53,7 +53,6 @@ fun AddLevelForm(
         }
 
         selectableLevels = parseSelectableLevels(elementsWithLevels.map { it.tags })
-
     }
 
     fun getMarkers(lvl: Double?): List<Marker> {

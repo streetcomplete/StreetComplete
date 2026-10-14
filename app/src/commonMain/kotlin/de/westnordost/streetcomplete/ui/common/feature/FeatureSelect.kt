@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.ui.common.feature
 
 import androidx.compose.material.LocalTextStyle
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue

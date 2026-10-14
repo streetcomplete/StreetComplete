@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.osm.opening_hours.Weekdays
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.answerAppliedTo
-import dev.mokkery.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.toEpochMilli
@@ -390,7 +389,7 @@ class AddOpeningHoursTest {
         ))
     }
 
-    @Test fun `isApplicableTo returns false if the opening hours are not signed, even if there are actually some set`() {
+    @Test fun `isApplicableTo is false for unsigned opening hours even when hours are set`() {
         assertFalse(questType.isApplicableTo(
             node(
                 tags = mapOf(

@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.Overlay
@@ -30,9 +29,10 @@ class WayLitOverlay : Overlay {
     override val hidesQuestTypes = setOf(AddWayLit::class.simpleName!!)
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =
-        mapData
-            .filter("ways, relations with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}")
-            .map { it to getStyle(it) }
+        mapData.filter("""
+            ways, relations with
+              highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
+        """).map { it to getStyle(it) }
 
     @Composable
     override fun Form(

@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.overlays.cycleway
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.geometry.Offset
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry

@@ -10,16 +10,17 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddTents : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           tourism ~ caravan_site|camp_site
           and !tents
+          and access !~ private|no
     """
     override val changesetComment = "Survey whether tents may be used here"
     override val wikiLink = "Key:tents"
@@ -28,7 +29,7 @@ class AddTents : OsmFilterQuestType<Boolean>() {
     override val achievements = listOf(OUTDOORS)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways with tourism ~ caravan_site|camp_site")
+        mapData.filter("nodes, ways, relations with tourism ~ caravan_site|camp_site")
 
     @Composable
     override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {

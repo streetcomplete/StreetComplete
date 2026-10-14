@@ -157,9 +157,6 @@
         "amenity/bureau_de_change": {
           "name": "Valutaveksling"
         },
-        "amenity/bus_station": {
-          "name": "Busstasjon/-terminal"
-        },
         "amenity/cafe": {
           "name": "Kafé"
         },
@@ -242,9 +239,6 @@
         "amenity/drinking_water": {
           "name": "Drikkevann"
         },
-        "amenity/embassy": {
-          "name": "Ambassade"
-        },
         "amenity/events_venue": {
           "name": "Arrangementsted"
         },
@@ -282,9 +276,6 @@
         },
         "amenity/fast_food/sandwich": {
           "name": "Hurtigmat for sandwich"
-        },
-        "amenity/ferry_terminal": {
-          "name": "Fergekai"
         },
         "amenity/fire_station": {
           "name": "Brannstasjon"
@@ -354,12 +345,6 @@
         },
         "amenity/nightclub/lgbtq": {
           "name": "LHBTQ+-nattklubb"
-        },
-        "amenity/nursing_home": {
-          "name": "Gamlehjem"
-        },
-        "amenity/parking": {
-          "name": "Parkeringsplass"
         },
         "amenity/parking/multi-storey": {
           "name": "Parkeringsbygg"
@@ -853,12 +838,6 @@
         "barrier/wall/noise_barrier": {
           "name": "Støyskjerm"
         },
-        "boundary": {
-          "name": "Grense"
-        },
-        "boundary/administrative": {
-          "name": "Administrativ grense"
-        },
         "bridge/support": {
           "name": "Brostøtte"
         },
@@ -1042,9 +1021,6 @@
         "building_part": {
           "name": "Bygningsdel"
         },
-        "building_point": {
-          "name": "Bygning"
-        },
         "cemetery/grave": {
           "name": "Grav"
         },
@@ -1126,9 +1102,6 @@
         "craft/key_cutter": {
           "name": "Nøkkelsliper"
         },
-        "craft/locksmith": {
-          "name": "Låsesmed"
-        },
         "craft/metal_construction": {
           "name": "Metallarbeider"
         },
@@ -1183,9 +1156,6 @@
         },
         "craft/stonemason": {
           "name": "Steinhugger"
-        },
-        "craft/tailor": {
-          "name": "Skredder"
         },
         "craft/tiler": {
           "name": "Flislegger"
@@ -1286,9 +1256,6 @@
         "ford": {
           "name": "Vadested"
         },
-        "ford_line": {
-          "name": "Vadested"
-        },
         "golf/bunker": {
           "name": "Bunkers"
         },
@@ -1337,9 +1304,6 @@
         "healthcare/birthing_center": {
           "name": "Fødestue"
         },
-        "healthcare/blood_donation": {
-          "name": "Blodgiversentral"
-        },
         "healthcare/dentist/orthodontics": {
           "name": "Kjeveortoped"
         },
@@ -1352,9 +1316,6 @@
         "healthcare/midwife": {
           "name": "Jordmor"
         },
-        "healthcare/physiotherapist": {
-          "name": "Fysioterapeut"
-        },
         "healthcare/psychotherapist": {
           "name": "Psykoterapeut"
         },
@@ -1366,9 +1327,6 @@
         },
         "highway/bus_guideway": {
           "name": "Ledeskinne for sporbuss"
-        },
-        "highway/bus_stop": {
-          "name": "Bussholdeplass"
         },
         "highway/busway": {
           "name": "Bussvei"
@@ -1647,9 +1605,6 @@
         "indoor/corridor": {
           "name": "Innendørs korridor"
         },
-        "indoor/corridor_line": {
-          "name": "Innendørs korridor"
-        },
         "indoor/door": {
           "name": "Innendørs dør"
         },
@@ -1677,9 +1632,6 @@
         "landuse/aquaculture": {
           "name": "Havbruk"
         },
-        "landuse/basin": {
-          "name": "Basseng"
-        },
         "landuse/cemetery": {
           "name": "Gravlund"
         },
@@ -1691,9 +1643,6 @@
         },
         "landuse/construction": {
           "name": "Byggeplass"
-        },
-        "landuse/farm": {
-          "name": "Jordbruksland"
         },
         "landuse/farmland": {
           "name": "Jordbruksland"
@@ -1761,9 +1710,6 @@
         "landuse/plant_nursery": {
           "name": "Planteskole"
         },
-        "landuse/pond": {
-          "name": "Dam"
-        },
         "landuse/quarry": {
           "name": "Steinbrudd"
         },
@@ -1775,9 +1721,6 @@
         },
         "landuse/religious": {
           "name": "Religiøst område"
-        },
-        "landuse/reservoir": {
-          "name": "Reservoar"
         },
         "landuse/residential": {
           "name": "Boligområde"
@@ -1973,9 +1916,6 @@
         },
         "leisure/track": {
           "name": "Racerbane (Ikke motorsport)"
-        },
-        "leisure/track/athletics/running": {
-          "name": "Løpebane"
         },
         "leisure/track/cycling": {
           "name": "Sykkelbane"
@@ -2199,9 +2139,6 @@
         },
         "military/bunker": {
           "name": "Militærbunker"
-        },
-        "military/nuclear_explosion_site": {
-          "name": "Atomeksplosjonssted"
         },
         "military/office": {
           "name": "Militærkontor"
@@ -2480,9 +2417,6 @@
         },
         "office/therapist": {
           "name": "Terapeutkontor"
-        },
-        "office/travel_agent": {
-          "name": "Reisebyrå"
         },
         "office/union": {
           "name": "Fagforeningskontor"
@@ -2814,9 +2748,6 @@
         "railway/funicular": {
           "name": "Kabelbanespor"
         },
-        "railway/halt": {
-          "name": "Togstasjon (holdeplass)"
-        },
         "railway/level_crossing": {
           "name": "Planovergang"
         },
@@ -2838,9 +2769,6 @@
         "railway/narrow_gauge": {
           "name": "Smalsporet jernbane"
         },
-        "railway/platform": {
-          "name": "Togperrong"
-        },
         "railway/preserved": {
           "name": "Museumsbane"
         },
@@ -2855,9 +2783,6 @@
         },
         "railway/signal": {
           "name": "Togsignal"
-        },
-        "railway/station": {
-          "name": "Togstasjon"
         },
         "railway/subway": {
           "name": "T-banespor",
@@ -2896,9 +2821,6 @@
         },
         "relation": {
           "name": "Relasjon"
-        },
-        "route/ferry": {
-          "name": "Fergerute"
         },
         "seamark": {
           "name": "Sjømerke"
@@ -3711,9 +3633,6 @@
         "type/route/pipeline": {
           "name": "Rørledningsrute"
         },
-        "type/route/power": {
-          "name": "Kraftlinje"
-        },
         "type/route/railway": {
           "name": "Jernbanelinje"
         },
@@ -3799,6 +3718,172 @@
         "waterway/weir": {
           "name": "Terskeldemning",
           "terms": ["terskeldam", "lav demning"]
+        },
+        "boundary": {
+          "name": "Grense"
+        },
+        "building_point": {
+          "name": "Bygning"
+        },
+        "ford_line": {
+          "name": "Vadested"
+        },
+        "traffic_sign/maxspeed-US-CA-LR": {
+          "name": "Fartsgrenseskilt"
+        },
+        "shop/ice_cream": {
+          "name": "Iskrembutikk"
+        },
+        "route/ferry": {
+          "name": "Fergerute"
+        },
+        "railway/halt": {
+          "name": "Togstasjon (holdeplass)",
+          "terms": ["togholdeplass", "jernbaneholdeplass"]
+        },
+        "railway/platform": {
+          "name": "Togperrong",
+          "terms": ["togplattform", "jernbaneplattform"]
+        },
+        "railway/station": {
+          "name": "Togstasjon"
+        },
+        "office/travel_agent": {
+          "name": "Reisebyrå"
+        },
+        "natural/wood_point": {
+          "name": "Naturskog"
+        },
+        "leisure/track/athletics/running": {
+          "name": "Løpebane"
+        },
+        "landuse/basin": {
+          "name": "Basseng"
+        },
+        "landuse/reservoir": {
+          "name": "Vannreservoir"
+        },
+        "landuse/military/danger_area_point": {
+          "name": "Militært fareområde"
+        },
+        "landuse/industrial/industrial_point": {
+          "name": "Industrielt område"
+        },
+        "indoor/corridor_line": {
+          "name": "Innendørs korridor"
+        },
+        "highway/bus_stop": {
+          "name": "Bussholdeplass"
+        },
+        "highway/raceway_unspecific": {
+          "name": "Racerbane for motorsport"
+        },
+        "highway/traffic_sign": {
+          "name": "Trafikkskilt"
+        },
+        "highway/motorway_link-US-CA": {
+          "name": "Motorveirampe",
+          "terms": ["motorveiforbindelse"]
+        },
+        "highway/primary_link-US-CA": {
+          "name": "Primærveiforbindelse",
+          "terms": ["primærveirampe", "primær hovedveiforbindelse"]
+        },
+        "highway/trunk_link-US-CA": {
+          "name": "Stamveiforbindelse",
+          "terms": ["stamveirampe"]
+        },
+        "highway/path/bicycle_foot": {
+          "name": "Gang- og sykkelvei"
+        },
+        "highway/path/crossing/bicycle_foot": {
+          "name": "Sykkel- og fotgjengerovergang"
+        },
+        "highway/footway/crossing/marked": {
+          "name": "Gangfelt",
+          "aliases": ["Fotgjengerfelt"]
+        },
+        "highway/footway/crossing/zebra": {
+          "name": "Gangfelt",
+          "aliases": ["Fotgjengerfelt"]
+        },
+        "highway/cycleway/crossing/marked": {
+          "name": "Sykkelkryssing med merking"
+        },
+        "highway/crossing/marked": {
+          "name": "Gangfelt"
+        },
+        "highway/crossing/zebra": {
+          "name": "Gangfelt"
+        },
+        "craft/locksmith": {
+          "name": "Låsesmed"
+        },
+        "craft/tailor": {
+          "name": "Skredder"
+        },
+        "building/entrance": {
+          "name": "Inngang / Utgang"
+        },
+        "building/glasshouse": {
+          "name": "Veksthus"
+        },
+        "building/house/detached": {
+          "name": "Anneks"
+        },
+        "building/house/semi-detached": {
+          "name": "Tomannsbolig"
+        },
+        "boundary/administrative": {
+          "name": "Adminstrativ grense"
+        },
+        "amenity/bus_station": {
+          "name": "Busstasjon/-terminal"
+        },
+        "amenity/coworking_space": {
+          "name": "Medarbeiderområde"
+        },
+        "amenity/embassy": {
+          "name": "Ambassade"
+        },
+        "amenity/ferry_terminal": {
+          "name": "Fergeterminal"
+        },
+        "amenity/nursing_home": {
+          "name": "Gamlehjem"
+        },
+        "@templates/contact": {
+          "name": "Punkt"
+        },
+        "@templates/internet_access": {
+          "name": "Punkt"
+        },
+        "@templates/poi": {
+          "name": "Punkt"
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Punkt"
+        },
+        "@templates/crossing/defaults": {
+          "name": "Punkt"
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Punkt"
+        },
+        "@templates/crossing/markings": {
+          "name": "Punkt"
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Punkt"
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Punkt"
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Punkt"
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Punkt"
         }
       }
     }

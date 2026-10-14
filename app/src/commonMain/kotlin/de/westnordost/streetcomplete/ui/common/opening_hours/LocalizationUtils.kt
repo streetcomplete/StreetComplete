@@ -4,19 +4,13 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.LayoutDirection.Ltr
 import androidx.compose.ui.unit.LayoutDirection.Rtl
-import de.westnordost.osm_opening_hours.model.ClockTime
-import de.westnordost.osm_opening_hours.model.ExtendedClockTime
-import de.westnordost.osm_opening_hours.model.ExtendedTime
 import de.westnordost.osm_opening_hours.model.Holiday
 import de.westnordost.osm_opening_hours.model.Month
-import de.westnordost.osm_opening_hours.model.Time
 import de.westnordost.osm_opening_hours.model.Weekday
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.getDisplayName
 import de.westnordost.streetcomplete.util.locale.DateTimeTextSymbolStyle
-import de.westnordost.streetcomplete.util.locale.LocalTimeFormatter
 import kotlinx.datetime.DayOfWeek
-import kotlinx.datetime.LocalTime
 import org.jetbrains.compose.resources.StringResource
 
 fun List<CharSequence>.joinToLocalizedString(

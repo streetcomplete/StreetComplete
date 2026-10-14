@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import dev.mokkery.matcher.any
 import de.westnordost.streetcomplete.testutils.bbox
-import dev.mokkery.mock
 import de.westnordost.streetcomplete.testutils.note
 import dev.mokkery.answering.returns
 import dev.mokkery.everySuspend
-import kotlinx.coroutines.runBlocking
+import dev.mokkery.matcher.any
+import dev.mokkery.mock
 import dev.mokkery.verify
+import kotlinx.coroutines.runBlocking
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 

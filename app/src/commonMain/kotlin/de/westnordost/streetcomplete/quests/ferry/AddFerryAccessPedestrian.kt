@@ -13,16 +13,17 @@ import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddFerryAccessPedestrian : OsmElementQuestType<Boolean> {
 
-    private val filter by lazy {
-        "ways, relations with route = ferry and !foot"
-            .toElementFilterExpression()
-    }
+    private val filter by lazy { """
+        ways, relations with
+          route = ferry and !foot
+    """.toElementFilterExpression() }
+
     override val changesetComment = "Specify ferry access for pedestrians"
     override val wikiLink = "Tag:route=ferry"
     override val icon = Res.drawable.quest_ferry_pedestrian
@@ -53,4 +54,7 @@ class AddFerryAccessPedestrian : OsmElementQuestType<Boolean> {
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["foot"] = answer.toYesNo()
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("ways, relations with route = ferry")
 }

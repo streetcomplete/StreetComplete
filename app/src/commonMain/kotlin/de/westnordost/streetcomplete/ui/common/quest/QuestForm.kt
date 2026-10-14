@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.ui.common.quest
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -7,17 +8,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -28,9 +29,11 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Action.*
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
+import de.westnordost.streetcomplete.ui.common.NonPredictiveBackHandler
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
 import de.westnordost.streetcomplete.ui.theme.defaultTextLinkStyles
+import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.ui.theme.titleSmall
 import de.westnordost.streetcomplete.ui.util.annotateLinks
 import de.westnordost.streetcomplete.util.ktx.isDeletable
@@ -43,7 +46,10 @@ import org.koin.compose.koinInject
 /** A generic quest form, with a [title], [subtitle], [hintText] and [hintImages] in the
  *  header speech bubble, then an optional [note] by another mapper shown below as another speech
  *  bubble, then finally the speech bubble containing the center-aligned [content] padded with a
- *  [contentPadding] (if there is any content) and an OK button to confirm the input.
+ *  [contentPadding] (if there is any content) and an OK button to confirm the input. If
+ *  [isResurvey] is true an additional title "Is this still correct" is added.
+ *  [onClickMap] is called when map is clicked/tapped, can be used to override default behavior
+ *  (closing the quest form). Return true when event is consumed/handled by the quest form.
  *
  *  **This composable requires the `LocalQuestType` composition local to be set!**
  *
@@ -55,9 +61,11 @@ fun QuestForm(
     isComplete: Boolean,
     onClickOk: () -> Unit,
     modifier: Modifier = Modifier,
+    onClickMap: ((MapClick) -> Boolean) = { false },
     featureDictionary: FeatureDictionary = koinInject(),
     hasChanges: Boolean = isComplete,
     title: String = stringResource(LocalQuestType.current!!.title),
+    isResurvey: Boolean = false,
     subtitle: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
     },
@@ -66,7 +74,7 @@ fun QuestForm(
     note: String? = LocalElement.current?.tags?.get("note"),
     otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
-    content: @Composable BoxScope.() -> Unit
+    content: @Composable BoxScope.() -> Unit,
 ) {
     QuestForm(
         on = on,
@@ -82,7 +90,9 @@ fun QuestForm(
         otherAnswers = otherAnswers,
         contentPadding = contentPadding,
         modifier = modifier,
+        onClickMap = onClickMap,
         content = content,
+        isResurvey = isResurvey,
     )
 }
 
@@ -90,7 +100,8 @@ fun QuestForm(
  *  header speech bubble, then an optional [note] by another mapper shown below as another speech
  *  bubble, then finally the speech bubble containing the center-aligned [content] padded with a
  *  [contentPadding] (if there is any content) and below a row of text buttons showing
- *  different [answers] (defined from start to end).
+ *  different [answers] (defined from start to end). If [isResurvey] is true an additional title
+ *  "Is this still correct" is added.
  *
  *  **This composable requires the `LocalQuestType` composition local to be set!**
  *
@@ -101,8 +112,10 @@ fun QuestForm(
     on: (Action) -> Unit,
     answers: List<AnswerItem>,
     modifier: Modifier = Modifier,
+    onClickMap: ((MapClick) -> Boolean) = { false },
     featureDictionary: FeatureDictionary = koinInject(),
     title: String = stringResource(LocalQuestType.current!!.title),
+    isResurvey: Boolean = false,
     subtitle: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
     },
@@ -111,7 +124,7 @@ fun QuestForm(
     note: String? = LocalElement.current?.tags?.get("note"),
     otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
-    content: @Composable (BoxScope.() -> Unit)? = null
+    content: @Composable (BoxScope.() -> Unit)? = null,
 ) {
     QuestForm(
         on = on,
@@ -127,15 +140,17 @@ fun QuestForm(
         otherAnswers = otherAnswers,
         contentPadding = contentPadding,
         modifier = modifier,
+        onClickMap = onClickMap,
         content = content,
+        isResurvey = isResurvey,
     )
 }
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 private fun QuestForm(
     on: (Action) -> Unit,
     title: String,
+    isResurvey: Boolean = false,
     subtitle: AnnotatedString?,
     hintText: String?,
     hintImages: List<DrawableResource>,
@@ -147,6 +162,7 @@ private fun QuestForm(
     otherAnswers: @Composable () -> List<AnswerItem>,
     contentPadding: PaddingValues,
     modifier: Modifier = Modifier,
+    onClickMap: ((MapClick) -> Boolean) = { false },
     mapDataWithEditsSource: MapDataWithEditsSource = koinInject(),
     content: @Composable (BoxScope.() -> Unit)?,
 ) {
@@ -154,11 +170,20 @@ private fun QuestForm(
 
     var confirmDiscard by remember { mutableStateOf(false) }
 
-    BackHandler {
+    fun dismiss() {
         if (hasChanges) {
             confirmDiscard = true
         } else {
             on(Action.Dismiss)
+        }
+    }
+
+    NonPredictiveBackHandler { dismiss() }
+
+    val lastMapClick = LocalLastMapClick.current
+    LaunchedEffect(lastMapClick) {
+        if (lastMapClick != null) {
+            if (!onClickMap(lastMapClick)) dismiss()
         }
     }
 
@@ -184,18 +209,36 @@ private fun QuestForm(
         return result
     }
 
+    val questHeader: @Composable () -> Unit = {
+        QuestHeader(
+            title = title,
+            subtitle = subtitle,
+            hintText = hintText,
+            hintImages = hintImages,
+        )
+    }
+
     BottomSheetFormScaffold(
+        onDismissRequest = ::dismiss,
         header = {
-            QuestHeader(
-                title = title,
-                subtitle = subtitle,
-                hintText = hintText,
-                hintImages = hintImages,
-            )
+            if (isResurvey) {
+                CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.titleLarge) {
+                    Text(stringResource(Res.string.resurvey_title))
+                }
+            } else {
+                questHeader()
+            }
         },
-        note = if (note != null) { {
-            ObjectNote(text = note)
-        } } else null,
+        note = if (note != null || isResurvey) {
+            {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    if (isResurvey) questHeader()
+                    if (note != null) ObjectNote(text = note)
+                }
+            }
+        } else {
+            null
+        },
         content = {
             QuestAnswerContent(
                 modifier = Modifier.fillMaxWidth(),
@@ -207,7 +250,9 @@ private fun QuestForm(
         },
         fab = if (onClickOk != null) {
             { FloatingOkButton(visible = isComplete, onClick = onClickOk) }
-        } else null,
+        } else {
+            null
+        },
         modifier = modifier,
     )
 

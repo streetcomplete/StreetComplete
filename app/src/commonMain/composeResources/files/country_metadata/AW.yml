@@ -2,5 +2,6 @@
 atmOperators: [CMB, RBC, Bancomatico, Banco di Caribe, Arubabank, ArubaBank]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeb, typea]
 officialLanguages: [nl, pap]
 popularSports: [baseball]

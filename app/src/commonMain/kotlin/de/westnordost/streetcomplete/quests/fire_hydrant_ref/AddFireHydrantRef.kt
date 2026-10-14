@@ -4,19 +4,21 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
-import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 
 class AddFireHydrantRef : OsmFilterQuestType<FireHydrantRefAnswer>() {
 
     override val elementFilter = """
         nodes with
-        emergency = fire_hydrant
-        and !name and !ref and noref != yes and ref:signed != no and !~"ref:.*"
+          emergency = fire_hydrant
+          and !name and !ref and noref != yes and ref:signed != no and !~"ref:.*"
     """
     override val changesetComment = "Determine fire hydrant refs"
     override val wikiLink = "Key:ref"
@@ -31,6 +33,9 @@ class AddFireHydrantRef : OsmFilterQuestType<FireHydrantRefAnswer>() {
     override fun Form(on: (QuestAction<FireHydrantRefAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddFireHydrantRefForm(on)
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with emergency = fire_hydrant")
 
     override fun applyAnswerTo(answer: FireHydrantRefAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

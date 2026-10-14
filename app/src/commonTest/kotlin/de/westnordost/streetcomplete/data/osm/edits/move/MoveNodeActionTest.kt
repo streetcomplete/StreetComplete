@@ -4,12 +4,12 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
-import dev.mokkery.mock
 import de.westnordost.streetcomplete.testutils.node
-import dev.mokkery.answering.returns
-import dev.mokkery.every
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.util.ktx.copy
+import dev.mokkery.answering.returns
+import dev.mokkery.every
+import dev.mokkery.mock
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals

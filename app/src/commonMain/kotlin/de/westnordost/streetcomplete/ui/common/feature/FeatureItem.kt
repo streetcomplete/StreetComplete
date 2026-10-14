@@ -2,10 +2,7 @@ package de.westnordost.streetcomplete.ui.common.feature
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.Icon
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.Text
@@ -19,7 +16,6 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.intl.LocaleList
 import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
@@ -27,9 +23,9 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.LocalAppLocale
 import de.westnordost.streetcomplete.ui.common.feature.buildAnnotatedName
 import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
-import org.jetbrains.compose.resources.painterResource
 
 /** Displays an OSM [feature] in the region specified by the given [countryCode].
  *
@@ -46,14 +42,16 @@ fun FeatureItem(
     iconSize: Dp = 45.dp // preset icons are 15x15, so this is 3x
 ) {
     val color = LocalContentColor.current
-    val languages = remember { getLanguagesForFeatureDictionary() }
+    val languages = remember(LocalAppLocale.current) { getLanguagesForFeatureDictionary() }
     val parentFeature = if (feature.isSuggestion) {
         featureDictionary.getParentOfById(
             id = feature.id,
             languages = languages,
             country = countryCode
         )
-    } else null
+    } else {
+        null
+    }
 
     val annotatedName = remember(feature, searchText, color) {
         feature.buildAnnotatedName(searchText = searchText, color = color)

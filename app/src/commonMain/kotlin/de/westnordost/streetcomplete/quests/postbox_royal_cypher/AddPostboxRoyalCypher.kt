@@ -8,18 +8,20 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
-import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
+import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 import org.jetbrains.compose.resources.painterResource
 
 class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>() {
 
     override val elementFilter = """
-        nodes with amenity = post_box and (!royal_cypher or royal_cypher = yes)
+        nodes with
+            amenity = post_box
+            and (!royal_cypher or royal_cypher = yes)
     """
     override val changesetComment = "Specify postbox royal cyphers"
     override val wikiLink = "Key:royal_cypher"

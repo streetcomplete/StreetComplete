@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
@@ -22,19 +24,19 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
 
     override val elementFilter = """
         nodes, ways, relations with
-        (
-          public_transport = platform
-          or (highway = bus_stop and public_transport != stop_position)
-          or highway = hitchhiking
-        )
-        and physically_present != no and naptan:BusStopType != HAR
-        and access !~ no|private
-        and !covered
-        and location !~ underground|indoor
-        and indoor != yes
-        and tunnel != yes
-        and (!level or level >= 0)
-        and (!shelter or shelter older today -4 years)
+          (
+            public_transport = platform
+            or (highway = bus_stop and public_transport != stop_position)
+            or highway = hitchhiking
+          )
+          and physically_present != no and naptan:BusStopType != HAR
+          and access !~ no|private
+          and !covered
+          and location !~ underground|indoor
+          and indoor != yes
+          and tunnel != yes
+          and (!level or level >= 0)
+          and (!shelter or shelter older today -4 years)
     """
     /* Not asking again if it is covered because it means the stop itself is under a large
        building or roof building so this won't usually change */
@@ -69,4 +71,12 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
             }
         }
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
+            nodes, ways, relations with
+              public_transport = platform
+              or (highway = bus_stop and public_transport != stop_position)
+              or highway = hitchhiking
+        """)
 }

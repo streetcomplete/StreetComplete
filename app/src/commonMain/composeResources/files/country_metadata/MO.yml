@@ -2,8 +2,10 @@
 additionalStreetsignLanguages: [en]
 atmOperators: [中國銀行, 中國工商銀行]
 centerLineStyle: white
-chargingStationOperators: ['Tesla, Inc.', 澳電 CEM]
+chargingStationOperators: [澳電 CEM, 'Tesla, Inc.']
+chargingStationSocketTypes: [gb_ac, gb_dc]
 defaultSpeedLimitHasUrbanOrRural: false
+domesticSocketTypes: [typeg]
 edgeLineStyle: yellow
 hasAdvisorySpeedLimitSign: true
 hasSlowZone: true

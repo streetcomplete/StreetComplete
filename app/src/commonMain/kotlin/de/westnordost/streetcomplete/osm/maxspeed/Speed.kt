@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.osm.maxspeed
 import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit
 import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit.*
 import kotlinx.serialization.Serializable
-import kotlin.math.roundToInt
 
 @Serializable
 data class Speed(

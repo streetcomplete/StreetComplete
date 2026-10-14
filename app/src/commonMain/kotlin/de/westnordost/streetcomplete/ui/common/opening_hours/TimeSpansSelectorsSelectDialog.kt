@@ -37,7 +37,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.TimePicker
 import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
 import de.westnordost.streetcomplete.ui.common.rememberTimePickerState
-import de.westnordost.streetcomplete.ui.theme.largeInput
+import de.westnordost.streetcomplete.ui.theme.veryLargeInput
 import de.westnordost.streetcomplete.util.locale.TimeFormatElements
 import org.jetbrains.compose.resources.stringResource
 
@@ -49,19 +49,19 @@ fun TimeSpansSelectorSelectDialog(
     initialTimeSpansSelector: TimeSpansSelector?,
     onSelect: (TimeSpansSelector) -> Unit,
     modifier: Modifier = Modifier,
-    locale: Locale = Locale.current,
+    locale: Locale? = null,
 ) {
     var step by remember { mutableIntStateOf(0) }
 
     val timeFormatElements = remember(locale) { TimeFormatElements.of(locale) }
     val startTimePickerState = rememberTimePickerState(
-        initialHour = initialTimeSpansSelector?.start?.hour ?: 0,
+        initialHour = (initialTimeSpansSelector?.start?.hour ?: 0) % 24,
         initialMinutes = initialTimeSpansSelector?.start?.minutes ?: 0,
         is12Hour = timeFormatElements.clock12 != null,
         allowAfterMidnight = false,
     )
     val endTimePickerState = rememberTimePickerState(
-        initialHour = initialTimeSpansSelector?.end?.hour ?: 0,
+        initialHour = (initialTimeSpansSelector?.end?.hour ?: 0) % 24,
         initialMinutes = initialTimeSpansSelector?.end?.minutes ?: 0,
         is12Hour = timeFormatElements.clock12 != null,
         allowAfterMidnight = true,
@@ -89,7 +89,7 @@ fun TimeSpansSelectorSelectDialog(
                     val timePickerState = if (step == 0) startTimePickerState else endTimePickerState
                     val openEnd = if (step == 0) startOpenEnd else endOpenEnd
 
-                    ProvideTextStyle(MaterialTheme.typography.largeInput) {
+                    ProvideTextStyle(MaterialTheme.typography.veryLargeInput) {
                         TimePicker(
                             state = timePickerState,
                             timeFormatElements = timeFormatElements,

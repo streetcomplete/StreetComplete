@@ -67,7 +67,9 @@ fun WayLitOverlayForm(
                     tagChanges.changeToSteps()
                     on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
                 }
-            } else null
+            } else {
+                null
+            }
         ) }
     )
 }

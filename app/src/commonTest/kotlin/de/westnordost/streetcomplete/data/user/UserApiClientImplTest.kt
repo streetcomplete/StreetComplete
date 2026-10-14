@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.user
 
 import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.testutils.OsmDevApi
-import io.ktor.client.HttpClient
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -41,7 +40,7 @@ class UserApiClientImplTest {
 
     private fun client(token: String?) =
         UserApiClientImpl(
-            httpClient = HttpClient(),
+            httpClient = OsmDevApi.httpClient(),
             baseUrl = OsmDevApi.URL,
             userAccessTokenSource = object : UserAccessTokenSource { override val accessToken = token.orEmpty() },
             userApiParser = UserApiParser()

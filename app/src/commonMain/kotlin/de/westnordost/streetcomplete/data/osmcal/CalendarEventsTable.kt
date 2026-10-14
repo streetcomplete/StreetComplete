@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osmcal
 
-
 object CalendarEventsTable {
     const val TABLE = "calendar_events"
 

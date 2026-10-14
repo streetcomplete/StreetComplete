@@ -271,6 +271,7 @@ class ElementFiltersParserTest {
         matchesTags(mapOf("lit" to "yes"), "lit  older today  +3   years")
         matchesTags(mapOf("lit" to "yes"), "lit  older today  +4   months")
         notMatchesTags(mapOf("lit" to "yes"), "lit older today -2 days ")
+        notMatchesTags(mapOf(), "lit older today +2 days ")
     }
 
     @Test fun `tag newer operator is parsed correctly`() {
@@ -279,6 +280,7 @@ class ElementFiltersParserTest {
         matchesTags(mapOf("lit" to "yes"), "lit  newer today  -3   years")
         matchesTags(mapOf("lit" to "yes"), "lit  newer today  -4   months")
         notMatchesTags(mapOf("lit" to "yes"), "lit newer today +2 days ")
+        notMatchesTags(mapOf(), "lit  newer today -2 days")
     }
 
     @Test fun `has tag operator is parsed correctly`() {

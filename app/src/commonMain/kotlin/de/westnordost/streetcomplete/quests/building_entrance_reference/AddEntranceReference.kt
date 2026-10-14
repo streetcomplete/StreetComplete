@@ -10,13 +10,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
-import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 
 class AddEntranceReference : OsmElementQuestType<EntranceReferenceAnswer> {
 
@@ -40,9 +41,11 @@ class AddEntranceReference : OsmElementQuestType<EntranceReferenceAnswer> {
           and !ref
     """.toElementFilterExpression() }
 
-    private val privateFootwaysFilter by lazy {
-        "ways with highway ~ footway|steps|pedestrian and access ~ private|no".toElementFilterExpression()
-    }
+    private val privateFootwaysFilter by lazy { """
+        ways with
+          highway ~ footway|steps|pedestrian
+          and access ~ private|no
+    """.toElementFilterExpression() }
 
     override val changesetComment = "Specify entrance identifications"
     override val wikiLink = "Key:ref"
@@ -100,7 +103,7 @@ class AddEntranceReference : OsmElementQuestType<EntranceReferenceAnswer> {
     }
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter { it.tags.containsKey("entrance") }.asSequence()
+        mapData.filter("nodes with entrance")
 
     @Composable
     override fun Form(on: (QuestAction<EntranceReferenceAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {

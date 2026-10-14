@@ -1,12 +1,5 @@
 package de.westnordost.streetcomplete.ui.common.auto_complete_text
 
-import androidx.compose.animation.core.LinearOutSlowInEasing
-import androidx.compose.animation.core.MutableTransitionState
-import androidx.compose.foundation.ScrollState
-import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.unit.IntRect
 import androidx.compose.ui.unit.dp

@@ -125,12 +125,13 @@ fun ShowQuestFormsScreen(
                 questType = questType,
                 element = viewModel.mockElement,
                 geometry = viewModel.mockGeometry,
-                geometryOffsetInWindow = null,
                 mapPosition = LatLon(0.0, 0.0),
                 mapRotation = viewModel.mockRotation,
                 mapTilt = 0f,
                 mapMetersPerDp = 0.01,
-                onSetMapMarkers = { /* No map here */ }
+                onSetMapMarkers = { /* No map here */ },
+                onSetMapOverlay = { /* No map here */ },
+                lastMapClick = null
             )
         }
     }

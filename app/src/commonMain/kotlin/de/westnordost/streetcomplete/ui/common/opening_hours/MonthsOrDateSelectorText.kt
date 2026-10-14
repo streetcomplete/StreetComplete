@@ -19,9 +19,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.osm_opening_hours.model.MonthRange
 import de.westnordost.osm_opening_hours.model.MonthsOrDateSelector
 import de.westnordost.osm_opening_hours.model.SingleMonth
-import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.locale.DateTimeTextSymbolStyle
-import org.jetbrains.compose.resources.stringResource
 
 /** A text that shows a list of localized months. E.g. Apr-Aug, Dec */
 @Composable
@@ -30,15 +28,15 @@ fun MonthsText(
     onChange: (List<MonthsOrDateSelector>) -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    locale: Locale = Locale.current,
-    userLocale: Locale = Locale.current,
+    countryLocale: Locale? = null,
+    userLocale: Locale? = null,
 ) {
     val layoutDirection = LocalLayoutDirection.current
     var showDialog by remember { mutableStateOf(false) }
 
     val isError = months.isEmpty()
     Text(
-        text = getMonthsString(months, locale, layoutDirection),
+        text = getMonthsString(months, countryLocale, layoutDirection),
         modifier = modifier
             .clickable(enabled) { showDialog = true }
             .padding(8.dp),
@@ -50,7 +48,7 @@ fun MonthsText(
             onDismissRequest = { showDialog = false },
             initialMonths = months,
             onSelected = onChange,
-            locale = locale,
+            countryLocale = countryLocale,
             userLocale = userLocale,
         )
     }
@@ -59,7 +57,7 @@ fun MonthsText(
 @Composable
 private fun getMonthsString(
     months: List<MonthsOrDateSelector>,
-    locale: Locale,
+    locale: Locale?,
     layoutDirection: LayoutDirection,
 ): String {
     if (months.isEmpty()) return ""
@@ -81,8 +79,8 @@ private fun MonthsOrDateSelector.toLocalizedString(
     style: DateTimeTextSymbolStyle = DateTimeTextSymbolStyle.Short,
     layoutDirection: LayoutDirection = Ltr,
     locale: Locale? = null,
-): String {
-    return when (this) {
+): String =
+    when (this) {
         is MonthRange -> {
             if (year != null) throw UnsupportedOperationException()
             localizedRange(
@@ -99,4 +97,3 @@ private fun MonthsOrDateSelector.toLocalizedString(
         // any date not supported
         else -> throw UnsupportedOperationException()
     }
-}

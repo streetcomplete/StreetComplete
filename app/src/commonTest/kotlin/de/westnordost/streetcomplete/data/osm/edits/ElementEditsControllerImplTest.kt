@@ -8,16 +8,15 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
-import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
-import dev.mokkery.matcher.any
 import de.westnordost.streetcomplete.testutils.edit
-import dev.mokkery.mock
 import de.westnordost.streetcomplete.testutils.node
-import dev.mokkery.answering.returns
-import dev.mokkery.every
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import dev.mokkery.answering.returns
+import dev.mokkery.every
+import dev.mokkery.matcher.any
+import dev.mokkery.mock
 import dev.mokkery.verify
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -28,20 +27,18 @@ class ElementEditsControllerImplTest {
     private lateinit var db: ElementEditsDao
     private lateinit var elementsDb: EditElementsDao
     private lateinit var listener: ElementEditsSource.Listener
-    private lateinit var prefs: Preferences
     private lateinit var idProvider: ElementIdProviderDao
 
     @BeforeTest fun setUp() {
-        db = mock() {
+        db = mock {
             every { delete(any()) } returns true
             every { markSynced(any()) } returns true
         }
         elementsDb = mock()
         idProvider = mock()
-        prefs = mock()
 
         listener = mock()
-        ctrl = ElementEditsControllerImpl(db, elementsDb, idProvider, prefs)
+        ctrl = ElementEditsControllerImpl(db, elementsDb, idProvider)
         ctrl.addListener(listener)
     }
 
@@ -181,7 +178,7 @@ class ElementEditsControllerImplTest {
         val c = edit.action.newElementsCount
         verify { idProvider.assign(edit.id, c.nodes, c.ways, c.relations) }
         verify { listener.onAddedEdit(any()) }
-        verify { prefs.lastEditTime = any() }    }
+    }
 
     private fun verifyDelete(vararg edits: ElementEdit) {
         val editIds = edits.map { it.id }

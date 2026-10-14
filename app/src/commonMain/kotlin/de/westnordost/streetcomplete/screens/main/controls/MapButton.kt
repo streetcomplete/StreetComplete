@@ -13,12 +13,12 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.*
-import org.jetbrains.compose.resources.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import de.westnordost.streetcomplete.ui.theme.divider
+import org.jetbrains.compose.resources.painterResource
 
 /** Small floating button on top of the map */
 @OptIn(ExperimentalMaterialApi::class)

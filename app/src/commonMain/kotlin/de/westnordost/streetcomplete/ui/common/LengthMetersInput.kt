@@ -12,11 +12,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.osm.length.Length
 import de.westnordost.streetcomplete.ui.common.input.DecimalInput
 import de.westnordost.streetcomplete.util.ktx.toShortString
-import androidx.compose.ui.tooling.preview.Preview
 
 /** Input field to input a length in meters */
 @Composable
@@ -25,7 +25,7 @@ fun LengthMetersInput(
     onChange: (Length.Meters?) -> Unit,
     maxMeterDigits: Pair<Int, Int>,
     modifier: Modifier = Modifier,
-    locale: Locale = Locale.current,
+    locale: Locale? = null,
     style: TextFieldStyle = TextFieldStyle.Filled,
 ) {
     Row(

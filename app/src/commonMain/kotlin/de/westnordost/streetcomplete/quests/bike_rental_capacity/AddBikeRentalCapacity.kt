@@ -19,10 +19,10 @@ class AddBikeRentalCapacity : OsmFilterQuestType<Int>() {
 
     override val elementFilter = """
         nodes, ways with
-         amenity = bicycle_rental
-         and access !~ private|no
-         and bicycle_rental = docking_station
-         and (!capacity or capacity older today -6 years)
+          amenity = bicycle_rental
+          and access !~ private|no
+          and bicycle_rental = docking_station
+          and (!capacity or capacity older today -6 years)
     """
 
     override val changesetComment = "Specify bicycle rental capacities"

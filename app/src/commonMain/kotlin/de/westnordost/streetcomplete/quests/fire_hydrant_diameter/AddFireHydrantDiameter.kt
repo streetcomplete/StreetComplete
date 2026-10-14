@@ -8,20 +8,20 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
-import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.LIFESAVER
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 
 class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
 
     override val elementFilter = """
         nodes with
-         emergency = fire_hydrant
-         and fire_hydrant:type and
-         (fire_hydrant:type = pillar or fire_hydrant:type = underground)
-         and !fire_hydrant:diameter
-         and (fire_hydrant:diameter:signed != no or fire_hydrant:diameter:signed older today -6 years)
+          emergency = fire_hydrant
+          and fire_hydrant:type
+          and fire_hydrant:type ~ pillar|underground
+          and !fire_hydrant:diameter
+          and (fire_hydrant:diameter:signed != no or fire_hydrant:diameter:signed older today -6 years)
     """
     override val changesetComment = "Specify fire hydrant diameters"
     override val wikiLink = "Tag:emergency=fire_hydrant"

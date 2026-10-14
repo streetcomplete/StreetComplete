@@ -13,9 +13,9 @@ class LocaleTest {
         assertEquals("Germany", germanInGermany.getDisplayRegion(english))
         assertEquals(null, germanInGermany.getDisplayScript(english))
 
-        val serbianInCyrillic = Locale("sr-Cyrl")
-        assertEquals("Serbian", serbianInCyrillic.getDisplayLanguage(english))
-        assertEquals(null, serbianInCyrillic.getDisplayRegion(english))
-        assertEquals("Cyrillic", serbianInCyrillic.getDisplayScript(english))
+        val serbianInLatn = Locale("sr-Latn")
+        assertEquals("Serbian", serbianInLatn.getDisplayLanguage(english))
+        assertEquals(null, serbianInLatn.getDisplayRegion(english))
+        assertEquals("Latin", serbianInLatn.getDisplayScript(english))
     }
 }

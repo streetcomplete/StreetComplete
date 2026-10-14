@@ -1,11 +1,8 @@
 package de.westnordost.streetcomplete.util
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
-import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
@@ -13,7 +10,6 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.intl.Locale
-import androidx.compose.ui.text.intl.Locale.Companion
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.LayoutDirection
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -22,10 +18,9 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.util.formatAnnotated
 import de.westnordost.streetcomplete.util.ktx.getFeature
-import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
 import org.jetbrains.compose.resources.ResourceEnvironment
 import org.jetbrains.compose.resources.getString
-import org.jetbrains.compose.resources.getSystemResourceEnvironment
+import org.jetbrains.compose.resources.rememberResourceEnvironment
 
 @Composable
 fun nameAndLocationLabel(
@@ -33,12 +28,9 @@ fun nameAndLocationLabel(
     featureDictionary: FeatureDictionary?,
     showHouseNumber: Boolean? = null
 ): AnnotatedString? {
-    val locale = Locale.current
-    val theme = isSystemInDarkTheme()
-    val density = LocalDensity.current
     val layoutDirection = LocalLayoutDirection.current
-    val resourceEnvironment = remember(locale, theme, density) { getSystemResourceEnvironment() }
-    val textState by produceState<AnnotatedString?>(initialValue = null) {
+    val resourceEnvironment = rememberResourceEnvironment()
+    val textState by produceState<AnnotatedString?>(null, resourceEnvironment, layoutDirection, element, featureDictionary, showHouseNumber) {
         value = getNameAndLocationLabel(
             resourceEnvironment = resourceEnvironment,
             layoutDirection = layoutDirection,
@@ -287,7 +279,7 @@ private fun CharSequence.inBold(): AnnotatedString =
         }
     }
 
-private fun annotatedStringOf(vararg strings: CharSequence?) : AnnotatedString =
+private fun annotatedStringOf(vararg strings: CharSequence?): AnnotatedString =
     buildAnnotatedString {
         for (string in strings) {
             append(string)

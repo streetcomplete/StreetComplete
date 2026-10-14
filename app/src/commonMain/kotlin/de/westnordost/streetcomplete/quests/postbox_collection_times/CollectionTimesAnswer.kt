@@ -7,4 +7,3 @@ sealed interface CollectionTimesAnswer {
 }
 
 data class CollectionTimes(val times: HierarchicOpeningHours) : CollectionTimesAnswer
-

@@ -19,7 +19,7 @@ import org.jetbrains.compose.resources.stringResource
 class AddSeating : OsmFilterQuestType<Seating>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           (
             amenity ~ restaurant|cafe|fast_food|ice_cream|food_court|pub|bar
             or shop = bakery

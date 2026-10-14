@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.ui.common.feature
 
-import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.LocalContentColor
@@ -10,7 +9,6 @@ import androidx.compose.ui.graphics.Color
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.osm.iconDrawableResource
 import de.westnordost.streetcomplete.resources.*
-import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import kotlin.collections.get
 

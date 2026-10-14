@@ -19,7 +19,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.coerceAtMost
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.max
-import androidx.compose.ui.unit.min
 import de.westnordost.streetcomplete.ui.ktx.backgroundWithPadding
 
 /** Layout that appears like a dialog and leaves an offset for an icon that appears displaced

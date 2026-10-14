@@ -26,7 +26,7 @@ data class CurrencyFormatElements(
         private fun ofOrNull(locale: Locale?): CurrencyFormatElements? {
             val formatter = CurrencyFormatter(locale)
             val d = "\\p{Nd}" // digit
-            val a = "[^\\p{Nd}]" // not a digit
+            val a = "\\P{Nd}" // not a digit
             // e.g.  US          $    1  ,   500      .  00
             // or    NO          kr   1  ␣   500      ,  00
             // or    DE               1  .   500      ,  00      €

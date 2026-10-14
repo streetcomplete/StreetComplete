@@ -1,16 +1,17 @@
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import org.gradle.api.DefaultTask
-import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.Console
 import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.InputFile
+import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 import java.net.URI
 
 const val wikiRowSpan2 = " rowspan=\"2\" |"
 const val noteQuestName = "OsmNoteQuest"
-const val noteQuestPackageName = "note_discussion"
+const val noteQuestPackageName = "note_comments"
 
 /**
  * This Gradle task generates a CSV file with information about quest types (see `writeCsvFile` function).
@@ -26,8 +27,8 @@ const val noteQuestPackageName = "note_discussion"
  *    (note that the "Default Priority" column may be different from the wiki)
  */
 open class GenerateQuestListTask : DefaultTask() {
-    @get:Input lateinit var targetFile: String
-    @get:InputDirectory lateinit var projectDirectory: File
+    @get:OutputFile lateinit var targetFile: File
+    @get:Console lateinit var projectDirectory: File
     @get:InputDirectory lateinit var questsDirectory: File
     @get:InputDirectory lateinit var iconsDirectory: File
     @get:InputFile lateinit var noteQuestFile: File
@@ -207,7 +208,7 @@ open class GenerateQuestListTask : DefaultTask() {
             listOf(",,,,,") +
             existingRepoQuests.map { it.getCsvString(projectDirectory) }
 
-        File(targetFile).writeText(csvLines.joinToString("\n"))
+        targetFile.writeText(csvLines.joinToString("\n"))
     }
 }
 
@@ -280,7 +281,9 @@ private class WikiQuest(rowCells: List<String>, rowIndex: Int) {
         sinceVersion = rowCellContents[6]
         notes = rowCellContents[7]
 
-        val code = rowCellContents[8]
+        // Anchor templates (e.g. `{{Anchor|note_discussion}}`) only add link targets, so ignore them
+        val code = rowCellContents[8].replace(Regex("""\{\{\s*[Aa]nchor\s*\|[^}]*}}"""), "").trim()
+
         val codeArguments = code.split("|")
 
         if (!code.startsWith("{{StreetComplete Quest Code|")

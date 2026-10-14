@@ -8,7 +8,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.text.intl.Locale
 import de.westnordost.osm_opening_hours.model.Month
 import de.westnordost.osm_opening_hours.model.MonthRange
 import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
@@ -58,8 +57,7 @@ fun AddOpeningHoursForm(
             timeMode = TimeMode.Spans,
             countryInfo = countryInfo,
             addButtonContent = { Text(stringResource(Res.string.quest_openingHours_add_times)) },
-            locale = countryInfo.userPreferredLocale,
-            userLocale = Locale.current,
+            countryLocale = countryInfo.userPreferredLocale,
             enabled = !isDisplayingPrevious,
         )
     }
@@ -79,7 +77,7 @@ fun AddOpeningHoursForm(
                         on(Answer(RegularOpeningHours(originalOpeningHours!!)))
                     }
                 ),
-                title = stringResource(Res.string.quest_openingHours_resurvey_title),
+                isResurvey = true,
                 otherAnswers = { listOf(
                     AnswerItem(stringResource(Res.string.quest_openingHours_no_sign)) {
                         confirmNoSign = true
@@ -94,7 +92,7 @@ fun AddOpeningHoursForm(
                 onClickOk = { on(Answer(RegularOpeningHours(openingHours))) },
                 hasChanges =
                     (originalOpeningHours ?: HierarchicOpeningHours()) != openingHours
-                    && openingHours.monthsList.isNotEmpty(),
+                    && !openingHours.isEmpty(),
                 otherAnswers = { listOf(
                     AnswerItem(stringResource(Res.string.quest_openingHours_no_sign)) {
                         confirmNoSign = true

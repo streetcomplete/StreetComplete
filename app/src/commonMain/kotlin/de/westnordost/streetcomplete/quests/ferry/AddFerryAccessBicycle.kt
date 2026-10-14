@@ -3,17 +3,17 @@ package de.westnordost.streetcomplete.quests.ferry
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.quests.ferry.FerryBicycleAccess.NO
 import de.westnordost.streetcomplete.quests.ferry.FerryBicycleAccess.NOT_SIGNED
 import de.westnordost.streetcomplete.quests.ferry.FerryBicycleAccess.YES
@@ -24,10 +24,10 @@ import org.jetbrains.compose.resources.stringResource
 
 class AddFerryAccessBicycle : OsmElementQuestType<FerryBicycleAccess> {
 
-    private val filter by lazy {
-        "ways, relations with route = ferry and !bicycle and !bicycle:signed"
-            .toElementFilterExpression()
-    }
+    private val filter by lazy { """
+        ways, relations with
+          route = ferry and !bicycle and !bicycle:signed
+    """.toElementFilterExpression() }
 
     override val changesetComment = "Specify ferry access for bicycles"
     override val wikiLink = "Tag:route=ferry"
@@ -76,4 +76,7 @@ class AddFerryAccessBicycle : OsmElementQuestType<FerryBicycleAccess> {
                 tags["bicycle:signed"] = "no"
         }
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("ways, relations with route = ferry")
 }

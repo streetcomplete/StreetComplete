@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.util.ktx.isPackageInstalled
 
-class AndroidArSupportChecker(private val context: Context): ArSupportChecker {
+class AndroidArSupportChecker(private val context: Context) : ArSupportChecker {
     override operator fun invoke(): Boolean =
         // extra requirement for Sceneform: OpenGL ES 3.1
         context.getSystemService<ActivityManager>()!!.deviceConfigurationInfo.glEsVersion.toDouble() >= 3.1

@@ -51,7 +51,7 @@ fun AddCyclewayForm(
     geometry: ElementGeometry,
     countryInfo: CountryInfo,
     preferences: Preferences = koinInject(),
-)  {
+) {
     val favKey = "AddCyclewayForm"
 
     val originalCycleway = remember(element) {
@@ -61,11 +61,13 @@ fun AddCyclewayForm(
     }
 
     val likelyNoBicycleContraflow = remember { """
-        ways with oneway:bicycle != no and (
+        ways with
+          oneway:bicycle != no
+          and (
             oneway ~ yes|-1 and highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
             or dual_carriageway = yes
             or junction ~ roundabout|circular
-        )
+          )
     """.toElementFilterExpression()
     }
 
@@ -96,10 +98,6 @@ fun AddCyclewayForm(
     }
     val isOneway = remember(element) { isOneway(element.tags) }
 
-    var isDisplayingPrevious by rememberSaveable(originalCycleway) {
-        // only show as re-survey (yes/no button) if the previous tagging was complete
-        mutableStateOf(originalCycleway.all { it != null })
-    }
     var cycleways by rememberSerializable(originalCycleway) { mutableStateOf(originalCycleway) }
     var isLeftSideVisible by rememberSerializable(showBothSides, countryInfo.isLeftHandTraffic) {
         mutableStateOf(showBothSides || countryInfo.isLeftHandTraffic)
@@ -107,6 +105,14 @@ fun AddCyclewayForm(
     var isRightSideVisible by rememberSerializable(showBothSides, countryInfo.isLeftHandTraffic) {
         mutableStateOf(showBothSides || !countryInfo.isLeftHandTraffic)
     }
+    var isDisplayingPrevious by rememberSaveable(originalCycleway) {
+        // only show as re-survey (yes/no button) if the previous tagging was complete
+        mutableStateOf(
+            (originalCycleway.left != null || !isLeftSideVisible) &&
+            (originalCycleway.right != null || !isRightSideVisible)
+        )
+    }
+
     var selectionMode by rememberSerializable { mutableStateOf(CyclewayFormSelectionMode.SELECT) }
 
     var confirmNotOnewayForCyclists by remember { mutableStateOf(false) }
@@ -158,7 +164,7 @@ fun AddCyclewayForm(
                         on(Answer(cycleways))
                     }
                 ),
-                title = stringResource(Res.string.quest_cycleway_resurvey_title),
+                isResurvey = true,
                 contentPadding = PaddingValues.Zero,
                 content = { content() }
             )
@@ -169,7 +175,7 @@ fun AddCyclewayForm(
                     (cycleways.left != null || !isLeftSideVisible) &&
                     (cycleways.right != null || !isRightSideVisible),
                 hasChanges =
-                    cycleways.left != null || cycleways.right != null,
+                    cycleways != originalCycleway,
                 onClickOk = {
                     if (cycleways.wasNoOnewayForCyclistsButNowItIs(element.tags, countryInfo.isLeftHandTraffic)) {
                         confirmNotOnewayForCyclists = true
@@ -183,7 +189,9 @@ fun AddCyclewayForm(
                             isLeftSideVisible = true
                             isRightSideVisible = true
                         }
-                    } else null,
+                    } else {
+                        null
+                    },
                     // this shortcut is only available for roads where the user doesn't have to
                     // explicitly state whether it is a oneway for cyclists, too
                     if (!isOneway) {
@@ -191,7 +199,9 @@ fun AddCyclewayForm(
                             cycleways = Sides(Cycleway.NONE, Cycleway.NONE)
                                 .withDefaultDirection(countryInfo.isLeftHandTraffic)
                         }
-                    } else null,
+                    } else {
+                        null
+                    },
                     AnswerItem(stringResource(Res.string.cycleway_reverse_direction)) {
                         confirmSelectReverseCyclewayDirection = true
                     }

@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [FLO, Flo, Delta Prince Edward]
+chargingStationOperators: [FLO, Delta Prince Edward]
 defaultSpeedLimitHasUrbanOrRural: true
 officialLanguages: [en]

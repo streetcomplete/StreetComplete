@@ -92,7 +92,7 @@ fun LanesForm(
     }
 
     showPickerForDirection?.let { laneSelectDirection ->
-        val selectableLanes = remember { (1 .. 10).toList() }
+        val selectableLanes = remember { (1..10).toList() }
         WheelPickerDialog(
             onDismissRequest = { showPickerForDirection = null },
             selectableValues = selectableLanes,

@@ -17,6 +17,8 @@ import de.westnordost.streetcomplete.osm.building.OTHER_KEYS_POTENTIALLY_DESCRIB
 import de.westnordost.streetcomplete.osm.building.createBuildingType
 import de.westnordost.streetcomplete.osm.building.createBuildingUseType
 import de.westnordost.streetcomplete.osm.building.icon
+import de.westnordost.streetcomplete.osm.estimateBuildingHeight
+import de.westnordost.streetcomplete.osm.estimateMinBuildingHeight
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
 import de.westnordost.streetcomplete.resources.*
 
@@ -63,21 +65,18 @@ class BuildingsOverlay : Overlay {
                 ?: building?.color
                 ?: if (isBuildingTypeMissing(element.tags)) OverlayColor.Red else OverlayColor.Invisible
 
+            val height = estimateBuildingHeight(element.tags)
+            val minHeight = if (height != null) estimateMinBuildingHeight(element.tags) else null
             // optional outline color should be the building's original use (reflecting the facade
             // of the building)
             val outlineColor = if (buildingUse != null) building?.color else null
-
-            // val height = estimateBuildingHeight(element.tags)
-            // val minHeight = if (height != null) estimateMinBuildingHeight(element.tags) else null
 
             element to OverlayStyle.Polygon(
                 color = color,
                 outline = outlineColor,
                 icon = building?.icon,
-                // TODO MapLibre: 3D buildings are disabled until
-                //      https://github.com/maplibre/maplibre-native/issues/2746 is fixed
-                // height = height,
-                // minHeight = minHeight
+                height = height,
+                minHeight = minHeight
             )
         }
 
@@ -98,7 +97,7 @@ class BuildingsOverlay : Overlay {
             OverlayColor.Blue
 
         // ~non-detached homes
-        HOUSE, DORMITORY, APARTMENTS, TERRACE, -> // 52%
+        HOUSE, DORMITORY, APARTMENTS, TERRACE, TERRACED_HOUSE -> // 52%
             OverlayColor.Sky
 
         // unspecified residential

@@ -31,13 +31,13 @@ class UnsyncedChangesCountSourceTest {
     private val baseCount = 3 + 4
 
     @BeforeTest fun setUp() {
-        noteEditsSource = mock() {
+        noteEditsSource = mock {
             every { addListener(any()) } calls { (listener: NoteEditsSource.Listener) ->
                 noteEditsListener = listener
             }
         }
 
-        elementEditsSource = mock() {
+        elementEditsSource = mock {
             every { addListener(any()) } calls { (listener: ElementEditsSource.Listener) ->
                 elementEditsListener = listener
             }

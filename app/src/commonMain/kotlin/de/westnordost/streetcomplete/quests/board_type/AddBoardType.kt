@@ -18,10 +18,10 @@ class AddBoardType : OsmFilterQuestType<BoardTypeAnswer>() {
 
     override val elementFilter = """
         nodes with
-         tourism = information
-         and information = board
-         and access !~ private|no
-         and (!board_type or board_type ~ yes|board)
+          tourism = information
+          and information = board
+          and access !~ private|no
+          and (!board_type or board_type ~ yes|board)
     """
     override val changesetComment = "Specify board types"
     override val wikiLink = "Key:board_type"
@@ -30,7 +30,10 @@ class AddBoardType : OsmFilterQuestType<BoardTypeAnswer>() {
     override val achievements = listOf(RARE, CITIZEN, OUTDOORS)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes with tourism = information and information = board")
+        mapData.filter("""
+            nodes with
+              tourism = information and information = board
+        """)
 
     @Composable
     override fun Form(on: (QuestAction<BoardTypeAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {

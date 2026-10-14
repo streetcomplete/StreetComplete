@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.data.AllEditTypes
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayAction
@@ -19,11 +18,11 @@ import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.resources.*
 import dev.mokkery.answering.calls
-import dev.mokkery.matcher.any
-import dev.mokkery.mock
 import dev.mokkery.answering.returns
 import dev.mokkery.answering.sequentially
 import dev.mokkery.every
+import dev.mokkery.matcher.any
+import dev.mokkery.mock
 import dev.mokkery.verify
 import dev.mokkery.verifyNoMoreCalls
 import kotlin.test.BeforeTest
@@ -43,13 +42,13 @@ class AchievementsControllerTest {
     private lateinit var listener: AchievementsSource.Listener
 
     @BeforeTest fun setUp() {
-        userAchievementsDao = mock() {
+        userAchievementsDao = mock {
             every { getAll() } returns mapOf()
         }
-        userLinksDao = mock() {
+        userLinksDao = mock {
             every { getAll() } returns listOf()
         }
-        statisticsSource = mock() {
+        statisticsSource = mock {
             every { addListener(any()) } calls { (listener: StatisticsSource.Listener) ->
                 statisticsListener = listener
             }

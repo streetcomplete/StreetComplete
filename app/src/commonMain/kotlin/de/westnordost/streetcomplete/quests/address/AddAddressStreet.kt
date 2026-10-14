@@ -11,12 +11,12 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
-import de.westnordost.streetcomplete.util.countryboundaries.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.osm.address.applyTo
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.countryboundaries.AllCountriesExcept
 
 class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName> {
 
@@ -51,7 +51,6 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName> {
     // In Japan, housenumbers usually have block numbers, not streets
     override val enabledInCountries = AllCountriesExcept("JP")
     override val achievements = listOf(POSTMAN)
-    override val hint = Res.string.quest_streetName_hint
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val excludedWayNodeIds = mapData.ways
@@ -79,8 +78,8 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName> {
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("""
             nodes, ways, relations with
-            (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
-            and !name and !brand and !operator and !ref
+              (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
+              and !name and !brand and !operator and !ref
         """)
 
     @Composable

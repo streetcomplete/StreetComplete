@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [en]
 atmOperators: [Bank Muscat, بنك مسقط, NBO, HSBC, بنك ظفار, Bank Dhofar, bank muscat, صراف بنك مسقط, بنك عمان العربي, البنك الوطني العماني, Muscat bank, Bank Muscat ATM]
 centerLineStyle: yellow
+domesticSocketTypes: [typeg]
 edgeLineStyle: yellow
 mobileCountryCode: 422
 noParkingSignStyle: vienna

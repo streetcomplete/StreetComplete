@@ -3,17 +3,17 @@ package de.westnordost.streetcomplete.data.osmcal
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.TABLE
-import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.Columns.ID
-import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.Columns.NAME
-import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.Columns.START_DATE
+import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.Columns.ADDRESS
 import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.Columns.END_DATE
-import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.Columns.WHOLE_DAY
+import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.Columns.ID
 import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.Columns.LATITUDE
 import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.Columns.LONGITUDE
-import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.Columns.VENUE
-import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.Columns.ADDRESS
+import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.Columns.NAME
 import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.Columns.READ
+import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.Columns.START_DATE
+import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.Columns.VENUE
+import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.Columns.WHOLE_DAY
+import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.TABLE
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlin.time.Instant
 

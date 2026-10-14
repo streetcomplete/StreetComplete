@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osmcal
 
+import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.time.Clock
@@ -13,7 +13,7 @@ import kotlin.time.Instant
 class CalendarEventsDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: CalendarEventsDao
 
-    @BeforeTest fun createDao() {
+    override fun onDatabaseInitialized(database: Database) {
         dao = CalendarEventsDao(database)
     }
 

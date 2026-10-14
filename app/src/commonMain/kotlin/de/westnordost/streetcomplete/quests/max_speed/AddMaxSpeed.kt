@@ -21,16 +21,16 @@ class AddMaxSpeed (
 
     override val elementFilter = """
         ways with
-         highway ~ motorway|trunk|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|busway
-         and !maxspeed and !maxspeed:advisory and !maxspeed:forward and !maxspeed:backward
-         and ${MAX_SPEED_TYPE_KEYS.joinToString(" and ") { "!$it" }}
-         and surface !~ ${UNPAVED_SURFACES.joinToString("|")}
-         and cyclestreet != yes and bicycle_road != yes
-         and living_street != yes
-         and motor_vehicle !~ private|no
-         and vehicle !~ private|no
-         and area != yes
-         and (access !~ private|no or (foot and foot !~ private|no))
+          highway ~ motorway|trunk|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|busway
+          and !maxspeed and !maxspeed:advisory and !maxspeed:forward and !maxspeed:backward
+          and ${MAX_SPEED_TYPE_KEYS.joinToString(" and ") { "!$it" }}
+          and surface !~ ${UNPAVED_SURFACES.joinToString("|")}
+          and cyclestreet != yes and bicycle_road != yes
+          and living_street != yes
+          and motor_vehicle !~ private|no
+          and vehicle !~ private|no
+          and area != yes
+          and (access !~ private|no or (foot and foot !~ private|no))
     """
     override val changesetComment = "Specify speed limits"
     override val wikiLink = "Key:maxspeed"

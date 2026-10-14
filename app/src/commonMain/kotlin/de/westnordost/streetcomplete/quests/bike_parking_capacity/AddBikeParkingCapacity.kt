@@ -19,16 +19,16 @@ class AddBikeParkingCapacity : OsmFilterQuestType<Int>() {
 
     override val elementFilter = """
         nodes, ways with
-         amenity = bicycle_parking
-         and access !~ private|no
-         and bicycle_parking !~ floor|informal
-         and (
-           !capacity
-           or (
-             bicycle_parking ~ stands|wall_loops|safe_loops|handlebar_holder
-             and capacity older today -8 years
-           )
-         )
+          amenity = bicycle_parking
+          and access !~ private|no
+          and bicycle_parking !~ floor|informal
+          and (
+            !capacity
+            or (
+              bicycle_parking ~ stands|wall_loops|safe_loops|handlebar_holder
+              and capacity older today -8 years
+            )
+          )
     """
     /* Bike capacity may change more often for stands and wheelbenders as adding or
        removing a few of them is minor work

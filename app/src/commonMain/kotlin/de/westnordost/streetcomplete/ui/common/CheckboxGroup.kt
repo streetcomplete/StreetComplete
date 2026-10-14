@@ -8,8 +8,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.selection.toggleable
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Checkbox
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateSetOf
@@ -18,8 +18,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 
 /** A group composed of a list of [options]. Multiple can be selected. */
 @Composable
@@ -34,8 +34,7 @@ fun <T> CheckboxGroup(
         options = options,
         onSelectionChange = { option: T, selected: Boolean ->
             onSelectionsChange(
-                if (selected) { selectedOptions + option }
-                else { selectedOptions - option }
+                if (selected) selectedOptions + option else selectedOptions - option
             )
         },
         selectedOptions = selectedOptions,

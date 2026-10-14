@@ -1,20 +1,13 @@
 package de.westnordost.streetcomplete.ui.util.photo
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.ReadOnlyComposable
-import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import de.westnordost.streetcomplete.util.ktx.toInstant
 import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
 import io.github.vinceglb.filekit.FileKit
 import io.github.vinceglb.filekit.PlatformFile
 import io.github.vinceglb.filekit.compressImage
-import io.github.vinceglb.filekit.dialogs.FileKitOpenCameraSettings
 import io.github.vinceglb.filekit.filesDir
 import io.github.vinceglb.filekit.write
-import kotlinx.datetime.format
-import kotlinx.datetime.format.DateTimeComponents
 import kotlin.time.Clock
 
 /** Lowers size and JPEG quality of the given photo file and overwrites the original */
@@ -35,6 +28,7 @@ fun createPhotoPlatformFile(): PlatformFile {
     return PlatformFile(FileKit.filesDir, "photo_$time.jpg")
 }
 
-@Composable @ReadOnlyComposable expect fun createOpenCameraSettings(): FileKitOpenCameraSettings
+@Composable
+expect fun rememberTakePhotoLauncher(onResult: (PlatformFile?) -> Unit): (PlatformFile) -> Unit
 
 @Composable expect fun rememberHasCamera(): Boolean

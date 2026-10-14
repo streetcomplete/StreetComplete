@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.weeklyosm
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import de.westnordost.streetcomplete.util.logs.Log
+import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -14,7 +15,7 @@ class WeeklyOsmUpdater(
     private val apiClient: WeeklyOsmApiClient,
     private val prefs: Preferences,
 ) {
-    private val coroutineScope = CoroutineScope(SupervisorJob())
+    private val coroutineScope = CoroutineScope(SupervisorJob() + CoroutineName("WeeklyOsmUpdater"))
 
     fun update() = coroutineScope.launch(Dispatchers.IO) {
         try {

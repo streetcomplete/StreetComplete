@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
@@ -14,17 +16,18 @@ class AddBikeParkingFee : OsmFilterQuestType<ParkingFeeAnswer>() {
 
     // element selection logic by @DerDings in #2507
     override val elementFilter = """
-        nodes, ways, relations with amenity = bicycle_parking
-        and access ~ yes|customers|public
-        and (
+        nodes, ways, relations with
+          amenity = bicycle_parking
+          and access ~ yes|customers|public
+          and (
             name
             or bicycle_parking ~ building|lockers|shed
             or capacity >= 100
-        )
-        and (
+          )
+          and (
             !fee and !fee:conditional
             or fee older today -8 years
-        )
+          )
     """
     override val changesetComment = "Specify bicycle parking fees"
     override val wikiLink = "Tag:amenity=bicycle_parking"
@@ -40,4 +43,7 @@ class AddBikeParkingFee : OsmFilterQuestType<ParkingFeeAnswer>() {
     override fun applyAnswerTo(answer: ParkingFeeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags)
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways, relations with amenity = bicycle_parking")
 }

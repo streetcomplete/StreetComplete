@@ -20,7 +20,7 @@ import org.jetbrains.compose.resources.painterResource
 
 /** List of grouped items where one item can be selected */
 @Composable
-fun <I, G: Group<I>> GroupedItemSelectColumn(
+fun <I, G : Group<I>> GroupedItemSelectColumn(
     groups: List<G>,
     topItems: List<I>,
     selectedGroup: G?,

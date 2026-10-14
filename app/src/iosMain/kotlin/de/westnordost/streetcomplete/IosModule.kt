@@ -3,26 +3,24 @@ package de.westnordost.streetcomplete
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import com.russhwolf.settings.NSUserDefaultsSettings
 import com.russhwolf.settings.ObservableSettings
+import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.data.Cleaner
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.DatabaseImpl
+import de.westnordost.streetcomplete.data.IosPeriodicCleaner
+import de.westnordost.streetcomplete.data.PeriodicCleaner
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseConfigurator
-import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.connection.IosActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.IosDownloadController
-import de.westnordost.streetcomplete.screens.about.AppStoreInfo
-import de.westnordost.streetcomplete.screens.about.IosAppStoreInfo
 import de.westnordost.streetcomplete.data.initialize
-import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
-import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.IosChangesetAutoCloser
+import de.westnordost.streetcomplete.data.maptiles.MapLibreMapTilesDownloader
+import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.upload.IosUploadController
 import de.westnordost.streetcomplete.data.upload.UploadController
-import de.westnordost.streetcomplete.screens.main.EmailAppLauncher
-import de.westnordost.streetcomplete.screens.main.IosEmailAppLauncher
-import de.westnordost.streetcomplete.screens.main.IosMapAppLauncher
-import de.westnordost.streetcomplete.screens.main.MapAppLauncher
-import de.westnordost.streetcomplete.ui.util.measure.ArMeasureAppLauncher
+import de.westnordost.streetcomplete.screens.about.AppStoreInfo
+import de.westnordost.streetcomplete.screens.about.IosAppStoreInfo
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.ui.util.measure.IosArSupportChecker
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
@@ -35,16 +33,20 @@ import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import org.maplibre.compose.location.IosLocationProvider
-import org.maplibre.compose.location.IosSystemSettingsLauncher
+import org.koin.dsl.onClose
+import org.maplibre.compose.location.AppleLocationProvider
 import org.maplibre.compose.location.LocationProvider
-import org.maplibre.compose.location.SystemSettingsLauncher
+import org.maplibre.compose.map.MapRuntime
+import org.maplibre.compose.map.createMapRuntime
+import org.maplibre.compose.offline.offlineStorage
+import org.maplibre.compose.util.ExperimentalMaplibreComposeApi
 import platform.Foundation.NSApplicationSupportDirectory
 import platform.Foundation.NSBundle
 import platform.Foundation.NSCachesDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDefaults
 import platform.Foundation.NSUserDomainMask
+import platform.UIKit.UIScreen
 
 private val COMPOSE_FILES_DIR = NSBundle.mainBundle.resourcePath +
     "/compose-resources/composeResources/de.westnordost.streetcomplete.resources/files"
@@ -86,7 +88,7 @@ val iosModule = module {
         val databaseFilePath = databaseUrl.path!!
         val databaseConnection = BundledSQLiteDriver().open(databaseFilePath)
         DatabaseImpl(databaseConnection).apply { initialize(StreetCompleteDatabaseConfigurator) }
-    }
+    } onClose { it?.close() }
 
     // avatars cache dir
 
@@ -112,13 +114,7 @@ val iosModule = module {
 
     // location
 
-    factory<LocationProvider> { IosLocationProvider() }
-    factory<SystemSettingsLauncher> { IosSystemSettingsLauncher() }
-
-    // launch apps
-
-    factory<MapAppLauncher> { IosMapAppLauncher }
-    factory<EmailAppLauncher> { IosEmailAppLauncher }
+    single<LocationProvider> { AppleLocationProvider() } onClose { it?.close() }
 
     // settings
 
@@ -132,11 +128,31 @@ val iosModule = module {
 
     factory<ActiveNetworkConnection> { IosActiveNetworkConnection() }
 
+    // map
+
+    single<MapRuntime> {
+        val appSupportUrl = NSFileManager.defaultManager.URLForDirectory(
+            directory = NSApplicationSupportDirectory,
+            inDomain = NSUserDomainMask,
+            appropriateForURL = null,
+            create = true,
+            error = null
+        )!!
+        @OptIn(ExperimentalMaplibreComposeApi::class)
+        createMapRuntime { cacheFile = Path(appSupportUrl.path!!, "maplibre-cache.db") }
+    } onClose { it?.close() }
+
+    factory<MapTilesDownloader> {
+        MapLibreMapTilesDownloader(get<MapRuntime>().offlineStorage, UIScreen.mainScreen.scale.toFloat())
+    }
+
     // background jobs
 
-    single<UploadController> { IosUploadController() }
+    single<UploadController> { IosUploadController(get()) } onClose { (it as? IosUploadController)?.close() }
 
-    single<DownloadController> { IosDownloadController() }
+    single<DownloadController> { IosDownloadController(get()) } onClose { (it as? IosDownloadController)?.close() }
 
-    factory<ChangesetAutoCloser> { IosChangesetAutoCloser() }
+    single { IosPeriodicCleaner { get<Cleaner>().cleanOld() } } onClose { it?.close() }
+
+    single<PeriodicCleaner> { get<IosPeriodicCleaner>() }
 }

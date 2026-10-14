@@ -3,8 +3,8 @@ package de.westnordost.streetcomplete.quests.max_height
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.osm.length.Length
-import de.westnordost.streetcomplete.testutils.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.answerApplied
+import de.westnordost.streetcomplete.testutils.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.createMapData
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.p
@@ -178,7 +178,7 @@ class AddMaxHeightTest {
         )
     }
 
-    @Test fun `not applicable to road on same layer as bridge, even if they intersect`() {
+    @Test fun `not applicable to intersecting road on same layer as bridge`() {
         val bridge = way(1, listOf(1, 2), mapOf(
             "highway" to "residential",
             "layer" to "1",

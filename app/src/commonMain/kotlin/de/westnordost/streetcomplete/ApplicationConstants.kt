@@ -9,7 +9,6 @@ object ApplicationConstants {
     val USER_AGENT = NAME + " " + BuildConfig.VERSION_NAME
     const val QUESTTYPE_TAG_KEY = NAME + ":quest_type"
 
-    const val OLD_DATABASE_NAME = "streetcomplete.db"
     const val DATABASE_NAME = "streetcomplete_v2.db"
 
     const val MAX_DOWNLOADABLE_AREA_IN_SQKM = 12.0
@@ -39,9 +38,6 @@ object ApplicationConstants {
 
     /** the duration after which logs won't be attached to the crash report */
     const val DO_NOT_ATTACH_LOG_TO_CRASH_REPORT_AFTER = 5L * 60 * 1000 // 5 minutes in ms
-
-    /** Time to wait until a changeset is closed after no more edits are added to that changeset */
-    const val CLOSE_CHANGESETS_AFTER_INACTIVITY_OF = 20L * 60 * 1000 // 20min
 
     /** Maximum distance to the location of the edit last added to the current changeset for it to
      *  be included in that same changeset. Otherwise, a new changeset will be opened for that */

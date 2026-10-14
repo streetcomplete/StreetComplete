@@ -15,7 +15,11 @@ import de.westnordost.streetcomplete.ui.common.quest.NameWithSuggestionsQuestFor
 
 class AddParcelLockerBrand : OsmFilterQuestType<String>() {
 
-    override val elementFilter = "nodes with amenity = parcel_locker and !brand and !name and !operator"
+    override val elementFilter = """
+        nodes with
+          amenity = parcel_locker
+          and !brand and !name and !operator
+    """
     override val changesetComment = "Specify parcel locker brand"
     override val wikiLink = "Tag:amenity=parcel_locker"
     override val icon = Res.drawable.quest_parcel_locker_brand

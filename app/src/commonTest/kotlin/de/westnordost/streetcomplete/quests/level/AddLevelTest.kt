@@ -38,7 +38,7 @@ class AddLevelTest {
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
-    @Test fun `does create quest for shop inside multi-storey mall (level)`() {
+    @Test fun `does create quest for shop inside multi-storey mall at a level`() {
         val mapData = createMapData(mapOf(
             mall,
             thingWithLevel("1"),

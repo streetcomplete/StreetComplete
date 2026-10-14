@@ -3,6 +3,7 @@ atmOperators: [Mercantil, Banco de Venezuela, Provincial, Sofitasa, Banco Mercan
 centerLineStyle: white
 chargingStationOperators: [Swing Energy, Vencharger]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeb, typea]
 mobileCountryCode: 734
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd latin

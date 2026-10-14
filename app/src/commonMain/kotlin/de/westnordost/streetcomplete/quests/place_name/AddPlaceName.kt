@@ -13,9 +13,9 @@ import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
-import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.localized_name.applyTo
 import de.westnordost.streetcomplete.osm.localized_name.parseLocalizedNames
+import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.LocalizedNameQuestForm
 
@@ -24,16 +24,16 @@ class AddPlaceName(
 ) : OsmElementQuestType<List<LocalizedName>> {
 
     private val filter by lazy { ("""
-        nodes, ways with
-        (
-          shop and shop !~ no|vacant
-          or office and office !~ no|vacant
-          or craft
-          or amenity = recycling and recycling_type = centre
-          or amenity = shelter and shelter_type = basic_hut
-          or tourism = information and information ~ office|visitor_centre
-          or natural = cave_entrance and fee = yes
-          or """ +
+        nodes, ways, relations with
+          (
+            shop and shop !~ no|vacant
+            or office and office !~ no|vacant
+            or craft
+            or amenity = recycling and recycling_type = centre
+            or amenity = shelter and shelter_type = basic_hut
+            or tourism = information and information ~ office|visitor_centre
+            or natural = cave_entrance and fee = yes
+            or """ +
 
         // The common list is shared by the opening hours quest and the wheelchair quest.
         // It is also mostly shared by the name quest, that has some wildcards (for say craft and office)
@@ -136,16 +136,16 @@ class AddPlaceName(
                 "fuel",
             ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
-        )
-        and (
+          )
+          and (
             (
-                !name
-                and !brand
-                and noname != yes
+              !name
+              and !brand
+              and noname != yes
             )
             or ~fixme|FIXME ~ name|name\?|Name|Name\?
-        )
-        and name:signed != no
+          )
+          and name:signed != no
     """).toElementFilterExpression() }
 
     override val changesetComment = "Determine place names"
@@ -170,6 +170,7 @@ class AddPlaceName(
             on = on,
             countryInfo = countryInfo,
             initialLocalizedNames = initialLocalizedNames,
+            isResurvey = initialLocalizedNames != null,
         )
     }
 

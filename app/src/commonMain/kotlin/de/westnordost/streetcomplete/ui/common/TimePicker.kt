@@ -11,9 +11,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.util.locale.TimeFormatElements
-import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun rememberTimePickerState(
@@ -52,6 +52,13 @@ class TimePickerState(
     }
 
     init {
+        if (allowAfterMidnight) {
+            require(initialHour in 0..24) { "hour must be within 0..24 but was $initialHour" }
+        } else {
+            require(initialHour in 0..<24) { "hour must be within 0..<24 but was $initialHour" }
+        }
+        require(initialMinute in 0..<60) { "minute must be within 0..59 but was $initialMinute" }
+
         selectableHours = (
             if (is12Hour) (1..12)
             else if (allowAfterMidnight) (0..24)
@@ -74,7 +81,6 @@ class TimePickerState(
     }
 }
 
-
 @Composable
 fun TimePicker(
     state: TimePickerState,
@@ -84,7 +90,7 @@ fun TimePicker(
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
         modifier = modifier,
     ) {
         if (timeFormatElements.before.isNotEmpty()) {

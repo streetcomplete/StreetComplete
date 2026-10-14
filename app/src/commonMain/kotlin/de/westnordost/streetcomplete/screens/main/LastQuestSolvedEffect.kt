@@ -6,10 +6,8 @@ import androidx.compose.animation.core.SpringSpec
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -38,7 +36,9 @@ import org.jetbrains.compose.resources.painterResource
 import org.koin.compose.koinInject
 import kotlin.random.Random
 
-/** Animation sound effect of a quest just having been solved on the */
+/** Animation and sound effect of a quest just having been solved on the map:
+ *  Plays a minicraft-like "plop" and animates the given quest icon from the given offset to the
+ *  corner of the screen where supposedly the quest counter is located (hardcoded). */
 @Composable
 fun LastQuestSolvedEffect(
     questSolvedEvent: QuestSolvedEvent,
@@ -73,8 +73,8 @@ fun LastQuestSolvedEffect(
                     scaleX = scale.value
                     scaleY = scale.value
                     alpha = 1f - fling.value * 0.67f
-                    translationX = (questSolvedEvent.position.x - iconSize/2) * (1f - fling.value) + targetX * fling.value
-                    translationY = (questSolvedEvent.position.y - iconSize/2) * (1f - fling.value)
+                    translationX = (questSolvedEvent.position.x - iconSize / 2) * (1f - fling.value) + targetX * fling.value
+                    translationY = (questSolvedEvent.position.y - iconSize / 2) * (1f - fling.value)
                 }
                 .background(Color.White, CircleShape)
             ) {

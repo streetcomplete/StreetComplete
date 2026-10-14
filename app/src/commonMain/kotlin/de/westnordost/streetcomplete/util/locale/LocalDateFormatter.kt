@@ -17,5 +17,3 @@ expect class LocalDateFormatter(
 ) {
     fun format(date: LocalDate): String
 }
-
-

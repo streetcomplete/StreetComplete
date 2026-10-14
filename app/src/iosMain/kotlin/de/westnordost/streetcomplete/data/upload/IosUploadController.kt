@@ -1,7 +1,13 @@
 package de.westnordost.streetcomplete.data.upload
 
-class IosUploadController : UploadController {
+import de.westnordost.streetcomplete.data.sync.IosSyncJob
+
+class IosUploadController(private val uploader: Uploader) : UploadController {
+    private val job = IosSyncJob(Uploader.TAG)
+
     override fun upload(isUserInitiated: Boolean) {
-        TODO("Not yet implemented")
+        job.launch { uploader.upload() }
     }
+
+    fun close() { job.close() }
 }

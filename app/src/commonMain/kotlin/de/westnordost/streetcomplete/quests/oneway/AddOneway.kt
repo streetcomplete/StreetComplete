@@ -22,15 +22,18 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
 
     /** find all roads */
     private val allRoadsFilter by lazy { """
-        ways with highway ~ ${ALL_ROADS.joinToString("|")} and area != yes
+        ways with
+          highway ~ ${ALL_ROADS.joinToString("|")}
+          and area != yes
     """.toElementFilterExpression() }
 
     /** find only those roads eligible for asking for oneway */
     private val elementFilter by lazy { """
-        ways with highway ~ living_street|residential|service|tertiary|unclassified|busway
-         and width <= 4 and (!lanes or lanes <= 1)
-         and !oneway and area != yes and junction != roundabout
-         and (access !~ private|no or (foot and foot !~ private|no))
+        ways with
+          highway ~ living_street|residential|service|tertiary|unclassified|busway
+          and width <= 4 and (!lanes or lanes <= 1)
+          and !oneway and area != yes and junction != roundabout
+          and (access !~ private|no or (foot and foot !~ private|no))
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify whether narrow roads are one-ways"

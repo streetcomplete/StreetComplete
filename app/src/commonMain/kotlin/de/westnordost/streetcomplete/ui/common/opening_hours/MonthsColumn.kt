@@ -16,8 +16,8 @@ fun MonthsColumn(
     monthsList: List<Months>,
     onChange: (List<Months>) -> Unit,
     modifier: Modifier = Modifier,
-    locale: Locale = Locale.current,
-    userLocale: Locale = Locale.current,
+    countryLocale: Locale? = null,
+    userLocale: Locale? = null,
     enabled: Boolean = true,
 ) {
     val displayMonths = monthsList.size > 1 || monthsList.any { it.selectors.isNotEmpty() }
@@ -37,7 +37,7 @@ fun MonthsColumn(
                         },
                         modifier = Modifier.weight(1f),
                         enabled = enabled,
-                        locale = locale,
+                        countryLocale = countryLocale,
                         userLocale = userLocale,
                     )
                     DeleteRowButton(
@@ -66,7 +66,7 @@ fun MonthsColumn(
                     onChange(newMonthsList)
                 },
                 modifier = Modifier.fillMaxWidth(),
-                locale = locale,
+                countryLocale = countryLocale,
                 userLocale = userLocale,
                 enabled = enabled,
             )

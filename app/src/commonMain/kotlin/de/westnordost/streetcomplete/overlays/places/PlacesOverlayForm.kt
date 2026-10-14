@@ -95,7 +95,7 @@ import kotlin.time.Duration.Companion.milliseconds
     var localizedNames by rememberSerializable(originalNames) { mutableStateOf(
         originalNames.takeIf { it.isNotEmpty() }
             ?: originalFeature?.addTags?.let { parseLocalizedNames(it) }
-            ?: listOf(LocalizedName(countryInfo.language.orEmpty(), ""))
+            ?: listOf(LocalizedName("", ""))
     ) }
     var isNoName by rememberSaveable(originalNoName) { mutableStateOf(originalNoName) }
     var selectedFeature by rememberSaveable(originalFeature, stateSaver = FeatureSaver(featureDictionary)) {
@@ -113,7 +113,7 @@ import kotlin.time.Duration.Companion.milliseconds
         } else {
             localizedNames =
                 parseLocalizedNames(feature.addTags)
-                ?: listOf(LocalizedName(countryInfo.language.orEmpty(), ""))
+                ?: listOf(LocalizedName("", ""))
         }
     }
 
@@ -195,13 +195,17 @@ import kotlin.time.Duration.Companion.milliseconds
                     val vacantShop = featureDictionary.getPlaceAsDisused(element, country = countryInfo.countryOrSubdivisionCode)
                     onSelectedFeature(vacantShop)
                 }
-            } else null,
+            } else {
+                null
+            },
             if (selectedFeature?.hasFixedName != true && !isNoName) {
                 AnswerItem(stringResource(Res.string.quest_placeName_no_name_answer)) {
                     isNoName = true
                     localizedNames = listOf()
                 }
-            } else null,
+            } else {
+                null
+            },
         ) },
         pinContent = {
             if (element == null) {

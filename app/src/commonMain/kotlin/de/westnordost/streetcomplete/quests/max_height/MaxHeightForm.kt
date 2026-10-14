@@ -15,17 +15,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.length.Length
 import de.westnordost.streetcomplete.osm.length.unit
+import de.westnordost.streetcomplete.ui.common.DropdownButton
 import de.westnordost.streetcomplete.ui.common.LengthFeetInchesInput
 import de.westnordost.streetcomplete.ui.common.LengthMetersInput
-import de.westnordost.streetcomplete.ui.common.DropdownButton
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import androidx.compose.ui.tooling.preview.Preview
 
 /** Displays a form to input the max height, as specified on the sign. For clarity and fun, the
  *  input fields are shown on a sign background that resembles a maxheight sign in the given

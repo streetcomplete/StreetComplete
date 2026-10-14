@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 
@@ -23,6 +24,7 @@ fun CenteredLargeTitleHint(text: String, modifier: Modifier = Modifier) {
         Text(
             text = text,
             modifier = Modifier.padding(64.dp),
+            textAlign = TextAlign.Center,
             style = MaterialTheme.typography.titleLarge,
             color = LocalContentColor.current.copy(alpha = ContentAlpha.medium)
         )

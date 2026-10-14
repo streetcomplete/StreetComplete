@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
+import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
-import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -10,7 +10,7 @@ import kotlin.test.assertTrue
 class UserLinksDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: UserLinksDao
 
-    @BeforeTest fun createDao() {
+    override fun onDatabaseInitialized(database: Database) {
         dao = UserLinksDao(database)
     }
 

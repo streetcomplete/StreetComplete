@@ -10,15 +10,15 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.testutils.QUEST_TYPE
-import dev.mokkery.matcher.any
 import de.westnordost.streetcomplete.testutils.edit
-import dev.mokkery.mock
 import de.westnordost.streetcomplete.testutils.noteEdit
 import de.westnordost.streetcomplete.testutils.noteQuestHidden
-import dev.mokkery.answering.returns
-import dev.mokkery.every
 import de.westnordost.streetcomplete.testutils.questHidden
 import dev.mokkery.answering.calls
+import dev.mokkery.answering.returns
+import dev.mokkery.every
+import dev.mokkery.matcher.any
+import dev.mokkery.mock
 import dev.mokkery.verify
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -40,17 +40,17 @@ class EditHistoryControllerTest {
     private lateinit var hiddenQuestsListener: QuestsHiddenSource.Listener
 
     @BeforeTest fun setUp() {
-        elementEditsController = mock() {
+        elementEditsController = mock {
             every { addListener(any()) } calls { (listener: ElementEditsSource.Listener) ->
                 elementEditsListener = listener
             }
         }
-        noteEditsController = mock() {
+        noteEditsController = mock {
             every { addListener(any()) } calls { (listener: NoteEditsSource.Listener) ->
                 noteEditsListener = listener
             }
         }
-        hiddenQuestsController = mock() {
+        hiddenQuestsController = mock {
             every { addListener(any()) } calls { (listener: QuestsHiddenSource.Listener) ->
                 hiddenQuestsListener = listener
             }

@@ -13,16 +13,17 @@ import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddFerryAccessMotorVehicle : OsmElementQuestType<Boolean> {
 
-    private val filter by lazy {
-        "ways, relations with route = ferry and !motor_vehicle"
-            .toElementFilterExpression()
-    }
+    private val filter by lazy { """
+        ways, relations with
+          route = ferry and !motor_vehicle
+    """.toElementFilterExpression() }
+
     override val changesetComment = "Specify ferry access for motor vehicles"
     override val wikiLink = "Tag:route=ferry"
     override val icon = Res.drawable.quest_ferry
@@ -55,4 +56,7 @@ class AddFerryAccessMotorVehicle : OsmElementQuestType<Boolean> {
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["motor_vehicle"] = answer.toYesNo()
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("ways, relations with route = ferry")
 }

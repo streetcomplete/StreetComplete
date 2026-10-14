@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.osm_opening_hours.model.ClockTime
-import de.westnordost.osm_opening_hours.model.Time
 import de.westnordost.osm_opening_hours.model.TimeIntervals
 import de.westnordost.osm_opening_hours.model.TimeSpansSelector
 import de.westnordost.osm_opening_hours.model.TimesSelector
@@ -19,7 +18,7 @@ fun TimesSelectorDialog(
     initialTime: TimesSelector,
     onSelect: (TimesSelector) -> Unit,
     modifier: Modifier = Modifier,
-    locale: Locale = Locale.current,
+    locale: Locale? = null,
 ) {
     when (initialTime) {
         is TimeSpansSelector -> {

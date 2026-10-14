@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.presets
 
+import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
-import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
@@ -10,7 +10,7 @@ import kotlin.test.assertTrue
 class EditTypePresetsDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: EditTypePresetsDao
 
-    @BeforeTest fun createDao() {
+    override fun onDatabaseInitialized(database: Database) {
         dao = EditTypePresetsDao(database)
     }
 

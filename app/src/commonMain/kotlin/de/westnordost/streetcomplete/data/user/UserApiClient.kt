@@ -23,4 +23,3 @@ interface UserApiClient {
      */
     suspend fun get(userId: Long): UserInfo?
 }
-

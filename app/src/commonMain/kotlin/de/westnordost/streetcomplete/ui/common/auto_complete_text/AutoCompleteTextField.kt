@@ -36,10 +36,8 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.IntRect
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toIntRect
 import androidx.compose.ui.window.Popup
-import androidx.compose.ui.window.PopupProperties
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import kotlin.math.max

@@ -38,7 +38,6 @@ class ErrorReportBuilder(
         return report.toString()
     }
 
-
     private fun readLogFromDatabase(): String {
         val newLogTimestamp =
             nowAsEpochMilliseconds() - ApplicationConstants.DO_NOT_ATTACH_LOG_TO_CRASH_REPORT_AFTER

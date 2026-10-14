@@ -49,6 +49,7 @@ fun createBuildingTypeFromHouseType(houseType: String?): BuildingType = when (ho
     null ->             BuildingType.HOUSE
     "detached" ->       BuildingType.DETACHED
     "terrace" ->        BuildingType.TERRACE
+    "terraced" ->       BuildingType.TERRACED_HOUSE
     "semi-detached" ->  BuildingType.SEMI_DETACHED
     "bungalow" ->       BuildingType.BUNGALOW
 

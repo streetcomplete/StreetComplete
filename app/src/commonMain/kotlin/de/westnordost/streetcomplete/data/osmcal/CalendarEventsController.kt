@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.util.Listeners
 /** Controls calendar events pulled from osmcal.org */
 class CalendarEventsController(
     private val dao: CalendarEventsDao
-): CalendarEventsSource {
+) : CalendarEventsSource {
     private val listeners = Listeners<CalendarEventsSource.Listener>()
 
     override fun getUnreadCount(): Int = dao.getUnreadCount()

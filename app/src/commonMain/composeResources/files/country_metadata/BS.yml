@@ -2,6 +2,7 @@
 atmOperators: [Scotiabank, CIBC, RBC, Commonwealth Bank]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeb, typea]
 isLeftHandTraffic: true
 lengthUnits: [foot and inch, meter]
 mobileCountryCode: 364

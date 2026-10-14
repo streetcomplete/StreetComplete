@@ -12,22 +12,22 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isCrossingWithTrafficSignals
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddTrafficSignalsSound : OsmElementQuestType<Boolean> {
 
     private val crossingFilter by lazy { """
         nodes with
-         (crossing = traffic_signals or crossing:signals = yes)
-         and highway ~ crossing|traffic_signals
-         and foot != no
-         and (
-          !$SOUND_SIGNALS
-          or $SOUND_SIGNALS = no and $SOUND_SIGNALS older today -4 years
-          or $SOUND_SIGNALS older today -8 years
-         )
+          (crossing = traffic_signals or crossing:signals = yes)
+          and highway ~ crossing|traffic_signals
+          and foot != no
+          and (
+            !$SOUND_SIGNALS
+            or $SOUND_SIGNALS = no and $SOUND_SIGNALS older today -4 years
+            or $SOUND_SIGNALS older today -8 years
+          )
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """

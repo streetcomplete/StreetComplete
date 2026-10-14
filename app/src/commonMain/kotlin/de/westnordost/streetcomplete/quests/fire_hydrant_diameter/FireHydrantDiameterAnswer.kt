@@ -18,7 +18,8 @@ data class FireHydrantDiameter(val value: Int, val unit: Unit) : FireHydrantDiam
 
     @Serializable
     enum class Unit {
-        Millimeter, Inch;
+        Millimeter,
+        Inch;
 
         fun usualRange(): IntProgression = when (this) {
             Millimeter -> 50..600 step 5

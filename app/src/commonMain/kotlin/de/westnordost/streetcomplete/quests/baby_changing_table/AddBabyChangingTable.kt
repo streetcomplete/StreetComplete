@@ -4,32 +4,34 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.quests.baby_changing_table.BabyChangingTableAnswer.*
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
-import de.westnordost.streetcomplete.util.ktx.toYesNo
 import org.jetbrains.compose.resources.stringResource
 
 class AddBabyChangingTable : OsmFilterQuestType<BabyChangingTableAnswer>() {
 
     override val elementFilter = """
-        nodes, ways with
-        (
-          amenity = toilets
-          or (
-            amenity ~ restaurant|cafe|biergarten|food_court|fuel|library|community_centre
-            or amenity = fast_food and indoor_seating = yes
-            or shop ~ mall|department_store|baby_goods
-            or shop = bakery and indoor_seating = yes
-          ) and toilets != no
-        )
-        and !diaper and !changing_table
+        nodes, ways, relations with
+          (
+            amenity = toilets
+            or (
+              amenity ~ restaurant|cafe|biergarten|food_court|fuel|library|community_centre
+              or amenity = fast_food and indoor_seating = yes
+              or shop ~ mall|department_store|baby_goods
+              or shop = bakery and indoor_seating = yes
+            ) and toilets != no
+          )
+          and !diaper and !changing_table
+          and access !~ private|no
     """
     override val changesetComment = "Survey availability of baby changing tables"
     override val wikiLink = "Key:changing_table"
@@ -50,7 +52,9 @@ class AddBabyChangingTable : OsmFilterQuestType<BabyChangingTableAnswer>() {
                 listOfNotNull(
                     if (element.tags["amenity"] != "toilets") {
                         AnswerItem(stringResource(Res.string.quest_wheelchairAccessPat_noToilet)) { on(Answer(NO_TOILET)) }
-                    } else null
+                    } else {
+                        null
+                    }
                 )
             },
         )
@@ -63,4 +67,7 @@ class AddBabyChangingTable : OsmFilterQuestType<BabyChangingTableAnswer>() {
             NO_TOILET -> tags["toilets"] = "no"
         }
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 }

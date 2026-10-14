@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.preferences
 
+import androidx.compose.ui.text.intl.Locale
 import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SettingsListener
 import com.russhwolf.settings.boolean
@@ -9,7 +10,6 @@ import com.russhwolf.settings.long
 import com.russhwolf.settings.nullableString
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.ktx.putStringOrNull
 import kotlinx.datetime.LocalDate
@@ -21,7 +21,9 @@ import kotlin.reflect.KClass
 @Mockable
 class Preferences(private val prefs: ObservableSettings) {
     // application settings
-    var language: String? by prefs.nullableString(LANGUAGE_SELECT)
+    var locale: Locale?
+        set(value) { prefs.putStringOrNull(LANGUAGE_SELECT, value?.toLanguageTag()) }
+        get() = prefs.getStringOrNull(LANGUAGE_SELECT)?.let { Locale(it) }
 
     var theme: Theme
         set(value) { prefs.putString(THEME_SELECT, value.name) }
@@ -47,8 +49,10 @@ class Preferences(private val prefs: ObservableSettings) {
 
     var showAllNotes: Boolean by prefs.boolean(SHOW_ALL_NOTES, false)
 
-    fun onLanguageChanged(callback: (String?) -> Unit): SettingsListener =
-        prefs.addStringOrNullListener(LANGUAGE_SELECT, callback)
+    fun onLocaleChanged(callback: (Locale?) -> Unit): SettingsListener =
+        prefs.addStringOrNullListener(LANGUAGE_SELECT) {
+            callback(it?.let { Locale(it) })
+        }
 
     fun onThemeChanged(callback: (Theme) -> Unit): SettingsListener =
         prefs.addStringOrNullListener(THEME_SELECT) {
@@ -80,18 +84,11 @@ class Preferences(private val prefs: ObservableSettings) {
     var userUnreadMessages: Int by prefs.int(OSM_UNREAD_MESSAGES, 0)
 
     var oAuth2AccessToken: String? by prefs.nullableString(OAUTH2_ACCESS_TOKEN)
-    val hasOAuth1AccessToken: Boolean get() = prefs.hasKey(OAUTH1_ACCESS_TOKEN)
 
     fun clearUserData() {
         prefs.remove(OSM_USER_ID)
         prefs.remove(OSM_USER_NAME)
         prefs.remove(OSM_UNREAD_MESSAGES)
-    }
-
-    fun removeOAuth1Data() {
-        prefs.remove(OAUTH1_ACCESS_TOKEN)
-        prefs.remove(OAUTH1_ACCESS_TOKEN_SECRET)
-        prefs.remove(OSM_LOGGED_IN_AFTER_OAUTH_FUCKUP)
     }
 
     // map state
@@ -109,8 +106,6 @@ class Preferences(private val prefs: ObservableSettings) {
     var mapZoom: Double by prefs.double(MAP_ZOOM, 0.0)
     var mapIsFollowing: Boolean by prefs.boolean(MAP_FOLLOWING, true)
     var mapIsNavigationMode: Boolean by prefs.boolean(MAP_NAVIGATION_MODE, false)
-
-    var clearedTangramCache: Boolean by prefs.boolean(CLEARED_TANGRAM_CACHE, false)
 
     // application version
     var lastChangelogVersion: String? by prefs.nullableString(LAST_VERSION)
@@ -178,8 +173,6 @@ class Preferences(private val prefs: ObservableSettings) {
     fun onSelectedEditTypePresetChanged(callback: (Long) -> Unit): SettingsListener =
         prefs.addLongListener(SELECTED_EDIT_TYPE_PRESET, 0L, callback)
 
-    var lastEditTime: Long by prefs.long(LAST_EDIT_TIME, 0L)
-
     fun <T> getLastPicked(serializer: KSerializer<List<T>>, key: String): List<T> =
         try {
             prefs.getStringOrNull(LAST_PICKED_PREFIX + key)?.let { Json.decodeFromString(serializer, it) } ?: emptyList()
@@ -198,6 +191,12 @@ class Preferences(private val prefs: ObservableSettings) {
         prefs.putString(LAST_PICKED_PREFIX + key, Json.encodeToString(serializer, values))
     }
 
+    /** The "languages" here are not necessarily IETF language tags, they are essentially what comes
+     *  in the `name:<>`. Most of the time it is a language tag, but it is possible that some
+     *  community or another uses other subtags. See
+     *  https://github.com/streetcomplete/countrymetadata/blob/master/data/additionalStreetsignLanguages.yml
+     *  and
+     *  https://github.com/streetcomplete/countrymetadata/blob/master/data/officialLanguages.yml */
     var preferredLanguageForNames: String? by prefs.nullableString(PREFERRED_LANGUAGE_FOR_NAMES)
 
     fun getLanguagesWithPreferredFirst(languages: List<String>): List<String> {
@@ -254,11 +253,6 @@ class Preferences(private val prefs: ObservableSettings) {
         private const val OSM_UNREAD_MESSAGES = "osm.unread_messages"
         private const val OAUTH2_ACCESS_TOKEN = "oauth2.accessToken"
 
-        // old keys login keys
-        private const val OAUTH1_ACCESS_TOKEN = "oauth.accessToken"
-        private const val OAUTH1_ACCESS_TOKEN_SECRET = "oauth.accessTokenSecret"
-        private const val OSM_LOGGED_IN_AFTER_OAUTH_FUCKUP = "osm.logged_in_after_oauth_fuckup"
-
         // team mode
         private const val TEAM_MODE_INDEX_IN_TEAM = "team_mode.index_in_team"
         private const val TEAM_MODE_TEAM_SIZE = "team_mode.team_size"
@@ -289,15 +283,11 @@ class Preferences(private val prefs: ObservableSettings) {
         private const val MAP_FOLLOWING = "map.following"
         private const val MAP_NAVIGATION_MODE = "map.navigation_mode"
 
-        // clean-up after upgrade
-        private const val CLEARED_TANGRAM_CACHE = "cleared_tangram_cache"
-
         // quest & overlays
         private const val PREFERRED_LANGUAGE_FOR_NAMES = "preferredLanguageForNames"
         private const val SELECTED_EDIT_TYPE_PRESET = "selectedQuestsPreset"
         private const val SELECTED_OVERLAY = "selectedOverlay"
         private const val LAST_PICKED_PREFIX = "imageListLastPicked."
-        private const val LAST_EDIT_TIME = "changesets.lastChangeTime"
 
         // profile & statistics screen UI
         private const val USER_DAYS_ACTIVE = "days_active"

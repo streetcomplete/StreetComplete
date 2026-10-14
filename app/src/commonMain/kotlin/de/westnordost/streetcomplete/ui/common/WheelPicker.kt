@@ -125,7 +125,7 @@ fun <T> WheelPicker(
             Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier
-                    .scale(if (index == state.selectedItemIndex) 1f else 0.85f)
+                    .scale(if (index == state.selectedItemIndex) 1f else 0.8f)
                     .pointerInput(index) {
                         detectTapGestures {
                             scope.launch { state.animateScrollToItem(index) }

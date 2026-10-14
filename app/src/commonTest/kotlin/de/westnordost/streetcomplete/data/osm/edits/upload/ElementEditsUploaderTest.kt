@@ -11,22 +11,24 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
-import dev.mokkery.matcher.any
 import de.westnordost.streetcomplete.testutils.edit
-import dev.mokkery.mock
 import de.westnordost.streetcomplete.testutils.node
+import dev.mokkery.answering.calls
 import dev.mokkery.answering.repeat
 import dev.mokkery.answering.returns
 import dev.mokkery.answering.sequentially
 import dev.mokkery.answering.throws
 import dev.mokkery.every
 import dev.mokkery.everySuspend
-import kotlinx.coroutines.cancelAndJoin
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import dev.mokkery.matcher.any
+import dev.mokkery.mock
 import dev.mokkery.verify
+import dev.mokkery.verify.VerifyMode.Companion.exactly
 import dev.mokkery.verifyNoMoreCalls
 import dev.mokkery.verifySuspend
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 
@@ -57,10 +59,27 @@ class ElementEditsUploaderTest {
         uploader.uploadedChangeListener = listener
     }
 
-    @Test fun `cancel upload works`() = runBlocking {
-        val job = launch { uploader.upload() }
-        job.cancelAndJoin()
-        verifyNoMoreCalls(elementEditsController, mapDataController, singleUploader, statisticsController)
+    @Test fun `cancel upload finishes current edit`() = runBlocking {
+        val edit = edit()
+        val updates = MapDataUpdates()
+        val job = launch(start = CoroutineStart.LAZY) { uploader.upload() }
+        every { elementEditsController.getOldestUnsynced() } sequentially {
+            returns(edit)
+            repeat { returns(null) }
+        }
+        everySuspend { singleUploader.upload(any(), any()) } calls {
+            job.cancel()
+            updates
+        }
+
+        job.start()
+        job.join()
+
+        verify(exactly(1)) { elementEditsController.getOldestUnsynced() }
+        verify { elementEditsController.markSynced(edit, updates) }
+        verify { noteEditsController.updateElementIds(any()) }
+        verify { mapDataController.updateAll(updates) }
+        verify { statisticsController.addOne(any(), any()) }
     }
 
     @Test fun `upload works`() = runBlocking {

@@ -11,7 +11,7 @@ import kotlinx.atomicfu.locks.withLock
 
 class NoteControllerImpl(
     private val dao: NoteDao
-): NoteController {
+) : NoteController {
 
     private val listeners = Listeners<NoteSource.Listener>()
 

@@ -2,6 +2,7 @@
 atmOperators: [FNB, Barclays, Standard Chartered, Stanbic Bank, First National Bank, Standard Chartered Bank, Standard Bank, Stanbic, FNB ATM, ABSA]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typem, typen]
 edgeLineStyle: yellow
 hasLivingStreet: true
 isLeftHandTraffic: true

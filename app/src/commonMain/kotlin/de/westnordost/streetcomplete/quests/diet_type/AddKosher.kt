@@ -16,16 +16,16 @@ import de.westnordost.streetcomplete.resources.*
 class AddKosher : OsmFilterQuestType<DietAvailabilityAnswer>() {
 
     override val elementFilter = """
-        nodes, ways with
-        (
-          amenity ~ restaurant|cafe|fast_food|ice_cream|food_court and food != no
-          or amenity ~ pub|nightclub|biergarten|bar and food = yes
-          or shop ~ butcher|supermarket|ice_cream|convenience
-        )
-        and (
-          !diet:kosher
-          or diet:kosher != only and diet:kosher older today -4 years
-        )
+        nodes, ways, relations with
+          (
+            amenity ~ restaurant|cafe|fast_food|ice_cream|food_court and food != no
+            or amenity ~ pub|nightclub|biergarten|bar and food = yes
+            or shop ~ butcher|supermarket|ice_cream|convenience
+          )
+          and (
+            !diet:kosher
+            or diet:kosher != only and diet:kosher older today -4 years
+          )
     """
     override val changesetComment = "Specify whether places are kosher"
     override val wikiLink = "Key:diet:kosher"

@@ -1,33 +1,34 @@
 plugins {
     // this is necessary to avoid the plugins to be loaded multiple times
     // in each subproject's classloader
-    id("org.jetbrains.kotlin.multiplatform") version "2.4.0" apply false
-    id("org.jetbrains.kotlin.plugin.compose") version "2.4.0"  apply false
-    id("com.android.application") version "9.1.1" apply false
-    id("com.android.library") version "9.1.1" apply false
-    id("com.android.kotlin.multiplatform.library") version "9.1.1" apply false
-    id("org.jetbrains.compose") version "1.12.0" apply false
+    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.kotlin.multiplatform) apply false
+    alias(libs.plugins.kotlin.compose) apply false
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.android.multiplatformLibrary) apply false
+    alias(libs.plugins.compose.multiplatform) apply false
 }
 
 val poEditorProjectId = "97843"
 
 tasks.register<UpdateWebsiteTranslationsTask>("updateWebsiteTranslations") {
     group = "streetcomplete"
-    targetDir = "$projectDir/../streetcomplete-website/res"
+    targetDir = projectDir.resolve("../streetcomplete-website/res")
     projectId = poEditorProjectId
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
 }
 
 tasks.register<UpdateStoreDescriptionsTask>("updateStoreDescriptions") {
     group = "streetcomplete"
-    targetDir = "$projectDir/metadata"
+    targetDir = projectDir.resolve("metadata")
     projectId = poEditorProjectId
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
 }
 
 tasks.register<QLeverCountValueByCountryTask>("updateAtmOperators") {
     group = "streetcomplete"
-    targetFile = "$projectDir/res/country_metadata/atmOperators.yml"
+    targetFile = projectDir.resolve("res/country_metadata/atmOperators.yml")
     osmTag = "operator"
     sparqlQueryPart = "osmkey:amenity 'atm';"
     minCount = 2
@@ -36,7 +37,7 @@ tasks.register<QLeverCountValueByCountryTask>("updateAtmOperators") {
 
 tasks.register<QLeverCountValueByCountryTask>("updateParcelLockerBrand") {
     group = "streetcomplete"
-    targetFile = "$projectDir/res/country_metadata/parcelLockerBrand.yml"
+    targetFile = projectDir.resolve("res/country_metadata/parcelLockerBrand.yml")
     osmTag = "brand"
     sparqlQueryPart = "osmkey:amenity 'parcel_locker';"
     minCount = 2
@@ -45,7 +46,7 @@ tasks.register<QLeverCountValueByCountryTask>("updateParcelLockerBrand") {
 
 tasks.register<QLeverCountValueByCountryTask>("updateClothesContainerOperators") {
     group = "streetcomplete"
-    targetFile = "$projectDir/res/country_metadata/clothesContainerOperators.yml"
+    targetFile = projectDir.resolve("res/country_metadata/clothesContainerOperators.yml")
     osmTag = "operator"
     sparqlQueryPart = "osmkey:amenity 'recycling'; osmkey:recycling_type 'container'; osmkey:recycling:clothes 'yes';"
     minCount = 2
@@ -54,7 +55,7 @@ tasks.register<QLeverCountValueByCountryTask>("updateClothesContainerOperators")
 
 tasks.register<QLeverCountValueByCountryTask>("updateChargingStationOperators") {
     group = "streetcomplete"
-    targetFile = "$projectDir/res/country_metadata/chargingStationOperators.yml"
+    targetFile = projectDir.resolve("res/country_metadata/chargingStationOperators.yml")
     osmTag = "operator"
     sparqlQueryPart = "osmkey:amenity 'charging_station';"
     minCount = 2
@@ -63,7 +64,7 @@ tasks.register<QLeverCountValueByCountryTask>("updateChargingStationOperators") 
 
 tasks.register<GenerateQuestListTask>("generateQuestList") {
     group = "streetcomplete"
-    targetFile = "$projectDir/quest-list.csv"
+    targetFile = projectDir.resolve("quest-list.csv")
     projectDirectory = projectDir
     questsDirectory = projectDir.resolve("app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/")
     iconsDirectory = projectDir.resolve("res/graphics/quest/")
@@ -87,7 +88,6 @@ tasks.register("updateStreetCompleteData") {
         "app:updateTranslations",
         "app:updateTranslationCompleteness",
         "app:updateIosTranslations",
-        "app:updateMapStyle",
         "app:updateChangelog",
         "app:generateMetadataByCountry",
         "app:updateTranslatorCredits",

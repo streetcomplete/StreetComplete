@@ -10,8 +10,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddCampDrinkingWater : OsmFilterQuestType<Boolean>() {
@@ -19,7 +19,7 @@ class AddCampDrinkingWater : OsmFilterQuestType<Boolean>() {
     /* We only resurvey drinking_water = yes and drinking_water = no, as it might have more detailed
      * values from other editors, and we don't want to damage them */
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           (
             tourism ~ camp_site|caravan_site|wilderness_hut
             or leisure = marina
@@ -28,6 +28,7 @@ class AddCampDrinkingWater : OsmFilterQuestType<Boolean>() {
             !drinking_water and !water_point
             or drinking_water older today -4 years and drinking_water ~ yes|no
           )
+          and access !~ private|no
     """
     override val changesetComment = "Specify whether there is drinking water"
     override val wikiLink = "Key:drinking_water"
@@ -36,7 +37,7 @@ class AddCampDrinkingWater : OsmFilterQuestType<Boolean>() {
     override val achievements = listOf(OUTDOORS)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways with tourism ~ camp_site|caravan_site")
+        mapData.filter("nodes, ways, relations with tourism ~ camp_site|caravan_site")
 
     @Composable
     override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {

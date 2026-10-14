@@ -2,17 +2,11 @@
   "en-US": {
     "presets": {
       "presets": {
-        "amenity/community_centre/cultural_centre": {
-          "name": "Cultural Center"
-        },
         "amenity/stripclub": {
           "name": "Strip Club"
         },
         "disused/railway": {
           "name": "Disused Railroad Feature"
-        },
-        "healthcare/physiotherapist": {
-          "name": "Physical Therapist"
         },
         "highway/motorway": {
           "name": "Freeway"
@@ -97,6 +91,9 @@
         },
         "type/route/tram": {
           "name": "Streetcar Route"
+        },
+        "highway/motorway_link-US-CA": {
+          "name": "Freeway Link"
         }
       }
     }

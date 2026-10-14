@@ -141,8 +141,11 @@ class DatabaseImpl(private val connection: SQLiteConnection) : Database {
             transactionDepth--
         }
     }
-}
 
+    override fun close() = lock.withLock {
+        connection.close()
+    }
+}
 
 private class CursorPositionImpl(private val statement: SQLiteStatement) : CursorPosition {
     override fun getInt(columnName: String): Int = statement.getInt(index(columnName))

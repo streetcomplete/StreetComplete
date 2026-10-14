@@ -41,7 +41,6 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -49,6 +48,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import de.westnordost.streetcomplete.data.osmcal.CalendarEvent
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.LocalAppLocale
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.util.ktx.format
@@ -75,10 +75,7 @@ fun CalendarEventDialog(
         appear.animateTo(1f, tween(600, easing = LinearOutSlowInEasing))
     }
 
-    val locale = Locale.current
-    val dateFormatter = remember(locale) {
-        LocalDateFormatter(locale = locale, style = DateTimeFormatStyle.Medium)
-    }
+    val dateFormatter = remember(LocalAppLocale.current) { LocalDateFormatter(style = DateTimeFormatStyle.Medium) }
     val dateTime = event.startDate.toLocalDateTime()
     val formattedDateWithoutYear = dateFormatter
         .format(dateTime.date)

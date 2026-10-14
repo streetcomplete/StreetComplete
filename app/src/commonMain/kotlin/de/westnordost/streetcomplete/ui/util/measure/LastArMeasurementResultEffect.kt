@@ -6,7 +6,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import de.westnordost.streetcomplete.osm.length.Length
 
 @Composable
 fun LastArMeasurementResultEffect(

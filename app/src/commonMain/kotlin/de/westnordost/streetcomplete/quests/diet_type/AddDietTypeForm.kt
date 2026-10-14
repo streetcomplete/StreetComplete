@@ -40,7 +40,9 @@ fun AddDietTypeForm(
                 AnswerItem(stringResource(Res.string.quest_diet_answer_no_food)) {
                     confirmNoFood = true
                 }
-            } else null
+            } else {
+                null
+            }
         ) }
     ) {
         CompositionLocalProvider(

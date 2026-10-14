@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import platform.Foundation.NSURL
 import platform.UIKit.UIAlertAction
@@ -84,3 +85,6 @@ object IosMapAppLauncher : MapAppLauncher {
         )
     )
 }
+
+@Composable
+actual fun rememberMapAppLauncher(): MapAppLauncher = IosMapAppLauncher

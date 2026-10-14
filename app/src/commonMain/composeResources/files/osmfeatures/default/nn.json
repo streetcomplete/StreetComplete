@@ -44,12 +44,6 @@
         "building/school": {
           "name": "Skulebugning"
         },
-        "building_point": {
-          "name": "Bygning"
-        },
-        "craft/tailor": {
-          "name": "Skreddar"
-        },
         "craft/watchmaker": {
           "name": "Klokkemakar"
         },
@@ -59,8 +53,20 @@
         "entrance/emergency": {
           "name": "Naudutgang"
         },
+        "leisure/picnic_table/chess": {
+          "name": "Sjakkbord"
+        },
+        "leisure/pitch/skateboard": {
+          "name": "Skatepark"
+        },
         "line": {
           "name": "Linje"
+        },
+        "man_made/antenna": {
+          "name": "Antenne"
+        },
+        "man_made/windmill": {
+          "name": "Vindmølle"
         },
         "office/diplomatic/consulate": {
           "name": "Konsulat"
@@ -92,11 +98,57 @@
         "tourism/artwork/sculpture": {
           "name": "Skulptur"
         },
+        "tourism/information/map": {
+          "name": "Kart"
+        },
         "waterway/river": {
           "name": "Elv"
         },
         "waterway/stream": {
           "name": "Straum"
+        },
+        "building_point": {
+          "name": "Bygning"
+        },
+        "type/multipolygon": {},
+        "craft/tailor": {
+          "name": "Skreddar"
+        },
+        "building/glasshouse": {
+          "name": "Drivhus"
+        },
+        "@templates/contact": {
+          "name": "Punkt"
+        },
+        "@templates/internet_access": {
+          "name": "Punkt"
+        },
+        "@templates/poi": {
+          "name": "Punkt"
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Punkt"
+        },
+        "@templates/crossing/defaults": {
+          "name": "Punkt"
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Punkt"
+        },
+        "@templates/crossing/markings": {
+          "name": "Punkt"
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Punkt"
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Punkt"
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Punkt"
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Punkt"
         }
       }
     }

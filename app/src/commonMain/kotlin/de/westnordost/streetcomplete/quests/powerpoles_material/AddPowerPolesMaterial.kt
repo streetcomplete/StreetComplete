@@ -30,11 +30,20 @@ class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterialAnswer>() {
     override val icon = Res.drawable.quest_power
     override val title = Res.string.quest_powerPolesMaterial_title
     override val achievements = listOf(BUILDING)
+    override val hideHighlightedElementsOnDifferentLevel = false
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
+            nodes with
+              power = pole or man_made = utility_pole
+        """) +
         // and also show the (power) lines themselves
-        mapData.filter("nodes with power = pole or man_made = utility_pole") +
-        mapData.filter("ways with power ~ line|minor_line or communication = line or telecom = line")
+        mapData.filter("""
+            ways with
+              power ~ line|minor_line
+              or communication = line
+              or telecom = line
+        """)
 
     // map data density is usually lower where there are power poles and more context is necessary
     // when looking at them from afar

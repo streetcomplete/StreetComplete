@@ -4,24 +4,27 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddHandwashing : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways with
-        amenity = toilets
-        and toilets:disposal
-        and toilets:disposal != flush
-        and !toilets:handwashing
+        nodes, ways, relations with
+          amenity = toilets
+          and toilets:disposal
+          and toilets:disposal != flush
+          and !toilets:handwashing
+          and access !~ private|no
     """
-    override val changesetComment = "Survey availability of handwashing capabilites"
+    override val changesetComment = "Survey availability of handwashing capabilities"
     override val wikiLink = "Key:toilets:handwashing"
     override val icon = Res.drawable.quest_washing_hands
     override val title = Res.string.quest_handwashing_title
@@ -36,4 +39,7 @@ class AddHandwashing : OsmFilterQuestType<Boolean>() {
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["toilets:handwashing"] = answer.toYesNo()
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways, relations with amenity = toilets")
 }

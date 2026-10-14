@@ -63,7 +63,9 @@ import org.jetbrains.compose.resources.stringResource
             if (hasSidewalk) {
                 surface?.icon?.let { ClipCirclePainter(painterResource(it)) }
                     ?: painterResource(Res.drawable.floating_question)
-            } else null
+            } else {
+                null
+            }
         },
         lastPicked = lastPicked,
         isLeftSideEnabled = hasSidewalkLeft,

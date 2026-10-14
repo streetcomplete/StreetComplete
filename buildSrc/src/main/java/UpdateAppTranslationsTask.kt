@@ -11,9 +11,11 @@ open class UpdateAppTranslationsTask : DefaultTask() {
     @get:Input lateinit var projectId: String
     @get:Input lateinit var apiToken: String
     @get:Input lateinit var languageCodes: Collection<String>
-    @get:Input lateinit var targetFiles: ((androidResCode: String) -> String)
+    @get:Input lateinit var targetFiles: ((androidResCode: String) -> File)
 
     @TaskAction fun run() {
+        require(apiToken != "invalid") { "POEditor API token must be set" }
+
         val exportLanguages = languageCodes.map { Locale.forLanguageTag(it) }
 
         val languageTags = fetchAvailableLocalizations(apiToken, projectId).map { it.code }
@@ -43,8 +45,8 @@ ${translations.entries.joinToString("\n") { (key, value) ->
 "    <string name=\"$key\">$xmlValue</string>"
 } }
 </resources>"""
-            val file = File(targetFiles(androidResCode))
-            File(file.parent).mkdirs()
+            val file = targetFiles(androidResCode)
+            file.parentFile.mkdirs()
             file.writeText(text)
         }
     }

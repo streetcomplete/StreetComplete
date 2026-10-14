@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
-import de.westnordost.streetcomplete.ui.theme.largeInput
+import de.westnordost.streetcomplete.ui.theme.veryLargeInput
 import de.westnordost.streetcomplete.util.locale.TimeFormatElements
 import org.jetbrains.compose.resources.stringResource
 
@@ -28,7 +28,7 @@ fun TimeSelectDialog(
     modifier: Modifier = Modifier,
     initialHour: Int = 0,
     initialMinutes: Int = 0,
-    locale: Locale = Locale.current,
+    locale: Locale? = null,
 ) {
     val timeFormatElements = remember(locale) { TimeFormatElements.of(locale) }
     val timePickerState = rememberTimePickerState(
@@ -45,7 +45,7 @@ fun TimeSelectDialog(
         content = {
             CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.high) {
                 Box(Modifier.fillMaxWidth()) {
-                    ProvideTextStyle(MaterialTheme.typography.largeInput) {
+                    ProvideTextStyle(MaterialTheme.typography.veryLargeInput) {
                         TimePicker(
                             state = timePickerState,
                             timeFormatElements = timeFormatElements,

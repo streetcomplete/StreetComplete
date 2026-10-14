@@ -1,40 +1,27 @@
 package de.westnordost.streetcomplete.screens.main
 
-import androidx.compose.ui.util.fastMap
-import platform.Foundation.NSCharacterSet
-import platform.Foundation.NSString
+import androidx.compose.runtime.Composable
 import platform.Foundation.NSURL
-import platform.Foundation.URLQueryAllowedCharacterSet
-import platform.Foundation.stringByAddingPercentEncodingWithAllowedCharacters
+import platform.Foundation.NSURLComponents
+import platform.Foundation.NSURLQueryItem
 import platform.UIKit.UIApplication
 
 object IosEmailAppLauncher : EmailAppLauncher {
     override fun compose(email: String, subject: String?, body: String?) {
-        val encodedSubject = (subject as NSString?)
-            ?.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet)
-
-        val encodedBody = (body as NSString?)
-            ?.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet)
-
-        val urlString = buildString {
-            append("mailto:$email")
-            if (encodedSubject != null) {
-                append("?")
-                append("subject=$encodedSubject")
-            }
-            if (encodedBody != null) {
-                if (encodedSubject != null) append("&") else append("?")
-                append("body=$encodedBody")
-            }
+        val components = NSURLComponents().apply {
+            scheme = "mailto"
+            path = email
+            queryItems = listOfNotNull(
+                subject?.let { NSURLQueryItem(name = "subject", value = it) },
+                body?.let { NSURLQueryItem(name = "body", value = it) },
+            )
         }
 
-        val url = NSURL.URLWithString(urlString)
+        val url = components.URL  ?: return
 
-        if (url != null) {
-            val app = UIApplication.sharedApplication
-            if (app.canOpenURL(url)) {
-                app.openURL(url)
-            }
+        val app = UIApplication.sharedApplication
+        if (app.canOpenURL(url)) {
+            app.openURL(url, options = emptyMap<Any?, Any?>(), completionHandler = null)
         }
     }
 
@@ -43,3 +30,6 @@ object IosEmailAppLauncher : EmailAppLauncher {
         return url != null && UIApplication.sharedApplication.canOpenURL(url)
     }
 }
+
+@Composable
+actual fun rememberEmailAppLauncher(): EmailAppLauncher = IosEmailAppLauncher

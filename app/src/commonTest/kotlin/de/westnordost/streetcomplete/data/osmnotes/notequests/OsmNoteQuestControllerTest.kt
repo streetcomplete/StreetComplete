@@ -5,18 +5,18 @@ import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.UserLoginSource
-import dev.mokkery.matcher.any
 import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.comment
-import dev.mokkery.mock
 import de.westnordost.streetcomplete.testutils.note
-import dev.mokkery.answering.returns
-import dev.mokkery.every
 import de.westnordost.streetcomplete.testutils.osmNoteQuest
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import dev.mokkery.answering.calls
+import dev.mokkery.answering.returns
+import dev.mokkery.every
+import dev.mokkery.matcher.any
 import dev.mokkery.matcher.matches
+import dev.mokkery.mock
 import dev.mokkery.verify
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -38,13 +38,13 @@ class OsmNoteQuestControllerTest {
     private lateinit var userLoginListener: UserLoginSource.Listener
 
     @BeforeTest fun setUp() {
-        noteSource = mock() {
+        noteSource = mock {
             every { addListener(any()) } calls { (listener: NotesWithEditsSource.Listener) ->
                 noteUpdatesListener = listener
             }
         }
         userDataSource = mock()
-        userLoginSource = mock() {
+        userLoginSource = mock {
             every { addListener(any()) } calls { (listener: UserLoginSource.Listener) ->
                 userLoginListener = listener
             }

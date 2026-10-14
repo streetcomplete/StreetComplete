@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
@@ -18,8 +20,11 @@ import org.jetbrains.compose.resources.stringResource
 
 class AddInformationToTourism : OsmFilterQuestType<TourismInformation>() {
 
-    override val elementFilter = "nodes, ways with tourism = information and !information"
-    override val changesetComment = "Specify type of tourist informations"
+    override val elementFilter = """
+        nodes, ways with
+          tourism = information and !information
+    """
+    override val changesetComment = "Specify type of tourist information facilities"
     override val wikiLink = "Tag:tourism=information"
     override val icon = Res.drawable.quest_information
     override val title = Res.string.quest_tourism_information_title
@@ -38,4 +43,7 @@ class AddInformationToTourism : OsmFilterQuestType<TourismInformation>() {
     override fun applyAnswerTo(answer: TourismInformation, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["information"] = answer.osmValue
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways, relations with tourism = information")
 }

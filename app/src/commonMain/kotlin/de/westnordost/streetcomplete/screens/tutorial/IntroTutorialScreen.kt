@@ -22,6 +22,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
@@ -32,8 +33,7 @@ import de.westnordost.streetcomplete.ui.theme.titleLarge
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import androidx.compose.ui.tooling.preview.Preview
-import de.westnordost.streetcomplete.ui.util.rememberDefaultLocationProvider
+import org.maplibre.compose.location.rememberDefaultLocationProvider
 
 /** Shows a short tutorial for first-time users */
 @Composable
@@ -55,7 +55,7 @@ fun IntroTutorialScreen(
         illustration = { page ->
             IntroTutorialIllustration(page)
         },
-        dismissOnBackPress = dismissOnBackPress,
+        isDismissable = dismissOnBackPress,
     ) { page ->
         Column(
             modifier = Modifier.fillMaxSize(1f),

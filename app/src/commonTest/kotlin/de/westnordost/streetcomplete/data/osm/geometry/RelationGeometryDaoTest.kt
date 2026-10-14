@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
+import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
-import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -15,7 +15,7 @@ import kotlin.test.assertTrue
 class RelationGeometryDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: RelationGeometryDao
 
-    @BeforeTest fun createDao() {
+    override fun onDatabaseInitialized(database: Database) {
         dao = RelationGeometryDao(database, PolylinesSerializer())
     }
 

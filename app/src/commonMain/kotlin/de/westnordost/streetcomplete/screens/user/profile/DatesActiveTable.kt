@@ -14,8 +14,8 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.drawText
-import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.rememberTextMeasurer
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
@@ -34,7 +34,6 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.isoDayNumber
 import kotlinx.datetime.minus
 import kotlinx.datetime.toLocalDateTime
-import androidx.compose.ui.tooling.preview.Preview
 import kotlin.math.ceil
 
 /** Draws a github-style like days-active graphic */
@@ -49,12 +48,11 @@ fun DatesActiveTable(
     cellPadding: Dp = 2.dp,
     cellCornerRadius: Dp = 6.dp,
 ) {
-    val locale = Locale.current
-    val weekdays = remember(locale) {
-        DayOfWeek.entries.map { it.getDisplayName(DateTimeTextSymbolStyle.Narrow, locale) }
+    val weekdays = remember {
+        DayOfWeek.entries.map { it.getDisplayName(DateTimeTextSymbolStyle.Narrow) }
     }
-    val months = remember(locale) {
-        Month.entries.map { it.getDisplayName(DateTimeTextSymbolStyle.Short, locale) }
+    val months = remember {
+        Month.entries.map { it.getDisplayName(DateTimeTextSymbolStyle.Short) }
     }
 
     BoxWithConstraints(modifier) {

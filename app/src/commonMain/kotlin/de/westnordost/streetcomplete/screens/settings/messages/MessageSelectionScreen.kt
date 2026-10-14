@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.settings.messages
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
-import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.safeDrawing
@@ -25,7 +24,7 @@ import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.settings.Preference
 import org.jetbrains.compose.resources.stringResource
 
-/** Screen in which to select which message types should be shown to the user / which are supressed
+/** Screen in which to select which message types should be shown to the user / which are suppressed
  * */
 @Composable
 fun MessageSelectionScreen(

@@ -26,7 +26,7 @@ fun MaxWeightType.getIcon(countryCode: String): DrawableResource? = when (this) 
     }
     MAX_WEIGHT_RATING_HGV -> when (countryCode) {
         "AU", "CA", "US" -> Res.drawable.maxweight_sign_weightrating_hgv_mutcd
-        "FI", "IS", "SE"->  Res.drawable.maxweight_sign_weightrating_hgv_yellow
+        "FI", "IS", "SE" -> Res.drawable.maxweight_sign_weightrating_hgv_yellow
         "DE" ->             Res.drawable.maxweight_sign_weightrating_hgv_de
         "GB" ->             null // no max weight rating HGV sign in GB
         else ->             Res.drawable.maxweight_sign_weightrating_hgv

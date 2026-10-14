@@ -73,13 +73,12 @@ enum class Surface(val osmValue: String?) {
         }
 
         /** Selectable surface values for roads, paths, etc. */
-        fun getSelectableValuesForWays(countryCode: String? = null): List<Surface> {
-            return if (countryCode != null && lateriteCountries.contains(countryCode)) {
+        fun getSelectableValuesForWays(countryCode: String? = null): List<Surface> =
+            if (countryCode != null && lateriteCountries.contains(countryCode)) {
                 selectableValuesForWaysWithLaterite
             } else {
                 selectableValuesForWaysWithoutLaterite
             }
-        }
 
         /** Selectable surface values for sport pitches */
         val selectableValuesForPitches: List<Surface> = listOf(

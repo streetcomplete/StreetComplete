@@ -11,19 +11,20 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddBikeRepairAvailability : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways with shop = bicycle
-        and (
+        nodes, ways with
+          shop = bicycle
+          and (
             !service:bicycle:repair
             or service:bicycle:repair older today -6 years
-        )
-        and access !~ private|no
+          )
+          and access !~ private|no
     """
 
     override val changesetComment = "Specify whether bicycle shops offer repairs"

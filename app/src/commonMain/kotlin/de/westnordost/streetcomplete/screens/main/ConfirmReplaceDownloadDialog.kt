@@ -23,7 +23,7 @@ fun ConfirmReplaceDownloadDialog(
             TextButton(onClick = {
                 onDismissRequest()
                 onConfirmed()
-            } ) {
+            }) {
                 Text(stringResource(Res.string.confirmation_cancel_prev_download_confirmed))
             }
         },

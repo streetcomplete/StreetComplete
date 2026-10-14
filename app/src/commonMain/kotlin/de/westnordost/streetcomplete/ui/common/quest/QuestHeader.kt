@@ -28,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.InfoFilledIcon
 import de.westnordost.streetcomplete.ui.common.InfoOutlineIcon
 import de.westnordost.streetcomplete.ui.ktx.fadingHorizontalScrollEdges
@@ -52,9 +53,7 @@ fun QuestHeader(
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Column(Modifier.weight(1f)) {
-                CompositionLocalProvider(
-                    LocalTextStyle provides MaterialTheme.typography.titleLarge
-                ) {
+                CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.titleLarge) {
                     Text(title)
                 }
                 if (subtitle != null) {
@@ -97,7 +96,6 @@ fun QuestHeader(
         }
     }
 }
-
 
 @Composable
 private fun HintImages(

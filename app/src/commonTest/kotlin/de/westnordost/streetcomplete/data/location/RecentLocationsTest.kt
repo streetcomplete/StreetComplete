@@ -7,6 +7,7 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import kotlin.time.Duration.Companion.seconds
+import kotlin.time.Instant
 
 class RecentLocationsTest {
     @Test fun `getAll returns nothing when empty`() {
@@ -16,7 +17,7 @@ class RecentLocationsTest {
 
     @Test fun `getAll returns one`() {
         val r = RecentLocations(10.seconds, 1.0, 1.seconds)
-        val l1 = Location(LatLon(0.0, 0.0), 1f, 1.seconds)
+        val l1 = Location(LatLon(0.0, 0.0), 1f, Instant.fromEpochSeconds(0))
         r.add(l1)
 
         assertEquals(
@@ -25,22 +26,24 @@ class RecentLocationsTest {
         )
     }
 
-    @Test fun `getAll returns ordered by elapsedDuration descending`() {
+    @Test fun `getAll returns ordered by measuredAt descending`() {
         val r = RecentLocations(10.seconds, 1.0, 1.seconds)
-        val l1 = Location(LatLon(0.0, 0.0), 1f, 1.seconds)
-        val l2 = Location(LatLon(1.0, 0.0), 1f, 2.seconds)
+        val l1 = Location(LatLon(0.0, 0.0), 1f, Instant.fromEpochSeconds(0))
+        val l2 = Location(LatLon(1.0, 0.0), 1f, Instant.fromEpochSeconds(20))
+        val l3 = Location(LatLon(2.0, 0.0), 1f, Instant.fromEpochSeconds(10))
 
         r.add(l1)
         r.add(l2)
+        r.add(l3)
         for ((first, second) in r.getAll().toList().asSequenceOfPairs()) {
-            assertTrue(first.elapsedDuration > second.elapsedDuration)
+            assertTrue(first.measuredAt > second.measuredAt)
         }
     }
 
     @Test fun `does not add older locations`() {
         val r = RecentLocations(10.seconds, 1.0, 1.seconds)
-        val l1 = Location(LatLon(0.0, 0.0), 1f, 10.seconds)
-        val l2 = Location(LatLon(1.0, 0.0), 1f, 1.seconds)
+        val l1 = Location(LatLon(0.0, 0.0), 1f, Instant.fromEpochSeconds(10))
+        val l2 = Location(LatLon(1.0, 0.0), 1f, Instant.fromEpochSeconds(0))
         r.add(l1)
         r.add(l2)
         assertEquals(
@@ -51,10 +54,10 @@ class RecentLocationsTest {
 
     @Test fun `getAll does not return locations too close to each other`() {
         val r = RecentLocations(10.seconds, 100.0, 1.seconds)
-        val l1 = Location(LatLon(0.0, 0.0), 1f, 1.seconds)
-        val l2 = Location(LatLon(0.0, 0.0).translate(80.0, 0.0), 1f, 2.seconds)
-        val l3 = Location(LatLon(0.0, 0.0).translate(160.0, 0.0), 1f, 3.seconds)
-        val l4 = Location(LatLon(0.0, 0.0).translate(240.0, 0.0), 1f, 4.seconds)
+        val l1 = Location(LatLon(0.0, 0.0), 1f, Instant.fromEpochSeconds(0))
+        val l2 = Location(LatLon(0.0, 0.0).translate(80.0, 0.0), 1f, Instant.fromEpochSeconds(2))
+        val l3 = Location(LatLon(0.0, 0.0).translate(160.0, 0.0), 1f, Instant.fromEpochSeconds(4))
+        val l4 = Location(LatLon(0.0, 0.0).translate(240.0, 0.0), 1f, Instant.fromEpochSeconds(6))
 
         r.add(l1)
         assertEquals(listOf(l1), r.getAll().toList())
@@ -71,10 +74,10 @@ class RecentLocationsTest {
 
     @Test fun `getAll does not return locations with too little time difference to each other`() {
         val r = RecentLocations(10.seconds, 1.0, 2.seconds)
-        val l1 = Location(LatLon(0.0, 0.0), 1f, 1.seconds)
-        val l2 = Location(LatLon(1.0, 0.0), 1f, 2.seconds)
-        val l3 = Location(LatLon(2.0, 0.0), 1f, 3.seconds)
-        val l4 = Location(LatLon(3.0, 0.0), 1f, 4.seconds)
+        val l1 = Location(LatLon(0.0, 0.0), 1f, Instant.fromEpochSeconds(1))
+        val l2 = Location(LatLon(1.0, 0.0), 1f, Instant.fromEpochSeconds(2))
+        val l3 = Location(LatLon(2.0, 0.0), 1f, Instant.fromEpochSeconds(3))
+        val l4 = Location(LatLon(3.0, 0.0), 1f, Instant.fromEpochSeconds(4))
 
         r.add(l1)
         assertEquals(listOf(l1), r.getAll().toList())
@@ -91,10 +94,10 @@ class RecentLocationsTest {
 
     @Test fun `removes oldest locations on add`() {
         val r = RecentLocations(10.seconds, 100.0, 1.seconds)
-        val l1 = Location(LatLon(0.0, 0.0), 1f, 1.seconds)
-        val l2 = Location(LatLon(1.0, 0.0), 1f, 5.seconds)
-        val l3 = Location(LatLon(2.0, 0.0), 1f, 8.seconds)
-        val l4 = Location(LatLon(3.0, 0.0), 1f, 17.seconds)
+        val l1 = Location(LatLon(0.0, 0.0), 1f, Instant.fromEpochSeconds(1))
+        val l2 = Location(LatLon(1.0, 0.0), 1f, Instant.fromEpochSeconds(5))
+        val l3 = Location(LatLon(2.0, 0.0), 1f, Instant.fromEpochSeconds(8))
+        val l4 = Location(LatLon(3.0, 0.0), 1f, Instant.fromEpochSeconds(17))
 
         r.add(l1)
         assertEquals(listOf(l1), r.getAll().toList())

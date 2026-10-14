@@ -35,8 +35,8 @@ fun MonthsOrDateSelectorSelectDialog(
     initialMonths: List<MonthsOrDateSelector>,
     onSelected: (months: List<MonthsOrDateSelector>) -> Unit,
     modifier: Modifier = Modifier,
-    locale: Locale = Locale.current,
-    userLocale: Locale = Locale.current,
+    countryLocale: Locale? = null,
+    userLocale: Locale? = null,
 ) {
     val scrollState = rememberScrollState()
     val selection = remember(initialMonths) {
@@ -60,7 +60,7 @@ fun MonthsOrDateSelectorSelectDialog(
                     },
                     selectedOptions = selection,
                     itemContent = {
-                        val text = it.getDisplayName(locale = locale)
+                        val text = it.getDisplayName(locale = countryLocale)
                         val textInUserLocale = it.getDisplayName(locale = userLocale)
                         val displayText = if (text != textInUserLocale) {
                             when (LocalLayoutDirection.current) {

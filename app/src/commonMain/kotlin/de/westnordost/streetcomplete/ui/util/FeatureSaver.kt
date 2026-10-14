@@ -16,3 +16,13 @@ class FeatureSaver(
             languages = getLanguagesForFeatureDictionary()
         )
 }
+
+class FeatureListSaver(
+    private val featureDictionary: FeatureDictionary
+) : Saver<List<Feature>, List<String>> {
+    override fun SaverScope.save(value: List<Feature>) = value.map { it.id }
+    override fun restore(value: List<String>): List<Feature> {
+        val languages = getLanguagesForFeatureDictionary()
+        return value.mapNotNull { featureDictionary.getById(id = it, languages = languages) }
+    }
+}

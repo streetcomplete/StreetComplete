@@ -6,30 +6,25 @@ import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SharedPreferencesSettings
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.create
+import de.westnordost.streetcomplete.data.AndroidPeriodicCleaner
 import de.westnordost.streetcomplete.data.CleanerWorker
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.DatabaseImpl
+import de.westnordost.streetcomplete.data.PeriodicCleaner
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseConfigurator
-import de.westnordost.streetcomplete.data.connection.AndroidActiveNetworkConnection
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
-import de.westnordost.streetcomplete.data.download.DownloadController
+import de.westnordost.streetcomplete.data.connection.AndroidActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.AndroidDownloadController
+import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadWorker
 import de.westnordost.streetcomplete.data.initialize
+import de.westnordost.streetcomplete.data.maptiles.MapLibreMapTilesDownloader
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
-import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloaderAndroid
-import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
-import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.AndroidChangesetAutoCloser
-import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloserWorker
-import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.AndroidUploadController
+import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadWorker
 import de.westnordost.streetcomplete.screens.about.AndroidAppStoreInfo
 import de.westnordost.streetcomplete.screens.about.AppStoreInfo
-import de.westnordost.streetcomplete.screens.main.AndroidEmailAppLauncher
-import de.westnordost.streetcomplete.screens.main.AndroidMapAppLauncher
-import de.westnordost.streetcomplete.screens.main.EmailAppLauncher
-import de.westnordost.streetcomplete.screens.main.MapAppLauncher
 import de.westnordost.streetcomplete.ui.util.measure.AndroidArSupportChecker
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
@@ -43,10 +38,13 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import org.koin.dsl.onClose
 import org.maplibre.compose.location.AndroidLocationProvider
-import org.maplibre.compose.location.AndroidSystemSettingsLauncher
 import org.maplibre.compose.location.LocationProvider
-import org.maplibre.compose.location.SystemSettingsLauncher
+import org.maplibre.compose.map.MapRuntime
+import org.maplibre.compose.map.createMapRuntime
+import org.maplibre.compose.offline.offlineStorage
+import org.maplibre.compose.util.ExperimentalMaplibreComposeApi
 
 private const val COMPOSE_FILES_DIR = "composeResources/de.westnordost.streetcomplete.resources/files"
 
@@ -78,7 +76,7 @@ val androidModule = module {
         val databaseFilePath = get<Context>().getDatabasePath(ApplicationConstants.DATABASE_NAME).path
         val databaseConnection = BundledSQLiteDriver().open(databaseFilePath)
         DatabaseImpl(databaseConnection).apply { initialize(StreetCompleteDatabaseConfigurator) }
-    }
+    } onClose { it?.close() }
 
     // avatars cache dir
 
@@ -97,12 +95,6 @@ val androidModule = module {
     // location
 
     factory<LocationProvider> { AndroidLocationProvider(get()) }
-    factory<SystemSettingsLauncher> { AndroidSystemSettingsLauncher(get()) }
-
-    // launch apps
-
-    factory<MapAppLauncher> { AndroidMapAppLauncher(get()) }
-    factory<EmailAppLauncher> { AndroidEmailAppLauncher(get()) }
 
     // settings
 
@@ -116,6 +108,15 @@ val androidModule = module {
 
     factory<ActiveNetworkConnection> { AndroidActiveNetworkConnection(androidContext()) }
 
+    // map
+
+    single<MapRuntime> {
+        // the MapLibre Android SDK default instead of the MapLibre Compose one, to keep offline data
+        // from before v64
+        @OptIn(ExperimentalMaplibreComposeApi::class)
+        createMapRuntime { cacheFile = Path(androidContext().filesDir.path, "mbgl-offline.db") }
+    } onClose { it?.close() }
+
     // background jobs
 
     single<UploadController> { AndroidUploadController(androidContext()) }
@@ -124,10 +125,13 @@ val androidModule = module {
     single<DownloadController> { AndroidDownloadController(androidContext()) }
     worker { DownloadWorker(get(), androidContext(), get()) }
 
-    factory<ChangesetAutoCloser> { AndroidChangesetAutoCloser(androidContext()) }
-    worker { ChangesetAutoCloserWorker(get(), androidContext(), get()) }
-
+    factory<PeriodicCleaner> { AndroidPeriodicCleaner(androidContext()) }
     worker { CleanerWorker(get(), get(), get()) }
 
-    factory<MapTilesDownloader> { MapTilesDownloaderAndroid(androidContext()) }
+    factory<MapTilesDownloader> {
+        MapLibreMapTilesDownloader(
+            get<MapRuntime>().offlineStorage,
+            androidContext().resources.displayMetrics.density
+        )
+    }
 }

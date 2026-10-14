@@ -10,8 +10,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddHotWater : OsmFilterQuestType<Boolean>() {
@@ -22,6 +22,7 @@ class AddHotWater : OsmFilterQuestType<Boolean>() {
           and fee = no
           and !hot_water
           and !shower:hot_water
+          and access !~ private|no
     """
 
     override val changesetComment = "Specify whether a shower has hot water"

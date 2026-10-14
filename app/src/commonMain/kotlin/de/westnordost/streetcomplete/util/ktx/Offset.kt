@@ -10,6 +10,6 @@ fun Offset.translate(distance: Float, angle: Double) =
     Offset((x + distance * cos(angle)).toFloat(), (y + distance * sin(angle)).toFloat())
 
 fun Offset.length() =
-    sqrt(x*x + y*y)
+    sqrt(x * x + y * y)
 
 fun Offset.toIntOffset() = IntOffset(x.toInt(), y.toInt())

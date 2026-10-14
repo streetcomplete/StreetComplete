@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.road_name
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -16,8 +15,8 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.osm.localized_name.parseLocalizedNames
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
 import de.westnordost.streetcomplete.ui.common.quest.LocalizedNameQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
@@ -29,19 +28,11 @@ fun AddRoadNameForm(
     countryInfo: CountryInfo,
     nameSuggestionsSource: NameSuggestionsSource = koinInject()
 ) {
+    var copiedName by rememberSerializable(element) { mutableStateOf(false) }
+
     var initialLocalizedNames by rememberSerializable(element) { mutableStateOf(
         parseLocalizedNames(element.tags)
     ) }
-
-    val mapClick = LocalLastMapClick.current
-    LaunchedEffect(mapClick) {
-        if (mapClick != null) {
-            nameSuggestionsSource
-                .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
-                .firstOrNull()
-                ?.let { initialLocalizedNames = it }
-        }
-    }
 
     LocalizedNameQuestForm(
         on = on,
@@ -51,10 +42,25 @@ fun AddRoadNameForm(
         noNameConfirmationText = {
             Text(stringResource(Res.string.quest_streetName_answer_noName_confirmation_description))
         },
+        isResurvey = initialLocalizedNames != null && !copiedName,
+        onClickMap = { mapClick: MapClick ->
+            val suggestedNames = nameSuggestionsSource
+                .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
+                .firstOrNull()
+
+            if (suggestedNames != null) {
+                copiedName = true
+                initialLocalizedNames = suggestedNames
+                true
+            } else {
+                false
+            }
+        },
     )
 }
 
-private val roadsWithNamesFilter by lazy {
-    "ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} and name"
-        .toElementFilterExpression()
-}
+private val roadsWithNamesFilter by lazy { """
+    ways with
+      highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
+      and name
+""".toElementFilterExpression() }

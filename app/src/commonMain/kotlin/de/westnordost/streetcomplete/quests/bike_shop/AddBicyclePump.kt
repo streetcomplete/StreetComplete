@@ -11,20 +11,20 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddBicyclePump : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways with
-        shop = bicycle
-        and !compressed_air
-        and (
+          shop = bicycle
+          and !compressed_air
+          and (
             !service:bicycle:pump
             or service:bicycle:pump older today -6 years
-        )
+          )
     """
     override val changesetComment = "Survey whether shop offers public pump"
     override val wikiLink = "Key:service:bicycle:pump"

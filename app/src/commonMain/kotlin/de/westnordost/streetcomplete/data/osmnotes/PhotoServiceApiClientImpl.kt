@@ -11,7 +11,6 @@ import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.contentType
 import io.ktor.http.defaultForFilePath
-import io.ktor.utils.io.ByteReadChannel
 import kotlinx.io.buffered
 import kotlinx.io.files.FileSystem
 import kotlinx.io.files.Path
@@ -24,7 +23,7 @@ class PhotoServiceApiClientImpl(
     private val fileSystem: FileSystem,
     private val httpClient: HttpClient,
     private val baseUrl: String
-): PhotoServiceApiClient {
+) : PhotoServiceApiClient {
     private val json = Json { ignoreUnknownKeys = true }
 
     override suspend fun upload(imagePaths: List<String>): List<String> = wrapApiClientExceptions {
@@ -38,7 +37,7 @@ class PhotoServiceApiClientImpl(
                 contentType(ContentType.defaultForFilePath(file.toString()))
                 // we read the whole file into a byte array rather than stream it, see
                 // https://github.com/streetcomplete/StreetComplete/issues/6959 / https://youtrack.jetbrains.com/issue/KTOR-9737
-                //setBody(ByteReadChannel(fileSystem.source(file).buffered()))
+                // setBody(ByteReadChannel(fileSystem.source(file).buffered()))
                 setBody(fileSystem.source(file).buffered().readByteArray())
                 expectSuccess = true
             }

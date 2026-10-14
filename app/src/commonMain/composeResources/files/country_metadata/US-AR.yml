@@ -1,4 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Regions Bank, Arvest Bank, Centennial Bank, Bank of America, Bank OZK, U.S. Bank, Simmons Bank, First Community Bank, Wells Fargo, First Security Bank, Chambers Bank, Athena Bitcoin]
-chargingStationOperators: [ChargePoint, Tesla, 'Tesla, Inc.', Electrify America, EVgo]
+atmOperators: [Regions Bank, Arvest Bank, Centennial Bank, Bank of America, Bank OZK, U.S. Bank, Simmons Bank, First Community Bank, Wells Fargo, First Security Bank, Chambers Bank, Athena Bitcoin, Arkansas Federal Credit Union]
+chargingStationOperators: [ChargePoint, Tesla, 'Tesla, Inc.', EVgo, Electrify America]
 defaultSpeedLimitHasUrbanOrRural: true
+parcelLockerBrand: [Parcel Pending, Amazon Locker]

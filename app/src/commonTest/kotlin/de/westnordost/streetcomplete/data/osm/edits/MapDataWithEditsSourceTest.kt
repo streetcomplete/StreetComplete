@@ -58,7 +58,7 @@ class MapDataWithEditsSourceTest {
         // a trick to get the edit action to apply to anything
         mapData.putElement(node(-1, pos = p(60.0, 60.0)))
 
-        editsSource = mock() {
+        editsSource = mock {
             every { getIdProvider(any()) } returns ElementIdProvider(listOf())
 
             every { getAllUnsynced() } returns listOf()
@@ -68,7 +68,7 @@ class MapDataWithEditsSourceTest {
             }
         }
 
-        mapDataSource = mock() {
+        mapDataSource = mock {
             every { get(any(), any()) } calls { (type: ElementType, id: Long) ->
                 when (type) {
                     NODE -> mapData.getNode(id)
@@ -79,7 +79,7 @@ class MapDataWithEditsSourceTest {
             every { getNode(any()) } calls { (id: Long) ->
                 mapData.getNode(id)
             }
-            every { getWay(any())} calls { (id: Long) ->
+            every { getWay(any()) } calls { (id: Long) ->
                 mapData.getWay(id)
             }
             every { getRelation(any()) } calls { (id: Long) ->

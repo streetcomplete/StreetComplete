@@ -11,7 +11,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentColor
@@ -26,13 +27,13 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.TextField2
 import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import org.jetbrains.compose.resources.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 
 /** Form to input building levels and roof levels, with quick-select buttons */
 @Composable
@@ -54,10 +55,9 @@ fun BuildingLevelsForm(
                 Column(
                     modifier = Modifier
                         .fillMaxHeight()
-                        .weight(1f)
-                        .padding(bottom = 16.dp),
+                        .width(80.dp),
                     horizontalAlignment = Alignment.End,
-                    verticalArrangement = Arrangement.SpaceBetween
+                    verticalArrangement = Arrangement.Bottom
                 ) {
                     Text(
                         text = stringResource(Res.string.quest_buildingLevels_levelsLabel2),
@@ -72,6 +72,7 @@ fun BuildingLevelsForm(
                                 onLevelsChange(value.toIntOrNull())
                             }
                         },
+                        modifier = Modifier.padding(bottom = 16.dp),
                         keyboardOptions = KeyboardOptions.Default.copy(
                             keyboardType = KeyboardType.Number,
                             imeAction = ImeAction.Next
@@ -81,14 +82,18 @@ fun BuildingLevelsForm(
                     )
                 }
                 // same height as BuildingLevelsIllustration
-                Spacer(Modifier.size(188.dp, 144.dp))
+                Spacer(Modifier
+                    .height(144.dp)
+                    .widthIn(max = 188.dp)
+                    .weight(1f)
+                )
                 Column(
                     modifier = Modifier
                         .fillMaxHeight()
-                        .weight(1f)
+                        .width(80.dp)
                         .padding(top = 16.dp),
                     horizontalAlignment = Alignment.Start,
-                    verticalArrangement = Arrangement.SpaceBetween
+                    verticalArrangement = Arrangement.Top
                 ) {
                     val roofLevelsString = roofLevels?.toString().orEmpty()
                     TextField2(
@@ -98,6 +103,7 @@ fun BuildingLevelsForm(
                                 onRoofLevelsChange(value.toIntOrNull())
                             }
                         },
+                        modifier = Modifier.padding(bottom = 16.dp),
                         keyboardOptions = KeyboardOptions.Default.copy(
                             keyboardType = KeyboardType.Number,
                             imeAction = ImeAction.Done
@@ -131,7 +137,7 @@ private fun String.isValidLevel(): Boolean =
     toIntOrNull()?.takeIf { it >= 0 } != null
 
 @Composable
-@Preview
+@Preview(widthDp = 288)
 private fun BuildingLevelsFormPreview() {
     val levels = remember { mutableStateOf<Int?>(55) }
     val roofLevels = remember { mutableStateOf<Int?>(55) }

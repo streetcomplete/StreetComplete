@@ -15,7 +15,11 @@ import de.westnordost.streetcomplete.ui.common.quest.NameWithSuggestionsQuestFor
 
 class AddAtmOperator : OsmFilterQuestType<String>() {
 
-    override val elementFilter = "nodes with amenity = atm and !operator and !name and !brand"
+    override val elementFilter = """
+        nodes with
+          amenity = atm
+          and !operator and !name and !brand
+    """
     override val changesetComment = "Specify ATM operator"
     override val wikiLink = "Tag:amenity=atm"
     override val icon = Res.drawable.quest_money

@@ -3,6 +3,7 @@ atmOperators: [Ecobank, Nita, Bank of Africa, BIA]
 centerLineStyle: white
 chargingStationOperators: [Bluezone]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typee, typec]
 edgeLineStyle: white
 mobileCountryCode: 614
 noParkingSignStyle: vienna

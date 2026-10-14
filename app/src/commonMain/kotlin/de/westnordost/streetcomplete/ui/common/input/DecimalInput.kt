@@ -23,14 +23,15 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.ui.LocalAppLocale
 import de.westnordost.streetcomplete.ui.common.TextField2
 import de.westnordost.streetcomplete.ui.common.TextFieldStyle
 import de.westnordost.streetcomplete.ui.common.colors
 import de.westnordost.streetcomplete.ui.common.getContentPadding
 import de.westnordost.streetcomplete.ui.common.shape
 import de.westnordost.streetcomplete.util.locale.NumberFormatter
-import androidx.compose.ui.tooling.preview.Preview
 import kotlin.math.absoluteValue
 
 /**
@@ -46,7 +47,7 @@ fun DecimalInput(
     maxIntegerDigits: Int = Int.MAX_VALUE,
     maxFractionDigits: Int = Int.MAX_VALUE,
     isUnsigned: Boolean = false,
-    locale: Locale = Locale.current,
+    locale: Locale? = null,
     style: TextFieldStyle = TextFieldStyle.Filled,
     enabled: Boolean = true,
     readOnly: Boolean = false,
@@ -65,7 +66,7 @@ fun DecimalInput(
     contentPadding: PaddingValues = style.getContentPadding(label != null),
 ) {
     val acceptedDecimalSeparators = remember { setOf('.', ',', '٫') }
-    val formatter = remember(locale, maxIntegerDigits, maxFractionDigits) {
+    val formatter = remember(locale, LocalAppLocale.current, maxIntegerDigits, maxFractionDigits) {
         NumberFormatter(
             locale = locale,
             maxIntegerDigits = maxIntegerDigits,
@@ -170,15 +171,13 @@ private fun String.isOnlyDecimalDigits(
             if (i != 0) return false
             // not allowed if unsigned
             if (isUnsigned) return false
-        }
-        else if (char.isDigit()) {
+        } else if (char.isDigit()) {
             if (hasSeparator) fractionDigits++
             else integerDigits++
 
             if (integerDigits > maxIntegerDigits) return false
             if (fractionDigits > maxFractionDigits) return false
-        }
-        else if (char == decimalSeparator) {
+        } else if (char == decimalSeparator) {
             // several decimal separators not allowed, e.g. 12.3.4
             if (hasSeparator) return false
 

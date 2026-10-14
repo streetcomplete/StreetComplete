@@ -100,6 +100,58 @@
         },
         "type/site": {
           "name": "Сайт"
+        },
+        "type/multipolygon": {},
+        "highway/path/bicycle_foot": {
+          "name": "Роварны і пешаходны шлях"
+        },
+        "highway/path/traffic_island_shared": {
+          "name": "Роварны і пешаходны астравок бяспекі"
+        },
+        "highway/path/crossing/bicycle_foot": {
+          "name": "Роварны і пешаходны пераход"
+        },
+        "highway/cycleway/crossing/marked": {
+          "name": "Пазначаны роварны пераезд"
+        },
+        "highway/crossing/marked": {
+          "name": "Пазначаны пераход"
+        },
+        "highway/crossing/zebra": {
+          "name": "Пазначаны пераход"
+        },
+        "@templates/contact": {
+          "name": "Пункт"
+        },
+        "@templates/internet_access": {
+          "name": "Пункт"
+        },
+        "@templates/poi": {
+          "name": "Пункт"
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Пункт"
+        },
+        "@templates/crossing/defaults": {
+          "name": "Пункт"
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Пункт"
+        },
+        "@templates/crossing/markings": {
+          "name": "Пункт"
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Пункт"
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Пункт"
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Пункт"
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Пункт"
         }
       }
     }

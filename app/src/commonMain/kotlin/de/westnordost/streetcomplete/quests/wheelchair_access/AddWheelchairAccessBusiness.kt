@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.resources.*
 class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           access !~ no|private
           and !wheelchair
           and (name or brand or noname = yes or name:signed = no)
@@ -54,7 +54,6 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
                 "theatre",                                        // culture
                 "conference_centre", "arts_centre",               // events
                 "police",                                         // civic
-                "ferry_terminal",                                 // transport
                 "place_of_worship",                               // religious
                 "hospital",                                       // health care
                 "brothel", "gambling", "love_hotel", "stripclub", // bad stuff

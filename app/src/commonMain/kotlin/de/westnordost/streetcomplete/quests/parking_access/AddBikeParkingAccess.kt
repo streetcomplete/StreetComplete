@@ -5,6 +5,8 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
@@ -18,9 +20,10 @@ class AddBikeParkingAccess : OsmFilterQuestType<ParkingAccess>() {
     // Only include these bicycle_parking types, because access for these types is needed for
     // AddBikeParkingFee and because those are uncontroversial. See #2496 and #2517
     override val elementFilter = """
-        nodes, ways, relations with amenity = bicycle_parking
-        and bicycle_parking ~ building|lockers|shed
-        and (!access or access = unknown)
+        nodes, ways, relations with
+          amenity = bicycle_parking
+          and bicycle_parking ~ building|lockers|shed
+          and (!access or access = unknown)
     """
 
     override val changesetComment = "Specify bicycle parking access"
@@ -41,4 +44,7 @@ class AddBikeParkingAccess : OsmFilterQuestType<ParkingAccess>() {
     override fun applyAnswerTo(answer: ParkingAccess, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["access"] = answer.osmValue
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways, relations with amenity = bicycle_parking")
 }

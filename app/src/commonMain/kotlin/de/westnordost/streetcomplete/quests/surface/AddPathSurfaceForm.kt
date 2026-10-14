@@ -40,12 +40,16 @@ fun AddPathSurfaceForm(
                 AnswerItem(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {
                     on(Answer(PathSurfaceAnswer.IsSteps))
                 }
-            } else null,
+            } else {
+                null
+            },
             if (element.tags["indoor"] != "yes") {
                 AnswerItem(stringResource(Res.string.quest_generic_answer_is_indoors)) {
                     on(Answer(PathSurfaceAnswer.IsIndoors))
                 }
-            } else null,
+            } else {
+                null
+            },
         ) }
     )
 }

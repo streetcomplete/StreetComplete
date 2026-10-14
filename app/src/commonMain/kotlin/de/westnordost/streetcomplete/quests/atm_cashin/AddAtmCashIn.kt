@@ -10,13 +10,16 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddAtmCashIn : OsmFilterQuestType<Boolean>() {
 
-    override val elementFilter = "nodes with amenity = atm and !cash_in"
+    override val elementFilter = """
+        nodes with
+          amenity = atm and !cash_in
+    """
     override val changesetComment = "Determine whether ATM allows depositing cash"
     override val wikiLink = "Key:cash_in"
     override val icon = Res.drawable.quest_money

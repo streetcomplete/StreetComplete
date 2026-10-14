@@ -15,7 +15,7 @@ fun String.toWeekdaysSelectors(): List<WeekdaysSelector> =
 
 private fun StringWithCursor.parseWeekdaySelectors(): List<WeekdaysSelector> {
     val result = ArrayList<WeekdaysSelector>()
-    do { result.add(parseWeekdaySelector()) } while(nextIsAndAdvance(','))
+    do { result.add(parseWeekdaySelector()) } while (nextIsAndAdvance(','))
     return result
 }
 

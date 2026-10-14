@@ -72,7 +72,7 @@ class AddCarWashTypeTest {
         )
     }
 
-    @Test fun `automated, self service and staff cleans car is tagged the same way as automated and self service`() {
+    @Test fun `automated with self service and staff is tagged like automated self service`() {
         assertEquals(
             setOf(
                 StringMapEntryAdd("self_service", "yes"),
