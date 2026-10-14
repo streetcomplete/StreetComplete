@@ -1,7 +1,7 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm")
-    id("org.jetbrains.kotlin.plugin.compose")
-    id("org.jetbrains.compose")
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.compose.multiplatform)
 }
 
 kotlin {
@@ -18,24 +18,33 @@ val hostArch = when (System.getProperty("os.arch")) {
     "amd64", "x86_64" -> "x64"
     else -> error("Unsupported desktop architecture: ${System.getProperty("os.arch")}")
 }
-val mapBackend = if (hostOs == "macos") "metal" else "vulkan"
+val mapRuntime = when ("$hostOs-$hostArch") {
+    "macos-arm64" -> libs.maplibre.runtime.macosArm64
+    "macos-x64" -> libs.maplibre.runtime.macosX64
+    "windows-arm64" -> libs.maplibre.runtime.windowsArm64
+    "windows-x64" -> libs.maplibre.runtime.windowsX64
+    "linux-arm64" -> libs.maplibre.runtime.linuxArm64
+    "linux-x64" -> libs.maplibre.runtime.linuxX64
+    else -> error("Unsupported desktop platform: $hostOs-$hostArch")
+}
 
 dependencies {
     implementation(project(":app"))
     implementation(compose.desktop.currentOs)
 
     // Dependency injection
-    implementation("io.insert-koin:koin-core:4.2.2")
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.core)
 
     // Compose
-    implementation("org.jetbrains.compose.components:components-resources:1.12.1")
+    implementation(libs.compose.resources)
 
     // File access
-    implementation("io.github.vinceglb:filekit-core:0.16.0")
+    implementation(libs.filekit.core)
 
     // Map
-    implementation("org.maplibre.compose:maplibre-compose:0.20.0")
-    runtimeOnly("org.maplibre.compose:maplibre-compose-runtime-$mapBackend-$hostOs-$hostArch:0.20.0")
+    implementation(libs.maplibre.compose)
+    runtimeOnly(mapRuntime)
 }
 
 compose.desktop {
