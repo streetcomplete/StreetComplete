@@ -159,7 +159,7 @@ mapOf(
             or aeroway = terminal
             or man_made = observatory
             or club
-            or building ~ commercial|retail|cathedral|civic|college|government|train_station|transportation|university|parking|tower|windmill
+            or building ~ civic|college|government|train_station|transportation|university
         )
     )
     """
