@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -23,11 +24,13 @@ import de.westnordost.streetcomplete.screens.main.ShownBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.CreateNoteForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.overlay.OverlayFormContainer
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.quest.OsmQuestFormContainer
-import de.westnordost.streetcomplete.ui.common.dialogs.SessionConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.SurveyConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.MapOverlayContent
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.stringResource
 
 /**
  * Everything that happens in the bottom sheet displayed in the main screen happens here.
@@ -134,15 +137,7 @@ fun MainBottomSheet(
                     onHideQuest(key)
                     onDismiss()
                 },
-                onDisableQuest = {
-                    val questType = shownBottomSheet.quest.type
-                    if (SuppressDisableQuestConfirmation) {
-                        onDisableQuest(questType)
-                        onDismiss()
-                    } else {
-                        questTypeToDisable = questType
-                    }
-                },
+                onDisableQuest = { questTypeToDisable = shownBottomSheet.quest.type },
                 questType = shownBottomSheet.quest.type,
                 element = shownBottomSheet.element,
                 geometry = shownBottomSheet.quest.geometry,
@@ -201,7 +196,7 @@ fun MainBottomSheet(
     }
 
     confirmEdit?.let { pendingEdit ->
-        SessionConfirmationDialog(
+        SurveyConfirmationDialog(
             onDismissRequest = { confirmEdit = null },
             onConfirmed = { dontShowAgain ->
                 SuppressSurveyConfirmation = dontShowAgain
@@ -211,21 +206,19 @@ fun MainBottomSheet(
                     pendingEdit.elementEditAction
                 )
                 onDismiss()
-            },
-            title = Res.string.quest_source_dialog_title,
-            note = Res.string.quest_source_dialog_note
+            }
         )
     }
 
     questTypeToDisable?.let { questType ->
-        SessionConfirmationDialog(
+        ConfirmationDialog(
             onDismissRequest = { questTypeToDisable = null },
-            onConfirmed = { dontShowAgain ->
-                SuppressDisableQuestConfirmation = dontShowAgain
+            onConfirmed = {
                 onDisableQuest(questType)
                 onDismiss()
             },
-            title = Res.string.quest_disable_confirmation_title
+            title = { Text(stringResource(Res.string.quest_disable_confirmation_title)) },
+            confirmButtonText = stringResource(Res.string.quest_generic_confirmation_yes)
         )
     }
 }
@@ -237,5 +230,3 @@ private data class PendingEdit(
 )
 
 private var SuppressSurveyConfirmation = false
-
-private var SuppressDisableQuestConfirmation = false
