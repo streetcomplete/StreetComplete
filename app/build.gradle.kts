@@ -188,7 +188,12 @@ kotlin {
                 implementation(libs.osm.openingHours)
 
                 // UI (Compose)
-                implementation(libs.bundles.compose.common)
+                implementation(libs.compose.runtime)
+                implementation(libs.compose.foundation)
+                implementation(libs.compose.material)
+                implementation(libs.compose.ui)
+                implementation(libs.compose.resources)
+                implementation(libs.compose.uiToolingPreview)
 
                 // UI Navigation
                 implementation(libs.androidx.navigationevent.compose)

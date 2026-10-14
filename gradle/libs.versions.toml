@@ -215,15 +215,3 @@ jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
 buildsrc-kotlinxSerializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "buildsrcKotlinxSerialization" }
 buildsrc-kaml = { module = "com.charleskorn.kaml:kaml", version.ref = "buildsrcKaml" }
 markdown = { module = "org.jetbrains:markdown", version.ref = "markdown" }
-
-[bundles]
-
-# Shared Compose UI dependencies used together in commonMain
-compose-common = [
-    "compose-runtime",
-    "compose-foundation",
-    "compose-material",
-    "compose-ui",
-    "compose-resources",
-    "compose-uiToolingPreview",
-]
