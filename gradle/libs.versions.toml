@@ -45,16 +45,6 @@ activity = "1.13.0"
 work = "2.12.0"
 desugarJdkLibs = "2.1.5"
 
-# Build logic (independent plugin and library versions)
-buildsrcKotlin = "2.0.0"
-buildsrcKotlinxIo = "0.7.0"
-buildsrcKotlinxSerialization = "1.8.1"
-buildsrcKaml = "0.77.1"
-klaxon = "5.6"
-yamlbeans = "1.17"
-jsoup = "1.18.3"
-markdown = "0.7.3"
-
 [plugins]
 
 # Kotlin
@@ -75,9 +65,6 @@ compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose" 
 # Code generation and testing
 buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
 mokkery = { id = "dev.mokkery", version.ref = "mokkery" }
-
-# Build logic
-buildsrc-kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "buildsrcKotlin" }
 
 [libraries]
 
@@ -206,12 +193,3 @@ desugar-jdkLibs = { module = "com.android.tools:desugar_jdk_libs", version.ref =
 # Testing
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 ktor-client-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
-
-# Build logic (buildSrc; countryboundaries is shared with the app)
-klaxon = { module = "com.beust:klaxon", version.ref = "klaxon" }
-buildsrc-kotlinxIo = { module = "org.jetbrains.kotlinx:kotlinx-io-core", version.ref = "buildsrcKotlinxIo" }
-yamlbeans = { module = "com.esotericsoftware.yamlbeans:yamlbeans", version.ref = "yamlbeans" }
-jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
-buildsrc-kotlinxSerializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "buildsrcKotlinxSerialization" }
-buildsrc-kaml = { module = "com.charleskorn.kaml:kaml", version.ref = "buildsrcKaml" }
-markdown = { module = "org.jetbrains:markdown", version.ref = "markdown" }

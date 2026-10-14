@@ -12,15 +12,15 @@ java {
 dependencies {
     implementation(libs.klaxon)
     implementation(libs.countryboundaries)
-    implementation(libs.buildsrc.kotlinxIo)
+    implementation(libs.kotlinx.io)
     implementation(libs.yamlbeans)
     implementation(libs.jsoup)
-    implementation(libs.buildsrc.kotlinxSerializationJson)
-    implementation(libs.buildsrc.kaml)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kaml)
     implementation(libs.markdown)
 }
 
 plugins {
     `kotlin-dsl`
-    alias(libs.plugins.buildsrc.kotlinSerialization)
+    alias(libs.plugins.kotlin.serialization)
 }
