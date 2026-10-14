@@ -111,8 +111,9 @@ fun MainNavHost(
 
     LaunchedEffect(uri) {
         uri?.let {
-            while (backStack.size > 1) backStack.goBack()
-            navViewModel.setUri(it)
+            if (navViewModel.setUri(it)) {
+                while (backStack.size > 1) backStack.goBack()
+            }
             onConsumedUri()
         }
     }

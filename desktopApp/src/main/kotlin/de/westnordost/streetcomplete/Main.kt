@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete
 
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.rememberWindowState
@@ -15,6 +17,7 @@ import dev.nucleusframework.window.WindowAppearanceMode
 import dev.nucleusframework.window.WindowScaffold
 import dev.nucleusframework.window.styling.LocalTitleBarStyle
 import io.github.vinceglb.filekit.FileKit
+import kotlinx.coroutines.flow.MutableStateFlow
 import org.jetbrains.compose.resources.painterResource
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
@@ -34,7 +37,11 @@ fun main(args: Array<String>) {
     Runtime.getRuntime().addShutdownHook(Thread { stopKoin() })
     koin.get<CrashReportsUncaughtExceptionHandler>().install()
     koin.get<ApplicationInitializer>().initialize()
-    nucleusApplication(args) {
+    // Keep the URI even if it arrives before the window and map are ready.
+    val pendingUri = MutableStateFlow<String?>(null)
+    nucleusApplication(args, enableSingleInstance = true) {
+        onDeepLink { pendingUri.value = it.toString() }
+        val uri by pendingUri.collectAsState()
         val theme = rememberAppTheme()
         NucleusDecoratedWindowTheme(isDark = theme.isDark) {
             // TODO desktop: use native window decorations when supported, see
@@ -58,7 +65,11 @@ fun main(args: Array<String>) {
                     // the map needs the window's GPU context, which Tao has after the first frame
                     val mapHost = rememberTaoComposeMapPresentationHost() ?: return@WindowScaffold
                     ProvideMapPresentationHost(mapHost) {
-                        App(uri = null, onConsumedUri = {}, theme = theme)
+                        App(
+                            uri = uri,
+                            onConsumedUri = { pendingUri.compareAndSet(uri, null) },
+                            theme = theme,
+                        )
                     }
                 }
             }
