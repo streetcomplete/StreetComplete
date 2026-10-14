@@ -47,7 +47,6 @@ dependencies {
     implementation(libs.maplibre.compose)
     implementation(libs.nucleus.application)
     implementation(libs.nucleus.decoratedWindowTao)
-    implementation(libs.nucleus.decoratedWindowMaterial2)
     runtimeOnly(mapRuntime)
 }
 

@@ -163,7 +163,6 @@ maplibre-compose = { module = "org.maplibre.compose:maplibre-compose", version.r
 # Desktop window and application
 nucleus-application = { module = "dev.nucleusframework:nucleus.nucleus-application", version.ref = "nucleus" }
 nucleus-decoratedWindowTao = { module = "dev.nucleusframework:nucleus.decorated-window-tao", version.ref = "nucleus" }
-nucleus-decoratedWindowMaterial2 = { module = "dev.nucleusframework:nucleus.decorated-window-material2", version.ref = "nucleus" }
 
 # Map runtimes (selected by platform in the app modules)
 maplibre-runtime-android = { module = "org.maplibre.compose:maplibre-compose-runtime-opengl-android", version.ref = "maplibre" }

@@ -4,12 +4,13 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.rememberWindowState
-import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportsUncaughtExceptionHandler
+import dev.nucleusframework.application.DecoratedWindow
 import dev.nucleusframework.application.nucleusApplication
+import dev.nucleusframework.window.NucleusDecoratedWindowTheme
+import dev.nucleusframework.window.TitleBar
 import dev.nucleusframework.window.WindowScaffold
-import dev.nucleusframework.window.material2.MaterialDecoratedWindow
-import dev.nucleusframework.window.material2.MaterialTitleBar
+import dev.nucleusframework.window.styling.LocalTitleBarStyle
 import io.github.vinceglb.filekit.FileKit
 import org.jetbrains.compose.resources.painterResource
 import org.koin.core.context.startKoin
@@ -33,15 +34,20 @@ fun main(args: Array<String>) {
     nucleusApplication(args) {
         // TODO desktop: the window decoration follows the system theme, not the theme chosen in
         //      the settings, as that is only read inside App (by AppViewModel)
-        AppTheme(isSystemInDarkTheme()) {
-            MaterialDecoratedWindow(
+        NucleusDecoratedWindowTheme(isDark = isSystemInDarkTheme()) {
+            // TODO desktop: use native window decorations when supported, see
+            //      https://github.com/NucleusFramework/Nucleus/issues/841
+            DecoratedWindow(
                 onCloseRequest = ::exitApplication,
                 state = rememberWindowState(),
                 title = "StreetComplete — Development",
                 icon = painterResource(Res.drawable.app_icon),
                 minimumSize = DpSize(320.dp, 320.dp),
             ) {
-                WindowScaffold(titleBar = { MaterialTitleBar() }) {
+                WindowScaffold(titleBar = {
+                    val style = LocalTitleBarStyle.current
+                    TitleBar(style = style.copy(metrics = style.metrics.copy(height = 28.dp)))
+                }) {
                     // the map needs the window's GPU context, which Tao has after the first frame
                     val mapHost = rememberTaoComposeMapPresentationHost() ?: return@WindowScaffold
                     ProvideMapPresentationHost(mapHost) {
