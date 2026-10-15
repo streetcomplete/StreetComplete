@@ -170,8 +170,8 @@ maplibre-runtime-macosArm64 = { module = "org.maplibre.compose:maplibre-compose-
 maplibre-runtime-macosX64 = { module = "org.maplibre.compose:maplibre-compose-runtime-metal-macos-x64", version.ref = "maplibre" }
 maplibre-runtime-windowsArm64 = { module = "org.maplibre.compose:maplibre-compose-runtime-vulkan-windows-arm64", version.ref = "maplibre" }
 maplibre-runtime-windowsX64 = { module = "org.maplibre.compose:maplibre-compose-runtime-vulkan-windows-x64", version.ref = "maplibre" }
-maplibre-runtime-linuxArm64 = { module = "org.maplibre.compose:maplibre-compose-runtime-vulkan-linux-arm64", version.ref = "maplibre" }
-maplibre-runtime-linuxX64 = { module = "org.maplibre.compose:maplibre-compose-runtime-vulkan-linux-x64", version.ref = "maplibre" }
+maplibre-runtime-linuxArm64 = { module = "org.maplibre.compose:maplibre-compose-runtime-opengl-linux-arm64", version.ref = "maplibre" }
+maplibre-runtime-linuxX64 = { module = "org.maplibre.compose:maplibre-compose-runtime-opengl-linux-x64", version.ref = "maplibre" }
 
 # Non-lazy grid
 compose-grid = { module = "com.cheonjaeung.compose.grid:grid", version.ref = "composeGrid" }
