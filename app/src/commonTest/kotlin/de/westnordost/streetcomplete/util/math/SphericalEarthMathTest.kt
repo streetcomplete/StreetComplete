@@ -677,6 +677,67 @@ class SphericalEarthMathTest {
 
     //endregion
 
+    //region interiorPointOfPolygon
+
+    @Test
+    fun `interiorPointOfPolygon for empty polygon fails`() {
+        assertFailsWith<IllegalArgumentException> {
+            listOf<LatLon>().interiorPointOfPolygon()
+        }
+    }
+
+    @Test fun `interiorPointOfPolygon with no area simply returns first point`() {
+        val positions = listOf(p(10.0, 10.0), p(10.0, 20.0), p(10.0, 30.0))
+        assertEquals(p(10.0, 10.0), positions.interiorPointOfPolygon())
+    }
+
+    @Test fun `interiorPointOfPolygon at origin`() {
+        val rhombus = p(0.0, 0.0).createRhombus(1.0)
+        val point = rhombus.interiorPointOfPolygon()
+        // scan line is halfway between the vertex at the center latitude and the one above
+        assertEquals(0.0, point.longitude, 1e-9)
+        assertEquals(0.5, point.latitude, 1e-9)
+        assertTrue(point.isInPolygon(rhombus))
+    }
+
+    @Test fun `interiorPointOfPolygon at 180th meridian`() {
+        val rhombus = p(179.9, 0.0).createRhombus(1.0)
+        val point = rhombus.interiorPointOfPolygon()
+        assertEquals(179.9, point.longitude, 1e-9)
+        assertEquals(0.5, point.latitude, 1e-9)
+        assertTrue(point.isInPolygon(rhombus))
+    }
+
+    @Test fun `interiorPointOfPolygon of square is its center`() {
+        val square = p(0.0, 0.0).createCounterClockwiseSquare(1.0)
+        assertEquals(p(0.0, 0.0), square.interiorPointOfPolygon())
+    }
+
+    @Test fun `interiorPointOfPolygon is inside U-shape where center point of polygon is not`() {
+        val u = createU(rightArmWidth = 1.0)
+        assertFalse(u.centerPointOfPolygon().isInPolygon(u))
+        val point = u.interiorPointOfPolygon()
+        assertTrue(point.isInPolygon(u))
+        assertEquals(p(0.5, 2.0), point)
+    }
+
+    @Test fun `interiorPointOfPolygon picks widest section of scan line`() {
+        val u = createU(rightArmWidth = 2.0)
+        assertEquals(p(3.0, 2.0), u.interiorPointOfPolygon())
+    }
+
+    @Test fun `interiorPointOfPolygon is inside J-shaped forest of issue 4965`() {
+        val forest = createWay375479412()
+        assertFalse(forest.centerPointOfPolygon().isInPolygon(forest))
+        val point = forest.interiorPointOfPolygon()
+        assertTrue(point.isInPolygon(forest))
+        // same as the result of GEOS' point on surface (as used in PostGIS' ST_PointOnSurface)
+        assertEquals(7.310970535438142, point.longitude, 1e-9)
+        assertEquals(51.0358469, point.latitude, 1e-9)
+    }
+
+    //endregion
+
     //region isInPolygon
 
     @Test fun `point at polygon vertex is in polygon`() {
@@ -1136,4 +1197,50 @@ private fun createWay218917749() = listOf(
     p(13.4488638, 52.4758926),
     p(13.4488621, 52.4758946),
     p(13.4488926, 52.4759134)
+)
+
+/*
+  o-o   o---o
+  | |   |   |
+  | o---o   |
+  |         |
+  o---------o
+*/
+private fun createU(rightArmWidth: Double) = listOf(
+    p(0.0, 0.0),
+    p(2.0 + rightArmWidth, 0.0),
+    p(2.0 + rightArmWidth, 3.0),
+    p(2.0, 3.0),
+    p(2.0, 1.0),
+    p(1.0, 1.0),
+    p(1.0, 3.0),
+    p(0.0, 3.0),
+    p(0.0, 0.0)
+)
+
+/* the J-shaped forest from issue #4965 */
+private fun createWay375479412() = listOf(
+    p(7.3113965, 51.0364943),
+    p(7.3112674, 51.0364709),
+    p(7.3111717, 51.0364102),
+    p(7.311107, 51.0363237),
+    p(7.3110546, 51.0362211),
+    p(7.3107785, 51.0352354),
+    p(7.3106804, 51.0351505),
+    p(7.3105144, 51.0351544),
+    p(7.3092394, 51.0354769),
+    p(7.3091155, 51.0354201),
+    p(7.3092222, 51.0354514),
+    p(7.3105081, 51.0351311),
+    p(7.3107047, 51.0351225),
+    p(7.3108097, 51.0352266),
+    p(7.3110996, 51.0362169),
+    p(7.3111393, 51.0363163),
+    p(7.3112001, 51.0363965),
+    p(7.311284, 51.036451),
+    p(7.311396, 51.0364678),
+    p(7.3115168, 51.0364536),
+    p(7.3116798, 51.0364312),
+    p(7.3115398, 51.0364776),
+    p(7.3113965, 51.0364943)
 )
