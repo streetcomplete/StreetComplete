@@ -28,7 +28,7 @@ class AddFuelTypes : OsmFilterQuestType<Set<FuelTypes>>() {
           and !fuel:cng
           and !fuel:diesel
           and !fuel:e10
-          and !fuel:s85
+          and !fuel:e85
           and !fuel:lpg
           and !fuel:octane_85
           and !fuel:octane_87
@@ -66,11 +66,7 @@ class AddFuelTypes : OsmFilterQuestType<Set<FuelTypes>>() {
         """)
 
     override fun applyAnswerTo(answer: Set<FuelTypes>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        for (entry in FuelTypes.entries) {
-            if (entry in answer) {
-                tags["fuel:${entry.value}"] = "yes"
-            }
-        }
+        answer.forEach { tags["fuel:${it.value}"] = "yes" }
         tags.updateCheckDate()
     }
 }
