@@ -333,7 +333,7 @@
     <string name="quest_religion_bahai">巴哈伊信仰</string>
     <string name="quest_religion_caodaist">高台教</string>
     <string name="quest_religion_chinese_folk">中國傳統信仰</string>
-    <string name="quest_religion_for_wayside_shrine_title">這座小廟是遵循那個宗教呢？</string>
+    <string name="quest_religion_for_wayside_shrine_title">這座小廟是遵循哪個宗教呢？</string>
     <string name="quest_parking_fee_title">在這裡停車需要付費嗎？</string>
     <string name="quest_surface_value_unhewn_cobblestone">不破的鵝卵石</string>
     <string name="quest_streetSurface_square_title">廣場的舖面是什麼材質？</string>
@@ -1411,7 +1411,7 @@
     <string name="quest_firewood_provided_title">這裡有提供薪柴嗎？</string>
     <string name="quest_first_aid_kit_location">這裡的急救包在那裡？</string>
     <string name="quest_lane_markings_title">這條路有標線嗎？</string>
-    <string name="quest_level_thing_title">這東西位於那個樓層號碼？</string>
+    <string name="quest_level_thing_title">這東西位於哪個樓層號碼？</string>
     <string name="quest_charging_station_bicycles_title">這裡是否也可以為單單充電嗎？</string>
     <string name="quest_recycling_type_pet_bottles">PET瓶罐</string>
     <string name="quest_maxweight_add_sign">新增告示牌</string>
