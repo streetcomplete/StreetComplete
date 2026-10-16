@@ -1107,7 +1107,7 @@
 
     <string name="quest_cycleway_width_title">How wide is the bicycle path here?</string>
 
-    <string name="default_disabled_msg_cycleway">This quest type is disabled by default because the user potentially needs to walk to the next intersection to see that sign, and that may be a little far.</string>
+    <string name="default_disabled_msg_sign_at_next_intersection">This quest type is disabled by default because the user potentially needs to walk to the next intersection to see that sign, and that may be a little far.</string>
 
     <string name="quest_dietType_glutenfree_name_title">Are gluten-free products offered here?</string>
     <string name="quest_dietType_explanation_glutenfree">Preparing gluten-free products requires knowledge, as common spices and sauces may contain gluten. Gluten-free food would be explicitly labeled as such.</string>
