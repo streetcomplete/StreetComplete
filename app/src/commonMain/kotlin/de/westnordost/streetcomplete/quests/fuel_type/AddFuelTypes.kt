@@ -25,6 +25,18 @@ class AddFuelTypes : OsmFilterQuestType<Set<FuelTypes>>() {
         nodes, ways, relations with
           amenity = fuel
           and access !~ private|no
+          and !fuel:cng
+          and !fuel:diesel
+          and !fuel:e10
+          and !fuel:s85
+          and !fuel:lpg
+          and !fuel:octane_85
+          and !fuel:octane_87
+          and !fuel:octane_89
+          and !fuel:octane_91
+          and !fuel:octane_92
+          and !fuel:octane_95
+          and !fuel:octane_98
     """
 
     override val changesetComment = "Specify fuel types that are available"
