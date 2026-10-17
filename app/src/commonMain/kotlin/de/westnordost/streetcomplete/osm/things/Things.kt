@@ -433,11 +433,11 @@ private val ADD_CHECK_DATE_EXPRESSION by lazy {
 
     """
         nodes, ways, relations with
-        $tags
-        or attraction
-        or disc_golf
-        or fitness_station
-        or leisure = pitch and sport ~ chess|table_soccer|table_tennis|teqball
-        or playground
+          $tags
+          or attraction
+          or disc_golf
+          or fitness_station
+          or leisure = pitch and sport ~ chess|table_soccer|table_tennis|teqball
+          or playground
     """.toElementFilterExpression()
 }
