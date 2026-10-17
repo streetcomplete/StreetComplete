@@ -6,6 +6,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.coerceAtLeast
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.times
 import de.westnordost.streetcomplete.ui.ktx.isLandscape
 
 object Dimensions {
@@ -22,8 +23,7 @@ object Dimensions {
             // in landscape mode, the quest form is by default expanded, so it already takes up
             // more/all vertical space. Especially on smaller screens, the width thus must be
             // somewhat limited so that the map is still visible
-            if (windowInfo.containerDpSize.width > 820.dp) 480.dp
-            else 360.dp
+            (0.5 * windowInfo.containerDpSize.width).coerceIn(320.dp, 480.dp)
         } else {
             // in portrait mode, it may stretch very wide
             480.dp
