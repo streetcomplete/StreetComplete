@@ -12,5 +12,4 @@ interface MapTilesDownloader {
 
     /** Delete all previously fetched tiles */
     suspend fun clear()
-
 }

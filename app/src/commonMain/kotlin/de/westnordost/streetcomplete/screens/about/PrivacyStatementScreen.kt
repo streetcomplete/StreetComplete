@@ -23,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.HtmlText
-import de.westnordost.streetcomplete.util.html.tryParseHtml
 import org.jetbrains.compose.resources.stringResource
 
 /** Shows the privacy statement */
@@ -40,10 +39,10 @@ fun PrivacyStatementScreen(
         SelectionContainer {
             HtmlText(
                 html =
-                    tryParseHtml(stringResource(Res.string.privacy_html)) +
-                    tryParseHtml(stringResource(Res.string.privacy_html_tileserver2, "JawgMaps", "https://www.jawg.io/en/confidentiality/")) +
-                    tryParseHtml(stringResource(Res.string.privacy_html_statistics)) +
-                    tryParseHtml(stringResource(Res.string.privacy_html_image_upload2)),
+                    stringResource(Res.string.privacy_html) +
+                    stringResource(Res.string.privacy_html_tileserver2, "JawgMaps", "https://www.jawg.io/en/confidentiality/") +
+                    stringResource(Res.string.privacy_html_statistics) +
+                    stringResource(Res.string.privacy_html_image_upload2),
                 modifier = Modifier
                     .fillMaxWidth()
                     .verticalScroll(rememberScrollState())

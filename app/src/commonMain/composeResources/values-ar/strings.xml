@@ -701,7 +701,6 @@
     <string name="quest_buildingType_abandoned_description">مبنى غير مستخدم وظيفته أو غرضه الأصلي غير معروف</string>
     <string name="quest_buildingType_ruins">أطلال/أنقاض/خرائب</string>
     <string name="quest_buildingType_ruins_description">مبنى مهجور أو تالف و / أو غير معروف</string>
-    <string name="quest_charging_station_capacity_title">كم عدد السيارات التي يمكن شحنها في محطة الشحن هذه في نفس الوقت؟</string>
     <string name="link_disaster_ninja_description">الخريطة التي تظهر الكوارث الطبيعية الأخيرة، مثيرة للاهتمام لواضعي الخرائط الإنسانية. يعرض أيضًا العديد من الإحصائيات الشيقة لتحليل مدى دقة وحداثة الأماكن.</string>
     <string name="quest_lanes_title">كم عدد مسارات الطريق الواحد للسيارات في هذا الطريق؟</string>
     <string name="quest_lanes_answer_noLanes">لا توجد مسارات بعلامات ولافتات مرورية</string>
@@ -1368,9 +1367,7 @@
     <string name="quest_first_aid_kit_location">أين توجد حقيبة الإسعافات الأولية هذه؟</string>
     <string name="quest_lane_markings_title">هل هذا الطريق به علامات مسارات؟</string>
     <string name="quest_level_thing_title">في أي طابق يقع هذا الشيء؟</string>
-    <string name="quest_bicycle_charging_station_capacity_title">كم عدد الدراجات التي يمكن شحنها هنا في نفس الوقت؟</string>
     <string name="quest_charging_station_bicycles_title">هل يمكن شحن الدراجات الهوائية هنا أيضًا؟</string>
-    <string name="quest_charging_station_bicycles_hint">توصّل محولات طاقة شواحن الدراجات بمقابس الكهرباء المنزلية العادية.</string>
     <string name="quest_maxweight_add_sign">أضف علامة</string>
     <string name="quest_maxweight_remove_sign">أزل العلامة</string>
     <string name="weekly_osm_new_edition_title">إصدار جديد!</string>

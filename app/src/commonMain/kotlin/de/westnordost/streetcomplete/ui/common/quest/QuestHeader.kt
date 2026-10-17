@@ -28,16 +28,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.InfoFilledIcon
 import de.westnordost.streetcomplete.ui.common.InfoOutlineIcon
 import de.westnordost.streetcomplete.ui.ktx.fadingHorizontalScrollEdges
 import de.westnordost.streetcomplete.ui.theme.titleLarge
-import de.westnordost.streetcomplete.ui.theme.titleMedium
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.resources.stringResource
-import de.westnordost.streetcomplete.resources.*
 
 /** Layout that contains the title, subtitle (name and location label), info button and
  *  retractable info area */

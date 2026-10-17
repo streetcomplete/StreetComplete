@@ -2,18 +2,12 @@ package de.westnordost.streetcomplete.data.location
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.ktx.asSequenceOfPairs
-import de.westnordost.streetcomplete.util.ktx.systemTimeNow
-import de.westnordost.streetcomplete.util.ktx.toLocation
 import de.westnordost.streetcomplete.util.math.translate
-import org.maplibre.compose.location.LocationEvent
-import org.maplibre.compose.location.LocationMeasurement
-import org.maplibre.spatialk.geojson.Position
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import kotlin.time.Duration.Companion.seconds
 import kotlin.time.Instant
-import kotlin.time.TimeSource
 
 class RecentLocationsTest {
     @Test fun `getAll returns nothing when empty`() {

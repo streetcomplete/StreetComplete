@@ -712,7 +712,6 @@ aktiva</string>
     <string name="quest_buildingType_abandoned_description">neuzata konstruaĵo kies origina funkcio aŭ celo estas nekonataj</string>
     <string name="quest_buildingType_ruins">Ruinoj</string>
     <string name="quest_buildingType_ruins_description">forlasita, ruinigita kaj neidentigebla konstruaĵo</string>
-    <string name="quest_charging_station_capacity_title">Kiom da aŭtoj povas ŝargi ĉi tie samtempe?</string>
     <string name="quest_lanes_title">Kiom da veturkoridoroj estas en tiu vojo?</string>
     <string name="quest_lanes_answer_noLanes">Neniu markita koridoro</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Ĝi havas duflankan maldekstran turnan vojeron</string>
@@ -744,7 +743,7 @@ Se iuj vojeroj estas rezervitaj al busoj, bonvolu lasi noton anstataŭe.</string
     <string name="quest_surface_value_clay">Skorio</string>
     <string name="quest_surface_value_artificial_turf">Artefarita herbo</string>
     <string name="quest_bicycle_parking_fee_title">Ĉu oni devas pagi por parki biciklon ĉi tie?</string>
-    <string name="quest_buildingType_house_description2">nesendependa unufamilia hejmo, ekz. unua envica domo</string>
+    <string name="quest_buildingType_house_description2">nesendependa unufamilia hejmo</string>
     <string name="quest_drinking_water_potable_signed">Sekure trinkebla (signita)</string>
     <string name="quest_drinking_water_not_potable_signed">Ne sekure trinkebla (signita)</string>
     <string name="quest_postboxRoyalCypher_title">Kiu reĝa monogramo estas videbla sur ĉi tiu poŝtkesto?</string>

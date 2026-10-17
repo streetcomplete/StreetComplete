@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.address
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -24,7 +23,7 @@ import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalElement
-import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
+import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.jetbrains.compose.resources.stringResource
@@ -46,29 +45,38 @@ fun AddAddressStreetForm(
        place name (i.e. "does not belong to a named street") */
     var showSelect by rememberSaveable { mutableStateOf(lastWasPlaceName) }
 
-    val mapClick = LocalLastMapClick.current
-    LaunchedEffect(mapClick) {
-        if (mapClick != null) {
-            // only allow selection of street when that field is actually displayed
-            if (streetOrPlaceName !is StreetName) return@LaunchedEffect
-
-            nameSuggestionsSource
-                .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
-                .firstOrNull()
-                ?.find { it.languageTag.isEmpty() }
-                ?.name
-                ?.let { streetOrPlaceName = StreetName(it) }
-        }
-    }
-
     QuestForm(
         on = on,
         isComplete =
             streetOrPlaceName.name.isNotBlank() &&
-            streetOrPlaceName.name.length <= MAX_OSM_TAG_VALUE_LENGTH,
+                streetOrPlaceName.name.length <= MAX_OSM_TAG_VALUE_LENGTH,
         onClickOk = {
             lastWasPlaceName = streetOrPlaceName is PlaceName
             on(Answer(streetOrPlaceName))
+        },
+        onClickMap = { mapClick: MapClick ->
+            // Do not consume event if the street name is not displayed
+            if (streetOrPlaceName !is StreetName) {
+                false
+            } else {
+                // Do not consume event if the user did not hit a road
+                val suggestedNames = nameSuggestionsSource
+                    .getNames(
+                        mapClick.position,
+                        mapClick.clickAreaSizeInMeters,
+                        roadsWithNamesFilter
+                    )
+                    .firstOrNull()
+
+                if (suggestedNames != null) {
+                    suggestedNames.find { it.languageTag.isEmpty() }
+                        ?.name
+                        ?.let { streetOrPlaceName = StreetName(it) }
+                    true
+                } else {
+                    false
+                }
+            }
         },
         subtitle = nameAndLocationLabel(LocalElement.current!!, featureDictionary, showHouseNumber = true),
         otherAnswers = { listOf(

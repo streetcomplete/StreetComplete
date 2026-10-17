@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Íslandsbanki, Landsbankinn, Arion banki, Hraðbanki, Arion Banki, Tomato, Landsbanki, Euronet]
-chargingStationOperators: [Orka náttúrunnar, Ísorka, eONE, Orkubú Vestfjarða, N1, Tesla, Orkan, Atlantsolía, 'Tesla, Inc.', ON, Orka Náttúrunnar, Reykjavik, Isorka]
+chargingStationOperators: [Orka náttúrunnar, Ísorka, eONE, Orkubú Vestfjarða, N1, Tesla, Orkan, Atlantsolía, 'Tesla, Inc.', ON, Orka Náttúrunnar, instavolt, Reykjavik, Isorka]
 chargingStationSocketTypes: [type2_cable, type2, type2_combo]
 clothesContainerOperators: [Sorpa, Rauði krossinn]
 domesticSocketTypes: [typef, typec]

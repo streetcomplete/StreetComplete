@@ -11,5 +11,7 @@ data class TimeRestriction(
 ) {
     fun isComplete(): Boolean = hours.isComplete()
 
+    fun isEmpty(): Boolean = hours.isEmpty()
+
     enum class Mode { ONLY_AT_HOURS, EXCEPT_AT_HOURS }
 }

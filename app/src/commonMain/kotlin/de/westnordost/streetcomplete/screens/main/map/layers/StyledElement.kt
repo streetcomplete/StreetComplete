@@ -186,7 +186,7 @@ private fun Color.darkened(): Color = Color(
 
 private fun Color.toRgbaString(): String {
     val c = toArgb()
-    return "rgba(${(c shr 16) and 0xFF}, ${(c shr 8) and 0xFF}, ${c and 0xFF}, ${alpha})"
+    return "rgba(${(c shr 16) and 0xFF}, ${(c shr 8) and 0xFF}, ${c and 0xFF}, $alpha)"
 }
 
 private const val ELEMENT_TYPE = "element_type"

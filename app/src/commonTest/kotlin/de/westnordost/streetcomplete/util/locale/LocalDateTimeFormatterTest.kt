@@ -40,6 +40,9 @@ class LocalDateTimeFormatterTest {
             ).format(dateTime) in listOf(
                 "Freitag, 8. November 1985, 18:30:24 Mitteleuropäische Zeit",
                 "Freitag, 8. November 1985 um 18:30:24 Mitteleuropäische Zeit",
+                // newer CLDR data (e.g. JDK 25) uses the specific name for standard time
+                "Freitag, 8. November 1985, 18:30:24 Mitteleuropäische Normalzeit",
+                "Freitag, 8. November 1985 um 18:30:24 Mitteleuropäische Normalzeit",
             )
         )
     }

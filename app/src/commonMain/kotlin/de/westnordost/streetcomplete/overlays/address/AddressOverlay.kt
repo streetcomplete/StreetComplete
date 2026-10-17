@@ -13,8 +13,8 @@ import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
-import de.westnordost.streetcomplete.screens.main.map.MapLabel
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.screens.main.map.MapLabel
 import de.westnordost.streetcomplete.util.getShortHouseNumber
 
 class AddressOverlay(

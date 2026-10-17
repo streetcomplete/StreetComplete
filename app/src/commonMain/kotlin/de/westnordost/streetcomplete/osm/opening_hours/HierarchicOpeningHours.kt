@@ -36,6 +36,9 @@ data class HierarchicOpeningHours(
         // remove ambiguity (#6175)
         && (monthsList.all { it.selectors.isEmpty() } || monthsList.none { it.selectors.isEmpty() })
 
+    fun isEmpty(): Boolean =
+        monthsList.all { it.isEmpty() }
+
     fun isTooLong(): Boolean =
         toOpeningHours().toString().length > MAX_OSM_TAG_VALUE_LENGTH
 }
@@ -46,6 +49,9 @@ data class Months(
 ) {
     fun isComplete(): Boolean =
         weekdaysList.isNotEmpty() && weekdaysList.all { it.isComplete() }
+
+    fun isEmpty(): Boolean =
+        selectors.isEmpty() && weekdaysList.all { it.isEmpty() }
 }
 
 data class Weekdays(
@@ -54,14 +60,20 @@ data class Weekdays(
     val times: WeekdaysContent
 ) {
     fun isComplete(): Boolean = times.isComplete()
+
+    fun isEmpty(): Boolean =
+        weekdaysSelectors.isEmpty() && holidaysSelectors.isEmpty() && times.isEmpty()
 }
 
 sealed interface WeekdaysContent {
     fun isComplete(): Boolean
+    fun isEmpty(): Boolean
 }
 data object Off : WeekdaysContent {
     override fun isComplete(): Boolean = true
+    override fun isEmpty(): Boolean = false
 }
 data class Times(val selectors: List<TimesSelector>) : WeekdaysContent {
     override fun isComplete(): Boolean = selectors.isNotEmpty()
+    override fun isEmpty(): Boolean = selectors.isEmpty()
 }

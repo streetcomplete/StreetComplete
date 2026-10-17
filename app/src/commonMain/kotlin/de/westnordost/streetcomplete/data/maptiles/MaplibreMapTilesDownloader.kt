@@ -8,35 +8,36 @@ import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.mapNotNull
 import org.maplibre.compose.offline.DownloadProgress
 import org.maplibre.compose.offline.DownloadStatus
-import org.maplibre.compose.offline.OfflineManager
 import org.maplibre.compose.offline.OfflinePack
 import org.maplibre.compose.offline.OfflinePackDefinition
+import org.maplibre.compose.offline.OfflineStorage
+import org.maplibre.compose.offline.OfflineStorageState
 import kotlin.coroutines.cancellation.CancellationException
 
 class MapLibreMapTilesDownloader(
-    private val manager: OfflineManager,
+    private val storage: OfflineStorage,
     private val pixelRatio: Float,
 ) : MapTilesDownloader {
 
     override suspend fun download(bbox: BoundingBox) {
         var pack: OfflinePack? = null
         try {
-            pack = manager.create(
+            pack = storage.create(
                 definition = OfflinePackDefinition.TilePyramid(
                     // Only tiles need downloading; glyphs and images are packaged with the app.
                     styleUrl = Res.getUri("files/map-download-style.json"),
                     bounds = bbox.toGeoJsonBoundingBox(),
-                    minZoom = 0,
-                    maxZoom = MapTiles.MAX_ZOOM,
+                    maxZoom = MapTiles.MAX_ZOOM.toDouble(),
                     pixelRatio = pixelRatio,
                 ),
                 // store timestamp as metadata for deleting areas older than X
                 metadata = nowAsEpochMilliseconds().toString().encodeToByteArray(),
             )
             val startedAt = nowAsEpochMilliseconds()
-            manager.resume(pack)
+            storage.resume(pack)
 
             val finalState = pack.downloadProgress.first { it.isFinished }
             when (finalState) {
@@ -52,11 +53,11 @@ class MapLibreMapTilesDownloader(
                     Log.w(TAG, "Offline download failed (${finalState.reason}): ${finalState.message}")
                 is DownloadProgress.TileLimitExceeded ->
                     Log.w(TAG, "Offline tile limit ${finalState.limit} was exceeded")
-                DownloadProgress.Unknown -> Unit // not a finished state
+                else -> Unit // not a finished state
             }
         } catch (error: Exception) {
             try {
-                pack?.let { manager.pause(it) }
+                pack?.let { storage.pause(it) }
             } catch (pauseError: Exception) {
                 error.addSuppressed(pauseError)
             }
@@ -69,10 +70,10 @@ class MapLibreMapTilesDownloader(
 
     override suspend fun deleteOld(time: Long) {
         try {
-            for (pack in manager.packs.value) {
+            for (pack in storage.awaitPacks()) {
                 val packTime = pack.metadata.value?.decodeToString()?.toLongOrNull()
                 if (packTime == null || packTime < time) {
-                    manager.delete(pack)
+                    storage.delete(pack)
                 }
             }
         } catch (error: CancellationException) {
@@ -84,8 +85,8 @@ class MapLibreMapTilesDownloader(
 
     override suspend fun clear() {
         try {
-            for (pack in manager.packs.value) { manager.delete(pack) }
-            manager.clearAmbientCache()
+            for (pack in storage.awaitPacks()) { storage.delete(pack) }
+            storage.clearAmbientCache()
         } catch (error: CancellationException) {
             throw error
         } catch (error: Exception) {
@@ -98,9 +99,19 @@ class MapLibreMapTilesDownloader(
     }
 }
 
+/** Waits until the storage has read its stored packs, then returns them */
+private suspend fun OfflineStorage.awaitPacks(): Set<OfflinePack> =
+    state.mapNotNull {
+        when (it) {
+            is OfflineStorageState.Ready -> it.packs
+            is OfflineStorageState.Failed -> throw it.cause
+            else -> null // still loading
+        }
+    }.first()
+
 private val DownloadProgress.isFinished: Boolean get() = when (this) {
     is DownloadProgress.Healthy -> status == DownloadStatus.Complete
     is DownloadProgress.Error,
     is DownloadProgress.TileLimitExceeded -> true
-    DownloadProgress.Unknown -> false
+    else -> false
 }

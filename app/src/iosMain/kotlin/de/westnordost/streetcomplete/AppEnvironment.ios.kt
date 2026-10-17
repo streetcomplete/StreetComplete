@@ -41,7 +41,9 @@ actual fun AppEnvironment(
     val effectiveLocale = locale ?: Locale.current
     val direction = if (NSLocale.characterDirectionForLanguage(effectiveLocale.language) == NSLocaleLanguageDirectionRightToLeft) {
         LayoutDirection.Rtl
-    } else LayoutDirection.Ltr
+    } else {
+        LayoutDirection.Ltr
+    }
     CompositionLocalProvider(
         LocalAppLocale provides AppLocale(locale, LocaleList.current),
         LocalLayoutDirection provides direction,

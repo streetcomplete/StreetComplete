@@ -96,7 +96,7 @@ class AddSidewalk : OsmElementQuestType<Sides<Sidewalk>> {
 
     @Composable
     override fun Form(on: (QuestAction<Sides<Sidewalk>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddSidewalkForm(on, geometry, countryInfo)
+        AddSidewalkForm(on, element, geometry, countryInfo)
     }
 
     override fun applyAnswerTo(answer: Sides<Sidewalk>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

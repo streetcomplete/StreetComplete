@@ -55,7 +55,7 @@ fun IntroTutorialScreen(
         illustration = { page ->
             IntroTutorialIllustration(page)
         },
-        dismissOnBackPress = dismissOnBackPress,
+        isDismissable = dismissOnBackPress,
     ) { page ->
         Column(
             modifier = Modifier.fillMaxSize(1f),

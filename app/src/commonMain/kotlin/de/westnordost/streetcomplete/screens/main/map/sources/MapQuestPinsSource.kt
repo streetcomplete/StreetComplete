@@ -94,8 +94,6 @@ class MapQuestPinsSource(
         })
     }.flowOn(Dispatchers.Default)
 
-
-
     // Callbacks may arrive on different threads; only the collector mutates the displayed data.
     private sealed interface Event {
         data object Reload : Event

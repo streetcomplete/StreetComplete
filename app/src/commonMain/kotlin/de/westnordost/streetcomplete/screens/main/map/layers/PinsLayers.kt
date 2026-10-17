@@ -36,14 +36,13 @@ import org.maplibre.compose.expressions.dsl.sp
 import org.maplibre.compose.expressions.dsl.textOffset
 import org.maplibre.compose.expressions.dsl.zoom
 import org.maplibre.compose.expressions.value.TranslateAnchor
+import org.maplibre.compose.interaction.ClickEvent
 import org.maplibre.compose.interaction.ClickResult
 import org.maplibre.compose.layers.CircleLayer
 import org.maplibre.compose.layers.SymbolLayer
 import org.maplibre.compose.map.LocalMapState
 import org.maplibre.compose.sources.GeoJsonData
-import org.maplibre.compose.sources.GeoJsonOptions
 import org.maplibre.compose.sources.rememberGeoJsonSource
-import org.maplibre.compose.style.StyleHandleException
 import org.maplibre.compose.util.DpPadding
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Feature
@@ -71,38 +70,26 @@ fun PinsLayers(
     val features by produceState<List<Feature<Point, JsonObject>>>(emptyList(), pins) {
         value = withContext(Dispatchers.Default) { pins.map { it.toGeoJsonFeature() } }
     }
-    val options = remember {
-        GeoJsonOptions(
-            cluster = true,
-            clusterMaxZoom = CLUSTER_MAX_ZOOM,
-            clusterRadius = 55,
-        )
+    val source = rememberGeoJsonSource(GeoJsonData.Features(FeatureCollection(features))) {
+        cluster = true
+        clusterMaxZoom = CLUSTER_MAX_ZOOM
+        clusterRadius = 55
     }
-
-    val source = rememberGeoJsonSource(
-        data = GeoJsonData.Features(FeatureCollection(features)),
-        options = options
-    )
 
     val currentOnZoomToCluster by rememberUpdatedState(onZoomToCluster)
     val currentOnClickPin by rememberUpdatedState(onClickPin)
 
-    fun onClickClusterFeature(features: List<Feature<Geometry, JsonObject?>>): ClickResult {
+    fun ClickEvent.onClickClusterFeature(features: List<Feature<Geometry, JsonObject?>>): ClickResult {
         val feature = features.firstOrNull() ?: return ClickResult.Pass
-        val currentHandle = mapState.style.sources[source] ?: return ClickResult.Pass
+        val handle = mapState.style.sources[source] ?: return ClickResult.Pass
         coroutineScope.launch {
-            val zoom = try {
-                currentHandle.getClusterExpansionZoom(feature)
-            } catch (e: StyleHandleException) {
-                if (mapState.style.sources[source] !== currentHandle) return@launch
-                throw e
-            }
+            val zoom = handle.getClusterExpansionZoom(feature) ?: return@launch
             currentOnZoomToCluster(zoom)
         }
         return ClickResult.Consume
     }
 
-    fun onClick(features: List<Feature<Geometry, JsonObject?>>): ClickResult {
+    fun ClickEvent.onClick(features: List<Feature<Geometry, JsonObject?>>): ClickResult {
         val properties = features.firstOrNull()?.properties ?: return ClickResult.Pass
         return currentOnClickPin(properties)
     }
@@ -125,7 +112,7 @@ fun PinsLayers(
         textOffset = textOffset(0.em, 0.1.em),
         textAllowOverlap = const(true),
         textIgnorePlacement = const(true),
-        onClick = ::onClickClusterFeature,
+        onClick = ClickEvent::onClickClusterFeature,
     )
     CircleLayer(
         id = "pin-dot-layer",
@@ -139,7 +126,7 @@ fun PinsLayers(
         radius = const(5.dp),
         strokeColor = const(Color(0xffaaaaaa)),
         strokeWidth = const(1.dp),
-        translate = offset(0.dp, -8.dp), // so that it hides behind the pin
+        translate = offset(0.dp, -12.dp), // so that it hides behind the pin
         translateAnchor = const(TranslateAnchor.Viewport),
     )
     SymbolLayer(
@@ -161,7 +148,7 @@ fun PinsLayers(
         iconOffset = const(DpOffset((-4.5).dp, (-34.5).dp)),
         iconAllowOverlap = const(false),
         iconIgnorePlacement = const(false),
-        onClick = ::onClick,
+        onClick = ClickEvent::onClick,
     )
 }
 

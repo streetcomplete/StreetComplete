@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.ui.util
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Canvas
 import androidx.compose.ui.graphics.Color

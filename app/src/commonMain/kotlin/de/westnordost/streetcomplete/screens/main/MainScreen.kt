@@ -12,9 +12,12 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -36,6 +39,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.DpOffset
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -44,12 +48,14 @@ import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.screens.MainNavViewModel
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.MainBottomSheet
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.controls.MainScreenControls
 import de.westnordost.streetcomplete.screens.main.controls.PointerPinButton
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistorySidebar
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
+import de.westnordost.streetcomplete.screens.main.edithistory.icon
 import de.westnordost.streetcomplete.screens.main.errors.LastCrashEffect
 import de.westnordost.streetcomplete.screens.main.errors.LastDownloadErrorEffect
 import de.westnordost.streetcomplete.screens.main.errors.LastUploadErrorEffect
@@ -60,11 +66,11 @@ import de.westnordost.streetcomplete.screens.main.map.MainMapContent
 import de.westnordost.streetcomplete.screens.main.map.MainMapTrackState
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.PinsMode
-import de.westnordost.streetcomplete.screens.main.map.positionAtCenter
-import de.westnordost.streetcomplete.screens.main.map.toDpPadding
 import de.westnordost.streetcomplete.screens.main.map.getTrackBearing
 import de.westnordost.streetcomplete.screens.main.map.offsetInWindow
+import de.westnordost.streetcomplete.screens.main.map.positionAtCenter
 import de.westnordost.streetcomplete.screens.main.map.rememberMainMapCameraState
+import de.westnordost.streetcomplete.screens.main.map.toDpPadding
 import de.westnordost.streetcomplete.screens.main.map.toStreetCompleteBoundingBox
 import de.westnordost.streetcomplete.screens.main.messages.MessageDialog
 import de.westnordost.streetcomplete.screens.main.urlconfig.ApplyUrlConfigDialog
@@ -76,6 +82,7 @@ import de.westnordost.streetcomplete.ui.ktx.dir
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toLatLon
+import de.westnordost.streetcomplete.util.ktx.toPosition
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
@@ -96,6 +103,7 @@ import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.rememberMapState
 import org.maplibre.compose.overlay.GeographicLayout
 import org.maplibre.compose.style.BaseStyle
+import org.maplibre.compose.util.DpPadding
 import org.maplibre.spatialk.units.Bearing
 import org.maplibre.spatialk.units.extensions.inDegrees
 import kotlin.time.Duration.Companion.milliseconds
@@ -110,8 +118,8 @@ fun MainScreen(
     onClickProfile: () -> Unit,
     onClickLogin: () -> Unit,
     onClickEnterTeamMode: () -> Unit,
-    onShowIntroTutorial: () -> Unit,
     onShowOverlaysTutorial: () -> Unit,
+    navViewModel: MainNavViewModel,
     modifier: Modifier = Modifier,
     viewModel: MainViewModel = koinViewModel(),
     editHistoryViewModel: EditHistoryViewModel = koinViewModel(),
@@ -131,7 +139,6 @@ fun MainScreen(
 
     val density = LocalDensity.current
     val layoutDirection = LocalLayoutDirection.current
-    val windowInfo = LocalWindowInfo.current
 
     val starsCount by viewModel.starsCount.collectAsState()
     val isShowingStarsCurrentWeek by viewModel.isShowingStarsCurrentWeek.collectAsState()
@@ -151,7 +158,7 @@ fun MainScreen(
     val isLoggedIn by viewModel.isLoggedIn.collectAsState()
     val isUploadingOrDownloading by viewModel.isUploadingOrDownloading.collectAsState()
 
-    val urlConfig by viewModel.urlConfig.collectAsState()
+    val urlConfig by navViewModel.urlConfig.collectAsState()
 
     val lastCrashReport by viewModel.lastCrashReport.collectAsState()
     val lastDownloadError by viewModel.lastDownloadError.collectAsState()
@@ -161,7 +168,7 @@ fun MainScreen(
 
     val isRequestingLogin by viewModel.isRequestingLogin.collectAsState()
 
-    val geoUri by viewModel.geoUri.collectAsState()
+    val geoUri by navViewModel.geoUri.collectAsState()
 
     var confirmReplaceDownload by remember { mutableStateOf(false) }
     var showMainMenuDialog by remember { mutableStateOf(false) }
@@ -180,6 +187,8 @@ fun MainScreen(
     var locationState by remember { mutableStateOf<LocationState?>(null) }
 
     val sheet = rememberMainSheetState(mainBottomSheetViewModel, editHistoryViewModel)
+
+    var pendingSheetSelection by remember { mutableStateOf<MainSheetSelection?>(null) }
 
     val sheetSelection = sheet.selection
     val shownBottomSheet = sheet.shownBottomSheet
@@ -200,7 +209,7 @@ fun MainScreen(
 
     val pinsMode = when (sheetSelection) {
         is MainSheetSelection.EditHistory -> PinsMode.EditHistory
-        null -> PinsMode.Quests// quest pins are only shown if no form is open
+        null -> PinsMode.Quests // quest pins are only shown if no form is open
         else -> PinsMode.None
     }
 
@@ -227,17 +236,22 @@ fun MainScreen(
             showOverlay = showOverlay,
             downloadedTiles = downloadedTiles,
             pinsMode = pinsMode,
-            isSelectable = !sheet.isFormOpen,
-            onClickQuest = { sheet.show(MainSheetSelection.Quest(it)) },
-            onClickEdit = { sheet.show(MainSheetSelection.EditHistory(it)) },
+            consumeClick = !sheet.isOpen,
+            onClickQuest = { pendingSheetSelection = MainSheetSelection.Quest(it) },
+            onClickEdit = { pendingSheetSelection = MainSheetSelection.EditHistory(it) },
             onClickElement = { key ->
-                selectedOverlay?.let { sheet.show(MainSheetSelection.Overlay(it.name, key)) }
+                pendingSheetSelection = selectedOverlay?.let { MainSheetSelection.Overlay(it.name, key) }
             },
         )
     }
 
     val cameraState = rememberMainMapCameraState(mapState, viewModel.initiallyFollowing, viewModel.initiallyNavigating)
-    val sheetPadding = Dimensions.getOpenQuestFormMapPadding(windowInfo).toDpPadding(layoutDirection)
+
+    val sheetPadding = Dimensions.getOpenQuestFormMapPadding(
+        LocalWindowInfo.current,
+        WindowInsets.safeDrawing.asPaddingValues()
+    ).toDpPadding(layoutDirection)
+
     //endregion
 
     //region actions
@@ -249,14 +263,26 @@ fun MainScreen(
         mapState.positionAtCenter(sheetPadding)
 
     fun getMetersPerDp(): Double =
-        mapState.metersPerDpAtLatitude(mapState.cameraPosition.target.latitude) ?: 0.0
+        mapState.metersPerDpAtLatitude(mapState.cameraPosition.center.latitude) ?: 0.0
 
     fun ClickEvent.toMapClick(): MapClick? =
-        position?.let { MapClick(it.toLatLon(), screenOffset, clickAreaSizeInMeters = getMetersPerDp() * 14) }
+        position?.let { MapClick(it.toLatLon(), screenOffset, clickAreaSizeInMeters = getMetersPerDp() * 20) }
 
     fun followPosition() {
         scope.launch {
             cameraState.followPosition(location?.position?.toLatLon(), getTrackBearing(tracks.currentTrack))
+        }
+    }
+
+    fun jumpToEdit() {
+        scope.launch {
+            sheet.shownEdit?.geometry?.let { cameraState.focus(it, DpPadding.Zero) }
+        }
+    }
+
+    fun jumpToBottomSheetFocus() {
+        scope.launch {
+            shownBottomSheet?.geometry?.let { cameraState.focus(it, sheetPadding) }
         }
     }
 
@@ -284,7 +310,7 @@ fun MainScreen(
         val displayedArea = mapState.viewport?.visibleBounds?.toStreetCompleteBoundingBox()
         if (displayedArea == null) {
             showToast = Toast.CannotFindBounds
-        } else if (!viewModel.download(displayedArea, mapState.cameraPosition.target.toLatLon())) {
+        } else if (!viewModel.download(displayedArea, mapState.cameraPosition.center.toLatLon())) {
             showToast = Toast.DownloadAreaTooBig
         }
     }
@@ -352,10 +378,20 @@ fun MainScreen(
 
     //region effects
 
+    LaunchedEffect(pendingSheetSelection, sheet.isOpen) {
+        val selection = pendingSheetSelection
+        if (selection != null) {
+            if (!sheet.isOpen) {
+                pendingSheetSelection = null
+                sheet.show(selection)
+            }
+        }
+    }
+
     LaunchedEffect(geoUri) {
         geoUri?.let {
             cameraState.moveTo(it)
-            viewModel.consumeGeoUri()
+            navViewModel.consumeGeoUri()
         }
     }
 
@@ -374,7 +410,8 @@ fun MainScreen(
     }
 
     LaunchedEffect(headingProvider) {
-        headingProvider.updates(HeadingRequest(33.milliseconds)).collect { headingMeasurement ->
+        val request = HeadingRequest { minimumInterval = 33.milliseconds }
+        headingProvider.updates(request).collect { headingMeasurement ->
             heading = (headingMeasurement.bearing - Bearing.North).inDegrees.toFloat()
         }
     }
@@ -400,13 +437,13 @@ fun MainScreen(
                         LocationUnavailableReason.ServicesDisabled -> LocationState.ALLOWED
                         LocationUnavailableReason.TemporarilyUnavailable -> LocationState.SEARCHING
                         LocationUnavailableReason.PermissionDenied -> LocationState.DENIED
-                        LocationUnavailableReason.Unsupported,
-                        LocationUnavailableReason.UnexpectedFailure -> null
+                        else -> null // unsupported or unclassified
                     }
 
                     tracks.clear()
                     launch { cameraState.setNavigationMode(false, null, null) }
                 }
+                else -> Unit
             }
         }
     }
@@ -416,10 +453,6 @@ fun MainScreen(
     LaunchedEffect(selectedOverlay) {
         val selection = sheet.selection as? MainSheetSelection.Overlay
         if (selection != null && selection.name != selectedOverlay?.name) sheet.close()
-    }
-
-    LaunchedEffect(Unit) {
-        if (!viewModel.hasShownTutorial && !isLoggedIn) onShowIntroTutorial()
     }
 
     LaunchedEffect(isTeamMode) {
@@ -476,6 +509,28 @@ fun MainScreen(
                 sheet.formMapOverlay?.invoke(this)
 
                 GeographicLayout(Modifier.windowInsetsPadding(WindowInsets.safeDrawing)) {
+                    val shownEdit = sheet.shownEdit?.edit
+                    shownEdit?.position?.toPosition()?.let { position ->
+                        val icon = shownEdit.icon ?: Res.drawable.empty_128
+                        PointerPinButton(
+                            targetPosition = position,
+                            onClick = ::jumpToEdit,
+                            contentPadding = PaddingValues(6.dp),
+                        ) {
+                            Image(painterResource(icon), null, modifier = Modifier.size(36.dp))
+                        }
+                    }
+
+                    shownBottomSheet?.position?.toPosition()?.let { position ->
+                        PointerPinButton(
+                            targetPosition = position,
+                            onClick = ::jumpToBottomSheetFocus,
+                            contentPadding = PaddingValues(6.dp),
+                        ) {
+                            Image(painterResource(shownBottomSheet.icon), null, modifier = Modifier.size(36.dp))
+                        }
+                    }
+
                     val position = location?.position
                     if (position != null) {
                         PointerPinButton(targetPosition = position, onClick = ::followPosition) {
@@ -510,7 +565,7 @@ fun MainScreen(
                     onZoomDrag = { zoomBy(it / 20.0) },
 
                     mapRotation = { mapState.cameraPosition.bearing.toFloat() },
-                    mapTilt = { mapState.cameraPosition.tilt.toFloat() },
+                    mapTilt = { mapState.cameraPosition.pitch.toFloat() },
                     onClickCompass = { scope.launch { cameraState.resetCompass() } },
 
                     locationState = locationState,
@@ -591,8 +646,8 @@ fun MainScreen(
                         onCreateNote = mainBottomSheetViewModel::createNote,
                         shownBottomSheet = shownBottomSheet,
                         mapRotation = mapCamera.bearing.toFloat(),
-                        mapTilt = mapCamera.tilt.toFloat(),
-                        mapPosition = getCrosshairPosition() ?: mapCamera.target.toLatLon(),
+                        mapTilt = mapCamera.pitch.toFloat(),
+                        mapPosition = getCrosshairPosition() ?: mapCamera.center.toLatLon(),
                         mapMetersPerDp = getMetersPerDp(),
                         onSetMapMarkers = { if (id == sheet.id) sheet.formMarkers = it?.toList() },
                         onSetMapOverlay = { if (id == sheet.id) sheet.formMapOverlay = it },
@@ -664,6 +719,7 @@ fun MainScreen(
         MainMenuDialog(
             onDismissRequest = { showMainMenuDialog = false },
             onClickProfile = onClickProfile,
+            onClickLogin = onClickLogin,
             onClickSettings = onClickSettings,
             onClickAbout = onClickAbout,
             onClickDownload = ::onClickDownload,
@@ -681,8 +737,8 @@ fun MainScreen(
         ApplyUrlConfigDialog(
             presetName = config.urlConfig.presetName,
             presetNameAlreadyExists = config.alreadyExists,
-            onDismissRequest = viewModel::consumeUrlConfig,
-            onConfirmed = { viewModel.applyUrlConfig(config.urlConfig) },
+            onDismissRequest = navViewModel::consumeUrlConfig,
+            onConfirmed = { navViewModel.applyUrlConfig(config.urlConfig) },
         )
     }
 
@@ -709,7 +765,6 @@ fun MainScreen(
 
     //endregion
 }
-
 
 private enum class Toast {
     Offline,

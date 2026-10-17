@@ -75,9 +75,8 @@ internal fun MainMapContent(
     showOverlay: Boolean,
     downloadedTiles: Collection<TilePos>,
     pinsMode: PinsMode,
-    /** whether clicking pins and overlay elements selects them. Otherwise, the click falls
-     *  through to the map */
-    isSelectable: Boolean,
+    /** whether clicking pins and overlay elements consumes the click event */
+    consumeClick: Boolean,
     onClickQuest: (QuestKey) -> Unit,
     onClickEdit: (EditKey) -> Unit,
     onClickElement: (ElementKey) -> Unit,
@@ -93,12 +92,15 @@ internal fun MainMapContent(
     }
     val styledElements: Collection<StyledElement> = if (showOverlay && showOverlayAtZoom) {
         viewModel.styleableElements.collectAsStateWithLifecycle().value
-    } else emptyList()
+    } else {
+        emptyList()
+    }
 
     val scope = rememberCoroutineScope()
-    fun <T : Any> select(key: T?, onSelect: (T) -> Unit): ClickResult =
-        if (key == null || !isSelectable) ClickResult.Pass
-        else { onSelect(key); ClickResult.Consume }
+    fun <T : Any> select(key: T?, onSelect: (T) -> Unit): ClickResult {
+        if (key != null) onSelect(key)
+        return if (consumeClick) ClickResult.Consume else ClickResult.Pass
+    }
     val onClickPin: (JsonObject) -> ClickResult = when (pinsMode) {
         PinsMode.Quests -> { properties -> select(viewModel.getQuestKey(properties), onClickQuest) }
         PinsMode.EditHistory -> { properties -> select(viewModel.getEditKey(properties), onClickEdit) }

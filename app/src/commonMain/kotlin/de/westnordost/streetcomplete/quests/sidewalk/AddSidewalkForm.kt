@@ -8,6 +8,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
@@ -16,6 +17,8 @@ import de.westnordost.streetcomplete.data.preferences.setLastPicked
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.SidewalkForm
+import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
+import de.westnordost.streetcomplete.osm.sidewalk.validOrNullValues
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
@@ -30,6 +33,7 @@ import org.koin.compose.koinInject
 @Composable
 fun AddSidewalkForm(
     on: (QuestAction<Sides<Sidewalk>>) -> Unit,
+    element: Element,
     geometry: ElementGeometry,
     countryInfo: CountryInfo,
     preferences: Preferences = koinInject(),
@@ -42,12 +46,17 @@ fun AddSidewalkForm(
 
     val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
 
+    val originalSidewalks = remember(element) {
+        parseSidewalkSides(element.tags)?.validOrNullValues()
+            ?: Sides<Sidewalk>(null, null)
+    }
+
     var sidewalks by rememberSerializable { mutableStateOf(Sides<Sidewalk>(null, null)) }
 
     QuestForm(
         on = on,
         isComplete = sidewalks.left != null && sidewalks.right != null,
-        hasChanges = sidewalks.left != null || sidewalks.right != null,
+        hasChanges = sidewalks != originalSidewalks,
         onClickOk = {
             on(Answer(sidewalks))
             preferences.setLastPicked(favKey, listOf(sidewalks))

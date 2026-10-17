@@ -2,8 +2,8 @@ import java.io.FileInputStream
 import java.util.Properties
 
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.plugin.compose")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -14,8 +14,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 25
         targetSdk = 37
-        versionCode = 6400
-        versionName = "64.0-alpha2"
+        versionCode = 6404
+        versionName = "64.0-beta2"
 
         // no x86: the MapLibre Compose runtime has no x86 build, and other native libraries must
         // not make the app installable where the map cannot run
@@ -66,19 +66,20 @@ dependencies {
     implementation(project(":app"))
 
     // Android / UI
-    implementation("androidx.activity:activity-compose:1.13.0")
+    implementation(libs.androidx.activity.compose)
 
     // Compose
-    implementation("org.jetbrains.compose.runtime:runtime:1.12.1")
-    implementation("org.jetbrains.compose.ui:ui:1.12.1")
-    debugImplementation("androidx.compose.ui:ui-tooling:1.12.1")
+    implementation(libs.compose.runtime)
+    implementation(libs.compose.ui)
+    debugImplementation(libs.androidx.compose.uiTooling)
 
     // Dependency Injection
-    implementation("io.insert-koin:koin-android:4.2.2")
-    implementation("io.insert-koin:koin-androidx-compose:4.2.2")
-    implementation("io.insert-koin:koin-androidx-workmanager:4.2.2")
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidxCompose)
+    implementation(libs.koin.androidxWorkmanager)
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
+    coreLibraryDesugaring(libs.desugar.jdkLibs)
 }
 
 val keystorePropertiesFile = rootProject.file("keystore.properties")

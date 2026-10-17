@@ -2,14 +2,19 @@ package de.westnordost.streetcomplete.screens.main.bottom_sheet.note
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -23,6 +28,8 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.Pin
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
+import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
+import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.QuestHeader
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import org.jetbrains.compose.resources.painterResource
@@ -36,59 +43,72 @@ fun CreateNoteForm(
     onLeaveNote: (noteText: String, noteImagePaths: List<String>, trackpoints: List<Trackpoint>?) -> Unit,
     onDismiss: () -> Unit,
     trackpoints: List<Trackpoint>?,
+    lastMapClick: MapClick?,
     modifier: Modifier = Modifier,
 ) {
     var noteText by rememberSaveable { mutableStateOf("") }
     var noteImagePaths by rememberSaveable { mutableStateOf(listOf<String>()) }
     var trackpointsDeleted by rememberSaveable { mutableStateOf(false) }
 
+    var requestDismiss by remember { mutableStateOf(false) }
+
     val trackpoints = if (trackpointsDeleted) null else trackpoints
+    val openFormPadding = Dimensions.getOpenQuestFormMapPadding(
+        LocalWindowInfo.current,
+        WindowInsets.safeDrawing.asPaddingValues()
+    )
 
-    Box(
-        modifier = modifier.fillMaxSize()
+    CompositionLocalProvider(
+        LocalLastMapClick provides lastMapClick,
     ) {
-        Pin(
-            iconPainter = painterResource(Res.drawable.quest_create_note),
-            modifier = Modifier
-                .align(Alignment.Center)
-                .padding(Dimensions.getOpenQuestFormMapPadding(LocalWindowInfo.current))
-                .animateFallDown(startDelay = 200.milliseconds)
-        )
+        Box(
+            modifier = modifier.fillMaxSize()
+        ) {
+            Pin(
+                iconPainter = painterResource(Res.drawable.quest_create_note),
+                modifier = Modifier
+                    .padding(openFormPadding)
+                    .align(Alignment.Center)
+                    .animateFallDown(startDelay = 200.milliseconds)
+            )
 
-        BottomSheetFormScaffold(
-            header = {
-                QuestHeader(
-                    title = stringResource(Res.string.map_btn_create_note),
-                    subtitle = null,
-                    hintText =
-                        stringResource(Res.string.create_new_note_description) +
-                        "\n" +
-                        stringResource(Res.string.create_new_note_hint),
-                    hintImages = emptyList()
-                )
-            },
-            content = {
-                ProvideTextStyle(MaterialTheme.typography.body1) {
-                    NoteForm(
-                        onDismiss = onDismiss,
-                        text = noteText,
-                        onTextChange = { noteText = it },
-                        imagePaths = noteImagePaths,
-                        onImagePathsChange = { noteImagePaths = it },
-                        trackpoints = trackpoints,
-                        onDeleteTrackpoints = { trackpointsDeleted = true },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(PaddingValues(horizontal = 24.dp, vertical = 12.dp))
+            BottomSheetFormScaffold(
+                onDismissRequest = { requestDismiss = true },
+                header = {
+                    QuestHeader(
+                        title = stringResource(Res.string.map_btn_create_note),
+                        subtitle = null,
+                        hintText =
+                            stringResource(Res.string.create_new_note_description) +
+                            "\n" +
+                            stringResource(Res.string.create_new_note_hint),
+                        hintImages = emptyList()
                     )
-                }
-            },
-            fab = {
-                FloatingOkButton(
-                    visible = noteText.isNotBlank(),
-                    onClick = { onLeaveNote(noteText.trim(), noteImagePaths, trackpoints) },
-                )
-            },
-        )
+                },
+                content = {
+                    ProvideTextStyle(MaterialTheme.typography.body1) {
+                        NoteForm(
+                            onDismiss = onDismiss,
+                            requestDismiss = requestDismiss,
+                            text = noteText,
+                            onTextChange = { noteText = it },
+                            imagePaths = noteImagePaths,
+                            onImagePathsChange = { noteImagePaths = it },
+                            trackpoints = trackpoints,
+                            onDeleteTrackpoints = { trackpointsDeleted = true },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(PaddingValues(horizontal = 24.dp, vertical = 12.dp))
+                        )
+                    }
+                },
+                fab = {
+                    FloatingOkButton(
+                        visible = noteText.isNotBlank(),
+                        onClick = { onLeaveNote(noteText.trim(), noteImagePaths, trackpoints) },
+                    )
+                },
+            )
+        }
     }
 }
