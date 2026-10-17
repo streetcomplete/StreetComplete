@@ -79,8 +79,10 @@ private fun <T> URL.retryingQuotaConnection(setup: ((HttpURLConnection) -> Unit)
     throw Exception("POEditor API continues to report http status code 429")
 }
 
-fun Locale.transformPOEditorLanguageTag() = when (toLanguageTag()) {
-    "zh-CN" -> Locale.forLanguageTag("zh-Hans") // Chinese is referred to as Chinese (China) in POEditor
-    "zh-TW" -> Locale.forLanguageTag("zh-Hant") // Chinese is referred to as Chinese (Tawain) in POEditor
-    else -> this
+fun transformPOEditorLanguageTag(tag: String): String = when (tag) {
+    // Chinese (Simplified) is referred to as Chinese (China) in POEditor
+    "zh-CN" -> "zh-Hans"
+    // Chinese (Traditional) is referred to as Chinese (Tawain) in POEditor
+    "zh-TW" -> "zh-Hant"
+    else -> tag
 }

@@ -15,8 +15,8 @@ val bcp47ExportLanguages = setOf(
     "en", "en-AU", "en-CA", "en-GB", "eo", "es", "es-AR", "et", "eu",
     "fa", "fi", "fr", "ga", "gl", "he", "hr", "hu", "hy",
     "id", "it", "ja", "ko", "kw", "lt", "lv", "ml", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
-    "ro", "ru", "sk", "sl", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk", "vi",
-    "zh", "zh-CN", "zh-TW"
+    "ro", "ru", "sk", "sl", "sr-Cyrl", "sr-Latn", "sv", "sw", "th", "tr", "uk", "vi",
+    "zh-Hans", "zh-Hant"
 )
 
 /** Version of the iD presets to use

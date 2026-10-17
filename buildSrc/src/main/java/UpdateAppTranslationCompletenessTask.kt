@@ -22,7 +22,7 @@ open class UpdateAppTranslationCompletenessTask : DefaultTask() {
 
         val localizations = fetchAvailableLocalizations(apiToken, projectId)
         for (status in localizations) {
-            val locale = Locale.forLanguageTag(status.code)
+            val locale = Locale.forLanguageTag(transformPOEditorLanguageTag(status.code))
             val completedPercentage = status.percentage
 
             if (!exportLanguages.any { it == locale } && locale != Locale.US) {
@@ -35,7 +35,7 @@ open class UpdateAppTranslationCompletenessTask : DefaultTask() {
                 }
             }
 
-            val androidResCode = locale.transformPOEditorLanguageTag().toAndroidResCode()
+            val androidResCode = locale.toAndroidResCode()
 
             // create a metadata file that describes how complete the translation is
 

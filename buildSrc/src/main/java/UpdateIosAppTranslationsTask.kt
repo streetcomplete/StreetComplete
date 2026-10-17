@@ -34,11 +34,11 @@ open class UpdateIosAppTranslationsTask : DefaultTask() {
 
         for (languageTag in languageTags) {
             val lang = if (languageTag.lowercase() == "en-us") "en" else languageTag
-            val locale = Locale.forLanguageTag(lang)
+            val locale = Locale.forLanguageTag(transformPOEditorLanguageTag(lang))
 
             if (!exportLanguages.any { it == locale }) continue
 
-            val actualLanguageTag = locale.transformPOEditorLanguageTag().toLanguageTag()
+            val actualLanguageTag = locale.toLanguageTag()
 
             print(languageTag)
             if (actualLanguageTag != languageTag) print(" -> " + actualLanguageTag)
