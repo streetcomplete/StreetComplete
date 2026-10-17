@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -67,6 +68,13 @@ fun MaxWeightSignForm(
             value = value,
             onValueChange = onValueChange,
             locale = locale
+        )
+    }
+
+    val weightClassInput: @Composable () -> Unit = {
+        WeightClassSwedenInput(
+            value = value,
+            onValueChange = onValueChange
         )
     }
 
@@ -142,6 +150,13 @@ fun MaxWeightSignForm(
                         Icon(painterResource(Res.drawable.maxweight_bogieweight), null)
                     }
             }
+            MAX_WEIGHT_CATEGORY_SE -> when (countryCode) {
+                "SE" ->
+                    MaxWeightSign(color = color) {
+                        Icon(painterResource(Res.drawable.maxweight_hgv_se), null)
+                        weightClassInput()
+                    }
+            }
         }
     }
 }
@@ -150,7 +165,7 @@ fun MaxWeightSignForm(
 @Composable
 private fun MaxWeightSignFormPreview() {
     var country by remember { mutableStateOf("DE") }
-    val countries = remember { listOf("DE", "FI", "US") }
+    val countries = remember { listOf("DE", "FI", "US", "SE") }
 
     var maxWeightType by remember { mutableStateOf(MAX_WEIGHT) }
 

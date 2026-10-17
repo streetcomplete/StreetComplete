@@ -53,6 +53,13 @@ class AddMaxWeightTest {
         )
     }
 
+    @Test fun `apply Swedish weight class category answer`() {
+        assertEquals(
+            setOf(StringMapEntryAdd("maxweight", "64")),
+            questType.answerApplied(listOf(MaxWeight(MAX_WEIGHT_CATEGORY_SE, Weight(1.0, METRIC_TON))))
+        )
+    }
+
     @Test fun `apply multiple signs answer`() {
         assertEquals(
             setOf(

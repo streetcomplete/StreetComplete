@@ -9,7 +9,16 @@ data class MaxWeight(val type: MaxWeightType, val weight: Weight?)
 
 fun MaxWeight.applyTo(tags: Tags) {
     if (weight != null) {
-        tags[type.osmKey] = weight.toOsmString()
+        if (type == MAX_WEIGHT_CATEGORY_SE) {
+            when (weight.value.toInt().toString()) {
+                "1" -> tags["maxweight"] = "64"
+                "2" -> tags["maxweight"] = "51.4"
+                "3" -> tags["maxweight"] = "37.5"
+                "4" -> tags["maxweight"] = "74"
+            }
+        } else {
+            tags[type.osmKey] = weight.toOsmString()
+        }
     }
 }
 
@@ -19,4 +28,5 @@ private val MaxWeightType.osmKey get() = when (this) {
     MAX_WEIGHT_RATING_HGV -> "maxweightrating:hgv"
     MAX_AXLE_LOAD         -> "maxaxleload"
     MAX_TANDEM_AXLE_LOAD  -> "maxbogieweight"
+    MAX_WEIGHT_CATEGORY_SE -> "maxweight"
 }

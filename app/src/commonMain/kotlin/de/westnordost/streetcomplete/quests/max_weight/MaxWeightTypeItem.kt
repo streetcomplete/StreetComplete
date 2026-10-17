@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.max_weight
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightType.MAX_AXLE_LOAD
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightType.MAX_TANDEM_AXLE_LOAD
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightType.MAX_WEIGHT
+import de.westnordost.streetcomplete.quests.max_weight.MaxWeightType.MAX_WEIGHT_CATEGORY_SE
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightType.MAX_WEIGHT_RATING
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightType.MAX_WEIGHT_RATING_HGV
 import de.westnordost.streetcomplete.resources.*
@@ -40,5 +41,9 @@ fun MaxWeightType.getIcon(countryCode: String): DrawableResource? = when (this) 
         "AU", "CA", "US" -> Res.drawable.maxweight_sign_bogieweight_mutcd
         "FI", "IS", "SE" -> Res.drawable.maxweight_sign_bogieweight_yellow
         else ->             Res.drawable.maxweight_sign_bogieweight
+    }
+    MAX_WEIGHT_CATEGORY_SE -> when (countryCode) {
+        "SE" ->             Res.drawable.sign_maxweightclass_se
+        else ->             null
     }
 }

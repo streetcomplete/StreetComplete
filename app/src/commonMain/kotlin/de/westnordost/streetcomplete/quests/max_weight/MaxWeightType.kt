@@ -9,4 +9,5 @@ enum class MaxWeightType {
     MAX_WEIGHT_RATING_HGV,
     MAX_AXLE_LOAD,
     MAX_TANDEM_AXLE_LOAD,
+    MAX_WEIGHT_CATEGORY_SE,
 }
