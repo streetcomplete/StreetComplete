@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.pinPainter
 import de.westnordost.streetcomplete.util.ktx.toPosition
+import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.const
@@ -31,15 +32,13 @@ import org.maplibre.spatialk.geojson.MultiPoint
 @MaplibreComposable
 @Composable
 fun SelectedPinsLayer(icon: DrawableResource, pinPositions: Collection<LatLon>) {
-    val pinsSize = remember { Animatable(0.5f) }
+    val pinsSize = remember { Animatable(0.1f) }
     LaunchedEffect(pinPositions, icon) {
-        pinsSize.snapTo(0.5f)
+        pinsSize.snapTo(0.1f)
+        delay(150)
         pinsSize.animateTo(
             targetValue = 1.5f,
-            animationSpec = spring(
-                dampingRatio = Spring.DampingRatioMediumBouncy,
-                stiffness = Spring.StiffnessMedium
-            ),
+            animationSpec = spring(dampingRatio = 0.35f, stiffness = 1000f),
         )
     }
 

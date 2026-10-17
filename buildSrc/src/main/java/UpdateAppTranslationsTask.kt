@@ -20,13 +20,13 @@ open class UpdateAppTranslationsTask : DefaultTask() {
 
         val languageTags = fetchAvailableLocalizations(apiToken, projectId).map { it.code }
         for (languageTag in languageTags) {
-            val locale = Locale.forLanguageTag(languageTag)
+            val locale = Locale.forLanguageTag(transformPOEditorLanguageTag(languageTag))
 
             if (!exportLanguages.any { it == locale }) continue
             // en-us is the source language
             if (locale == Locale.US) continue
 
-            val androidResCode = locale.transformPOEditorLanguageTag().toAndroidResCode()
+            val androidResCode = locale.toAndroidResCode()
 
             print(languageTag)
             if (androidResCode != languageTag) print(" -> " + androidResCode)
