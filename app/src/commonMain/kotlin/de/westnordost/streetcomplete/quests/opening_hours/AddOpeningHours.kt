@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory
 import de.westnordost.streetcomplete.osm.opening_hours.isSupported
 import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
@@ -147,6 +146,7 @@ mapOf(
 
     // 'updateFilterFragment' is for places that often do not have (signed) 'opening_hours'. Thus, we only
     // ask for users to resurvey, and ignore places without tagged 'opening_hours'.
+
     private val updateFilterFragment = """
     (
         opening_hours older today -1 years
