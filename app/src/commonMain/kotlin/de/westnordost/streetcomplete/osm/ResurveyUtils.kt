@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
-import de.westnordost.streetcomplete.osm.things.addCheckDateThing
+import de.westnordost.streetcomplete.osm.things.shouldAddThingCheckDate
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import kotlinx.datetime.LocalDate
@@ -113,7 +113,7 @@ fun updateMetadataResurvey(changeBuilder: StringMapChangesBuilder) {
         version = 1,
         timestampEdited = 1
     )
-    if (dummy.isPlaceOrDisusedPlace() || dummy.addCheckDateThing()) {
+    if (dummy.isPlaceOrDisusedPlace() || dummy.shouldAddThingCheckDate()) {
         changeBuilder.updateCheckDate()
     }
     if (dummy.tags["fixme"] == "resurvey") {

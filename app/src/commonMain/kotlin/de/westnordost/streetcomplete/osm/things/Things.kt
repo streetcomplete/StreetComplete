@@ -11,7 +11,7 @@ fun Element.isThingOrDisusedThing(): Boolean =
 fun Element.isThing(): Boolean =
     IS_THING_EXPRESSION.matches(this)
 
-fun Element.addCheckDateThing(): Boolean =
+fun Element.shouldAddThingCheckDate(): Boolean =
     ADD_CHECK_DATE_EXPRESSION.matches(this)
 
 fun Element.isDisusedThing(): Boolean =
