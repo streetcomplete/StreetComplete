@@ -8,13 +8,11 @@ import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.size
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -22,28 +20,29 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.TransformOrigin
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.crosshair
+import de.westnordost.streetcomplete.resources.quest_split_way_many_splits_confirmation_description
+import de.westnordost.streetcomplete.resources.scissors_cut
+import de.westnordost.streetcomplete.resources.scissors_cut_preview
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.scissorsPainter
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.NonPredictiveBackHandler
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
-import de.westnordost.streetcomplete.ui.common.quest.LocalMapMarkersCallback
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
-import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.common.quest.OnMap
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.theme.Dimensions
@@ -55,6 +54,9 @@ import de.westnordost.streetcomplete.util.math.initialBearingTo
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import kotlin.math.PI
+import kotlin.math.cos
+import kotlin.math.sin
 
 /** Form that lets the user split an OSM way */
 @Composable
@@ -69,14 +71,12 @@ fun SplitWayForm(
     var confirmManySplits by remember { mutableStateOf(false) }
     var confirmDiscard by remember { mutableStateOf(false) }
 
-    var cuts by rememberSerializable { mutableStateOf(emptyList<SplitPolylineAtPosition>()) }
+    var cuts by rememberSerializable { mutableStateOf(emptyList<Pair<SplitPolylineAtPosition, Float>>()) }
 
     val metersPerDp = LocalMapMetersPerDp.current
     val minDistanceToOtherCuts = (metersPerDp * 24).dp.toPx().toDouble()
     val maxDistanceToCrosshair = (metersPerDp * 24).dp.toPx().toDouble()
     val snapToVertexDistance = (metersPerDp * 12).dp.toPx().toDouble()
-
-    val mapMarkersCallback = LocalMapMarkersCallback.current
 
     val scissorsPosition = remember(mapPosition) {
         mapPosition?.let {
@@ -88,29 +88,22 @@ fun SplitWayForm(
         }
     }
     val scissorsAngle = remember(scissorsPosition) {
-        val pos1 = scissorsPosition?.pos
-        val pos2 = when (scissorsPosition) {
-            is SplitAtLinePosition -> {
-                scissorsPosition.pos2
-            }
+        (when (scissorsPosition) {
+            is SplitAtLinePosition -> scissorsPosition.pos1.initialBearingTo(scissorsPosition.pos2)
             is SplitAtPoint -> {
                 val way = wayGeometry.polylines.first()
                 val index = way.indexOfFirst { it == scissorsPosition.pos }
-                way.getOrNull(index + 1)
+                val pos2 = way.getOrNull(index + 1)
+                if (pos2 != null) scissorsPosition.pos.initialBearingTo(pos2) else null
             }
             null -> null
-        }
-        if (pos1 != null && pos2 != null) {
-            pos1.initialBearingTo(pos2)
-        } else {
-            null
-        }
+        }?.toFloat() ?: 0f) + 90f
     }
 
     val hasChanges = cuts.isNotEmpty()
     val isFormComplete = cuts.size >= if (way.isClosed) 2 else 1
     val canSplitHere = scissorsPosition != null
-        && cuts.all { scissorsPosition.pos.distanceTo(it.pos) >= minDistanceToOtherCuts }
+        && cuts.all { scissorsPosition.pos.distanceTo(it.first.pos) >= minDistanceToOtherCuts }
 
     val snipAnimation = remember { Animatable(0f) }
     val scope = rememberCoroutineScope()
@@ -123,28 +116,42 @@ fun SplitWayForm(
         }
     }
 
-    LaunchedEffect(cuts) {
-        mapMarkersCallback?.invoke(
-            cuts.map { Marker(ElementPointGeometry(it.pos), Res.drawable.scissors_cut) }
-        )
-    }
-
     NonPredictiveBackHandler { dismiss() }
 
-    if (scissorsPosition != null) {
-        val mapRotation = LocalMapRotation.current
-        OnMap {
+    val mapRotation = LocalMapRotation.current
+    OnMap {
+        if (scissorsPosition != null) {
+            Image(
+                painter = painterResource(Res.drawable.scissors_cut_preview),
+                contentDescription = null,
+                modifier = Modifier
+                    .placedAt(scissorsPosition.pos.toPosition())
+                    .rotate(scissorsAngle - mapRotation)
+            )
+        }
+        for (position in cuts) {
+            Image(
+                painter = painterResource(Res.drawable.scissors_cut),
+                contentDescription = null,
+                modifier = Modifier
+                    .placedAt(position.first.pos.toPosition())
+                    .rotate(position.second - mapRotation)
+            )
+        }
+        if (snipAnimation.value != 0f && scissorsPosition != null) {
             Image(
                 painter = scissorsPainter(snipAnimation.value),
                 contentDescription = null,
                 modifier = Modifier
                     .placedAt(scissorsPosition.pos.toPosition())
-                    .size(72.dp)
-                    .graphicsLayer(
-                        translationY = 6.dp.toPx(),
-                        transformOrigin = TransformOrigin(pivotFractionX = 0.5f, pivotFractionY = 0.5f - 4f / 44f),
-                        rotationZ = (scissorsAngle?.toFloat() ?: 0f) + 90f - mapRotation
-                    )
+                    .graphicsLayer {
+                        val a = scissorsAngle - mapRotation
+                        val r = a * PI / 180f
+                        val x = (-96 + 96 * snipAnimation.value).dp.toPx()
+                        translationX = (x * sin(r)).toFloat()
+                        translationY = (x * -cos(r)).toFloat()
+                        rotationZ = a
+                    }
             )
         }
     }
@@ -176,7 +183,9 @@ fun SplitWayForm(
                                 snipAnimation.animateTo(0f)
                             }
 
-                            cuts = cuts.toMutableList().also { it.add(scissorsPosition) }
+                            cuts = cuts.toMutableList().also {
+                                it.add(Pair(scissorsPosition, scissorsAngle))
+                            }
                         }
                     },
                     hasCuts = cuts.isNotEmpty(),
@@ -190,7 +199,7 @@ fun SplitWayForm(
                         if (cuts.size > 2) {
                             confirmManySplits = true
                         } else {
-                            onConfirmed(cuts)
+                            onConfirmed(cuts.map { it.first })
                         }
                     },
                     modifier = Modifier.padding(8.dp),
@@ -202,7 +211,7 @@ fun SplitWayForm(
     if (confirmManySplits) {
         AreYouSureDialog(
             onDismissRequest = { confirmManySplits = false },
-            onConfirmed = { onConfirmed(cuts) },
+            onConfirmed = { onConfirmed(cuts.map { it.first }) },
             text = { Text(stringResource(Res.string.quest_split_way_many_splits_confirmation_description)) }
         )
     }
