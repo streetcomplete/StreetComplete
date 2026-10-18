@@ -24,7 +24,6 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
     override val elementFilter = """
         nodes, ways with
           amenity = recycling
-          and recycling_type = container
           and recycling:glass = yes
           and !recycling:glass_bottles
           and access !~ private|no
