@@ -271,9 +271,6 @@ kotlin {
             dependsOn(jvmAndroidMain)
             dependsOn(nonAndroidMain)
             dependencies {
-                // Kotlin
-                implementation(libs.kotlinx.coroutines.swing)
-
                 // HTTP client
                 implementation(libs.ktor.client.cio)
             }

@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.android.multiplatformLibrary) apply false
     alias(libs.plugins.compose.multiplatform) apply false
+    alias(libs.plugins.nucleus) apply false
 }
 
 val poEditorProjectId = "97843"

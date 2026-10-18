@@ -7,6 +7,9 @@ compose = "1.12.1"
 buildkonfig = "0.23.0"
 # Keep compatible with Kotlin: https://mokkery.dev/docs/Setup/#compatibility
 mokkery = "3.5.0"
+# A development build of Nucleus 3.0, as it fixes some issues with maplibre-compose. Update to 3.0
+# once released
+nucleus = "3.0.0-dev-202610121021"
 
 # Kotlin
 kotlinxCoroutines = "1.11.0"
@@ -61,6 +64,7 @@ android-multiplatformLibrary = { id = "com.android.kotlin.multiplatform.library"
 
 # Compose
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose" }
+nucleus = { id = "dev.nucleusframework", version.ref = "nucleus" }
 
 # Code generation and testing
 buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
@@ -155,6 +159,10 @@ androidx-lifecycle-viewmodelCompose = { module = "org.jetbrains.androidx.lifecyc
 
 # Map
 maplibre-compose = { module = "org.maplibre.compose:maplibre-compose", version.ref = "maplibre" }
+
+# Desktop window and application
+nucleus-application = { module = "dev.nucleusframework:nucleus.nucleus-application", version.ref = "nucleus" }
+nucleus-decoratedWindowTao = { module = "dev.nucleusframework:nucleus.decorated-window-tao", version.ref = "nucleus" }
 
 # Map runtimes (selected by platform in the app modules)
 maplibre-runtime-android = { module = "org.maplibre.compose:maplibre-compose-runtime-opengl-android", version.ref = "maplibre" }
