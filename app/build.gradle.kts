@@ -6,8 +6,8 @@ import org.jetbrains.kotlin.gradle.targets.native.tasks.KotlinNativeSimulatorTes
 import java.io.FileWriter
 
 
-/** App version name, code and flavor */
-val appVersionName = "64.0-beta2"
+/** App version name */
+val appVersionName = "64.0"
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
@@ -21,7 +21,7 @@ val bcp47ExportLanguages = setOf(
 
 /** Version of the iD presets to use
  *  see https://github.com/openstreetmap/id-tagging-schema/releases for latest version */
-val presetsVersion = "v7.2.0"
+val presetsVersion = "v7.3.0"
 
 /** Version of the Name Suggestion Index to use
  *  see https://github.com/osmlab/name-suggestion-index/tags for latest version (without leading "v"
