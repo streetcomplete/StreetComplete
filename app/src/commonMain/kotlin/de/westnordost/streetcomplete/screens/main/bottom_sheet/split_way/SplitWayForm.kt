@@ -42,6 +42,7 @@ import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMarkersCallback
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.common.quest.OnMap
 import de.westnordost.streetcomplete.ui.ktx.toPx
@@ -131,6 +132,7 @@ fun SplitWayForm(
     NonPredictiveBackHandler { dismiss() }
 
     if (scissorsPosition != null) {
+        val mapRotation = LocalMapRotation.current
         OnMap {
             Image(
                 painter = scissorsPainter(snipAnimation.value),
@@ -141,7 +143,7 @@ fun SplitWayForm(
                     .graphicsLayer(
                         translationY = 6.dp.toPx(),
                         transformOrigin = TransformOrigin(pivotFractionX = 0.5f, pivotFractionY = 0.5f - 4f / 44f),
-                        rotationZ = (scissorsAngle?.toFloat() ?: 0f) + 90f
+                        rotationZ = (scissorsAngle?.toFloat() ?: 0f) + 90f - mapRotation
                     )
             )
         }
