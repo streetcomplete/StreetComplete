@@ -37,15 +37,16 @@ fun AddRecyclingContainerMaterialsForm(
     on: (QuestAction<RecyclingContainerMaterialsAnswer>) -> Unit,
     element: Element
 ) {
-    var selectedItems by rememberSerializable(element) { mutableStateOf(parseRecyclingMaterials(element.tags)) }
-    val resurvey = remember(element) { selectedItems.isNotEmpty() }
+    val originalSelectedItems = remember(element) { parseRecyclingMaterials(element.tags) }
+    var selectedItems by rememberSerializable(originalSelectedItems) { mutableStateOf(originalSelectedItems) }
 
     var confirmJustTrash by remember { mutableStateOf(false) }
 
     QuestForm(
         on = on,
         isComplete = selectedItems.isNotEmpty(),
-        isResurvey = resurvey,
+        isResurvey = originalSelectedItems.isNotEmpty(),
+        hasChanges = originalSelectedItems != selectedItems,
         onClickOk = { on(Answer(RecyclingMaterials(selectedItems))) },
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_recycling_materials_answer_waste)) {
