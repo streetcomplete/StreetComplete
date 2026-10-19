@@ -19,10 +19,10 @@ To make the app easy to use, quests are limited to those answerable by asking si
 
 ## Download
 
-[<img src=".github/images/google-play-badge.svg" alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/details?id=de.westnordost.streetcomplete)
-[<img src=".github/images/f-droid-badge.svg" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/de.westnordost.streetcomplete/)
-[<img src=".github/images/github-badge.png" alt="Download APK from GitHub" height="80">](https://github.com/streetcomplete/StreetComplete/releases/latest)
-[<img src=".github/images/app-store-badge.svg" alt="Download on the App Store" height="80">](https://apps.apple.com/app/id6808344816)
+[<img src=".github/images/google-play-badge.svg" alt="Get it on Google Play" height="40">](https://play.google.com/store/apps/details?id=de.westnordost.streetcomplete)
+[<img src=".github/images/f-droid-badge.svg" alt="Get it on F-Droid" height="40">](https://f-droid.org/packages/de.westnordost.streetcomplete/)
+[<img src=".github/images/github-badge.png" alt="Download APK from GitHub" height="40">](https://github.com/streetcomplete/StreetComplete/releases/latest)
+[<img src=".github/images/app-store-badge.svg" alt="Download on the App Store" height="40">](https://apps.apple.com/app/id6808344816)
 
 ## Quests
 
