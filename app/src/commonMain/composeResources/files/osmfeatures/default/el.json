@@ -264,6 +264,13 @@
           "name": "Αίθουσα Κοινότητας",
           "terms": ["κοινοτική αίθουσα"]
         },
+        "amenity/community_centre/cultural_centre": {
+          "name": "Πολιτιστικό Κέντρο",
+          "terms": ["κέντρο πολιτισμού"]
+        },
+        "amenity/community_centre/family_centre": {
+          "name": "Οικογενειακό Κέντρο"
+        },
         "amenity/community_centre/lgbtq": {
           "name": "Κέντρο της Κοινότητας ΛΟΑΤΚΙ"
         },
@@ -369,9 +376,6 @@
         },
         "amenity/doctors/plastic_surgery": {
           "name": "Πλαστικός Χειρουργός"
-        },
-        "amenity/doctors/podiatry": {
-          "name": "Ποδίατρος"
         },
         "amenity/doctors/proctology": {
           "name": "Γαστρεντερολόγος"
@@ -580,6 +584,10 @@
           "name": "Θυρίδα Δεμάτων",
           "terms": ["ντουλάπι δεμάτων"]
         },
+        "amenity/parking": {
+          "name": "Πάρκινγκ",
+          "terms": ["στάθμευση", "χώρος στάθμευσης", "θέσεις στάθμευσης", "γκαράζ"]
+        },
         "amenity/parking/multi-storey": {
           "name": "Πολυώροφο Πάρκινγκ",
           "terms": ["πολυόροφο γκαράζ στάθμευσης"]
@@ -606,6 +614,10 @@
         "amenity/parking_space/disabled": {
           "name": "Προσβάσιμη Θέση Στάθμευσης",
           "terms": ["προσβάσιμη θέση πάρκινγκ"]
+        },
+        "amenity/parking_surface": {
+          "name": "Επίγειο Πάρκινγκ",
+          "terms": ["επίγειος χώρος στάθμευσης", "επίγεια στάθμευση", "επίγειο γκαράζ", "γκαρά", "στάθμευση", "πάρκινγ", "χώρος στάθμευσης"]
         },
         "amenity/payment_centre": {
           "name": "Κέντρο Πληρωμών"
@@ -929,6 +941,9 @@
           "name": "Βιβλιοθήκη Παιγνίων",
           "terms": ["βιβλιοθήκη παιχνιδιών"]
         },
+        "amenity/traffic_park": {
+          "name": "Πάρκο Κυκλοφοριακής Αγωγής"
+        },
         "amenity/trolley_bay": {
           "name": "Χώρος Καροτσιών",
           "terms": ["καρότσια"]
@@ -1074,6 +1089,12 @@
         },
         "area": {
           "name": "Περιοχή",
+          "relation": {
+            "role_labels": {
+              "inner": "Εσωτερικό άκρο",
+              "outer": "Εξωτερικό άκρο"
+            }
+          },
           "terms": ["περιοχή"]
         },
         "area/footway": {
@@ -1504,6 +1525,10 @@
         },
         "building/temple": {
           "name": "Ναός"
+        },
+        "building/tent": {
+          "name": "Μόνιμη Τέντα",
+          "terms": ["μόνιμη σκηνή", "σκηνή", "τέντα"]
         },
         "building/train_station": {
           "name": "Κτίριο Σταθμού Τρένου",
@@ -1945,6 +1970,13 @@
         "healthcare/birthing_center": {
           "name": "Μαιευτήριο"
         },
+        "healthcare/blood_donation": {
+          "name": "Κέντρο Αιμοδοσίας",
+          "terms": ["αιμοδοσία", "βλαστοκύταρρα", "πλασμαφαίρεση", "αίμα", "αφαίρεση"]
+        },
+        "healthcare/counselling": {
+          "name": "Συμβουλευτικό Κέντρο"
+        },
         "healthcare/dentist/orthodontics": {
           "name": "Ορθοδοντικός"
         },
@@ -2008,8 +2040,7 @@
           "name": "Άτυπη Διάβαση"
         },
         "highway/crossing/traffic_signals": {
-          "name": "Διάβαση Με Σημάνσεις Πεζών",
-          "terms": ["διάβαση πεζών με σήματα"]
+          "name": "Διάβαση με Φανάρια"
         },
         "highway/crossing/uncontrolled": {
           "name": "Διάβαση Με Διαγράμμιση"
@@ -2343,6 +2374,10 @@
           "name": "Αναμνηστική Πλάκα",
           "terms": ["αναμνηστική πλακέτα"]
         },
+        "historic/millstone": {
+          "name": "Μυλόπετρα",
+          "terms": ["μυλόλιθος", "μύλη"]
+        },
         "historic/monument": {
           "name": "Μνημείο",
           "terms": ["μνημείο", "μαυσωλείο", "μνημειακό κτίσμα"]
@@ -2449,6 +2484,10 @@
         },
         "landuse/forest": {
           "name": "Διαχειριζόμενο Δάσος"
+        },
+        "landuse/garages": {
+          "name": "Χρήση Γης ως Γκαράζ",
+          "terms": ["γκαράζ"]
         },
         "landuse/grass": {
           "name": "Γρασίδι",
@@ -2880,6 +2919,10 @@
         "leisure/sauna": {
           "name": "Σάουνα"
         },
+        "leisure/schoolyard": {
+          "name": "Προαύλιο Σχολείου",
+          "terms": ["αυλή σχολείου", "σχολική αυλή", "σχολικό προαύλιο"]
+        },
         "leisure/slipway": {
           "name": "Γλίστρα",
           "terms": ["γλίστρα", "νεωλκείο"]
@@ -3157,6 +3200,10 @@
         },
         "man_made/silo": {
           "name": "Σιλό"
+        },
+        "man_made/silo/crop": {
+          "name": "Σιλό Σοδειάς",
+          "terms": ["σοδειά", "σιτηρά"]
         },
         "man_made/ski_jump": {
           "name": "Πύργος άλματος σκι",
@@ -4146,6 +4193,10 @@
         "railway": {
           "name": "Σιδηροδρομικό Στοιχείο"
         },
+        "railway/abandoned": {
+          "name": "Ορατά Απομεινάρια Σιδηροτροχιάς",
+          "terms": ["εγκαταλελειμμένος σιδηρόδρομος", "πρώην σιδηρόδρομος", "παλιός σιδηρόδρομος"]
+        },
         "railway/buffer_stop": {
           "name": "Ταμπονιέρα",
           "terms": ["σιδηροδρομικός προσκρουστήρας"]
@@ -4185,6 +4236,10 @@
         },
         "railway/narrow_gauge": {
           "name": "Σιδηροτροχιές Στενού Εύρους"
+        },
+        "railway/platform_edge": {
+          "name": "Άκρο Αποβάθρας",
+          "terms": ["άκρο πλατφόρμας", "αποβάθρα", "πλατφόρμα"]
         },
         "railway/preserved": {
           "name": "Σιδηροτροχιές Μουσειακού Σιδηρόδρομου"
@@ -5149,17 +5204,43 @@
         },
         "type/boundary": {
           "name": "Όριο",
-          "terms": ["όριο", "σύνορο"]
+          "terms": ["όριο", "σύνορο"],
+          "relation": {
+            "role_labels": {
+              "inner": "Εσωτερικό άκρο",
+              "outer": "Εξωτερικό άκρο"
+            }
+          }
         },
         "type/boundary/administrative": {
           "name": "Διοικητικό Όριο",
+          "relation": {
+            "role_labels": {
+              "admin_centre": "Πρωτεύουσα / Έδρα",
+              "label": "Ετικέτα",
+              "inner": "Εσωτερικό άκρο",
+              "outer": "Εξωτερικό άκρο"
+            }
+          },
           "terms": ["διοικητικό όριο", "σύνορο"]
+        },
+        "type/boundary/protected_area": {
+          "name": "Προστατευόμενη Περιοχή",
+          "terms": ["βιότοπος", "οικότοπος", "υδροβιότοπος", "εθνικό πάρκο", "προστασία", "άγρια ζωή", "φύση", "διατήρηση"]
         },
         "type/connectivity": {
           "name": "Συνδεσιμότητα Λωρίδας"
         },
         "type/destination_sign": {
           "name": "Πινακίδα Προορισμού",
+          "relation": {
+            "role_labels": {
+              "intersection": "Διασταύρωση",
+              "sign": "Φυσική ταμπέλα",
+              "from": "Από",
+              "to": "Προς"
+            }
+          },
           "terms": ["σήμα προορισμού"]
         },
         "type/enforcement": {
@@ -5170,38 +5251,127 @@
         },
         "type/multipolygon": {
           "name": "Πολύ-Πολύγωνο",
-          "terms": ["πολυπολύγωνο"]
+          "terms": ["πολυπολύγωνο"],
+          "relation": {
+            "role_labels": {
+              "inner": "Εσωτερικό άκρο",
+              "outer": "Εξωτερικό άκρο"
+            }
+          }
         },
         "type/public_transport/stop_area_group": {
           "name": "Ομάδα Περιοχής Διαμετακόμισης"
         },
         "type/restriction": {
           "name": "Περιορισμός",
+          "relation": {
+            "role_labels": {
+              "from": "Από",
+              "to": "Προς",
+              "via": "Μέσω"
+            }
+          },
           "terms": ["απαγόρευση"]
         },
+        "type/restriction/no_entry": {
+          "name": "Απαγορεύεται η είσοδος",
+          "relation": {
+            "role_labels": {
+              "from": "Από",
+              "to": "Προς",
+              "via": "Μέσω"
+            }
+          }
+        },
+        "type/restriction/no_exit": {
+          "name": "Απαγορεύεται η έξοδος",
+          "relation": {
+            "role_labels": {
+              "from": "Από",
+              "to": "Προς",
+              "via": "Μέσω"
+            }
+          }
+        },
         "type/restriction/no_left_turn": {
-          "name": "Όχι Αριστερή Στροφή"
+          "name": "Όχι Αριστερή Στροφή",
+          "relation": {
+            "role_labels": {
+              "from": "Από",
+              "to": "Προς",
+              "via": "Μέσω"
+            }
+          }
         },
         "type/restriction/no_right_turn": {
-          "name": "Όχι Δεξιά Στροφή"
+          "name": "Όχι Δεξιά Στροφή",
+          "relation": {
+            "role_labels": {
+              "from": "Από",
+              "to": "Προς",
+              "via": "Μέσω"
+            }
+          }
         },
         "type/restriction/no_straight_on": {
-          "name": "Όχι Ευθεία"
+          "name": "Όχι Ευθεία",
+          "relation": {
+            "role_labels": {
+              "from": "Από",
+              "to": "Προς",
+              "via": "Μέσω"
+            }
+          }
         },
         "type/restriction/no_u_turn": {
-          "name": "Όχι Αναστροφή"
+          "name": "Όχι Αναστροφή",
+          "relation": {
+            "role_labels": {
+              "from": "Από",
+              "to": "Προς",
+              "via": "Μέσω"
+            }
+          }
         },
         "type/restriction/only_left_turn": {
-          "name": "Μόνο Αριστερή Στροφή"
+          "name": "Μόνο Αριστερή Στροφή",
+          "relation": {
+            "role_labels": {
+              "from": "Από",
+              "to": "Προς",
+              "via": "Μέσω"
+            }
+          }
         },
         "type/restriction/only_right_turn": {
-          "name": "Μόνο Δεξιά Στροφή"
+          "name": "Μόνο Δεξιά Στροφή",
+          "relation": {
+            "role_labels": {
+              "from": "Από",
+              "to": "Προς",
+              "via": "Μέσω"
+            }
+          }
         },
         "type/restriction/only_straight_on": {
-          "name": "Μόνο Ευθεία"
+          "name": "Μόνο Ευθεία",
+          "relation": {
+            "role_labels": {
+              "from": "Από",
+              "to": "Προς",
+              "via": "Μέσω"
+            }
+          }
         },
         "type/restriction/only_u_turn": {
-          "name": "Μόνο Αναστροφή"
+          "name": "Μόνο Αναστροφή",
+          "relation": {
+            "role_labels": {
+              "from": "Από",
+              "to": "Προς",
+              "via": "Μέσω"
+            }
+          }
         },
         "type/route": {
           "name": "Δρομολόγιο",
@@ -5290,6 +5460,14 @@
         },
         "type/waterway": {
           "name": "Γραμμή Νερού",
+          "relation": {
+            "role_labels": {
+              "main_stream": "Κύρια ροή",
+              "mouth": "Εκβολή",
+              "side_stream": "Πλευρική ροή",
+              "spring": "Πηγή"
+            }
+          },
           "terms": ["υδατοδιαδρομή", "διαδρομή νερού"]
         },
         "waterway": {
@@ -5576,6 +5754,9 @@
         "amenity/university": {
           "name": "Περιοχή Πανεπιστημίου",
           "terms": ["έκταση πανεπιστημίου", "εδάφη πανεπιστημίου", "χώρος πανεπιστημίου"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Ποδίατρος"
         },
         "aerialway/station": {
           "name": "Σταθμός Τελεφερίκ"

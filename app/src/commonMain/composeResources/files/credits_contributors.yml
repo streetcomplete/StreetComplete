@@ -1,17 +1,17 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 629558
-  linesOfInterfaceMarkupChanged: 177268
-  assetFilesChanged: 2787
+  linesOfCodeChanged: 631105
+  linesOfInterfaceMarkupChanged: 177361
+  assetFilesChanged: 2812
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 26789
+  linesOfCodeChanged: 26879
   linesOfInterfaceMarkupChanged: 3788
   assetFilesChanged: 152
 - name: "Sargun Vohra"
   githubUsername: "sargunv"
-  linesOfCodeChanged: 22885
-  linesOfInterfaceMarkupChanged: 103
+  linesOfCodeChanged: 26118
+  linesOfInterfaceMarkupChanged: 140
   assetFilesChanged: 12
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
@@ -33,16 +33,16 @@
   linesOfCodeChanged: 5539
   linesOfInterfaceMarkupChanged: 21
   assetFilesChanged: 4
+- name: "arthedain"
+  githubUsername: "paulklie"
+  linesOfCodeChanged: 4393
+  linesOfInterfaceMarkupChanged: 644
+  assetFilesChanged: 62
 - name: "Matija Nalis"
   githubUsername: "mnalis"
   linesOfCodeChanged: 3763
   linesOfInterfaceMarkupChanged: 607
   assetFilesChanged: 72
-- name: "arthedain"
-  githubUsername: "paulklie"
-  linesOfCodeChanged: 3602
-  linesOfInterfaceMarkupChanged: 380
-  assetFilesChanged: 62
 - name: "arrival-spring"
   githubUsername: "arrival-spring"
   linesOfCodeChanged: 3308
@@ -74,6 +74,11 @@
   linesOfCodeChanged: 1639
   linesOfInterfaceMarkupChanged: 262
   assetFilesChanged: 48
+- name: "mcliquid"
+  githubUsername: "mcliquid"
+  linesOfCodeChanged: 1545
+  linesOfInterfaceMarkupChanged: 1026
+  assetFilesChanged: 15
 - name: "smichel17"
   githubUsername: "smichel17"
   linesOfCodeChanged: 1332
@@ -119,11 +124,6 @@
   githubUsername: "GaeaKat"
   linesOfCodeChanged: 629
   linesOfInterfaceMarkupChanged: 259
-- name: "mcliquid"
-  githubUsername: "mcliquid"
-  linesOfCodeChanged: 617
-  linesOfInterfaceMarkupChanged: 592
-  assetFilesChanged: 14
 - name: "Enno Hermann"
   githubUsername: "eginhard"
   linesOfCodeChanged: 537
@@ -149,6 +149,11 @@
 - name: "Irakliy Kukava"
   githubUsername: "irakliy01"
   linesOfCodeChanged: 302
+- name: "Amaan Qureshi"
+  githubUsername: "Amaanprobably"
+  linesOfCodeChanged: 300
+  linesOfInterfaceMarkupChanged: 516
+  assetFilesChanged: 7
 - name: "Marek Krug"
   githubUsername: "marekkrug"
   linesOfCodeChanged: 276
@@ -171,11 +176,6 @@
 - name: "darken"
   githubUsername: "d4rken"
   linesOfCodeChanged: 230
-- name: "Amaan Qureshi"
-  githubUsername: "Amaanprobably"
-  linesOfCodeChanged: 229
-  linesOfInterfaceMarkupChanged: 322
-  assetFilesChanged: 6
 - name: "errol pais"
   githubUsername: "errolpais"
   linesOfCodeChanged: 227
@@ -302,6 +302,9 @@
   linesOfCodeChanged: 28
 - name: "Hsieh Chin Fan"
   linesOfCodeChanged: 27
+- name: "geographybuff"
+  githubUsername: "geographybuff"
+  linesOfCodeChanged: 26
 - name: "Jeffrey Yasskin"
   githubUsername: "jyasskin"
   linesOfCodeChanged: 24

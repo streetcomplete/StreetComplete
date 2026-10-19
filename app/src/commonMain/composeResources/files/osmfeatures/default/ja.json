@@ -211,8 +211,8 @@
           "terms": ["駐輪場(ロッカー)", "駐輪場", "ロッカー", "自転車ロッカー", "自転車"]
         },
         "amenity/bicycle_parking/shed": {
-          "name": "駐輪場(屋根付き)",
-          "terms": ["駐輪場(屋根付き)", "駐輪場", "自転車"]
+          "name": "自転車小屋",
+          "terms": ["自転車小屋", "駐輪小屋", "屋内駐輪場", "駐輪場", "自転車"]
         },
         "amenity/bicycle_rental": {
           "name": "レンタサイクル",
@@ -462,10 +462,6 @@
         "amenity/doctors/plastic_surgery": {
           "name": "形成外科",
           "terms": ["形成外科", "診療科目", "ヘルスケア", "医療分野", "診察科目", "専門医"]
-        },
-        "amenity/doctors/podiatry": {
-          "name": "足病医",
-          "terms": ["足病科", "診療科目", "ヘルスケア", "医療分野", "診察科目", "専門医"]
         },
         "amenity/doctors/proctology": {
           "name": "肛門科",
@@ -738,6 +734,10 @@
           "name": "宅配ロッカー",
           "terms": ["宅配ボックス", "宅配ロッカー", "ロッカー", "宅配", "宅配便ロッカー", "受取", "発送"]
         },
+        "amenity/parking": {
+          "name": "駐車場",
+          "terms": ["駐車場", "駐車スペース", "自動車", "パーキング", "コインパーキング", "月極"]
+        },
         "amenity/parking/multi-storey": {
           "name": "立体駐車場",
           "terms": ["複数階の駐車場", "駐車場", "立体駐車場", "立駐"]
@@ -766,6 +766,10 @@
         "amenity/parking_space/disabled": {
           "name": "駐車区画（障害者用）",
           "terms": ["駐車区画（障害者用）", "障害者", "優先駐車区画", "車椅子", "駐車区画", "駐車場"]
+        },
+        "amenity/parking_surface": {
+          "name": "地上駐車場",
+          "terms": ["地上駐車場", "平面駐車場", "屋外駐車場", "地上", "平面", "屋外", "駐車場"]
         },
         "amenity/payment_centre": {
           "name": "納入窓口",
@@ -2469,10 +2473,6 @@
         "highway/crossing/informal": {
           "name": "横断多し"
         },
-        "highway/crossing/traffic_signals": {
-          "name": "横断歩道(信号あり)",
-          "terms": ["横断歩道(信号あり)", "横断歩道", "信号機", "信号", "歩行者信号機", "歩行者用信号機"]
-        },
         "highway/crossing/uncontrolled": {
           "name": "横断歩道(信号なし)",
           "terms": ["横断歩道(信号なし)", "横断歩道", "歩道"]
@@ -4032,7 +4032,7 @@
         },
         "man_made/water_tap": {
           "name": "給水栓",
-          "terms": ["給水栓"]
+          "terms": ["給水栓", "蛇口", "手洗い場", "手洗場", "水道"]
         },
         "man_made/water_tower": {
           "name": "給水塔",
@@ -6756,6 +6756,10 @@
         "amenity/university": {
           "name": "大学（代表点または敷地）",
           "terms": ["大学の敷地", "キャンパス", "大学", "教育", "学校"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "足病医",
+          "terms": ["足病医", "医療"]
         },
         "amenity/charging_station/charging_station_bicycle_designated": {
           "name": "自転車充電スタンド",

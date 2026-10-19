@@ -434,10 +434,6 @@
           "name": "整形外科",
           "terms": ["整形外科"]
         },
-        "amenity/doctors/podiatry": {
-          "name": "足病診療師",
-          "terms": ["podiatrist", "足病診療師", "足療師", "足部診療師", "足部治療師"]
-        },
         "amenity/doctors/proctology": {
           "name": "直腸科",
           "terms": ["直腸科"]
@@ -2349,10 +2345,6 @@
         },
         "highway/crossing/informal": {
           "name": "非正式行人穿越道"
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "有號誌的行人穿越道",
-          "terms": ["有號誌的行人穿越道"]
         },
         "highway/crossing/uncontrolled": {
           "name": "有標線的行人穿越道",
@@ -6468,6 +6460,10 @@
         "amenity/nursing_home": {
           "name": "護養院",
           "terms": ["nursing home", "療養院"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "足病診療師",
+          "terms": ["podiatrist", "足病診療師", "足療師", "足部診療師", "足部治療師"]
         },
         "aerialway/station": {
           "name": "纜車站",

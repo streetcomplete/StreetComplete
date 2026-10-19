@@ -304,6 +304,14 @@
           "name": "Neuadd y Gymuned",
           "terms": ["canolfan", "ganolfan", "chanolfan"]
         },
+        "amenity/community_centre/cultural_centre": {
+          "name": "Canolfan Ddiwylliannol",
+          "terms": ["diwylliannol", "canolfan", "ganolfan", "chanolfan"]
+        },
+        "amenity/community_centre/family_centre": {
+          "name": "Canolfan Deuluol",
+          "terms": ["teulu", "canolfan", "ganolfan", "chanolfan"]
+        },
         "amenity/community_centre/lgbtq": {
           "name": "Canolfan Gymunedol LHDTC+",
           "terms": ["hoyw", "traws", "deurhywiol", "lesbiaidd", "lesbian", "trawsryweddol", "rhywedd"]
@@ -421,10 +429,6 @@
         "amenity/doctors/plastic_surgery": {
           "name": "Llawfeddyg Cosmetig",
           "terms": ["llawfeddygaeth gosmetig", "craniofacial", "maxilla", "cosmetig", "adadeiladol"]
-        },
-        "amenity/doctors/podiatry": {
-          "name": "Podiatrydd",
-          "terms": ["pigwrn", "troed", "traed", "coes", "podiatreg"]
         },
         "amenity/doctors/proctology": {
           "name": "Llawfeddyg Colorefrol",
@@ -685,6 +689,10 @@
         },
         "amenity/parcel_locker": {
           "name": "Locer Parseli"
+        },
+        "amenity/parking": {
+          "name": "Maes Parcio",
+          "terms": ["barcio", "pharcio", "stopio", "car.ceir", "cerbyd"]
         },
         "amenity/parking/multi-storey": {
           "name": "Maes Parcio Aml-lawr"
@@ -1203,12 +1211,6 @@
         },
         "area": {
           "name": "Ardal",
-          "relation": {
-            "role_labels": {
-              "inner": "Mewnol",
-              "outer": "Allanol"
-            }
-          },
           "terms": ["poligon", "polygon", "bolygon", "pholygon", "siap", "siâp"]
         },
         "area/footway": {
@@ -2120,9 +2122,6 @@
         },
         "highway/crossing/informal": {
           "name": "Croesfan Anffurfiol"
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "Croesfan â Goleuadau Cerddwyr"
         },
         "highway/crossing/uncontrolled": {
           "name": "Croesfan â Marciau"
@@ -3284,7 +3283,8 @@
           "terms": ["teledu cylch cyfyng", "cctc", "cctv", "ctcc", "anpr", "alpr", "gwarchod", "diogelwch", "arsylwi", "caeedig", "caeëdig", "fideo", "cloch drws", "diogelu"]
         },
         "man_made/survey_point": {
-          "name": "Pwynt Arsylwi"
+          "name": "Pwynt Tirfesur",
+          "terms": ["marc geodetig", "geodeteg", "arolwg", "piler", "pwynt", "trig", "trigonometri"]
         },
         "man_made/telescope": {
           "name": "Telesgop",
@@ -3759,7 +3759,8 @@
           "name": "Swyddfa Ddiogelwch"
         },
         "office/surveyor": {
-          "name": "Swyddfa Arolygydd"
+          "name": "Swyddfa Dirfesur",
+          "terms": ["arolwg", "gweld", "sbio", "llygad", "llygaid", "taith", "ymweliad", "ymweld"]
         },
         "office/tax_advisor": {
           "name": "Swyddfa Gynghori Treth"
@@ -4205,6 +4206,10 @@
         },
         "railway/monorail": {
           "name": "Trac Trên-un-Gledren"
+        },
+        "railway/platform_edge": {
+          "name": "Ymyl Platfform",
+          "terms": ["ochr"]
         },
         "railway/rail": {
           "name": "Trac Trên"
@@ -5141,9 +5146,7 @@
           "name": "Ffin Gweinyddol",
           "relation": {
             "role_labels": {
-              "inner": "Mewnol",
-              "label": "Label",
-              "outer": "Allanol"
+              "label": "Label"
             }
           },
           "terms": ["bowndari", "bowndry", "bowndri", "fin", "border", "bordor", "bordar"]
@@ -5169,13 +5172,7 @@
         },
         "type/multipolygon": {
           "name": "Amlbolygon",
-          "terms": ["amlochron", "amlpolygon"],
-          "relation": {
-            "role_labels": {
-              "inner": "Mewnol",
-              "outer": "Allanol"
-            }
-          }
+          "terms": ["amlochron", "amlpolygon"]
         },
         "type/restriction": {
           "name": "Rhwystr",
@@ -5595,6 +5592,10 @@
         "amenity/university": {
           "name": "Tiroedd Prifysgol",
           "terms": ["coleg", "graddedigion", "phd", "meistr", "bagloriaeth"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Podiatrydd",
+          "terms": ["pigwrn", "troed", "traed", "coes", "podiatreg"]
         },
         "aerialway/station": {
           "name": "Gorsaf Lifft Sgïo"

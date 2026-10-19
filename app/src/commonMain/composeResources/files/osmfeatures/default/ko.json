@@ -435,10 +435,6 @@
           "name": "성형외과 의사",
           "terms": ["성형외과 의사"]
         },
-        "amenity/doctors/podiatry": {
-          "name": "족부의학과 의사",
-          "terms": ["족부의학과 의사"]
-        },
         "amenity/doctors/proctology": {
           "name": "대장항문외과 의사",
           "terms": ["대장항문외과 의사"]
@@ -697,6 +693,9 @@
           "name": "택배 보관함",
           "terms": ["택배 보관함"]
         },
+        "amenity/parking": {
+          "name": "주차 공간"
+        },
         "amenity/parking/multi-storey": {
           "name": "입체 주차장",
           "terms": ["입체 주차장", "다층 주차장", "주차장 건물"]
@@ -718,7 +717,7 @@
           "terms": ["주차장 입구", "주차장 출구", "주차장 출입구"]
         },
         "amenity/parking_space": {
-          "name": "주차 공간",
+          "name": "주차 칸",
           "terms": ["주차 공간"]
         },
         "amenity/parking_space/disabled": {
@@ -2386,10 +2385,6 @@
         },
         "highway/crossing/informal": {
           "name": "비공식적인 횡단보도"
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "보행자 신호등이 있는 횡단보도",
-          "terms": ["보행자 신호등이 있는 횡단보도"]
         },
         "highway/crossing/uncontrolled": {
           "name": "표시가 있는 횡단보도",
@@ -4522,8 +4517,8 @@
           "terms": ["소재지명"]
         },
         "place/neighbourhood": {
-          "name": "동",
-          "terms": ["동"]
+          "name": "통 / 행정리",
+          "terms": ["통", "행정리"]
         },
         "place/plot": {
           "name": "필지",
@@ -6554,6 +6549,10 @@
         },
         "amenity/university": {
           "name": "대학교 부지"
+        },
+        "amenity/doctors/podiatry": {
+          "name": "족부의사",
+          "terms": ["발", "발톱"]
         },
         "amenity/charging_station/charging_station_bicycle_designated": {
           "name": "자전거 충전소"

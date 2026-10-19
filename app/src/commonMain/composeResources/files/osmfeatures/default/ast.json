@@ -159,9 +159,6 @@
           "name": "Doctor",
           "terms": ["médicu", "especialista"]
         },
-        "amenity/doctors/podiatry": {
-          "name": "Pediatra"
-        },
         "amenity/dojo": {
           "name": "Dojo / Academia d'artes marciales",
           "terms": ["ximnasiu"]
@@ -2028,6 +2025,10 @@
         "ford_line": {
           "name": "Vau"
         },
+        "type/restriction/no_straight_on": {},
+        "type/restriction/only_left_turn": {},
+        "type/restriction/only_right_turn": {},
+        "type/restriction/only_straight_on": {},
         "shop/ice_cream": {
           "name": "Xeladería"
         },
@@ -2103,6 +2104,9 @@
         "amenity/embassy": {
           "name": "Embaxada",
           "terms": ["embaxada", "consuláu", "representación diplomática"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Pediatra"
         },
         "aerialway/station": {
           "name": "Estación de remonte"

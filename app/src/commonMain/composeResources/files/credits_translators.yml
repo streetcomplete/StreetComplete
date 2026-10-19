@@ -61,13 +61,13 @@ cs:
    Vojtik69: 23
    Vladankudlac: 19
 cy: 
-   dreigiau: 16698
+   dreigiau: 17073
    fin-w: 5375
    Brychan Thomas: 802
    Geraint Thomas: 672
    Alexander Funk: 20
 da: 
-   ERyPTION: 40355
+   ERyPTION: 40868
    Dennis Kjær Jensen: 3629
    Soren: 2142
    Leonora: 1947
@@ -79,12 +79,13 @@ da:
    Pelle Rosenbeck Gøeg: 145
    Youri Lima: 13
 de: 
-   Flo Edelmann: 20109
+   Flo Edelmann: 20333
    Mr. Update: 6412
    mcliquid: 3208
    legofahrrad: 1798
    Pixelcode: 1605
    papojari: 726
+   AlexF999: 532
    Mopshase12: 433
    Lenni: 357
    Gncsimm: 237
@@ -119,7 +120,7 @@ el:
    tinigrillion: 96
    François l'Olonnais: 94
 en-AU: 
-   Didz: 34677
+   Didz: 34583
    Declan: 3591
    Tech Dec: 2972
    Baku: 1093
@@ -134,13 +135,14 @@ en-CA:
    Benjamin Davies: 14246
    Snowcat: 166
 en-GB: 
-   Oliver Hawes: 5130
+   Oliver Hawes: 5113
    10992: 3367
    arrival-spring: 2356
    Peter Newman: 2350
    Andi Chandler: 1247
-   legofahrrad: 1034
+   legofahrrad: 1004
    Jay Turner: 608
+   AlexF999: 510
    Andrew: 488
    Chris Lane: 310
    Tony Furnell: 245
@@ -257,9 +259,9 @@ fi:
    Lasse: 44
    Markus Mikkonen: 30
 fr: 
-   Etienne: 15982
-   Florian Stosse: 5698
-   David Chionne: 2094
+   Etienne: 15991
+   Florian Stosse: 5650
+   David Chionne: 2070
    rouelibre: 1618
    Binnette: 1586
    alecanu: 1148
@@ -267,16 +269,16 @@ fr:
    roptat: 689
    Frédéric Bourgeon: 659
    Lucas 🐱: 651
-   Ceciestunepoubelle: 519
    James. mcmahon: 511
-   Yoldc22: 493
+   Ceciestunepoubelle: 484
+   Yoldc22: 479
    Stéphanie Jean-Daubias: 414
    whatismoss: 374
-   yahn_f: 357
    Vincèn: 296
-   Nicomem: 288
+   yahn_f: 293
    Lejun: 272
    _translator: 267
+   Nicomem: 261
    A. gayot: 238
    Alex: 209
    Paul: 202
@@ -289,7 +291,6 @@ fr:
    Jean-Baptiste Holcroft: 138
    Timothée Goguely: 138
    Anthony C.: 134
-   gendy54: 123
    Julien: 123
    X@v: 114
    Cybereric: 111
@@ -298,6 +299,7 @@ fr:
    Kazing: 86
    Tatartiflette: 72
    Poussinou: 71
+   gendy54: 71
    Pierre Rudloff: 70
    dumoulin.jb: 62
    Alexander Romme: 61
@@ -338,7 +340,7 @@ he:
    Фитик: 192
    GerOriki: 144
 hr: 
-   Matija Nalis: 51728
+   Matija Nalis: 52521
    Nemanja Bračko: 74
    Mario: 9
 hu: 
@@ -424,6 +426,7 @@ ja:
    FUMIHIKO HIGASHI: 173
    Tatsuya Ishikawa: 154
    098orin: 128
+   Nabetaro: 102
    yuuki: 75
    8177: 51
    Nyampire: 48
@@ -653,6 +656,7 @@ ru:
    Van: 80
    Barsuk452: 79
    Oldest. doughy-0t: 79
+   AlexF999: 75
    Unaboomer: 74
    nikiforovpizza: 50
    Alexey: 43
@@ -688,7 +692,7 @@ sl:
    Bojan: 3549
    SimonG: 901
    Timotej Lazar: 160
-sr-cyrl: 
+sr-Cyrl: 
    Nemanja Bračko: 22075
    Mario: 15779
    Branko Kokanovic: 5364
@@ -743,7 +747,7 @@ tr:
    lemedro: 27
    rie: 13
 uk: 
-   Serhii. Muchychka: 13799
+   Serhii. Muchychka: 14862
    Domkot_UA: 6729
    nikiforovpizza: 6212
    andygol: 6069
@@ -770,7 +774,7 @@ vi:
    Fushikawa: 1251
    Nguyen Phuc Anh: 754
    Trọng Cường Nguyễn: 12
-zh: 
+zh-Hans: 
    OilStation: 9782
    Liang Pengfei: 3079
    Oliver_lew: 722
@@ -785,16 +789,18 @@ zh:
    Almy127: 13
    yzuio: 12
    Minecraftis1st: 9
-zh-TW: 
-   Supaplex: 9073
-   吳俊嘉（O jun-ga）: 3154
+zh-Hant: 
+   Supaplex: 8840
+   吳俊嘉（O jun-ga）: 3132
    Kagami: 1086
    Edison_lu: 732
-   Sean Young: 591
+   Sean Young: 583
    Lepus: 343
+   Kingking: 234
    thomas: 150
    typebrook: 76
    ET: 70
    Sevenwuying: 35
    秉宏: 30
+   Vincentwwy168: 27
    Howard Yang: 10
