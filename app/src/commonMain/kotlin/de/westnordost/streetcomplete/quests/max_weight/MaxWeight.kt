@@ -9,15 +9,21 @@ data class MaxWeight(val type: MaxWeightType, val weight: Weight?)
 
 fun MaxWeight.applyTo(tags: Tags) {
     if (weight != null) {
-        tags[type.osmKey] = if (type == MAX_WEIGHT_CATEGORY_SE) {
-            when (weight.value) {
+        if (type == MAX_WEIGHT_CATEGORY_SE) {
+            tags[type.osmKey] = when (weight.value) {
                 1.0 -> "64"
                 2.0 -> "51.4"
                 3.0 -> "37.5"
                 4.0 -> "74"
+                else -> "0"
             }
+            // See discussion here: https://github.com/streetcomplete/StreetComplete/issues/6586
+            // We add the specific traffic_sign codes save the context of this information
+            // Also: do not overwrite any existing signs
+            if(tags["traffic_sign"]==null)
+                tags["traffic_sign"]="SE-CSS-"+weight.value.toInt()
         } else {
-            weight.toOsmString()
+            tags[type.osmKey] = weight.toOsmString()
         }
     }
 }

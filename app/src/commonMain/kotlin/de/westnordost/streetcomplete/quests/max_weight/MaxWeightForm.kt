@@ -41,8 +41,14 @@ fun MaxWeightForm(
     val countryCode = locale.region
 
     val selectableMaxWeightTypes = MaxWeightType.entries.filter { type ->
-        type !in signs.map { it.type } &&
-        type.getIcon(countryCode) != null
+        val selectedTypes = signs.map { it.type }
+        // MAX_WEIGHT_CATEGORY_SE and MAX_WEIGHT both add the "maxweight" tag. Thus we need to ensure they cannot be selected together.
+        val isMutuallyExclusiveSelected = when (type) {
+            MaxWeightType.MAX_WEIGHT -> MaxWeightType.MAX_WEIGHT_CATEGORY_SE in selectedTypes
+            MaxWeightType.MAX_WEIGHT_CATEGORY_SE -> MaxWeightType.MAX_WEIGHT in selectedTypes
+            else -> false
+        }
+        type !in selectedTypes && !isMutuallyExclusiveSelected && type.getIcon(countryCode) != null
     }
 
     Column(
