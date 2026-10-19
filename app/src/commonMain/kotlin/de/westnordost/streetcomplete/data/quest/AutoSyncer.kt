@@ -108,6 +108,10 @@ class AutoSyncer(
                 }
             }
         }
+        // also try once on start, in case there are pending changes that haven't been uploaded
+        // during the last session because the last session was offline
+        triggerAutoUpload()
+
         coroutineScope.launch {
             val request = LocationRequest {
                 accuracy = LocationAccuracy.High
