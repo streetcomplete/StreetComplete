@@ -273,6 +273,9 @@ kotlin {
             dependencies {
                 // HTTP client
                 implementation(libs.ktor.client.cio)
+
+                // OS integration (scheduling)
+                implementation(libs.nucleus.scheduler)
             }
         }
         commonTest {
