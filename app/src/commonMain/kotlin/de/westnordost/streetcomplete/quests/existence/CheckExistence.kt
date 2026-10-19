@@ -40,7 +40,13 @@ class CheckExistence(
               amenity ~ clock|post_box|bbq|car_sharing|ticket_validator|bicycle_repair_station
               or leisure ~ firepit|fitness_station|picnic_table
               or (leisure = pitch and sport ~ table_tennis|chess|table_soccer|teqball)
-              or amenity = grit_bin and seasonal = no
+              or (
+                amenity = grit_bin and
+                (
+                    seasonal = no
+                    or __season__ = winter
+                )
+              )
               or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
               or tourism = information and information ~ board|terminal|map
               or advertising ~ column|board|poster_box
