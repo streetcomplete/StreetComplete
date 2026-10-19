@@ -11,7 +11,7 @@ Almost two years of waiting are over! This is the first stable version of Street
 In this release, the final pieces of the puzzle were put together:
 
 - 📌 I completed the migration to a multiplatform UI framework. As a side effect, I reworked the UI for a lot of quest forms (#6842). @kiliankoe (#6989), @maxwellward (#7033), @sargunv (#7123, #7124) helped a bit, too.
-- 🗺️ @sargunv and I ported the map and any interaction with it also  (#6352, #7088).
+- 🗺️ @sargunv and I ported the map and any interaction with it (#6352, #7088).
 - 🍏 And finally, @sargunv placed the app on a multiplatform base (#7125).
 
 ### General
@@ -34,18 +34,18 @@ In this release, the final pieces of the puzzle were put together:
 
 ### New Quests
 
-- **_"How much do you need to pay to park here?"_** (#6653), thanks @marekkrug
-- **_"What doctors are present here?"_** (#7044), by @paulklie
-- **_"What type of vending machine is this?"_** (#7061), by @paulklie, thanks @Amaanprobably
-- **_"Who may enter here?"_** (#7071, #7109), by @esilja. Replaces previous quests that asked for playground and tower access
-- **_"What’s the surface here?"_** - asked for motorcycle parkings (#7237, #6999, #6829), by @Amaanprobably, @ontheair81
-- **_"How many sockets does this charging station have?"_** (#6732, #5164), thanks @mcliquid
-- **_"Can cars be charged here?"_** (#7083, also #7098), by @paulklie. This and the above quest replace the quests that ask if and how many cars / bicycles can be charged at a charging station
-- **_"Can you lock this while charging?"_**, asked for bicycle charging stations etc. (#7189), by @paulklie
+- _"How much do you need to pay to park here?"_ (#6653), thanks @marekkrug
+- _"What doctors are present here?"_ (#7044), by @paulklie
+- _"What type of vending machine is this?"_ (#7061), by @paulklie, thanks @Amaanprobably
+- _"Who may enter here?"_ (#7071, #7109), by @esilja. Replaces previous quests that asked for playground and tower access
+- _"What’s the surface here?"_, asked for motorcycle parkings (#7237, #6999, #6829), by @Amaanprobably, @ontheair81
+- _"How many sockets does this charging station have?"_ (#6732, #5164), thanks @mcliquid
+- _"Can cars be charged here?"_ (#7083, also #7098), by @paulklie. This and the above quest replace the quests that ask if and how many cars / bicycles can be charged at a charging station
+- _"Can you lock this while charging?"_, asked for bicycle charging stations etc. (#7189), by @paulklie
 
 ### Removed Problematic Quests
 
-- **_"Are pedestrians forbidden to walk on this road without a sidewalk here?"_** (#7014)
+- _"Are pedestrians forbidden to walk on this road without a sidewalk here?"_ (#7014)
 
 ### Quest improvements
 
