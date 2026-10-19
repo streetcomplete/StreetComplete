@@ -23,7 +23,8 @@ abstract class MainNavViewModel : ViewModel() {
     /** Whether the intro tutorial should be shown on start */
     abstract val shouldShowIntroTutorial: Boolean
 
-    /** Returns whether the URI was recognized and should open the main screen. */
+    /** Shows the given preset or geo URI on the main screen. Returns false if it is neither, then
+     *  it is ignored. */
     abstract suspend fun setUri(uri: String): Boolean
 
     abstract val urlConfig: StateFlow<ShownUrlConfig?>
