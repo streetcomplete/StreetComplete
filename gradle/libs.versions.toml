@@ -44,6 +44,9 @@ filekit = "0.16.0"
 composeWebview = "2.0.3"
 
 # Android
+# The Jetpack Compose version that the Compose Multiplatform version above depends on, which
+# may differ (e.g. for patch releases)
+androidxCompose = "1.12.1"
 activity = "1.13.0"
 work = "2.12.0"
 desugarJdkLibs = "2.1.5"
@@ -146,7 +149,7 @@ compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "compose" }
 compose-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "compose" }
 compose-uiToolingPreview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "compose" }
 compose-uiTooling = { module = "org.jetbrains.compose.ui:ui-tooling", version.ref = "compose" }
-androidx-compose-uiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+androidx-compose-uiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "androidxCompose" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity" }
 
 # UI navigation
