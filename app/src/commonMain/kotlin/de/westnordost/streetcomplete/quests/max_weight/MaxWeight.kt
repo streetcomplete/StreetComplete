@@ -9,15 +9,15 @@ data class MaxWeight(val type: MaxWeightType, val weight: Weight?)
 
 fun MaxWeight.applyTo(tags: Tags) {
     if (weight != null) {
-        if (type == MAX_WEIGHT_CATEGORY_SE) {
-            when (weight.value.toInt().toString()) {
-                "1" -> tags["maxweight"] = "64"
-                "2" -> tags["maxweight"] = "51.4"
-                "3" -> tags["maxweight"] = "37.5"
-                "4" -> tags["maxweight"] = "74"
+        tags[type.osmKey] = if (type == MAX_WEIGHT_CATEGORY_SE) {
+            when (weight.value) {
+                1.0 -> "64"
+                2.0 -> "51.4"
+                3.0 -> "37.5"
+                4.0 -> "74"
             }
         } else {
-            tags[type.osmKey] = weight.toOsmString()
+            weight.toOsmString()
         }
     }
 }
