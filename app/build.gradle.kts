@@ -124,7 +124,13 @@ kotlin {
 
     sourceSets {
         val jvmAndroidMain = create("jvmAndroidMain") { dependsOn(commonMain.get()) }
-        val nonAndroidMain = create("nonAndroidMain") { dependsOn(commonMain.get()) }
+        val nonAndroidMain = create("nonAndroidMain") {
+            dependsOn(commonMain.get())
+            dependencies {
+                // HTTP client
+                api(libs.ktor.client.engine.defaults)
+            }
+        }
         val mobileMain = create("mobileMain") { dependsOn(commonMain.get()) }
 
         commonMain {
@@ -261,18 +267,10 @@ kotlin {
         iosMain {
             dependsOn(nonAndroidMain)
             dependsOn(mobileMain)
-            dependencies {
-                // HTTP client
-                implementation(libs.ktor.client.darwin)
-            }
         }
         getByName("desktopMain") {
             dependsOn(jvmAndroidMain)
             dependsOn(nonAndroidMain)
-            dependencies {
-                // HTTP client
-                implementation(libs.ktor.client.cio)
-            }
         }
         commonTest {
             dependencies {
