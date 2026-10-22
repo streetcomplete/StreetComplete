@@ -23,7 +23,7 @@ class AddToiletsFee : OsmFilterQuestType<ToiletFeeAnswer>() {
     override val elementFilter = """
         nodes, ways, relations with
           amenity = toilets
-          and access = yes
+          and access !~ private|customers
           and !fee
           and !fee:conditional
           and (!seasonal or seasonal = no)
