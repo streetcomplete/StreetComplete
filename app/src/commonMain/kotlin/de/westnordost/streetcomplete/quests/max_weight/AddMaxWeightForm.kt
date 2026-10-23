@@ -34,7 +34,7 @@ fun AddMaxWeightForm(
 
     QuestForm(
         on = on,
-        isComplete = signs.isNotEmpty() && signs.all { it.weight != null },
+        isComplete = isComplete(signs),
         onClickOk = {
             if (isUnrealisticWeight(signs)) {
                 confirmUnusualInput = true
@@ -90,8 +90,18 @@ fun AddMaxWeightForm(
     }
 }
 
+private fun isComplete(signs: List<MaxWeight>): Boolean =
+    signs.isNotEmpty() && signs.all { sign ->
+        if (sign.type == MaxWeightType.MAX_WEIGHT_CATEGORY_SE) {
+            sign.weight != null && sign.weight.value in 1.0..4.0
+        } else {
+            sign.weight != null
+        }
+    }
+
 private fun isUnrealisticWeight(signs: List<MaxWeight>): Boolean {
     for (sign in signs) {
+        if (sign.type == MaxWeightType.MAX_WEIGHT_CATEGORY_SE) return false
         val w = sign.weight?.toMetricTons() ?: continue
         if (w > 30 || w < 2) return true
     }

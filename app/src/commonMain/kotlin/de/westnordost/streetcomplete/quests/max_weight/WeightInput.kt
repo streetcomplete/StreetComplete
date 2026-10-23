@@ -13,6 +13,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit
+import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.ui.common.AutoFitTextFieldFontSize
 import de.westnordost.streetcomplete.ui.common.ButtonStyle
 import de.westnordost.streetcomplete.ui.common.DropdownButton
@@ -98,5 +99,35 @@ fun WeightInput(
             )
         }
         Text("t")
+    }
+}
+
+@Composable
+fun WeightClassSwedenInput(
+    value: Double?,
+    onValueChange: (Double?) -> Unit,
+    modifier: Modifier = Modifier,
+    locale: Locale = Locale.current,
+) {
+    Row(
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
+    ) {
+        Text("BK")
+        AutoFitTextFieldFontSize(
+            value = value?.toString().orEmpty(),
+            modifier = Modifier.width(80.dp)
+        ) {
+            DecimalInput(
+                value = value,
+                onValueChange = onValueChange,
+                maxIntegerDigits = 1,
+                maxFractionDigits = 0,
+                locale = locale,
+                isUnsigned = true,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
     }
 }
