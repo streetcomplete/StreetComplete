@@ -21,9 +21,8 @@ class AddFirewood : OsmFilterQuestType<Boolean>() {
         nodes, ways with
           (
             leisure = firepit
-            or (amenity = bbq and fuel ~ .*wood.*)
-            or
-            (
+            or (amenity = bbq and fuel ~ (.*;)?wood(;.*)?)
+            or (
               fireplace = yes
               and (
                 amenity = shelter
