@@ -42,7 +42,7 @@ fun MaxWeightType.getIcon(countryCode: String): DrawableResource? = when (this) 
         "FI", "IS", "SE" -> Res.drawable.maxweight_sign_bogieweight_yellow
         else ->             Res.drawable.maxweight_sign_bogieweight
     }
-    // The most common max weight in sweden are the Bärighetsklass signs. These exist with classes 1-4.
+    // The most common max weight signs in Sweden are the Bärighetsklass signs. These exist with classes 1-4.
     // https://bransch.trafikverket.se/for-dig-i-branschen/vag/bk--barighetsklasser-pa-vagar-och-broar/
     // https://github.com/streetcomplete/StreetComplete/issues/6586
     MAX_WEIGHT_CATEGORY_SE -> when (countryCode) {

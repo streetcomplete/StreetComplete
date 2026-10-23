@@ -5,7 +5,16 @@ import de.westnordost.streetcomplete.quests.max_weight.MaxWeightType.*
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class MaxWeight(val type: MaxWeightType, val weight: Weight?)
+@Serializable
+sealed interface MaxWeightSign
+
+@Serializable
+data class MaxWeight(val type: MaxWeightType, val weight: Weight?) : MaxWeightSign
+
+@Serializable
+enum class MaxWeightCategorySweden : MaxWeightSign { 
+    One, Two, Three, Four
+} 
 
 fun MaxWeight.applyTo(tags: Tags) {
     if (weight != null) {
@@ -20,8 +29,9 @@ fun MaxWeight.applyTo(tags: Tags) {
             // See discussion here: https://github.com/streetcomplete/StreetComplete/issues/6586
             // We add the specific traffic_sign codes save the context of this information
             // Also: do not overwrite any existing signs
-            if(tags["traffic_sign"]==null)
-                tags["traffic_sign"]="SE-CSS-"+weight.value.toInt()
+            if (tags["traffic_sign"] == null) {
+                tags["traffic_sign"] = "SE-CSS-" + weight.value.toInt()
+            }
         } else {
             tags[type.osmKey] = weight.toOsmString()
         }
