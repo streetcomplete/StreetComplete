@@ -21,14 +21,22 @@ class AddFirewood : OsmFilterQuestType<Boolean>() {
         nodes, ways with
           (
             leisure = firepit
-            or (amenity = bbq and fuel = wood)
-            or (tourism = wilderness_hut and fireplace = yes)
+            or (
+              amenity = bbq and fuel ~ .*wood.*
+            )
+            or (
+              fireplace = yes
+              and (
+                amenity = shelter
+                or tourism = wilderness_hut
+              )
+            )
           )
           and access !~ private|no
           and !wood_provided
     """
 
-    // for now only enabled in the nordics / high-trust societies
+    // for now only enabled in the Nordics / high-trust societies
     override val enabledInCountries = NoCountriesExcept(
         "SE",
         "DK",
