@@ -3,20 +3,20 @@ import SwiftUI
 import UIKit
 
 struct ComposeView: UIViewControllerRepresentable {
-    let links: IosAppLinks
+    let pendingUri: Kotlinx_coroutines_coreMutableStateFlow
 
     func makeUIViewController(context: Context) -> UIViewController {
-        MainViewControllerKt.MainViewController(links: links)
+        MainViewControllerKt.MainViewController(pendingUri: pendingUri)
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
 
 struct ContentView: View {
-    let links: IosAppLinks
+    let pendingUri: Kotlinx_coroutines_coreMutableStateFlow
 
     var body: some View {
-        ComposeView(links: links)
+        ComposeView(pendingUri: pendingUri)
             // Compose handles all insets (and the keyboard) itself
             .ignoresSafeArea()
     }

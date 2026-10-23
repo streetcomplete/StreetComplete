@@ -3,7 +3,7 @@ import SwiftUI
 
 @main
 struct iOSApp: App {
-    private let links = IosAppLinks()
+    private let pendingUri = MutableStateFlowKt.MutableStateFlow(value: nil)
 
     init() {
         KoinKt.doInitKoin()
@@ -11,8 +11,8 @@ struct iOSApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView(links: links)
-                .onOpenURL { links.openUri(uri: $0.absoluteString) }
+            ContentView(pendingUri: pendingUri)
+                .onOpenURL { pendingUri.value = $0.absoluteString }
         }
     }
 }
