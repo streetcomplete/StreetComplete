@@ -101,7 +101,7 @@ private fun isComplete(signs: List<MaxWeight>): Boolean =
 
 private fun isUnrealisticWeight(signs: List<MaxWeight>): Boolean {
     for (sign in signs) {
-        if(sign.type == MaxWeightType.MAX_WEIGHT_CATEGORY_SE) return false
+        if (sign.type == MaxWeightType.MAX_WEIGHT_CATEGORY_SE) return false
         val w = sign.weight?.toMetricTons() ?: continue
         if (w > 30 || w < 2) return true
     }
