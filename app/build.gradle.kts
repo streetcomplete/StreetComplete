@@ -435,6 +435,18 @@ tasks.register<UpdateIosAppTranslationsTask>("updateIosTranslations") {
     )
 }
 
+tasks.register<UpdateMacosAppTranslationsTask>("updateMacosTranslations") {
+    group = "streetcomplete"
+    projectId = poEditorProjectId
+    apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
+    targetDir = projectDir.resolve("../desktopApp/macosLocalizations")
+    languageCodes = bcp47ExportLanguages
+    strings = mapOf(
+        "NSLocationWhenInUseUsageDescription" to "no_location_permission_warning",
+        "NSLocationUsageDescription" to "no_location_permission_warning",
+    )
+}
+
 tasks.register<UpdateChangelogTask>("updateChangelog") {
     group = "streetcomplete"
     sourceFile = rootDir.resolve("CHANGELOG.md")
