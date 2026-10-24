@@ -76,6 +76,7 @@ fun <T> OsmQuestFormContainer(
     onEdit: (action: ElementEditAction) -> Unit,
     onLeaveNote: (noteText: String, noteImagePaths: List<String>) -> Unit,
     onHideQuest: () -> Unit,
+    onDisableQuest: () -> Unit,
     questType: OsmElementQuestType<T>,
     element: Element,
     geometry: ElementGeometry,
@@ -239,6 +240,7 @@ fun <T> OsmQuestFormContainer(
             onDismissRequest = { confirmCantSay = false },
             onLeaveNote = { showForm(QuestFormState.LeaveNote) },
             onHideQuest = { onHideQuest() },
+            onDisableQuest = { onDisableQuest() }
         )
     }
 }
