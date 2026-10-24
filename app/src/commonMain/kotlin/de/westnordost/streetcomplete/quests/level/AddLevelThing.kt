@@ -44,6 +44,7 @@ class AddLevelThing : OsmElementQuestType<String> {
     override val icon = Res.drawable.quest_level_thing
     override val title = Res.string.quest_level_thing_title
     override val achievements = listOf(CITIZEN)
+    override val hint = Res.string.quest_level_hint
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // get geometry of all malls in the area
