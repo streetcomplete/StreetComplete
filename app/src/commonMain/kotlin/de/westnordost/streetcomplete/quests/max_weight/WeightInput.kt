@@ -104,11 +104,12 @@ fun WeightInput(
 
 @Composable
 fun WeightClassSwedenInput(
-    value: MaxWeightSign?,
+    value: Double?,
     onValueChange: (Double?) -> Unit,
     modifier: Modifier = Modifier,
     locale: Locale = Locale.current,
 ) {
+    val selectedCategory = MaxWeightCategorySweden.entries.firstOrNull { it.index.toDouble() == value }
     Row(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
@@ -117,9 +118,9 @@ fun WeightClassSwedenInput(
         Text("BK")
         DropdownButton(
             items = MaxWeightCategorySweden.entries,
-            selectedItem = value,
-            onSelectedItem = onValueChange,
-            itemContent = { Text(it.toString()) },
+            selectedItem = selectedCategory,
+            onSelectedItem = { onValueChange(it.index.toDouble()) },
+            itemContent = { Text(it.index.toString()) },
             modifier = Modifier.width(80.dp),
             style = ButtonStyle.Outlined
         )
