@@ -6,7 +6,6 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
 import java.io.File
-import java.util.Locale
 
 /** Export the strings used for iOS to the xcstrings file */
 open class UpdateIosAppTranslationsTask : DefaultTask() {
@@ -25,27 +24,8 @@ open class UpdateIosAppTranslationsTask : DefaultTask() {
     }
 
     @TaskAction fun run() {
-        val exportLanguages = languageCodes.map { Locale.forLanguageTag(it) }
-
-        val languageTags = fetchAvailableLocalizations(apiToken, projectId).map { it.code }
-
         // language code -> (string id -> translation string)
-        val translations = HashMap<String, Map<String, String>>()
-
-        for (languageTag in languageTags) {
-            val lang = if (languageTag.lowercase() == "en-us") "en" else languageTag
-            val locale = Locale.forLanguageTag(transformPOEditorLanguageTag(lang))
-
-            if (!exportLanguages.any { it == locale }) continue
-
-            val actualLanguageTag = locale.toLanguageTag()
-
-            print(languageTag)
-            if (actualLanguageTag != languageTag) print(" -> " + actualLanguageTag)
-            println()
-
-            translations[actualLanguageTag] = fetchLocalizationJson(apiToken, projectId, languageTag)
-        }
+        val translations = fetchLocalizationsJson(apiToken, projectId, languageCodes)
 
         // iosKey: e.g. "NSLocationWhenInUseUsageDescription"
         // stringId: e.g. "no_location_permission_warning"
