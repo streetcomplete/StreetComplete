@@ -272,6 +272,10 @@ kotlin {
             dependencies {
                 // HTTP client
                 implementation(libs.ktor.client.cio)
+
+                // OS integration (sharing)
+                implementation(libs.nucleus.share)
+                implementation(libs.nucleus.application)
             }
         }
         commonTest {
