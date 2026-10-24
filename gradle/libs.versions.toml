@@ -9,7 +9,7 @@ buildkonfig = "0.23.0"
 mokkery = "3.5.0"
 # A development build of Nucleus 3.0, as it fixes some issues with maplibre-compose. Update to 3.0
 # once released
-nucleus = "3.0.0-dev-202610121021"
+nucleus = "3.0.0-dev-202610230652"
 
 # Kotlin
 kotlinxCoroutines = "1.11.0"
