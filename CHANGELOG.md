@@ -1,5 +1,12 @@
 # Changelog
 
+## v64.1
+
+- Fix three sources for (rare) crashes
+- Fix auto-sync stopped working under certain conditions (#7312)
+- Fix gracefully treat connection problems on download (#7324)
+- Other minor improvements (#7313, #7328, #7331, #7325), by @paulklie
+
 ## v64.0
 
 Buckle up, this is the longest changelog we had for any version of StreetComplete, ever:
