@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.quest
 
 import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
@@ -157,6 +158,9 @@ class VisibleQuestsSource(
         } ?: return null
         return if (isVisible(quest)) quest else null
     }
+
+    fun getAllForElement(elementType: ElementType, elementId: Long): List<OsmQuest> =
+        osmQuestSource.getAllForElement(elementType, elementId).filter { isVisible(it) }
 
     private fun isVisible(quest: Quest): Boolean =
         isVisible(quest.key) && isVisibleInTeamMode(quest) && isVisible(quest.type)
