@@ -101,10 +101,12 @@ class AutoSyncer(
 
         coroutineScope.launch {
             activeNetworkConnection.capabilities.collect { capabilities ->
-                networkCapabilities.value = capabilities
+                if (capabilities != networkCapabilities.value) {
+                    networkCapabilities.value = capabilities
 
-                if (capabilities?.hasInternet == true) {
-                    triggerAutoSync()
+                    if (capabilities?.hasInternet == true) {
+                        triggerAutoSync()
+                    }
                 }
             }
         }
@@ -128,14 +130,6 @@ class AutoSyncer(
                 }
             }
         }
-    }
-
-    fun onClear() {
-        unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
-        downloadProgressSource.removeListener(downloadProgressListener)
-        userLoginSource.removeListener(userLoginStatusListener)
-        teamModeQuestFilterSource.removeListener(teamModeChangeListener)
-        coroutineScope.coroutineContext.cancelChildren()
     }
 
     /* ------------------------------------------------------------------------------------------ */

@@ -24,7 +24,6 @@ import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.preferences.Autosync
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.data.quest.AutoSyncer
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.upload.UploadController
@@ -79,7 +78,6 @@ class MainViewModelImpl(
     private val teamModeQuestFilterController: TeamModeQuestFilterController,
     private val elementEditsSource: ElementEditsSource,
     private val noteEditsSource: NoteEditsSource,
-    private val autoSyncer: AutoSyncer,
     private val periodicCleaner: PeriodicCleaner,
     private val feedsUpdater: FeedsUpdater,
     private val prefs: Preferences,
@@ -424,7 +422,5 @@ class MainViewModelImpl(
         teamModeQuestFilterController.removeListener(teamModeListener)
         elementEditsSource.removeListener(elementEditsListener)
         noteEditsSource.removeListener(noteEditsListener)
-
-        autoSyncer.onClear()
     }
 }
