@@ -38,7 +38,6 @@ import de.westnordost.streetcomplete.ui.common.UploadIcon
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun MainMenuDialog(
     onDismissRequest: () -> Unit,

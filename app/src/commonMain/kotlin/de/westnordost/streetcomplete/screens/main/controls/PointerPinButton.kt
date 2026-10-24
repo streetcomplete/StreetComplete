@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.main.controls
 
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -16,7 +15,6 @@ import org.maplibre.compose.overlay.PointerPinButton as MapLibrePointerPinButton
 
 /** A pointer at the edge of the unobstructed map, shown while [targetPosition] lies outside
  *  its inscribed ellipse. The pin points towards the target; its content stays upright. */
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun MapOverlayScope.PointerPinButton(
     targetPosition: Position,

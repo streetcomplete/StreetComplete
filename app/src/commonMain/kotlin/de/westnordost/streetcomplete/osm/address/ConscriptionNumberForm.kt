@@ -49,7 +49,6 @@ import org.jetbrains.compose.resources.stringResource
  *  or [generally](https://commons.wikimedia.org/wiki/Category:Conscription_and_orientation_house_number_in_Czechia)
  *  and because the housenumber quest is disabled in Czech Republic anyway.
  *  */
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ConscriptionNumberForm(
     value: ConscriptionNumber,

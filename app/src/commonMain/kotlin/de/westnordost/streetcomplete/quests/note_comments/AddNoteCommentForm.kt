@@ -46,7 +46,6 @@ import org.koin.compose.koinInject
 import org.koin.core.qualifier.named
 
 /** Quest form for the OsmNoteQuestType quest */
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun AddNoteCommentForm(
     onDismiss: () -> Unit,

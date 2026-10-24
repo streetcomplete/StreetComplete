@@ -48,7 +48,6 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 /** Shows the user profile: username, avatar, star count and a hint regarding unpublished changes */
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ProfileScreen(viewModel: ProfileViewModel) {
     val userName by viewModel.userName.collectAsState()
