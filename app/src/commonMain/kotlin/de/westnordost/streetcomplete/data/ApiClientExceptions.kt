@@ -43,6 +43,18 @@ inline fun <T> wrapApiClientExceptions(block: () -> T): T =
             }
         }
     }
+    // any other exception thrown by the underlying Ktor client engine -
+    // each ktor client engine throws different exceptions on connection failure, not necessarily
+    // an IO exception. Which exceptions these are, is not documented. If it is documented one day
+    // we could add an expect/actual filter here to catch the different exceptions for the different
+    // client engines. Ideally, however, Ktor would wrap these exceptions into one exception, e.g.
+    // io.ktor.client.ConnectionException or similar.
+    // While neither of this is done, we just catch all exceptions 😢
+    // see https://youtrack.jetbrains.com/issue/KTOR-10027/
+    catch (e: Exception) {
+        throw ConnectionException(e.message, e)
+    }
+
 
 /** The server responded with an unhandled error code */
 class ApiClientException(message: String? = null, cause: Throwable? = null) :
