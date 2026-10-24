@@ -272,6 +272,9 @@ kotlin {
             dependencies {
                 // HTTP client
                 implementation(libs.ktor.client.cio)
+
+                // OS integration (network status)
+                implementation(libs.nucleus.systemInfo)
             }
         }
         commonTest {
