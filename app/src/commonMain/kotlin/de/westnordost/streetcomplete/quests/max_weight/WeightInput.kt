@@ -104,7 +104,7 @@ fun WeightInput(
 
 @Composable
 fun WeightClassSwedenInput(
-    value: Double?,
+    value: MaxWeightSign?,
     onValueChange: (Double?) -> Unit,
     modifier: Modifier = Modifier,
     locale: Locale = Locale.current,
@@ -115,19 +115,13 @@ fun WeightClassSwedenInput(
         horizontalArrangement = Arrangement.spacedBy(4.dp),
     ) {
         Text("BK")
-        AutoFitTextFieldFontSize(
-            value = value?.toString().orEmpty(),
-            modifier = Modifier.width(80.dp)
-        ) {
-            DecimalInput(
-                value = value,
-                onValueChange = onValueChange,
-                maxIntegerDigits = 1,
-                maxFractionDigits = 0,
-                locale = locale,
-                isUnsigned = true,
-                modifier = Modifier.fillMaxWidth()
-            )
-        }
+        DropdownButton(
+            items = MaxWeightCategorySweden.entries,
+            selectedItem = value,
+            onSelectedItem = onValueChange,
+            itemContent = { Text(it.toString()) },
+            modifier = Modifier.width(80.dp),
+            style = ButtonStyle.Outlined
+        )
     }
 }

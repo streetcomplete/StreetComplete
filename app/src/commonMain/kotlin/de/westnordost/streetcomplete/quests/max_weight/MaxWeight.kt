@@ -5,16 +5,15 @@ import de.westnordost.streetcomplete.quests.max_weight.MaxWeightType.*
 import kotlinx.serialization.Serializable
 
 @Serializable
-@Serializable
 sealed interface MaxWeightSign
 
 @Serializable
 data class MaxWeight(val type: MaxWeightType, val weight: Weight?) : MaxWeightSign
 
 @Serializable
-enum class MaxWeightCategorySweden : MaxWeightSign { 
+enum class MaxWeightCategorySweden : MaxWeightSign {
     One, Two, Three, Four
-} 
+}
 
 fun MaxWeight.applyTo(tags: Tags) {
     if (weight != null) {
