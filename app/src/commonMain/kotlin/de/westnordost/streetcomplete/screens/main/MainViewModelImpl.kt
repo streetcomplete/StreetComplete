@@ -127,7 +127,7 @@ class MainViewModelImpl(
 
 
     /* HUD */
-    override var showZoomButtons: StateFlow<Boolean> = callbackFlow {
+    override var showZoomButtons: StateFlow<Boolean?> = callbackFlow {
         send(prefs.showZoomButtons)
         val listener = prefs.onShowZoomButtonsChanged { trySend(it) }
         awaitClose { listener.deactivate() }
