@@ -43,7 +43,7 @@ fun StyledElement.toGeoJsonFeatures(): List<Feature<Geometry, JsonObject>> {
         is OverlayStyle.Polygon -> {
             if (style.color.alpha != 0f) {
                 p["color"] = JsonPrimitive(style.color.toRgbaString())
-                p["outline-color"] =  JsonPrimitive(style.color.darkened().toRgbaString())
+                p["outline-color"] = JsonPrimitive(style.outline?.toRgbaString() ?: style.color.darkened().toRgbaString())
                 p["opacity"] = JsonPrimitive(0.8f)
             } else {
                 p["opacity"] = JsonPrimitive(0f)
