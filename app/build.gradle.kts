@@ -273,7 +273,7 @@ kotlin {
                 // HTTP client
                 implementation(libs.ktor.client.cio)
 
-                // OS integration (network status, sharing)
+                // OS integration
                 implementation(libs.nucleus.systemInfo)
                 implementation(libs.nucleus.share)
                 implementation(libs.nucleus.application)
