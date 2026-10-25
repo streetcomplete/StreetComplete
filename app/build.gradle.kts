@@ -423,11 +423,11 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
     targetFiles = { projectDir.resolve("src/commonMain/composeResources/values-$it/translation_info.xml") }
 }
 
-tasks.register<UpdateIosAppTranslationsTask>("updateIosTranslations") {
+tasks.register<UpdateInfoPlistTranslationsTask>("updateIosTranslations") {
     group = "streetcomplete"
     projectId = poEditorProjectId
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
-    targetFile = projectDir.resolve("../iosApp/iosApp/InfoPlist.xcstrings")
+    targetDir = projectDir.resolve("../iosApp/iosApp")
     languageCodes = bcp47ExportLanguages
     strings = mapOf(
         "NSCameraUsageDescription" to "camera_permission_description",
@@ -435,7 +435,7 @@ tasks.register<UpdateIosAppTranslationsTask>("updateIosTranslations") {
     )
 }
 
-tasks.register<UpdateMacosAppTranslationsTask>("updateMacosTranslations") {
+tasks.register<UpdateInfoPlistTranslationsTask>("updateMacosTranslations") {
     group = "streetcomplete"
     projectId = poEditorProjectId
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String

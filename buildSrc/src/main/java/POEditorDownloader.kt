@@ -25,33 +25,6 @@ fun fetchLocalizationJson(apiToken: String, projectId: String, languageCode: Str
     }
 }
 
-/** Fetch the localizations for all the given BCP 47 language codes that are available and return
- *  them as a map of BCP 47 language code -> (string id -> translation string). en-us, the source
- *  language, is returned as en. */
-fun fetchLocalizationsJson(apiToken: String, projectId: String, languageCodes: Collection<String>): Map<String, Map<String, String>> {
-    val exportLanguages = languageCodes.map { Locale.forLanguageTag(it) }
-
-    val languageTags = fetchAvailableLocalizations(apiToken, projectId).map { it.code }
-
-    val translations = HashMap<String, Map<String, String>>()
-
-    for (languageTag in languageTags) {
-        val lang = if (languageTag.lowercase() == "en-us") "en" else languageTag
-        val locale = Locale.forLanguageTag(transformPOEditorLanguageTag(lang))
-
-        if (!exportLanguages.any { it == locale }) continue
-
-        val actualLanguageTag = locale.toLanguageTag()
-
-        print(languageTag)
-        if (actualLanguageTag != languageTag) print(" -> " + actualLanguageTag)
-        println()
-
-        translations[actualLanguageTag] = fetchLocalizationJson(apiToken, projectId, languageTag)
-    }
-    return translations
-}
-
 /** Fetch language codes of available translations from POEditor API */
 fun fetchAvailableLocalizations(apiToken: String, projectId: String): List<Localization> {
     val result = URI("https://api.poeditor.com/v2/languages/list").toURL().retryingQuotaConnection({ connection ->
