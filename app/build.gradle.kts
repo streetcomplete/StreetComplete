@@ -22,7 +22,7 @@ val bcp47ExportLanguages = setOf(
 /** Script-less locales mapped to the exported language whose resources should be copied for them.
  *  Compose resources does not infer the script of a locale like "zh-CN" and crashes when it would
  *  have to choose between several script variants, see
- *  https://youtrack.jetbrains.com/issue/CMP-10996/ */
+ *  TODO compose https://youtrack.jetbrains.com/issue/CMP-10996/ */
 val bcp47FallbackLanguages = mapOf(
     "zh" to "zh-Hans",
     "zh-TW" to "zh-Hant",
