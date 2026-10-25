@@ -11,6 +11,7 @@ open class UpdateAppTranslationsTask : DefaultTask() {
     @get:Input lateinit var projectId: String
     @get:Input lateinit var apiToken: String
     @get:Input lateinit var languageCodes: Collection<String>
+    @get:Input var fallbackLanguages: Map<String, String> = emptyMap()
     @get:Input lateinit var targetFiles: ((androidResCode: String) -> File)
 
     @TaskAction fun run() {
@@ -45,9 +46,11 @@ ${translations.entries.joinToString("\n") { (key, value) ->
 "    <string name=\"$key\">$xmlValue</string>"
 } }
 </resources>"""
-            val file = targetFiles(androidResCode)
-            file.parentFile.mkdirs()
-            file.writeText(text)
+            for (resCode in locale.toAndroidResCodes(fallbackLanguages)) {
+                val file = targetFiles(resCode)
+                file.parentFile.mkdirs()
+                file.writeText(text)
+            }
         }
     }
 }
