@@ -418,10 +418,6 @@
           "name": "Plastisch chirurg",
           "terms": ["plastisch chirurg", "plastische chirurgie"]
         },
-        "amenity/doctors/podiatry": {
-          "name": "Podoloog",
-          "terms": ["voeten", "nagels", "voetheelkunde", "podologie", "podiatrie", "podiatrist"]
-        },
         "amenity/doctors/proctology": {
           "name": "Darmchirurg",
           "terms": ["colorectale chirurg", "endeldarmchirurg"]
@@ -1457,6 +1453,9 @@
           "name": "Kissing gate",
           "terms": ["veehek", "kushek", "kusjeshek", "kissing gate"]
         },
+        "barrier/lift_gate": {
+          "name": "Slagboom"
+        },
         "barrier/log": {
           "name": "Blokkade door omgevallen boom",
           "terms": ["gevallen", "omgevallen"]
@@ -2286,10 +2285,6 @@
         "highway/crossing": {
           "name": "Oversteekplaats",
           "terms": ["kruispunt", "oversteken"]
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "Oversteekplaats met verkeerslichten voor voetgangers",
-          "terms": ["verkeerslichten", "zebra", "oversteekplaats", "zebrapad", "stoplicht"]
         },
         "highway/crossing/uncontrolled": {
           "name": "Gemarkeerde oversteekplaats",
@@ -6139,6 +6134,10 @@
         },
         "amenity/prep_school": {
           "name": "Bijlesinstituut"
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Podoloog",
+          "terms": ["voeten", "nagels", "voetheelkunde", "podologie", "podiatrie", "podiatrist"]
         },
         "aerialway/station": {
           "name": "Kabelbaanstation",

@@ -306,9 +306,6 @@
           "name": "Bác sĩ",
           "terms": ["văn phòng bác sĩ", "văn phòng bác sỹ", "văn phòng thầy thuốc", "van phong bac si", "van phong bac sy", "van phong thay thuoc"]
         },
-        "amenity/doctors/podiatry": {
-          "terms": ["bác sĩ chữa chân", "bác sỹ chữa chân", "thầy thuốc chữa chân", "bác sĩ bộ khoa", "bác sỹ bộ khoa", "bac si chua chan", "bac sy chua chan", "thay thuoc chua chan", "bac si bo khoa", "bac sy bo khoa"]
-        },
         "amenity/dojo": {
           "name": "Võ đường",
           "terms": ["võ đường", "trường võ thuật", "phòng tập võ thuật", "võ thuật", "karate", "judo", "nhu đạo", "vo duong", "truong vo thuat", "phong tap vo thuat", "vo thuat", "nhu dao"]
@@ -389,8 +386,8 @@
           "terms": ["trung tâm ẩm thực", "khu ẩm thực", "phố ẩm thực", "nhà hàng ăn nhanh", "quán ăn nhanh", "trung tam am thuc", "khu am thuc", "pho am thuc", "nha hang an nhanh", "quan an nhanh"]
         },
         "amenity/fountain": {
-          "name": "Vòi nước",
-          "terms": ["vòi nước", "voi nuoc"]
+          "name": "Đài phun nước",
+          "terms": ["đài phun nước", "suối nước", "vòi nước", "dai phun nuoc", "suoi nuoc", "voi nuoc"]
         },
         "amenity/fuel": {
           "name": "Cây xăng",
@@ -1869,10 +1866,6 @@
         },
         "highway/crossing": {
           "name": "Lối Băng qua Đường"
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "Lối Qua đường có Đèn Cảnh báo",
-          "terms": ["lối qua đường có đèn cảnh báo", "lối qua đường có đèn tín hiệu", "vạch qua đường có đèn cảnh báo", "vạch qua đường có đèn tín hiệu", "loi qua duong co den canh bao", "loi qua duong co den tin hieu", "vach qua duong co den canh bao", "vach qua duong co den tin hieu"]
         },
         "highway/crossing/unmarked": {
           "name": "Lối Qua đường Không có Vạch",
@@ -5250,6 +5243,10 @@
         "amenity/nursing_home": {
           "name": "Viện Dưỡng lão",
           "terms": ["viện dưỡng lão", "nhà dưỡng lão", "nhà an dưỡng", "nơi an dưỡng", "nhà điều dưỡng", "nhà nghỉ dưỡng", "chăm sóc người già", "vien duong lao", "nha duong lao", "nha an duong", "noi an duong", "nha dieu duong", "nha nghi duong", "cham soc nguoi gia"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Chữa Chân",
+          "terms": ["bác sĩ chữa chân", "bác sỹ chữa chân", "thầy thuốc chữa chân", "bác sĩ bộ khoa", "bác sỹ bộ khoa", "bac si chua chan", "bac sy chua chan", "thay thuoc chua chan", "bac si bo khoa", "bac sy bo khoa"]
         },
         "aerialway/station": {
           "name": "Trạm Cáp treo",

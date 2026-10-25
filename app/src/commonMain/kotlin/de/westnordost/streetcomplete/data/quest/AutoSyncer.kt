@@ -101,13 +101,19 @@ class AutoSyncer(
 
         coroutineScope.launch {
             activeNetworkConnection.capabilities.collect { capabilities ->
-                networkCapabilities.value = capabilities
+                if (capabilities != networkCapabilities.value) {
+                    networkCapabilities.value = capabilities
 
-                if (capabilities?.hasInternet == true) {
-                    triggerAutoSync()
+                    if (capabilities?.hasInternet == true) {
+                        triggerAutoSync()
+                    }
                 }
             }
         }
+        // also try once on start, in case there are pending changes that haven't been uploaded
+        // during the last session because the last session was offline
+        triggerAutoUpload()
+
         coroutineScope.launch {
             val request = LocationRequest {
                 accuracy = LocationAccuracy.High
@@ -124,14 +130,6 @@ class AutoSyncer(
                 }
             }
         }
-    }
-
-    fun onClear() {
-        unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
-        downloadProgressSource.removeListener(downloadProgressListener)
-        userLoginSource.removeListener(userLoginStatusListener)
-        teamModeQuestFilterSource.removeListener(teamModeChangeListener)
-        coroutineScope.coroutineContext.cancelChildren()
     }
 
     /* ------------------------------------------------------------------------------------------ */

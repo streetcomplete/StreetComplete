@@ -16,7 +16,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
@@ -39,7 +38,6 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 
 /** Form with which the user can leave a note instead of solving the quest/edit */
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable fun LeaveNoteInsteadForm(
     onLeaveNote: (text: String, noteImagePaths: List<String>) -> Unit,
     onDismiss: () -> Unit,

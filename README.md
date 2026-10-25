@@ -1,7 +1,5 @@
 ![StreetComplete](.github/images/feature_graphic.png)
 
-### >>> [Test on iOS TestFlight now!](https://testflight.apple.com/join/K1u3eUU5)
-
 StreetComplete is an easy to use editor of OpenStreetMap data available for Android and iOS. It can be used without any OpenStreetMap-specific knowledge. It asks simple questions, with answers directly used to edit and improve OpenStreetMap data. The app is aimed at users who do not know anything about OSM tagging schemes but still want to contribute to OpenStreetMap.
 
 StreetComplete automatically looks for nearby places where a survey is needed and shows them as quest markers on its map. Each of these quests can then be solved on site by answering a simple question. For example, tapping on a marker may show the question "What is the name of this road?", with a text field to answer it.
@@ -21,7 +19,10 @@ To make the app easy to use, quests are limited to those answerable by asking si
 
 ## Download
 
-[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/details?id=de.westnordost.streetcomplete)[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/de.westnordost.streetcomplete/)[<img src="https://user-images.githubusercontent.com/663460/26973090-f8fdc986-4d14-11e7-995a-e7c5e79ed925.png" alt="Download APK from GitHub" height="80">](https://github.com/streetcomplete/StreetComplete/releases/latest)
+[<img src=".github/images/google-play-badge.svg" alt="Get it on Google Play" height="40">](https://play.google.com/store/apps/details?id=de.westnordost.streetcomplete)
+[<img src=".github/images/f-droid-badge.svg" alt="Get it on F-Droid" height="40">](https://f-droid.org/packages/de.westnordost.streetcomplete/)
+[<img src=".github/images/github-badge.png" alt="Download APK from GitHub" height="40">](https://github.com/streetcomplete/StreetComplete/releases/latest)
+[<img src=".github/images/app-store-badge.svg" alt="Download on the App Store" height="40">](https://apps.apple.com/app/id6808344816)
 
 ## Quests
 
@@ -56,7 +57,7 @@ This software is released under the terms of the [GNU General Public License v3.
 <a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" alt="nlnet" height="100"/></a><br/>
 The **NLnet foundation** sponsored development on this app in four individual grants with funds from the European Commission:<br/>
 
-- A grant from <a href="https://nlnet.nl/project/StreetComplete-multiplatform/">2025</a> will allow Tobias Zwick to finish migrating the app to a multiplatform, so that it runs also on iOS (see <a href="https://github.com/streetcomplete/StreetComplete/issues/5421">ticket</a>)
+- A grant from <a href="https://nlnet.nl/project/StreetComplete-multiplatform/">2025</a> allowed Tobias Zwick to finish migrating the app to a multiplatform, so that it runs also on iOS (see <a href="https://github.com/streetcomplete/StreetComplete/issues/5421">ticket</a>)
 - In <a href="https://nlnet.nl/project/StreetComplete-Together/">2021</a>, a grant enabled Tobias Zwick to work about five months on the app - most notably, implement the overlays functionality and measuring with AR.
 - In <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">2019</a> and <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/397825">2021</a>, Mateusz Konieczny each got a grant to work on StreetComplete with a focus on improvements on UI and data collection
 

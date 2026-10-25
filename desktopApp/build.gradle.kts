@@ -66,9 +66,14 @@ nucleus.application {
     }
     nativeDistributions {
         packageName = "StreetCompleteDev"
+        protocol("StreetComplete", "streetcomplete", "geo")
         // TODO desktop: sync with versionName in androidApp and MARKETING_VERSION in iosApp
         packageVersion = "1.0.0"
         modules("java.prefs", "jdk.unsupported")
+        linux {
+            // maplibre-compose uses dbus-java-core which in turn uses this module
+            modules("jdk.security.auth")
+        }
         macOS {
             // keep in sync with DESKTOP_APP_ID in DesktopModule.kt
             bundleID = "de.westnordost.streetcomplete.desktop"

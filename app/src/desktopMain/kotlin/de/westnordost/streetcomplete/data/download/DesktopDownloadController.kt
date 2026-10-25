@@ -12,6 +12,10 @@ import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.job
 import kotlinx.coroutines.launch
 
+// TODO desktop: (On Linux) we might want to use the dedicated D-Bus API
+//  https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.Background.html
+//  to request continuing the download to run in the background
+
 class DesktopDownloadController(private val downloader: Downloader) : DownloadController {
     // Downloader already logs errors and notifies its listeners
     private val scope = CoroutineScope(

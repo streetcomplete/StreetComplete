@@ -852,13 +852,6 @@
         "type/boundary": {
           "name": "Boundary"
         },
-        "type/boundary/administrative": {
-          "relation": {
-            "role_labels": {
-              "admin_centre": "Admin Centre"
-            }
-          }
-        },
         "type/multipolygon": {
           "name": "Multipolygon"
         },
@@ -908,6 +901,12 @@
           "name": "Building",
           "terms": ["structure"]
         },
+        "type/restriction/no_left_turn": {},
+        "type/restriction/no_right_turn": {},
+        "type/restriction/no_straight_on": {},
+        "type/restriction/only_left_turn": {},
+        "type/restriction/only_right_turn": {},
+        "type/restriction/only_straight_on": {},
         "landuse/reservoir": {
           "name": "Reservoir",
           "terms": ["dam"]
@@ -920,7 +919,6 @@
           "name": "Shared Path Crossing",
           "terms": ["cycle & foot crossing", "bicycle and foot crosswalk", "bike and pedestrian crossing", "cycleway", "cycling", "cyclist"]
         },
-        "boundary/administrative": {},
         "@templates/contact": {
           "name": "Point",
           "terms": ["node", "other", "vertex", "vertices"]

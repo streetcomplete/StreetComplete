@@ -205,8 +205,9 @@
           "terms": ["stazione", "parcheggio", "interno", "livelli", "parco bici", "parcheggio biciclette"]
         },
         "amenity/bicycle_parking/lockers": {
-          "name": "Rastrelliere",
-          "terms": ["stipetto", "armadietto", "garage", "armadio", "locker"]
+          "name": "Armadietti per biciclette",
+          "terms": ["stipetto", "armadietto", "garage", "armadio", "locker"],
+          "aliases": ["Armadietto per biciclette", "Box per biciclette", "Box biciclette", "Armadietti individuali per biciclette"]
         },
         "amenity/bicycle_parking/shed": {
           "name": "Rimessa per biciclette",
@@ -447,10 +448,6 @@
         "amenity/doctors/plastic_surgery": {
           "name": "Chirurgo plastico",
           "terms": ["chirurgia estetica", "chirurgia craniofacciale", "chirurgia ricostruttiva", "chirurgia plastica"]
-        },
-        "amenity/doctors/podiatry": {
-          "name": "Podologo",
-          "terms": ["caviglia", "piedi", "piede", "gamba", "gambe", "podologia"]
         },
         "amenity/doctors/proctology": {
           "name": "Chirurgo colo-rettale",
@@ -698,6 +695,10 @@
           "name": "Punto di ritiro self-service",
           "terms": ["paccomat", "locker"]
         },
+        "amenity/parking": {
+          "name": "Parcheggio",
+          "terms": ["parcheggio", "auto", "autorimessa", "veicoli", "camion", "tir", "camper", "roulotte"]
+        },
         "amenity/parking/multi-storey": {
           "name": "Parcheggio multipiano",
           "terms": ["auto", "parcheggio coperto", "parcheggio su più piani", "più piani", "piano", "parcheggio interno", "garage", "rampa parcheggio", "edificio parcheggio"]
@@ -706,7 +707,7 @@
           "name": "Area del parcheggio di interscambio"
         },
         "amenity/parking/street-side": {
-          "name": "Parcheggio lato strada",
+          "name": "Parcheggio sul ciglio della strada",
           "terms": ["parcheggio a bordo strada", "parcheggio bordo strada", "parcheggio a lato strada", "bordo strada", "lato strada", "slargo", "spiazzo", "parcheggio"]
         },
         "amenity/parking/underground": {
@@ -724,6 +725,10 @@
         "amenity/parking_space/disabled": {
           "name": "Stallo di parcheggio per disabili",
           "terms": ["parcheggio disabili", "disabili", "sedia a rotelle", "stallo"]
+        },
+        "amenity/parking_surface": {
+          "name": "Parcheggio a raso",
+          "aliases": ["Parcheggio di superficie", "Parcheggio all'aperto", "Parcheggio per macchine", "Parcheggio per automobili", "Parcheggio per veicoli"]
         },
         "amenity/payment_centre": {
           "name": "Centro per i pagamenti",
@@ -1052,7 +1057,7 @@
         },
         "amenity/telephone": {
           "name": "Telefono",
-          "terms": ["telefono", "cabina"]
+          "terms": ["cabina telefonica", "telefono pubblico", "telefono a pagamento"]
         },
         "amenity/theatre": {
           "name": "Teatro",
@@ -1435,7 +1440,7 @@
           "name": "Sbarra"
         },
         "barrier/log": {
-          "name": "Ostruzione dell'albero caduto",
+          "name": "Ostruzione da albero caduto",
           "terms": ["ostruzione da albero caduto", "sbarramento da albero caduto", "ostacolo albero caduto", "albero caduto"]
         },
         "barrier/motorcycle_barrier": {
@@ -1670,7 +1675,7 @@
           "terms": ["tetto", "pensilina", "copertura", "riparo"]
         },
         "building/ruins": {
-          "name": "Edificio in rovina",
+          "name": "Edificio costruito appositamente per sembrare diroccato",
           "terms": ["rovina", "rovine", "distrutto", "pericolante", "pericolo", "crollo", "crolli", "crollato", "collassato", "collasso"]
         },
         "building/school": {
@@ -1987,7 +1992,8 @@
           "name": "Scuola di danza"
         },
         "education/driving_school": {
-          "name": "Scuola guida"
+          "name": "Scuola guida",
+          "terms": ["autoscuola"]
         },
         "education/kindergarten": {
           "name": "Scuola dell'infanzia",
@@ -2282,10 +2288,6 @@
         },
         "highway/crossing/informal": {
           "name": "Attraversamento informale"
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "Attraversamento pedonale semaforizzato",
-          "terms": ["semaforo", "piedi", "pedonale", "strisce pedonali", "attraversamento", "bici", "ciclabile", "marciapiede"]
         },
         "highway/crossing/uncontrolled": {
           "name": "Attraversamento pedonale segnalato",
@@ -3015,8 +3017,8 @@
           "terms": ["riserva", "natura", "parco", "naturale"]
         },
         "leisure/outdoor_seating": {
-          "name": "Posti a sedere all’esterno",
-          "terms": ["giardino", "patio", "esterno", "aperto", "all’aperto", "cena", "caffè", "merenda", "pub", "ristorante", "bar", "veranda", "dehors"]
+          "name": "Area con posti a sedere all’aperto",
+          "terms": ["giardino", "patio", "esterno", "aperto", "all’aperto", "cena", "caffè", "merenda", "pub", "ristorante", "bar", "veranda", "dehors", "dehor", "sedute", "tavoli", "scoperto"]
         },
         "leisure/park": {
           "name": "Parco"
@@ -3804,7 +3806,7 @@
           "terms": ["serbatoio", "bacino", "acqua", "lago artificiale", "diga"]
         },
         "natural/water/river": {
-          "name": "Area Fluviale",
+          "name": "Area fluviale",
           "terms": ["area fluviale"]
         },
         "natural/water/stream": {
@@ -5300,8 +5302,8 @@
           "name": "Rifugio alpino"
         },
         "tourism/apartment": {
-          "name": "Affittacamere",
-          "terms": ["affittacamere", "bed & breakfast", "appartamenti"]
+          "name": "Appartamenti turistici",
+          "terms": ["bed & breakfast", "appartamenti"]
         },
         "tourism/aquarium": {
           "name": "Acquario",
@@ -5934,7 +5936,8 @@
           "name": "Scuola di danza"
         },
         "amenity/driving_school": {
-          "name": "Scuola guida"
+          "name": "Scuola guida",
+          "terms": ["autoscuola"]
         },
         "amenity/embassy": {
           "name": "Ambasciata",
@@ -5967,6 +5970,10 @@
         },
         "amenity/university": {
           "name": "Università"
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Podologo",
+          "terms": ["piede", "piedi", "caviglia", "unghie", "calli", "alluce"]
         },
         "amenity/charging_station/charging_station_bicycle_designated": {
           "name": "Stazione di ricarica per biciclette",

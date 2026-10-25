@@ -2,6 +2,7 @@
 advisoryCycleLaneStyle: white dashes without pictogram
 atmOperators: [Banco Agrícola, Chivo, Banco Agricola, Davivienda, Scotiabank, Banco Cuscatlan, Banco Hipotecario, Banco de América Central, Banco Cuscatlán, BAC Credomatic, Gobierno de El Salvador, Caja de Crédito, Banco Atlántida]
 centerLineStyle: yellow
+chargingStationSocketTypes: [nacs, type1, type1_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: true
 domesticSocketTypes: [typeb, typea]
 exclusiveCycleLaneStyle: white dots

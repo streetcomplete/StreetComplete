@@ -189,7 +189,7 @@
         },
         "amenity/bicycle_parking": {
           "name": "Bicycle Parking",
-          "terms": ["bike", "bike parking", "bike rack", "bike stands", "cycle parking", "cycling"]
+          "terms": ["bicycle stand", "bike", "bike parking", "bike rack", "bike stands", "cycle parking", "cycling"]
         },
         "amenity/bicycle_parking/building": {
           "name": "Bicycle Parking Garage",
@@ -418,10 +418,6 @@
         "amenity/doctors/plastic_surgery": {
           "name": "Plastic Surgeon",
           "terms": ["aesthetic surgery", "cosmetic surgery", "craniofacial surgery", "plastic surgery", "reconstructive surgery"]
-        },
-        "amenity/doctors/podiatry": {
-          "name": "Podiatrist",
-          "terms": ["ankle", "feet", "foot", "leg", "legs", "podiatry", "chiropodist", "podiatric surgeon"]
         },
         "amenity/doctors/psychiatrist": {
           "name": "Psychiatrist",
@@ -695,7 +691,7 @@
         },
         "amenity/parking_surface": {
           "name": "Surface Car Park",
-          "terms": ["at-grade parking", "car park", "ground level parking", "open air parking", "parking lot", "surface lot", "surface parking", "surface parking lot"]
+          "terms": ["at-grade parking", "automobile parking", "car lot", "car park", "car parking", "ground level parking", "open air parking", "parking lot", "rv parking", "surface lot", "surface parking", "truck parking", "vehicle parking", "surface parking lot"]
         },
         "amenity/payment_centre": {
           "name": "Payment Centre",
@@ -1250,12 +1246,6 @@
         },
         "area": {
           "name": "Area",
-          "relation": {
-            "role_labels": {
-              "inner": "Inner",
-              "outer": "Outer"
-            }
-          },
           "terms": ["polygon"]
         },
         "area/footway": {
@@ -1542,7 +1532,7 @@
         },
         "building/carport": {
           "name": "Carport",
-          "terms": ["car", "covered parking space", "garage", "porch"]
+          "terms": ["car", "car roof", "covered parking space", "garage", "porch", "roof"]
         },
         "building/cathedral": {
           "name": "Cathedral Building"
@@ -2229,7 +2219,7 @@
         },
         "healthcare/podiatrist": {
           "name": "Podiatrist",
-          "terms": ["feet", "foot", "nails"]
+          "terms": ["ankle", "feet", "foot", "leg", "legs", "nails", "podiatry", "chiropodist", "podiatric surgeon"]
         },
         "healthcare/psychotherapist": {
           "name": "Psychotherapist",
@@ -2279,10 +2269,6 @@
         },
         "highway/crossing/informal": {
           "name": "Informal Crossing"
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "Crossing With Pedestrian Signals",
-          "terms": ["bicycle crossing (lights)", "crosswalk (lights)", "pedestrian crossing (lights)", "pedestrian traffic lights", "pedestrian traffic signals"]
         },
         "highway/crossing/uncontrolled": {
           "name": "Marked Crossing",
@@ -2457,7 +2443,7 @@
         },
         "highway/residential": {
           "name": "Residential Road",
-          "terms": ["road", "street"]
+          "terms": ["road", "street", "residential street"]
         },
         "highway/rest_area": {
           "name": "Rest Area",
@@ -5823,10 +5809,7 @@
           "name": "Administrative Boundary",
           "relation": {
             "role_labels": {
-              "admin_centre": "Admin Centre",
-              "inner": "Inner",
-              "label": "Label",
-              "outer": "Outer"
+              "label": "Label"
             }
           }
         },
@@ -5849,13 +5832,7 @@
           "terms": ["maxspeed", "radar", "speed camera"]
         },
         "type/multipolygon": {
-          "name": "Multipolygon",
-          "relation": {
-            "role_labels": {
-              "inner": "Inner",
-              "outer": "Outer"
-            }
-          }
+          "name": "Multipolygon"
         },
         "type/public_transport/stop_area_group": {
           "name": "Public Transport Stop Area Group",
@@ -6267,6 +6244,10 @@
         "amenity/university": {
           "name": "University Grounds",
           "terms": ["college", "graduate school", "master's degree program", "phd program"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Podiatrist",
+          "terms": ["ankle", "feet", "foot", "leg", "legs", "nails", "podiatry", "chiropodist", "podiatric surgeon"]
         },
         "aerialway/station": {
           "name": "Aerialway Station",

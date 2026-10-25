@@ -338,6 +338,14 @@
           "name": "ศาลาประชาคม",
           "terms": ["ศาลาประชาคม"]
         },
+        "amenity/community_centre/cultural_centre": {
+          "name": "ศูนย์วัฒนธรรม",
+          "terms": ["ศูนย์ทางวัฒนธรรม"]
+        },
+        "amenity/community_centre/family_centre": {
+          "name": "ศูนย์ครอบครัว",
+          "terms": ["ศูนย์ทางครอบครัว"]
+        },
         "amenity/community_centre/lgbtq": {
           "name": "ศูนย์ชุมชนกลุ่ม LGBTQ+",
           "terms": ["ศูนย์ชุมชนกลุ่ม lgbtq+"]
@@ -461,10 +469,6 @@
         "amenity/doctors/plastic_surgery": {
           "name": "ศัลยแพทย์ตกแต่ง",
           "terms": ["ศัลยแพทย์ตกแต่ง"]
-        },
-        "amenity/doctors/podiatry": {
-          "name": "แพทย์เท้า",
-          "terms": ["แพทย์เท้า"]
         },
         "amenity/doctors/proctology": {
           "name": "ศัลยแพทย์ลำไส้ใหญ่",
@@ -737,6 +741,10 @@
           "name": "ตู้ล็อกเกอร์รับฝากพัสดุ",
           "terms": ["ตู้ล็อกเกอร์รับฝากพัสดุ"]
         },
+        "amenity/parking": {
+          "name": "ที่จอดรถ",
+          "terms": ["ลานจอดรถ"]
+        },
         "amenity/parking/multi-storey": {
           "name": "โรงจอดรถหลายชั้น",
           "terms": ["โรงจอดรถหลายชั้น"]
@@ -764,6 +772,10 @@
         "amenity/parking_space/disabled": {
           "name": "ซองจอดรถสำหรับคนพิการ",
           "terms": ["ซองจอดรถสำหรับคนพิการ", "ช่องจอดรถสำหรับคนพิการ", "ซองจอดรถวีลแชร์"]
+        },
+        "amenity/parking_surface": {
+          "name": "ลานจอดรถ",
+          "terms": ["ที่จดอรถแบบลาน"]
         },
         "amenity/payment_centre": {
           "name": "ศูนย์การชำระเงิน",
@@ -1344,12 +1356,6 @@
         },
         "area": {
           "name": "พื้นที่",
-          "relation": {
-            "role_labels": {
-              "inner": "ภายใน",
-              "outer": "ภายนอก"
-            }
-          },
           "terms": ["พื้นที่"]
         },
         "area/footway": {
@@ -1556,6 +1562,10 @@
         "barrier/kissing_gate": {
           "name": "ประตูกั้นปศุสัตว์",
           "terms": ["ประตูกั้นปศุสัตว์"]
+        },
+        "barrier/lift_gate": {
+          "name": "ประตูกันกระแทก",
+          "terms": ["ประตูกันแบบกระแทก"]
         },
         "barrier/log": {
           "name": "ต้มไม้ล้มขวางทาง",
@@ -1855,6 +1865,10 @@
         "building/temple": {
           "name": "อาคารวัด/โบสถ์",
           "terms": ["อาคารวัด/โบสถ์"]
+        },
+        "building/tent": {
+          "name": "เต็นท์ถาวร",
+          "terms": ["เต็นท์แบบถาวร"]
         },
         "building/terrace": {
           "name": "แถวของตึกแถว",
@@ -2396,6 +2410,14 @@
           "name": "ศูนย์คลอดกำเนิด",
           "terms": ["ศูนย์คลอดกำเนิด"]
         },
+        "healthcare/blood_donation": {
+          "name": "ศูนย์รับบริจาคโลหิต",
+          "terms": ["ศูนย์รับบริจาคโลหิต", "ศูนย์รับบริจาคเลือด", "บริจาคเลือด"]
+        },
+        "healthcare/counselling": {
+          "name": "ศูนย์ให้คำปรึกษา",
+          "terms": ["ศูนย์ให้การปรึกษา"]
+        },
         "healthcare/dentist/orthodontics": {
           "name": "ทันตแพทย์จัดฟัน",
           "terms": ["ทันตแพทย์จัดฟัน"]
@@ -2476,10 +2498,6 @@
         },
         "highway/crossing/informal": {
           "name": "ทางตัดแบบไม่เป็นทางการ"
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "ทางข้ามมีไฟจราจร",
-          "terms": ["ทางข้ามมีไฟจราจร"]
         },
         "highway/crossing/uncontrolled": {
           "name": "ทางข้ามมีเครื่องหมายจราจร",
@@ -3926,6 +3944,10 @@
           "name": "ไซโล",
           "terms": ["ไซโล"]
         },
+        "man_made/silo/crop": {
+          "name": "ไซโลเก็บพืชผล",
+          "terms": ["ไซโลเก็บผลผลิตทางการเกษตร"]
+        },
         "man_made/ski_jump": {
           "name": "หอกระโดดสกี",
           "terms": ["หอกระโดดสกี"]
@@ -5191,6 +5213,10 @@
           "name": "ทางรถไฟรางแคบ",
           "terms": ["ทางรถไฟรางแคบ", "ทางรถไฟแนร์โรว์เกจ"]
         },
+        "railway/platform_edge": {
+          "name": "ขอบชานชาลา",
+          "terms": ["ขอบของชานชาลา"]
+        },
         "railway/preserved": {
           "name": "ทางรถไฟสายมรดก",
           "terms": ["ทางรถไฟสายมรดก"]
@@ -5296,6 +5322,10 @@
         "seamark/mooring": {
           "name": "หลักผูกเรือ",
           "terms": ["จอดเรือ", "หลักผูกเรือ"]
+        },
+        "seamark/offshore_platform": {
+          "name": "แท่นนอกชายฝั่ง",
+          "terms": ["แท่นขุดเจาะและผลิตกลางทะเล"]
         },
         "shop": {
           "name": "ร้านค้า",
@@ -6297,10 +6327,7 @@
           "name": "แนวเขตการปกครอง",
           "relation": {
             "role_labels": {
-              "admin_centre": "ศูนย์การปกครอง",
-              "inner": "ภายใน",
-              "label": "ป้ายชื่อ",
-              "outer": "ภายนอก"
+              "label": "ป้ายชื่อ"
             }
           },
           "terms": ["แนวเขตการปกครอง"]
@@ -6327,13 +6354,7 @@
         },
         "type/multipolygon": {
           "name": "รูปหลายเหลี่ยม",
-          "terms": ["รูปหลายเหลี่ยม"],
-          "relation": {
-            "role_labels": {
-              "inner": "ภายใน",
-              "outer": "ภายนอก"
-            }
-          }
+          "terms": ["รูปหลายเหลี่ยม"]
         },
         "type/public_transport/stop_area_group": {
           "name": "กลุ่มพื้นที่หยุดการขนส่ง",
@@ -6802,6 +6823,10 @@
         "amenity/university": {
           "name": "พื้นที่มหาวิทยาลัย",
           "terms": ["พื้นที่มหาวิทยาลัย", "campus", "แคมปัส", "วิทยาเขต"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "แพทย์เท้า",
+          "terms": ["แพทย์เท้า"]
         },
         "amenity/charging_station/charging_station_bicycle_designated": {
           "name": "สถานีชาร์จรถจักรยาน",

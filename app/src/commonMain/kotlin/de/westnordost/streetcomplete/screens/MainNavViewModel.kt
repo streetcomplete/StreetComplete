@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfig
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
-import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.ktx.toPosition
 import de.westnordost.streetcomplete.util.parseGeoUri
@@ -24,7 +23,9 @@ abstract class MainNavViewModel : ViewModel() {
     /** Whether the intro tutorial should be shown on start */
     abstract val shouldShowIntroTutorial: Boolean
 
-    abstract fun setUri(uri: String)
+    /** Shows the given preset or geo URI on the main screen. Returns false if it is neither, then
+     *  it is ignored. */
+    abstract suspend fun setUri(uri: String): Boolean
 
     abstract val urlConfig: StateFlow<ShownUrlConfig?>
     abstract fun consumeUrlConfig()
@@ -45,18 +46,19 @@ class MainNavViewModelImpl(
     override val shouldShowIntroTutorial: Boolean
         get() = !prefs.hasShownTutorial
 
-    override fun setUri(uri: String) {
-        launch {
-            urlConfig.value = parseShownUrlConfig(uri)
+    override suspend fun setUri(uri: String): Boolean {
+        val config = parseShownUrlConfig(uri)
+        val geo = parseGeoUri(uri)
+        if (config == null && geo == null) return false
 
-            val geo = parseGeoUri(uri)
-            if (geo != null) {
-                val zoom = if (geo.zoom == null || geo.zoom < 14) 18.0 else geo.zoom
-                val pos = LatLon(geo.latitude, geo.longitude)
+        urlConfig.value = config
+        if (geo != null) {
+            val zoom = if (geo.zoom == null || geo.zoom < 14) 18.0 else geo.zoom
+            val pos = LatLon(geo.latitude, geo.longitude)
 
-                geoUri.value = CameraPosition(center = pos.toPosition(), bearing = 0.0, pitch = 0.0, zoom = zoom)
-            }
+            geoUri.value = CameraPosition(center = pos.toPosition(), bearing = 0.0, pitch = 0.0, zoom = zoom)
         }
+        return true
     }
 
     private suspend fun parseShownUrlConfig(uri: String): ShownUrlConfig? {

@@ -2,6 +2,7 @@
 atmOperators: [Popular, First Bank, Banco Popular, Oriental, PenFed Credit Union, Scotiabank, Oriental Bank, Cooperativa de Ahorro y Crédito de Cabo Rojo]
 centerLineStyle: yellow
 chargingStationOperators: ['Tesla, Inc.', Tesla]
+chargingStationSocketTypes: [nacs, type1, type1_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: true
 domesticSocketTypes: [typeb, typea]
 lengthUnits: [foot and inch, meter]

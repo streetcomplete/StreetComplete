@@ -11,7 +11,6 @@ import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -157,7 +156,6 @@ private fun TeamModeTeamSizeInput(
     }
 }
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun TeamModeColorSelect(
     teamSize: Int,

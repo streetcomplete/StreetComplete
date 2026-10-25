@@ -41,7 +41,7 @@ class AvatarsDownloader(
         try {
             userApi.get(userId)?.profileImageUrl
         } catch (e: Exception) {
-            Log.w(TAG, "Unable to query info for user id $userId")
+            Log.w(TAG, "Unable to query info for user id $userId", e)
             null
         }
 
