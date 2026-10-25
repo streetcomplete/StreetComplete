@@ -62,5 +62,6 @@ open class UpdateInfoPlistTranslationsTask : DefaultTask() {
     }
 }
 
+/** Escape for a quoted string in the plist format of .strings files */
 private fun String.escapeStrings(): String =
     replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n")
