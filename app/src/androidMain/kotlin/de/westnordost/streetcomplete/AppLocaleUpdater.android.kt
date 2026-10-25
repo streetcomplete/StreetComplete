@@ -11,11 +11,11 @@ internal actual fun applyAppLocale(locale: Locale?) {
     LocaleList.setDefault(locales)
 }
 
-/** The system locales with the resolved app locale put in front. */
+/** The system locales with [locale] put in front, if any. */
 internal fun appLocales(locale: Locale?): LocaleList {
-    val configurationLocales = Resources.getSystem().configuration.locales
-    val systemLocales = (0 until configurationLocales.size()).map { configurationLocales[it]!! }
-    val resolvedLocale = resolveAppLocale(locale, systemLocales.map { Locale(it.toLanguageTag()) })
-    val locales = listOf(resolvedLocale.platformLocale) + systemLocales
+    val systemLocales = Resources.getSystem().configuration.locales
+    if (locale == null) return systemLocales
+    val locales = listOf(locale.platformLocale) +
+        (0 until systemLocales.size()).map { systemLocales[it]!! }
     return LocaleList(*locales.distinct().toTypedArray())
 }

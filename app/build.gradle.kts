@@ -19,6 +19,18 @@ val bcp47ExportLanguages = setOf(
     "zh-Hans", "zh-Hant"
 )
 
+/** Script-less locales mapped to the exported language whose resources should be copied for them.
+ *  Compose resources does not infer the script of a locale like "zh-CN" and crashes when it would
+ *  have to choose between several script variants, see
+ *  https://youtrack.jetbrains.com/issue/CMP-10996/ */
+val bcp47FallbackLanguages = mapOf(
+    "zh" to "zh-Hans",
+    "zh-TW" to "zh-Hant",
+    "zh-HK" to "zh-Hant",
+    "zh-MO" to "zh-Hant",
+    "sr" to "sr-Cyrl",
+)
+
 /** Version of the iD presets to use
  *  see https://github.com/openstreetmap/id-tagging-schema/releases for latest version */
 val presetsVersion = "v7.3.0"
@@ -391,6 +403,7 @@ tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons
 tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     group = "streetcomplete"
     languageCodes = bcp47ExportLanguages
+    fallbackLanguages = bcp47FallbackLanguages
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
     targetFiles = { projectDir.resolve("src/commonMain/composeResources/values-$it/strings.xml") }
@@ -399,6 +412,7 @@ tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
 tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleteness") {
     group = "streetcomplete"
     languageCodes = bcp47ExportLanguages
+    fallbackLanguages = bcp47FallbackLanguages
     mustIncludeLanguagePercentage = 90
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId

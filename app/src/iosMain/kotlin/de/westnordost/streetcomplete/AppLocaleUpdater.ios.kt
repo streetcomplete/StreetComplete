@@ -24,15 +24,11 @@ private object IosAppLocale {
     fun apply(locale: Locale?) {
         appFormattingLocale = locale?.toNSLocale() ?: systemFormattingLocale
 
-        val systemLocales = systemLanguages.map { Locale(it) }
-        val resolvedLocale = resolveAppLocale(locale, systemLocales)
-        val overrideLocale = resolvedLocale.takeIf { locale != null || it != systemLocales.firstOrNull() }
-
         // Compose reads AppleLanguages. Keep the override process-local: persisting it changes
         // Foundation's startup locale, which cannot be reset when returning to system default.
         val domain = defaults.volatileDomainForName(NSArgumentDomain)
         val updated = domain.toMutableMap()
-        val languages = overrideLocale?.let { (listOf(it.toLanguageTag()) + systemLanguages).distinct() }
+        val languages = locale?.let { (listOf(it.toLanguageTag()) + systemLanguages).distinct() }
             ?: originalLanguages
         if (languages == null) updated.remove(LANGUAGES_KEY)
         else updated[LANGUAGES_KEY] = languages
