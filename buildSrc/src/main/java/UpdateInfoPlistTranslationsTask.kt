@@ -55,10 +55,7 @@ open class UpdateInfoPlistTranslationsTask : DefaultTask() {
             }
             if (lines.isEmpty()) continue
 
-            // Apple identifies Serbian in Cyrillic script as just "sr" (Xcode also compiles sr-Cyrl
-            // to sr.lproj)
-            val lprojName = if (languageCode == "sr-Cyrl") "sr" else languageCode
-            val file = targetDir.resolve("$lprojName.lproj/InfoPlist.strings")
+            val file = targetDir.resolve("$languageCode.lproj/InfoPlist.strings")
             file.parentFile.mkdirs()
             file.writeText(lines.joinToString("\n", postfix = "\n"))
         }
