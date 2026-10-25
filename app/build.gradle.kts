@@ -29,6 +29,7 @@ val bcp47FallbackLanguages = mapOf(
     "zh-HK" to "zh-Hant",
     "zh-MO" to "zh-Hant",
     "sr" to "sr-Cyrl",
+    "sr-ME" to "sr-Latn",
 )
 
 /** Version of the iD presets to use
