@@ -9,8 +9,6 @@ import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.mapNotNull
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
 import org.maplibre.compose.offline.DownloadProgress
 import org.maplibre.compose.offline.DownloadStatus
 import org.maplibre.compose.offline.OfflinePack
@@ -24,11 +22,7 @@ class MapLibreMapTilesDownloader(
     private val pixelRatio: Float,
 ) : MapTilesDownloader {
 
-    // necessary because OfflineStorage is not threadsafe
-    // https://github.com/maplibre/maplibre-compose/issues/1879
-    private val mutex = Mutex()
-
-    override suspend fun download(bbox: BoundingBox): Unit = mutex.withLock {
+    override suspend fun download(bbox: BoundingBox) {
         var pack: OfflinePack? = null
         try {
             pack = storage.create(
@@ -74,7 +68,7 @@ class MapLibreMapTilesDownloader(
         }
     }
 
-    override suspend fun deleteOld(time: Long): Unit = mutex.withLock {
+    override suspend fun deleteOld(time: Long) {
         try {
             for (pack in storage.awaitPacks()) {
                 val packTime = pack.metadata.value?.decodeToString()?.toLongOrNull()
@@ -89,7 +83,7 @@ class MapLibreMapTilesDownloader(
         }
     }
 
-    override suspend fun clear(): Unit = mutex.withLock {
+    override suspend fun clear() {
         try {
             for (pack in storage.awaitPacks()) { storage.delete(pack) }
             storage.clearAmbientCache()
