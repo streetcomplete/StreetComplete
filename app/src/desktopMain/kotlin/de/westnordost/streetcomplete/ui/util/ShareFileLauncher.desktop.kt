@@ -18,6 +18,8 @@ import java.awt.Desktop
 import java.io.File
 import java.io.IOException
 
+// TODO desktop: might want to use Nucleus share file launcher either on all platforms when
+//  Nucleus 3.0 is released, or use FileKit-based solution if/when it is available on all platforms
 @Composable
 actual fun rememberShareFileLauncher(): (PlatformFile) -> Unit {
     val window = LocalNucleusWindow.current
