@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.overlays.cycleway.CyclewayOverlay
 import de.westnordost.streetcomplete.overlays.places.PlacesOverlay
 import de.westnordost.streetcomplete.overlays.sidewalk.SidewalkOverlay
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
+import de.westnordost.streetcomplete.overlays.surface.SurfaceOverlay
 import de.westnordost.streetcomplete.overlays.way_lit.WayLitOverlay
 import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
 import de.westnordost.streetcomplete.quests.amenity_indoor.AddIsAmenityIndoor
@@ -15,6 +16,9 @@ import de.westnordost.streetcomplete.quests.general_access.AddGeneralAccess
 import de.westnordost.streetcomplete.quests.moped.AddMopedAccess
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
+import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface
+import de.westnordost.streetcomplete.quests.surface.AddFootwayPartSurface
+import de.westnordost.streetcomplete.quests.surface.AddPathSurface
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 import de.westnordost.streetcomplete.quests.traffic_signals_vibrate.AddTrafficSignalsVibration
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
@@ -26,7 +30,7 @@ val editTypeAliases = mapOf(
     "AddWheelChairAccessPublicTransport" to AddWheelchairAccessPublicTransport::class.simpleName!!,
     "AddWheelChairAccessToilets"         to AddWheelchairAccessToilets::class.simpleName!!,
     "AddSidewalks"                       to AddSidewalk::class.simpleName!!,
-    "DetailRoadSurface"                  to AddRoadSurface::class.simpleName!!,
+    "DetailRoadSurface"                  to SurfaceOverlay::class.simpleName!!,
     "AddTrafficSignalsBlindFeatures"     to AddTrafficSignalsVibration::class.simpleName!!,
     "AddSuspectedOneway"                 to AddOneway::class.simpleName!!,
     "AddPicnicTableCover"                to AddAmenityCover::class.simpleName!!,
@@ -42,4 +46,9 @@ val editTypeAliases = mapOf(
     "AddProhibitedForMoped"              to AddMopedAccess::class.simpleName!!,
     "AddPlaygroundAccess"                to AddGeneralAccess::class.simpleName!!,
     "AddTowerAccess"                     to AddGeneralAccess::class.simpleName!!,
+    // unify all surface quests under the overlay
+    AddCyclewayPartSurface::class.simpleName!! to SurfaceOverlay::class.simpleName!!,
+    AddFootwayPartSurface::class.simpleName!!  to SurfaceOverlay::class.simpleName!!,
+    AddPathSurface::class.simpleName!!         to SurfaceOverlay::class.simpleName!!,
+    AddRoadSurface::class.simpleName!!         to SurfaceOverlay::class.simpleName!!,
 )
