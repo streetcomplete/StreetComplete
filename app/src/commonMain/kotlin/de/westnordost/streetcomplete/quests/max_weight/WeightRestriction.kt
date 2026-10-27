@@ -7,13 +7,13 @@ import de.westnordost.streetcomplete.util.ktx.toShortString
 import kotlinx.serialization.Serializable
 
 @Serializable
-sealed interface MaxWeightRestriction {
+sealed interface WeightRestriction {
     val weight: Weight?
 
     fun isComplete(): Boolean = weight != null
 
     companion object {
-        fun getSelectableEntries(countryCode: String): List<MaxWeightRestriction> = buildList {
+        fun getSelectableEntries(countryCode: String): List<WeightRestriction> = buildList {
             // no weight sign in France (see maxweightrating signs) - #6686
             if (countryCode != "FR") {
                 add(MaxWeight())
@@ -36,18 +36,18 @@ sealed interface MaxWeightRestriction {
 }
 
 @Serializable
-data class MaxWeight(override val weight: Weight? = null) : MaxWeightRestriction
+data class MaxWeight(override val weight: Weight? = null) : WeightRestriction
 @Serializable
-data class MaxWeightRating(override val weight: Weight? = null) : MaxWeightRestriction
+data class MaxWeightRating(override val weight: Weight? = null) : WeightRestriction
 @Serializable
-data class MaxWeightRatingHgv(override val weight: Weight? = null) : MaxWeightRestriction
+data class MaxWeightRatingHgv(override val weight: Weight? = null) : WeightRestriction
 @Serializable
-data class MaxAxleLoad(override val weight: Weight? = null) : MaxWeightRestriction
+data class MaxAxleLoad(override val weight: Weight? = null) : WeightRestriction
 @Serializable
-data class MaxTandemAxleLoad(override val weight: Weight? = null) : MaxWeightRestriction
+data class MaxTandemAxleLoad(override val weight: Weight? = null) : WeightRestriction
 
 @Serializable
-data class MaxWeightCategorySweden(val category: Category? = null) : MaxWeightRestriction {
+data class MaxWeightCategorySweden(val category: Category? = null) : WeightRestriction {
     override val weight: Weight? get() = category?.weight
 
     enum class Category(val value: Int, val weight: Weight) {
@@ -76,7 +76,7 @@ data class Weight(
     }
 }
 
-fun MaxWeightRestriction.applyTo(tags: Tags) {
+fun WeightRestriction.applyTo(tags: Tags) {
     val weight = weight?.toOsmString() ?: return
     when (this) {
         is MaxWeight -> tags["maxweight"] = weight

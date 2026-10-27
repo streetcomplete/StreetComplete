@@ -38,16 +38,16 @@ import org.jetbrains.compose.resources.painterResource
  *  should look similar to how the signs actually look in the country with the given [locale]
  */
 @Composable
-fun MaxWeightRestrictionSignForm(
-    value: MaxWeightRestriction,
-    onValueChange: (MaxWeightRestriction) -> Unit,
+fun WeightRestrictionSignForm(
+    value: WeightRestriction,
+    onValueChange: (WeightRestriction) -> Unit,
     locale: Locale,
     selectableUnits: List<WeightMeasurementUnit>,
     modifier: Modifier = Modifier,
 ) {
     when (value) {
         is MaxWeightCategorySweden -> {
-            MaxWeightSignSwedenForm(
+            MaxWeightSignCategorySwedenForm(
                 value = value,
                 onValueChange = onValueChange,
                 modifier = modifier,
@@ -75,7 +75,7 @@ fun MaxWeightRestrictionSignForm(
 
 @Composable
 private fun MaxWeightSignForm(
-    value: MaxWeightRestriction,
+    value: WeightRestriction,
     onWeightChange: (Weight?) -> Unit,
     locale: Locale,
     selectableUnits: List<WeightMeasurementUnit>,
@@ -193,7 +193,7 @@ private fun MaxWeightSignForm(
 }
 
 @Composable
-private fun MaxWeightSignSwedenForm(
+private fun MaxWeightSignCategorySwedenForm(
     value: MaxWeightCategorySweden,
     onValueChange: (MaxWeightCategorySweden) -> Unit,
     modifier: Modifier = Modifier,
@@ -232,11 +232,11 @@ private fun MaxWeightSignSwedenForm(
 
 @Preview
 @Composable
-private fun MaxWeightSignSignFormPreview() {
+private fun WeightRestrictionSignFormPreview() {
     var country by remember { mutableStateOf("DE") }
     val countries = remember { listOf("DE", "FI", "US", "SE") }
 
-    var maxWeight by remember { mutableStateOf<MaxWeightRestriction>(MaxWeight()) }
+    var maxWeight by remember { mutableStateOf<WeightRestriction>(MaxWeight()) }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -249,12 +249,12 @@ private fun MaxWeightSignSignFormPreview() {
             itemContent = { Text(it) }
         )
         DropdownButton(
-            items = MaxWeightRestriction.getSelectableEntries(country),
+            items = WeightRestriction.getSelectableEntries(country),
             onSelectedItem = { maxWeight = it },
             selectedItem = maxWeight,
             itemContent = { Text(it::class.simpleName!!) }
         )
-        MaxWeightRestrictionSignForm(
+        WeightRestrictionSignForm(
             value = maxWeight,
             onValueChange = { maxWeight = it },
             locale = Locale("${Locale.current.language}-$country"),

@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.max_weight
 import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 
-fun MaxWeightRestriction.getIcon(countryCode: String): DrawableResource = when (this) {
+fun WeightRestriction.getIcon(countryCode: String): DrawableResource = when (this) {
     is MaxWeight -> when (countryCode) {
         "AU", "CA", "US" -> Res.drawable.maxweight_sign_weight_mutcd
         "FI", "IS", "SE" -> Res.drawable.maxweight_sign_weight_yellow
