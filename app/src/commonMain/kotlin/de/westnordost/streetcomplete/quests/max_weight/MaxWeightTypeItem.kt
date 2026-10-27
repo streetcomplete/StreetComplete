@@ -46,7 +46,7 @@ fun MaxWeightType.getIcon(countryCode: String): DrawableResource? = when (this) 
     // https://bransch.trafikverket.se/for-dig-i-branschen/vag/bk--barighetsklasser-pa-vagar-och-broar/
     // https://github.com/streetcomplete/StreetComplete/issues/6586
     MAX_WEIGHT_CATEGORY_SE -> when (countryCode) {
-        "SE" ->             Res.drawable.sign_maxweightclass_se
+        "SE" ->             Res.drawable.maxweight_sign_maxweightclass_se
         else ->             null
     }
 }
