@@ -40,8 +40,10 @@ fun MaxWeightForm(
 
     val countryCode = locale.region
 
-    val selectableMaxWeightRestrictions = MaxWeightRestriction.getSelectableEntries(countryCode)
-        .filter { sign -> signs.none { sign::class == it::class } }
+    val selectableMaxWeightRestrictions = remember(countryCode, signs) {
+        MaxWeightRestriction.getSelectableEntries(countryCode)
+            .filter { sign -> signs.none { sign::class == it::class } }
+    }
 
     Column(
         modifier = modifier,
