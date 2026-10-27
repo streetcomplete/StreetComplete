@@ -23,10 +23,10 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddMaxWeightForm(
-    on: (QuestAction<List<MaxWeight>>) -> Unit,
+    on: (QuestAction<List<MaxWeightRestriction>>) -> Unit,
     countryInfo: CountryInfo,
 ) {
-    var signs by rememberSerializable { mutableStateOf(emptyList<MaxWeight>()) }
+    var signs by rememberSerializable { mutableStateOf(emptyList<MaxWeightRestriction>()) }
 
     var confirmUnusualInput by remember { mutableStateOf(false) }
     var confirmNoSign by remember { mutableStateOf(false) }
@@ -34,7 +34,7 @@ fun AddMaxWeightForm(
 
     QuestForm(
         on = on,
-        isComplete = isComplete(signs),
+        isComplete = signs.isNotEmpty() && signs.all { it.isComplete() },
         onClickOk = {
             if (isUnrealisticWeight(signs)) {
                 confirmUnusualInput = true
@@ -90,18 +90,9 @@ fun AddMaxWeightForm(
     }
 }
 
-private fun isComplete(signs: List<MaxWeight>): Boolean =
-    signs.isNotEmpty() && signs.all { sign ->
-        if (sign.type == MaxWeightType.MAX_WEIGHT_CATEGORY_SE) {
-            sign.weight != null && sign.weight.value in 1.0..4.0
-        } else {
-            sign.weight != null
-        }
-    }
-
-private fun isUnrealisticWeight(signs: List<MaxWeight>): Boolean {
+private fun isUnrealisticWeight(signs: List<MaxWeightRestriction>): Boolean {
     for (sign in signs) {
-        if (sign.type == MaxWeightType.MAX_WEIGHT_CATEGORY_SE) return false
+        if (sign is MaxWeightCategorySweden) return false
         val w = sign.weight?.toMetricTons() ?: continue
         if (w > 30 || w < 2) return true
     }

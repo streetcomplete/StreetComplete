@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.ferry.wayIdsInFerryRoutes
 import de.westnordost.streetcomplete.resources.*
 
-class AddMaxWeight : OsmElementQuestType<List<MaxWeight>> {
+class AddMaxWeight : OsmElementQuestType<List<MaxWeightRestriction>> {
 
     // We ask for the maximum weight of bridges and ferries.
     // The general filter is used for both:
@@ -81,11 +81,11 @@ class AddMaxWeight : OsmElementQuestType<List<MaxWeight>> {
     }
 
     @Composable
-    override fun Form(on: (QuestAction<List<MaxWeight>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<List<MaxWeightRestriction>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddMaxWeightForm(on, countryInfo)
     }
 
-    override fun applyAnswerTo(answer: List<MaxWeight>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: List<MaxWeightRestriction>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer.isNotEmpty()) {
             for (maxweight in answer) {
                 maxweight.applyTo(tags)
