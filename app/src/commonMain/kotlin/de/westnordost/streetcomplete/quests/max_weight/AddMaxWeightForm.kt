@@ -92,7 +92,7 @@ fun AddMaxWeightForm(
 
 private fun isUnrealisticWeight(signs: List<MaxWeightRestriction>): Boolean {
     for (sign in signs) {
-        if (sign is MaxWeightCategorySweden) return false
+        if (sign !is MaxWeight) continue
         val w = sign.weight?.toMetricTons() ?: continue
         if (w > 30 || w < 2) return true
     }
