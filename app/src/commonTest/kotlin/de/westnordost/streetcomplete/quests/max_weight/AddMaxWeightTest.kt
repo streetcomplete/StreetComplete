@@ -58,7 +58,7 @@ class AddMaxWeightTest {
             assertEquals(
                 setOf(
                     StringMapEntryAdd("maxweight", category.weight.value.toShortString()),
-                    StringMapEntryAdd("traffic_sign", "SE:c22-" + category.value),
+                    StringMapEntryAdd("traffic_sign", "SE:C22-" + category.value),
                 ),
                 questType.answerApplied(listOf(MaxWeightCategorySweden(category)))
             )
