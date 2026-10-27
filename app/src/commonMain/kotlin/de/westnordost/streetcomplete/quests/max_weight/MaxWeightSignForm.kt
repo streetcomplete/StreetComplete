@@ -34,6 +34,9 @@ import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import org.jetbrains.compose.resources.painterResource
 
+/** A form to input a single max weight sign. The signs shown
+ *  should look similar to how the signs actually look in the country with the given [locale]
+ */
 @Composable
 fun MaxWeightRestrictionSignForm(
     value: MaxWeightRestriction,
@@ -70,9 +73,6 @@ fun MaxWeightRestrictionSignForm(
     }
 }
 
-/** A form to input the [weight] for a single max weight sign [type]. The signs shown
- *  should look similar to how the signs actually look in the country with the given [locale]
- */
 @Composable
 private fun MaxWeightSignForm(
     value: MaxWeightRestriction,
