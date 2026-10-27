@@ -90,7 +90,7 @@ fun WeightRestriction.applyTo(tags: Tags) {
             // We add the specific traffic_sign codes save the context of this information
             // Also: do not overwrite any existing signs
             if (tags["traffic_sign"] == null) {
-                tags["traffic_sign"] = "SE:CSS-" + category!!.value.toString()
+                tags["traffic_sign"] = "SE:c22-" + category!!.value.toString()
             }
         }
     }
