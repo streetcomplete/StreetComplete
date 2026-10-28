@@ -40,6 +40,7 @@ class AddLevelThing : OsmElementQuestType<String> {
             !building:use
             and building ~ civic|hospital|museum|public|train_station|transportation|university
           )
+          or indoor ~ room|area|corridor
           and access !~ private|no
     """.toElementFilterExpression() }
 
