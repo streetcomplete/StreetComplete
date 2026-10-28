@@ -128,6 +128,7 @@ import de.westnordost.streetcomplete.data.user.achievements.UserLinksDao
 import de.westnordost.streetcomplete.data.user.achievements.achievements
 import de.westnordost.streetcomplete.data.user.achievements.editTypeAliases
 import de.westnordost.streetcomplete.data.user.achievements.links
+import de.westnordost.streetcomplete.data.user.achievements.editTypeStatisticsMerge
 import de.westnordost.streetcomplete.data.user.oauth.OAuthApiClient
 import de.westnordost.streetcomplete.data.user.oauth.OAuthApiClientImpl
 import de.westnordost.streetcomplete.data.user.statistics.ActiveDatesDao
@@ -135,6 +136,7 @@ import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsDao
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTable
 import de.westnordost.streetcomplete.data.user.statistics.EditTypeStatisticsDao
 import de.westnordost.streetcomplete.data.user.statistics.EditTypeStatisticsTable
+import de.westnordost.streetcomplete.data.user.statistics.MergedStatistics
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsApiClient
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsApiClientImpl
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
@@ -643,7 +645,7 @@ val commonModule = module {
 
     viewModel<LoginViewModel> { LoginViewModelImpl(get(), get(), get()) }
 
-    viewModel<EditStatisticsViewModel> { EditStatisticsViewModelImpl(get(), get(), get()) }
+    viewModel<EditStatisticsViewModel> { EditStatisticsViewModelImpl(MergedStatistics(get(), editTypeStatisticsMerge), get(), get()) }
 
     viewModel<LinksViewModel> { LinksViewModelImpl(get(), get()) }
 

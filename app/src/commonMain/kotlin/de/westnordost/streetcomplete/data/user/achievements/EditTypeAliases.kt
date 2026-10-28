@@ -31,15 +31,18 @@ val editTypeAliases = listOf(
     "AddSuspectedOneway"                 to AddOneway::class.simpleName!!,
     "AddPicnicTableCover"                to AddAmenityCover::class.simpleName!!,
     "AddCrossingType"                    to AddCrossingMarkings::class.simpleName!!,
-    // whether lit roads have been added in context of the quest or the overlay should not matter for the statistics
-    WayLitOverlay::class.simpleName!!    to AddWayLit::class.simpleName!!,
-    SidewalkOverlay::class.simpleName!!  to AddSidewalk::class.simpleName!!,
-    CyclewayOverlay::class.simpleName!!  to AddCycleway::class.simpleName!!,
-    BuildingsOverlay::class.simpleName!! to AddBuildingType::class.simpleName!!,
     "AddStreetParking"                   to StreetParkingOverlay::class.simpleName!!,
     "AddIsDefibrillatorIndoor"           to AddIsAmenityIndoor::class.simpleName!!,
     "ShopsOverlay"                       to PlacesOverlay::class.simpleName!!,
     "AddProhibitedForMoped"              to AddMopedAccess::class.simpleName!!,
     "AddPlaygroundAccess"                to AddGeneralAccess::class.simpleName!!,
     "AddTowerAccess"                     to AddGeneralAccess::class.simpleName!!,
+)
+
+// whether data has been added in context of the quest or the overlay should not matter for the statistics
+val editTypeStatisticsMerge = listOf(
+    WayLitOverlay::class.simpleName!!          to AddWayLit::class.simpleName!!,
+    SidewalkOverlay::class.simpleName!!        to AddSidewalk::class.simpleName!!,
+    CyclewayOverlay::class.simpleName!!        to AddCycleway::class.simpleName!!,
+    BuildingsOverlay::class.simpleName!!       to AddBuildingType::class.simpleName!!,
 )
