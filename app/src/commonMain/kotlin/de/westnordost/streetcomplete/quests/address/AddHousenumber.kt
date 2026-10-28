@@ -169,7 +169,7 @@ class AddHousenumber(
         when (answer) {
             is AddressNumberAndName -> {
                 if (answer.number?.isBlank() != false && answer.name.isNullOrBlank()) {
-                    tags["nohousenumber"] = "yes"
+                    tags["addr:housenumber:signed"] = "no"
                 } else {
                     val countryCode = getCountryInfoByLocation(geometry.center).countryCode
                     answer.applyTo(tags, countryCode)

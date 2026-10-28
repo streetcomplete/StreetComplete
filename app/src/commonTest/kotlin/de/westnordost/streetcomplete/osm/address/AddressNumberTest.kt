@@ -57,6 +57,22 @@ class AddressNumberTest {
         )
     }
 
+    @Test fun `applyTo house number clears no address fields`() {
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("addr:housenumber", "123"),
+                StringMapEntryDelete("addr:housenumber:signed", "no"),
+                StringMapEntryDelete("noaddress", "yes"),
+                StringMapEntryDelete("nohousenumber", "yes"),
+            ),
+            HouseNumber("123").appliedTo(mapOf(
+                "addr:housenumber:signed" to "no",
+                "noaddress" to "yes",
+                "nohousenumber" to "yes",
+            ))
+        )
+    }
+
     @Test fun `applyTo house number clears other address number fields`() {
         assertEquals(
             setOf(

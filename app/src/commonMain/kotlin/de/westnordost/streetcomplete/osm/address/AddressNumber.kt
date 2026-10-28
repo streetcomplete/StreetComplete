@@ -53,7 +53,11 @@ fun AddressNumber.applyTo(tags: Tags, countryCode: String?) {
         "addr:conscriptionnumber",
         "addr:streetnumber",
         "addr:block_number",
-        "addr:block"
+        "addr:block",
+        // and no-address tags
+        "nohousenumber",
+        "noaddress",
+        "addr:housenumber:signed"
     ).forEach { tags.remove(it) }
 
     if (!isComplete()) return
