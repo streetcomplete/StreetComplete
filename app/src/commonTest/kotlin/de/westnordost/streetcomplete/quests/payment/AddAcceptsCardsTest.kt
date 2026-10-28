@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.accepts_cards
+package de.westnordost.streetcomplete.quests.payment
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.quests.answerApplied
