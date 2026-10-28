@@ -21,6 +21,7 @@ class StatisticsControllerImpl(
     private val countryBoundaries: Lazy<CountryBoundaries>,
     private val prefs: Preferences,
     private val userLoginSource: UserLoginSource,
+    private val editTypeAliases: Map<String, String>,
 ) : StatisticsController {
 
     private val userLoginListener = object : UserLoginSource.Listener {
@@ -92,6 +93,7 @@ class StatisticsControllerImpl(
         activeDatesDao.getAll(activeDatesRange)
 
     override fun addOne(type: String, position: LatLon) {
+        val type = transformEditType(type)
         editTypeStatisticsDao.addOne(type)
         currentWeekEditTypeStatisticsDao.addOne(type)
         getRealCountryCode(position)?.let {
@@ -103,6 +105,7 @@ class StatisticsControllerImpl(
     }
 
     override fun subtractOne(type: String, position: LatLon) {
+        val type = transformEditType(type)
         editTypeStatisticsDao.subtractOne(type)
         currentWeekEditTypeStatisticsDao.subtractOne(type)
         getRealCountryCode(position)?.let {
@@ -126,9 +129,9 @@ class StatisticsControllerImpl(
             return
         }
 
-        editTypeStatisticsDao.replaceAll(statistics.types.associate { it.type to it.count })
+        editTypeStatisticsDao.replaceAll(transformEditTypes(statistics.types))
         countryStatisticsDao.replaceAll(statistics.countries)
-        currentWeekEditTypeStatisticsDao.replaceAll(statistics.currentWeekTypes.associate { it.type to it.count })
+        currentWeekEditTypeStatisticsDao.replaceAll(transformEditTypes(statistics.currentWeekTypes))
         currentWeekCountryStatisticsDao.replaceAll(statistics.currentWeekCountries)
         currentWeekRank = statistics.currentWeekRank
         activeDatesDao.replaceAll(statistics.activeDates)
@@ -169,6 +172,18 @@ class StatisticsControllerImpl(
             // skip country subdivisions (e.g. US-TX)
             !it.contains('-')
         }
+
+    private fun transformEditType(editType: String): String =
+        editTypeAliases[editType] ?: editType
+
+    private fun transformEditTypes(editTypes: List<EditTypeStatistics>): Map<String, Int> {
+        val types = HashMap<String, Int>()
+        for ((type, count) in editTypes) {
+            val type = transformEditType(type)
+            types[type] = (types[type] ?: 0) + count
+        }
+        return types
+    }
 
     override fun addListener(listener: StatisticsSource.Listener) {
         listeners.add(listener)

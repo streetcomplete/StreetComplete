@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAcces
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessToilets
 
 // list of (quest) synonyms (this alternate name is mentioned to aid searching for this code)
-val editTypeAliases = listOf(
+val editTypeAliases = mapOf(
     "AddWheelChairAccessPublicTransport" to AddWheelchairAccessPublicTransport::class.simpleName!!,
     "AddWheelChairAccessToilets"         to AddWheelchairAccessToilets::class.simpleName!!,
     "AddSidewalks"                       to AddSidewalk::class.simpleName!!,
