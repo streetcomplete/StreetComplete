@@ -38,7 +38,7 @@ open class GetTranslatorCreditsTask : DefaultTask() {
         val resultMap = mutableMapOf<String, MutableMap<String, Int>>()
 
         // POEditor displays language names. What we need however are language tags
-        val tagsByName = languageCodes.associateBy { tagToName(it) }
+        val tagsByName = languageCodes.associateBy { tagToPoEditorName(it) }
 
         // 1. get all users and their ids
         val users = queryUsersOnAllPages()
@@ -157,10 +157,12 @@ data class User(
 
 /** Convert language tag to how the language is named in English POEditor UI
  *  e.g. en -> English, en-US -> English (US). */
-private fun tagToName(tag: String): String =
+private fun tagToPoEditorName(tag: String): String =
     when (tag) {
         "en-GB" -> "English (UK)"
         "en" -> "English (US)"
+        "zh-Hant" -> "Chinese (TW)"
+        "zh-Hans" -> "Chinese"
         else -> {
             val locale = Locale.forLanguageTag(tag)
             val scriptName = if (locale.script != "") " (" + locale.getDisplayScript(Locale.ENGLISH) + ")" else ""

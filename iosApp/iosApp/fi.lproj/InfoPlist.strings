@@ -1,0 +1,2 @@
+"NSCameraUsageDescription" = "Kameran käyttöoikeus vaaditaan, jotta kuvia voi lisätä karttamuistiinpanoihin.";
+"NSLocationWhenInUseUsageDescription" = "Sijaintilupa tarvitaan sijaintisi näyttämiseen kartalla, ja tietojen lataamiseen lähiympäristöstäsi.";

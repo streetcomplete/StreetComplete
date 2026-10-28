@@ -85,7 +85,9 @@ fun AddPostboxCollectionTimesForm(
                 on = on,
                 isComplete = openingHours.isComplete() && !openingHours.isTooLong(),
                 onClickOk = { on(Answer(CollectionTimes(openingHours))) },
-                hasChanges = openingHours.monthsList.isNotEmpty(),
+                hasChanges =
+                    (originalOpeningHours ?: HierarchicOpeningHours()) != openingHours
+                    && !openingHours.isEmpty(),
                 otherAnswers = {
                     val switchTimeModeAnswer = when (timeMode) {
                         TimeMode.Points -> {

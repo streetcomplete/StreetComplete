@@ -7,6 +7,7 @@ import org.gradle.api.tasks.TaskAction
 import org.w3c.dom.Attr
 import org.w3c.dom.Document
 import org.w3c.dom.Element
+import org.xml.sax.SAXException
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -48,6 +49,8 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
                     URI(url).toURL().openStream().use { input ->
                         val factory = DocumentBuilderFactory.newInstance()
                         factory.isIgnoringComments = true
+                        factory.isExpandEntityReferences = false
+                        factory.isXIncludeAware = false
                         val svg = factory.newDocumentBuilder().parse(input)
 
                         val drawable = createAndroidDrawable(svg)
@@ -55,6 +58,8 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
                     }
                     iconWasFound = true
                     break
+                } catch (e: SAXException) {
+                    message += "$icon ($url) produces exception \n"
                 } catch (e: IOException) {
                     message += "$icon not found in $url\n"
                 } catch (e: IllegalArgumentException) {

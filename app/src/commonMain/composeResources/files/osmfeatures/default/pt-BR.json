@@ -446,10 +446,6 @@
           "name": "Cirurgião plástico",
           "terms": ["cirurgia reconstrutiva", "cirurgia estética", "cirurgia cosmética", "cirurgia craniofacial", "cirurgia plástica"]
         },
-        "amenity/doctors/podiatry": {
-          "name": "Podólogo",
-          "terms": ["podóloga", "podologia", "podiatria", "podiatra", "podopediatria", "podogeriatria", "pés", "unhas"]
-        },
         "amenity/doctors/proctology": {
           "name": "Proctologista",
           "terms": ["cirurgião colorretal", "proctólogo", "cirurgia colorretal", "proctologia", "cólon", "ânus", "coloproctologia", "coloproctologista", "reto", "retal"]
@@ -2419,11 +2415,6 @@
         },
         "highway/crossing/informal": {
           "name": "Travessia informal"
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "Faixa de pedestres com semáforo",
-          "terms": ["sinal de travessia de pedestres", "travessia de pedestres com sinal", "travessia de bicicletas com sinal"],
-          "aliases": ["Travessia de pedestres com semáforo", "Travessia de pedestres com sinal de tráfego"]
         },
         "highway/crossing/uncontrolled": {
           "name": "Faixa de pedestres sem semáforo",
@@ -6694,6 +6685,10 @@
         "amenity/university": {
           "name": "Universidade",
           "terms": ["área de universidade", "faculdade", "área de faculdade", "centro universitário"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Podólogo",
+          "terms": ["podóloga", "podologia", "podiatria", "podiatra", "podopediatria", "podogeriatria", "pés", "unhas"]
         },
         "aerialway/station": {
           "name": "Estação aérea",

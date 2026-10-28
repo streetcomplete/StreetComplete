@@ -311,7 +311,7 @@
     <string name="create_new_note_description">你可以留下註記，讓其他圖客了解此處的問題。請透過移動地圖來調整註記的位置。</string>
     <string name="quest_generic_looks_like_this">通常長得像這樣子：</string>
     <string name="quest_surface_value_metal">金屬材質表面</string>
-    <string name="quest_cycleway_title2">這裡有單車道嗎？那種類型？</string>
+    <string name="quest_cycleway_title2">這裡有單車道嗎？哪種類型？</string>
     <string name="quest_bridge_structure_title">這座橋樑的結構是？</string>
     <string name="quest_internet_access_wlan">Wi-Fi</string>
     <string name="quest_internet_access_wired">有線 (LAN)</string>
@@ -333,7 +333,7 @@
     <string name="quest_religion_bahai">巴哈伊信仰</string>
     <string name="quest_religion_caodaist">高台教</string>
     <string name="quest_religion_chinese_folk">中國傳統信仰</string>
-    <string name="quest_religion_for_wayside_shrine_title">這座小廟是遵循那個宗教呢？</string>
+    <string name="quest_religion_for_wayside_shrine_title">這座小廟是遵循哪個宗教呢？</string>
     <string name="quest_parking_fee_title">在這裡停車需要付費嗎？</string>
     <string name="quest_surface_value_unhewn_cobblestone">不破的鵝卵石</string>
     <string name="quest_streetSurface_square_title">廣場的舖面是什麼材質？</string>
@@ -345,7 +345,7 @@
     <string name="quest_bicycle_parking_type_shed">立車架</string>
     <string name="quest_bicycle_parking_type_locker">車鎖</string>
     <string name="quest_bicycle_parking_type_building">單車車庫</string>
-    <string name="quest_bicycle_parking_type_title">這是那種單車停車場？</string>
+    <string name="quest_bicycle_parking_type_title">這哪那種單車停車場？</string>
     <string name="quest_postboxCollectionTimes_title">這個郵筒的收信時間？</string>
     <string name="quest_collectionTimes_add_times">增加收信時間</string>
     <string name="quest_collectionTimes_answer_no_times_specified">沒有特定的時間</string>
@@ -439,7 +439,7 @@
     <string name="quest_buildingType_toilets">洗手間</string>
     <string name="quest_segregated_title">這裡的人行道和自行車道是如何編排的？</string>
     <string name="dialog_tutorial_upload">要手動上傳更改，使用位於工具列如圖所示的按鈕</string>
-    <string name="quest_segregated_separated">與那一種道路分隔</string>
+    <string name="quest_segregated_separated">與哪一種道路分隔</string>
     <string name="quest_segregated_mixed">自行車與步行者共用空間</string>
     <string name="quest_maxheight_title">這裡的高度限制多少？</string>
     <string name="quest_maxheight_answer_noSign">該處並沒有標誌…</string>
@@ -497,7 +497,7 @@
     <string name="quest_handrail_title">這條階梯有扶手嗎？</string>
     <string name="quest_ref_answer_noRef">看不到編號…</string>
     <string name="quest_street_side_puzzle_tutorial">插圖中的道路與大頭針位置處的地圖相同方式旋轉…</string>
-    <string name="quest_recycling_materials_title">這裡能拿過去那些回收物品？</string>
+    <string name="quest_recycling_materials_title">這裡能拿過去哪些回收物品？</string>
     <string name="quest_recycling_materials_note">如果有沒有列出的回收項目，請留下註解。</string>
     <string name="quest_recycling_type_batteries">電池</string>
     <string name="quest_recycling_type_cans">鐵鋁罐</string>
@@ -692,7 +692,7 @@
     <string name="quest_steps_ramp_bicycle">單車牽引斜坡</string>
     <string name="quest_steps_ramp_stroller">手推車斜坡</string>
     <string name="quest_steps_ramp_wheelchair">輪椅斜坡</string>
-    <string name="quest_atm_operator_title">這台 ATM 的營運銀行是那家？</string>
+    <string name="quest_atm_operator_title">這台 ATM 的營運銀行是哪家？</string>
     <string name="quest_clothes_container_operator_title">這個舊衣回收箱收集的衣服會捐給誰？</string>
     <string name="quest_charging_station_operator_title">這個充電站的經營者是誰？</string>
     <string name="link_indoorequal_description">發現商場、鐵路車站等的室內地圖。</string>
@@ -716,7 +716,6 @@
     <string name="quest_buildingType_abandoned_description">未使用的建築，原先使用目的不明或不知道特定目的 </string>
     <string name="quest_buildingType_ruins">廢墟</string>
     <string name="quest_buildingType_ruins_description">廢棄，廢墟和身份不明的建築</string>
-    <string name="quest_charging_station_capacity_title">同一時間在這一充電站有幾台車能同時充電？</string>
     <string name="link_disaster_ninja_description">人道救援圖客感興趣，呈現最近自然災害下更新的地圖。另外，也會顯示分析關於這一帶畫得多完善，或是地圖夠新等有趣的統計數據。</string>
     <string name="quest_lanes_title">這條路允行車輛通行的車道數多少？</string>
     <string name="quest_lanes_answer_noLanes">無標線車道</string>
@@ -861,7 +860,7 @@
     <string name="quest_generic_answer_is_actually_steps">這部分是階梯</string>
     <string name="quest_barrier_type_passage_conversion">轉換成牆壁、圍欄等當中的通道。</string>
     <string name="quest_barrier_type_gate_conversion">轉換成閘門</string>
-    <string name="quest_traffic_calming_type_title">這是那種類型的交通寧靜？</string>
+    <string name="quest_traffic_calming_type_title">這哪種類型的交通寧靜？</string>
     <string name="quest_traffic_calming_type_bump">減速丘 (較短)</string>
     <string name="quest_traffic_calming_type_hump">駝峰 (較長)</string>
     <string name="quest_traffic_calming_type_table">桌子 (平頂)</string>
@@ -910,7 +909,7 @@
 
 或者，你可以留註解 (拍照片)</string>
     <string name="quest_address_house_number_label">門牌號碼：</string>
-    <string name="quest_fireHydrant_position_title">消防栓的位置在那裡呢？</string>
+    <string name="quest_fireHydrant_position_title">消防栓的位置在哪裡呢？</string>
     <string name="quest_fireHydrant_position_green">在草地、泥土地或是灌木叢中</string>
     <string name="quest_fireHydrant_position_lane">在道路上</string>
     <string name="quest_fireHydrant_position_sidewalk">在人行道</string>
@@ -1019,12 +1018,12 @@
     <string name="quest_existence_title2">這東西還在這邊嗎？</string>
     <string name="quest_generalFee_title2">你需要付費才能進來這裡嗎？</string>
     <string name="quest_internet_access_title">這地方提供的網路連線類型是？</string>
-    <string name="quest_level_title2">這地方在那一層樓？</string>
+    <string name="quest_level_title2">這地方在哪一層樓？</string>
     <string name="quest_lit_title">這裡有照明嗎？</string>
     <string name="quest_openingHours_title">這裡的開放時間是？</string>
     <string name="quest_openingHours_signed_title">這裡有顯示開放時間嗎？</string>
     <string name="quest_placeName_title">這地方的名稱是什麼？</string>
-    <string name="quest_shop_type_title2">這裡是那種類型的商家？</string>
+    <string name="quest_shop_type_title2">這裡哪那種類型的商家？</string>
     <string name="quest_smoking_title2">這裡是否允許吸菸？</string>
     <string name="quest_smoothness_title">這裡的路面材質品質如何？</string>
     <string name="quest_summit_register_title2">這裡的山峰有註冊嗎？</string>
@@ -1047,7 +1046,7 @@
     <string name="map_btn_create_track">新增錄製軌跡</string>
     <string name="map_btn_stop_track">停止記錄軌跡</string>
     <string name="quest_bicycle_rental_capacity_title">這裡有多少單車出租數量？</string>
-    <string name="quest_bicycle_rental_type_title">這裡是那種型式的單車出租？</string>
+    <string name="quest_bicycle_rental_type_title">這裡是哪種型式的單車出租？</string>
     <string name="quest_bicycle_rental_type_docking_station">能夠上鎖單車的單車站</string>
     <string name="quest_bicycle_rental_type_dropoff_point">指定的地點 (單車個別上鎖)</string>
     <string name="quest_bicycle_rental_type_human">有車架的單車出租</string>
@@ -1097,7 +1096,7 @@
     <string name="quest_entrance_reference_nothing_signed">沒有標示或房間概況</string>
     <string name="quest_entrance_reference_reference_label">入口標示：</string>
     <string name="quest_entrance_reference_flat_range_label">房間概況：</string>
-    <string name="quest_entrance_reference_flat_range_to">到那裡</string>
+    <string name="quest_entrance_reference_flat_range_to">到哪裡</string>
     <string name="default_disabled_msg_overlay">此任務類型預設關閉，因為目前已有更直觀且有效率的疊層工具，可用於輸入與更新此類資料。</string>
     <string name="quest_camp_drinking_water_title">這邊的飲水是否免費提供給露營者？</string>
     <string name="quest_camp_shower_title">這裡有淋浴設施嗎？</string>
@@ -1176,7 +1175,7 @@
     <string name="separate_cycleway_with_sidewalk">只允許單車的路徑旁邊有人行道 (有實體分隔開)</string>
     <string name="cycleway_reverse_direction">反轉單車道方向</string>
     <string name="cycleway_reverse_direction_warning">反方向的單車道通常很少見。</string>
-    <string name="cycleway_reverse_direction_toast">點一下決定那邊要反轉</string>
+    <string name="cycleway_reverse_direction_toast">點一下決定哪邊要反轉</string>
     <string name="separate_cycleway_path">路徑或山徑</string>
     <string name="quest_fireHydrant_type_pipe">管子</string>
     <string name="measure_info_title">達成最佳精確度</string>
@@ -1199,7 +1198,7 @@
     <string name="quest_crossing_yes">是，可以穿越</string>
     <string name="quest_crossing_no">並非設計為可穿越，但仍然可能穿越 (例如非正式路徑)</string>
     <string name="quest_crossing_prohibited">無，禁止穿越或是無法</string>
-    <string name="quest_hairdresser_title">那種類型的顧戶會來光顧剪頭髮？</string>
+    <string name="quest_hairdresser_title">哪種類型的顧戶會來光顧剪頭髮？</string>
     <string name="quest_hairdresser_male_and_female">任何人</string>
     <string name="quest_hairdresser_female_only">女性</string>
     <string name="quest_hairdresser_male_only">男性</string>
@@ -1236,7 +1235,7 @@
     <string name="inside">裡面</string>
     <string name="outside">外面</string>
     <string name="quest_recycling_type_food_waste">廚餘</string>
-    <string name="quest_defibrillator_location">去顫器的位置在那裡？</string>
+    <string name="quest_defibrillator_location">去顫器的位置在哪裡？</string>
     <string name="quest_defibrillator_location_description">請提供精確的位置敘述 (例如「行李員休息室」)</string>
     <string name="quest_sanitary_dump_station_title">這裡有環境衛生垃圾站嗎？</string>
     <string name="quest_sanitary_dump_station_description">衛生傾倒站是專門收集露營車、長途卡車等廢水箱排泄物的設施。通常會有如下標誌：</string>
@@ -1285,7 +1284,7 @@
 您可以在我們的網站或專案首頁找到捐款資訊，但由於Google Play政策限制，我們無法直接在程式內提供連結。</string>
     <string name="quest_isAmenityIndoor_outside_covered">沒有在裡面，但是被遮蔽</string>
     <string name="lit_value_unsupported">特定的照明狀況，並無法在應用程式裡面選擇</string>
-    <string name="quest_generic_otherAnswers2">那個…</string>
+    <string name="quest_generic_otherAnswers2">啊…</string>
     <string name="quest_pedestrian_crossing_signals2">當要穿越時會顯示交通號誌嗎？</string>
     <string name="quest_moped_access_title">這條單車道是否有告示牌顯示是否允許輕便摩托車？</string>
     <string name="quest_moped_access_allowed">並沒有告示牌</string>
@@ -1313,7 +1312,7 @@
     <string name="pref_title_language_select2">語言</string>
     <string name="pref_title_resurvey_intervals_summary">要多久之後確認先前標示的地圖資料仍然正確。</string>
     <string name="questList_disabled_by_default">預設關閉</string>
-    <string name="action_manage_presets_summary">要在那個名稱之下的任務選擇將儲存。</string>
+    <string name="action_manage_presets_summary">要在哪個名稱之下的任務選擇將儲存。</string>
     <string name="quest_multiselect_hint">選擇所有符合的：</string>
     <string name="quest_barrier_opening_width_gate">這邊開口的寬度多少？</string>
     <string name="bridge">橋樑</string>
@@ -1339,7 +1338,7 @@
     <string name="quest_bicycle_repair_station_tools">多種工具</string>
     <string name="quest_bicycle_repair_station_stand">工作台</string>
     <string name="quest_bicycle_repair_station_chain_tool">車鏈工具</string>
-    <string name="quest_boat_rental_title">這裡出租那種類型的船？</string>
+    <string name="quest_boat_rental_title">這裡出租哪種類型的船？</string>
     <string name="quest_boat_rental_motorboat">動力船</string>
     <string name="quest_boat_rental_jetski">水上摩托車</string>
     <string name="quest_boat_rental_sailboat">帆船</string>
@@ -1410,12 +1409,10 @@
     <string name="quest_aerialway_bicycle_summer">只有在夏天</string>
     <string name="quest_board_type_rules">規則</string>
     <string name="quest_firewood_provided_title">這裡有提供薪柴嗎？</string>
-    <string name="quest_first_aid_kit_location">這裡的急救包在那裡？</string>
+    <string name="quest_first_aid_kit_location">這裡的急救包在哪裡？</string>
     <string name="quest_lane_markings_title">這條路有標線嗎？</string>
-    <string name="quest_level_thing_title">這東西位於那個樓層號碼？</string>
-    <string name="quest_bicycle_charging_station_capacity_title">這邊同一時間可以充幾台單車的電？</string>
+    <string name="quest_level_thing_title">這東西位於哪個樓層號碼？</string>
     <string name="quest_charging_station_bicycles_title">這裡是否也可以為單單充電嗎？</string>
-    <string name="quest_charging_station_bicycles_hint">單車充電座能夠插入一般家戶插座。</string>
     <string name="quest_recycling_type_pet_bottles">PET瓶罐</string>
     <string name="quest_maxweight_add_sign">新增告示牌</string>
     <string name="quest_maxweight_remove_sign">移除告示牌</string>
@@ -1475,7 +1472,7 @@
     <string name="quest_shop_gone_replaced_answer_hint2">您尋找的類型</string>
     <string name="link_gomap_description">適用於 iOS 的進階 OSM 編輯器</string>
     <string name="link_terraink_description">為城市或社區製作精美的客製化海報</string>
-    <string name="quest_place_vacant_type_title">此處原本為空置狀態。那麼現在這裡變成了什麼？</string>
+    <string name="quest_place_vacant_type_title">此處原本為空置狀態。哪麼現在這裡變成了什麼？</string>
     <string name="about_title">關於 %1$s</string>
     <string name="quest_surface_value_laterite">紅土</string>
     <string name="leave_note_quest_context_hint">無法回答“%1$s”：</string>
@@ -1492,7 +1489,7 @@
     <string name="resurvey_title">仍然正確嗎？</string>
     <string name="add">新增</string>
     <string name="quest_bothway_aerialway_confirm">你確定人可以從任何方向乘座纜車？</string>
-    <string name="quest_doctor_type_title">這裡有那種專科醫生？</string>
+    <string name="quest_doctor_type_title">這裡有哪種專科醫生？</string>
     <string name="quest_generalFee_title3">你需要付錢才能待在這裡嗎？</string>
     <string name="quest_access_permit">證書持有者 (通常都能取得)</string>
     <string name="unit_day">日</string>
@@ -1505,5 +1502,5 @@
     <string name="quest_generalAccess_title3">誰可以待在這裡？</string>
     <string name="quest_generalAccess_hint">忽略任何費用，如果需要付費則會另外再詢問。</string>
     <string name="quest_toiletsFee_fee_for_non_customers">只有非顧客才需要付費</string>
-    <string name="quest_vending_machine_type">這是那種類型的販賣機？</string>
+    <string name="quest_vending_machine_type">這是那哪類型的販賣機？</string>
 </resources>

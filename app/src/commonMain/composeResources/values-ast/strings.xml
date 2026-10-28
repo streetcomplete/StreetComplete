@@ -713,7 +713,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="quest_buildingType_abandoned_description">edificiu en desusu y función o propósitu orixinal desconocíu</string>
     <string name="quest_buildingType_ruins">Ruines</string>
     <string name="quest_buildingType_ruins_description">edificiu abandonáu, inidentificable y en ruines</string>
-    <string name="quest_charging_station_capacity_title">¿Cuántos coches se pueden cargar nesta estación de carga al tiempu?</string>
     <string name="link_disaster_ninja_description">Mapa que muestra desastres naturales de recién, interesante pa quien fai cartografía humanitaria. Amás, muestra munches estadístiques interesantes p'analizar la calidá y el nivel d'actualización de los datos.</string>
     <string name="quest_lanes_title">¿Cuántos carriles de tráficu rodáu tien esta vía?</string>
     <string name="quest_lanes_answer_noLanes">Los carriles tán ensin marcar</string>

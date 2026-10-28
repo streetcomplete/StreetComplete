@@ -380,9 +380,6 @@
         "amenity/doctors/plastic_surgery": {
           "name": "Пластический хирург"
         },
-        "amenity/doctors/podiatry": {
-          "name": "Ортопед"
-        },
         "amenity/doctors/proctology": {
           "name": "Колоректальный хирург"
         },
@@ -595,6 +592,10 @@
         "amenity/parcel_locker": {
           "name": "Почтомат"
         },
+        "amenity/parking": {
+          "name": "Парковка",
+          "terms": ["парковка", "стоянка", "автостоянка"]
+        },
         "amenity/parking/multi-storey": {
           "name": "Многоуровневая парковка",
           "terms": ["паркинг", "многоуровневый гараж"]
@@ -603,7 +604,8 @@
           "name": "Придорожная парковка"
         },
         "amenity/parking/underground": {
-          "name": "Подземная парковка"
+          "name": "Подземная парковка",
+          "terms": ["подземный паркинг"]
         },
         "amenity/parking_entrance": {
           "name": "Въезд в крытую парковку",
@@ -2007,9 +2009,6 @@
           "name": "Пешеходный переход",
           "terms": ["пешеходный переход"]
         },
-        "highway/crossing/traffic_signals": {
-          "name": "Регулируемый пешеходный переход"
-        },
         "highway/crossing/uncontrolled": {
           "name": "Размеченный (нерегулируемый) пешеходный переход"
         },
@@ -2455,6 +2454,10 @@
         "landuse/forest": {
           "name": "Используемый в хозяйственной деятельности лес"
         },
+        "landuse/garages": {
+          "name": "Территория гаражей",
+          "terms": ["гаражи"]
+        },
         "landuse/grass": {
           "name": "Газон",
           "terms": ["газон", "искусственный газон", "земля используемая под газон"]
@@ -2843,7 +2846,7 @@
         },
         "leisure/pitch/tennis": {
           "name": "Теннисный корт",
-          "terms": ["теннисный корт"]
+          "terms": ["теннисный корт", "тенисный корт"]
         },
         "leisure/pitch/volleyball": {
           "name": "Волейбольная площадка",
@@ -4531,7 +4534,7 @@
         },
         "shop/clothes": {
           "name": "Магазин одежды",
-          "terms": ["одежда"]
+          "terms": ["одежда", "трикотаж"]
         },
         "shop/clothes/second_hand": {
           "name": "Секондхэнд",
@@ -4842,7 +4845,8 @@
           "name": "Магазин пищевых добавок"
         },
         "shop/nuts": {
-          "name": "Магазин орехов"
+          "name": "Магазин орехов и сухофруктов",
+          "terms": ["орехи", "сухофрукты"]
         },
         "shop/optician": {
           "name": "Оптика",
@@ -4941,7 +4945,7 @@
         },
         "shop/spices": {
           "name": "Магазин специй",
-          "terms": ["специи"]
+          "terms": ["специи", "сухофрукты"]
         },
         "shop/sports": {
           "name": "Спорттовары",
@@ -5733,6 +5737,9 @@
         },
         "amenity/university": {
           "name": "Территория университета"
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Подиатр"
         },
         "aerialway/station": {
           "name": "Станция канатной дороги"

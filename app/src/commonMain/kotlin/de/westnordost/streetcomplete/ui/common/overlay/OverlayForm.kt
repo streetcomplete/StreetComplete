@@ -88,11 +88,20 @@ fun OverlayForm(
 ) {
     var confirmDiscard by remember { mutableStateOf(false) }
 
-    NonPredictiveBackHandler {
+    fun dismiss() {
         if (hasChanges) {
             confirmDiscard = true
         } else {
             on(Action.Dismiss)
+        }
+    }
+
+    NonPredictiveBackHandler { dismiss() }
+
+    val lastMapClick = LocalLastMapClick.current
+    LaunchedEffect(lastMapClick) {
+        if (lastMapClick != null) {
+            if (!onClickMap(lastMapClick)) dismiss()
         }
     }
 
@@ -134,6 +143,7 @@ fun OverlayForm(
         }
 
         BottomSheetFormScaffold(
+            onDismissRequest = ::dismiss,
             note = if (label != null) {
                 { CompositionLocalProvider(
                     LocalTextStyle provides MaterialTheme.typography.titleMedium,
@@ -160,21 +170,6 @@ fun OverlayForm(
                 )
             },
         )
-    }
-
-    val lastMapClick = LocalLastMapClick.current
-    LaunchedEffect(lastMapClick) {
-        if (lastMapClick != null) {
-            // Check if the map click event has already been consumed by the overlay form
-            if (!onClickMap(lastMapClick)) {
-                // User has tapped the map. Dismiss changes.
-                if (hasChanges) {
-                    confirmDiscard = true
-                } else {
-                    on(Action.Dismiss)
-                }
-            }
-        }
     }
 
     if (confirmDiscard) {

@@ -4,6 +4,13 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import java.io.File
+import java.io.IOException
+import java.nio.file.FileVisitResult
+import java.nio.file.Files
+import java.nio.file.Path
+import java.nio.file.SimpleFileVisitor
+import java.nio.file.attribute.BasicFileAttributes
+import java.util.Locale
 
 /** Export the strings used on the streetcomplete.app website to the target directory as JSON files
  */
@@ -41,23 +48,40 @@ open class UpdateWebsiteTranslationsTask : DefaultTask() {
     @TaskAction fun run() {
         require(apiToken != "invalid") { "POEditor API token must be set" }
 
-        val languageCodes = fetchAvailableLocalizations(apiToken, projectId).map { it.code }
+        val languageTags = fetchAvailableLocalizations(apiToken, projectId).map { it.code }
         val json = Json {
             prettyPrint = true
         }
 
-        for (languageCode in languageCodes) {
-            println(languageCode)
-            val translations = fetchLocalizationJson(apiToken, projectId, languageCode)
-            val lang = if (languageCode.lowercase() == "en-us") "en" else languageCode.lowercase()
+        // remove all prior translations
+        Files.walkFileTree(targetDir.toPath(), object : SimpleFileVisitor<Path>() {
+            public override fun visitFile(file: Path, attrs: BasicFileAttributes): FileVisitResult {
+                if (file.fileName.toString() == "strings.json") {
+                    Files.delete(file)
+                }
+                return FileVisitResult.CONTINUE
+            }
+        })
+
+        for (languageTag in languageTags) {
+            val locale = Locale.forLanguageTag(transformPOEditorLanguageTag(languageTag))
+            var actualLanguageTag = locale.toLanguageTag()
+            if (locale == Locale.US) actualLanguageTag = "en"
+
+            print(languageTag)
+            if (languageTag != actualLanguageTag) print(" -> " + actualLanguageTag)
+            println()
+
+            val translations = fetchLocalizationJson(apiToken, projectId, languageTag)
             val strings = translations.filterKeys { it in keys || it in requiredKeys }
             // only accept complete translations
             if (requiredKeys.all { it in strings.keys }) {
-                val dir = targetDir.resolve(lang)
+                val dir = targetDir.resolve(actualLanguageTag)
                 dir.mkdirs()
                 val file = dir.resolve("strings.json")
                 file.writeText(json.encodeToString(strings))
             }
         }
     }
+
 }

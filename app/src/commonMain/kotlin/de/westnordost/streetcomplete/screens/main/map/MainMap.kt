@@ -24,7 +24,10 @@ fun MainMap(
     MaplibreMap(
         modifier = modifier,
         state = state,
-        cameraConstraints = CameraConstraints(minZoom = 0.0, maxZoom = 22.0),
+        cameraConstraints = CameraConstraints {
+            minZoom = 0.0
+            maxZoom = 22.0
+        },
         interactions = MapInteractions {
             camera {
                 pan { onStart(onPan) }

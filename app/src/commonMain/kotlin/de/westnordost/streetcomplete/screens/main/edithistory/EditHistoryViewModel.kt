@@ -138,7 +138,7 @@ private fun List<Edit>.toEditItems(): List<EditItem> {
         val sameDate = editDateTime.date == editAboveDateTime?.date
         val sameTime =
             editDateTime.time.hour == editAboveDateTime?.time?.hour &&
-                editDateTime.time.minute == editAboveDateTime?.time?.minute
+                editDateTime.time.minute == editAboveDateTime.time.minute
         editAboveDateTime = editDateTime
 
         EditItem(

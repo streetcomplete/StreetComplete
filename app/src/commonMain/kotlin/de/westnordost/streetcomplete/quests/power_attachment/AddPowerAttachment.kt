@@ -39,6 +39,7 @@ class AddPowerAttachment : OsmFilterQuestType<PowerAttachment>() {
     // map data density is usually lower where there are power poles and more context is necessary
     // when looking at them from afar
     override val highlightedElementsRadius get() = 100.0
+    override val hideHighlightedElementsOnDifferentLevel = false
 
     @Composable
     override fun Form(on: (QuestAction<PowerAttachment>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {

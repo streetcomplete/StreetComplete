@@ -44,7 +44,6 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 
 /** Searchable and clickable quest list as a full screen */
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun ShowQuestFormsScreen(
     viewModel: ShowQuestFormsViewModel,

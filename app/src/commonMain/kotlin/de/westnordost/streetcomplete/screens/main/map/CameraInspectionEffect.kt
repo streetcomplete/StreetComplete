@@ -42,11 +42,14 @@ internal fun CameraInspectionEffect(
             }
             else -> {
                 cameraState.openSheet()
-                when (val shown = snapshotFlow { sheet.shownBottomSheet }.filterNotNull().first()) {
-                    is ShownBottomSheet.OsmQuest -> cameraState.focus(shown.quest.geometry, sheetPadding)
-                    is ShownBottomSheet.OsmNoteQuest -> cameraState.focus(shown.quest.geometry, sheetPadding)
-                    // overlay forms leave the map in place
-                    else -> cameraState.setPadding(sheetPadding)
+                val shown = snapshotFlow { sheet.shownBottomSheet }.filterNotNull().first()
+
+                // only focus quest forms. Overlay forms leave the map in place
+                if (shown is ShownBottomSheet.OsmQuest) {
+                    cameraState.focus(shown.geometry, sheetPadding)
+                }
+                if (shown is ShownBottomSheet.OsmNoteQuest) {
+                    cameraState.focus(shown.geometry, sheetPadding)
                 }
             }
         }

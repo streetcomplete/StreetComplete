@@ -719,7 +719,6 @@ nivåer</string>
     <string name="quest_buildingType_abandoned_description">oanvänd byggnad vars ursprungliga funktion eller syfte är okänd</string>
     <string name="quest_buildingType_ruins">Ruiner</string>
     <string name="quest_buildingType_ruins_description">övergiven, förstörd och oidentifierbar byggnad</string>
-    <string name="quest_charging_station_capacity_title">Hur många bilar kan laddas här samtidigt?</string>
     <string name="link_disaster_ninja_description">Karta som visar de senaste naturkatastroferna, intressant för humanitära kartläggare. Visar också mycket intressant statistik för att analysera hur väl kartlagda och uppdaterade platser är.</string>
     <string name="quest_lanes_title">Hur många körfält för bilar har den här vägen?</string>
     <string name="quest_lanes_answer_noLanes">Inga markerade körfält</string>
@@ -1404,9 +1403,7 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_firewood_provided_title">Finns det brännved här?</string>
     <string name="quest_first_aid_kit_location">Var finns första hjälpen-kitet?</string>
     <string name="quest_level_thing_title">På vilken våning ligger den här saken?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Hur många cyklar kan laddas här samtidigt?</string>
     <string name="quest_charging_station_bicycles_title">Kan man ladda cyklar här också?</string>
-    <string name="quest_charging_station_bicycles_hint">Strömadaptrarna till cykelladdarna ansluts till vanliga hushållsuttag.</string>
     <string name="quest_recycling_type_pet_bottles">PET flaska</string>
     <string name="quest_maxweight_add_sign">Lägg till skylt</string>
     <string name="quest_maxweight_remove_sign">Ta bort skylt</string>

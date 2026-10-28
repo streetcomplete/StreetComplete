@@ -32,13 +32,12 @@ import de.westnordost.streetcomplete.ui.common.NonPredictiveBackHandler
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
 import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
 import de.westnordost.streetcomplete.ui.util.photo.compressPhotoAndOverwrite
-import de.westnordost.streetcomplete.ui.util.photo.createOpenCameraSettings
 import de.westnordost.streetcomplete.ui.util.photo.createPhotoPlatformFile
 import de.westnordost.streetcomplete.ui.util.photo.rememberHasCamera
+import de.westnordost.streetcomplete.ui.util.photo.rememberTakePhotoLauncher
 import de.westnordost.streetcomplete.util.image.fileBitmapPainter
 import io.github.vinceglb.filekit.FileKit
 import io.github.vinceglb.filekit.PlatformFile
-import io.github.vinceglb.filekit.dialogs.compose.rememberCameraPickerLauncher
 import io.github.vinceglb.filekit.path
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -52,6 +51,7 @@ import org.koin.compose.koinInject
 @Composable
 fun NoteForm(
     onDismiss: () -> Unit,
+    requestDismiss: Boolean,
     text: String,
     onTextChange: (String) -> Unit,
     imagePaths: List<String>,
@@ -64,8 +64,8 @@ fun NoteForm(
     val hasCamera = rememberHasCamera()
     var path by rememberSaveable { mutableStateOf<String?>(null) }
     val coroutineScope = rememberCoroutineScope()
-    val takePhotoLauncher = rememberCameraPickerLauncher(createOpenCameraSettings()) { file ->
-        val path2 = path ?: return@rememberCameraPickerLauncher
+    val takePhotoLauncher = rememberTakePhotoLauncher { file ->
+        val path2 = path ?: return@rememberTakePhotoLauncher
         coroutineScope.launch(Dispatchers.IO) {
             if (file != null) {
                 FileKit.compressPhotoAndOverwrite(PlatformFile(path2))
@@ -87,7 +87,7 @@ fun NoteForm(
         onDismiss()
     }
 
-    NonPredictiveBackHandler {
+    fun dismiss() {
         if (hasChanges) {
             confirmDiscard = true
         } else {
@@ -95,15 +95,16 @@ fun NoteForm(
         }
     }
 
+    NonPredictiveBackHandler { dismiss() }
+
+    LaunchedEffect(requestDismiss) {
+        if (requestDismiss) dismiss()
+    }
+
     val lastMapClick = LocalLastMapClick.current
     LaunchedEffect(lastMapClick) {
         if (lastMapClick != null) {
-            // User has tapped the map. Dismiss changes.
-            if (hasChanges) {
-                confirmDiscard = true
-            } else {
-                onDiscard()
-            }
+            dismiss()
         }
     }
 
@@ -147,7 +148,7 @@ fun NoteForm(
             onTakePhoto = {
                 val file = createPhotoPlatformFile()
                 path = file.path
-                takePhotoLauncher.launch(destinationFile = file)
+                takePhotoLauncher(file)
             },
             // because otherwise it would overlap with the OK button
             modifier = Modifier.padding(end = 72.dp)

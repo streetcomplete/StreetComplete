@@ -24,7 +24,6 @@ import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.preferences.Autosync
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.data.quest.AutoSyncer
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.upload.UploadController
@@ -79,23 +78,22 @@ class MainViewModelImpl(
     private val teamModeQuestFilterController: TeamModeQuestFilterController,
     private val elementEditsSource: ElementEditsSource,
     private val noteEditsSource: NoteEditsSource,
-    private val autoSyncer: AutoSyncer,
     private val periodicCleaner: PeriodicCleaner,
     private val feedsUpdater: FeedsUpdater,
     private val prefs: Preferences,
 ) : MainViewModel() {
 
     override val initialCamera get() = CameraPosition(
-        target = prefs.mapPosition.toPosition(), bearing = prefs.mapRotation,
-        tilt = prefs.mapTilt, zoom = prefs.mapZoom,
+        center = prefs.mapPosition.toPosition(), bearing = prefs.mapRotation,
+        pitch = prefs.mapTilt, zoom = prefs.mapZoom,
     )
     override val initiallyFollowing get() = prefs.mapIsFollowing
     override val initiallyNavigating get() = prefs.mapIsNavigationMode
 
     override fun saveCamera(camera: CameraPosition, following: Boolean, navigating: Boolean) {
-        prefs.mapPosition = camera.target.toLatLon()
+        prefs.mapPosition = camera.center.toLatLon()
         prefs.mapRotation = camera.bearing
-        prefs.mapTilt = camera.tilt
+        prefs.mapTilt = camera.pitch
         prefs.mapZoom = camera.zoom
         prefs.mapIsFollowing = following
         prefs.mapIsNavigationMode = navigating
@@ -424,7 +422,5 @@ class MainViewModelImpl(
         teamModeQuestFilterController.removeListener(teamModeListener)
         elementEditsSource.removeListener(elementEditsListener)
         noteEditsSource.removeListener(noteEditsListener)
-
-        autoSyncer.onClear()
     }
 }

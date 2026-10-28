@@ -719,7 +719,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingType_abandoned_description">役割や役目が不明な使用されていない建物</string>
     <string name="quest_buildingType_ruins">廃墟</string>
     <string name="quest_buildingType_ruins_description">遺棄された建物</string>
-    <string name="quest_charging_station_capacity_title">この充電ステーションでは一度に何台の車を充電できますか?</string>
     <string name="link_disaster_ninja_description">最近の自然災害を示す地図で、人道支援マッパーにとって興味深いものです。また、 は、場所がどの程度適切にマッピングされ、最新のものであるかを分析するための多くの興味深い統計を示しています。</string>
     <string name="quest_lanes_title">この道路は何車線ありますか？</string>
     <string name="quest_lanes_answer_noLanes">車線分けなし</string>
@@ -1246,6 +1245,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_sanitary_dump_station_description">汚水処理場とは、キャンピングカー、長距離トラック、ボートなどのトイレの汚水タンクから人間の排泄物を排出するための施設です。通常、次のような標識で示されています:</string>
     <string name="quest_generalFee_title">これを使うのにお金を払う必要がありますか。</string>
     <string name="quest_bbq_fuel_not_a_bbq">これは防火囲いです</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">調理面 (例 焼網/鉄板) がない場合、かまどです。</string>
     <string name="about_title_logs">ログ (%1$d)</string>
     <string name="about_summary_logs">エラー報告で使用する</string>
     <string name="action_filter">フィルター</string>
@@ -1298,6 +1298,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_parcel_locker_brand">この宅配ロッカーのブランドは何ですか？</string>
     <string name="separate_cycleway_no_signed">自転車の通行を明示的に禁止している標識があります</string>
     <string name="action_back">戻る</string>
+    <string name="action_clear">消去</string>
     <string name="action_more">もっと</string>
     <string name="action_open_in_browser">ブラウザで開く</string>
     <string name="about_category_contribute">貢献する</string>
@@ -1372,4 +1373,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_leave_new_note_photo_delete">削除</string>
     <string name="quest_board_type_tourism">観光（一般）</string>
     <string name="link_gomap_description">iOS向けの進化したOSMエディタ</string>
+    <string name="quest_charging_station_socket_type1">Type 1 (J1772)</string>
+    <string name="quest_charging_station_socket_type1_combo">Type 1 Combo (CCS)</string>
+    <string name="quest_charging_station_socket_type2">Type 2 (メネケス), ケーブルなし</string>
+    <string name="quest_charging_station_socket_type2_cable">Type 2 (メネケス), ケーブルあり</string>
 </resources>

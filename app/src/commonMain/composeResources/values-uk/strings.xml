@@ -715,7 +715,6 @@
     <string name="quest_buildingType_abandoned_description">будівля, що не використовується, первісна функція чи мета якої не відома</string>
     <string name="quest_buildingType_ruins">Руїни</string>
     <string name="quest_buildingType_ruins_description">занедбана, зруйнована будівля, яку неможливо визначити</string>
-    <string name="quest_charging_station_capacity_title">Скільки автомобілів можна зарядити на цій зарядній станції одночасно?</string>
     <string name="link_disaster_ninja_description">Мапа, що показує нещодавні природні катастрофи, цікава для гуманітарних картографів. Також вона показує багато цікавої статистики, завдяки якій можна проаналізувати як добре замаплене місце або наскільки свіжі дані.</string>
     <string name="quest_lanes_title">Скильки на цій дорозі смуг для авто?</string>
     <string name="quest_lanes_answer_noLanes">Немає розмічених смуг</string>
@@ -1414,9 +1413,7 @@
     <string name="quest_first_aid_kit_location">Де знаходиться ця аптечка першої допомоги?</string>
     <string name="quest_lane_markings_title">Чи є на цій дорозі розмітка смуг?</string>
     <string name="quest_level_thing_title">На якому поверсі знаходиться ця річ?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Скільки велосипедів можна заряджати тут одночасно?</string>
     <string name="quest_charging_station_bicycles_title">Чи можна тут також заряджати велосипеди?</string>
-    <string name="quest_charging_station_bicycles_hint">Адаптери живлення для велозарядок підключаються до звичайних розеток.</string>
     <string name="quest_recycling_type_pet_bottles">ПЕТ пляшки</string>
     <string name="quest_maxweight_add_sign">Додати знак</string>
     <string name="quest_maxweight_remove_sign">Прибрати знак</string>
@@ -1501,4 +1498,35 @@
     <string name="unit_minute">хвилина</string>
     <string name="quest_parking_charge_title">Скільки потрібно заплатити, щоб паркуватися тут?</string>
     <string name="quest_parking_charge_time_unit_label">за</string>
+    <string name="quest_generalAccess_title">Хто може цим користуватися?</string>
+    <string name="quest_generalAccess_title2">Хто може сюди увійти?</string>
+    <string name="quest_generalAccess_title3">Хто може тут зупинитися?</string>
+    <string name="quest_generalAccess_hint">Не зважайте на будь-які збори чи платежі. Питання про те, чи потребує доступ оплати, буде поставлено окремо.</string>
+    <string name="quest_toiletsFee_fee_for_non_customers">Платять всі крім клієнтів</string>
+    <string name="quest_vending_machine_type">Що це за торговий автомат?</string>
+    <string name="quest_selection_hint_message_open_settings">Відкрити налаштування</string>
+    <string name="link_waymarked_description">Показує позначені маршрути для піших прогулянок, їзди на велосипеді (зокрема гірському), верхової їзди, катання на ковзанах та зимових видів спорту.</string>
+    <string name="quest_buildingType_terraced_house">Окремий будинок у ряді таунхаузів</string>
+    <string name="quest_buildingType_terraced_house_description">окремий будинок у ряді однакових будинків</string>
+    <string name="quest_barrier_opening_not_wheelchair_accessible">Не підходить для інвалідних візків</string>
+    <string name="quest_charging_station_bicycles_hint2">Деякі розетки тут можна використовувати для заряджання велосипедів. Перевірте, чи не заборонено заряджати велосипеди — наприклад, чи немає відповідних знаків або чи не призначена ця територія виключно для автомобілів.</string>
+    <string name="quest_charging_station_car_access">Чи можна тут заряджати автомобілі?</string>
+    <string name="quest_charging_station_socket_title">Скільки розеток має ця зарядна станція?</string>
+    <string name="quest_charging_station_socket_type1">Тип 1 (J1772)</string>
+    <string name="quest_charging_station_socket_type1_combo">Тип 1 Комбо (CCS)</string>
+    <string name="quest_charging_station_socket_type2">Тип 2 (Меннекес), без кабелю</string>
+    <string name="quest_charging_station_socket_type2_cable">Тип 2 (Меннекес), з кабелем</string>
+    <string name="quest_charging_station_socket_type2_combo">Тип 2 Комбо (CCS)
+</string>
+    <string name="quest_charging_station_socket_type3a">Тип 3А (Scame)</string>
+    <string name="quest_charging_station_socket_type3c">Тип 3C (Scame)</string>
+    <string name="quest_charging_station_socket_chademo">CHAdeMO</string>
+    <string name="quest_charging_station_socket_chaoji">ChaoJi (CHAdeMO 3.0)</string>
+    <string name="quest_charging_station_socket_nacs">NACS (Тесла)</string>
+    <string name="quest_charging_station_socket_gb_ac">GB/T (Китай) - постійний струм</string>
+    <string name="quest_charging_station_socket_gb_dc">GB/T (Китай) - змінний струм</string>
+    <string name="quest_charging_station_socket_domestic">Побутова розетка</string>
+    <string name="quest_charging_station_other_socket">Інший тип розетки…</string>
+    <string name="quest_charging_station_add_socket">Додати розетку</string>
+    <string name="quest_parking_charge_answer_no_fee">Плата взагалі відсутня</string>
 </resources>

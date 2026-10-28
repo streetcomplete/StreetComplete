@@ -718,7 +718,6 @@ seviyeleri</string>
     <string name="quest_buildingType_abandoned_description">asıl işlevi veya amacı bilinmeyen kullanılmayan bina</string>
     <string name="quest_buildingType_ruins">Kalıntı</string>
     <string name="quest_buildingType_ruins_description">metruk, harap ve tanımlanamayan bina</string>
-    <string name="quest_charging_station_capacity_title">Bu şarj istasyonunda aynı anda kaç araba şarj edilebilir?</string>
     <string name="link_disaster_ninja_description">Doğal afetleri gösteren bir harita, insanlara yardım etmek isteyenler için faydalı. Ayrıca bölgelerin ne kadar iyi ve güncel olduğunu gösteren bir sürü ilginç veriyi de gösterir.</string>
     <string name="quest_lanes_title">Bu yolda arabalar için kaç şerit var?</string>
     <string name="quest_lanes_answer_noLanes">İşaretli şerit yok</string>
@@ -1412,9 +1411,7 @@ Bir seviye, pencereleri çatıda olduğunda bir çatı seviyesi olarak sayılır
     <string name="quest_first_aid_kit_location">Bu ilk yardım çantası nerede bulunuyor?</string>
     <string name="quest_lane_markings_title">Bu yolda şerit işaretleri var mı?</string>
     <string name="quest_level_thing_title">Bu şey kaçıncı katta bulunuyor?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Burada aynı anda kaç bisiklet şarj edilebilir?</string>
     <string name="quest_charging_station_bicycles_title">Burada bisikletler de şarj edilebiliyor mu?</string>
-    <string name="quest_charging_station_bicycles_hint">Bisiklet şarj cihazı güç adaptörleri normal ev prizlerine takılır.</string>
     <string name="quest_recycling_type_pet_bottles">PET şişeler</string>
     <string name="quest_maxweight_add_sign">İşaret ekle</string>
     <string name="quest_maxweight_remove_sign">İşaret sil</string>

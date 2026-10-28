@@ -707,7 +707,6 @@
     <string name="quest_buildingType_abandoned_description">מבנה שאינו בשימוש אשר ייעודו או שימושו המקורי אינו ידוע</string>
     <string name="quest_buildingType_ruins">הריסות</string>
     <string name="quest_buildingType_ruins_description">מבנה עזוב, הרוס ובלתי ניתן לזיהוי</string>
-    <string name="quest_charging_station_capacity_title">כמה מכוניות ניתן להטעין כאן בעת אחת?</string>
     <string name="link_disaster_ninja_description">מפה שמציגה אסונות טבע שאירעו לאחרונה, שמעניינים ממפים הומניטריים. בנוסף, מציגה מידע סטטיסטי רב לניתוח עד כמה מקומות הם ממופים ומעודכנים.</string>
     <string name="quest_lanes_title">כמה נתיבים למכוניות יש בכביש זה?</string>
     <string name="quest_lanes_answer_noLanes">אין נתיבים מסומנים</string>

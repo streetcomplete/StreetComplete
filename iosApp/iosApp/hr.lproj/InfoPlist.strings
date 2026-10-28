@@ -1,0 +1,2 @@
+"NSCameraUsageDescription" = "Kako bi se fotografije mogle priložiti bilješkama na karti, potrebno je dozvoliti pristup kameri.";
+"NSLocationWhenInUseUsageDescription" = "Dozvola pristupa Preciznoj Lokaciji je potrebna za prikazivanje vaše pozicije na karti te preuzimanje podataka u vašoj blizini.";

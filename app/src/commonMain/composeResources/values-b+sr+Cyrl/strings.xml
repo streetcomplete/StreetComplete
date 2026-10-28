@@ -718,7 +718,6 @@
     <string name="quest_buildingType_abandoned_description">напуштена зграда којој је изворна функција или сврха непозната.</string>
     <string name="quest_buildingType_ruins">Рушевина</string>
     <string name="quest_buildingType_ruins_description">запуштена, урушена и непрепознатљива грађевина</string>
-    <string name="quest_charging_station_capacity_title">Колико се аутомобила може пунити истовремено на овој станици за пуњење?</string>
     <string name="link_disaster_ninja_description">Карта која показује недавне природне катастрофе, занимљива картографима хуманитарних организација. Такође, показује мноштво статистичких података за анализу колико су добро картирана и ажурирана места.</string>
     <string name="quest_lanes_title">Колико трака за аутомобиле има овај пут?</string>
     <string name="quest_lanes_answer_noLanes">Нема означених трака</string>
@@ -1415,9 +1414,7 @@
     <string name="quest_first_aid_kit_location">Где се налази комплет за прву помоћ?</string>
     <string name="quest_lane_markings_title">Да ли овај пут има обележене траке?</string>
     <string name="quest_level_thing_title">На ком нивоу се ово налази?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Колико бицикала се може пунити истовремено?</string>
     <string name="quest_charging_station_bicycles_title">Да ли се овде могу пунити и бицикли?</string>
-    <string name="quest_charging_station_bicycles_hint">Адаптери за пуњење користе обичне кућне утичнице.</string>
     <string name="quest_recycling_type_pet_bottles">PET амбалажа</string>
     <string name="quest_maxweight_add_sign">Додај знак</string>
     <string name="quest_maxweight_remove_sign">Уклони знак</string>

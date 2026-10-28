@@ -718,7 +718,6 @@ conquista</string>
     <string name="quest_buildingType_abandoned_description">edifício não utilizado, cuja função ou propósito original é desconhecido</string>
     <string name="quest_buildingType_ruins">Ruínas</string>
     <string name="quest_buildingType_ruins_description">edifício abandonado, em ruínas e não identificável</string>
-    <string name="quest_charging_station_capacity_title">Quantos carros podem ser carregados em simultâneo neste posto de carregamento?</string>
     <string name="link_disaster_ninja_description">Mapa que mostra desastres naturais recentes, interessante para mapeadores humanitários. Além disso, mostra muitas estatísticas interessantes para analisar o quão bem mapeados e atualizados são os lugares.</string>
     <string name="quest_lanes_title">Quantas vias de trânsito para veículos esta estrada tem?</string>
     <string name="quest_lanes_answer_noLanes">Vias sem marcação</string>
@@ -1413,9 +1412,7 @@ Por exemplo 1,3 ou 2b,4,6.</string>
     <string name="quest_first_aid_kit_location">Onde está este kit de primeiros socorros?</string>
     <string name="quest_lane_markings_title">Esta estrada tem marcações na faixa de rodagem?</string>
     <string name="quest_level_thing_title">Em que andar fica essa coisa?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Quantas bicicletas podem ser carregadas aqui ao mesmo tempo?</string>
     <string name="quest_charging_station_bicycles_title">As bicicletas também podem ser carregadas aqui?</string>
-    <string name="quest_charging_station_bicycles_hint">As fichas dos adaptadores de corrente para carregadores de bicicletas ligam-se a tomadas domésticas normais.</string>
     <string name="quest_recycling_type_pet_bottles">Garrafas PET</string>
     <string name="quest_maxweight_add_sign">Adicionar sinal</string>
     <string name="quest_maxweight_remove_sign">Remover sinal</string>

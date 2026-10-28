@@ -19,6 +19,7 @@ class AddAtmOperator : OsmFilterQuestType<String>() {
         nodes with
           amenity = atm
           and !operator and !name and !brand
+          and access !~ private|no
     """
     override val changesetComment = "Specify ATM operator"
     override val wikiLink = "Tag:amenity=atm"

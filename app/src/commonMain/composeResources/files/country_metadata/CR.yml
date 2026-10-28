@@ -2,6 +2,7 @@
 atmOperators: [BAC Credomatic, Banco Promerica de Costa Rica S.A., BCR, Banco Popular, Banco Nacional de Costa Rica, Banco Nacional, Banco de Costa Rica, Grupo Mutual, Scotiabank, Davivienda, Edenia, Pura Vida Bitcoin, Cajero BCR, ATH]
 centerLineStyle: yellow
 chargingStationOperators: [ICE, Estación de Recarga, JASEC, Coopesantos, CNFL]
+chargingStationSocketTypes: [nacs, type1, type1_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: true
 domesticSocketTypes: [typeb, typea]
 mobileCountryCode: 712

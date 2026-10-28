@@ -716,7 +716,6 @@ mailak</string>
     <string name="quest_buildingType_abandoned_description">helburu ezezagun edo ez-argia duen eraikin abandonatua</string>
     <string name="quest_buildingType_ruins">Aztarnak</string>
     <string name="quest_buildingType_ruins_description">jada osorik ez dagoen eraikin baten aztarnak</string>
-    <string name="quest_charging_station_capacity_title">Zenbat kotxe karga daitezke aldi berean karga-estazio honetan?</string>
     <string name="link_disaster_ninja_description">Azken hondamendi naturalak erakusten dituen mapa interesgarria mapa humanitarioentzat. Gainera, estatistika interesgarri asko erakusten ditu, zein leku ongi mapeatuak eta eguneratuak dauden aztertzeko.</string>
     <string name="quest_lanes_title">Zenbat errail ditu kotxeentzat errepide honek?</string>
     <string name="quest_lanes_answer_noLanes">Markatu gabeko errailak</string>
@@ -1433,9 +1432,7 @@ Adibidez 1,3 edo 2b,4,6.</string>
     <string name="quest_first_aid_kit_location">Non dago hurbilen botikina?</string>
     <string name="quest_lane_markings_title">Errepide honek errei-markarik al du?</string>
     <string name="quest_level_thing_title">Zein maila zenbakitan dago gauza hau?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Zenbat bizikleta kargatu daitezke bertan denbora berean?</string>
     <string name="quest_charging_station_bicycles_title">Hemen bizikletak ere kargatu daitezke?</string>
-    <string name="quest_charging_station_bicycles_hint">Bizikleta-kargagailuen egokigailuak etxeko entxufe arruntetara konektatzen dira.</string>
     <string name="quest_recycling_type_pet_bottles">PET botilak</string>
     <string name="quest_maxweight_add_sign">Gehitu ikurra</string>
     <string name="quest_maxweight_remove_sign">Kendu ikurra</string>

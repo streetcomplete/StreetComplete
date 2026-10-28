@@ -407,10 +407,6 @@
         "amenity/doctors/plastic_surgery": {
           "name": "Plastiikkakirurgi"
         },
-        "amenity/doctors/podiatry": {
-          "name": "Jalkaterapeutti",
-          "terms": ["podiatri"]
-        },
         "amenity/doctors/proctology": {
           "name": "Proktologi",
           "terms": ["peräsuolikirurgi"]
@@ -657,6 +653,9 @@
         },
         "amenity/parking_space/disabled": {
           "name": "Liikkumisesteisten pysäköintipaikka"
+        },
+        "amenity/parking_surface": {
+          "name": "Pintapysäköintialue"
         },
         "amenity/payment_centre": {
           "name": "Maksupalvelu"
@@ -1145,12 +1144,6 @@
         },
         "area": {
           "name": "Alue",
-          "relation": {
-            "role_labels": {
-              "inner": "Sisä",
-              "outer": "Ulko"
-            }
-          },
           "terms": ["alue", "polygoni", "monikulmio", "multipolygoni"]
         },
         "area/footway": {
@@ -2134,9 +2127,6 @@
         "highway/crossing/informal": {
           "name": "Epävirallinen ylityspaikka",
           "aliases": ["Ylityspaikka"]
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "Valo-ohjattu suojatie"
         },
         "highway/crossing/uncontrolled": {
           "name": "Liikennemerkillä / tiemerkinnöillä merkitty suojatie"
@@ -3361,6 +3351,9 @@
         "man_made/silo": {
           "name": "Siilo",
           "terms": ["viljasiilo", "siilo", "viljaelevaattori", "viljavarasto", "vehnä", "maissi", "kaura", "ruis", "ohra"]
+        },
+        "man_made/silo/crop": {
+          "name": "Viljasiilo"
         },
         "man_made/ski_jump": {
           "name": "Mäkihyppytorni"
@@ -5415,10 +5408,7 @@
           "name": "Hallinnollinen raja",
           "relation": {
             "role_labels": {
-              "admin_centre": "Hallintokeskus",
-              "inner": "Sisä",
-              "label": "Nimike",
-              "outer": "Ulko"
+              "label": "Nimike"
             }
           },
           "terms": ["hallinnollinen raja", "alueraja", "rajaviiva", "kunnanraja", "valtion raja", "reuna"]
@@ -5441,13 +5431,7 @@
           "name": "Nopeuskamera"
         },
         "type/multipolygon": {
-          "name": "Multipolygoni",
-          "relation": {
-            "role_labels": {
-              "inner": "Sisä",
-              "outer": "Ulko"
-            }
-          }
+          "name": "Multipolygoni"
         },
         "type/public_transport/stop_area_group": {
           "name": "Joukkoliikennealueiden ryhmä"
@@ -5864,6 +5848,10 @@
           "name": "Yliopistokampus",
           "aliases": ["Yliopistoalue"],
           "terms": ["kampus", "yliopistokampus", "college", "kandi", "maisteri", "tohtori"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Jalkaterapeutti",
+          "terms": ["podiatri"]
         },
         "amenity/charging_station/charging_station_bicycle_designated": {
           "name": "Polkupyörän latauspiste",

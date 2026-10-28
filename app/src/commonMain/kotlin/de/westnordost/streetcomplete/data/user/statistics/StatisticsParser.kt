@@ -8,7 +8,7 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.io.decodeFromSource
 import kotlin.time.Instant
 
-class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
+class StatisticsParser {
     private val jsonParser = Json { ignoreUnknownKeys = true }
 
     @OptIn(ExperimentalSerializationApi::class)
@@ -16,14 +16,14 @@ class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
         jsonParser.decodeFromSource<ApiStatistics>(json).toStatistics()
 
     private fun ApiStatistics.toStatistics() = Statistics(
-        types = parseEditTypeStatistics(questTypes),
+        types = questTypes.map { EditTypeStatistics(it.key, it.value) },
         countries = countries.map { (key, value) ->
             CountryStatistics(countryCode = key, count = value, rank = countryRanks[key])
         }.sortedBy(CountryStatistics::countryCode),
         rank = rank,
         daysActive = daysActive,
         currentWeekRank = currentWeekRank,
-        currentWeekTypes = parseEditTypeStatistics(currentWeekQuestTypes),
+        currentWeekTypes = currentWeekQuestTypes.map { EditTypeStatistics(it.key, it.value) },
         currentWeekCountries = currentWeekCountries.map { (key, value) ->
             CountryStatistics(countryCode = key, count = value, rank = currentWeekCountryRanks[key])
         }.sortedBy(CountryStatistics::countryCode),
@@ -32,22 +32,6 @@ class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
         lastUpdate = lastUpdate.toEpochMilliseconds(),
         isAnalyzing = isAnalyzing,
     )
-
-    private fun parseEditTypeStatistics(input: Map<String, Int>): List<EditTypeStatistics> {
-        val result = input.toMutableMap()
-        mergeTypeAliases(result)
-        return result.map { EditTypeStatistics(it.key, it.value) }
-    }
-
-    private fun mergeTypeAliases(map: MutableMap<String, Int>) {
-        for ((oldName, newName) in typeAliases) {
-            val count = map[oldName]
-            if (count != null) {
-                map.remove(oldName)
-                map[newName] = (map[newName] ?: 0) + count
-            }
-        }
-    }
 }
 
 @Serializable

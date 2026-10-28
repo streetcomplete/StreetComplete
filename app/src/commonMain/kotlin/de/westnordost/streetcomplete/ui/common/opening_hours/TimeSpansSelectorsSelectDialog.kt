@@ -42,7 +42,6 @@ import de.westnordost.streetcomplete.util.locale.TimeFormatElements
 import org.jetbrains.compose.resources.stringResource
 
 /** Dialog in which the user can select a (clock) time span */
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun TimeSpansSelectorSelectDialog(
     onDismissRequest: () -> Unit,
@@ -55,13 +54,13 @@ fun TimeSpansSelectorSelectDialog(
 
     val timeFormatElements = remember(locale) { TimeFormatElements.of(locale) }
     val startTimePickerState = rememberTimePickerState(
-        initialHour = initialTimeSpansSelector?.start?.hour ?: 0,
+        initialHour = (initialTimeSpansSelector?.start?.hour ?: 0) % 24,
         initialMinutes = initialTimeSpansSelector?.start?.minutes ?: 0,
         is12Hour = timeFormatElements.clock12 != null,
         allowAfterMidnight = false,
     )
     val endTimePickerState = rememberTimePickerState(
-        initialHour = initialTimeSpansSelector?.end?.hour ?: 0,
+        initialHour = (initialTimeSpansSelector?.end?.hour ?: 0) % 24,
         initialMinutes = initialTimeSpansSelector?.end?.minutes ?: 0,
         is12Hour = timeFormatElements.clock12 != null,
         allowAfterMidnight = true,

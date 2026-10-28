@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ButtonColors
 import androidx.compose.material.ButtonElevation
 import androidx.compose.material.DropdownMenu
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -35,7 +34,6 @@ import org.jetbrains.compose.resources.stringResource
  *  In Apple human interface design guidelines, this would be called a
  *  [Pop-up button](https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons).
  *  */
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun <T> DropdownButton(
     items: List<T>,

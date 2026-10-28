@@ -1,7 +1,11 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
+import de.westnordost.streetcomplete.overlays.buildings.BuildingsOverlay
+import de.westnordost.streetcomplete.overlays.cycleway.CyclewayOverlay
 import de.westnordost.streetcomplete.overlays.places.PlacesOverlay
+import de.westnordost.streetcomplete.overlays.sidewalk.SidewalkOverlay
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
+import de.westnordost.streetcomplete.overlays.way_lit.WayLitOverlay
 import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
 import de.westnordost.streetcomplete.quests.amenity_indoor.AddIsAmenityIndoor
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
@@ -18,7 +22,7 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAcces
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessToilets
 
 // list of (quest) synonyms (this alternate name is mentioned to aid searching for this code)
-val editTypeAliases = listOf(
+val editTypeAliases = mapOf(
     "AddWheelChairAccessPublicTransport" to AddWheelchairAccessPublicTransport::class.simpleName!!,
     "AddWheelChairAccessToilets"         to AddWheelchairAccessToilets::class.simpleName!!,
     "AddSidewalks"                       to AddSidewalk::class.simpleName!!,
@@ -28,10 +32,10 @@ val editTypeAliases = listOf(
     "AddPicnicTableCover"                to AddAmenityCover::class.simpleName!!,
     "AddCrossingType"                    to AddCrossingMarkings::class.simpleName!!,
     // whether lit roads have been added in context of the quest or the overlay should not matter for the statistics
-    "WayLitOverlay"                      to AddWayLit::class.simpleName!!,
-    "SidewalkOverlay"                    to AddSidewalk::class.simpleName!!,
-    "CyclewayOverlay"                    to AddCycleway::class.simpleName!!,
-    "BuildingsOverlay"                   to AddBuildingType::class.simpleName!!,
+    WayLitOverlay::class.simpleName!!    to AddWayLit::class.simpleName!!,
+    SidewalkOverlay::class.simpleName!!  to AddSidewalk::class.simpleName!!,
+    CyclewayOverlay::class.simpleName!!  to AddCycleway::class.simpleName!!,
+    BuildingsOverlay::class.simpleName!! to AddBuildingType::class.simpleName!!,
     "AddStreetParking"                   to StreetParkingOverlay::class.simpleName!!,
     "AddIsDefibrillatorIndoor"           to AddIsAmenityIndoor::class.simpleName!!,
     "ShopsOverlay"                       to PlacesOverlay::class.simpleName!!,

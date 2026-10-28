@@ -32,21 +32,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.multiplatform.webview.request.RequestInterceptor
-import com.multiplatform.webview.request.WebRequest
-import com.multiplatform.webview.request.WebRequestInterceptResult
-import com.multiplatform.webview.web.LoadingState
-import com.multiplatform.webview.web.WebView
-import com.multiplatform.webview.web.WebViewNavigator
-import com.multiplatform.webview.web.rememberWebViewNavigator
-import com.multiplatform.webview.web.rememberWebViewState
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.user.login.LoginError.CommunicationError
 import de.westnordost.streetcomplete.screens.user.login.LoginError.RequiredPermissionsNotGranted
 import de.westnordost.streetcomplete.ui.common.BackIcon
+import de.westnordost.streetcomplete.ui.common.NonPredictiveBackHandler
 import de.westnordost.streetcomplete.ui.common.ToastPopup
 import de.westnordost.streetcomplete.ui.theme.titleLarge
+import dev.nucleusframework.webview.request.RequestInterceptor
+import dev.nucleusframework.webview.request.WebRequest
+import dev.nucleusframework.webview.request.WebRequestInterceptResult
+import dev.nucleusframework.webview.web.LoadingState
+import dev.nucleusframework.webview.web.WebView
+import dev.nucleusframework.webview.web.WebViewNavigator
+import dev.nucleusframework.webview.web.rememberWebViewNavigator
+import dev.nucleusframework.webview.web.rememberWebViewState
 import org.jetbrains.compose.resources.stringResource
 
 /** Leads user through the OAuth 2 auth flow to login */
@@ -90,7 +91,12 @@ fun LoginScreen(
                 url = viewModel.authorizationRequestUrl,
                 additionalHttpHeaders = mapOf(
                     "Accept-Language" to Locale.current.toLanguageTag()
-                )
+                ),
+                extraSettings = {
+                    isJavaScriptEnabled = true
+                    customUserAgentString = ApplicationConstants.USER_AGENT
+                    supportZoom = false
+                },
             )
 
             val webViewNavigator = rememberWebViewNavigator(
@@ -109,7 +115,14 @@ fun LoginScreen(
                 }
             )
 
+            // navigate back within the web view, e.g. from "forgot password" to the login form
+            NonPredictiveBackHandler(isBackEnabled = webViewNavigator.canGoBack) {
+                webViewNavigator.navigateBack()
+            }
+
             // handle error response
+            // TODO desktop: load errors aren't reported on desktop, so this is never triggered
+            //      there, see https://github.com/NucleusFramework/ComposeNativeWebview/issues/69
             LaunchedEffect(webViewState.errorsForCurrentRequest) {
                 val error = webViewState.errorsForCurrentRequest.firstOrNull()
                 if (error != null) {
@@ -130,17 +143,13 @@ fun LoginScreen(
                 if (webViewState.loadingState is LoadingState.Loading) {
                     LinearProgressIndicator(Modifier.fillMaxWidth())
                 }
+                // TODO desktop: on macOS, edit shortcuts like ⌘V don't work in the web view, so a
+                //      password can't be pasted, see
+                //      https://github.com/NucleusFramework/ComposeNativeWebview/issues/68
                 WebView(
                     state = webViewState,
                     modifier = Modifier.fillMaxSize(),
-                    captureBackPresses = true,
                     navigator = webViewNavigator,
-                    onCreated = {
-                        val settings = webViewState.webSettings
-                        settings.isJavaScriptEnabled = true
-                        settings.customUserAgentString = ApplicationConstants.USER_AGENT
-                        settings.supportZoom = false
-                    } as () -> Unit,
                 )
             }
         } else if (state is RetrievingAccessToken || state is LoggedIn) {

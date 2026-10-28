@@ -36,7 +36,7 @@ private fun XmlReader.parseMapData(ignoreRelation: (tags: Map<String, String>) -
         START_ELEMENT -> when (localName) {
             "tag" -> {
                 if (tags == null) tags = HashMap()
-                tags!![attribute("k")] = attribute("v")
+                tags[attribute("k")] = attribute("v")
             }
             "nd" -> nodes.add(attribute("ref").toLong())
             "member" -> members.add(

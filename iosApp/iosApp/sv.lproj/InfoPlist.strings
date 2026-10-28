@@ -1,0 +1,2 @@
+"NSCameraUsageDescription" = "Kameratillstånd krävs för att kunna bifoga foton till kartanteckningar.";
+"NSLocationWhenInUseUsageDescription" = "Platsbehörighet behövs för att visa din position på kartan och ladda ner data i din närhet.";

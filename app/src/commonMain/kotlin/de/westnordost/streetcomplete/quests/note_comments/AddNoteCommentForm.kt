@@ -46,7 +46,6 @@ import org.koin.compose.koinInject
 import org.koin.core.qualifier.named
 
 /** Quest form for the OsmNoteQuestType quest */
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun AddNoteCommentForm(
     onDismiss: () -> Unit,
@@ -64,6 +63,13 @@ fun AddNoteCommentForm(
     var noteImagePaths by rememberSaveable { mutableStateOf(listOf<String>()) }
 
     var avatars by remember { mutableStateOf(mapOf<Long, Painter?>()) }
+
+    var requestDismiss by remember { mutableStateOf(false) }
+
+    val alreadyHidden = remember(note.id) {
+        questsHiddenSource.get(OsmNoteQuestKey(note.id)) != null
+    }
+
     LaunchedEffect(note) {
         avatars = note.comments
             .mapNotNull { it.user?.id }
@@ -74,14 +80,11 @@ fun AddNoteCommentForm(
             }
     }
 
-    val alreadyHidden = remember(note.id) {
-        questsHiddenSource.get(OsmNoteQuestKey(note.id)) != null
-    }
-
     CompositionLocalProvider(
         LocalLastMapClick provides lastMapClick,
     ) {
         BottomSheetFormScaffold(
+            onDismissRequest = { requestDismiss = true },
             header = {
                 Text(
                     text = stringResource(quest.type.title),
@@ -102,6 +105,7 @@ fun AddNoteCommentForm(
                     Divider()
                     NoteForm(
                         onDismiss = onDismiss,
+                        requestDismiss = requestDismiss,
                         text = noteText,
                         onTextChange = { noteText = it },
                         imagePaths = noteImagePaths,

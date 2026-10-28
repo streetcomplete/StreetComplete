@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Slovenská sporiteľňa, Všeobecná úverová banka, ČSOB, Tatra banka, Prima banka, UniCredit, Poštová banka, Euronet, VÚB banka, Kvakomat, Bitcoinmat.sk, 365.bank, Fio banka, Raiffeisen banka, ATM Point, Kvakomat by KvaPay, Bitcoinmat, Bitomat, Bitcoinmat.org, wBTCb, ATM point]
 chargingStationOperators: [Západoslovenská energetika, GreenWay, ejoin, Lidl, GreenWay Infrastructure, ZSE Drive, Tesla, OMV Slovensko, evmapa, Specialized, MOL, od našich, 'Sharengo/4 SALE,s.r.o', VSE, Shell Recharge, NabiBajk, LEDEOS, ebajk connect, Mesto Prešov, Billa, Slovnaft, Ionity, GTIS Charging SK s.r.o., EVlink, Cykloregión Liptov, Antik Telecom, AgeVolt, ABB, 'ejoin, s.r.o.', ebajkonnect, ebajkconnect, U dobrého pastiera, Mesto Košice, Ledeos, Kaufland, Hedin AUtomotive Slovakia s.r.o., GreenWay Slovensko s.r.o., Farmárska reštaurácia, BMW T.O.B., Antik]
-chargingStationSocketTypes: [type2_cable, type2, type2_combo]
+chargingStationSocketTypes: [type2_cable, type2, type2_combo, chademo]
 clothesContainerOperators: [Ekocharita, HUMANA, Humana, EKOCHARITA, 'KOSIT, a.s.', Nadácia ECO, TextilEco, 'Marius Pedersen,a.s.', Marius Pedersen, ECO textil, 'T+T, a. s.', Ekotextil]
 defaultSpeedLimitHasUrbanOrRural: true
 domesticSocketTypes: [typee, typec]

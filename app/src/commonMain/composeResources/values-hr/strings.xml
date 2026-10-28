@@ -719,7 +719,6 @@ postignuća</string>
     <string name="quest_buildingType_abandoned_description">zgrada koja se ne koristi, a čija je izvorna funkcija ili namjena nepoznata</string>
     <string name="quest_buildingType_ruins">Ruševine</string>
     <string name="quest_buildingType_ruins_description">zapuštena i uništena zgrada koju nije moguće identificirati</string>
-    <string name="quest_charging_station_capacity_title">Koliko se vozila može istovremeno puniti ovdje?</string>
     <string name="link_disaster_ninja_description">Karta koja prikazuje nedavne prirodne katastrofe, zanimljiva za kartografe humanitarnih organizacija. Također, prikazuje mnoštvo zanimljivih statističkih podataka za analizu koliko su dobro kartirana i ažurirana mjesta.</string>
     <string name="quest_lanes_title">Koliko automobilskih traka ima ova cesta?</string>
     <string name="quest_lanes_answer_noLanes">Nema označenih traka</string>
@@ -1419,9 +1418,7 @@ Kat se računa kao kat u potkrovlju samo kada ima prozore unutar krova. Stoga, k
     <string name="quest_first_aid_kit_location">Gdje se nalazi ovaj pribor za prvu pomoć?</string>
     <string name="quest_lane_markings_title">Jesu li trake označene na ovoj cesti?</string>
     <string name="quest_level_thing_title">Na kojem se katu to nalazi?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Koliko se električnih bicikala ovdje može puniti istovremeno?</string>
     <string name="quest_charging_station_bicycles_title">Mogu li se ovdje puniti i električni bicikli?</string>
-    <string name="quest_charging_station_bicycles_hint">Punjači za električne bicikle mogu imati ugrađene priključke specifične za bicikl ili mogu imati obične kućne utičnice za spajanje adaptera za napajanje.</string>
     <string name="quest_recycling_type_pet_bottles">PET boce</string>
     <string name="quest_maxweight_add_sign">Dodaj znak</string>
     <string name="quest_maxweight_remove_sign">Ukloni znak</string>
@@ -1512,4 +1509,28 @@ U suprotnom, možete preuzeti drugu tipkovnicu u trgovini aplikacija. Na Android
     <string name="quest_generalAccess_hint">Zanemarite sve naknade ili troškove. Pitanje plaćanja za pristup dolazi naknadno.</string>
     <string name="quest_toiletsFee_fee_for_non_customers">Plaćaju samo osobe koje nisu klijenti</string>
     <string name="quest_vending_machine_type">Koja je to vrsta samoposlužnog automata?</string>
+    <string name="quest_selection_hint_message_open_settings">Otvori postavke</string>
+    <string name="link_waymarked_description">Prikazuje označene staze za pješačenje, biciklizam, brdski biciklizam, jahanje, rolanje i zimske sportove.</string>
+    <string name="quest_buildingType_terraced_house">Jedna od kuća u nizu</string>
+    <string name="quest_buildingType_terraced_house_description">pojedinačna kuća u nizu sličnih kuća</string>
+    <string name="quest_barrier_opening_not_wheelchair_accessible">Nije prikladno za invalidska kolica</string>
+    <string name="quest_charging_station_bicycles_hint2">Neke od utičnica ovdje mogu se koristiti za punjenje električnih bicikala. Provjerite je li punjenje bicikala zabranjeno – na primjer, znakovima zabrane ili zato što je prostor namijenjen isključivo automobilima.</string>
+    <string name="quest_charging_station_car_access">Mogu li se ovdje puniti električni automobili?</string>
+    <string name="quest_charging_station_socket_title">Koliko utičnica ima ova punionica?</string>
+    <string name="quest_charging_station_socket_type1">Type 1 (J1772)</string>
+    <string name="quest_charging_station_socket_type1_combo">Type 1 Combo (CCS)</string>
+    <string name="quest_charging_station_socket_type2">Type 2 (Mennekes), bez kabela</string>
+    <string name="quest_charging_station_socket_type2_cable">Tip 2 (Mennekes), s kabelom</string>
+    <string name="quest_charging_station_socket_type2_combo">Type 2 Combo (CCS)</string>
+    <string name="quest_charging_station_socket_type3a">Type 3A (Scame)</string>
+    <string name="quest_charging_station_socket_type3c">Type 3C (Scame)</string>
+    <string name="quest_charging_station_socket_chademo">CHAdeMO</string>
+    <string name="quest_charging_station_socket_chaoji">ChaoJi (CHAdeMO 3.0)</string>
+    <string name="quest_charging_station_socket_nacs">NACS (Tesla)</string>
+    <string name="quest_charging_station_socket_gb_ac">GB/T (Kina) - AC</string>
+    <string name="quest_charging_station_socket_gb_dc">GB/T (Kina) - DC</string>
+    <string name="quest_charging_station_socket_domestic">Kućanska utičnica (bilo koja)</string>
+    <string name="quest_charging_station_other_socket">Drugačija utičnica…</string>
+    <string name="quest_charging_station_add_socket">Dodaj utičnicu</string>
+    <string name="quest_parking_charge_answer_no_fee">Nema nikakve naplate</string>
 </resources>

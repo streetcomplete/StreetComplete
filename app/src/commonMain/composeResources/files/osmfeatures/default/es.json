@@ -470,10 +470,6 @@
           "name": "Cirujano plástico",
           "terms": ["cirugía estética", "cirugía cosmética", "cirugía craneofacial", "cirugía reconstructiva", "cirugía plástica"]
         },
-        "amenity/doctors/podiatry": {
-          "name": "Podólogo",
-          "terms": ["tobillo", "pies", "pie", "pierna", "piernas", "podología"]
-        },
         "amenity/doctors/proctology": {
           "name": "Cirujano colorrectal",
           "terms": ["cirugía colorrectal", "proctología", "colon", "ano", "coloproctología"]
@@ -829,6 +825,10 @@
           "name": "Sinagoga judia",
           "terms": ["judío", "judía", "judio", "judia"]
         },
+        "amenity/place_of_worship/multifaith": {
+          "name": "Lugar de culto multiconfesional",
+          "terms": ["lugar de culto multiconfesional", "espacio de culto multirreligioso", "lugar de culto interreligioso"]
+        },
         "amenity/place_of_worship/muslim": {
           "name": "Mezquita musulmana",
           "terms": ["musulmán", "musulman", "musulmano", "musulmana"]
@@ -1059,6 +1059,10 @@
         "amenity/shelter/public_transport": {
           "name": "Refugio de transporte público",
           "terms": ["refugio", "parada de autobús", "parada de metro", "espera"]
+        },
+        "amenity/shelter/sun_shelter": {
+          "name": "Refugio para el sol",
+          "terms": ["refugio para el sol", "refugio solar", "cubierta para el sol", "sombra"]
         },
         "amenity/shower": {
           "name": "Ducha",
@@ -1360,8 +1364,8 @@
           "name": "Área",
           "relation": {
             "role_labels": {
-              "inner": "Interior",
-              "outer": "Exterior"
+              "inner": "Borde interior",
+              "outer": "Borde exterior"
             }
           },
           "terms": ["superficie", "extensión", "espacio", "zona", "sector", "campo", "dominio", "territorio", "tierra", "parcela", "terreno"]
@@ -2507,8 +2511,8 @@
           "name": "Cruce informal"
         },
         "highway/crossing/traffic_signals": {
-          "name": "Cruce semaforizado para peatones",
-          "terms": ["semáforo para peatones", "señal para peatones", "cruce de peatones", "paso de peatones", "paso de bicicletas"]
+          "name": "Cruce con semáforos",
+          "terms": ["cruce con semáforos", "cruce semaforizado", "cruce regulado por semáforos", "cruce peatonal con semáforos"]
         },
         "highway/crossing/uncontrolled": {
           "name": "Cruce peatonal marcado",
@@ -5223,6 +5227,10 @@
           "name": "Vía de ferrocarril de ancho estrecho",
           "terms": ["ferrocarril de vía estrecha", "vía angosta", "gálibo estrecho"]
         },
+        "railway/platform_edge": {
+          "name": "Borde de andén",
+          "terms": ["borde de andén", "borde del andén", "límite del andén"]
+        },
         "railway/preserved": {
           "name": "Vía de ferrocarril histórico",
           "terms": ["patrimonio", "patrimonial", "protegida", "histórica", "historica", "tren histórico", "ferrocarril preservado", "tren a vapor", "tren turístico"]
@@ -6327,16 +6335,22 @@
         },
         "type/boundary": {
           "name": "Límite",
-          "terms": ["frontera", "límite", "confín", "linde", "divisoria", "borde"]
+          "terms": ["frontera", "límite", "confín", "linde", "divisoria", "borde"],
+          "relation": {
+            "role_labels": {
+              "inner": "Borde interior",
+              "outer": "Borde exterior"
+            }
+          }
         },
         "type/boundary/administrative": {
           "name": "Límite Administrativo",
           "relation": {
             "role_labels": {
-              "admin_centre": "Centro administrativo",
-              "inner": "Interior",
+              "admin_centre": "Capital / Sede",
               "label": "Etiqueta",
-              "outer": "Exterior"
+              "inner": "Borde interior",
+              "outer": "Borde exterior"
             }
           },
           "terms": ["frontera", "límite", "confín", "linde", "divisoria", "borde"]
@@ -6351,7 +6365,13 @@
         },
         "type/destination_sign": {
           "name": "Señal de destino",
-          "terms": ["señal de salida", "salida", "destino"]
+          "terms": ["señal de salida", "salida", "destino"],
+          "relation": {
+            "role_labels": {
+              "from": "Desde",
+              "to": "Hasta"
+            }
+          }
         },
         "type/enforcement": {
           "name": "Control de cumplimiento",
@@ -6366,8 +6386,8 @@
           "terms": ["multipolígono", "polígono", "múltiple", "multi-polígono"],
           "relation": {
             "role_labels": {
-              "inner": "Interior",
-              "outer": "Exterior"
+              "inner": "Borde interior",
+              "outer": "Borde exterior"
             }
           }
         },
@@ -6377,39 +6397,122 @@
         },
         "type/restriction": {
           "name": "Restricción",
+          "relation": {
+            "role_labels": {
+              "from": "Desde",
+              "to": "Hasta",
+              "via": "Vía"
+            }
+          },
           "terms": ["restricción", "limitación", "prohibición"]
+        },
+        "type/restriction/no_entry": {
+          "name": "Prohibido el paso",
+          "relation": {
+            "role_labels": {
+              "from": "Desde",
+              "to": "Hasta",
+              "via": "Vía"
+            }
+          }
+        },
+        "type/restriction/no_exit": {
+          "name": "Sin salida",
+          "relation": {
+            "role_labels": {
+              "from": "Desde",
+              "to": "Hasta",
+              "via": "Vía"
+            }
+          }
         },
         "type/restriction/no_left_turn": {
           "name": "Prohibido girar a la izquierda",
-          "terms": ["prohibición", "giro", "giro a la izquierda", "no girar a la izquierda", "prohibido girar a la izquierda"]
+          "terms": ["prohibición", "giro", "giro a la izquierda", "no girar a la izquierda", "prohibido girar a la izquierda"],
+          "relation": {
+            "role_labels": {
+              "from": "Desde",
+              "to": "Hasta",
+              "via": "Vía"
+            }
+          }
         },
         "type/restriction/no_right_turn": {
           "name": "Prohibido girar a la derecha",
-          "terms": ["prohibición", "giro", "giro a la derecha", "no girar a la derecha", "prohibido girar a la derecha"]
+          "terms": ["prohibición", "giro", "giro a la derecha", "no girar a la derecha", "prohibido girar a la derecha"],
+          "relation": {
+            "role_labels": {
+              "from": "Desde",
+              "to": "Hasta",
+              "via": "Vía"
+            }
+          }
         },
         "type/restriction/no_straight_on": {
           "name": "Prohibido continuar recto",
-          "terms": ["continuar", "recto", "de frente", "derecho", "prohibido seguir derecho", "prohibido seguir recto", "no seguir", "girar"]
+          "terms": ["continuar", "recto", "de frente", "derecho", "prohibido seguir derecho", "prohibido seguir recto", "no seguir", "girar"],
+          "relation": {
+            "role_labels": {
+              "from": "Desde",
+              "to": "Hasta",
+              "via": "Vía"
+            }
+          }
         },
         "type/restriction/no_u_turn": {
           "name": "Prohibido girar en U",
-          "terms": ["prohibido cambiar de sentido", "no cambiar de sentido", "cambio de sentido", "prohibido girar en u", "no girar en u", "giro en u", "vuelta en u", "girar en u"]
+          "terms": ["prohibido cambiar de sentido", "no cambiar de sentido", "cambio de sentido", "prohibido girar en u", "no girar en u", "giro en u", "vuelta en u", "girar en u"],
+          "relation": {
+            "role_labels": {
+              "from": "Desde",
+              "to": "Hasta",
+              "via": "Vía"
+            }
+          }
         },
         "type/restriction/only_left_turn": {
           "name": "Sólo girar a la izquierda",
-          "terms": ["solo giro a la izquierda", "giro", "izquierda"]
+          "terms": ["solo giro a la izquierda", "giro", "izquierda"],
+          "relation": {
+            "role_labels": {
+              "from": "Desde",
+              "to": "Hasta",
+              "via": "Vía"
+            }
+          }
         },
         "type/restriction/only_right_turn": {
           "name": "Sólo girar a la derecha",
-          "terms": ["solo giro a la derecha", "giro", "derecha"]
+          "terms": ["solo giro a la derecha", "giro", "derecha"],
+          "relation": {
+            "role_labels": {
+              "from": "Desde",
+              "to": "Hasta",
+              "via": "Vía"
+            }
+          }
         },
         "type/restriction/only_straight_on": {
           "name": "Sólo continuar recto",
-          "terms": ["solo seguir derecho", "solo seguir recto", "derecho", "recto", "no girar", "prohibido girar"]
+          "terms": ["solo seguir derecho", "solo seguir recto", "derecho", "recto", "no girar", "prohibido girar"],
+          "relation": {
+            "role_labels": {
+              "from": "Desde",
+              "to": "Hasta",
+              "via": "Vía"
+            }
+          }
         },
         "type/restriction/only_u_turn": {
           "name": "Sólo girar en U",
-          "terms": ["solo giro en u", "giro en u", "vuelta en u", "cambio de sentido", "cambiar de sentido", "girar en u"]
+          "terms": ["solo giro en u", "giro en u", "vuelta en u", "cambio de sentido", "cambiar de sentido", "girar en u"],
+          "relation": {
+            "role_labels": {
+              "from": "Desde",
+              "to": "Hasta",
+              "via": "Vía"
+            }
+          }
         },
         "type/route": {
           "name": "Ruta",
@@ -6838,6 +6941,10 @@
         "amenity/university": {
           "name": "Terreno universitario",
           "terms": ["campus universitario", "predio universitario"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Podólogo",
+          "terms": ["podólogo", "pie", "pies", "uñas"]
         },
         "amenity/charging_station/charging_station_bicycle_designated": {
           "name": "Estación de carga para bicicletas eléctricas",

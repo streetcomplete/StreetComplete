@@ -33,7 +33,7 @@ import org.jetbrains.compose.resources.DrawableResource
  * Everything that happens in the bottom sheet displayed in the main screen happens here.
  *
  * It actually ought to be displayed at full size, because bottom sheets may have elements that
- * should be displayed above the acutal bottom sheet form (such as a crosshairs, or the arrow when
+ * should be displayed above the actual bottom sheet form (such as a crosshairs, or the arrow when
  * moving a node). So, the actual sliding up/down of the bottom sheet(s) is handled by the forms
  * individually. */
 @Composable

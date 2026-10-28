@@ -75,16 +75,15 @@ internal fun MainMapContent(
     showOverlay: Boolean,
     downloadedTiles: Collection<TilePos>,
     pinsMode: PinsMode,
-    /** whether clicking pins and overlay elements selects them. Otherwise, the click falls
-     *  through to the map */
-    isSelectable: Boolean,
+    /** whether clicking pins and overlay elements consumes the click event */
+    consumeClick: Boolean,
     onClickQuest: (QuestKey) -> Unit,
     onClickEdit: (EditKey) -> Unit,
     onClickElement: (ElementKey) -> Unit,
 ) {
     val mapState = checkNotNull(LocalMapState.current)
-    val showPinsAtZoom by remember(mapState) { derivedStateOf { mapState.cameraPosition.zoom >= 13 } }
-    val showOverlayAtZoom by remember(mapState) { derivedStateOf { mapState.cameraPosition.zoom >= 14 } }
+    val showPinsAtZoom by remember { derivedStateOf { mapState.cameraPosition.zoom >= 13 } }
+    val showOverlayAtZoom by remember { derivedStateOf { mapState.cameraPosition.zoom >= 14 } }
 
     val pins: Collection<Pin> = if (!showPinsAtZoom) emptyList() else when (pinsMode) {
         PinsMode.Quests -> viewModel.questPins.collectAsStateWithLifecycle().value
@@ -98,13 +97,10 @@ internal fun MainMapContent(
     }
 
     val scope = rememberCoroutineScope()
-    fun <T : Any> select(key: T?, onSelect: (T) -> Unit): ClickResult =
-        if (key == null || !isSelectable) {
-            ClickResult.Pass
-        } else {
-            onSelect(key)
-            ClickResult.Consume
-        }
+    fun <T : Any> select(key: T?, onSelect: (T) -> Unit): ClickResult {
+        if (key != null) onSelect(key)
+        return if (consumeClick) ClickResult.Consume else ClickResult.Pass
+    }
     val onClickPin: (JsonObject) -> ClickResult = when (pinsMode) {
         PinsMode.Quests -> { properties -> select(viewModel.getQuestKey(properties), onClickQuest) }
         PinsMode.EditHistory -> { properties -> select(viewModel.getEditKey(properties), onClickEdit) }
