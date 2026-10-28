@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 import de.westnordost.streetcomplete.util.ktx.toYesNo
-import de.westnordost.streetcomplete.quests.payment.PaymentUtils
+import de.westnordost.streetcomplete.osm.PaymentUtils
 
 class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
 

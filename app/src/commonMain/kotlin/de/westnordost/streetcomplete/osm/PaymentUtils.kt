@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.payment
+package de.westnordost.streetcomplete.osm
 
 object PaymentUtils {
     val commonFilter = """
