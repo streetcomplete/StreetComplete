@@ -35,17 +35,17 @@ val editTypeAliases = mapOf(
     "AddSuspectedOneway"                 to AddOneway::class.simpleName!!,
     "AddPicnicTableCover"                to AddAmenityCover::class.simpleName!!,
     "AddCrossingType"                    to AddCrossingMarkings::class.simpleName!!,
-    // whether lit roads have been added in context of the quest or the overlay should not matter for the statistics
-    WayLitOverlay::class.simpleName!!    to AddWayLit::class.simpleName!!,
-    SidewalkOverlay::class.simpleName!!  to AddSidewalk::class.simpleName!!,
-    CyclewayOverlay::class.simpleName!!  to AddCycleway::class.simpleName!!,
-    BuildingsOverlay::class.simpleName!! to AddBuildingType::class.simpleName!!,
     "AddStreetParking"                   to StreetParkingOverlay::class.simpleName!!,
     "AddIsDefibrillatorIndoor"           to AddIsAmenityIndoor::class.simpleName!!,
     "ShopsOverlay"                       to PlacesOverlay::class.simpleName!!,
     "AddProhibitedForMoped"              to AddMopedAccess::class.simpleName!!,
     "AddPlaygroundAccess"                to AddGeneralAccess::class.simpleName!!,
     "AddTowerAccess"                     to AddGeneralAccess::class.simpleName!!,
+    // whether answers have been added in context of the quest or the overlay should not matter for the statistics
+    AddWayLit::class.simpleName!!              to WayLitOverlay::class.simpleName!!,
+    AddSidewalk::class.simpleName!!            to SidewalkOverlay::class.simpleName!!,
+    AddCycleway::class.simpleName!!            to CyclewayOverlay::class.simpleName!!,
+    AddBuildingType::class.simpleName!!        to BuildingsOverlay::class.simpleName!!,
     // unify all surface quests under the overlay
     AddCyclewayPartSurface::class.simpleName!! to SurfaceOverlay::class.simpleName!!,
     AddFootwayPartSurface::class.simpleName!!  to SurfaceOverlay::class.simpleName!!,
