@@ -77,6 +77,7 @@ import de.westnordost.streetcomplete.quests.crossing_kerb_height.AddCrossingKerb
 import de.westnordost.streetcomplete.quests.crossing_markings.AddCrossingMarkings
 import de.westnordost.streetcomplete.quests.crossing_signals.AddCrossingSignals
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
+import de.westnordost.streetcomplete.quests.cycleway.AddCyclewayDirection
 import de.westnordost.streetcomplete.quests.defibrillator.AddDefibrillatorLocation
 import de.westnordost.streetcomplete.quests.diet_type.AddGlutenFree
 import de.westnordost.streetcomplete.quests.diet_type.AddHalal
@@ -554,6 +555,7 @@ fun questTypeRegistry(
     144 to AddCyclewaySegregation(), // Cyclosm, Valhalla, Bike Citizens Bicycle Navigation...
     145 to AddFootwayPartSurface(),
     146 to AddCyclewayPartSurface(),
+    203 to AddCyclewayDirection(),
     147 to AddSidewalkSurface(),
     148 to AddCyclewayWidth(arSupportChecker), // should be after cycleway segregation
 
