@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+classpath=$(find /app/lib -name '*.jar' ! -name '._*' | sort | paste -sd: -)
+# Flatpak's home is temporary; Java appends .java/.userPrefs to this persistent path.
+exec /app/jre/bin/java --enable-native-access=ALL-UNNAMED \
+    -Djava.util.prefs.userRoot="$XDG_CONFIG_HOME" \
+    -Dstreetcomplete.resources=/app/share/streetcomplete \
+    -cp "$classpath" de.westnordost.streetcomplete.MainKt "$@"
