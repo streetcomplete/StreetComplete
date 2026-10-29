@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
@@ -264,6 +265,14 @@ class OsmQuestController(
         val geometry = mapDataSource.getGeometry(entry.elementType, entry.elementId) ?: return null
         if (isBlacklistedPosition(geometry.center)) return null
         return createOsmQuest(entry, geometry)
+    }
+
+    override fun getAllForElement(elementType: ElementType, elementId: Long): List<OsmQuest> {
+        val entries = db.getAllForElements(listOf(ElementKey(elementType, elementId)))
+        if (entries.isEmpty()) return emptyList()
+        val geometry = mapDataSource.getGeometry(elementType, elementId) ?: return emptyList()
+        if (isBlacklistedPosition(geometry.center)) return emptyList()
+        return entries.mapNotNull { createOsmQuest(it, geometry) }
     }
 
     override fun getAllInBBox(bbox: BoundingBox, questTypes: Collection<String>?): List<OsmQuest> {
