@@ -25,5 +25,5 @@ val PLACES_THAT_REQUIRE_PAYMENT_FILTER = """
         ).joinToString("|")} and fee = yes
     )
     and fee != no
-    """
+"""
 
