@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.osm
 
-val PLACES_THAT_REQUIRE_PAYMENT = """
+val PLACES_THAT_REQUIRE_PAYMENT_FILTER = """
     (
         (shop and shop !~ no|vacant|mall)
         or amenity ~ ${arrayOf(
@@ -24,9 +24,6 @@ val PLACES_THAT_REQUIRE_PAYMENT = """
             "museum", "gallery", "zoo", "aquarium"
         ).joinToString("|")} and fee = yes
     )
-    and (!seasonal or seasonal = no)
     and fee != no
-    and access !~ private|no
-    and (name or brand or noname = yes or name:signed = no)
     """
 

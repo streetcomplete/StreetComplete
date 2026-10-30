@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.osm.PLACES_THAT_REQUIRE_PAYMENT
+import de.westnordost.streetcomplete.osm.PLACES_THAT_REQUIRE_PAYMENT_FILTER
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
@@ -22,11 +22,14 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
 
     override val elementFilter = """
         nodes, ways, relations with
-          $PLACES_THAT_REQUIRE_PAYMENT
+          $PLACES_THAT_REQUIRE_PAYMENT_FILTER
+          and (!seasonal or seasonal = no)
+          and access !~ private|no
+          and (name or brand or noname = yes or name:signed = no)
           and (
             !payment:credit_cards and !payment:debit_cards and payment:others != no
-            or payment:debit_cards older today -4 years
-            or payment:credit_cards older today -4 years
+            or payment:debit_cards older today -3 years
+            or payment:credit_cards older today -3 years
           )
           and !brand and !wikipedia:brand and !wikidata:brand
     """

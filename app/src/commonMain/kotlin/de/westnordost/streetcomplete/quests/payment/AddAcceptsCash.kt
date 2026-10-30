@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.osm.PLACES_THAT_REQUIRE_PAYMENT
+import de.westnordost.streetcomplete.osm.PLACES_THAT_REQUIRE_PAYMENT_FILTER
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
@@ -21,7 +21,10 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways, relations with
-          $PLACES_THAT_REQUIRE_PAYMENT
+          $PLACES_THAT_REQUIRE_PAYMENT_FILTER
+          and (!seasonal or seasonal = no)
+          and access !~ private|no
+          and (name or brand or noname = yes or name:signed = no)
           and (
             !payment:cash and !payment:coins and !payment:notes and payment:others != no
             or (
