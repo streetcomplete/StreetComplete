@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.osm
 
-object PaymentUtils {
-    val commonFilter = """
+val PLACES_THAT_REQUIRE_PAYMENT = """
     (
         (shop and shop !~ no|vacant|mall)
         or amenity ~ ${arrayOf(
@@ -30,4 +29,4 @@ object PaymentUtils {
     and access !~ private|no
     and (name or brand or noname = yes or name:signed = no)
     """
-}
+
