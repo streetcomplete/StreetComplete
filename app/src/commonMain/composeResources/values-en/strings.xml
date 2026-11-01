@@ -1408,7 +1408,7 @@
     <string name="quest_parcel_locker_brand">What’s the brand of this parcel locker?</string>
 
     <string name="quest_parking_access_title2">Who is allowed to park here? Parking may be free or paid.</string>
-    <string name="quest_access_yes">Anyone</string>
+    <string name="quest_access_yes">Any member of the general public</string>
     <string name="quest_access_customers">Any person visiting a specific place (e.g. customers only)</string>
     <string name="quest_access_private">Only individuals with permission</string>
     <string name="quest_access_permit">Holders of permits (generally obtainable)</string>

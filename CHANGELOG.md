@@ -4,6 +4,7 @@
 
 ### Fixes
 
+- Fix edits were dropped on upload when connection to OpenStreetMap failed (#7352)
 - Fix rare crash in certain places on download (#7341)
 - Fix a crash on download on iOS (#7334)
 - Fix two more causes of crashes on iOS
@@ -15,7 +16,9 @@
 ### Improvements
 
 - Max weight: Add maxweight class sign common in Sweden (#6586, #7298), thanks @paulklie
-- Other minor improvements (#7313, #7328, #7331, #7325, #7340, #6525, #7320 …), thanks @paulklie, @FloEdelmann
+- Card payment: Asked for more places now (#7346), by @paulklie
+- iOS: Tested with iPhone Duo
+- Other minor improvements (#7313, #7328, #7331, #7325, #7340, #6525, #7320, #7338 …), thanks @paulklie, @FloEdelmann, @esilja
 
 ## v64.0
 

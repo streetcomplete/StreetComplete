@@ -1409,7 +1409,7 @@ Kat se računa kao kat u potkrovlju samo kada ima prozore unutar krova. Stoga, k
     <string name="quest_streetName_hint">Isti naziv možete kopirati sa susjednog segmenta tako da ga dotaknete na karti.</string>
     <string name="quest_streetName_abbreviation_instruction">Kratice poput npr. „Ul.“ treba proširiti.</string>
     <string name="quest_streetName_add_language">Dodaj jezik</string>
-    <string name="ok">Prihvati</string>
+    <string name="ok">U redu</string>
     <string name="cancel">Odustani</string>
     <string name="quest_aerialway_bicycle_title">Prevozi li ova žičara bicikle?</string>
     <string name="quest_aerialway_bicycle_summer">Samo ljeti</string>
@@ -1448,7 +1448,7 @@ Kat se računa kao kat u potkrovlju samo kada ima prozore unutar krova. Stoga, k
     <string name="quest_camp_tent_title">Smije li se ovdje kampirati u šatoru?</string>
     <string name="quest_camp_cabin_title">Ima li ovdje bungalova za smještaj?</string>
     <string name="quest_camp_caravan_title">Smije li se ovdje kampirati s kamperom ili kamp-prikolicom?</string>
-    <string name="quest_ferry_bicycle_title">Jesu li bicikli dozvoljeni na ovoj trajektnoj vezi?</string>
+    <string name="quest_ferry_bicycle_title">Prevozi li ova trajektna veza bicikle?</string>
     <string name="quest_openingHours_add_time">Dodaj radno vrijeme</string>
     <string name="quest_openingHours_chooseStartTimeTitle">Odaberite početak radnog vremena</string>
     <string name="quest_openingHours_chooseEndTimeTitle">Odaberite završetak radnog vremena</string>

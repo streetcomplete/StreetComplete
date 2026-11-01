@@ -140,7 +140,7 @@ De oplysninger, du indsender, tilføjes direkte til OpenStreetMap i dit navn, ud
     <string name="quest_sport_equestrian">Ridning</string>
     <string name="quest_sport_athletics">Atletik</string>
     <string name="quest_sport_volleyball">Volleyball</string>
-    <string name="quest_sport_beachvolleyball">Strandvolleyball</string>
+    <string name="quest_sport_beachvolleyball">Beachvolleyball</string>
     <string name="quest_sport_american_football">Amerikansk fodbold</string>
     <string name="quest_sport_skateboard">Skateboarding</string>
     <string name="quest_sport_bowls">Bowls</string>
@@ -1416,7 +1416,7 @@ For eksempel 1,3 eller 2b,4,6.</string>
     <string name="quest_board_type_rules">Regler</string>
     <string name="quest_firewood_provided_title">Er der brænde til rådighed her?</string>
     <string name="quest_first_aid_kit_location">Hvor befinder førstehjælpskassen sig?</string>
-    <string name="quest_lane_markings_title">Er der markeret vognbaner på denne vej?</string>
+    <string name="quest_lane_markings_title">Har denne vej vognbaneafmærkning?</string>
     <string name="quest_level_thing_title">På hvilken etage er denne ting placeret?</string>
     <string name="quest_charging_station_bicycles_title">Kan elcykler oplades her?</string>
     <string name="quest_recycling_type_pet_bottles">PET-flasker</string>

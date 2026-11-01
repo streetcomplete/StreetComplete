@@ -678,8 +678,8 @@
     <string name="quest_oneway2_title">这是条单行道吗？沿哪个方向？</string>
     <string name="quest_oneway2_dir">朝此方向的单行道</string>
     <string name="quest_oneway2_no_oneway">不是单行道</string>
-    <string name="quest_steps_incline_title">这段阶梯哪头朝上？</string>
-    <string name="quest_steps_incline_up">这边朝上</string>
+    <string name="quest_steps_incline_title">在这楼梯，是如何由下方步行至上方？</string>
+    <string name="quest_steps_incline_up">这样由下至上</string>
     <string name="quest_step_count_title">有多少台阶？</string>
     <string name="quest_traffic_signals_sound_title">这里是否有为盲人提供的声音信号装置？</string>
     <string name="quest_traffic_signals_vibrate_title">这些交通信号灯是否有触觉指示以告知盲人何时能够安全通过？</string>

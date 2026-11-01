@@ -1,18 +1,18 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 631105
-  linesOfInterfaceMarkupChanged: 177361
-  assetFilesChanged: 2812
-- name: "Flo Edelmann"
-  githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 26879
-  linesOfInterfaceMarkupChanged: 3788
-  assetFilesChanged: 152
+  linesOfCodeChanged: 631512
+  linesOfInterfaceMarkupChanged: 177389
+  assetFilesChanged: 2818
 - name: "Sargun Vohra"
   githubUsername: "sargunv"
-  linesOfCodeChanged: 26118
+  linesOfCodeChanged: 26966
   linesOfInterfaceMarkupChanged: 140
   assetFilesChanged: 12
+- name: "Flo Edelmann"
+  githubUsername: "FloEdelmann"
+  linesOfCodeChanged: 26880
+  linesOfInterfaceMarkupChanged: 3788
+  assetFilesChanged: 152
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
   linesOfCodeChanged: 22353
@@ -35,8 +35,8 @@
   assetFilesChanged: 4
 - name: "arthedain"
   githubUsername: "paulklie"
-  linesOfCodeChanged: 4393
-  linesOfInterfaceMarkupChanged: 644
+  linesOfCodeChanged: 5130
+  linesOfInterfaceMarkupChanged: 681
   assetFilesChanged: 62
 - name: "Matija Nalis"
   githubUsername: "mnalis"
@@ -146,6 +146,11 @@
   linesOfCodeChanged: 344
   linesOfInterfaceMarkupChanged: 1956
   assetFilesChanged: 56
+- name: "esilja"
+  githubUsername: "esilja"
+  linesOfCodeChanged: 308
+  linesOfInterfaceMarkupChanged: 139
+  assetFilesChanged: 1
 - name: "Irakliy Kukava"
   githubUsername: "irakliy01"
   linesOfCodeChanged: 302
@@ -158,11 +163,6 @@
   githubUsername: "marekkrug"
   linesOfCodeChanged: 276
   linesOfInterfaceMarkupChanged: 64
-  assetFilesChanged: 1
-- name: "esilja"
-  githubUsername: "esilja"
-  linesOfCodeChanged: 275
-  linesOfInterfaceMarkupChanged: 139
   assetFilesChanged: 1
 - name: "Alexis Lecanu"
   githubUsername: "ravenfeld"
@@ -380,6 +380,9 @@
   githubUsername: "sams96"
   linesOfCodeChanged: 5
   assetFilesChanged: 4
+- name: "Markus Göllnitz"
+  githubUsername: "camelCaseNick"
+  linesOfCodeChanged: 4
 - name: "Julien Lepiller"
   linesOfCodeChanged: 4
 - name: "cyclingcat"
