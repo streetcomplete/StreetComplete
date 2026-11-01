@@ -1,5 +1,3 @@
--dontobfuscate
-
 # Lifecycle
 -keep public class androidx.lifecycle.* {
     public protected *;
