@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.accepts_cash
+package de.westnordost.streetcomplete.quests.payment
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
@@ -8,8 +8,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.osm.PLACES_THAT_REQUIRE_PAYMENT_FILTER
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
@@ -19,34 +21,17 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways, relations with
-          (
-            (shop and shop !~ no|vacant|mall)
-            or amenity ~ ${arrayOf(
-              "bar", "cafe", "fast_food", "ice_cream", "pub", "biergarten", "restaurant", "fuel",
-              "cinema", "nightclub", "planetarium", "theatre", "internet_cafe", "car_wash",
-              "pharmacy", "telephone", "vending_machine", "luggage_locker"
-            ).joinToString("|")}
-            or leisure ~ ${arrayOf(
-              "adult_gaming_centre", "amusement_arcade", "bowling_alley", "escape_game",
-              "miniature_golf","sauna", "trampoline_park", "tanning_salon"
-            ).joinToString("|")}
-            or craft ~ ${arrayOf(
-              "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
-              "electronics_repair", "key_cutter", "stonemason"
-            ).joinToString("|")}
-            or tourism ~ ${arrayOf(
-              "theme_park", "hotel", "hostel", "motel", "guest_house",
-              "apartment", "camp_site"
-            ).joinToString("|")}
-            or tourism ~ ${arrayOf(
-              "attraction", "museum", "gallery", "zoo", "aquarium"
-            ).joinToString("|")} and fee = yes
-          )
-          and !payment:cash and !payment:coins and !payment:notes and payment:others != no
-          and (name or brand or noname = yes or name:signed = no)
+          $PLACES_THAT_REQUIRE_PAYMENT_FILTER
           and (!seasonal or seasonal = no)
-          and fee != no
           and access !~ private|no
+          and (name or brand or noname = yes or name:signed = no)
+          and (
+            !payment:cash and !payment:coins and !payment:notes and payment:others != no
+            or (
+              payment:cash = yes and payment:cash older today -2 years
+              or payment:cash older today -4 years
+            )
+          )
     """
 
     override val changesetComment = "Survey whether payment with cash is accepted"
@@ -72,6 +57,6 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
     }
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["payment:cash"] = answer.toYesNo()
+        tags.updateWithCheckDate("payment:cash", answer.toYesNo())
     }
 }

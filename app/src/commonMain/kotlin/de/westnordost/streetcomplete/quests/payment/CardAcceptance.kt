@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.accepts_cards
+package de.westnordost.streetcomplete.quests.payment
 
 import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.StringResource
