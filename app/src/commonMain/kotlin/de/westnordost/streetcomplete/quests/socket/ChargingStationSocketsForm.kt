@@ -26,10 +26,11 @@ fun ChargingStationSocketsForm(
     commonSockets: List<ChargingStationSocket>,
     modifier: Modifier = Modifier,
     domesticSocketIcon: DrawableResource? = null,
-    showEuLabels: Boolean = false
+    showEuLabels: Boolean = false,
+    vehicle: Vehicle,
 ) {
     val selectableSockets = remember(sockets.keys) {
-        ChargingStationSocket.entries.toSet() - sockets.keys
+        ChargingStationSocket.entries.filter { it.vehicle.contains(vehicle) }.toSet() - sockets.keys
     }
     Column(
         modifier = modifier.fillMaxWidth(),
