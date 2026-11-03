@@ -57,7 +57,7 @@ fun MainNavHost(
             NavBackStack<Route>(Route.Main)
         }
     }
-    // Navigation keeps the full tracks; restoring the app uses the bounded saved copy.
+    // Navigation keeps the full tracks; restoring the app uses the cached copy.
     val tracks = rememberSaveable(saver = MainMapTrackState.Saver) { MainMapTrackState() }
     val logsFilters = rememberSerializable {
         mutableStateOf(LogsFilters(

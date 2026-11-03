@@ -7,6 +7,15 @@ import androidx.compose.runtime.toMutableStateList
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.util.ktx.toLatLon
+import io.github.vinceglb.filekit.FileKit
+import io.github.vinceglb.filekit.PlatformFile
+import io.github.vinceglb.filekit.cacheDir
+import io.github.vinceglb.filekit.path
+import kotlinx.io.buffered
+import kotlinx.io.files.Path
+import kotlinx.io.files.SystemFileSystem
+import kotlinx.io.readString
+import kotlinx.io.writeString
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import org.maplibre.compose.location.LocationMeasurement
@@ -69,6 +78,7 @@ class MainMapTrackState {
     fun stopRecording(): List<Trackpoint> {
         val recorded = currentTrack
         startNewTrack(isRecording = false)
+        deleteTracksCache()
         return recorded
     }
 
@@ -77,6 +87,7 @@ class MainMapTrackState {
         val isRecording = isRecording
         tracks.clear()
         tracks.add(Track(mutableStateListOf(), isRecording))
+        deleteTracksCache()
     }
 
     private fun startNewTrack(isRecording: Boolean) {
@@ -84,24 +95,86 @@ class MainMapTrackState {
     }
 
     companion object {
+        private const val ACTIVE_TRACKS_CACHE_FILE = "active_tracks_cache.json"
+
+        private fun getActiveTracksCachePath(): Path =
+            Path(PlatformFile(FileKit.cacheDir, ACTIVE_TRACKS_CACHE_FILE).path)
+
+        private fun saveTracksToCache(tracks: List<SavedTrack>) {
+            try {
+                val path = getActiveTracksCachePath()
+                SystemFileSystem.sink(path).buffered().use {
+                    it.writeString(Json.encodeToString(tracks))
+                }
+            } catch (ignored: Exception) {
+            }
+        }
+
+        private fun loadTracksFromCache(): List<SavedTrack>? {
+            return try {
+                val path = getActiveTracksCachePath()
+                if (SystemFileSystem.exists(path)) {
+                    val text = SystemFileSystem.source(path).buffered().use { it.readString() }
+                    Json.decodeFromString<List<SavedTrack>>(text)
+                } else {
+                    null
+                }
+            } catch (e: Exception) {
+                null
+            }
+        }
+
+        internal fun deleteTracksCache() {
+            try {
+                val path = getActiveTracksCachePath()
+                SystemFileSystem.delete(path, mustExist = false)
+            } catch (ignored: Exception) {
+            }
+        }
+
         val Saver = Saver<MainMapTrackState, String>(
             save = { state ->
-                // Instance state is limited to about 1 MB per transaction, so only the newest
-                // points are saved. A recording longer than this is cut on process death.
-                var remaining = MAX_SAVED_TRACKPOINTS
-                val tracks = state.tracks.asReversed().map { track ->
-                    val points = track.points.takeLast(remaining).also { remaining -= it.size }
-                    SavedTrack(points, track.isRecording)
-                }.asReversed().dropWhile { it.points.isEmpty() }
-                    .ifEmpty { listOf(SavedTrack(emptyList(), state.isRecording)) }
-                Json.encodeToString(tracks)
+                val hasPoints = state.tracks.any { it.points.isNotEmpty() }
+                if (hasPoints) {
+                    val savedTracks = state.tracks.map { track ->
+                        SavedTrack(track.points.toList(), track.isRecording)
+                    }.dropWhile { it.points.isEmpty() }
+                        .ifEmpty { listOf(SavedTrack(emptyList(), state.isRecording)) }
+                    saveTracksToCache(savedTracks)
+                } else {
+                    deleteTracksCache()
+                }
+                Json.encodeToString(SavedTracksMetadata(isRecording = state.isRecording, hasCachedTracks = hasPoints))
             },
             restore = { value ->
                 MainMapTrackState().apply {
                     tracks.clear()
-                    tracks.addAll(Json.decodeFromString<List<SavedTrack>>(value).map {
-                        Track(it.points.toMutableStateList(), it.isRecording)
-                    })
+                    val metadata = try {
+                        Json.decodeFromString<SavedTracksMetadata>(value)
+                    } catch (e: Exception) {
+                        null
+                    }
+
+                    if (metadata != null) {
+                        val cached = if (metadata.hasCachedTracks) loadTracksFromCache() else null
+                        if (cached != null) {
+                            tracks.addAll(cached.map {
+                                Track(it.points.toMutableStateList(), it.isRecording)
+                            })
+                        } else {
+                            tracks.add(Track(mutableStateListOf(), isRecording = metadata.isRecording))
+                        }
+                    } else {
+                        // Fallback for legacy saved format
+                        try {
+                            val legacyTracks = Json.decodeFromString<List<SavedTrack>>(value)
+                            tracks.addAll(legacyTracks.map {
+                                Track(it.points.toMutableStateList(), it.isRecording)
+                            })
+                        } catch (e: Exception) {
+                            tracks.add(Track(mutableStateListOf(), isRecording = false))
+                        }
+                    }
                 }
             },
         )
@@ -109,7 +182,12 @@ class MainMapTrackState {
 }
 
 private const val TRACKPOINT_BATCH_SIZE = 50
-internal const val MAX_SAVED_TRACKPOINTS = 1000
+
+@Serializable
+private data class SavedTracksMetadata(
+    val isRecording: Boolean,
+    val hasCachedTracks: Boolean,
+)
 
 @Serializable
 private data class SavedTrack(val points: List<Trackpoint>, val isRecording: Boolean)
