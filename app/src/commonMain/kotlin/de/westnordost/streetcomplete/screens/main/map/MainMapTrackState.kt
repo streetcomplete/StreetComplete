@@ -147,34 +147,29 @@ class MainMapTrackState {
                 Json.encodeToString(SavedTracksMetadata(isRecording = state.isRecording, hasCachedTracks = hasPoints))
             },
             restore = { value ->
+                val metadata = try {
+                    Json.decodeFromString<SavedTracksMetadata>(value)
+                } catch (_: Exception) {
+                    null
+                }
+
+                val savedTracks = if (metadata != null) {
+                    (if (metadata.hasCachedTracks) loadTracksFromCache() else null)
+                        ?: listOf(SavedTrack(emptyList(), metadata.isRecording))
+                } else {
+                    // Legacy format
+                    try {
+                        Json.decodeFromString<List<SavedTrack>>(value)
+                    } catch (_: Exception) {
+                        null
+                    } ?: listOf(SavedTrack(emptyList(), isRecording = false))
+                }
+
                 MainMapTrackState().apply {
                     tracks.clear()
-                    val metadata = try {
-                        Json.decodeFromString<SavedTracksMetadata>(value)
-                    } catch (e: Exception) {
-                        null
-                    }
-
-                    if (metadata != null) {
-                        val cached = if (metadata.hasCachedTracks) loadTracksFromCache() else null
-                        if (cached != null) {
-                            tracks.addAll(cached.map {
-                                Track(it.points.toMutableStateList(), it.isRecording)
-                            })
-                        } else {
-                            tracks.add(Track(mutableStateListOf(), isRecording = metadata.isRecording))
-                        }
-                    } else {
-                        // Fallback for legacy saved format
-                        try {
-                            val legacyTracks = Json.decodeFromString<List<SavedTrack>>(value)
-                            tracks.addAll(legacyTracks.map {
-                                Track(it.points.toMutableStateList(), it.isRecording)
-                            })
-                        } catch (e: Exception) {
-                            tracks.add(Track(mutableStateListOf(), isRecording = false))
-                        }
-                    }
+                    tracks.addAll(savedTracks.map {
+                        Track(it.points.toMutableStateList(), it.isRecording)
+                    })
                 }
             },
         )
