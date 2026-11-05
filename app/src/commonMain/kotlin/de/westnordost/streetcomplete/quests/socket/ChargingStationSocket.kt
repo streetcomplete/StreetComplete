@@ -3,63 +3,53 @@ package de.westnordost.streetcomplete.quests.socket
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class Vehicle()
+enum class Vehicle
 {
     CAR,
     BICYCLE
 }
 
-
 /** Sockets used on charging stations for electric vehicles */
 @Serializable
-enum class ChargingStationSocket(val osmId: String, val vehicle: List<Vehicle>) {
-    TYPE1("type1", Vehicle.CAR),
-    TYPE1_COMBO("type1_combo", Vehicle.CAR),
-    TYPE2_CABLE("type2_cable", Vehicle.CAR),
-    TYPE2("type2", Vehicle.CAR),
-    TYPE2_COMBO("type2_combo", Vehicle.CAR),
-    TYPE3A("type3a", Vehicle.CAR),
-    TYPE3C("type3c", Vehicle.CAR),
-    CHADEMO("chademo", Vehicle.CAR),
-    CHAOJI("chaoji", Vehicle.CAR),
-    NACS("nacs", Vehicle.CAR),
-    GB_AC("gb_ac", Vehicle.CAR),
-    GB_DC("gb_dc", Vehicle.CAR),
-    DOMESTIC("domestic", Vehicle.CAR),
+enum class ChargingStationSocket(val osmId: String, val vehicles: List<Vehicle>) {
+    TYPE1("type1", listOf(Vehicle.CAR)),
+    TYPE1_COMBO("type1_combo", listOf(Vehicle.CAR)),
+    TYPE2_CABLE("type2_cable", listOf(Vehicle.CAR)),
+    TYPE2("type2", listOf(Vehicle.CAR)),
+    TYPE2_COMBO("type2_combo", listOf(Vehicle.CAR)),
+    TYPE3A("type3a", listOf(Vehicle.CAR)),
+    TYPE3C("type3c", listOf(Vehicle.CAR)),
+    CHADEMO("chademo", listOf(Vehicle.CAR)),
+    CHAOJI("chaoji", listOf(Vehicle.CAR)),
+    NACS("nacs", listOf(Vehicle.CAR)),
+    GB_AC("gb_ac", listOf(Vehicle.CAR)),
+    GB_DC("gb_dc", listOf(Vehicle.CAR)),
+    DOMESTIC("domestic", listOf(Vehicle.CAR)),
 
-    AS3112("as3112", Vehicle.BICYCLE),
-    BS1363("bs1363", Vehicle.BICYCLE),
-    CEI23_50_S_11("cei23_50_s_11", Vehicle.BICYCLE),
-    CEI23_50_S_17("cei23_50_s_17", Vehicle.BICYCLE),
-    NEMA_1_15("nema_1_15", Vehicle.BICYCLE),
-    NEMA_14_50("nema_14_50", Vehicle.BICYCLE),
-    NEMA_5_15("nema_5_15", Vehicle.BICYCLE),
-    NEMA_5_20("nema_5_20", Vehicle.BICYCLE),
-    SCHUKO("schuko", Vehicle.BICYCLE),
-    SEV1011_T13("sev1011_t13", Vehicle.BICYCLE),
-    SEV1011_T15("sev1011_t15", Vehicle.BICYCLE),
-    SEV1011_T23("sev1011_t23", Vehicle.BICYCLE),
-    SEV1011_T25("sev1011_t25", Vehicle.BICYCLE),
-    TYPEC("typec", Vehicle.BICYCLE),
-    TYPED("typed", Vehicle.BICYCLE),
-    TYPEE("typee", Vehicle.BICYCLE),
-    TYPEG("typeg", Vehicle.BICYCLE),
-    TYPEH("typeh", Vehicle.BICYCLE),
-    TYPEI("typei", Vehicle.BICYCLE),
-    TYPEK("typek", Vehicle.BICYCLE),
-    TYPEL("typel", Vehicle.BICYCLE),
-    TYPEM("typem", Vehicle.BICYCLE),
-    TYPEN("typen", Vehicle.BICYCLE),
-    TYPEO("typeo", Vehicle.BICYCLE),
-    UNIVERSAL_ABCDEFGIO("universal_abcdefgio", Vehicle.BICYCLE),
-    UNIVERSAL_ABCO("universal_abco", Vehicle.BICYCLE),
-    UNIVERSAL_AC("universal_ac", Vehicle.BICYCLE),
-    UNIVERSAL_CI("universal_ci", Vehicle.BICYCLE),
-    UNIVERSAL_DM("universal_dm", Vehicle.BICYCLE),
-    UNIVERSAL_LF("universal_lf", Vehicle.BICYCLE),
-    UNIVERSAL_L("universal_l", Vehicle.BICYCLE);
-
-    constructor(osmId: String, vehicle: Vehicle) : this(osmId, listOf(vehicle))
+    AS3112("as3112", listOf()),
+    BS1363("bs1363", listOf()),
+    CEI23_50_S_11("cei23_50_s_11", listOf()),
+    CEI23_50_S_17("cei23_50_s_17", listOf()),
+    NEMA_1_15("nema_1_15", listOf()),
+    NEMA_14_50("nema_14_50", listOf()),
+    NEMA_5_15("nema_5_15", listOf()),
+    NEMA_5_20("nema_5_20", listOf()),
+    SCHUKO("schuko", listOf(Vehicle.BICYCLE)),
+    SEV1011_T13("sev1011_t13", listOf()),
+    SEV1011_T15("sev1011_t15", listOf()),
+    SEV1011_T23("sev1011_t23", listOf()),
+    SEV1011_T25("sev1011_t25", listOf()),
+    TYPEC("typec", listOf(Vehicle.BICYCLE)),
+    TYPED("typed", listOf()),
+    TYPEE("typee", listOf()),
+    TYPEG("typeg", listOf()),
+    TYPEH("typeh", listOf()),
+    TYPEI("typei", listOf()),
+    TYPEK("typek", listOf()),
+    TYPEL("typeL", listOf()),
+    TYPEM("typem", listOf()),
+    TYPEN("typen", listOf()),
+    TYPEO("typeo", listOf());
 
     val osmKey: String get() = "socket:$osmId"
 

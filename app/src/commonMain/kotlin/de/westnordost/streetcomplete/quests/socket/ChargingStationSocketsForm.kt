@@ -9,7 +9,6 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
@@ -27,11 +26,8 @@ fun ChargingStationSocketsForm(
     modifier: Modifier = Modifier,
     domesticSocketIcon: DrawableResource? = null,
     showEuLabels: Boolean = false,
-    vehicle: Vehicle,
+    selectableSockets: Set<ChargingStationSocket>
 ) {
-    val selectableSockets = remember(sockets.keys) {
-        ChargingStationSocket.entries.filter { it.vehicle.contains(vehicle) }.toSet() - sockets.keys
-    }
     Column(
         modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(8.dp)

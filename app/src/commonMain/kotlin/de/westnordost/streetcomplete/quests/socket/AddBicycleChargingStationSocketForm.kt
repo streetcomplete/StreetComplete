@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
-import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 
@@ -20,7 +19,8 @@ fun AddBicycleChargingStationSocketForm(
     countryInfo: CountryInfo
 ) {
     val commonSockets = remember(countryInfo) {
-        countryInfo.domesticSocketTypes.mapNotNull { ChargingStationSocket.of(it) }
+        listOf(ChargingStationSocket.SCHUKO, ChargingStationSocket.TYPEC)
+        //countryInfo.domesticSocketTypes.mapNotNull { ChargingStationSocket.of(it) }
     }
 
     val initialSockets = remember(element) {
@@ -45,7 +45,7 @@ fun AddBicycleChargingStationSocketForm(
             commonSockets = commonSockets,
             domesticSocketIcon = null,
             showEuLabels = false,
-            vehicle = Vehicle.BICYCLE
+            selectableSockets = setOf(ChargingStationSocket.SCHUKO, ChargingStationSocket.TYPEC)
         )
     }
 }

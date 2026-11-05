@@ -62,8 +62,9 @@ fun AddChargingStationSocketForm(
             onSocketsChanged = { sockets = it },
             commonSockets = commonSockets,
             domesticSocketIcon = domesticSocketIcon,
-            showEuLabels = showEuLabels,
-            vehicle = Vehicle.CAR
+            selectableSockets = remember(sockets.keys) {
+                ChargingStationSocket.entries.filter { it.vehicles.contains(Vehicle.CAR) }.toSet() - sockets.keys
+            }
         )
     }
 }

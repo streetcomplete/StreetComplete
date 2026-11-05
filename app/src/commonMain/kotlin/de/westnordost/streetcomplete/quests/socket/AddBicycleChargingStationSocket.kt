@@ -19,6 +19,8 @@ import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.quests.socket.ChargingStationSocket.*
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.countryboundaries.Countries
+import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
@@ -44,6 +46,15 @@ class AddBicycleChargingStationSocket : OsmElementQuestType<Map<ChargingStationS
     override val icon = Res.drawable.quest_charger_bicycle_capacity
     override val title = Res.string.quest_charging_station_socket_title
     override val achievements = listOf(BICYCLIST)
+
+    // Some countries use sockets without a defined tag. And in some, more complex dual use sockets are common
+    // For now: only enable in countries which only use type-c or type-f (schuko).
+    override val enabledInCountries: Countries = NoCountriesExcept(
+        "AD", "AF", "AL", "AM", "AO", "AT", "AZ", "BA", "BG", "BY", "CV", "DE", "DZ",
+        "EE", "EG", "ES", "FI", "GE", "GN", "GR", "GW", "HR", "HU", "ID", "IR", "IS", "KG", "KP",
+        "KR", "KZ", "LT", "LU", "LV", "MD", "ME", "MK", "NL", "NO", "PT", "RO", "RS", "RU", "SE",
+        "SI", "SR", "ST", "TJ", "TM", "TR", "UA", "UZ", "XK"
+    )
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // Individual charge points are nodes per OSM wiki; not quested yet (follow-up).
