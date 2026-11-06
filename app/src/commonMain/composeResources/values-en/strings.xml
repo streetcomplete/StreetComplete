@@ -101,7 +101,7 @@
     <string name="quest_roofShape_select_one">Select one:</string>
     <!-- As in: "select any of the pictures below that fit" -->
     <string name="quest_multiselect_hint">Select all that apply:</string>
-    <string name="quest_select_hint">Select:</string>
+    <string name="quest_select_hint">Select</string>
     <!-- As in: "show more of those pictures to select an answer from -->
     <string name="quest_roofShape_show_more">Show more…</string>
     <!-- E.g "tactile paving at a crosswalk usually looks like this: <picture of tactile paving shown> -->
