@@ -27,7 +27,7 @@ abstract class MainViewModel : ViewModel() {
     abstract fun saveCamera(camera: CameraPosition, following: Boolean, navigating: Boolean)
 
     /* HUD */
-    abstract var showZoomButtons: StateFlow<Boolean>
+    abstract var showZoomButtons: StateFlow<Boolean?>
 
     /* messages */
     abstract val messagesCount: StateFlow<Int>
