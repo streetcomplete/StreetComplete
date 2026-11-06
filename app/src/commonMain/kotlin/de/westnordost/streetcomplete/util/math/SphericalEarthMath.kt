@@ -390,6 +390,75 @@ fun List<LatLon>.centerPointOfPolygon(): LatLon {
 }
 
 /**
+ * Returns a point inside the given polygon, roughly in its middle: the midpoint of the widest
+ * section of a horizontal scan line through the middle of the polygon's latitude extent.
+ *
+ * Unlike [centerPointOfPolygon], the result always lies inside the polygon, also for concave
+ * shapes like a "C" or "J", where the centroid lies outside of it. The scan line is placed halfway
+ * between the two vertex latitudes closest to the middle, so no vertex lies on it.
+ *
+ * This is the algorithm used by JTS' InteriorPointArea (and thus GEOS and PostGIS'
+ * ST_PointOnSurface), see
+ * https://github.com/locationtech/jts/blob/master/modules/core/src/main/java/org/locationtech/jts/algorithm/InteriorPointArea.java
+ *
+ * The polygon is expected to be closed, i.e. its last position equals its first.
+ *
+ * @throws IllegalArgumentException if positions list is empty
+ */
+fun List<LatLon>.interiorPointOfPolygon(): LatLon {
+    require(isNotEmpty()) { "positions list is empty" }
+
+    val origin = first()
+    // calculating with offsets to avoid rounding imprecision and 180th meridian problem
+    val xs = DoubleArray(size) { normalizeLongitude(this[it].longitude - origin.longitude) }
+    val ys = DoubleArray(size) { this[it].latitude - origin.latitude }
+
+    val minY = ys.min()
+    val maxY = ys.max()
+    val centerY = (minY + maxY) / 2
+    // the scan line goes halfway between the closest vertex latitudes below and above the center
+    var loY = minY
+    var hiY = maxY
+    for (y in ys) {
+        if (y <= centerY) {
+            if (y > loY) loY = y
+        } else if (y < hiY) {
+            hiY = y
+        }
+    }
+    val scanY = (loY + hiY) / 2
+
+    val crossings = ArrayList<Double>()
+    for (i in 0 until size - 1) {
+        val y0 = ys[i]
+        val y1 = ys[i + 1]
+        // only edges with one end on either side of the scan line cross it
+        if ((y0 < scanY) != (y1 < scanY)) {
+            crossings.add(xs[i] + (scanY - y0) * (xs[i + 1] - xs[i]) / (y1 - y0))
+        }
+    }
+    // fewer than two crossings: the polygon has no area
+    if (crossings.size < 2) return origin
+
+    crossings.sort()
+    // the crossings come in pairs, each pair bounding a section of the scan line inside the polygon
+    var bestX = (crossings[0] + crossings[1]) / 2
+    var bestWidth = crossings[1] - crossings[0]
+    for (i in 2 until crossings.size - 1 step 2) {
+        val width = crossings[i + 1] - crossings[i]
+        if (width > bestWidth) {
+            bestWidth = width
+            bestX = (crossings[i] + crossings[i + 1]) / 2
+        }
+    }
+
+    return LatLon(
+        scanY + origin.latitude,
+        normalizeLongitude(bestX + origin.longitude)
+    )
+}
+
+/**
  * Returns whether the given position is within the given polygon. Whether the polygon is defined
  * clockwise or counterclockwise does not matter. The polygon boundary and its vertices are
  * considered inside the polygon

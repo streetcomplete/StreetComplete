@@ -8,8 +8,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.util.ktx.isArea
-import de.westnordost.streetcomplete.util.math.centerPointOfPolygon
 import de.westnordost.streetcomplete.util.math.centerPointOfPolyline
+import de.westnordost.streetcomplete.util.math.interiorPointOfPolygon
 import de.westnordost.streetcomplete.util.math.isRingDefinedClockwise
 
 /** Creates an ElementGeometry from an element and a collection of positions. */
@@ -61,7 +61,7 @@ class ElementGeometryCreator {
             /* ElementGeometry considers polygons that are defined clockwise holes, so ensure that
                it is defined CCW here. */
             if (polyline.isRingDefinedClockwise()) polyline.reverse()
-            ElementPolygonsGeometry(arrayListOf(polyline), polyline.centerPointOfPolygon())
+            ElementPolygonsGeometry(arrayListOf(polyline), polyline.interiorPointOfPolygon())
         } else {
             ElementPolylinesGeometry(arrayListOf(polyline), polyline.centerPointOfPolyline())
         }
@@ -96,8 +96,9 @@ class ElementGeometryCreator {
         rings.addAll(inner)
 
         /* only use first ring that is not a hole if there are multiple
-           this is the same behavior as Leaflet or Tangram */
-        return ElementPolygonsGeometry(rings, outer.first().centerPointOfPolygon())
+           this is the same behavior as Leaflet or Tangram.
+           Holes are ignored, so the marker may lie inside a hole */
+        return ElementPolygonsGeometry(rings, outer.first().interiorPointOfPolygon())
     }
 
     private fun createPolylinesGeometry(
