@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
+import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
@@ -81,6 +82,7 @@ class MainBottomSheetViewModelImpl(
     private val visibleQuestsSource: VisibleQuestsSource,
     private val overlayRegistry: OverlayRegistry,
     private val featureDictionary: Lazy<FeatureDictionary>,
+    private val questTypeOrderSource: QuestTypeOrderSource,
 ) : MainBottomSheetViewModel() {
     override suspend fun getBottomSheet(selection: MainSheetSelection): ShownBottomSheet? =
         withContext(Dispatchers.IO) { load(selection) }
@@ -97,9 +99,20 @@ class MainBottomSheetViewModelImpl(
         if (visibleQuestsSource.get(key) == null) return null
         return when (key) {
             is OsmQuestKey -> {
-                val quest = osmQuestSource.get(key) ?: return null
                 val element = mapDataSource.get(key.elementType, key.elementId) ?: return null
-                ShownBottomSheet.OsmQuest(quest, element)
+                val visibleQuests = visibleQuestsSource.getAllForElement(key.elementType, key.elementId)
+                if (visibleQuests.isEmpty()) return null
+
+                val questTypes: MutableList<de.westnordost.streetcomplete.data.quest.QuestType> =
+                    visibleQuests.map { it.type }.toMutableList()
+                questTypeOrderSource.sort(questTypes)
+                val typeOrderMap = questTypes.withIndex().associate { it.value to it.index }
+                val sortedQuests = visibleQuests.sortedBy { typeOrderMap[it.type] ?: Int.MAX_VALUE }
+
+                val clickedQuest = sortedQuests.find { it.key == key } ?: return null
+                val orderedQuests = listOf(clickedQuest) + sortedQuests.filter { it != clickedQuest }
+
+                ShownBottomSheet.OsmQuest(orderedQuests, element)
             }
             is OsmNoteQuestKey -> {
                 val quest = osmNoteQuestSource.get(key.noteId) ?: return null
@@ -206,9 +219,16 @@ class MainBottomSheetViewModelImpl(
 /** The data necessary to show an element from the map clicked on in the bottom sheet */
 sealed interface ShownBottomSheet {
     data class OsmQuest(
-        val quest: de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest,
+        val quests: List<de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest>,
         val element: Element,
     ) : ShownBottomSheet {
+        constructor(
+            quest: de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest,
+            element: Element,
+        ) : this(listOf(quest), element)
+
+        val quest: de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest get() = quests.first()
+
         override val position get() = quest.position
         override val geometry get() = quest.geometry
         override val icon get() = quest.type.icon

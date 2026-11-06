@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -26,12 +25,14 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.layout.positionInParent
+import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetState.Collapsed
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetState.Expanded
+import de.westnordost.streetcomplete.ui.common.quest.LocalFormTopYCallback
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import kotlin.jvm.JvmName
 import kotlin.math.max
@@ -60,6 +61,7 @@ fun BottomSheet(
         )
     }
     val peekHeightPx = peekHeight.toPx()
+    val onFormTopY = LocalFormTopYCallback.current
 
     // outer box into which the sheet can slide into
     BoxWithConstraints(
@@ -91,6 +93,7 @@ fun BottomSheet(
                 )
                 .onGloballyPositioned { coordinates ->
                     onPositionChanged(coordinates.positionInParent().y)
+                    onFormTopY?.invoke(coordinates.positionInRoot().y)
                 },
             content = { content() }
         )

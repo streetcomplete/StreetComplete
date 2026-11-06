@@ -35,6 +35,7 @@ val LocalMapMarkersCallback = compositionLocalOf<((Iterable<Marker>) -> Unit)?> 
 
 val LocalMapOverlayCallback = compositionLocalOf<((MapOverlayContent?) -> Unit)?> { null }
 
+val LocalFormTopYCallback = compositionLocalOf<((Float) -> Unit)?> { null }
 /** Content composed in the map's overlay, see [OnMap] */
 typealias MapOverlayContent = @Composable MapOverlayScope.() -> Unit
 
