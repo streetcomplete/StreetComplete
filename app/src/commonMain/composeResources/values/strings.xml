@@ -1169,6 +1169,20 @@
     <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
     <string name="quest_fuelSelfService_title">Does this gas station allow self-service?</string>
 
+    <string name="quest_fuel_types_title">What types of fuel are available here?</string>
+    <string name="quest_fuel_types_cng">Compressed natural gas</string>
+    <string name="quest_fuel_types_diesel">Diesel</string>
+    <string name="quest_fuel_types_e10">E10</string>
+    <string name="quest_fuel_types_e85">E85</string>
+    <string name="quest_fuel_types_lpg">Liquified petroleum gas</string>
+    <string name="quest_fuel_types_octane_85">Octane 85</string>
+    <string name="quest_fuel_types_octane_87">Octane 87</string>
+    <string name="quest_fuel_types_octane_89">Octane 89</string>
+    <string name="quest_fuel_types_octane_91">Octane 91</string>
+    <string name="quest_fuel_types_octane_92">Octane 92</string>
+    <string name="quest_fuel_types_octane_95">Octane 95</string>
+    <string name="quest_fuel_types_octane_98">Octane 98</string>
+
     <string name="quest_generalAccess_title">Who may use this?</string>
     <string name="quest_generalAccess_title2">Who may enter here?</string>
     <string name="quest_generalAccess_title3">Who may stay here?</string>
