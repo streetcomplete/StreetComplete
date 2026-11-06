@@ -16,7 +16,7 @@ import kotlinx.serialization.Serializable
  *
  *  The tag updates are passed in as a diff to be more robust when handling conflicts.
  *
- *  The original element is passed in in order to decide if an updated element is still compatible
+ *  The original element is passed in order to decide if an updated element is still compatible
  *  with the action: Basically, if the geometry changed significantly, there is a possibility that
  *  the tag update made may not be correct anymore, so that is considered a conflict.
  */
