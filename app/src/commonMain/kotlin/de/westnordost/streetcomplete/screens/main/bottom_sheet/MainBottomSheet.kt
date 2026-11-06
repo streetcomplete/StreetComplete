@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -16,18 +17,20 @@ import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.quests.note_comments.AddNoteCommentForm
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_create_note
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.ShownBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.CreateNoteForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.overlay.OverlayFormContainer
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.quest.OsmQuestFormContainer
+import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.SurveyConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.MapOverlayContent
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.stringResource
 
 /**
  * Everything that happens in the bottom sheet displayed in the main screen happens here.
@@ -41,6 +44,7 @@ fun MainBottomSheet(
     onDismiss: () -> Unit,
     onSolved: (icon: DrawableResource, position: LatLon) -> Unit,
     onHideQuest: (QuestKey) -> Unit,
+    onDisableQuest: (QuestType) -> Unit,
     isSurvey: (ElementGeometry) -> Boolean,
     onSubmitEdit: (ElementEditType, ElementGeometry, ElementEditAction) -> Unit,
     onCommentNote: (Note, String?, List<String>) -> Unit,
@@ -56,6 +60,7 @@ fun MainBottomSheet(
     modifier: Modifier = Modifier
 ) {
     var confirmEdit by remember { mutableStateOf<PendingEdit?>(null) }
+    var questTypeToDisable by remember { mutableStateOf<QuestType?>(null) }
 
     when (shownBottomSheet) {
         is ShownBottomSheet.CreateOsmNote -> {
@@ -132,6 +137,7 @@ fun MainBottomSheet(
                     onHideQuest(key)
                     onDismiss()
                 },
+                onDisableQuest = { questTypeToDisable = shownBottomSheet.quest.type },
                 questType = shownBottomSheet.quest.type,
                 element = shownBottomSheet.element,
                 geometry = shownBottomSheet.quest.geometry,
@@ -192,15 +198,27 @@ fun MainBottomSheet(
     confirmEdit?.let { pendingEdit ->
         SurveyConfirmationDialog(
             onDismissRequest = { confirmEdit = null },
-            onConfirmed = {
+            onConfirmed = { dontShowAgain ->
+                SuppressSurveyConfirmation = dontShowAgain
                 onSubmitEdit(
                     pendingEdit.elementEditType,
                     pendingEdit.geometry,
                     pendingEdit.elementEditAction
                 )
                 onDismiss()
+            }
+        )
+    }
+
+    questTypeToDisable?.let { questType ->
+        ConfirmationDialog(
+            onDismissRequest = { questTypeToDisable = null },
+            onConfirmed = {
+                onDisableQuest(questType)
+                onDismiss()
             },
-            onToggleDontShowAgain = { SuppressSurveyConfirmation = it }
+            title = { Text(stringResource(Res.string.quest_disable_confirmation_title)) },
+            confirmButtonText = stringResource(Res.string.quest_generic_confirmation_yes)
         )
     }
 }
