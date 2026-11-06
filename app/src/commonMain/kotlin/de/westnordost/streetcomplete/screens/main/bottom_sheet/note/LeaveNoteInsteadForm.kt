@@ -27,6 +27,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osmnotes.getEditTypeContextForNote
 import de.westnordost.streetcomplete.data.overlays.Overlay
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.note_comments.NoteForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
@@ -45,6 +46,7 @@ import org.koin.compose.koinInject
     element: Element?,
     modifier: Modifier = Modifier,
     featureDictionary: FeatureDictionary = koinInject(),
+    questTypeRegistry: QuestTypeRegistry = koinInject(),
 ) {
     val coroutineScope = rememberCoroutineScope()
 
@@ -103,7 +105,7 @@ import org.koin.compose.koinInject
                 visible = noteText.isNotBlank(),
                 onClick = {
                     coroutineScope.launch {
-                        val context = getEditTypeContextForNote(element, editType, featureDictionary)
+                        val context = getEditTypeContextForNote(element, editType, featureDictionary, questTypeRegistry)
                         onLeaveNote("$context\n\n${noteText.trim()}", noteImagePaths)
                     }
                 },

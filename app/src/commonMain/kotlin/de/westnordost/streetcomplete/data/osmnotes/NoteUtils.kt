@@ -7,6 +7,8 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.overlays.Overlay
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import org.jetbrains.compose.resources.getString
 import org.jetbrains.compose.resources.getSystemResourceEnvironment
@@ -16,6 +18,7 @@ suspend fun getEditTypeContextForNote(
     element: Element?,
     elementEditType: ElementEditType,
     featureDictionary: FeatureDictionary,
+    questTypeRegistry: QuestTypeRegistry,
 ): String {
     val resourceEnvironment = getSystemResourceEnvironment()
     val title = getString(resourceEnvironment, elementEditType.title)
@@ -29,6 +32,10 @@ suspend fun getEditTypeContextForNote(
     }
     val result = StringBuilder()
     result.append(headerText)
+    if (elementEditType is QuestType) {
+        val ordinal = questTypeRegistry.getOrdinalOf(elementEditType)
+        result.append(" (q$ordinal)")
+    }
     if (element != null) {
         result.append(" for https://osm.org/${element.type.name.lowercase()}/${element.id}")
     }
