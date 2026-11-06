@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=StreetComplete
+Comment=StreetComplete development build
+Exec=streetcomplete
+Icon=de.westnordost.streetcomplete.desktop
+Terminal=false
+Categories=Education;Geography;
+StartupNotify=true
