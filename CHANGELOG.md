@@ -4,7 +4,7 @@
 
 ### Fixes
 
-- Fix edits were dropped on upload when connection to OpenStreetMap failed (#7352)
+- Fix edits were dropped on upload when connection to OpenStreetMap failed on Android (#7352)
 - Fix rare crash in certain places on download (#7341)
 - Fix a crash on download on iOS (#7334)
 - Fix two more causes of crashes on iOS
