@@ -71,7 +71,7 @@ fun ChargingStationSocketAddButton(
                     )
                 }
             }
-            if (!showAllSockets) {
+            if (!showAllSockets && selectableSockets.any { it !in commonSockets }) {
                 DropdownMenuItem(onClick = { showAllSockets = true }) {
                     Text(stringResource(Res.string.quest_charging_station_other_socket))
                 }

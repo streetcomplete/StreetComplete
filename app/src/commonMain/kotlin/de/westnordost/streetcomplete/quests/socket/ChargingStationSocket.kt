@@ -10,6 +10,7 @@ enum class Vehicle
 }
 
 /** Sockets used on charging stations for electric vehicles */
+/** Many are unused for now */
 @Serializable
 enum class ChargingStationSocket(val osmId: String, val vehicles: List<Vehicle>) {
     TYPE1("type1", listOf(Vehicle.CAR)),

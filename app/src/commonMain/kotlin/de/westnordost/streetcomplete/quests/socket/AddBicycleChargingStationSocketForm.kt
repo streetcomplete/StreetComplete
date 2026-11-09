@@ -19,7 +19,7 @@ fun AddBicycleChargingStationSocketForm(
     countryInfo: CountryInfo
 ) {
     val commonSockets = remember(countryInfo) {
-        listOf(ChargingStationSocket.SCHUKO, ChargingStationSocket.TYPEC)
+        ChargingStationSocket.entries.filter { it.vehicles.contains(Vehicle.BICYCLE) }
         //countryInfo.domesticSocketTypes.mapNotNull { ChargingStationSocket.of(it) }
     }
 
@@ -45,7 +45,7 @@ fun AddBicycleChargingStationSocketForm(
             commonSockets = commonSockets,
             domesticSocketIcon = null,
             showEuLabels = false,
-            selectableSockets = setOf(ChargingStationSocket.SCHUKO, ChargingStationSocket.TYPEC)
+            selectableSockets = ChargingStationSocket.entries.filter { it.vehicles.contains(Vehicle.BICYCLE) }.toSet()
         )
     }
 }
