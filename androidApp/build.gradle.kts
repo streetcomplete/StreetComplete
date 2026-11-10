@@ -14,8 +14,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 25
         targetSdk = 37
-        versionCode = 6405
-        versionName = "64.0"
+        versionCode = 6406
+        versionName = "64.1"
 
         // no x86: the MapLibre Compose runtime has no x86 build, and other native libraries must
         // not make the app installable where the map cannot run
@@ -30,13 +30,11 @@ android {
     buildTypes {
         all {
             isMinifyEnabled = true
-            isShrinkResources = false
+            isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             testProguardFile("test-proguard-rules.pro")
         }
         getByName("debug") {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             applicationIdSuffix = ".debug"
         }
         getByName("release") {

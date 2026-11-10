@@ -1531,7 +1531,7 @@ Ansonsten kannst du auch eine andere Tastatur im App Store herunterladen. Auf An
     <string name="quest_charging_station_socket_gb_ac">GB/T (China) - AC</string>
     <string name="quest_charging_station_socket_gb_dc">GB/T (China) - DC</string>
     <string name="quest_charging_station_socket_domestic">Beliebige Haushaltssteckdose</string>
-    <string name="quest_charging_station_other_socket">Andere Steckdose...</string>
+    <string name="quest_charging_station_other_socket">Andere Steckdose…</string>
     <string name="quest_charging_station_add_socket">Steckdose hinzufügen</string>
     <string name="quest_parking_charge_answer_no_fee">Es fallen keinerlei Gebühren an</string>
 </resources>

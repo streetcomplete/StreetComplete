@@ -2,10 +2,23 @@
 
 ## v64.1
 
-- Fix three sources for (rare) crashes
+### Fixes
+
+- Fix edits were dropped on upload when connection to OpenStreetMap failed on Android (#7352)
+- Fix rare crash in certain places on download (#7341)
+- Fix a crash on download on iOS (#7334)
+- Fix two more causes of crashes on iOS
+- Fix crash when user selected Chinese as language prior to v64.0 (#7318, #7330), by @sargunv
 - Fix auto-sync stopped working under certain conditions (#7312)
 - Fix gracefully treat connection problems on download (#7324)
-- Other minor improvements (#7313, #7328, #7331, #7325), by @paulklie
+- Other minor fixes (#1553, #7344, …)
+
+### Improvements
+
+- Max weight: Add maxweight class sign common in Sweden (#6586, #7298), thanks @paulklie
+- Card payment: Asked for more places now (#7346), by @paulklie
+- iOS: Tested with iPhone Duo
+- Other minor improvements (#7313, #7328, #7331, #7325, #7340, #6525, #7320, #7338 …), thanks @paulklie, @FloEdelmann, @esilja
 
 ## v64.0
 

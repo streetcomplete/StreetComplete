@@ -624,7 +624,7 @@
     <string name="achievement_veg_title">Захисник тварин</string>
     <string name="achievement_veg_solved_X">Ви розв'язали %1$d квестів, цікавих для людей, які не вживають м'яса!</string>
     <string name="achievement_car_title">В дорозі</string>
-    <string name="achievement_car_solved_X">Ви розв'язали %1$d квестів, які покращують деталі вуличної інфраструктури, додавши вулицю в OpenStreetMap!</string>
+    <string name="achievement_car_solved_X">Ви розвʼязали %1$d квестів, які покращують деталі вуличної інфраструктури, додавши вулицю в OpenStreetMap!</string>
     <string name="unread_messages_message">У вашій поштовій скриньці є %1$d непрочитаних повідомлень</string>
     <string name="unread_messages_button">Відкрити Вхідні</string>
     <string name="action_about2">Про</string>
