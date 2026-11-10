@@ -34,6 +34,9 @@ class AddLevelThing : OsmElementQuestType<String> {
         ways, relations with
           shop ~ department_store|mall
           or aeroway = terminal
+          or railway = station
+          or amenity = bus_station
+          or public_transport = station
           or parking = multi-storey
           or building:use ~ civic|hospital|museum|public|train_station|transportation|university
           or (
