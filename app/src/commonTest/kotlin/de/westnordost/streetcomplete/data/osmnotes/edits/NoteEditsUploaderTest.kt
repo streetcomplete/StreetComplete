@@ -255,7 +255,7 @@ class NoteEditsUploaderTest {
             returns(edit)
             repeat { returns(null) }
         }
-        every { userDataSource.userName } returns "blah mc/Blah"
+        every { userDataSource.userName } returns "blah mc/Bla?h"
         everySuspend { notesApi.create(any(), any()) } returns note
         everySuspend {
             tracksApi.create(
@@ -268,7 +268,7 @@ class NoteEditsUploaderTest {
 
         upload()
 
-        verifySuspend { notesApi.create(pos, "test\n\nGPS Trace: https://www.openstreetmap.org/user/blah%20mc%2FBlah/traces/988\n") }
+        verifySuspend { notesApi.create(pos, "test\n\nGPS Trace: https://www.openstreetmap.org/user/blah%20mc%2FBla%3Fh/traces/988\n") }
         verify { noteController.put(note) }
         verify { noteEditsController.markSynced(edit, note) }
         verify { listener.onUploaded("NOTE", pos) }
