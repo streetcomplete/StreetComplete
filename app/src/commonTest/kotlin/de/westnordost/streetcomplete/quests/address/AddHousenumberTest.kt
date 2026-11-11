@@ -217,7 +217,7 @@ class AddHousenumberTest {
 
     @Test fun `apply no house number answer`() {
         assertEquals(
-            setOf(StringMapEntryAdd("nohousenumber", "yes")),
+            setOf(StringMapEntryAdd("addr:housenumber:signed", "no")),
             questType.answerApplied(AddressNumberAndName(null, null))
         )
     }

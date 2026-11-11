@@ -1227,6 +1227,12 @@
           "name": "Građevina",
           "terms": ["zgrada", "građevina", "kuća"]
         },
+        "type/restriction/no_left_turn": {},
+        "type/restriction/no_right_turn": {},
+        "type/restriction/no_straight_on": {},
+        "type/restriction/only_left_turn": {},
+        "type/restriction/only_right_turn": {},
+        "type/restriction/only_straight_on": {},
         "route/ferry": {
           "name": "Trajektna ruta",
           "terms": ["trajektna trasa", "trajektna ruta"]

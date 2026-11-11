@@ -18,7 +18,7 @@ class AddGeneralAccess : OsmFilterQuestType<GeneralAccess>() {
     override val elementFilter = """
         nodes, ways, relations with
           (
-            amenity ~ bbq|bicycle_wash|compressed_air|dog_toilet|kitchen|sanitary_dump_station|shower|toilets|toy_library|water_point
+            amenity ~ bbq|bicycle_wash|charging_station|compressed_air|dog_toilet|kitchen|sanitary_dump_station|shower|toilets|toy_library|water_point
             or leisure ~ bird_hide|playground|sauna|wildlife_hide
             or (
                 man_made = tower

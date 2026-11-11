@@ -25,6 +25,7 @@ class AddClothingBinOperator : OsmElementQuestType<ClothingBinOperatorAnswer> {
           and !operator and !name and !brand
           and operator:signed != no
           and brand:signed != no
+          and access !~ private|no
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify clothing bin operators"

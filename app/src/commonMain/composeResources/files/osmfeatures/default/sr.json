@@ -330,9 +330,6 @@
         "amenity/doctors/plastic_surgery": {
           "name": "Пластични хирург"
         },
-        "amenity/doctors/podiatry": {
-          "name": "Подиатрист"
-        },
         "amenity/doctors/proctology": {
           "name": "Колоректални хирург"
         },
@@ -1731,9 +1728,6 @@
         },
         "highway/crossing": {
           "name": "Пешачки прелаз"
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "Пешачки прелаз са семафором"
         },
         "highway/crossing/uncontrolled": {
           "name": "Обележени пешачки прелаз"
@@ -4753,6 +4747,9 @@
         "amenity/nursing_home": {
           "name": "Старачки дом",
           "terms": ["старачки дом", "дом за старе"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Подиатрист"
         },
         "aerialway/station": {
           "name": "Станица жичаре"

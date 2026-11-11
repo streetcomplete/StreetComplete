@@ -24,7 +24,7 @@ class AddBenchStatusOnBusStop : OsmFilterQuestType<Boolean>() {
             or (highway = bus_stop and public_transport != stop_position)
             or highway = hitchhiking
           )
-          and physically_present != no and naptan:BusStopType != HAR
+          and physically_present != no and naptan:BusStopType !~ HAR|CUS
           and access !~ no|private
           and (!bench or bench older today -4 years)
     """

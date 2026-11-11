@@ -52,9 +52,9 @@ private fun StringWithCursor.parseElement(): HtmlElementNode? {
         cursor = start
         return null
     }
-    skipWhitespaces()
+    skipHtmlWhitespaces()
     val attributes = parseAttributes()
-    skipWhitespaces()
+    skipHtmlWhitespaces()
     nextIsAndAdvance('/') // ignore closing tag
     if (!nextIsAndAdvance('>')) fail("Expected >")
 
@@ -65,7 +65,7 @@ private fun StringWithCursor.parseElement(): HtmlElementNode? {
     // end tag
     if (!isAtEnd()) {
         if (!nextIsAndAdvance("</$tag", ignoreCase = true)) fail("Expected end tag")
-        skipWhitespaces()
+        skipHtmlWhitespaces()
         if (!nextIsAndAdvance('>')) fail("Expected >")
     }
     return HtmlElementNode(tag, attributes, children)
@@ -77,7 +77,7 @@ private fun StringWithCursor.parseText(): String? {
     val chars = ArrayList<Char>()
     while (!isAtEnd() && !nextIs('<')) {
         var c = advance()
-        if (c.isWhitespace()) c = ' '
+        if (c.isHtmlWhitespace()) c = ' '
         if (c != ' ' || chars.lastOrNull() != ' ') chars.add(c)
     }
     if (chars.isEmpty()) return null
@@ -89,16 +89,16 @@ private fun StringWithCursor.parseAttributes(): Map<String, String> {
     while (!isAtEnd()) {
         val pair = parseAttribute() ?: break
         attributes.add(pair)
-        skipWhitespaces()
+        skipHtmlWhitespaces()
     }
     return attributes.toMap()
 }
 
 private fun StringWithCursor.parseAttribute(): Pair<String, String>? {
     val name = getNextWordAndAdvance { it !in notAllowedCharactersInAttributeName } ?: return null
-    skipWhitespaces()
+    skipHtmlWhitespaces()
     if (!nextIsAndAdvance('=')) return name to ""
-    skipWhitespaces()
+    skipHtmlWhitespaces()
     val value: String?
     if (nextIsAndAdvance('\'')) {
         val end = findNext('\'')
@@ -118,14 +118,17 @@ private fun StringWithCursor.parseAttribute(): Pair<String, String>? {
     return name to value.unescapeHtmlEntities()
 }
 
-private fun StringWithCursor.skipWhitespaces(): Int =
-    advanceWhile { it.isWhitespace() }
+private fun StringWithCursor.skipHtmlWhitespaces(): Int =
+    advanceWhile { it.isHtmlWhitespace() }
 
 private fun StringWithCursor.fail(message: String): Nothing =
     throw HtmlParseException(cursor, message)
 
 private fun Char.isAlphanumeric(): Boolean =
     this in 'a'..'z' || this in 'A'..'Z' || this in '0'..'9'
+
+private fun Char.isHtmlWhitespace(): Boolean =
+    this == ' '|| this == '\u000C' || this == '\t' || this == '\n' || this == '\r'
 
 // https://developer.mozilla.org/en-US/docs/Glossary/Void_element
 private val voidTags = setOf(

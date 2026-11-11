@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesControll
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.preferences.ResurveyIntervalsUpdater
+import de.westnordost.streetcomplete.data.quest.AutoSyncer
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.DatabaseLogger
 import de.westnordost.streetcomplete.util.logs.KermitLogger
@@ -29,6 +30,8 @@ class ApplicationInitializer(
     private val prefs: Preferences,
     private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater,
     private val appLocaleUpdater: AppLocaleUpdater,
+    // need to hold references to these so that they exist and can do their thing
+    private val autoSyncer: AutoSyncer,
 ) {
     private val scope = CoroutineScope(SupervisorJob() + CoroutineName("Application"))
 

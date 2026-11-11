@@ -373,10 +373,6 @@
           "name": "Háziorvos",
           "terms": ["orvosi alapellátás"]
         },
-        "amenity/doctors/podiatry": {
-          "name": "Lábgyógyász",
-          "terms": ["láb", "gyógyítás"]
-        },
         "amenity/dog_toilet": {
           "name": "Kutyavécé"
         },
@@ -2066,9 +2062,6 @@
         "highway/crossing": {
           "name": "Gyalogosátkelő",
           "terms": ["kereszteződés"]
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "Jelzőlámpás gyalogosátkelő"
         },
         "highway/crossing/uncontrolled": {
           "name": "Jelzett gyalogosátkelő",
@@ -5644,6 +5637,10 @@
         "amenity/nursing_home": {
           "name": "Ápolóotthon",
           "terms": ["öregek otthona", "fogyatékosok otthona"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Lábgyógyász",
+          "terms": ["láb", "gyógyítás"]
         },
         "aerialway/station": {
           "name": "Kötélpályás felvonó állomása",

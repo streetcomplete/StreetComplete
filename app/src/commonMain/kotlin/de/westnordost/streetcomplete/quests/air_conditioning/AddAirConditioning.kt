@@ -28,6 +28,7 @@ class AddAirConditioning : OsmFilterQuestType<Boolean>() {
           and indoor_seating != no
           and takeaway != only
           and !air_conditioning
+          and access !~ private|no
     """
     override val changesetComment = "Survey availability of air conditioning"
     override val wikiLink = "Key:air_conditioning"

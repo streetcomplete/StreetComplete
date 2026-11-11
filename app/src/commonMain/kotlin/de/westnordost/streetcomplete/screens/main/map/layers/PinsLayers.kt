@@ -126,7 +126,7 @@ fun PinsLayers(
         radius = const(5.dp),
         strokeColor = const(Color(0xffaaaaaa)),
         strokeWidth = const(1.dp),
-        translate = offset(0.dp, -8.dp), // so that it hides behind the pin
+        translate = offset(0.dp, -12.dp), // so that it hides behind the pin
         translateAnchor = const(TranslateAnchor.Viewport),
     )
     SymbolLayer(

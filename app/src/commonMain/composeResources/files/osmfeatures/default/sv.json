@@ -470,10 +470,6 @@
           "name": "Plastikkirurg",
           "terms": ["plastikkirurg", "estetisk kirurgi", "kosmetisk kirurgi", "kraniofacial kirurgi", "rekonstruktiv kirurgi", "plastikkirurgi"]
         },
-        "amenity/doctors/podiatry": {
-          "name": "Fotterapeut",
-          "terms": ["fotterapeut", "fotled", "fötter", "fot", "ben", "fotvård", "fotvårdsläkare"]
-        },
         "amenity/doctors/proctology": {
           "name": "Kolorektal kirurg",
           "terms": ["kolorektal kirurg", "kolorektal kirurgi", "proktologi"]
@@ -1358,12 +1354,6 @@
         },
         "area": {
           "name": "Yta",
-          "relation": {
-            "role_labels": {
-              "inner": "Inre",
-              "outer": "Yttre"
-            }
-          },
           "terms": ["yta", "areal", "område", "plan", "utrymme", "fällt", "mark"]
         },
         "area/footway": {
@@ -2507,10 +2497,6 @@
         },
         "highway/crossing/informal": {
           "name": "Informell korsning"
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "Korsning med trafikljus för fotgängare",
-          "terms": ["trafikljus för fotgängare", "trafiksignaler för fotgängare", "övergångsställe (trafiksignal)", "cykelöverfart (trafiksignal)"]
         },
         "highway/crossing/uncontrolled": {
           "name": "Markerad korsning",
@@ -6335,10 +6321,7 @@
           "name": "Administrativ gräns",
           "relation": {
             "role_labels": {
-              "admin_centre": "Administrativt centrum",
-              "inner": "Inre",
-              "label": "Etikett",
-              "outer": "Yttre"
+              "label": "Etikett"
             }
           },
           "terms": ["administrativ gräns", "gräns", "stat", "territorium", "administrativ enhet"]
@@ -6365,13 +6348,7 @@
         },
         "type/multipolygon": {
           "name": "Multipolygon",
-          "terms": ["multipolygon", "polygon", "komplex yta"],
-          "relation": {
-            "role_labels": {
-              "inner": "Inre",
-              "outer": "Yttre"
-            }
-          }
+          "terms": ["multipolygon", "polygon", "komplex yta"]
         },
         "type/public_transport/stop_area_group": {
           "name": "Grupp av stopp för kollektivtrafik",
@@ -6840,6 +6817,10 @@
         "amenity/university": {
           "name": "Universitetsområde",
           "terms": ["universitet", "universitetsområde", "högskola", "högskoleområde", "högre utbildning", "campus", "masterprogram", "doktorandprogram", "magisterutbildning", "forskarutbildning"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Podiatri (fötter)",
+          "terms": ["podiatri", "podiatriker", "fot", "fötter", "naglar", "fothälsa", "fotkirurgi"]
         },
         "amenity/charging_station/charging_station_bicycle_designated": {
           "name": "Cykelladdstation",

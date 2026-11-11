@@ -1,0 +1,26 @@
+[versions]
+
+kotlin = "2.0.0"
+klaxon = "5.6"
+countryboundaries = "3.0.0"
+kotlinxIo = "0.7.0"
+yamlbeans = "1.17"
+jsoup = "1.18.3"
+kotlinxSerialization = "1.8.1"
+kaml = "0.77.1"
+markdown = "0.7.3"
+
+[plugins]
+
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+
+[libraries]
+
+klaxon = { module = "com.beust:klaxon", version.ref = "klaxon" }
+countryboundaries = { module = "de.westnordost:countryboundaries", version.ref = "countryboundaries" }
+kotlinx-io = { module = "org.jetbrains.kotlinx:kotlinx-io-core", version.ref = "kotlinxIo" }
+yamlbeans = { module = "com.esotericsoftware.yamlbeans:yamlbeans", version.ref = "yamlbeans" }
+jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+kaml = { module = "com.charleskorn.kaml:kaml", version.ref = "kaml" }
+markdown = { module = "org.jetbrains:markdown", version.ref = "markdown" }

@@ -204,9 +204,6 @@
         "amenity/doctors/pathology": {
           "name": "Патолог"
         },
-        "amenity/doctors/podiatry": {
-          "name": "Ортопед"
-        },
         "amenity/doctors/rheumatology": {
           "name": "Ревматолог"
         },
@@ -705,9 +702,6 @@
         },
         "highway/crossing": {
           "name": "Пешеходна пътека"
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "Пешеходно пресичане със светофар"
         },
         "highway/crossing/uncontrolled": {
           "name": "Маркирана пешеходна пътека"
@@ -1937,6 +1931,8 @@
         "building_point": {
           "name": "Сграда"
         },
+        "type/restriction/no_straight_on": {},
+        "type/restriction/only_straight_on": {},
         "traffic_sign/maxspeed-US-CA-LR": {
           "name": "Знак за ограничение на скоростта"
         },
@@ -2023,6 +2019,9 @@
         },
         "amenity/nursing_home": {
           "name": "Старчески дом"
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Ортопед"
         },
         "@templates/contact": {
           "name": "Точка"

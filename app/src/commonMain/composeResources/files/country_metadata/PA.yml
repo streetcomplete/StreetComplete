@@ -2,6 +2,7 @@
 atmOperators: [Banistmo, Banco General, Caja de Ahorros, Paralla, Scotiabank, CryptoDiggers, Banco Nacional de Panama, Global, Banco Nacional de Panamá, Banco Nacional]
 centerLineStyle: yellow
 chargingStationOperators: [Evergo]
+chargingStationSocketTypes: [nacs, type1, type1_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: true
 domesticSocketTypes: [typeb, typea]
 mobileCountryCode: 714

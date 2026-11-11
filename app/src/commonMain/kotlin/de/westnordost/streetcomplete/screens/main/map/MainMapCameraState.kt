@@ -168,15 +168,6 @@ class MainMapCameraState internal constructor(
         if (sheet.previous == null) mode = sheet.copy(previous = map.cameraPosition)
     }
 
-    /** Change the [padding] without moving the map. */
-    fun setPadding(padding: DpPadding) {
-        val camera = map.cameraPosition
-        map.setCameraPosition(camera.copy(
-            center = map.positionAtCenter(padding)?.toPosition() ?: camera.center,
-            padding = padding,
-        ))
-    }
-
     /** Resume browsing. Returns to the user's [position] and [bearing] when following it, otherwise
      *  to the camera position from before the sheet(s) moved the camera, if any. */
     suspend fun closeSheet(position: LatLon?, bearing: Double?) {
@@ -198,8 +189,6 @@ class MainMapCameraState internal constructor(
                 ),
                 animation = zoomAnimation(map.cameraPosition.zoom - sheet.previous.zoom),
             )
-        } else {
-            setPadding(DpPadding.Zero)
         }
     }
 

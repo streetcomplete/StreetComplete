@@ -958,7 +958,7 @@
           "terms": ["desktop", "hardware", "laptop", "operating system", "software", "computer store"]
         },
         "shop/confectionery": {
-          "name": "Sweet Shop",
+          "name": "Lolly Shop",
           "terms": ["sweets", "candy", "lollies", "fudge", "lollipop", "sugar", "sweet", "candy shop", "confectionery store", "candy store"]
         },
         "shop/convenience": {
@@ -1309,13 +1309,6 @@
           "name": "Zoo",
           "terms": ["animal"]
         },
-        "type/boundary/administrative": {
-          "relation": {
-            "role_labels": {
-              "admin_centre": "Admin Centre"
-            }
-          }
-        },
         "type/public_transport/stop_area_group": {
           "name": "Public Transport Stop Area Group",
           "terms": ["transit stop area group"]
@@ -1388,8 +1381,7 @@
         "building/house/terrace": {
           "name": "Terraced Houses",
           "terms": ["brownstone", "dwelling", "family", "home", "residence", "row home", "row house", "terrace", "townhome", "row of townhouses"]
-        },
-        "boundary/administrative": {}
+        }
       }
     }
   }

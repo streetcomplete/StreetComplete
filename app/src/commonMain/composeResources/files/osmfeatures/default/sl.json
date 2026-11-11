@@ -219,6 +219,15 @@
         "amenity/community_centre": {
           "name": "Središče skupnosti"
         },
+        "amenity/community_centre/community_hall": {
+          "name": "Dom skupnosti"
+        },
+        "amenity/community_centre/parish_hall": {
+          "name": "Župnijski dom"
+        },
+        "amenity/community_centre/village_hall": {
+          "name": "Dom vaške skupnosti"
+        },
         "amenity/community_centre/youth_centre": {
           "name": "Mladinsko središče / center"
         },
@@ -365,9 +374,15 @@
           "name": "Nočni klub",
           "terms": ["disko", "diskoteka"]
         },
+        "amenity/parking": {
+          "name": "Parkirišče"
+        },
         "amenity/parking/multi-storey": {
           "name": "Parkirna hiša",
           "terms": ["garažna hiša", "garaža"]
+        },
+        "amenity/parking/street-side": {
+          "name": "Parkirišče na strani ceste / ulice"
         },
         "amenity/parking/underground": {
           "name": "Podzemna parkirna hiša"
@@ -1379,9 +1394,6 @@
         },
         "highway/crossing/informal": {
           "name": "Neuraden prehod"
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "Prehod s signalizacijo"
         },
         "highway/crossing/uncontrolled": {
           "name": "Označen, nenadzorovan prehod"
@@ -2575,6 +2587,9 @@
           "name": "Elektrarna",
           "terms": ["agregat", "električni generator"]
         },
+        "power/generator/method/photovoltaic": {
+          "name": "Panel sončnih celic"
+        },
         "power/generator/source/nuclear": {
           "name": "Jedrski reaktor"
         },
@@ -2599,11 +2614,20 @@
         "power/plant/source/gas": {
           "name": "Plinska elektrarna"
         },
+        "power/plant/source/hydro": {
+          "name": "Hidroelektrarna"
+        },
         "power/plant/source/nuclear": {
           "name": "Jedrska elektrarna"
         },
+        "power/plant/source/solar": {
+          "name": "Sončna elektrarna"
+        },
         "power/plant/source/solar/photovoltaic": {
           "name": "Elektrarna na sončne celice"
+        },
+        "power/plant/source/wind": {
+          "name": "Vetrna elektrarna"
         },
         "power/pole": {
           "name": "Steber daljnovoda",
@@ -2624,12 +2648,21 @@
         "public_transport/platform/bus_point": {
           "terms": ["avtobusna postaja"]
         },
+        "public_transport/station": {
+          "name": "Postaja javnega prevoza"
+        },
         "public_transport/station_aerialway": {
           "name": "Postaja žičnice",
           "terms": ["žičniška postaja", "postaja gondole"]
         },
         "public_transport/station_bus": {
           "name": "Avtobusna postaja / Terminal"
+        },
+        "public_transport/station_monorail": {
+          "name": "Postaja enotirne železnice"
+        },
+        "public_transport/station_subway": {
+          "name": "Postaja podzemne železnice"
         },
         "public_transport/station_train": {
           "name": "Železniška postaja",
@@ -2653,6 +2686,9 @@
         },
         "railway/level_crossing": {
           "name": "Cestni prehod čez železniško progo"
+        },
+        "railway/milestone": {
+          "name": "Železniški miljnik"
         },
         "railway/monorail": {
           "name": "Enotirna železniška proga"
@@ -2694,17 +2730,32 @@
         "railway/tram_level_crossing": {
           "name": "Cestni prehod čez progo tramvaja"
         },
+        "railway/turntable": {
+          "name": "Okretnica"
+        },
         "relation": {
           "name": "Zveza",
           "terms": ["relacija", "povezava", "odnos"]
+        },
+        "seamark/mooring": {
+          "name": "Privez"
         },
         "shop": {
           "name": "Trgovina",
           "terms": ["prodajalna"]
         },
+        "shop/agrarian": {
+          "name": "Trgovina s kmetijsko opremo"
+        },
         "shop/alcohol": {
           "name": "Trgovina z alkoholnimi pijačami",
           "terms": ["alkoholne pijače"]
+        },
+        "shop/anime": {
+          "name": "Trgovina z animejem in mango"
+        },
+        "shop/antiques": {
+          "name": "Starinarnica"
         },
         "shop/appliance": {
           "name": "Splošna tehnična trgovina",
@@ -2717,6 +2768,9 @@
           "name": "Trgovina za otroke",
           "terms": ["babycenter", "dojenčki", "otroci", "igrače"]
         },
+        "shop/bag": {
+          "name": "Trgovina s torbami, potovalkami"
+        },
         "shop/bakery": {
           "name": "Pekarna",
           "terms": ["pekarija", "pek", "kruh", "pecivo", "hrana"]
@@ -2724,12 +2778,21 @@
         "shop/bathroom_furnishing": {
           "name": "Trgovina s kopalniško opremo"
         },
+        "shop/bbq": {
+          "name": "Trgovina z opremo za peko na žaru"
+        },
         "shop/beauty": {
           "name": "Lepotilni salon",
           "terms": ["salon lepote", "lepotilnica", "nega rok in nohtov", "manikura", "pedikura", "wellness center"]
         },
+        "shop/beauty/nails": {
+          "name": "Manikurni salon"
+        },
         "shop/beauty/tanning": {
           "name": "Solarij"
+        },
+        "shop/bed": {
+          "name": "Trgovina s posteljnino in vzmetnicami"
         },
         "shop/beverages": {
           "name": "Trgovina s pijačami",
@@ -2746,20 +2809,36 @@
           "name": "Stavnica",
           "terms": ["pobiralec stav"]
         },
+        "shop/books": {
+          "name": "Knjigarna"
+        },
         "shop/boutique": {
           "name": "Butik"
+        },
+        "shop/brewing_supplies": {
+          "name": "Trgovina s pivovarsko opremo"
         },
         "shop/butcher": {
           "name": "Mesar",
           "terms": ["mesarija", "mesarstvo"]
         },
+        "shop/camera": {
+          "name": "Trgovina s fotografsko opremo"
+        },
         "shop/candles": {
           "name": "Svečarstvo",
           "terms": ["sveče", "vosek", "svečarna"]
         },
+        "shop/cannabis": {
+          "name": "Trgovina marihuane",
+          "terms": ["marihuana", "indijska konoplja", "kanabis"]
+        },
         "shop/car": {
           "name": "Avtomobilski salon",
           "terms": ["avtohiša"]
+        },
+        "shop/car/second_hand": {
+          "name": "Prodaja rabljenih avtomobilov"
         },
         "shop/car_parts": {
           "name": "Avtomobilski deli",
@@ -2799,6 +2878,9 @@
         "shop/clothes/wedding": {
           "name": "Trgovina s poročnimi oblekami"
         },
+        "shop/clothes/workwear": {
+          "name": "Trgovina z delavskimi oblačili"
+        },
         "shop/coffee": {
           "name": "Trgovina s kavo"
         },
@@ -2834,8 +2916,17 @@
           "name": "Orodjarna",
           "terms": ["orodje"]
         },
+        "shop/doors": {
+          "name": "Trgovina z vrati"
+        },
         "shop/dry_cleaning": {
           "name": "Čistilnica"
+        },
+        "shop/e-cigarette": {
+          "name": "Trgovina z elektronskimi cigaretami"
+        },
+        "shop/electrical": {
+          "name": "Trgovina z elektronsko opremo"
         },
         "shop/electronics": {
           "name": "Elektronska trgovina",
@@ -2843,6 +2934,12 @@
         },
         "shop/erotic": {
           "name": "Erotična trgovina"
+        },
+        "shop/erotic/lgbtq": {
+          "name": "Erotična trgovina LGBTQ+"
+        },
+        "shop/esoteric": {
+          "name": "Trgovina z ezoteričnimi izdelki"
         },
         "shop/fabric": {
           "name": "Trgovina z metrskim blagom"
@@ -2854,9 +2951,30 @@
         "shop/fashion": {
           "name": "Trgovina z modnimi oblačili"
         },
+        "shop/fashion_accessories": {
+          "name": "Trgovina z modnimi dodatki"
+        },
+        "shop/fireplace": {
+          "name": "Trgovina s kamini"
+        },
+        "shop/fishing": {
+          "name": "Ribarska trgovina"
+        },
+        "shop/flooring": {
+          "name": "Trgovina s talnimi oblogami"
+        },
         "shop/florist": {
           "name": "Cvetličarna",
           "terms": ["cvetlice", "cvetličarstvo"]
+        },
+        "shop/frame": {
+          "name": "Delavnica za izdelavo okvirjev"
+        },
+        "shop/frozen_food": {
+          "name": "Trgovina z zamrznjeno hrano"
+        },
+        "shop/fuel": {
+          "name": "Trgovina z gorivom"
         },
         "shop/funeral_directors": {
           "name": "Pogrebne storitve",
@@ -2877,13 +2995,25 @@
           "name": "Prodajalna daril",
           "terms": ["darila"]
         },
+        "shop/gold_buyer": {
+          "name": "Odkup zlata"
+        },
         "shop/greengrocer": {
           "name": "Sadje in zelenjava",
           "terms": ["sadjar", "zelenjavar"]
         },
+        "shop/groundskeeping": {
+          "name": "Trgovina z opremo za trato in vrt"
+        },
         "shop/hairdresser": {
           "name": "Frizer",
           "terms": ["frizerski salon", "frizer", "česalnica", "striženje", "britje"]
+        },
+        "shop/hairdresser/barber": {
+          "name": "Brivec"
+        },
+        "shop/hairdresser_supply": {
+          "name": "Trgovina s frizersko opremo"
         },
         "shop/hardware": {
           "name": "Železnina",
@@ -2899,6 +3029,24 @@
           "name": "Trgovina z avdio opremo",
           "terms": ["hifi"]
         },
+        "shop/honey": {
+          "name": "Trgovina z medom"
+        },
+        "shop/household_linen": {
+          "name": "Trgovina z gospodinjskim perilom"
+        },
+        "shop/houseware": {
+          "name": "Trgovina z gospodinjskimi potrebščinami"
+        },
+        "shop/hunting": {
+          "name": "Lovska trgovina"
+        },
+        "shop/interior_decoration": {
+          "name": "Trgovina za notranje opremljanje"
+        },
+        "shop/jewelry": {
+          "name": "Trgovina z nakitom"
+        },
         "shop/kiosk": {
           "name": "Kiosk"
         },
@@ -2912,6 +3060,9 @@
         "shop/leather": {
           "name": "Usnjarna"
         },
+        "shop/lighting": {
+          "name": "Trgovina z razsvetljavo"
+        },
         "shop/locksmith": {
           "name": "Ključavničar",
           "terms": ["ključavničarstvo", "ključar"]
@@ -2923,6 +3074,9 @@
         "shop/mall": {
           "name": "Trgovski center",
           "terms": ["nakupovalni center", "trgovski center"]
+        },
+        "shop/massage": {
+          "name": "Masažni salon"
         },
         "shop/medical_supply": {
           "name": "Trgovina z medicinskimi primpomočki"
@@ -2938,6 +3092,9 @@
           "name": "Trgovina z motorji",
           "terms": ["moto trgovina"]
         },
+        "shop/motorcycle_repair": {
+          "name": "Popravljalnica motornih koles"
+        },
         "shop/music": {
           "name": "Trgovina z glasbo",
           "terms": ["muzikalije"]
@@ -2945,8 +3102,14 @@
         "shop/musical_instrument": {
           "name": "Trgovina z glasbenimi inštrumenti"
         },
+        "shop/newsagent": {
+          "name": "Prodaja časopisov"
+        },
         "shop/nutrition_supplements": {
           "name": "Trgovina s prehrambenimi dodatki"
+        },
+        "shop/nuts": {
+          "name": "Trgovina z oreški"
         },
         "shop/optician": {
           "name": "Optik",
@@ -2958,8 +3121,14 @@
         "shop/paint": {
           "name": "Trgovina z barvami"
         },
+        "shop/pasta": {
+          "name": "Trgovina s testeninami"
+        },
         "shop/pastry": {
           "name": "Slaščičarna"
+        },
+        "shop/pawnbroker": {
+          "name": "Zastavljalnica"
         },
         "shop/perfumery": {
           "name": "Parfumerija"
@@ -2968,9 +3137,38 @@
           "name": "Trgovina za domače živali",
           "terms": ["pripomočki za domače živali", "hrana za domače žival"]
         },
+        "shop/pet_grooming": {
+          "name": "Negovalni salon za hišne ljubljenčke"
+        },
         "shop/photo": {
           "name": "Foto trgovina",
           "terms": ["foto delavnica", "prodajalna fotografske opreme"]
+        },
+        "shop/pottery": {
+          "name": "Trgovina z lončenino",
+          "terms": ["trgovina z lončenino", "lončarna"]
+        },
+        "shop/printer_ink": {
+          "name": "Trgovina s tiskalniškim črnilom"
+        },
+        "shop/psychic": {
+          "name": "Jasnovidec/ka"
+        },
+        "shop/pyrotechnics": {
+          "name": "Trgovina z ognjemetom",
+          "terms": ["trgovina z ognjemetom", "trgovina pirotehnike", "ognjemet", "pirotehnika"]
+        },
+        "shop/religion": {
+          "name": "Verska trgovina"
+        },
+        "shop/rental": {
+          "name": "Izposojevalnica"
+        },
+        "shop/repair": {
+          "name": "Popravljalnica"
+        },
+        "shop/rice": {
+          "name": "Trgovina z rižem"
         },
         "shop/scuba_diving": {
           "name": "Trgovina s potapljaško opremo"
@@ -2979,9 +3177,15 @@
           "name": "Ribarnica",
           "terms": ["morska hrana", "ribe", "škampi", "hitra hrana"]
         },
+        "shop/shoe_repair": {
+          "name": "Popravljalnica čevljev"
+        },
         "shop/shoes": {
           "name": "Trgovina s čevlji",
           "terms": ["obutev", "trgovina z obutvij"]
+        },
+        "shop/spices": {
+          "name": "Trgovina z začimbami"
         },
         "shop/sports": {
           "name": "Športna trgovina",
@@ -2995,7 +3199,7 @@
           "name": "Najem shrambnih prostorov"
         },
         "shop/supermarket": {
-          "name": "Supermarket",
+          "name": "Veleblagovnica",
           "terms": ["supermarker", "velika samopostrežna trgovina"]
         },
         "shop/tailor": {
@@ -3027,8 +3231,11 @@
           "terms": ["igrače"]
         },
         "shop/travel_agency": {
-          "name": "Turistična agencija",
-          "terms": ["potovalna agencija", "potovanje", "potovanja", "turizem"]
+          "name": "Turistično posredništvo",
+          "terms": ["turistična agencija", "potovalna agencija", "potovanje", "potovanja", "turizem"]
+        },
+        "shop/trophy": {
+          "name": "Trgovina s trofejami"
         },
         "shop/tyres": {
           "name": "Prodaja pnevmatik",
@@ -3041,6 +3248,9 @@
         "shop/vacuum_cleaner": {
           "name": "Trgovina s sesalci"
         },
+        "shop/variety_store": {
+          "name": "Diskontna prodajalna"
+        },
         "shop/video": {
           "name": "Videoteka",
           "terms": ["video"]
@@ -3051,8 +3261,20 @@
         "shop/watches": {
           "name": "Trgovina z urami"
         },
+        "shop/water": {
+          "name": "Trgovina s pitno vodo"
+        },
+        "shop/water_sports": {
+          "name": "Trgovina za vodne športe"
+        },
         "shop/weapons": {
           "name": "Trgovina z orožjem"
+        },
+        "shop/wholesale": {
+          "name": "Trgovina na debelo"
+        },
+        "shop/wigs": {
+          "name": "Trgovina z lasuljami"
         },
         "shop/window_blind": {
           "name": "Trgovina z okenskimi senčili"
@@ -3060,6 +3282,18 @@
         "shop/wine": {
           "name": "Vinoteka",
           "terms": ["kletarstvo", "vinska klet", "vinotoč"]
+        },
+        "shop/yes": {
+          "name": "Trgovina (neopredeljene vrste)"
+        },
+        "telecom/data_center": {
+          "name": "Podatkovno središče"
+        },
+        "tourism": {
+          "name": "Turistični gradnik"
+        },
+        "tourism/alpine_hut": {
+          "name": "Gorska koča"
         },
         "tourism/apartment": {
           "name": "Apartma / Gostišče"
@@ -3071,6 +3305,21 @@
         "tourism/artwork": {
           "name": "Umetnina",
           "terms": ["umetnost"]
+        },
+        "tourism/artwork/bust": {
+          "name": "Doprsni kip"
+        },
+        "tourism/artwork/graffiti": {
+          "name": "Grafit"
+        },
+        "tourism/artwork/mural": {
+          "name": "Freska"
+        },
+        "tourism/artwork/sculpture": {
+          "name": "Skulptura"
+        },
+        "tourism/artwork/statue": {
+          "name": "Kip"
         },
         "tourism/attraction": {
           "name": "Turistična znamenitost",
@@ -3110,11 +3359,23 @@
         "tourism/information/board": {
           "name": "Oglasna deska"
         },
+        "tourism/information/board/welcome_sign": {
+          "name": "Znak dobrodošlice"
+        },
         "tourism/information/guidepost": {
           "name": "Kažipot"
         },
         "tourism/information/map": {
           "name": "Zemljevid"
+        },
+        "tourism/information/office": {
+          "name": "Pisarna za turistične informacije"
+        },
+        "tourism/information/route_marker": {
+          "name": "Označevalec poti"
+        },
+        "tourism/information/visitor_centre": {
+          "name": "Središče za obiskovalce"
         },
         "tourism/motel": {
           "name": "Motel",
@@ -3123,6 +3384,9 @@
         "tourism/museum": {
           "name": "Muzej",
           "terms": ["muzej"]
+        },
+        "tourism/museum/history": {
+          "name": "Zgodovinski muzej"
         },
         "tourism/picnic_site": {
           "name": "Prostor za piknike",
@@ -3159,12 +3423,30 @@
         "traffic_calming/hump": {
           "name": "Hitrostna grbina"
         },
+        "traffic_calming/island": {
+          "name": "Otok za umirjanje prometa"
+        },
         "traffic_calming/rumble_strip": {
           "name": "Cestne tresavke",
           "terms": ["grobi opozoril pas", "cestni", "opozorilni pas", "tresavke", "ležeči policaj", "grbine"]
         },
+        "traffic_calming/table": {
+          "name": "Hitrostna tabla"
+        },
+        "traffic_calming/yes": {
+          "name": "Umirjanje prometa (neopredeljene vrste)"
+        },
         "traffic_sign": {
           "name": "Prometni znak"
+        },
+        "traffic_sign/city_limit": {
+          "name": "Znak omejitve naselja"
+        },
+        "traffic_sign/maxspeed": {
+          "name": "Znak omejitve hitrosti"
+        },
+        "type/associatedStreet": {
+          "name": "Povezana ulica"
         },
         "type/boundary": {
           "name": "Meja",
@@ -3172,7 +3454,15 @@
         },
         "type/boundary/administrative": {
           "name": "Upravna meja",
+          "relation": {
+            "role_labels": {
+              "label": "Oznaka"
+            }
+          },
           "terms": ["administrativna meja"]
+        },
+        "type/boundary/protected_area": {
+          "name": "Zaščiteno območje"
         },
         "type/multipolygon": {
           "name": "Več mnogokotnikov",
@@ -3201,6 +3491,9 @@
         },
         "type/restriction/only_right_turn": {
           "name": "Obvezna desna smer"
+        },
+        "type/restriction/only_straight_on": {
+          "name": "Le naravnost naprej"
         },
         "type/route": {
           "name": "Proga",
@@ -3237,6 +3530,9 @@
         "type/route/horse": {
           "name": "Jahalna pot"
         },
+        "type/route/light_rail": {
+          "name": "Lahkotirna povezava"
+        },
         "type/route/monorail": {
           "name": "Proga enotirne železnice"
         },
@@ -3268,16 +3564,28 @@
           "name": "Tramvajska linija",
           "terms": ["tramvajska povezava"]
         },
+        "type/route/trolleybus": {
+          "name": "Povezava trolejbusa"
+        },
         "type/route_master": {
           "name": "Mreža javnega prometa",
           "terms": ["omrežje javnega prometa"]
         },
+        "type/site": {
+          "name": "Območje"
+        },
         "type/site/climbing/area": {
           "name": "Plezalno območje"
+        },
+        "type/site/climbing/crag": {
+          "name": "Plezalna pečina"
         },
         "type/waterway": {
           "name": "Vodotok",
           "terms": ["voda", "potok", "reka", "veletok"]
+        },
+        "waterway": {
+          "name": "Gradnik vodotoka"
         },
         "waterway/boatyard": {
           "name": "Ladjedelnica",
@@ -3309,6 +3617,9 @@
         "waterway/fuel": {
           "name": "Pristaniška črpalka za gorivo",
           "terms": ["pristaniška pumpa", "črpalka", "postaja"]
+        },
+        "waterway/lock_gate": {
+          "name": "Vodna zapornica"
         },
         "waterway/river": {
           "name": "Reka",
@@ -3348,6 +3659,10 @@
           "name": "Plitvina",
           "terms": ["brodenje", "brod"]
         },
+        "type/restriction/only_u_turn": {},
+        "traffic_sign/maxspeed-US-CA-LR": {
+          "name": "Znak omejitve hitrosti"
+        },
         "shop/ice_cream": {
           "name": "Sladoledarna",
           "terms": ["slaščičarna", "bistro"]
@@ -3361,8 +3676,8 @@
           "terms": ["kolodvor"]
         },
         "office/travel_agent": {
-          "name": "Turistična agencija",
-          "terms": ["potovalna agencija", "potovanje", "potovanja", "turizem"]
+          "name": "Turistično posredništvo",
+          "terms": ["turistična agencija", "potovalna agencija", "potovanje", "potovanja", "turizem"]
         },
         "office/lawyer/notary": {
           "name": "Notarska pisarna"
@@ -3452,6 +3767,9 @@
         "craft/tailor": {
           "name": "Krojač",
           "terms": ["krojač", "oblačila"]
+        },
+        "climbing/crag": {
+          "name": "Plezalna pečina"
         },
         "climbing/route": {
           "name": "Plezalna pot"

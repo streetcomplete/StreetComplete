@@ -326,10 +326,6 @@
           "name": "Kabineto de kuracisto",
           "terms": ["kuracistejo", "sanigejo", "doktoro"]
         },
-        "amenity/doctors/podiatry": {
-          "name": "Pied-kuracisto",
-          "terms": ["piedisto"]
-        },
         "amenity/doctors/urology": {
           "name": "Urologisto"
         },
@@ -1893,10 +1889,6 @@
         },
         "highway/crossing": {
           "name": "Stratpasejo"
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "Stratpasejo kun trafiklumoj",
-          "terms": ["pasejo", "trairejo", "trafiklumoj", "transpasejo", "piedira transpasejo", "stripasejo", "zebrostria pasejo"]
         },
         "highway/crossing/unmarked": {
           "name": "Stratpasejo nemarkita",
@@ -5332,6 +5324,10 @@
         "amenity/nursing_home": {
           "name": "Domo de permanenta zorgado",
           "terms": ["maljunulejo", "kudukulejo"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Pied-kuracisto",
+          "terms": ["piedisto"]
         },
         "aerialway/station": {
           "name": "Stacio kablovoja",

@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.ui.common.dialogs
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.FlowRowScope
 import androidx.compose.foundation.layout.Spacer
@@ -25,7 +24,6 @@ import androidx.compose.ui.unit.dp
 
 /** The layout used in alert dialogs. Used for mimicking the appearance of alert dialogs when not
  *  using AlertDialog */
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun AlertDialogLayout(
     modifier: Modifier = Modifier,

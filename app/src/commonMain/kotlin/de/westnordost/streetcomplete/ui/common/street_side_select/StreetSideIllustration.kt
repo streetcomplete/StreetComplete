@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredWidth
+import androidx.compose.material.Button
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -35,9 +37,11 @@ import androidx.compose.ui.unit.max
 import androidx.compose.ui.unit.min
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.get
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.ktx.conditional
 import de.westnordost.streetcomplete.ui.util.FallDownTransitionSpec
 import kotlinx.coroutines.delay
+import org.jetbrains.compose.resources.stringResource
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.ceil
@@ -164,9 +168,19 @@ private fun <T> StreetSideIllustrationSide(
                 },
             contentAlignment = Alignment.Center,
         ) {
-            if (floatingPainter != null) {
-                Box(Modifier.rotate(-rotation).scale(1f / scale)) {
+            Box(Modifier.rotate(-rotation).scale(1f / scale)) {
+                if (floatingPainter != null) {
                     Image(floatingPainter, null)
+                }
+                if (value == null && onClickSide != null && enabled) {
+                    Button(
+                        onClick = {
+                            onClickSide(side)
+                            showTapHint = false
+                        }
+                    ) {
+                        Text(stringResource(Res.string.quest_select_hint))
+                    }
                 }
             }
         }

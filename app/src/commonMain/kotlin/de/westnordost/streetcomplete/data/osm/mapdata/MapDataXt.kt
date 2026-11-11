@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.streetcomplete.data.elementfilter.ElementFilterExpression
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import kotlinx.atomicfu.locks.ReentrantLock
+import kotlinx.atomicfu.locks.withLock
 
 fun MapData.filter(expr: String): Sequence<Element> =
     filter(FilterExpressionCache.get(expr))
@@ -19,7 +21,10 @@ fun MapData.filter(expr: ElementFilterExpression): Sequence<Element> {
 
 private object FilterExpressionCache {
     private val cache = mutableMapOf<String, Lazy<ElementFilterExpression>>()
+    private val lock = ReentrantLock()
 
     fun get(expr: String): ElementFilterExpression =
-        cache.getOrPut(expr) { lazy { expr.toElementFilterExpression() } }.value
+        lock.withLock {
+            cache.getOrPut(expr) { lazy { expr.toElementFilterExpression() } }
+        }.value
 }

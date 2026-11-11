@@ -20,6 +20,7 @@ class AddVendingMachineType() : OsmFilterQuestType<List<Feature>>() {
         (
           amenity=vending_machine
           and !vending
+          and access !~ private|no
         )
     """
     override val changesetComment = "Survey what a vending machine sells"

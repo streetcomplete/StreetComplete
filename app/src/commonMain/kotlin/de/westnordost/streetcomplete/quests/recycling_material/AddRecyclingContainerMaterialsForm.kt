@@ -10,6 +10,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -17,9 +18,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.screens.settings.presets.EditTypePresetSelection
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.item_select.ItemsSelectGrid
@@ -32,14 +35,18 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun AddRecyclingContainerMaterialsForm(
     on: (QuestAction<RecyclingContainerMaterialsAnswer>) -> Unit,
+    element: Element
 ) {
-    var selectedItems by rememberSerializable { mutableStateOf(emptySet<RecyclingMaterial>()) }
+    val originalSelectedItems = remember(element) { parseRecyclingMaterials(element.tags) }
+    var selectedItems by rememberSerializable(originalSelectedItems) { mutableStateOf(originalSelectedItems) }
 
     var confirmJustTrash by remember { mutableStateOf(false) }
 
     QuestForm(
         on = on,
         isComplete = selectedItems.isNotEmpty(),
+        isResurvey = originalSelectedItems.isNotEmpty(),
+        hasChanges = originalSelectedItems != selectedItems,
         onClickOk = { on(Answer(RecyclingMaterials(selectedItems))) },
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_recycling_materials_answer_waste)) {
