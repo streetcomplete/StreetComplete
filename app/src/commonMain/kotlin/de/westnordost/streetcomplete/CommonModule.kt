@@ -407,11 +407,13 @@ val commonModule = module {
         val countryInfos = get<CountryInfos>()
         val countryBoundariesLazy = get<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy"))
         val featureDictionaryLazy = get<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy"))
+        val currentSeason = CurrentSeason()
         questTypeRegistry(
             get(),
             { countryInfos.get(countryBoundariesLazy.value, it) },
             { countryBoundariesLazy.value.getIds(it).firstOrNull() },
-            { featureDictionaryLazy.value.getFeature(it) }
+            { featureDictionaryLazy.value.getFeature(it) },
+            currentSeason
         )
     }
 
@@ -467,7 +469,7 @@ val commonModule = module {
     }
 
     single { SurveyChecker(get()) }
-    single { CurrentSeason(get()) }
+    single { CurrentSeason() }
 
     //endregion
 

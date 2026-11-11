@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.osmfeatures.Feature
+import de.westnordost.streetcomplete.data.location.CurrentSeason
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -205,6 +206,7 @@ fun questTypeRegistry(
     getCountryInfoByLocation: (LatLon) -> CountryInfo,
     getCountryOrSubdivisionCode: (LatLon) -> String?,
     getFeature: (Element) -> Feature?,
+    currentSeason: CurrentSeason
 ) = QuestTypeRegistry(listOf(
 
     /*
@@ -346,7 +348,7 @@ fun questTypeRegistry(
        whether the postbox is still there in countries in which it is enabled */
     48 to AddPostboxCollectionTimes(),
     49 to CheckExistence(getFeature),
-    155 to AddGritBinSeasonal(),
+    155 to AddGritBinSeasonal(currentSeason),
 
     190 to AddArtworkType(),
 
