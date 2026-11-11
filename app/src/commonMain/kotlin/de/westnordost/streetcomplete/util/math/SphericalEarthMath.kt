@@ -405,59 +405,81 @@ fun List<LatLon>.centerPointOfPolygon(): LatLon {
  *
  * @throws IllegalArgumentException if positions list is empty
  */
-fun List<LatLon>.interiorPointOfPolygon(): LatLon {
-    require(isNotEmpty()) { "positions list is empty" }
+fun List<LatLon>.interiorPointOfPolygon(): LatLon = listOf(this).interiorPointOfMultiPolygon()
 
-    val origin = first()
+/**
+ * Returns a point inside the given multipolygon, i.e. inside its outer rings and not inside any of
+ * its holes. Like [interiorPointOfPolygon], the scan line goes through the middle of the first
+ * ring's latitude extent, but the sections of the scan line inside the other rings count, too.
+ *
+ * The rings are expected to be closed. The input is not validated: for invalid geometry, like a
+ * hole that crosses its outer ring, the result may not be inside the area, but it doesn't fail.
+ *
+ * @throws IllegalArgumentException if the list or its first ring is empty
+ */
+fun List<List<LatLon>>.interiorPointOfMultiPolygon(): LatLon {
+    require(isNotEmpty() && first().isNotEmpty()) { "positions list is empty" }
+
+    val origin = first().first()
     // calculating with offsets to avoid rounding imprecision and 180th meridian problem.
     // x is the longitude offset and y the latitude offset of each vertex from the first one
-    val xs = DoubleArray(size) { normalizeLongitude(this[it].longitude - origin.longitude) }
-    val ys = DoubleArray(size) { this[it].latitude - origin.latitude }
+    val xs = map { ring ->
+        DoubleArray(ring.size) { normalizeLongitude(ring[it].longitude - origin.longitude) }
+    }
+    val ys = map { ring -> DoubleArray(ring.size) { ring[it].latitude - origin.latitude } }
 
-    // 1. the middle of the polygon's latitude extent
-    val minY = ys.min()
-    val maxY = ys.max()
+    // 1. the middle of the first ring's latitude extent
+    val minY = ys[0].min()
+    val maxY = ys[0].max()
     val centerY = (minY + maxY) / 2
 
     // 2. the scan line is a horizontal line at latitude scanY. It goes halfway between the vertex
     //    latitude closest to the center from below (or at it) and the one closest from above, so
-    //    that no vertex lies on the scan line. Thus, every edge either clearly crosses it or not
+    //    that no vertex of any ring lies on the scan line. Thus, every edge either clearly crosses
+    //    it or not
     var closestYBelowCenter = minY
     var closestYAboveCenter = maxY
-    for (y in ys) {
-        if (y <= centerY) {
-            if (y > closestYBelowCenter) closestYBelowCenter = y
-        } else if (y < closestYAboveCenter) {
-            closestYAboveCenter = y
+    for (ringYs in ys) {
+        for (y in ringYs) {
+            if (y <= centerY) {
+                if (y > closestYBelowCenter) closestYBelowCenter = y
+            } else if (y < closestYAboveCenter) {
+                closestYAboveCenter = y
+            }
         }
     }
     val scanY = (closestYBelowCenter + closestYAboveCenter) / 2
 
-    // 3. the x of each point at which an edge of the polygon crosses the scan line
+    // 3. the x of each point at which an edge of any ring crosses the scan line
     val crossingsX = ArrayList<Double>()
-    for (i in 0 until size - 1) {
-        // the edge from vertex i to vertex i + 1 is a straight line from (x0, y0) to (x1, y1)
-        val x0 = xs[i]
-        val y0 = ys[i]
-        val x1 = xs[i + 1]
-        val y1 = ys[i + 1]
-        // only edges with one end on either side of the scan line cross it
-        val crossesScanLine = (y0 < scanY) != (y1 < scanY)
-        if (crossesScanLine) {
-            // how far along the edge it crosses the scan line, from 0 (at y0) to 1 (at y1).
-            // E.g. if scanY is a quarter of the way from y0 to y1, t is 0.25
-            val t = (scanY - y0) / (y1 - y0)
-            // as the edge is a straight line, the crossing is just as far along from x0 to x1
-            val crossingX = x0 + t * (x1 - x0)
-            crossingsX.add(crossingX)
+    for (r in indices) {
+        val ringXs = xs[r]
+        val ringYs = ys[r]
+        for (i in 0 until ringYs.size - 1) {
+            // the edge from vertex i to vertex i + 1 is a straight line from (x0, y0) to (x1, y1)
+            val x0 = ringXs[i]
+            val y0 = ringYs[i]
+            val x1 = ringXs[i + 1]
+            val y1 = ringYs[i + 1]
+            // only edges with one end on either side of the scan line cross it
+            val crossesScanLine = (y0 < scanY) != (y1 < scanY)
+            if (crossesScanLine) {
+                // how far along the edge it crosses the scan line, from 0 (at y0) to 1 (at y1).
+                // E.g. if scanY is a quarter of the way from y0 to y1, t is 0.25
+                val t = (scanY - y0) / (y1 - y0)
+                // as the edge is a straight line, the crossing is just as far along from x0 to x1
+                val crossingX = x0 + t * (x1 - x0)
+                crossingsX.add(crossingX)
+            }
         }
     }
     // fewer than two crossings: the polygon has no area
     if (crossingsX.size < 2) return origin
 
     // 4. going along the scan line from west to east, the crossings alternately enter and leave
-    //    the polygon. So, once sorted, the crossings come in pairs (1st and 2nd, 3rd and 4th, ...),
-    //    each pair bounding a section of the scan line that is inside the polygon
+    //    the area (entering a hole is leaving the area). So, once sorted, the crossings come in
+    //    pairs (1st and 2nd, 3rd and 4th, ...), each pair bounding a section of the scan line that
+    //    is inside the area
     crossingsX.sort()
 
     // 5. the result is the middle of the widest of these sections

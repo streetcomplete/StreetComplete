@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.math.centerPointOfPolyline
+import de.westnordost.streetcomplete.util.math.interiorPointOfMultiPolygon
 import de.westnordost.streetcomplete.util.math.interiorPointOfPolygon
 import de.westnordost.streetcomplete.util.math.isRingDefinedClockwise
 
@@ -95,10 +96,9 @@ class ElementGeometryCreator {
         rings.addAll(outer)
         rings.addAll(inner)
 
-        /* only use first ring that is not a hole if there are multiple
-           this is the same behavior as Leaflet or Tangram.
-           Holes are ignored, so the marker may lie inside a hole */
-        return ElementPolygonsGeometry(rings, outer.first().interiorPointOfPolygon())
+        /* the scan line goes through the middle of the first outer ring. The marker is never
+           placed inside a hole */
+        return ElementPolygonsGeometry(rings, rings.interiorPointOfMultiPolygon())
     }
 
     private fun createPolylinesGeometry(

@@ -736,6 +736,36 @@ class SphericalEarthMathTest {
         assertEquals(51.0358469, point.latitude, 1e-9)
     }
 
+    @Test fun `interiorPointOfMultiPolygon is not inside hole`() {
+        val outer = p(0.0, 0.0).createCounterClockwiseSquare(3.0)
+        val hole = p(0.0, 0.0).createCounterClockwiseSquare(1.0).reversed()
+        assertTrue(outer.centerPointOfPolygon().isInPolygon(hole))
+        val point = listOf(outer, hole).interiorPointOfMultiPolygon()
+        assertTrue(point.isInPolygon(outer))
+        assertFalse(point.isInPolygon(hole))
+        assertEquals(p(-2.0, 0.0), point)
+    }
+
+    @Test fun `interiorPointOfMultiPolygon is not inside hole of another outer ring`() {
+        val outer1 = createRectangle(0.0, 0.0, 1.0, 2.0)
+        val outer2 = createRectangle(2.0, 0.0, 12.0, 2.0)
+        val holeOfOuter2 = createRectangle(3.0, 0.5, 11.0, 1.5).reversed()
+        val point = listOf(outer1, outer2, holeOfOuter2).interiorPointOfMultiPolygon()
+        assertEquals(p(0.5, 1.0), point)
+    }
+
+    @Test fun `interiorPointOfMultiPolygon does not fail for invalid geometry`() {
+        val outer = p(0.0, 0.0).createCounterClockwiseSquare(1.0)
+        val crossingHole = p(1.0, 0.0).createCounterClockwiseSquare(1.0).reversed()
+        listOf(outer, crossingHole).interiorPointOfMultiPolygon()
+        val unclosedRing = listOf(p(-0.5, -0.5), p(0.5, 0.5))
+        listOf(outer, unclosedRing).interiorPointOfMultiPolygon()
+        listOf(outer, listOf()).interiorPointOfMultiPolygon()
+        assertFailsWith<IllegalArgumentException> {
+            listOf<List<LatLon>>().interiorPointOfMultiPolygon()
+        }
+    }
+
     //endregion
 
     //region isInPolygon
@@ -1197,6 +1227,14 @@ private fun createWay218917749() = listOf(
     p(13.4488638, 52.4758926),
     p(13.4488621, 52.4758946),
     p(13.4488926, 52.4759134)
+)
+
+private fun createRectangle(minX: Double, minY: Double, maxX: Double, maxY: Double) = listOf(
+    p(minX, minY),
+    p(maxX, minY),
+    p(maxX, maxY),
+    p(minX, maxY),
+    p(minX, minY)
 )
 
 /*
