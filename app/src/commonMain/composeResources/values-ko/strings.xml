@@ -724,7 +724,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_buildingType_abandoned_description">원래의 목적을 알 수 없는, 사용하지 않는 건물</string>
     <string name="quest_buildingType_ruins">폐허</string>
     <string name="quest_buildingType_ruins_description">버려지고 부서져 알아보기 힘든 건물</string>
-    <string name="quest_charging_station_capacity_title">이 충전소에서 최대 몇 대의 차량이 동시에 충전할 수 있나요?</string>
     <string name="link_disaster_ninja_description">최근에 일어난 자연재해를 보여주는 지도로, 인도주의 지도 제작자들에게 유용합니다. 또한 어느 지역의 지도가 자세하고 최신인지를 분석해 통계로 보여줍니다.</string>
     <string name="quest_lanes_title">이 도로는 몇 차로인가요?</string>
     <string name="quest_lanes_answer_noLanes">차선이 그려져 있지 않음</string>
@@ -1424,7 +1423,5 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_first_aid_kit_location">이 구급함은 어디에 있나요?</string>
     <string name="quest_lane_markings_title">이 도로에 차선이 그려져 있나요?</string>
     <string name="quest_level_thing_title">이 지물은 몇 층에 있나요?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">이 충전소에서 최대 몇 대의 자전거가 동시에 충전할 수 있나요?</string>
     <string name="quest_charging_station_bicycles_title">이곳에서 자전거도 충전할 수 있나요?</string>
-    <string name="quest_charging_station_bicycles_hint">자전거 충전기 어댑터는 일반 가정용 콘센트에 꽂습니다.</string>
 </resources>

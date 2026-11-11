@@ -16,7 +16,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
@@ -28,6 +27,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osmnotes.getEditTypeContextForNote
 import de.westnordost.streetcomplete.data.overlays.Overlay
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.note_comments.NoteForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
@@ -39,7 +39,6 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 
 /** Form with which the user can leave a note instead of solving the quest/edit */
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable fun LeaveNoteInsteadForm(
     onLeaveNote: (text: String, noteImagePaths: List<String>) -> Unit,
     onDismiss: () -> Unit,
@@ -47,6 +46,7 @@ import org.koin.compose.koinInject
     element: Element?,
     modifier: Modifier = Modifier,
     featureDictionary: FeatureDictionary = koinInject(),
+    questTypeRegistry: QuestTypeRegistry = koinInject(),
 ) {
     val coroutineScope = rememberCoroutineScope()
 
@@ -105,7 +105,7 @@ import org.koin.compose.koinInject
                 visible = noteText.isNotBlank(),
                 onClick = {
                     coroutineScope.launch {
-                        val context = getEditTypeContextForNote(element, editType, featureDictionary)
+                        val context = getEditTypeContextForNote(element, editType, featureDictionary, questTypeRegistry)
                         onLeaveNote("$context\n\n${noteText.trim()}", noteImagePaths)
                     }
                 },

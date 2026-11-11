@@ -41,10 +41,12 @@ internal class UrlConfigKtTest {
     }
 
     @Test fun `parse simple config`() {
-        assertEquals(
-            UrlConfig("Test", listOf(q0, q2, q3), emptyList(), emptyList(), null),
-            parseConfigUrl("https://streetcomplete.app/s?n=Test&q=d", quests, overlays)
-        )
+        for (scheme in listOf("https", "http")) {
+            assertEquals(
+                UrlConfig("Test", listOf(q0, q2, q3), emptyList(), emptyList(), null),
+                parseConfigUrl("$scheme://streetcomplete.app/s?n=Test&q=d", quests, overlays)
+            )
+        }
     }
 
     @Test fun `parse config with overlays`() {

@@ -72,11 +72,11 @@
     <string name="privacy_html">&lt;p&gt;プライバシーを気にする人は、素敵です！あなたには良いニュースしかないでしょう。&lt;/p&gt;
 &lt;h2&gt;直接の貢献&lt;/h2&gt;
 &lt;p&gt;
-まず、このアプリで OpenStreetMap に実際に、直接貢献していることを理解してください。&lt;br/&gt;
-このアプリであなたが提供するものはすべて地図に直接追加され、アプリと OSM インフラストラクチャーの間にサードパーティは存在しません。
+まず、このアプリで OpenStreetMap (OSM) に実際に、直接貢献していることを理解してください。&lt;br/&gt;
+このアプリであなたが提供するものはすべて地図に直接追加され、アプリと OSM インフラの間にサードパーティは存在しません。
 &lt;/p&gt;
 &lt;p&gt;
-OpenStreetMap を匿名で編集することはできないため、変更は OSM ユーザーアカウントで行います。これは、日付、コンテンツ、および暗黙的に変更した場所が openstreetmap.org ウェブサイトに公開され、あなたのアカウントに帰属することを意味します。
+OpenStreetMap を匿名で編集することはできません。あなたが行った変更 (およびその時刻と場所) は、あなたの OSM ユーザーアカウントに帰属し、openstreetmap.org のウェブサイトで公開されます。StreetComplete は現地調査用のアプリであるため、あなたがいつ、どこでこのアプリを使用したかが明らかになります。
 &lt;/p&gt;
 
 &lt;h2&gt;位置情報&lt;/h2&gt;
@@ -86,8 +86,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
 &lt;h2&gt;データの使用&lt;/h2&gt;
 &lt;p&gt;
-このアプリは OSM インフラストラクチャと直接通信します。
-ただし、変更をアップロードする前に、アプリは私たちのサーバー上で&lt;a href="https://www.westnordost.de/streetcomplete/banned_versions.txt"&gt;単純なテキストファイル&lt;/a&gt;を使用して、アップロードと変更が禁止されているかどうかを確認します。これは、OSM データをは外してしまう可能性のある重大なバグのあるバージョンのアプリを保護するための予防措置です。
+このアプリは OSM サーバーと直接通信します。&lt;br/&gt;
+変更をアップロードする前に、アプリは私たちのサーバー上で&lt;a href="https://www.westnordost.de/streetcomplete/banned_versions.txt"&gt;単純なテキストファイル&lt;/a&gt;を使用して、アップロードと変更が禁止されているかどうかを確認します。これは、OSM データをは外してしまう可能性のある重大なバグのあるバージョンのアプリを保護するための予防措置です。
 &lt;/p&gt;
 </string>
     <string name="autosync_on">オン</string>
@@ -206,17 +206,17 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_maxspeed_answer_living_street">生活道路です</string>
     <string name="quest_orchard_produce_title">ここでは何が栽培されていますか？</string>
     <string name="produce_grapes">ブドウ</string>
-    <string name="produce_agaves">アガベス</string>
+    <string name="produce_agaves">リュウゼツラン</string>
     <string name="produce_almonds">アーモンド</string>
-    <string name="produce_apples">りんご</string>
-    <string name="produce_apricots">杏子</string>
+    <string name="produce_apples">リンゴ</string>
+    <string name="produce_apricots">アンズ</string>
     <string name="produce_avocados">アボカド</string>
     <string name="produce_bananas">バナナ</string>
     <string name="produce_blueberries">ブルーベリー</string>
     <string name="produce_cacao">カカオ</string>
     <string name="produce_cashew_nuts">カシューナッツ</string>
-    <string name="produce_cherries">さくらんぼ</string>
-    <string name="produce_chestnuts">栗</string>
+    <string name="produce_cherries">サクランボ</string>
+    <string name="produce_chestnuts">クリ</string>
     <string name="produce_coconuts">ココナッツ</string>
     <string name="produce_coffee">コーヒー</string>
     <string name="produce_cranberries">クランベリー</string>
@@ -238,18 +238,18 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="produce_olives">オリーブ</string>
     <string name="produce_oranges">オレンジ</string>
     <string name="produce_papayas">パパイヤ</string>
-    <string name="produce_peaches">桃</string>
-    <string name="produce_pears">梨</string>
+    <string name="produce_peaches">モモ</string>
+    <string name="produce_pears">ナシ</string>
     <string name="produce_chili">チリ</string>
-    <string name="produce_persimmons">柿</string>
+    <string name="produce_persimmons">カキ</string>
     <string name="produce_pineapples">パイナップル</string>
-    <string name="produce_pepper">胡椒</string>
+    <string name="produce_pepper">コショウ</string>
     <string name="produce_pistachios">ピスタチオ</string>
-    <string name="produce_plums">梅</string>
+    <string name="produce_plums">ウメ</string>
     <string name="produce_raspberries">ラズベリー</string>
     <string name="produce_rubber">ゴム</string>
     <string name="produce_strawberries">いちご</string>
-    <string name="produce_tea">お茶</string>
+    <string name="produce_tea">茶</string>
     <string name="produce_vanilla">バニラ</string>
     <string name="produce_walnuts">クルミ</string>
     <string name="produce_sisal">サイザル</string>
@@ -444,7 +444,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_segregated_separated">分離されている</string>
     <string name="quest_segregated_mixed">歩行者と自転車は同じ部分を通る</string>
     <string name="quest_maxheight_title">この場所の高さ制限は何ですか？</string>
-    <string name="quest_maxheight_answer_noSign">標識は無い…</string>
+    <string name="quest_maxheight_answer_noSign">標識なし…</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">その高さはありそうにないです。本当に正しいですか？</string>
     <string name="quest_noteDiscussion_comment2">— %1$s, %2$s</string>
     <string name="quest_noteDiscussion_closed2">%1$s, %2$s がクローズした</string>
@@ -719,7 +719,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingType_abandoned_description">役割や役目が不明な使用されていない建物</string>
     <string name="quest_buildingType_ruins">廃墟</string>
     <string name="quest_buildingType_ruins_description">遺棄された建物</string>
-    <string name="quest_charging_station_capacity_title">この充電ステーションでは一度に何台の車を充電できますか?</string>
     <string name="link_disaster_ninja_description">最近の自然災害を示す地図で、人道支援マッパーにとって興味深いものです。また、 は、場所がどの程度適切にマッピングされ、最新のものであるかを分析するための多くの興味深い統計を示しています。</string>
     <string name="quest_lanes_title">この道路は何車線ありますか？</string>
     <string name="quest_lanes_answer_noLanes">車線分けなし</string>
@@ -1246,6 +1245,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_sanitary_dump_station_description">汚水処理場とは、キャンピングカー、長距離トラック、ボートなどのトイレの汚水タンクから人間の排泄物を排出するための施設です。通常、次のような標識で示されています:</string>
     <string name="quest_generalFee_title">これを使うのにお金を払う必要がありますか。</string>
     <string name="quest_bbq_fuel_not_a_bbq">これは防火囲いです</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">調理面 (例 焼網/鉄板) がない場合、かまどです。</string>
     <string name="about_title_logs">ログ (%1$d)</string>
     <string name="about_summary_logs">エラー報告で使用する</string>
     <string name="action_filter">フィルター</string>
@@ -1263,6 +1263,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_disable_action">無効にする</string>
     <string name="quest_disable_title">このクエストタイプを無効にしますか？</string>
     <string name="quest_disable_message_not_installed">StreetMeasureが(まだ)インストールされていません。</string>
+    <string name="quest_disable_message_not_working">StreetMeasure が測定結果を返しませんでした。</string>
     <string name="quest_disable_message_tape_measure">代わりに巻尺を使ってもいいのですが、それは少し面倒かもしれませんね。</string>
     <string name="quest_buildingType_outbuilding">離れ家</string>
     <string name="quest_buildingType_outbuilding_description">物件における重要度の低い建物</string>
@@ -1296,8 +1297,12 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
 屋根部分に窓がある階は屋根の階数として扱われます。なお、屋根の階数が0でもその屋根が平らであるとは限らず、単に屋根の高さが1階分に満たないだけの場合もあります。</string>
     <string name="quest_parcel_locker_brand">この宅配ロッカーのブランドは何ですか？</string>
+    <string name="quest_powerPolesMaterial_is_terminal">送電線は建物に固定されています</string>
+    <string name="quest_cycleway_value_sidewalk_ok">なし。ただし、標識で道路沿いの歩道での自転車走行が許可されています</string>
     <string name="separate_cycleway_no_signed">自転車の通行を明示的に禁止している標識があります</string>
+    <string name="separate_cycleway_footway_allowed_sign">歩道。ただし、標識で歩道での自転車走行が許可されています</string>
     <string name="action_back">戻る</string>
+    <string name="action_clear">消去</string>
     <string name="action_more">もっと</string>
     <string name="action_open_in_browser">ブラウザで開く</string>
     <string name="about_category_contribute">貢献する</string>
@@ -1372,4 +1377,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_leave_new_note_photo_delete">削除</string>
     <string name="quest_board_type_tourism">観光（一般）</string>
     <string name="link_gomap_description">iOS向けの進化したOSMエディタ</string>
+    <string name="quest_charging_station_socket_type1">Type 1 (J1772)</string>
+    <string name="quest_charging_station_socket_type1_combo">Type 1 Combo (CCS)</string>
+    <string name="quest_charging_station_socket_type2">Type 2 (メネケス), ケーブルなし</string>
+    <string name="quest_charging_station_socket_type2_cable">Type 2 (メネケス), ケーブルあり</string>
 </resources>

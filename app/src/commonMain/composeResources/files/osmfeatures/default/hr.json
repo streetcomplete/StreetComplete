@@ -339,6 +339,14 @@
           "name": "Društvena dvorana",
           "terms": ["društvena dvorana", "društveni dom", "mjesna zajednica"]
         },
+        "amenity/community_centre/cultural_centre": {
+          "name": "Kulturni centar",
+          "terms": ["centar kulutre", "kulturno središte", "dom kulture"]
+        },
+        "amenity/community_centre/family_centre": {
+          "name": "Obiteljski centar",
+          "terms": ["centar za podršku obitelji", "obiteljsko savjetovalište"]
+        },
         "amenity/community_centre/lgbtq": {
           "name": "LGBTQ+ društveni dom",
           "terms": ["lgbtq+ društveni dom", "lgbtq+ dvorana za aktivnosti"]
@@ -462,10 +470,6 @@
         "amenity/doctors/plastic_surgery": {
           "name": "Plastični kirurg",
           "terms": ["estetska kirurgija", "kraniofacijalna kirurgija", "plastična kirurgija", "rekonstruktivna kirurgija"]
-        },
-        "amenity/doctors/podiatry": {
-          "name": "Podijatar",
-          "terms": ["stopala", "stopalo", "nokti", "nokte"]
         },
         "amenity/doctors/proctology": {
           "name": "Kolorektalni kirurg",
@@ -738,6 +742,10 @@
           "name": "Ormarić za pakete",
           "terms": ["automatski poštanski sandučić", "predaja", "pošta", "paket", "ormarić za pakete", "stanica za pakete", "preuzimanje paketa", "boxnow", "paketomat", "gls", "paket24"]
         },
+        "amenity/parking": {
+          "name": "Parkiralište",
+          "terms": ["pakring", "parkiralište", "parkiranje", "naplata parkiranja"]
+        },
         "amenity/parking/multi-storey": {
           "name": "Višeetažna parkirna garaža",
           "terms": ["parking garaža na više razina", "višeetažni parking", "nadzemna garaža"]
@@ -817,6 +825,10 @@
         "amenity/place_of_worship/jewish": {
           "name": "Židovska sinagoga",
           "terms": ["židovska sinagoga"]
+        },
+        "amenity/place_of_worship/multifaith": {
+          "name": "Viševjersko mjesto bogoslužja",
+          "terms": ["ekumenski"]
         },
         "amenity/place_of_worship/muslim": {
           "name": "Muslimanska džamija",
@@ -1048,6 +1060,10 @@
         "amenity/shelter/public_transport": {
           "name": "Tranzitno sklonište",
           "terms": ["autobusna stanica", "stanica metroa", "sklonište javnog prijevoza", "sklonište tramvajske stanice", "natkrivena stanica", "natkriveno spremište"]
+        },
+        "amenity/shelter/sun_shelter": {
+          "name": "Zaklon od sunca",
+          "terms": ["sjena", "sklonište od sunca", "sunce", "sklonište za hladovinu"]
         },
         "amenity/shower": {
           "name": "Tuš",
@@ -1350,8 +1366,8 @@
           "name": "Područje",
           "relation": {
             "role_labels": {
-              "inner": "Unutarnje",
-              "outer": "Vanjsko"
+              "inner": "Unutarnji rub",
+              "outer": "Vanjski rub"
             }
           },
           "terms": ["područje", "površina"]
@@ -2500,8 +2516,8 @@
           "name": "Neformalni prijelaz"
         },
         "highway/crossing/traffic_signals": {
-          "name": "Pješački prijelaz sa semaforom",
-          "terms": ["biciklistički prijelaz (svjetla)", "pješački prijelaz (svjetla)", "pješački semafori", "pješačka prometna signalizacija"]
+          "name": "Križanje sa prometnom signalizacijom",
+          "terms": ["biciklistički prijelaz (svjetla)", "pješački prijelaz (svjetla)", "pješački semafori", "pješačka prometna signalizacija'"]
         },
         "highway/crossing/uncontrolled": {
           "name": "Pješački prijelaz samo za zebrom",
@@ -2929,7 +2945,7 @@
           "terms": ["svetište uz cestu", "svetište uz put"]
         },
         "historic/wreck": {
-          "name": "Olupina brodoloma",
+          "name": "Olupina broda",
           "terms": ["brodolom"]
         },
         "indoor": {
@@ -5217,6 +5233,10 @@
           "name": "Uskotračna pruga",
           "terms": ["uskotračna željeznička pruga", "uskotračna pruga"]
         },
+        "railway/platform_edge": {
+          "name": "Rub platforme",
+          "terms": ["rub perona", "rub stajališta"]
+        },
         "railway/preserved": {
           "name": "Povijesna željeznička pruga",
           "terms": ["povijesni vlak", "parni vlak", "turistički vlak"]
@@ -5322,6 +5342,10 @@
         "seamark/mooring": {
           "name": "Brodski vez",
           "terms": ["vez", "sidrište", "privezište", "vezivanje broda", "vez za plovila"]
+        },
+        "seamark/offshore_platform": {
+          "name": "Offshore platforma",
+          "terms": ["pučinska platforma", "platfomra u akvatoriju"]
         },
         "shop": {
           "name": "Prodavaonica",
@@ -6321,16 +6345,22 @@
         },
         "type/boundary": {
           "name": "Granica",
-          "terms": ["granica", "međa", "linija", "linija razgraničenja"]
+          "terms": ["granica", "međa", "linija", "linija razgraničenja"],
+          "relation": {
+            "role_labels": {
+              "inner": "Unutarnji rub",
+              "outer": "Vanjski rub"
+            }
+          }
         },
         "type/boundary/administrative": {
           "name": "Administrativna granica",
           "relation": {
             "role_labels": {
-              "admin_centre": "Aministrativni centar",
-              "inner": "Unutarnje",
+              "admin_centre": "Glavni grad/sjedište",
               "label": "Oznaka",
-              "outer": "Vanjske"
+              "inner": "Unutarnji rub",
+              "outer": "Vanjski rub"
             }
           },
           "terms": ["granica", "međa", "linija", "linija razgraničenja", "državna granica", "županijska granica", "administrativna granica", "administrativna linija"]
@@ -6344,6 +6374,14 @@
         },
         "type/destination_sign": {
           "name": "Oznaka odredišta",
+          "relation": {
+            "role_labels": {
+              "intersection": "Raskrižje",
+              "sign": "Fizički znak",
+              "from": "Od",
+              "to": "Prema"
+            }
+          },
           "terms": ["znak destinacije", "znak cilja", "znak za izlaz"]
         },
         "type/enforcement": {
@@ -6359,8 +6397,8 @@
           "terms": ["multipoligon", "višestruki poligon", "dvostruki poligon", "trostruki poligon"],
           "relation": {
             "role_labels": {
-              "inner": "Unutarnje",
-              "outer": "Vanjsko"
+              "inner": "Unutarnji rub",
+              "outer": "Vanjski rub"
             }
           }
         },
@@ -6370,39 +6408,122 @@
         },
         "type/restriction": {
           "name": "Ograničenje",
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Prema",
+              "via": "Preko"
+            }
+          },
           "terms": ["ograničenje", "blokiranje", "ograničavanje", "restrikcija", "zadržavanje", "zabrana", "zabrana za vozila", "zabrana pristupa"]
+        },
+        "type/restriction/no_entry": {
+          "name": "Ne ulazi",
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Prema",
+              "via": "Preko"
+            }
+          }
+        },
+        "type/restriction/no_exit": {
+          "name": "Bez izlaza",
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Prema",
+              "via": "Preko"
+            }
+          }
         },
         "type/restriction/no_left_turn": {
           "name": "Zabranjeno lijevo skretanje",
-          "terms": ["lijevo skretanje zabranjeno"]
+          "terms": ["lijevo skretanje zabranjeno"],
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Prema",
+              "via": "Preko"
+            }
+          }
         },
         "type/restriction/no_right_turn": {
           "name": "Zabranjeno desno skretanje",
-          "terms": ["desno skretanje zabranjeno"]
+          "terms": ["desno skretanje zabranjeno"],
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Prema",
+              "via": "Preko"
+            }
+          }
         },
         "type/restriction/no_straight_on": {
           "name": "Zabranjeno ravno naprijed",
-          "terms": ["zabranjen prolaz ravno"]
+          "terms": ["zabranjen prolaz ravno"],
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Prema",
+              "via": "Preko"
+            }
+          }
         },
         "type/restriction/no_u_turn": {
           "name": "Zabranjeno polukružno okretanje",
-          "terms": ["zabrana polukružnog okretanja"]
+          "terms": ["zabrana polukružnog okretanja"],
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Prema",
+              "via": "Preko"
+            }
+          }
         },
         "type/restriction/only_left_turn": {
           "name": "Dozvoljeno samo skretanje lijevo",
-          "terms": ["samo lijevo skretanje"]
+          "terms": ["samo lijevo skretanje"],
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Prema",
+              "via": "Preko"
+            }
+          }
         },
         "type/restriction/only_right_turn": {
           "name": "Dozvoljeno samo skretanje desno",
-          "terms": ["samo desno skretanje"]
+          "terms": ["samo desno skretanje"],
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Prema",
+              "via": "Preko"
+            }
+          }
         },
         "type/restriction/only_straight_on": {
           "name": "Dozvoljeno samo ravno",
-          "terms": ["dozvoljen samo smjer ravno"]
+          "terms": ["dozvoljen samo smjer ravno"],
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Prema",
+              "via": "Preko"
+            }
+          }
         },
         "type/restriction/only_u_turn": {
           "name": "Dozvoljeno samo polukružno okretanje",
-          "terms": ["samo polukružno okretanje"]
+          "terms": ["samo polukružno okretanje"],
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Prema",
+              "via": "Preko"
+            }
+          }
         },
         "type/route": {
           "name": "Ruta",
@@ -6506,6 +6627,14 @@
         },
         "type/waterway": {
           "name": "Vodeni tok",
+          "relation": {
+            "role_labels": {
+              "main_stream": "Glavni tok",
+              "mouth": "Ušće",
+              "side_stream": "Bočni tok",
+              "spring": "Izvor"
+            }
+          },
           "terms": ["vodeni tok", "vodotok", "ispust za vodu", "plovni kanal", "plovni dio rijeke", "kanal", "plovni put", "vodeni put"]
         },
         "waterway": {
@@ -6832,6 +6961,10 @@
         "amenity/university": {
           "name": "Sveučilište",
           "terms": ["fakultet", "koledž", "visoka škola", "veleučilište", "magistarski program", "doktorski program"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Podijatar",
+          "terms": ["stopala", "stopalo", "nokti", "nokte"]
         },
         "amenity/charging_station/charging_station_bicycle_designated": {
           "name": "Stanica za punjenje električnih bicikala",

@@ -718,7 +718,6 @@ szintje</string>
     <string name="quest_buildingType_abandoned_description">használaton kívüli épület, aminek az eredeti funkciója vagy rendeltetése ismeretlen</string>
     <string name="quest_buildingType_ruins">Romos</string>
     <string name="quest_buildingType_ruins_description">elhagyatott, romos és beazonosíthatatlan épület</string>
-    <string name="quest_charging_station_capacity_title">Hány autó tölthető egyidejűleg ezen a töltőállomáson?</string>
     <string name="link_disaster_ninja_description">Térkép, amely megjeleníti a közelmúltbéli természeti katasztrófákat, hasznos információt szolgáltatva a humanitárius térképezőknek. Valamint számos érdekes statisztikát is megjelenít arról, hogy mennyire feltérképezettek és naprakészek az egyes helyek.</string>
     <string name="quest_lanes_title">Hány forgalmi sávos ez az út?</string>
     <string name="quest_lanes_answer_noLanes">Nincsenek felfestve sávok</string>
@@ -1418,9 +1417,7 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="quest_first_aid_kit_location">Hol található ez az elsősegély-felszerelés?</string>
     <string name="quest_lane_markings_title">Vannak az úton útburkolati jelek?</string>
     <string name="quest_level_thing_title">Melyik szinten található ez a dolog?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Hány kerékpárt lehet itt egyszerre tölteni?</string>
     <string name="quest_charging_station_bicycles_title">Kerékpárt is lehet itt tölteni?</string>
-    <string name="quest_charging_station_bicycles_hint">A kerékpártöltő adapterek normál háztartási aljzatokba csatlakoztathatók.</string>
     <string name="quest_recycling_type_pet_bottles">PET-palackok</string>
     <string name="quest_maxweight_add_sign">A tábla hozzáadása</string>
     <string name="quest_maxweight_remove_sign">A tábla eltávolítása</string>

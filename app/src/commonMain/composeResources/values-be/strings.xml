@@ -720,7 +720,6 @@
     <string name="quest_buildingType_abandoned_description">будынак, які не выкарыстоўваецца, першапачатковая функцыя або прызначэнне якога невядомыя</string>
     <string name="quest_buildingType_ruins">Руiна</string>
     <string name="quest_buildingType_ruins_description">закінуты, разбураны і неапазнаны будынак</string>
-    <string name="quest_charging_station_capacity_title">Колькі аўтамабіляў можна зараджаць на гэтай зараднай станцыі адначасова?</string>
     <string name="link_disaster_ninja_description">Карта якая паказвае нядаўнія стыхійныя бедствы, карысна для гуманітарных картографаў. Таксама адлюстроўвае шмат цікавай статыстыкі аб тым наколькі добра некаторыя месцы картаграфаваны.</string>
     <string name="quest_lanes_title">Колькі ў гэтай дарогі аўтамабільных палос?</string>
     <string name="quest_lanes_answer_noLanes">Няма размечаных палос руху</string>
@@ -1420,9 +1419,7 @@
     <string name="quest_first_aid_kit_location">Дзе знаходзіцца гэты санітарны пакет?</string>
     <string name="quest_lane_markings_title">На гэтай дарозе ёсць раздзяляльныя лініі?</string>
     <string name="quest_level_thing_title">На якім узроўні знаходзіцца гэтая рэч?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Колькі ровараў можна тут зараджаць адначасова?</string>
     <string name="quest_charging_station_bicycles_title">Ці можна тут зараджаць ровары?</string>
-    <string name="quest_charging_station_bicycles_hint">Зарадныя прылады для ровара падключаюцца да звычайных бытавых разетак.</string>
     <string name="quest_recycling_type_pet_bottles">Пластыкавыя бутэлькі</string>
     <string name="quest_maxweight_add_sign">Дадаць подпіс</string>
     <string name="quest_maxweight_remove_sign">Выдаліць подпіс</string>

@@ -326,6 +326,13 @@
           "name": "Centro comunitário",
           "terms": ["community center", "espaço social", "centro social"]
         },
+        "amenity/community_centre/chitalishte_BG": {
+          "terms": ["chitalishte"]
+        },
+        "amenity/community_centre/cultural_centre": {
+          "name": "Centro comunitário e cultural",
+          "terms": ["cultura", "centre", "center", "comunidade", "culturais", "atividades", "actividades", "comunitário"]
+        },
         "amenity/community_centre/lgbtq": {
           "name": "Centro comunitário LGBTQ+",
           "terms": ["gay", "lésbico", "lgbt", "lgbtq", "lgb", "homosexual", "homossexual"]
@@ -445,10 +452,6 @@
         "amenity/doctors/plastic_surgery": {
           "name": "Cirurgião plástico",
           "terms": ["cirurgia reconstrutiva", "cirurgia estética", "cirurgia cosmética", "cirurgia craniofacial", "cirurgia plástica"]
-        },
-        "amenity/doctors/podiatry": {
-          "name": "Podologista",
-          "terms": ["podologia", "podologista", "podiatria", "pé", "perna", "quiropodista", "podiatra", "podólogo"]
         },
         "amenity/doctors/proctology": {
           "name": "Proctologista",
@@ -793,6 +796,10 @@
           "name": "Sinagoga",
           "terms": ["judaica", "judaico", "judaísmo", "judeu", "judeus", "judia"]
         },
+        "amenity/place_of_worship/multifaith": {
+          "name": "Espaço de oração ecuménico",
+          "terms": ["ecumenic", "religião", "multirreligioso", "religiões", "culto"]
+        },
         "amenity/place_of_worship/muslim": {
           "name": "Mesquita",
           "terms": ["islão", "islamismo", "islã", "muçulmano", "muçulmana", "muçulmanos", "muçulmanas"]
@@ -1023,6 +1030,10 @@
         "amenity/shelter/public_transport": {
           "name": "Abrigo de transporte público",
           "terms": ["abrigo", "paragem", "transporte público", "cobertura", "autocarro", "comboio"]
+        },
+        "amenity/shelter/sun_shelter": {
+          "name": "Abrigo para o sol",
+          "terms": ["shelter", "solar", "refúgio", "cobertura", "proteção", "resguardo"]
         },
         "amenity/shower": {
           "name": "Chuveiro",
@@ -1312,8 +1323,8 @@
           "name": "Área",
           "relation": {
             "role_labels": {
-              "inner": "Interior",
-              "outer": "Exterior"
+              "inner": "Limite interior",
+              "outer": "Limite exterior"
             }
           },
           "terms": ["espaço", "extensão", "zona", "polígono"]
@@ -4665,7 +4676,8 @@
           "terms": ["village", "freguesia", "freguezia", "cidade", "vila", "aldeia"]
         },
         "playground": {
-          "name": "Equipamento de parque infantil"
+          "name": "Equipamento de parque infantil",
+          "terms": ["equipamento", "aparelho", "dispositivo", "brinquedo", "recreio", "diversão", "playground", "brincar", "baloiço", "balancé"]
         },
         "playground/activitypanel": {
           "name": "Painel de atividades lúdicas",
@@ -4723,6 +4735,10 @@
           "name": "Casa de brincar",
           "terms": ["casinha", "brincar", "casinhas", "brincadeira", "recreio"]
         },
+        "playground/pump": {
+          "name": "Bomba de água de brincar",
+          "terms": ["bombear", "brincar", "recreio", "brincadeira", "água"]
+        },
         "playground/roundabout": {
           "name": "Gira-gira",
           "terms": ["girar", "rodopiar", "rodar"]
@@ -4774,6 +4790,10 @@
         "playground/tunnel_tube": {
           "name": "Túnel de brincar",
           "terms": ["tubo"]
+        },
+        "playground/water": {
+          "name": "Aparelho de água de brincar (genérico)",
+          "terms": ["água", "brincar", "recreio", "brincadeira", "diversão", "diversões", "parque"]
         },
         "playground/zipwire": {
           "name": "Corda suspensa",
@@ -5130,6 +5150,10 @@
           "name": "Ferrovia de bitola estreita",
           "terms": ["narrow gauge rail", "bitola estreita", "via métrica", "bitola métrica", "carris", "linha férrea", "minas", "caminhos-de-ferro", "caminho-de-ferro", "caminho de ferro"]
         },
+        "railway/platform_edge": {
+          "name": "Borda de plataforma ferroviária",
+          "terms": ["bordo", "rebordo", "ferrovia", "comboio", "ferroviario", "caminho de ferro", "caminho-de-ferro", "caminhos-de-ferro", "estação", "railway", "train", "platform"]
+        },
         "railway/preserved": {
           "name": "Ferrovia preservada",
           "terms": ["ferrovia", "caminho-de-ferro", "caminho de ferro", "linha férrea", "comboio histórico", "comboio turísitico"]
@@ -5235,6 +5259,10 @@
         "seamark/mooring": {
           "name": "Ancoragem",
           "terms": ["amarração", "ancoragem", "galo", "bóia de terminal"]
+        },
+        "seamark/offshore_platform": {
+          "name": "Plataforma em alto-mar",
+          "terms": ["bore", "drilling rig", "oil rig", "petroleum well", "platform", "petróleo", "perfuração", "perfurar", "mar", "oceano"]
         },
         "shop": {
           "name": "Loja",
@@ -6230,16 +6258,22 @@
         },
         "type/boundary": {
           "name": "Fronteira",
-          "terms": ["limite", "orla", "divisão"]
+          "terms": ["limite", "orla", "divisão"],
+          "relation": {
+            "role_labels": {
+              "inner": "Limite interior",
+              "outer": "Limite exterior"
+            }
+          }
         },
         "type/boundary/administrative": {
           "name": "Fronteira administrativa",
           "relation": {
             "role_labels": {
               "admin_centre": "Centro administrativo",
-              "inner": "Interior",
               "label": "Identificador",
-              "outer": "Exterior"
+              "inner": "Limite interior",
+              "outer": "Limite exterior"
             }
           },
           "terms": ["fronteira legal", "limite país", "fronteira", "concelho", "freguesia", "distrito", "limite administrativo", "fronteira administrativa"]
@@ -6254,6 +6288,14 @@
         },
         "type/destination_sign": {
           "name": "Sinalização de destino",
+          "relation": {
+            "role_labels": {
+              "intersection": "Intersecção",
+              "sign": "Sinal físico",
+              "from": "De",
+              "to": "Para"
+            }
+          },
           "terms": ["placa", "sinal", "saída"]
         },
         "type/enforcement": {
@@ -6269,8 +6311,8 @@
           "terms": ["multipolygon", "multi-polígono", "multi polígono"],
           "relation": {
             "role_labels": {
-              "inner": "Interior",
-              "outer": "Exterior"
+              "inner": "Limite interior",
+              "outer": "Limite exterior"
             }
           }
         },
@@ -6280,39 +6322,122 @@
         },
         "type/restriction": {
           "name": "Restrição",
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Para",
+              "via": "Via"
+            }
+          },
           "terms": ["restrição", "proibição"]
+        },
+        "type/restriction/no_entry": {
+          "name": "Proibido entrar",
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Para",
+              "via": "Via"
+            }
+          }
+        },
+        "type/restriction/no_exit": {
+          "name": "Sem saída",
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Para",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_left_turn": {
           "name": "Proibição de virar à esquerda",
-          "terms": ["não virar à esquerda"]
+          "terms": ["não virar à esquerda"],
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Para",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_right_turn": {
           "name": "Proibição de virar à direita",
-          "terms": ["não virar à direita"]
+          "terms": ["não virar à direita"],
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Para",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_straight_on": {
           "name": "Proibido seguir em frente",
-          "terms": ["proibição de seguir em frente", "virar para a esquerda ou direita"]
+          "terms": ["proibição de seguir em frente", "virar para a esquerda ou direita"],
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Para",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_u_turn": {
           "name": "Proibição de inversão de marcha",
-          "terms": ["não inverter o sentido", "inversão de marcha proibida", "proibida a inversão de marcha", "não fazer inversão de marcha"]
+          "terms": ["não inverter o sentido", "inversão de marcha proibida", "proibida a inversão de marcha", "não fazer inversão de marcha"],
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Para",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_left_turn": {
           "name": "Virar apenas à esquerda",
-          "terms": ["esquerda", "viragem", "virar", "sentido obrigatório"]
+          "terms": ["esquerda", "viragem", "virar", "sentido obrigatório"],
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Para",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_right_turn": {
           "name": "Virar apenas à direita",
-          "terms": ["direita", "viragem", "virar", "sentido obrigatório"]
+          "terms": ["direita", "viragem", "virar", "sentido obrigatório"],
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Para",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_straight_on": {
           "name": "Seguir apenas em frente",
-          "terms": ["frente", "viragem", "virar", "sentido obrigatório"]
+          "terms": ["frente", "viragem", "virar", "sentido obrigatório"],
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Para",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_u_turn": {
           "name": "Apenas inversão de marcha",
-          "terms": ["apenas meia-volta", "meia volta", "meia-volta", "inversão", "inversão do sentido de marcha", "inversão de marcha"]
+          "terms": ["apenas meia-volta", "meia volta", "meia-volta", "inversão", "inversão do sentido de marcha", "inversão de marcha"],
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Para",
+              "via": "Via"
+            }
+          }
         },
         "type/route": {
           "name": "Rota",
@@ -6416,6 +6541,14 @@
         },
         "type/waterway": {
           "name": "Curso de água",
+          "relation": {
+            "role_labels": {
+              "main_stream": "Curso principal",
+              "mouth": "Foz",
+              "side_stream": "Curso lateral",
+              "spring": "Nascente"
+            }
+          },
           "terms": ["hidrovia", "curso", "rio", "canal", "levada", "ribeiro", "ribeira", "córrego", "área inundável", "inundável", "inundada", "bacia", "hidrologia", "hídrica", "fluvial", "fluviais", "água", "arroio", "riacho"]
         },
         "waterway": {
@@ -6741,6 +6874,10 @@
         "amenity/university": {
           "name": "Universidade",
           "terms": ["university grounds", "faculdade", "escola superior", "centro universitário", "politécnico", "instituto politécnico", "instituto", "instituto universitário", "colégio", "academia", "escola"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Podologista",
+          "terms": ["podiatria", "podologista", "podologia", "pés", "pé", "podiatra", "quiropodista", "podólogo"]
         },
         "amenity/charging_station/charging_station_bicycle_designated": {
           "name": "Posto de carregamento de bicicletas",

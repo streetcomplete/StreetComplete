@@ -441,7 +441,7 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="dialog_tutorial_upload">För att ladda upp ändringarna manuellt, använd knappen som ser ut så här.</string>
     <string name="quest_segregated_separated">Separerade från varandra</string>
     <string name="quest_segregated_mixed">Cyklister och gångtrafikanter delar bana</string>
-    <string name="quest_maxheight_title">Vad är maxhöjden här?</string>
+    <string name="quest_maxheight_title">Mät den maximala höjden här.</string>
     <string name="quest_maxheight_answer_noSign">Det finns ingen skylt…</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">Angiven höjd verkar osannolik. Är du säker på att den är korrekt?</string>
     <string name="quest_noteDiscussion_comment2">— %1$s, %2$s</string>
@@ -719,7 +719,6 @@ nivåer</string>
     <string name="quest_buildingType_abandoned_description">oanvänd byggnad vars ursprungliga funktion eller syfte är okänd</string>
     <string name="quest_buildingType_ruins">Ruiner</string>
     <string name="quest_buildingType_ruins_description">övergiven, förstörd och oidentifierbar byggnad</string>
-    <string name="quest_charging_station_capacity_title">Hur många bilar kan laddas här samtidigt?</string>
     <string name="link_disaster_ninja_description">Karta som visar de senaste naturkatastroferna, intressant för humanitära kartläggare. Visar också mycket intressant statistik för att analysera hur väl kartlagda och uppdaterade platser är.</string>
     <string name="quest_lanes_title">Hur många körfält för bilar har den här vägen?</string>
     <string name="quest_lanes_answer_noLanes">Inga markerade körfält</string>
@@ -1403,10 +1402,9 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_board_type_rules">Regler</string>
     <string name="quest_firewood_provided_title">Finns det brännved här?</string>
     <string name="quest_first_aid_kit_location">Var finns första hjälpen-kitet?</string>
+    <string name="quest_lane_markings_title">Finns det körfältsmarkeringar på den här vägen?</string>
     <string name="quest_level_thing_title">På vilken våning ligger den här saken?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Hur många cyklar kan laddas här samtidigt?</string>
     <string name="quest_charging_station_bicycles_title">Kan man ladda cyklar här också?</string>
-    <string name="quest_charging_station_bicycles_hint">Strömadaptrarna till cykelladdarna ansluts till vanliga hushållsuttag.</string>
     <string name="quest_recycling_type_pet_bottles">PET flaska</string>
     <string name="quest_maxweight_add_sign">Lägg till skylt</string>
     <string name="quest_maxweight_remove_sign">Ta bort skylt</string>
@@ -1420,7 +1418,7 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_address_answer_no_block2">Det ligger inte inom ett kvarter…</string>
     <string name="quest_artwork_title">Vad är det här för slags konstverk?</string>
     <string name="quest_artwork_sculpture">Skulptur</string>
-    <string name="quest_artwork_statue">Statyn</string>
+    <string name="quest_artwork_statue">Staty</string>
     <string name="quest_artwork_mural">Väggmålning</string>
     <string name="quest_artwork_graffiti">Graffiti</string>
     <string name="quest_artwork_installation">Konstinstallation</string>
@@ -1465,12 +1463,18 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_shop_gone_replaced_answer_hint2">Skriv in vad du söker</string>
     <string name="link_gomap_description">Avancerad OSM-redigerare för iOS</string>
     <string name="quest_place_vacant_type_title">Den här lokalen har stått tom. Vad finns här nu?</string>
+    <string name="about_title">Om %1$s</string>
     <string name="quest_surface_value_laterite">Laterit</string>
+    <string name="leave_note_quest_context_hint">Kan inte svara på ”%1$s”:</string>
+    <string name="leave_note_overlay_context_hint">I samband med överlägget ”%1$s”:</string>
+    <string name="quest_leave_new_note_track_delete_title">Vill du radera den här spårinspelningen?</string>
+    <string name="unchanged_tag_action_title">Bekräftat %1$s</string>
     <string name="bicycle_boulevard_is_a2">Det är en cykelboulevard</string>
     <string name="bicycle_boulevard_is_not_a2">Det är ingen cykelboulevard</string>
     <string name="camera_permission_description">Kameratillstånd krävs för att kunna bifoga foton till kartanteckningar.</string>
     <string name="resurvey_title">Stämmer det fortfarande?</string>
     <string name="add">Lägg till</string>
+    <string name="quest_bothway_aerialway_confirm">Är du säker på att man kan åka med den här linbanan i båda riktningarna?</string>
     <string name="quest_doctor_type_title">Vilka läkare finns här?</string>
     <string name="quest_generalFee_title3">Måste man betala för att bo här?</string>
     <string name="quest_access_permit">Innehavare av tillstånd (som i regel kan erhållas)</string>
@@ -1488,4 +1492,15 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_selection_hint_message_open_settings">Öppna inställningar</string>
     <string name="quest_buildingType_terraced_house">Individuellt radhus</string>
     <string name="quest_barrier_opening_not_wheelchair_accessible">Inte lämpligt för rullstolar</string>
+    <string name="quest_charging_station_car_access">Kan man ladda bilar här?</string>
+    <string name="quest_charging_station_socket_title">Hur många uttag har den här laddstationen?</string>
+    <string name="quest_charging_station_socket_chademo">CHAdeMO</string>
+    <string name="quest_charging_station_socket_chaoji">ChaoJi (CHAdeMO 3.0)</string>
+    <string name="quest_charging_station_socket_nacs">NACS (Tesla)</string>
+    <string name="quest_charging_station_socket_gb_ac">GB/T (Kina) – växelström</string>
+    <string name="quest_charging_station_socket_gb_dc">GB/T (Kina) – likström</string>
+    <string name="quest_charging_station_socket_domestic">Vilket hushållsuttag som helst</string>
+    <string name="quest_charging_station_other_socket">Annat uttag…</string>
+    <string name="quest_charging_station_add_socket">Lägg till uttag</string>
+    <string name="quest_parking_charge_answer_no_fee">Det kostar ingenting alls</string>
 </resources>

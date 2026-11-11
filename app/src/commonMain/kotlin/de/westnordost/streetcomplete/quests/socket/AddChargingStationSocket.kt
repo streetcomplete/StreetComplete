@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.quests.socket.ChargingStationSocket.*
 import de.westnordost.streetcomplete.resources.*
@@ -33,7 +34,7 @@ class AddChargingStationSocket : OsmElementQuestType<Map<ChargingStationSocket, 
             !~"socket:(${ChargingStationSocket.entries.joinToString("|") { it.osmId }})"
             or ~"socket:(${ChargingStationSocket.entries.joinToString("|") { it.osmId }})" ~ "yes"
             or ~"socket:(${INVALID_CHARGING_STATION_SOCKETS.joinToString("|")})"
-            or socket older today -2 years
+            or ${getLastCheckDateKeys("socket").joinToString(" or ") { "$it < today -2 years" }}
           )
           and access !~ no|private
     """.toElementFilterExpression() }

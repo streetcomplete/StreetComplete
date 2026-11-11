@@ -24,6 +24,7 @@ class AddBoatRental : OsmFilterQuestType<Set<BoatRental>>() {
             ${BoatRental.entries.joinToString(" and ") { "!${it.osmValue}" }}
             or ${DEPRECATED_RENTALS.joinToString(" or ")}
           )
+          and access !~ private|no
     """
     override val changesetComment = "Specify boats for rental"
     override val wikiLink = "Tag:amenity=boat_rental"

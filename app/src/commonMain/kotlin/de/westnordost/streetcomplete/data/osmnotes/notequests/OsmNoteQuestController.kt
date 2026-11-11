@@ -168,6 +168,7 @@ private fun Note.containsSurveyRequiredMarker(): Boolean =
 
 private fun NoteComment.containsSurveyRequiredMarker(): Boolean =
     text?.contains("#surveyme", ignoreCase = true) == true
+    || text?.contains("#surveyneeded", ignoreCase = true) == true
 
 private fun Note.probablyCreatedByUserInThisApp(userId: Long): Boolean {
     val firstComment = comments.first()

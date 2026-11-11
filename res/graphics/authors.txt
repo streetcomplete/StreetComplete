@@ -425,6 +425,7 @@ quest/
     leaf.svg
     level.svg
     level_thing.svg
+    lock_power.svg                  Amaan Qureshi, License: CC-BY-SA 4.0
     mail.svg
     mail_ref.svg
     max_width.svg

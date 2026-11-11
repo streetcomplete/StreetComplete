@@ -719,7 +719,6 @@ conquista</string>
     <string name="quest_buildingType_abandoned_description">edifício não utilizado, cuja função ou propósito original é desconhecido</string>
     <string name="quest_buildingType_ruins">Ruínas</string>
     <string name="quest_buildingType_ruins_description">edifício abandonado, em ruínas e não identificável</string>
-    <string name="quest_charging_station_capacity_title">Quantos carros podem ser carregados nesta estação de carregamento ao mesmo tempo?</string>
     <string name="link_disaster_ninja_description">Mapa que mostra desastres naturais recentes, interessante para mapeadores humanitários. Além disso, mostra muitas estatísticas interessantes para analisar como os lugares estão bem mapeados e atualizados.</string>
     <string name="quest_lanes_title">Quantas faixas para carros essa estrada tem?</string>
     <string name="quest_lanes_answer_noLanes">Sem pistas marcadas</string>
@@ -1385,7 +1384,6 @@ Um nível é considerado um nível de telhado quando suas janelas estão no telh
     <string name="quest_aerialway_bicycle_summer">Apenas no verão</string>
     <string name="quest_board_type_rules">Regras</string>
     <string name="quest_first_aid_kit_location">Onde esse kit de primeiros socorros está localizado?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Quantas bicicletas podem ser carregadas aqui ao mesmo tempo?</string>
     <string name="quest_charging_station_bicycles_title">Bicicletas podem ser carregadas aqui também?</string>
     <string name="quest_recycling_type_pet_bottles">Garrafas PET</string>
     <string name="pref_title_message_achievements">Conquistas desbloqueadas</string>

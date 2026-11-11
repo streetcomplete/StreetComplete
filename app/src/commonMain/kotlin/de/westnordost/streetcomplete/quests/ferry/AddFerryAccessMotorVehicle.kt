@@ -56,4 +56,7 @@ class AddFerryAccessMotorVehicle : OsmElementQuestType<Boolean> {
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["motor_vehicle"] = answer.toYesNo()
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("ways, relations with route = ferry")
 }

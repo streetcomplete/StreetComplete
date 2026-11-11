@@ -537,7 +537,7 @@ It allows it to make complex geometry checks, but writing them is also far more 
 
 Some quests should be enabled only in some countries or disabled in a specific countries.
 
-[`override val enabledInCountries = NoCountriesExcept("SE")`](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/accepts_cash/AddAcceptsCash.kt) - enabled only in Sweden.
+[`override val enabledInCountries = NoCountriesExcept("SE")`](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/payment/AddAcceptsCash.kt) - enabled only in Sweden.
 
 [`override val enabledInCountries = AllCountriesExcept("US", "CA")`](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/address/AddHousenumber.kt) - not enabled in USA or Canada
 

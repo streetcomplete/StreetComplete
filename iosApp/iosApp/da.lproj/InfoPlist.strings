@@ -1,0 +1,2 @@
+"NSCameraUsageDescription" = "Der kræves tilladelse til at bruge kameraet for at vedhæfte fotos til kortbemærkninger.";
+"NSLocationWhenInUseUsageDescription" = "Tilladelse til præcis placering er nødvendig for at vise din position på kortet og downloade data i nærheden af dig.";

@@ -102,6 +102,10 @@ Always remember to pay attention to [the quest guidelines](https://github.com/st
 
 See also [this far more detailed guide to making a new quest](CONTRIBUTING_A_NEW_QUEST.md).
 
+### AI policy
+
+See [AI policy](https://github.com/streetcomplete/StreetComplete/blob/master/AI_POLICY.md).
+
 ### Code style
 
 Inheritance and class hierarchy should be avoided if possible. It is preferable to extract shared code to helper file such as [KerbUtil.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/osm/kerb/KerbUtil.kt).
@@ -123,14 +127,13 @@ Materials in [`res/documentation`](res/documentation) also may be useful, it inc
 
 ### Dependencies
 
-- [MapLibre Native](https://github.com/maplibre/maplibre-native/) for map rendering
+- [MapLibre Compose](https://github.com/maplibre/maplibre-compose/) for map rendering
 - [countryboundaries](https://github.com/westnordost/countryboundaries) for detecting in which country a quest is (affects quest display, etc.)
 - [countrymetadata](https://github.com/streetcomplete/countrymetadata) for info about various countries (left/right hand driving etc.)
 - [osmapi](https://github.com/westnordost/osmapi) for communication with the OSM API
 - [osmfeatures](https://github.com/westnordost/osmfeatures) to correctly refer to a feature by name. Data for it is provided by:
   - [iD Tagging Schema](https://github.com/openstreetmap/id-tagging-schema) - In StreetComplete it powers display of feature type, object classification in shop overlay and more
   - [Name suggestion index](https://github.com/osmlab/name-suggestion-index) - it allows to search POI types also by brand names
-- [streetcomplete-mapstyle](https://github.com/streetcomplete/maplibre-streetcomplete-style)
 
 ### Created for StreetComplete
 
@@ -144,8 +147,3 @@ Materials in [`res/documentation`](res/documentation) also may be useful, it inc
 - [detect_missing_value_support_in_streetcomplete](https://codeberg.org/matkoniecz/detect_missing_value_support_in_streetcomplete.git) may manage to list tags missing from [opening_hours](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/opening_hours/AddOpeningHours.kt), [name](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/place_name/AddPlaceName.kt), [wheelchair](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt) quests and [places](app/src/commonMain/kotlin/de/westnordost/streetcomplete/osm/places/Places.kt) overlay - and some of tags listed there may be in fact worth supporting in this parts of StreetComplete.
 
 You may find more projects under [the StreetComplete tag](https://github.com/topics/streetcomplete) on GitHub.
-
-#### Retired
-
-- [oneway-data-api](https://github.com/streetcomplete/oneway-data-api) by [@ENT8R](https://github.com/ENT8R) for getting oneway data from improveosm.org
-- [parser](https://github.com/matkoniecz/abandoned-StreetComplete-branches/tree/taginfo) by [@matkoniecz](https://github.com/matkoniecz) listing tags added by StreetComplete for taginfo

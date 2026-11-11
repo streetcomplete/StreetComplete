@@ -241,7 +241,7 @@ val commonModule = module {
 
     //region basic configuration
 
-    factory { ApplicationInitializer(get(), get(), get(), get(), get(), get(), get(), get()) }
+    factory { ApplicationInitializer(get(), get(), get(), get(), get(), get(), get(), get(), get()) }
 
     single { HttpClient {
         defaultRequest {
@@ -554,7 +554,7 @@ val commonModule = module {
 
     factory { ActiveDatesDao(get()) }
 
-    factory { StatisticsParser(editTypeAliases) }
+    factory { StatisticsParser() }
     factory<StatisticsApiClient> { StatisticsApiClientImpl(get(), STATISTICS_BACKEND_URL, get()) }
 
     single<StatisticsSource> { get<StatisticsController>() }
@@ -568,6 +568,7 @@ val commonModule = module {
             countryBoundaries = get(named("CountryBoundariesLazy")),
             prefs = get(),
             userLoginSource = get(),
+            editTypeAliases = editTypeAliases
         )
     }
 
@@ -607,7 +608,7 @@ val commonModule = module {
     viewModel<MainViewModel> {
         MainViewModelImpl(
             get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
-            get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
+            get(), get(), get(), get(), get(), get(), get(), get(), get(),
         )
     }
 

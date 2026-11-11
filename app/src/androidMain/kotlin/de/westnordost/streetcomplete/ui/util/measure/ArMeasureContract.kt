@@ -5,7 +5,6 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContract
-import androidx.core.os.bundleOf
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.length.Length
@@ -21,13 +20,11 @@ class ArMeasureContract : ActivityResultContract<ArMeasureContract.Params, Lengt
         val intent = context.packageManager.getLaunchIntentForPackage(ApplicationConstants.STREETMEASURE)
             ?: throw ActivityNotFoundException()
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-        intent.putExtras(bundleOf(
-            "request_result" to       true,
-            "unit" to                 unit,
-            "precision_cm" to         10,
-            "precision_inch" to       4,
-            "measure_vertical" to     input.measureVertical,
-        ))
+        intent.putExtra("request_result", true)
+        intent.putExtra("unit", unit)
+        intent.putExtra("precision_cm", 10)
+        intent.putExtra("precision_inch", 4)
+        intent.putExtra("measure_vertical", input.measureVertical)
         return intent
     }
 

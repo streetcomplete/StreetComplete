@@ -717,7 +717,6 @@ dienų</string>
     <string name="quest_buildingType_abandoned_description">nenaudojamas pastatas, kurio pirminė funkcija ar paskirtis nežinoma</string>
     <string name="quest_buildingType_ruins">Griuvėsiai</string>
     <string name="quest_buildingType_ruins_description">apleistas, sugriuvęs ir neatpažįstamas pastatas</string>
-    <string name="quest_charging_station_capacity_title">Kiek automobilių gali būti kraunama tuo pačiu metu?</string>
     <string name="link_disaster_ninja_description">Žemėlapis, kuriame rodomos neseniai įvykusios stichinės nelaimės, įdomus humanitarinių žemėlapių sudarytojams. Taip pat pateikiama daug įdomios statistikos, leidžiančios išanalizuoti, kaip gerai žemėlapiuose pažymėtos ir atnaujintos vietovės.</string>
     <string name="quest_lanes_title">Kiek šiame kelyje yra automobilių eismo juostų?</string>
     <string name="quest_lanes_answer_noLanes">Nėra pažymėtų eismo juostų</string>

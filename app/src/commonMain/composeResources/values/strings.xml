@@ -101,7 +101,7 @@
     <string name="quest_roofShape_select_one">Select one:</string>
     <!-- As in: "select any of the pictures below that fit" -->
     <string name="quest_multiselect_hint">Select all that apply:</string>
-    <string name="quest_select_hint">Select:</string>
+    <string name="quest_select_hint">Select</string>
     <!-- As in: "show more of those pictures to select an answer from -->
     <string name="quest_roofShape_show_more">Show more…</string>
     <!-- E.g "tactile paving at a crosswalk usually looks like this: <picture of tactile paving shown> -->
@@ -1034,8 +1034,8 @@
     <string name="quest_carWashType_selfService">Self-service</string>
     <string name="quest_carWashType_service">Staff cleans car</string>
 
-    <string name="quest_charging_station_bicycles_title">Can bicycles be charged here, too?</string>
-    <string name="quest_charging_station_bicycles_hint">Bicycle charger power adapters plug into normal household sockets.</string>
+    <string name="quest_charging_station_bicycles_title">Can bicycles be charged here?</string>
+    <string name="quest_charging_station_bicycles_hint2">Some of the sockets here can be used to charge bicycles. Check whether charging bicycles is prohibited, for example by signs or because the area is for cars only.</string>
 
     <string name="quest_charging_station_car_access">Can cars be charged here?</string>
 
@@ -1234,6 +1234,8 @@
 
     <string name="quest_lit_title">Is it lit here?</string>
 
+    <string name="quest_lockable_title">Can you lock this while charging?</string>
+
     <string name="quest_maxheight_title">Measure the maximum height here.</string>
     <string name="quest_maxheight_below_bridge_title">Measure the height below the highlighted bridge (or other structure).</string>
     <string name="quest_maxheight_sign_title">What height limit is indicated here?</string>
@@ -1405,7 +1407,7 @@
     <string name="quest_parcel_locker_brand">What’s the brand of this parcel locker?</string>
 
     <string name="quest_parking_access_title2">Who is allowed to park here? Parking may be free or paid.</string>
-    <string name="quest_access_yes">Anyone</string>
+    <string name="quest_access_yes">Any member of the general public</string>
     <string name="quest_access_customers">Any person visiting a specific place (e.g. customers only)</string>
     <string name="quest_access_private">Only individuals with permission</string>
     <string name="quest_access_permit">Holders of permits (generally obtainable)</string>
@@ -1427,6 +1429,7 @@
 
     <string name="quest_parking_charge_title">How much do you need to pay to park here?</string>
     <string name="quest_parking_charge_time_unit_label">per</string>
+    <string name="quest_parking_charge_answer_no_fee">There is no fee at all</string>
 
     <string name="quest_parkingType_title">What kind of parking is this?</string>
     <string name="quest_parkingType_surface">Parking lot</string>
@@ -1718,7 +1721,7 @@
     <string name="quest_surface_value_rubber">Rubber granules</string>
     <string name="quest_surface_value_acrylic">Synthetic resin</string>
 
-    <string name="quest_tactilePaving_title_crosswalk">Does this crosswalk have tactile paving on both ends?</string>
+    <string name="quest_tactilePaving_title_crosswalk">Is there tactile paving at the kerbs on both ends of this crosswalk?</string>
     <string name="quest_tactilePaving_incorrect">Only on one side</string>
     <string name="quest_tactilePaving_title_steps">Is there tactile paving at the top and bottom of these steps?</string>
     <string name="quest_tactilePaving_steps_top">Only at the top</string>

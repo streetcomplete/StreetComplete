@@ -2,7 +2,7 @@
 atmOperators: [SEB, Swedbank, Luminor, DNB, Luminor Bank, Medus, Euronet, UAB „Worldline Lietuva“, Nordea, Worldline Lietuva, AB SEB bankas, AB "Swedbank", swedbank, 'SEB, DNB', Perlas, Nordea/Parex/Danske/Ūkio, Luminor/Citadele, Citadele]
 centerLineStyle: white
 chargingStationOperators: [UAB Ignitis, Ignitis, Elinta, Elinta Charge, Ignitis ON, IgnitisON, Eldrive, Elektrum, Spark, Enefit, Inbalance grid, Unipark, UAB Vilniaus apšvietimas, Vilniaus apšvietimas, LAKD, Ionity, Inbalance, UAB „Elinta“]
-chargingStationSocketTypes: [type2_cable, type2, type2_combo]
+chargingStationSocketTypes: [type2_cable, type2, type2_combo, chademo]
 clothesContainerOperators: [Šiaulių regiono atliekų tvarkymo centras, Ecoservice, Vilniaus atliekų sistemos administratorius, UAB „VAATC“, Vilniaus miesto savivaldybė]
 defaultSpeedLimitHasUrbanOrRural: true
 domesticSocketTypes: [typef, typec]

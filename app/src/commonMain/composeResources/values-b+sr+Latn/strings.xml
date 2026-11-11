@@ -718,7 +718,6 @@ dani</string>
     <string name="quest_buildingType_abandoned_description">napuštena zgrada kojoj je izvorna funkcija ili svrha nepoznata.</string>
     <string name="quest_buildingType_ruins">Ruševina</string>
     <string name="quest_buildingType_ruins_description">zapuštena, urušena i neprepoznatljiva građevina</string>
-    <string name="quest_charging_station_capacity_title">Koliko se automobila može puniti istovremeno na ovoj stanici za punjenje?</string>
     <string name="link_disaster_ninja_description">Karta koja pokazuje nedavne prirodne katastrofe, zanimljiva kartografima humanitarnih organizacija. Takođe, pokazuje mnoštvo statističkih podataka za analizu koliko su dobro kartirana i ažurirana mesta.</string>
     <string name="quest_lanes_title">Koliko traka za automobile ima ovaj put?</string>
     <string name="quest_lanes_answer_noLanes">Nema označenih traka</string>
@@ -1415,9 +1414,7 @@ Spratom se smatra i kada su prozori u krovu. Stoga, krovovi bez sprata nisu nuž
     <string name="quest_first_aid_kit_location">Gde se nalazi komplet za prvu pomoć?</string>
     <string name="quest_lane_markings_title">Da li ovaj put ima obeležene trake?</string>
     <string name="quest_level_thing_title">Na kom nivou se ovo nalazi?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Koliko bicikala se može puniti istovremeno?</string>
     <string name="quest_charging_station_bicycles_title">Da li se ovde mogu puniti i bicikli?</string>
-    <string name="quest_charging_station_bicycles_hint">Adapteri za punjenje koriste obične kućne utičnice.</string>
     <string name="quest_recycling_type_pet_bottles">PET ambalaža</string>
     <string name="quest_maxweight_add_sign">Dodaj znak</string>
     <string name="quest_maxweight_remove_sign">Ukloni znak</string>

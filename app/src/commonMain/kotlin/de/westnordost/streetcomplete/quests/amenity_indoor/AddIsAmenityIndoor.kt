@@ -34,7 +34,7 @@ class AddIsAmenityIndoor(
         nodes with
           (
             emergency ~ defibrillator|fire_extinguisher|fire_hose|first_aid_kit
-            or amenity ~ atm|drinking_water|telephone|parcel_locker|library_dropoff|luggage_locker|locker|post_box|public_bookcase|give_box|ticket_validator|shower|vending_machine
+            or amenity ~ atm|bicycle_repair_station|drinking_water|telephone|parcel_locker|library_dropoff|luggage_locker|locker|post_box|public_bookcase|give_box|ticket_validator|shower|vending_machine
             or amenity = clock and display != sundial
           )
           and access !~ private|no

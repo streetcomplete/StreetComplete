@@ -717,7 +717,6 @@ līmeņi</string>
     <string name="quest_buildingType_abandoned_description">neizmantota ēka, kuras sākotnējā nozīme ir neskaidra</string>
     <string name="quest_buildingType_ruins">Drupas</string>
     <string name="quest_buildingType_ruins_description">nolaista, bojāta un neidentificējama ēka</string>
-    <string name="quest_charging_station_capacity_title">Cik automašīnas šeit var vienlaicīgi uzlādēt?</string>
     <string name="link_disaster_ninja_description">Karte, kas rāda nesenās dabas katastrofas, kas var noderēt humanitārajiem kartētājiem. Rāda arī daudz interesantas statistikas par to, cik labi kartēta un aktuāla ir informācija par vietām.</string>
     <string name="quest_lanes_title">Cik daudz automašīnu joslas ir šim ceļam?</string>
     <string name="quest_lanes_answer_noLanes">Nav iezīmētu joslu</string>

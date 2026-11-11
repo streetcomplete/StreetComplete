@@ -13,6 +13,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.duration.DurationUnit
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.ChargeInput
+import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
@@ -23,11 +25,12 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddChargeForm(
-    on: (QuestAction<Charge>) -> Unit,
+    on: (QuestAction<ChargeAnswer>) -> Unit,
     countryInfo: CountryInfo,
 ) {
     var amount by rememberSerializable { mutableStateOf<Double?>(null) }
     var durationUnit by rememberSerializable { mutableStateOf(DurationUnit.HOURS) }
+    var confirmNoFee by remember { mutableStateOf(false) }
 
     val currencyFormatInfo = remember(countryInfo) {
         CurrencyFormatElements.of(countryInfo.userPreferredLocale)
@@ -44,7 +47,10 @@ fun AddChargeForm(
                 currency,
                 durationUnit
             )))
-        }
+        },
+        otherAnswers = { listOf(
+            AnswerItem(stringResource(Res.string.quest_parking_charge_answer_no_fee)) { confirmNoFee = true }
+        ) }
     ) {
         ProvideTextStyle(MaterialTheme.typography.extraLargeInput) {
             ChargeInput(
@@ -56,5 +62,12 @@ fun AddChargeForm(
                 perLabel = stringResource(Res.string.quest_parking_charge_time_unit_label),
             )
         }
+    }
+
+    if (confirmNoFee) {
+        AreYouSureDialog(
+            onDismissRequest = { confirmNoFee = false },
+            onConfirmed = { on(Answer(ChargeAnswer.NoCharge)) }
+        )
     }
 }

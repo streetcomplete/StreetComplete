@@ -27,6 +27,16 @@ class HtmlParserKtTest {
         assertFails { parse("<!--") }
     }
 
+    @Test fun `preserves unicode whitespaces`() {
+        assertEquals(listOf(HtmlTextNode("©\u00a0OpenStreetMap")), parse("©\u00a0OpenStreetMap"))
+        assertEquals(listOf(HtmlTextNode("©\u00a0OpenStreetMap")), parse("©\u00a0OpenStreetMap"))
+        assertEquals(listOf(HtmlTextNode("a \u00a0 b")), parse("a \u00a0 b"))
+    }
+
+    @Test fun `collapses html whitespaces`() {
+        assertEquals(listOf(HtmlTextNode("a b c d e")), parse("a \t b\n\nc\r\n d\u000C e"))
+    }
+
     @Test fun `one cdata`() {
         assertEquals(listOf(), parse("<![CDATA[]]>"))
         assertEquals(listOf(), parse("<![CDATA[<>=\"']]>"))

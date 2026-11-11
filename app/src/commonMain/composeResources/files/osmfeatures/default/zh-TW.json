@@ -470,10 +470,6 @@
           "name": "整形外科",
           "terms": ["醫學美容"]
         },
-        "amenity/doctors/podiatry": {
-          "name": "足病診療",
-          "terms": ["足病診療"]
-        },
         "amenity/doctors/proctology": {
           "name": "直腸科",
           "terms": ["直腸科"]
@@ -746,7 +742,7 @@
           "terms": ["智慧包裹櫃", "包裹保管箱"]
         },
         "amenity/parking": {
-          "name": "停車",
+          "name": "停車場",
           "terms": ["停車場"]
         },
         "amenity/parking/multi-storey": {
@@ -828,6 +824,10 @@
         "amenity/place_of_worship/jewish": {
           "name": "猶太教堂",
           "terms": ["猶太會堂"]
+        },
+        "amenity/place_of_worship/multifaith": {
+          "name": "多元信仰禮拜場所",
+          "terms": ["多元信仰禮拜場所"]
         },
         "amenity/place_of_worship/muslim": {
           "name": "清真寺",
@@ -1059,6 +1059,10 @@
         "amenity/shelter/public_transport": {
           "name": "候車亭",
           "terms": ["候車亭", "等候亭"]
+        },
+        "amenity/shelter/sun_shelter": {
+          "name": "遮陽棚",
+          "terms": ["遮陽棚"]
         },
         "amenity/shower": {
           "name": "淋浴間",
@@ -1360,8 +1364,8 @@
           "name": "區域",
           "relation": {
             "role_labels": {
-              "inner": "內部",
-              "outer": "外部"
+              "inner": "內部邊界",
+              "outer": "外部邊界"
             }
           },
           "terms": ["區域"]
@@ -2509,7 +2513,7 @@
         },
         "highway/crossing/traffic_signals": {
           "name": "有號誌的行人穿越道",
-          "terms": ["有號誌的行人穿越道"]
+          "terms": ["有燈號行人穿越道", "有交通號誌的行人穿越道"]
         },
         "highway/crossing/uncontrolled": {
           "name": "有標線的行人穿越道",
@@ -2695,11 +2699,11 @@
         },
         "highway/primary": {
           "name": "一級道路",
-          "terms": ["省道"]
+          "terms": ["省道", "主要幹道"]
         },
         "highway/primary_link": {
           "name": "一級道路聯絡道",
-          "terms": ["省道聯絡道"]
+          "terms": ["主要幹道聯絡道", "省道聯絡道"]
         },
         "highway/raceway": {
           "name": "賽車賽道",
@@ -2731,11 +2735,11 @@
         },
         "highway/secondary": {
           "name": "二級道路",
-          "terms": ["縣道", "市道"]
+          "terms": ["二級道路", "次要道路", "縣道", "市道"]
         },
         "highway/secondary_link": {
           "name": "二級道路聯絡道",
-          "terms": ["縣道聯絡道", "市道聯絡道"]
+          "terms": ["次要道路聯絡道", "縣道聯絡道", "市道聯絡道"]
         },
         "highway/service": {
           "name": "專用道路",
@@ -5222,6 +5226,10 @@
           "name": "窄軌鐵路軌道",
           "terms": ["窄軌鐵路軌道"]
         },
+        "railway/platform_edge": {
+          "name": "平台邊緣",
+          "terms": ["平台邊"]
+        },
         "railway/preserved": {
           "name": "保存鐵路",
           "terms": ["保存鐵路", "保存路線", "保存線", "觀光鐵路", "觀光路線", "觀光線"]
@@ -6326,16 +6334,22 @@
         },
         "type/boundary": {
           "name": "邊界",
-          "terms": ["界線", "範圍"]
+          "terms": ["界線", "範圍"],
+          "relation": {
+            "role_labels": {
+              "inner": "內部邊界",
+              "outer": "外部邊界"
+            }
+          }
         },
         "type/boundary/administrative": {
           "name": "行政區界",
           "relation": {
             "role_labels": {
               "admin_centre": "行政中心",
-              "inner": "內部",
               "label": "標籤",
-              "outer": "外部"
+              "inner": "內部邊界",
+              "outer": "外部邊界"
             }
           },
           "terms": ["行政分區", "行政區範圍"]
@@ -6350,6 +6364,14 @@
         },
         "type/destination_sign": {
           "name": "目的地標誌",
+          "relation": {
+            "role_labels": {
+              "intersection": "十字路口",
+              "sign": "實體標誌",
+              "from": "從",
+              "to": "到"
+            }
+          },
           "terms": ["目的地標示"]
         },
         "type/enforcement": {
@@ -6365,8 +6387,8 @@
           "terms": ["複合多邊形", "多邊形"],
           "relation": {
             "role_labels": {
-              "inner": "內部",
-              "outer": "外部"
+              "inner": "內部邊界",
+              "outer": "外部邊界"
             }
           }
         },
@@ -6376,39 +6398,122 @@
         },
         "type/restriction": {
           "name": "限制",
+          "relation": {
+            "role_labels": {
+              "from": "從",
+              "to": "到",
+              "via": "經由"
+            }
+          },
           "terms": ["限制"]
+        },
+        "type/restriction/no_entry": {
+          "name": "禁止進入",
+          "relation": {
+            "role_labels": {
+              "from": "從",
+              "to": "到",
+              "via": "經由"
+            }
+          }
+        },
+        "type/restriction/no_exit": {
+          "name": "死路",
+          "relation": {
+            "role_labels": {
+              "from": "從",
+              "to": "到",
+              "via": "經由"
+            }
+          }
         },
         "type/restriction/no_left_turn": {
           "name": "禁止左轉",
-          "terms": ["不准左轉"]
+          "terms": ["不准左轉"],
+          "relation": {
+            "role_labels": {
+              "from": "從",
+              "to": "到",
+              "via": "經由"
+            }
+          }
         },
         "type/restriction/no_right_turn": {
           "name": "禁止右轉",
-          "terms": ["不准右轉"]
+          "terms": ["不准右轉"],
+          "relation": {
+            "role_labels": {
+              "from": "從",
+              "to": "到",
+              "via": "經由"
+            }
+          }
         },
         "type/restriction/no_straight_on": {
           "name": "禁止直行",
-          "terms": ["不准直行"]
+          "terms": ["不准直行"],
+          "relation": {
+            "role_labels": {
+              "from": "從",
+              "to": "到",
+              "via": "經由"
+            }
+          }
         },
         "type/restriction/no_u_turn": {
           "name": "禁止迴轉",
-          "terms": ["不准迴轉"]
+          "terms": ["不准迴轉"],
+          "relation": {
+            "role_labels": {
+              "from": "從",
+              "to": "到",
+              "via": "經由"
+            }
+          }
         },
         "type/restriction/only_left_turn": {
           "name": "僅准左轉",
-          "terms": ["只能左轉"]
+          "terms": ["只能左轉"],
+          "relation": {
+            "role_labels": {
+              "from": "從",
+              "to": "到",
+              "via": "經由"
+            }
+          }
         },
         "type/restriction/only_right_turn": {
           "name": "僅准右轉",
-          "terms": ["只允許右轉", "只能右轉"]
+          "terms": ["只允許右轉", "只能右轉"],
+          "relation": {
+            "role_labels": {
+              "from": "從",
+              "to": "到",
+              "via": "經由"
+            }
+          }
         },
         "type/restriction/only_straight_on": {
           "name": "僅准直行",
-          "terms": ["只允許直行", "只能直行"]
+          "terms": ["只允許直行", "只能直行"],
+          "relation": {
+            "role_labels": {
+              "from": "從",
+              "to": "到",
+              "via": "經由"
+            }
+          }
         },
         "type/restriction/only_u_turn": {
           "name": "僅准迴轉",
-          "terms": ["只允許迴轉", "只能迴轉"]
+          "terms": ["只允許迴轉", "只能迴轉"],
+          "relation": {
+            "role_labels": {
+              "from": "從",
+              "to": "到",
+              "via": "經由"
+            }
+          }
         },
         "type/route": {
           "name": "路線",
@@ -6512,6 +6617,14 @@
         },
         "type/waterway": {
           "name": "水路",
+          "relation": {
+            "role_labels": {
+              "main_stream": "主流",
+              "mouth": "出海口",
+              "side_stream": "支流",
+              "spring": "泉水"
+            }
+          },
           "terms": ["水道"]
         },
         "waterway": {
@@ -6695,7 +6808,7 @@
         },
         "highway/primary_link-US-CA": {
           "name": "一級道路聯絡道",
-          "terms": ["省道聯絡道"]
+          "terms": ["主要幹道聯絡道", "省道聯絡道"]
         },
         "highway/trunk_link-US-CA": {
           "name": "快速道路匝道",
@@ -6837,6 +6950,10 @@
         "amenity/university": {
           "name": "大學範圍",
           "terms": ["大學", "大學範圍", "大學用地", "大學校地"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "足病診療師",
+          "terms": ["足病診療師"]
         },
         "amenity/charging_station/charging_station_bicycle_designated": {
           "name": "腳踏車充電站",

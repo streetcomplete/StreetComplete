@@ -28,10 +28,10 @@ import org.jetbrains.compose.resources.stringResource
 /** Form to (first) select a number of maxweight [signs] (via MaxWeightSignForm) */
 @Composable
 fun MaxWeightForm(
-    signs: List<MaxWeight>,
-    onSignAdded: (MaxWeight) -> Unit,
+    signs: List<WeightRestriction>,
+    onSignAdded: (WeightRestriction) -> Unit,
     onSignRemoved: (index: Int) -> Unit,
-    onSignChanged: (index: Int, MaxWeight) -> Unit,
+    onSignChanged: (index: Int, WeightRestriction) -> Unit,
     locale: Locale,
     selectableUnits: List<WeightMeasurementUnit>,
     modifier: Modifier = Modifier,
@@ -40,9 +40,9 @@ fun MaxWeightForm(
 
     val countryCode = locale.region
 
-    val selectableMaxWeightTypes = MaxWeightType.entries.filter { type ->
-        type !in signs.map { it.type } &&
-        type.getIcon(countryCode) != null
+    val selectableWeightRestrictions = remember(countryCode, signs) {
+        WeightRestriction.getSelectableEntries(countryCode)
+            .filter { sign -> signs.none { sign::class == it::class } }
     }
 
     Column(
@@ -55,10 +55,9 @@ fun MaxWeightForm(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Center
             ) {
-                MaxWeightSignForm(
-                    type = sign.type,
-                    weight = sign.weight,
-                    onWeightChange = { onSignChanged(index, signs[index].copy(weight = it)) },
+                WeightRestrictionSignForm(
+                    value = sign,
+                    onValueChange = { onSignChanged(index, it) },
                     locale = locale,
                     selectableUnits = selectableUnits,
                     modifier = Modifier.weight(1f)
@@ -71,7 +70,7 @@ fun MaxWeightForm(
                 }
             }
         }
-        if (selectableMaxWeightTypes.isNotEmpty()) {
+        if (selectableWeightRestrictions.isNotEmpty()) {
             Button2(onClick = { showSelectionDialog = true }) {
                 Text(stringResource(Res.string.quest_maxweight_add_sign))
             }
@@ -82,12 +81,9 @@ fun MaxWeightForm(
         SimpleItemSelectDialog(
             onDismissRequest = { showSelectionDialog = false },
             columns = SimpleGridCells.Fixed(2),
-            items = selectableMaxWeightTypes,
-            onSelected = { onSignAdded(MaxWeight(it, null)) },
-            itemContent = {
-                val icon = it.getIcon(countryCode)
-                if (icon != null) Image(painterResource(icon), null)
-            }
+            items = selectableWeightRestrictions,
+            onSelected = { onSignAdded(it) },
+            itemContent = { Image(painterResource(it.getIcon(countryCode)), null) }
         )
     }
 }

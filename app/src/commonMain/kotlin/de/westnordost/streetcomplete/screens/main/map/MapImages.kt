@@ -4,7 +4,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshotFlow
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.Density
@@ -16,6 +19,8 @@ import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.pin
 import de.westnordost.streetcomplete.resources.pin_shadow
 import de.westnordost.streetcomplete.ui.ktx.id
+import de.westnordost.streetcomplete.ui.util.ColorFilterPainter
+import de.westnordost.streetcomplete.ui.util.WithHaloPainter
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -24,7 +29,6 @@ import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.map.MapState
 import org.maplibre.compose.map.ResolvedStyleImage
 import org.maplibre.compose.map.StyleLoadState
-import org.maplibre.compose.style.StyleHandleException
 import kotlin.math.min
 
 @Composable
@@ -58,35 +62,37 @@ class MapImages internal constructor(
             )
         }
 
-    /** Adds the given icons, named by their icon id. Monochrome preset icons are added as SDF, so
-     *  that layers can color and outline them. */
-    suspend fun addIcons(icons: Map<DrawableResource, Painter>) =
-        add(icons, { it.id }) { id, painter ->
+    /** Adds the given icons with a halo in [haloColor], named [iconNamePrefix] + icon id.
+     *  Monochrome preset icons are drawn in [color]. */
+    suspend fun addIcons(icons: Map<DrawableResource, Painter>, color: Color, haloColor: Color) {
+        val prefix = iconNamePrefix(color, haloColor)
+        add(icons, { icon -> icon.id?.let { prefix + it } }) { icon, painter ->
+            val isMonochrome = icon.id?.startsWith("preset_") == true
+            val tinted = if (isMonochrome) ColorFilterPainter(painter, ColorFilter.tint(color)) else painter
+            val withHalo = WithHaloPainter(tinted, density, ICON_HALO_WIDTH, haloColor)
             ResolvedStyleImage.fromPainter(
-                painter, density, layoutDirection,
-                size = painter.sizeAtMost(MAX_ICON_SIZE),
-                drawAsSdf = id.startsWith("preset_"),
+                withHalo, density, layoutDirection,
+                size = withHalo.sizeAtMost(MAX_ICON_SIZE + ICON_HALO_WIDTH * 2),
             )
         }
+    }
 
     private suspend fun add(
         icons: Map<DrawableResource, Painter>,
         getId: (DrawableResource) -> String?,
-        create: suspend (id: String, Painter) -> ResolvedStyleImage,
+        create: suspend (DrawableResource, Painter) -> ResolvedStyleImage,
     ) {
         snapshotFlow { map.style.loadState }.first { it == StyleLoadState.Ready }
         mutex.withLock {
+            val images = mutableMapOf<String, ResolvedStyleImage>()
             for ((icon, painter) in icons) {
+                // the style was replaced meanwhile; the next call adds the images again
+                if (map.style.loadState != StyleLoadState.Ready) return
                 val id = getId(icon) ?: continue
                 if (map.style.images[id] != null) continue
-                val image = create(id, painter)
-                try {
-                    map.style.images.set(id, image)
-                } catch (e: StyleHandleException) {
-                    // the style was replaced meanwhile; the next call adds the image again
-                    return
-                }
+                images[id] = create(icon, painter)
             }
+            if (images.isNotEmpty()) map.style.images.setAll(images)
         }
     }
 
@@ -102,5 +108,12 @@ class MapImages internal constructor(
     private companion object {
         val PIN_SIZE = 71.dp
         val MAX_ICON_SIZE = 48.dp
+        /** same as the halo of labels on the map */
+        val ICON_HALO_WIDTH = 2.5.dp
     }
 }
+
+/** Prefix of the names of icons added with [MapImages.addIcons] in the given colors. The colors
+ *  are part of the name because they are drawn into the image. */
+fun iconNamePrefix(color: Color, haloColor: Color): String =
+    "icon_${color.toArgb().toUInt().toString(16)}_${haloColor.toArgb().toUInt().toString(16)}_"

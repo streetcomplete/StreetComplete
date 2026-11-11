@@ -718,7 +718,6 @@ na n-éachtaí</string>
     <string name="quest_buildingType_abandoned_description">foirgneamh nár úsáideadh, agus nach bhfuil soiléir cén feidhm a bhí air</string>
     <string name="quest_buildingType_ruins">Fothrach</string>
     <string name="quest_buildingType_ruins_description">foirgneamh tréigthe do-aitheanta nó scriosta</string>
-    <string name="quest_charging_station_capacity_title">Cé mhéad carr is féidir a luchtú anseo ag an am céanna?</string>
     <string name="link_disaster_ninja_description">Léarscáil a léiríonn tubaistí nádúrtha, rud atá suimiúil do léarscáilithe daonnúla. Léiríonn sé freisin roinnt staitisticí suimiúla chun anailís a dhéanamh ar an gcaighdeán léarscáilíochta na n-áiteanna agus ar cé chomh cothrom le dáta atá siad.</string>
     <string name="quest_lanes_title">Cé mhéad lána cairr a bhfuil ar an mbóthar seo?</string>
     <string name="quest_lanes_answer_noLanes">Níl aon lána marcáilte</string>
@@ -1414,9 +1413,7 @@ Is féidir leat tuilleadh eolais a fháil faoi shíntiús ar ár suíomh nó ar 
     <string name="quest_first_aid_kit_location">Cá bhfuil an fearas garchabhrach suite?</string>
     <string name="quest_lane_markings_title">An bhfuil aon mharcanna lána ar an mbóthar seo?</string>
     <string name="quest_level_thing_title">Cén uimhir leibhéil ar a bhfuil an rud seo suite?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Cá mhéad rothair is féidir a luchtú anseo ag an am céanna?</string>
     <string name="quest_charging_station_bicycles_title">An bhfuil áit anseo le luchtú rothair chomh maith?</string>
-    <string name="quest_charging_station_bicycles_hint">Is féidir na cuibheoir don luchtú rothair a phlugáil isteach sna ghnáthshoicéidí tí.</string>
     <string name="quest_recycling_type_pet_bottles">Buidéil TPE</string>
     <string name="quest_maxweight_add_sign">Cuir comhartha leis</string>
     <string name="quest_maxweight_remove_sign">Bain comhartha</string>

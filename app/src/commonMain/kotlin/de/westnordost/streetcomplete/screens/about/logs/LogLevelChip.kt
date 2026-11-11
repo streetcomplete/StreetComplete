@@ -32,7 +32,6 @@ import de.westnordost.streetcomplete.ui.theme.logWarning
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun LogLevelFilterChips(
     selectedLogLevels: Set<LogLevel>,

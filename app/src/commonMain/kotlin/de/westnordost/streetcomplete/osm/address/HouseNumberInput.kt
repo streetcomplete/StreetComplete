@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.osm.address
 
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
@@ -30,7 +29,6 @@ import de.westnordost.streetcomplete.ui.theme.extraLargeInput
  *  When the user didn't input anything yet, will show the [suggestion] for which those buttons
  *  work, too.
  *  */
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun HouseNumberInput(
     value: String,

@@ -704,7 +704,6 @@ Viss det ikkje finst noko fartsskilt for heile gata (som òg gjeld for den avmer
     <string name="quest_buildingType_abandoned_description">ubrukt bygning der det ikkje er kjent kva han opphavleg skulle brukast til</string>
     <string name="quest_buildingType_ruins">Ruinar</string>
     <string name="quest_buildingType_ruins_description">øydelagd, falleferdig eller uidentifiserbar bygning</string>
-    <string name="quest_charging_station_capacity_title">Kor mange bilar kan ladast samtidig her?</string>
     <string name="link_disaster_ninja_description">Kart som viser nyleg hende natur­katastrofar, som er nyttig for kartlegging for humanitære formål. Viser òg mykje interessant statistikk om kor godt kartlagd stadar er og kort oppdaterte karta er.</string>
     <string name="quest_lanes_title">Kor mange køyrefelt har denne vegen?</string>
     <string name="quest_lanes_answer_noLanes">Ingen oppmerkte køyrefelt</string>
@@ -1400,9 +1399,7 @@ Ein etasje vert rekna som taketasje når vindauga er i taket. Tak utan taketasja
     <string name="quest_first_aid_kit_location">Kor heng dette førstehjelpsskrinet?</string>
     <string name="quest_lane_markings_title">Har denne vegen midtlinje(r)?</string>
     <string name="quest_level_thing_title">I kva etasje er denne?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Kor mange elsyklar kan ladast samtidig her?</string>
     <string name="quest_charging_station_bicycles_title">Kan ein òg lada elsyklar her?</string>
-    <string name="quest_charging_station_bicycles_hint">Elsykkel-ladarar passar i vanlege stikkontaktar.</string>
     <string name="quest_recycling_type_pet_bottles">PET-flasker</string>
     <string name="quest_maxweight_add_sign">Registrer skilt</string>
     <string name="quest_maxweight_remove_sign">Fjern skilt</string>

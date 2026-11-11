@@ -10,7 +10,7 @@
           "terms": ["contact", "plaats", "adresgegevens", "straat", "huisnummer"]
         },
         "advertising": {
-          "name": "Advertentie-object",
+          "name": "Advertentie-toestel",
           "terms": ["advertentie", "toestel", "middel", "communicatie", "drager"]
         },
         "advertising/billboard": {
@@ -424,10 +424,6 @@
           "name": "Plastisch chirurg",
           "terms": ["plastisch chirurg", "plastische chirurgie"]
         },
-        "amenity/doctors/podiatry": {
-          "name": "Podoloog",
-          "terms": ["voeten", "nagels", "voetheelkunde", "podologie", "podiatrie", "podiatrist"]
-        },
         "amenity/doctors/proctology": {
           "name": "Darmchirurg",
           "terms": ["colorectale chirurg", "endeldarmchirurg"]
@@ -687,6 +683,10 @@
           "name": "Pakketkluis",
           "terms": ["verzenden", "ophalen", "pakket", "kluis", "pakketautomaat"]
         },
+        "amenity/parking": {
+          "name": "Parkeerplaats",
+          "terms": ["parkeren", "parkeer"]
+        },
         "amenity/parking/multi-storey": {
           "name": "Parkeergarage met meerdere niveaus",
           "terms": ["parkeertoren", "parking met meerdere verdiepingen"]
@@ -712,6 +712,9 @@
         },
         "amenity/parking_space/disabled": {
           "name": "Gehandicaptenparkeerplaats"
+        },
+        "amenity/parking_surface": {
+          "name": "Oppervlakte parkeerplaats"
         },
         "amenity/payment_centre": {
           "name": "Betalingscentrum",
@@ -1468,6 +1471,10 @@
         "barrier/kissing_gate": {
           "name": "Kissing gate",
           "terms": ["veehek", "kushek", "kusjeshek", "kissing gate"]
+        },
+        "barrier/lift_gate": {
+          "name": "Slagboom",
+          "terms": ["slagboom"]
         },
         "barrier/log": {
           "name": "Blokkade door omgevallen boom",
@@ -2307,10 +2314,6 @@
         "highway/crossing": {
           "name": "Oversteekplaats",
           "terms": ["kruispunt", "oversteken"]
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "Oversteekplaats met verkeerslichten voor voetgangers",
-          "terms": ["verkeerslichten", "zebra", "oversteekplaats", "zebrapad", "stoplicht"]
         },
         "highway/crossing/uncontrolled": {
           "name": "Gemarkeerde oversteekplaats",
@@ -4271,7 +4274,7 @@
           "terms": ["wijk", "buurt", "stadsdeel"]
         },
         "place/square": {
-          "name": "Maak hoeken recht",
+          "name": "Plein",
           "terms": ["open plein", "open plaats"]
         },
         "place/suburb": {
@@ -6198,6 +6201,10 @@
         "amenity/nursing_home": {
           "name": "Woonzorgcentrum",
           "terms": ["woonzorgcentrum", "verpleegtehuis", "rust- en verzorgingstehuis", "rusttehuis", "rusthuis", "bejaardentehuis", "rvt", "vvt", "wzc"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Podoloog",
+          "terms": ["voeten", "nagels", "voetheelkunde", "podologie", "podiatrie", "podiatrist"]
         },
         "aerialway/station": {
           "name": "Kabelbaanstation",

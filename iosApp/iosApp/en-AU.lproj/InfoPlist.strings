@@ -1,0 +1,2 @@
+"NSCameraUsageDescription" = "Camera permission is needed to attach photos to map notes.";
+"NSLocationWhenInUseUsageDescription" = "Location permission is needed to show your position on the map and download data your vicinity.";

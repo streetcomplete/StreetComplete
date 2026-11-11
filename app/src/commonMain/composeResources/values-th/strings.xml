@@ -713,7 +713,6 @@
     <string name="quest_buildingType_abandoned_description">อาคารที่ไม่ถูกใช้งานแล้วซึ่งไม่ทราบว่าเดิมใช้ทำอะไร</string>
     <string name="quest_buildingType_ruins">ซาก</string>
     <string name="quest_buildingType_ruins_description">เป็นซากปรักหักพังโดยระบุไม่ได้ว่าเป็นอาคารอะไร</string>
-    <string name="quest_charging_station_capacity_title">จุดชาร์จนี้สามารถชาร์จได้กี่คันพร้อมๆ กัน?</string>
     <string name="link_disaster_ninja_description">แผนที่ที่แสดงภัยพิบัติล่าสุด ซึ่งน่าสนใจสำหรับคนทำแผนที่เชิงมนุษยธรรม และมีการแสดงสถิติที่น่าสนใจที่วิเคราะห์ว่าพื้นที่นั้นๆมีข้อมูลแผนที่ที่ครอบคลุมและล่าสุดแค่ไหน</string>
     <string name="quest_lanes_title">ถนนนี้มีช่องทางสำหรับรถยนต์กี่ช่อง?</string>
     <string name="quest_lanes_answer_noLanes">ไม่มีช่องจราจรที่มีสัญลักษณ์</string>

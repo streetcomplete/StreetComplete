@@ -205,7 +205,7 @@ class KerbUtilTest {
                 "footway" to "sidewalk"
             )),
         ))
-        // 2 kerbs here actually: at node 3 and and node 1
+        // 2 kerbs here actually: at node 3 and at node 1
         assertEquals(2, mapData.findAllKerbNodes().toList().size)
     }
 

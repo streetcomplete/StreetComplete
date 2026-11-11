@@ -708,7 +708,6 @@
     <string name="quest_buildingType_abandoned_description">изоставена сграда, не е известно каква е било преди</string>
     <string name="quest_buildingType_ruins">Руини</string>
     <string name="quest_buildingType_ruins_description">разрушена сграда, неизвестно предназначение</string>
-    <string name="quest_charging_station_capacity_title">Колко автомобила могат да зареждат едновременно тук?</string>
     <string name="link_disaster_ninja_description">Карта на природните бедствия за лица оказващи хуманитарна помощ. Интересни статистики за актуалността на обектите.</string>
     <string name="quest_lanes_title">Колко ленти за движение на автомобили има този път?</string>
     <string name="quest_lanes_answer_noLanes">Няма маркирани ленти</string>
@@ -1407,9 +1406,7 @@
     <string name="quest_first_aid_kit_location">Къде се намира този комплект за първа помощ?</string>
     <string name="quest_lane_markings_title">Има ли маркировка на лентите на този път?</string>
     <string name="quest_level_thing_title">На кое ниво/етаж се намира това нещо?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Колко велосипеда могат да се зареждат тук едновременно?</string>
     <string name="quest_charging_station_bicycles_title">Могат ли и велосипеди да се зареждат тук?</string>
-    <string name="quest_charging_station_bicycles_hint">Зарядните устройства за велосипеди се включват в обикновени контакти.</string>
     <string name="quest_recycling_type_pet_bottles">PET бутилки</string>
     <string name="quest_maxweight_add_sign">Добавяне на знак</string>
     <string name="quest_maxweight_remove_sign">Премахване на знак</string>

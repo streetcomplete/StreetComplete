@@ -1478,6 +1478,10 @@
         "ford_line": {
           "name": "Vad"
         },
+        "type/restriction/no_straight_on": {},
+        "type/restriction/only_left_turn": {},
+        "type/restriction/only_right_turn": {},
+        "type/restriction/only_straight_on": {},
         "shop/ice_cream": {
           "name": "Magazin de Înghețată"
         },

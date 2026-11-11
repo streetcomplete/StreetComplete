@@ -399,10 +399,6 @@
         "amenity/doctors/plastic_surgery": {
           "name": "Plastický chirurg"
         },
-        "amenity/doctors/podiatry": {
-          "name": "Podiater",
-          "terms": ["noha", "nohy", "nechty"]
-        },
         "amenity/doctors/psychiatrist": {
           "name": "Psychiater"
         },
@@ -999,7 +995,8 @@
           "terms": ["amfiteater"]
         },
         "amenity/ticket_validator": {
-          "name": "Označovač lístkov"
+          "name": "Označovač lístkov",
+          "terms": ["oznacovac", "validátor", "validator"]
         },
         "amenity/toilets": {
           "name": "Verejné toalety",
@@ -1214,7 +1211,8 @@
           "name": "Bludisko"
         },
         "attraction/pirate_ship": {
-          "name": "Pirátska loď"
+          "name": "Kyvadlová pirátska loď",
+          "terms": ["piratska lod"]
         },
         "attraction/river_rafting": {
           "name": "Rafting na divokej vode"
@@ -1686,7 +1684,7 @@
           "terms": ["knihviazacstvo", "knihviazač", "knihviazac", "knihy", "viazacstvo", "viazačstvo"]
         },
         "craft/brewery": {
-          "name": "Remeselný pivovar",
+          "name": "Minipivovar",
           "terms": ["remeselny pivovar", "pivovar", "minipivovar"]
         },
         "craft/carpenter": {
@@ -2004,10 +2002,12 @@
           "terms": ["poziarny zasobnik", "požiarna nádrž", "poziarna nadrz", "protipožiarny zásobník", "protipoziarny zasobnik", "protipožiarna nádrž", "protipoziarna nadrz", "hasičská nádrž", "hasicska nadrz"]
         },
         "entrance": {
-          "name": "Vchod / východ"
+          "name": "Vchod / východ",
+          "terms": ["východ", "vychod", "vstup", "výstup", "vystup"]
         },
         "entrance/emergency": {
-          "name": "Núdzovy východ"
+          "name": "Núdzovy východ",
+          "terms": ["nudzovy vychod"]
         },
         "entrance/emergency_ward_entrance": {
           "name": "Núdzový vchod do budovy"
@@ -2191,10 +2191,6 @@
         "highway/crossing/informal": {
           "name": "Neformálny prechod"
         },
-        "highway/crossing/traffic_signals": {
-          "name": "Priechod pre chodcov so sveteľnou signalizáciou",
-          "terms": ["svetelná signalizácia", "svetelna", "signalizácia", "signalizacia", "semafory"]
-        },
         "highway/crossing/uncontrolled": {
           "name": "Priechod pre chodcov so značením"
         },
@@ -2313,6 +2309,10 @@
         "highway/motorway": {
           "name": "Diaľnica",
           "terms": ["dialnica", "rýchlocesta", "rychlocesta"]
+        },
+        "highway/motorway_junction": {
+          "name": "Diaľničný zjazd",
+          "terms": ["dialnicny zjazd", "zjazd z diaľnice"]
         },
         "highway/motorway_link": {
           "name": "Diaľničný privádzač",
@@ -2486,7 +2486,7 @@
           "name": "Obratisko s ostrovčekom"
         },
         "historic": {
-          "name": "Historické miesto",
+          "name": "Historický prvok",
           "terms": ["historicke miesto", "hrad", "pevnosť", "pevnost", "kaštieľ", "kastiel", "zámok", "zamok", "rujna", "hradisko", "archeologické miesto", "archeologicke miesto"]
         },
         "historic/aircraft": {
@@ -2513,7 +2513,8 @@
           "terms": ["hradisko", "zámok", "zamok", "zrúcanina", "zrucanina", "hrad"]
         },
         "historic/castle/fortress": {
-          "name": "Historická pevnosť (zámok)"
+          "name": "Historická pevnosť (sídlo)",
+          "terms": ["pevnosť", "pevnost"]
         },
         "historic/castle/palace": {
           "name": "Palác"
@@ -2526,7 +2527,8 @@
           "terms": ["mestska brana", "historická brána", "historicka brana", "brána", "brana", "opevnenie", "mestské hradby", "mestske hradby", "hradby"]
         },
         "historic/fort": {
-          "name": "Historická vojenská pevnosť"
+          "name": "Historická vojenská pevnosť",
+          "terms": ["vojenská pevnosť", "vojenska pevnost", "pevnosť", "pevnost"]
         },
         "historic/manor": {
           "name": "Panský dom",
@@ -2551,7 +2553,8 @@
           "terms": ["pamätihodnosť", "pamatihodnost", "pamätník", "pamatnik", "pomník"]
         },
         "historic/pillory": {
-          "name": "Historický pranier"
+          "name": "Historický pranier",
+          "terms": ["pranier"]
         },
         "historic/ruins": {
           "name": "Ruiny",
@@ -3053,7 +3056,8 @@
           "terms": ["jazdecká aréna", "jazdecka arena", "rodeo aréna", "rodeo arena", "kolbisko"]
         },
         "leisure/pitch/field_hockey": {
-          "name": "Ihrisko pre pozemný hokej"
+          "name": "Ihrisko pre pozemný hokej",
+          "terms": ["pozemný hokej", "pozemny hokej"]
         },
         "leisure/pitch/four_square": {
           "name": "Ihriso pre foursquare",
@@ -3848,7 +3852,8 @@
           "name": "Prirodzený les"
         },
         "noexit/yes": {
-          "name": "Slepá ulica"
+          "name": "Slepá cesta",
+          "terms": ["slepa cesta", "slepá ulica", "slepa ulica", "koniec cesty", "exit"]
         },
         "office": {
           "name": "Úrad",
@@ -4219,7 +4224,7 @@
         },
         "playground/structure": {
           "name": "Ihrisková zostava",
-          "terms": ["preliezačka", "preliezka", "ihrisková zostava"]
+          "terms": ["preliezačka", "preliezka", "ihrisková zostava", "zostava", "hojdačka", "hojdacka", "šmýkačka", "smykacka", "smykľavka", "smyklavka"]
         },
         "playground/swing": {
           "name": "Závesná hojdačka",
@@ -5747,6 +5752,7 @@
           "name": "Brod",
           "terms": ["brod rieky", "rieka", "priechod cez rieku"]
         },
+        "type/restriction/only_u_turn": {},
         "traffic_sign/maxspeed-US-CA-LR": {
           "name": "Značka obmedzenia rýchlosti"
         },
@@ -5875,7 +5881,8 @@
           "terms": ["obchod s panskymi odevmi", "pánske odevy", "panske odevy", "pánske obleky", "panske obleky"]
         },
         "building/entrance": {
-          "name": "Vchod / východ"
+          "name": "Vchod / východ",
+          "terms": ["východ", "vychod", "vstup", "výstup", "vystup"]
         },
         "building/glasshouse": {
           "name": "Skleník",
@@ -5951,6 +5958,10 @@
         "amenity/university": {
           "name": "Areál univerzity",
           "terms": ["univerzita", "vysoká škola", "vysoka skola"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Podiater",
+          "terms": ["noha", "nohy", "nechty", "kotník", "kotnik"]
         },
         "aerialway/station": {
           "name": "Stanica lanovky",

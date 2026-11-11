@@ -717,7 +717,6 @@ activitate</string>
     <string name="quest_buildingType_abandoned_description">clădire neutilizată, a cărei destinație inițială e necunoscută</string>
     <string name="quest_buildingType_ruins">Ruine</string>
     <string name="quest_buildingType_ruins_description">clădire abandonată, ruinată și neidentificabilă</string>
-    <string name="quest_charging_station_capacity_title">Câte mașini pot fi încărcate simultan?</string>
     <string name="link_disaster_ninja_description">Hartă ce prezintă dezastre naturale recente, de interes pentru cartografii umanitari. De asemenea, arată multe statistici interesante pentru a analiza cât de bine sunt cartografiate și actualizate locurile.</string>
     <string name="quest_lanes_title">Câte benzi destinate autovehiculelor are drumul?</string>
     <string name="quest_lanes_answer_noLanes">Fără benzi marcate</string>
@@ -1416,9 +1415,7 @@ De exemplu 1, 3 sau 2b, 4, 6.</string>
     <string name="quest_first_aid_kit_location">Unde se află această trusă de prim ajutor?</string>
     <string name="quest_lane_markings_title">Acest drum are marcaje rutiere?</string>
     <string name="quest_level_thing_title">La ce număr de etaj se află acest lucru?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Câte biciclete pot fi încărcate aici în același timp?</string>
     <string name="quest_charging_station_bicycles_title">Se pot încărca și bicicletele aici?</string>
-    <string name="quest_charging_station_bicycles_hint">Adaptoarele de alimentare pentru încărcătoare de biciclete se conectează la prizele normale de uz casnic.</string>
     <string name="quest_recycling_type_pet_bottles">Sticle PET</string>
     <string name="quest_maxweight_add_sign">Adăugați semn</string>
     <string name="quest_maxweight_remove_sign">Eliminați semnul</string>

@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Banca Transilvania, BCR, BRD, Euronet, Raiffeisen Bank, CEC Bank, UniCredit Bank, ING, Shitcoins.club, Bitcoin Romania, Raiffeisen, OTP Bank, bitpm, UniCredit, CEC, BT, Alpha Bank, Unicredit Bank, ING România, Garanti Bank, ATM Bancpost, GarantiBank, Garanti Bankası, Bancpost, ATM RZB, Raifeissen Bank, RZB, ProCredit Bank, Piraeus Bank, Credit Europe Bank, Bitomat, ATM Unicredit Bank, ATM Dezinstalat, Vista Bank, UniCredit Bank SA, Raiffesin Bank, Multibanco, Garanti, First Bank, CEC bank, Banca Românească, Alpha, ATM Piraeus Bank, ATM BCR]
 chargingStationOperators: [Lidl, Renovatio e-charge, Enel X, E.ON, Kaufland, Tesla, ppc blue, Eldrive, EVconnect, S.T.P.T., Primăria Timișoara, Plugpoint, Petrom, EVBox, Polyfazer, Petrom Electric, MOL, iHunt, Rompetrol, Renovatio, PPC, Enel, ChargePoint, e-charge, Schneider Electric, Nova, NGT, McDonald's, Lektri.co, IKEA, EvGo, ElMotion, ElDrive, EV Connect Romania, ELDrive, Aeroportul Oradea]
-chargingStationSocketTypes: [type2_cable, type2, type2_combo]
+chargingStationSocketTypes: [type2_cable, type2, type2_combo, chademo]
 clothesContainerOperators: [Containere Textile, Caritas, SC Transal Urbis SRL, TexCycle, RER Group Romania]
 defaultSpeedLimitHasUrbanOrRural: true
 domesticSocketTypes: [typef, typec]

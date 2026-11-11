@@ -23,6 +23,7 @@ class AddHairdresserCustomers : OsmFilterQuestType<HairdresserCustomers>() {
           and hairdresser != barber
           and !female and !male
           and !male:signed and !female:signed
+          and access !~ private|no
     """
     override val changesetComment = "Survey hairdresser's customers"
     override val wikiLink = "Tag:shop=hairdresser"

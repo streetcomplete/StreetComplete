@@ -718,7 +718,6 @@ riconoscimento</string>
     <string name="quest_buildingType_abandoned_description">costruzione inutilizzata, la cui funzione o scopo originale è sconosciuto</string>
     <string name="quest_buildingType_ruins">Rovine</string>
     <string name="quest_buildingType_ruins_description">Fatiscente, edificio in rovina e non identificabile</string>
-    <string name="quest_charging_station_capacity_title">Quante automobili possono essere ricaricate contemporaneamente?</string>
     <string name="link_disaster_ninja_description">Mappe che mostrano disastri naturali recenti, interessanti per i mappatori umanitari. Inoltre, mostrano molte statistiche interessanti per analizzare quanto i luoghi sono ben mappati o aggiornati.</string>
     <string name="quest_lanes_title">Quante corsie per automobili ha questa strada?</string>
     <string name="quest_lanes_answer_noLanes">Nessuna corsia indicata</string>
@@ -1415,9 +1414,7 @@ Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tett
     <string name="quest_first_aid_kit_location">Dove si trova questo kit di pronto soccorso?</string>
     <string name="quest_lane_markings_title">Questa strada ha delle linee per delimitare le corsie?</string>
     <string name="quest_level_thing_title">A quale livello numerico si trova questa cosa?</string>
-    <string name="quest_bicycle_charging_station_capacity_title">Quante biciclette possono essere caricate qui nello stesso momento?</string>
     <string name="quest_charging_station_bicycles_title">Le biciclette possono essere caricate qui?</string>
-    <string name="quest_charging_station_bicycles_hint">Gli adattatori di alimentazione per caricabatterie per biciclette si collegano alle normali prese domestiche.</string>
     <string name="quest_recycling_type_pet_bottles">Bottiglie PET</string>
     <string name="quest_maxweight_add_sign">Aggiungi cartello</string>
     <string name="quest_maxweight_remove_sign">Rimuovi cartello</string>

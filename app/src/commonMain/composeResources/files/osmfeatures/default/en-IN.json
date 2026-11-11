@@ -154,6 +154,26 @@
         "barrier/hedge": {
           "name": "Hedge"
         },
+        "barrier/kerb": {
+          "name": "Kerb",
+          "terms": ["curb"]
+        },
+        "barrier/kerb/flush": {
+          "name": "Flush Kerb",
+          "terms": ["even curb", "level curb", "tactile curb", "flush curb"]
+        },
+        "barrier/kerb/lowered": {
+          "name": "Lowered Kerb",
+          "terms": ["curb cut", "curb ramp", "dropped kerb", "kerb ramp", "pram ramp", "lowered curb"]
+        },
+        "barrier/kerb/raised": {
+          "name": "Raised Kerb",
+          "terms": ["step", "raised curb"]
+        },
+        "barrier/kerb/rolled": {
+          "name": "Rolled Kerb",
+          "terms": ["gutter", "rolled curb"]
+        },
         "barrier/stile": {
           "name": "Stile"
         },
@@ -507,13 +527,6 @@
           "name": "Zoo",
           "terms": ["animal"]
         },
-        "type/boundary/administrative": {
-          "relation": {
-            "role_labels": {
-              "admin_centre": "Admin Centre"
-            }
-          }
-        },
         "type/route/subway": {
           "name": "Metro Route",
           "terms": ["subway route"]
@@ -554,8 +567,7 @@
         "landuse/reservoir": {
           "name": "Reservoir",
           "terms": ["dam"]
-        },
-        "boundary/administrative": {}
+        }
       }
     }
   }

@@ -692,7 +692,6 @@
     <string name="quest_buildingType_abandoned_description">չօգտագործված շենք, որի բնօրինակ գործառույթը կամ նպատակը անհայտ է</string>
     <string name="quest_buildingType_ruins">Ավերակներ</string>
     <string name="quest_buildingType_ruins_description">Անվերազերծված, ավերված եւ չճանաչելի շենք</string>
-    <string name="quest_charging_station_capacity_title">Քանի մեքենա կարող է միաժամանակ գանձվել այստեղ:</string>
     <string name="link_disaster_ninja_description">Քարտեզ, որը ցույց է տալիս վերջին բնական աղետները, հետաքրքիր է հումանիտար mappers: Նաեւ ցույց է տալիս շատ հետաքրքիր վիճակագրություն, վերլուծելու, թե որքանով են լավ քարտեզավորված եւ արդի տեղերը:</string>
     <string name="quest_lanes_title">Քանի երթեւեկություն է մեքենաների համար այս ճանապարհը:</string>
     <string name="quest_lanes_answer_noLanes">Նշված գծեր չկա</string>
