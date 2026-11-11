@@ -20,7 +20,6 @@ import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
 import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory
-import de.westnordost.streetcomplete.osm.building.applyBuildingUseTo
 import de.westnordost.streetcomplete.osm.building.applyTo
 import de.westnordost.streetcomplete.osm.building.createBuildingType
 import de.westnordost.streetcomplete.osm.building.createBuildingUseType
@@ -45,15 +44,18 @@ fun BuildingsOverlayForm(
     element: Element,
     preferences: Preferences = koinInject()
 ) {
-    val originalBuilding = remember(element) { createBuildingType(element.tags) }
+    val originalBuilding = remember(element) {
+        createBuildingType(element.tags - setOf("historic", "ruins", "abandoned"))
+    }
     val originalBuildingUse = remember(element) { createBuildingUseType(element.tags) }
 
+    val groups = remember { BuildingTypeCategory.entries - setOf(HISTORIC) }
     val groupsPair = remember {
         Pair(
             // building: no building is constructed as historic, ruins, abandoned or construction
             BuildingTypeCategory.entries - setOf(UNSUPPORTED, HISTORIC, RUINS, ABANDONED, CONSTRUCTION),
-            // building use
-            BuildingTypeCategory.entries - setOf(UNSUPPORTED, CONSTRUCTION)
+            // building use: either current building use or current lifecycle
+            BuildingTypeCategory.entries - setOf(UNSUPPORTED, HISTORIC, CONSTRUCTION)
         )
     }
 
@@ -76,8 +78,7 @@ fun BuildingsOverlayForm(
                 itemContent = { BuildingTypeItem(it) },
                 onClickOk = { (selectedBuilding, selectedBuildingUse) ->
                     val tagChanges = StringMapChangesBuilder(element.tags)
-                    selectedBuilding.applyTo(tagChanges)
-                    selectedBuildingUse.applyBuildingUseTo(tagChanges)
+                    selectedBuilding.applyTo(tagChanges, selectedBuildingUse)
                     on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
                 },
                 labels = Pair(
@@ -90,10 +91,10 @@ fun BuildingsOverlayForm(
         else {
             GroupedItemSelectOverlayForm(
                 on = on,
-                groups = BuildingTypeCategory.entries,
+                groups = groups,
                 topSelectableItems = BuildingType.topSelectableValues,
                 initialSelectedItem = originalBuilding,
-                groupContent = { BuildingTypeCategoryItem(it) },
+                groupContent = { BuildingTypeCategoryItem(it.category) },
                 itemContent = { BuildingTypeItem(it) },
                 lastPickedItemContent = { item ->
                     Image(
@@ -102,9 +103,9 @@ fun BuildingsOverlayForm(
                         modifier = Modifier.height(24.dp)
                     )
                 },
-                onClickOk = { selectedItem ->
+                onClickOk = { selectedBuilding ->
                     val tagChanges = StringMapChangesBuilder(element.tags)
-                    selectedItem.applyTo(tagChanges)
+                    selectedBuilding.applyTo(tagChanges)
                     on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
                 },
                 prefs = preferences,

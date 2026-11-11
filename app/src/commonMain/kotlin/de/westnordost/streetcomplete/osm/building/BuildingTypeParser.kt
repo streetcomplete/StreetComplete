@@ -28,13 +28,17 @@ fun createBuildingType(tags: Map<String, String>): BuildingType? {
 }
 
 fun createBuildingUseType(tags: Map<String,String>): BuildingType? {
-    // Excluded building types that shouldn't belong with building:use (subject to future changes)
-    val excluded = listOf(RUINS, ABANDONED, HISTORIC)
+    if (tags["ruins"] == "yes") return RUINS
+    else if (tags["abandoned"] == "yes") return ABANDONED
 
     val buildingUseValue = tags["building:use"] ?: return null
     val buildingUse =
-        BuildingType.entries.find { it.osmKey == "building" && it.osmValue == buildingUseValue && it !in excluded }
-        ?: BuildingType.aliases.entries.find { it.key.first == "building" && it.key.second == buildingUseValue && it.value !in excluded }?.value
+        BuildingType.entries.find { it.osmKey == "building" && it.osmValue == buildingUseValue }
+        ?: BuildingType.aliases.entries.find {
+            it.key.first == "building" &&
+            it.key.second == buildingUseValue &&
+            it.value.osmKey == "building"
+        }?.value
 
     if (buildingUse == HOUSE) return createBuildingTypeFromHouseType(tags["house"])
 
@@ -43,7 +47,6 @@ fun createBuildingUseType(tags: Map<String,String>): BuildingType? {
 
     return buildingUse
 }
-
 
 fun createBuildingTypeFromHouseType(houseType: String?): BuildingType = when (houseType) {
     null ->             BuildingType.HOUSE
