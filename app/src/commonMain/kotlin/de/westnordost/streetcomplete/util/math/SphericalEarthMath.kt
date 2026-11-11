@@ -434,7 +434,9 @@ fun List<LatLon>.interiorPointOfPolygon(): LatLon {
         val y1 = ys[i + 1]
         // only edges with one end on either side of the scan line cross it
         if ((y0 < scanY) != (y1 < scanY)) {
-            crossings.add(xs[i] + (scanY - y0) * (xs[i + 1] - xs[i]) / (y1 - y0))
+            val x0 = xs[i]
+            val x1 = xs[i + 1]
+            crossings.add(x0 + (scanY - y0) * (x1 - x0) / (y1 - y0))
         }
     }
     // fewer than two crossings: the polygon has no area
