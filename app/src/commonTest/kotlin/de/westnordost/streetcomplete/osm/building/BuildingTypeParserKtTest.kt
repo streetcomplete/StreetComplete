@@ -73,6 +73,11 @@ class BuildingTypeParserKtTest {
         assertEquals(DETACHED, createBuildingUseType(mapOf("building:use" to "house", "house" to "detached")))
     }
 
+    @Test fun `parse lifecycle states as current building use`() {
+        assertEquals(RUINS, createBuildingUseType(mapOf("ruins" to "yes")))
+        assertEquals(ABANDONED, createBuildingUseType(mapOf("abandoned" to "yes")))
+    }
+
     @Test fun `parse excluded building uses`() {
         assertNull(createBuildingUseType(mapOf("building:use" to "yes")))
     }

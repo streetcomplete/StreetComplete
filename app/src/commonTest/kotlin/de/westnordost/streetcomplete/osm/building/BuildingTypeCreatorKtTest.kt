@@ -86,15 +86,38 @@ class BuildingTypeCreatorKtTest {
                 "historic" to "yes"
             ))
         )
+        assertEquals(
+            mapOf(
+                "building" to "commercial",
+                "building:use" to "office",
+                "historic" to "yes"
+            ),
+            COMMERCIAL.appliedTo(
+                mapOf("building" to "residential", "historic" to "yes"),
+                OFFICE
+            )
+        )
     }
 
-    @Test fun `set building type to yes when tagging as historic building`() {
+    @Test fun `preserve original building type when marking as historic`() {
         assertEquals(
-            mapOf("building" to "yes", "historic" to "yes"),
-            HISTORIC.appliedTo(mapOf(
-                "building" to "apartments",
-                "historic" to "no"
-            ))
+            mapOf("building" to "apartments", "historic" to "yes"),
+            HISTORIC.appliedTo(mapOf("building" to "apartments", "historic" to "no"))
+        )
+    }
+
+    @Test
+    fun `preserve historic when changing building use`() {
+        assertEquals(
+            mapOf(
+                "building" to "commercial",
+                "building:use" to "office",
+                "historic" to "yes"
+            ),
+            COMMERCIAL.appliedTo(
+                mapOf("building" to "commercial", "historic" to "yes"),
+                OFFICE
+            )
         )
     }
 
@@ -123,56 +146,114 @@ class BuildingTypeCreatorKtTest {
             mapOf("building" to "residential"),
             RESIDENTIAL.appliedTo(mapOf("building" to "livestock"))
         )
+        // Sanity check for regression
+        assertEquals(
+            mapOf("building" to "livestock", "building:use" to "office"),
+            FARM_AUXILIARY.appliedTo(
+                mapOf("building" to "livestock"),
+                OFFICE
+            )
+        )
     }
 
     @Test fun `set building use`() {
         assertEquals(
             mapOf("building" to "commercial", "building:use" to "office"),
-            OFFICE.buildingUseAppliedTo(mapOf("building" to "commercial"))
+            COMMERCIAL.appliedTo(
+                mapOf("building" to "commercial"),
+                OFFICE
+            )
         )
 
         assertEquals(
             mapOf("building" to "residential", "building:use" to "apartments"),
-            APARTMENTS.buildingUseAppliedTo(mapOf("building" to "residential"))
+            RESIDENTIAL.appliedTo(
+                mapOf("building" to "residential"),
+                APARTMENTS
+            )
         )
     }
 
     @Test fun `replace existing building use`() {
         assertEquals(
             mapOf("building" to "commercial", "building:use" to "office"),
-            OFFICE.buildingUseAppliedTo(mapOf("building" to "commercial", "building:use" to "retail"))
+            COMMERCIAL.appliedTo(
+                mapOf("building" to "commercial", "building:use" to "retail"),
+                 OFFICE
+            )
         )
     }
 
     @Test fun `remove redundant building use`() {
         assertEquals(
             mapOf("building" to "office"),
-            OFFICE.buildingUseAppliedTo(mapOf("building" to "office", "building:use" to "office"))
+            OFFICE.appliedTo(
+                mapOf("building" to "office", "building:use" to "retail"),
+                OFFICE
+            )
         )
-    }
-
-    @Test fun `update check date for building use`() {
         assertEquals(
-            mapOf("building:use" to "office", "check_date" to nowAsCheckDateString()),
-            OFFICE.buildingUseAppliedTo(mapOf("building:use" to "office"))
+            mapOf("building" to "office"),
+            OFFICE.appliedTo(
+                mapOf("building" to "house", "building:use" to "apartments"),
+                OFFICE
+            )
+        )
+    }
+
+    @Test fun `set building use removes abandoned and ruins`() {
+        assertEquals(
+            mapOf("building" to "commercial", "building:use" to "office"),
+            COMMERCIAL.appliedTo(
+                mapOf(
+                    "building" to "commercial",
+                    "abandoned" to "yes",
+                    "ruins" to "yes",
+                    "disused" to "yes"
+                ),
+                OFFICE
+            )
+        )
+    }
+
+    @Test fun `selecting ruins and abandoned removes building use`() {
+        assertEquals(
+            mapOf("building" to "commercial", "abandoned" to "yes"),
+            COMMERCIAL.appliedTo(
+                mapOf("building" to "commercial", "building:use" to "office"),
+                ABANDONED
+            )
+        )
+        assertEquals(
+            mapOf("building" to "commercial", "ruins" to "yes"),
+            COMMERCIAL.appliedTo(
+                mapOf("building" to "commercial", "building:use" to "office"),
+                RUINS
+            )
+        )
+    }
+
+    @Test fun `update check date when combined selection is unchanged`() {
+        assertEquals(
+            mapOf(
+                "building" to "commercial",
+                "building:use" to "office",
+                "check_date" to nowAsCheckDateString()
+            ),
+            COMMERCIAL.appliedTo(
+                mapOf("building" to "commercial", "building:use" to "office"),
+                OFFICE
+            )
         )
     }
 }
 
-private fun BuildingType.appliedTo(tags: Map<String, String>): Map<String, String> {
-    val cb = StringMapChangesBuilder(tags)
-    applyTo(cb)
-    val mutableMap = tags.toMutableMap()
-    cb.create().applyTo(mutableMap)
-    return mutableMap
-}
-
-private fun BuildingType.buildingUseAppliedTo(
-    tags: Map<String, String>
+private fun BuildingType.appliedTo(
+    tags: Map<String, String>,
+    buildingUse: BuildingType? = null
 ): Map<String, String> {
     val cb = StringMapChangesBuilder(tags)
-    applyBuildingUseTo(cb)
-
+    applyTo(cb, buildingUse)
     val mutableMap = tags.toMutableMap()
     cb.create().applyTo(mutableMap)
     return mutableMap
