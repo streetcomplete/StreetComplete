@@ -32,18 +32,20 @@ class AddLevelThing : OsmElementQuestType<String> {
     /* including any kind of public buildings, but not any buildings that were built for public usage, but are now used differently */
     private val buildingFilter by lazy { """
         ways, relations with
-          shop ~ department_store|mall
-          or aeroway = terminal
-          or railway = station
-          or amenity = bus_station
-          or public_transport = station
-          or parking = multi-storey
-          or building:use ~ civic|hospital|museum|public|train_station|transportation|university
-          or (
-            !building:use
-            and building ~ civic|hospital|museum|public|train_station|transportation|university
+          (
+            shop ~ department_store|mall
+            or aeroway = terminal
+            or railway = station
+            or amenity = bus_station
+            or public_transport = station
+            or parking = multi-storey
+            or building:use ~ civic|hospital|museum|public|train_station|transportation|university
+            or (
+              !building:use
+              and building ~ civic|hospital|museum|public|train_station|transportation|university
+            )
+            or indoor ~ room|area|corridor
           )
-          or indoor ~ room|area|corridor
           and access !~ private|no
     """.toElementFilterExpression() }
 

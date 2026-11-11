@@ -32,18 +32,20 @@ class AddLevel : OsmElementQuestType<String> {
      * like small airport terminals, like Mo Chit 2 in Bangkok*/
     private val buildingFilter by lazy { """
         ways, relations with
-          shop ~ department_store|mall
-          or aeroway = terminal
-          or railway = station
-          or amenity = bus_station
-          or public_transport = station
-          or parking = multi-storey
-          or building:use ~ civic|hospital|museum|public|train_station|transportation|university
-          or (
-            !building:use
-            and building ~ civic|hospital|museum|public|train_station|transportation|university
+          (
+            shop ~ department_store|mall
+            or aeroway = terminal
+            or railway = station
+            or amenity = bus_station
+            or public_transport = station
+            or parking = multi-storey
+            or building:use ~ civic|hospital|museum|public|train_station|transportation|university
+            or (
+              !building:use
+              and building ~ civic|hospital|museum|public|train_station|transportation|university
+            )
+            or indoor ~ room|area|corridor
           )
-          or indoor ~ room|area|corridor
           and access !~ private|no
     """.toElementFilterExpression() }
 
