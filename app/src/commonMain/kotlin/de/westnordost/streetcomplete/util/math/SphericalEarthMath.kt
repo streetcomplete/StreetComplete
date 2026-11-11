@@ -409,48 +409,67 @@ fun List<LatLon>.interiorPointOfPolygon(): LatLon {
     require(isNotEmpty()) { "positions list is empty" }
 
     val origin = first()
-    // calculating with offsets to avoid rounding imprecision and 180th meridian problem
+    // calculating with offsets to avoid rounding imprecision and 180th meridian problem.
+    // x is the longitude offset and y the latitude offset of each vertex from the first one
     val xs = DoubleArray(size) { normalizeLongitude(this[it].longitude - origin.longitude) }
     val ys = DoubleArray(size) { this[it].latitude - origin.latitude }
 
+    // 1. the middle of the polygon's latitude extent
     val minY = ys.min()
     val maxY = ys.max()
     val centerY = (minY + maxY) / 2
-    // the scan line goes halfway between the closest vertex latitudes below and above the center
-    var loY = minY
-    var hiY = maxY
+
+    // 2. the scan line is a horizontal line at latitude scanY. It goes halfway between the vertex
+    //    latitude closest to the center from below (or at it) and the one closest from above, so
+    //    that no vertex lies on the scan line. Thus, every edge either clearly crosses it or not
+    var closestYBelowCenter = minY
+    var closestYAboveCenter = maxY
     for (y in ys) {
         if (y <= centerY) {
-            if (y > loY) loY = y
-        } else if (y < hiY) {
-            hiY = y
+            if (y > closestYBelowCenter) closestYBelowCenter = y
+        } else if (y < closestYAboveCenter) {
+            closestYAboveCenter = y
         }
     }
-    val scanY = (loY + hiY) / 2
+    val scanY = (closestYBelowCenter + closestYAboveCenter) / 2
 
-    val crossings = ArrayList<Double>()
+    // 3. the x of each point at which an edge of the polygon crosses the scan line
+    val crossingsX = ArrayList<Double>()
     for (i in 0 until size - 1) {
+        // the edge from vertex i to vertex i + 1 is a straight line from (x0, y0) to (x1, y1)
+        val x0 = xs[i]
         val y0 = ys[i]
+        val x1 = xs[i + 1]
         val y1 = ys[i + 1]
         // only edges with one end on either side of the scan line cross it
-        if ((y0 < scanY) != (y1 < scanY)) {
-            val x0 = xs[i]
-            val x1 = xs[i + 1]
-            crossings.add(x0 + (scanY - y0) * (x1 - x0) / (y1 - y0))
+        val crossesScanLine = (y0 < scanY) != (y1 < scanY)
+        if (crossesScanLine) {
+            // how far along the edge it crosses the scan line, from 0 (at y0) to 1 (at y1).
+            // E.g. if scanY is a quarter of the way from y0 to y1, t is 0.25
+            val t = (scanY - y0) / (y1 - y0)
+            // as the edge is a straight line, the crossing is just as far along from x0 to x1
+            val crossingX = x0 + t * (x1 - x0)
+            crossingsX.add(crossingX)
         }
     }
     // fewer than two crossings: the polygon has no area
-    if (crossings.size < 2) return origin
+    if (crossingsX.size < 2) return origin
 
-    crossings.sort()
-    // the crossings come in pairs, each pair bounding a section of the scan line inside the polygon
-    var bestX = (crossings[0] + crossings[1]) / 2
-    var bestWidth = crossings[1] - crossings[0]
-    for (i in 2 until crossings.size - 1 step 2) {
-        val width = crossings[i + 1] - crossings[i]
+    // 4. going along the scan line from west to east, the crossings alternately enter and leave
+    //    the polygon. So, once sorted, the crossings come in pairs (1st and 2nd, 3rd and 4th, ...),
+    //    each pair bounding a section of the scan line that is inside the polygon
+    crossingsX.sort()
+
+    // 5. the result is the middle of the widest of these sections
+    var bestX = (crossingsX[0] + crossingsX[1]) / 2
+    var bestWidth = crossingsX[1] - crossingsX[0]
+    for (i in 2 until crossingsX.size - 1 step 2) {
+        val sectionStartX = crossingsX[i]
+        val sectionEndX = crossingsX[i + 1]
+        val width = sectionEndX - sectionStartX
         if (width > bestWidth) {
             bestWidth = width
-            bestX = (crossings[i] + crossings[i + 1]) / 2
+            bestX = (sectionStartX + sectionEndX) / 2
         }
     }
 
