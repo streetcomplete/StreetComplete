@@ -983,8 +983,6 @@
     <string name="quest_buildingType_tower">Tower</string>
     <string name="quest_buildingType_tower_description">any kind of tower</string>
     <string name="quest_buildingType_bunker">Bunker</string>
-    <string name="quest_buildingType_historic">Historic</string>
-    <string name="quest_buildingType_historic_description">building of historic value, constructed for an unknown or unclear purpose</string>
     <string name="quest_buildingType_abandoned">Abandoned</string>
     <string name="quest_buildingType_abandoned_description">unused building whose original function or purpose is unknown</string>
     <string name="quest_buildingType_ruins">Ruins</string>

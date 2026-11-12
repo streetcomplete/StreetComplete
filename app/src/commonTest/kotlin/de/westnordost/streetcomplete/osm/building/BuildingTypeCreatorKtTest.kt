@@ -99,13 +99,6 @@ class BuildingTypeCreatorKtTest {
         )
     }
 
-    @Test fun `preserve original building type when marking as historic`() {
-        assertEquals(
-            mapOf("building" to "apartments", "historic" to "yes"),
-            HISTORIC.appliedTo(mapOf("building" to "apartments", "historic" to "no"))
-        )
-    }
-
     @Test
     fun `preserve historic when changing building use`() {
         assertEquals(

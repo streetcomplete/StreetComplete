@@ -17,11 +17,27 @@ class BuildingTypeParserKtTest {
     @Test fun `parse buildings`() {
         assertEquals(HUT, createBuildingType(mapOf("building" to "hut")))
         assertEquals(STORAGE_TANK, createBuildingType(mapOf("man_made" to "storage_tank")))
-        assertEquals(HISTORIC, createBuildingType(mapOf("historic" to "yes")))
 
         assertEquals(null, createBuildingType(mapOf("building" to "yes")))
         assertEquals(UNSUPPORTED, createBuildingType(mapOf("building" to "something else")))
         assertEquals(UNSUPPORTED, createBuildingType(mapOf("man_made" to "something else")))
+    }
+
+    @Test fun `parse original building and current use together`() {
+        val tags = mapOf("building" to "house", "building:use" to "office", "abandoned" to "yes", "ruins" to "yes")
+        // the form strips lifecycle tags before parsing the original building type
+        val originalBuilding = createBuildingType(tags - setOf("ruins", "abandoned"))
+
+        assertEquals(HOUSE, originalBuilding)
+        assertEquals(RUINS, createBuildingUseType(tags))
+    }
+
+    @Test fun `parse abandoned and building use together`() {
+        val tags = mapOf("building" to "house", "building:use" to "office", "abandoned" to "yes")
+        val originalBuilding = createBuildingType(tags - setOf("ruins", "abandoned"))
+
+        assertEquals(HOUSE, originalBuilding)
+        assertEquals(ABANDONED, createBuildingUseType(tags))
     }
 
     @Test fun `parse deprecated building aliases`() {
@@ -42,9 +58,9 @@ class BuildingTypeParserKtTest {
         assertEquals(HOUSE, createBuildingType(mapOf("building" to "house", "house" to "something else")))
     }
 
-    @Test fun `parse historic is secondary`() {
-        assertEquals(HISTORIC, createBuildingType(mapOf("historic" to "yes")))
-        assertEquals(HISTORIC, createBuildingType(mapOf("building" to "yes", "historic" to "yes")))
+    @Test fun `parse ignores historic`() {
+        assertNull(createBuildingType(mapOf("historic" to "yes")))
+        assertNull(createBuildingType(mapOf("building" to "yes", "historic" to "yes")))
         assertEquals(APARTMENTS, createBuildingType(mapOf("building" to "apartments", "historic" to "yes")))
     }
 

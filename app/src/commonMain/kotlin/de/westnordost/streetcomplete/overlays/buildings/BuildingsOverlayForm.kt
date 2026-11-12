@@ -45,17 +45,16 @@ fun BuildingsOverlayForm(
     preferences: Preferences = koinInject()
 ) {
     val originalBuilding = remember(element) {
-        createBuildingType(element.tags - setOf("historic", "ruins", "abandoned"))
+        createBuildingType(element.tags - setOf("ruins", "abandoned"))
     }
     val originalBuildingUse = remember(element) { createBuildingUseType(element.tags) }
 
-    val groups = remember { BuildingTypeCategory.entries - setOf(HISTORIC) }
     val groupsPair = remember {
         Pair(
-            // building: no building is constructed as historic, ruins, abandoned or construction
-            BuildingTypeCategory.entries - setOf(UNSUPPORTED, HISTORIC, RUINS, ABANDONED, CONSTRUCTION),
+            // building: no building is constructed as ruins, abandoned or construction
+            BuildingTypeCategory.entries - setOf(UNSUPPORTED, RUINS, ABANDONED, CONSTRUCTION),
             // building use: either current building use or current lifecycle
-            BuildingTypeCategory.entries - setOf(UNSUPPORTED, HISTORIC, CONSTRUCTION)
+            BuildingTypeCategory.entries - setOf(UNSUPPORTED, CONSTRUCTION)
         )
     }
 
@@ -91,10 +90,10 @@ fun BuildingsOverlayForm(
         else {
             GroupedItemSelectOverlayForm(
                 on = on,
-                groups = groups,
+                groups = BuildingTypeCategory.entries,
                 topSelectableItems = BuildingType.topSelectableValues,
                 initialSelectedItem = originalBuilding,
-                groupContent = { BuildingTypeCategoryItem(it.category) },
+                groupContent = { BuildingTypeCategoryItem(it) },
                 itemContent = { BuildingTypeItem(it) },
                 lastPickedItemContent = { item ->
                     Image(

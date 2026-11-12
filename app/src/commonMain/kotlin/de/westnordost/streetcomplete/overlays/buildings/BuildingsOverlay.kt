@@ -125,7 +125,7 @@ class BuildingsOverlay : Overlay {
             OverlayColor.Orange
 
         // other/special
-        HISTORIC, ABANDONED, RUINS, CONSTRUCTION, BUNKER, TOMB, TOWER,
+        ABANDONED, RUINS, CONSTRUCTION, BUNKER, TOMB, TOWER,
         UNSUPPORTED ->
             OverlayColor.Purple
     }
