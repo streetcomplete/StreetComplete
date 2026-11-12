@@ -122,7 +122,7 @@ private val roadsFilter by lazy { """
       and bicycle_road != yes
       and cyclestreet != yes
       and bicycle != no
-      and (!vehicle or vehicle = yes or bicycle = yes)
+      and (!vehicle or vehicle = yes or bicycle = yes or bicycle = designated)
       and bicycle != designated
       and access !~ private|no
 """.toElementFilterExpression() }
