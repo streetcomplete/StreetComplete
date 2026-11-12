@@ -1,5 +1,12 @@
 # Changelog
 
+## v64.2
+
+- Level of POIs: Asked in more places, such as public buildings or generally indoor-mapped places  (#7235), by @paulklie
+- Bus stops: Don't ask anything for unmarked bus stops (#7370)
+- Other minor improvements (#7364, #7369, #7376), thanks @paulklie
+- Other minor fixes (#7381, …)
+
 ## v64.1
 
 ### Fixes
