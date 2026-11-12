@@ -82,9 +82,6 @@ enum class BuildingType(val osmKey: String?, val osmValue: String?) {
     CIVIC           ("building", "civic"),
     RELIGIOUS       ("building", "religious"),
 
-    // historic is back here because if a building is tagged as e.g. building=civic + historic=yes
-    // the building type parsed should rather be "civic building" than "historic building"
-    HISTORIC        ("historic", "yes"),
     CONSTRUCTION    ("building", "construction");
 
     companion object {
@@ -157,7 +154,6 @@ enum class BuildingType(val osmKey: String?, val osmValue: String?) {
             ("building" to "cooling_tower") to TOWER,
 
             // Other
-            ("building" to "castle") to HISTORIC,
             ("building" to "canopy") to ROOF, // not documented
             ("man_made" to "canopy") to ROOF, // not documented
             ("building" to "gazebo") to ROOF, // not documented

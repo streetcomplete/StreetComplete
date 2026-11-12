@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.osm.building
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNull
 
 class BuildingTypeParserKtTest {
 
@@ -16,11 +17,27 @@ class BuildingTypeParserKtTest {
     @Test fun `parse buildings`() {
         assertEquals(HUT, createBuildingType(mapOf("building" to "hut")))
         assertEquals(STORAGE_TANK, createBuildingType(mapOf("man_made" to "storage_tank")))
-        assertEquals(HISTORIC, createBuildingType(mapOf("historic" to "yes")))
 
         assertEquals(null, createBuildingType(mapOf("building" to "yes")))
         assertEquals(UNSUPPORTED, createBuildingType(mapOf("building" to "something else")))
         assertEquals(UNSUPPORTED, createBuildingType(mapOf("man_made" to "something else")))
+    }
+
+    @Test fun `parse original building and current use together`() {
+        val tags = mapOf("building" to "house", "building:use" to "office", "abandoned" to "yes", "ruins" to "yes")
+        // the form strips lifecycle tags before parsing the original building type
+        val originalBuilding = createBuildingType(tags - setOf("ruins", "abandoned"))
+
+        assertEquals(HOUSE, originalBuilding)
+        assertEquals(RUINS, createBuildingUseType(tags))
+    }
+
+    @Test fun `parse abandoned and building use together`() {
+        val tags = mapOf("building" to "house", "building:use" to "office", "abandoned" to "yes")
+        val originalBuilding = createBuildingType(tags - setOf("ruins", "abandoned"))
+
+        assertEquals(HOUSE, originalBuilding)
+        assertEquals(ABANDONED, createBuildingUseType(tags))
     }
 
     @Test fun `parse deprecated building aliases`() {
@@ -41,9 +58,51 @@ class BuildingTypeParserKtTest {
         assertEquals(HOUSE, createBuildingType(mapOf("building" to "house", "house" to "something else")))
     }
 
-    @Test fun `parse historic is secondary`() {
-        assertEquals(HISTORIC, createBuildingType(mapOf("historic" to "yes")))
-        assertEquals(HISTORIC, createBuildingType(mapOf("building" to "yes", "historic" to "yes")))
+    @Test fun `parse ignores historic`() {
+        assertNull(createBuildingType(mapOf("historic" to "yes")))
+        assertNull(createBuildingType(mapOf("building" to "yes", "historic" to "yes")))
         assertEquals(APARTMENTS, createBuildingType(mapOf("building" to "apartments", "historic" to "yes")))
+    }
+
+    @Test fun `parse missing building use`() {
+        assertNull(createBuildingUseType(mapOf()))
+        assertNull(createBuildingUseType(mapOf("building" to "office")))
+    }
+
+    @Test fun `requires building key`() {
+        assertNull(createBuildingUseType(mapOf("building:use" to "tower")))
+    }
+
+    @Test fun `parse building use`() {
+        assertEquals(OFFICE, createBuildingUseType(mapOf("building" to "commercial", "building:use" to "office")))
+        assertEquals(APARTMENTS, createBuildingUseType(mapOf("building" to "residential", "building:use" to "apartments")))
+    }
+
+    @Test fun `parse building use aliases`() {
+        assertEquals(FARM_AUXILIARY, createBuildingUseType(mapOf("building:use" to "livestock")))
+        assertEquals(RELIGIOUS, createBuildingUseType(mapOf("building:use" to "convent")))
+    }
+
+    @Test fun `parse houses uses with alternative tagging scheme`() {
+        assertEquals(HOUSE, createBuildingUseType(mapOf("building:use" to "house")))
+        assertEquals(BUNGALOW, createBuildingUseType(mapOf("building:use" to "house", "house" to "bungalow")))
+        assertEquals(DETACHED, createBuildingUseType(mapOf("building:use" to "house", "house" to "detached")))
+    }
+
+    @Test fun `parse lifecycle states as current building use`() {
+        assertEquals(RUINS, createBuildingUseType(mapOf("ruins" to "yes")))
+        assertEquals(ABANDONED, createBuildingUseType(mapOf("abandoned" to "yes")))
+    }
+
+    @Test fun `parse excluded building uses`() {
+        assertNull(createBuildingUseType(mapOf("building:use" to "yes")))
+    }
+
+    @Test fun `parse unsupported building use`() {
+        assertNull(createBuildingUseType(mapOf("building:use" to "something")))
+    }
+
+    @Test fun `parse invalid building use`() {
+        assertNull(createBuildingUseType(mapOf("building:use" to "glasshouse")))
     }
 }

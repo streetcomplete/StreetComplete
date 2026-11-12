@@ -37,6 +37,14 @@ enum class BuildingTypeCategory(
         FARM, FARM_AUXILIARY, SILO, GREENHOUSE, STORAGE_TANK, SHED,
     )),
     OTHER(null, listOf(
-        ROOF, TOWER, BUNKER, BRIDGE, HISTORIC, ABANDONED, RUINS, TOMB
+        ROOF, TOWER, BUNKER, BRIDGE, ABANDONED, RUINS, TOMB
     )),
+}
+operator fun List<BuildingTypeCategory>.minus(
+    excluded: Set<BuildingType>
+): List<FilteredBuildingTypeCategory> = map { category ->
+    FilteredBuildingTypeCategory(
+        category = category,
+        children = category.children.filterNot { it in excluded }
+    )
 }
