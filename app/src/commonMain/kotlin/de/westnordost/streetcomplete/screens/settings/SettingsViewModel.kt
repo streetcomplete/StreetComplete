@@ -39,7 +39,7 @@ abstract class SettingsViewModel : ViewModel() {
     abstract val autosync: StateFlow<Autosync>
     abstract val theme: StateFlow<Theme>
     abstract val keepScreenOn: StateFlow<Boolean>
-    abstract val showZoomButtons: StateFlow<Boolean>
+    abstract val showZoomButtons: StateFlow<Boolean?>
     abstract val selectedLocale: StateFlow<Locale?>
 
     abstract fun unhideQuests()
