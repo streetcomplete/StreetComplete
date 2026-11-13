@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.quests.questTypeRegistry
 import dev.mokkery.mock
 
 fun main() {
-    val registry = questTypeRegistry(mock(), mock(), mock(), mock())
+    val registry = questTypeRegistry(mock(), mock(), mock(), mock(), mock())
 
     for (questType in registry) {
         if (questType is OsmElementQuestType<*>) {

@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
+import de.westnordost.streetcomplete.data.location.CurrentSeason
 import de.westnordost.streetcomplete.data.location.SurveyChecker
 import de.westnordost.streetcomplete.data.logs.LogsController
 import de.westnordost.streetcomplete.data.logs.LogsDao
@@ -406,11 +407,13 @@ val commonModule = module {
         val countryInfos = get<CountryInfos>()
         val countryBoundariesLazy = get<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy"))
         val featureDictionaryLazy = get<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy"))
+        val currentSeason = CurrentSeason()
         questTypeRegistry(
             get(),
             { countryInfos.get(countryBoundariesLazy.value, it) },
             { countryBoundariesLazy.value.getIds(it).firstOrNull() },
-            { featureDictionaryLazy.value.getFeature(it) }
+            { featureDictionaryLazy.value.getFeature(it) },
+            currentSeason
         )
     }
 
@@ -466,6 +469,7 @@ val commonModule = module {
     }
 
     single { SurveyChecker(get()) }
+    single { CurrentSeason() }
 
     //endregion
 
