@@ -37,14 +37,15 @@ class CheckExistence(
             and (${lastChecked(2.0)})
           ) or (
             (
-              amenity ~ clock|post_box|bbq|car_sharing|ticket_validator|bicycle_repair_station
-              or leisure ~ firepit|fitness_station|picnic_table
+              amenity ~ clock|post_box|bbq|car_sharing|ticket_validator|bicycle_repair_station|vacuum_cleaner
+              or leisure ~ firepit|fitness_station|picnic_table|bird_hide
               or (leisure = pitch and sport ~ table_tennis|chess|table_soccer|teqball)
               or amenity = grit_bin and seasonal = no
               or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
               or tourism = information and information ~ board|terminal|map
               or advertising ~ column|board|poster_box
               or (highway = emergency_access_point or emergency = access_point) and ref
+              or highway = hitchhiking
               or emergency ~ life_ring|phone
               or emergency = defibrillator and (indoor = no or access = yes)
               or (
@@ -57,13 +58,14 @@ class CheckExistence(
             and (${lastChecked(4.0)})
           ) or (
             (
-              amenity ~ bench|lounger|waste_basket|toilets|shower|drinking_water
+              amenity ~ bench|lounger|waste_basket|toilets|shower|drinking_water|baby_hatch|luggage_locker|water_point|water_tap|sanitary_dump_station|charging_station
               or amenity = recycling and recycling_type = container
               or man_made = planter
+              or water_way ~ sanitary_dump_station|water_point|fuel
             )
             and (${lastChecked(6.0)})
           ) or (
-            amenity ~ bicycle_parking|motorcycle_parking|taxi|shelter
+            amenity ~ bicycle_parking|motorcycle_parking|taxi|shelter|photo_booth
             and (${lastChecked(10.0)})
           ) or (
             (
