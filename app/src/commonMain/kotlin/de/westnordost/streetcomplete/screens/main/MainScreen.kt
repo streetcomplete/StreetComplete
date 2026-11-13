@@ -640,6 +640,7 @@ fun MainScreen(
                             getOffset(position)?.let { lastQuestSolved = QuestSolvedEvent(icon, it) }
                         },
                         onHideQuest = mainBottomSheetViewModel::hideQuest,
+                        onDisableQuest = mainBottomSheetViewModel::disableQuest,
                         isSurvey = mainBottomSheetViewModel::isSurvey,
                         onSubmitEdit = mainBottomSheetViewModel::submitEdit,
                         onCommentNote = mainBottomSheetViewModel::commentNote,

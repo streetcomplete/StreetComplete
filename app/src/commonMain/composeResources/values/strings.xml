@@ -147,8 +147,10 @@
 
     <string name="quest_leave_new_note_title">Leave a note instead?</string>
     <string name="quest_leave_new_note_description">You can leave a public note for other mappers to resolve at this location, or hide this quest for yourself only</string>
+    <string name="quest_leave_new_note_description_disable">Alternatively, you can disable all quests of this type. This can be changed again in the settings.</string>
     <string name="quest_leave_new_note_yes">Leave note</string>
     <string name="quest_leave_new_note_no">Hide</string>
+    <string name="quest_leave_new_note_disable_quest">Disable all</string>
     <string name="quest_leave_new_note_as_answer">In this case, you need to leave a note in which you explain the situation.</string>
 
 
@@ -185,6 +187,7 @@
 
     <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
     <string name="quest_source_dialog_note">Only information that was verified in-person should be entered.</string>
+    <string name="quest_disable_confirmation_title">Are you sure you want to disable all quests of this type?</string>
     <string name="dialog_session_dont_show_again">Don’t show again for this session</string>
 
     <string name="dialog_dont_notify_again2">Unsubscribe</string>
