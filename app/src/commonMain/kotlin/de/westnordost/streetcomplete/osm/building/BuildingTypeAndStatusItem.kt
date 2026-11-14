@@ -14,7 +14,7 @@ val BuildingStatus.title: StringResource get() = when (this) {
     RUINS -> Res.string.quest_buildingType_ruins
 }
 
-val BuildingStatus.description: StringResource get() = when (this) {
+val BuildingStatus.description: StringResource? get() = when (this) {
     is BuildingType -> description
     CONSTRUCTION -> null
     DISUSED -> Res.string.quest_buildingType_disused_description
