@@ -983,8 +983,10 @@
     <string name="quest_buildingType_tower">Tower</string>
     <string name="quest_buildingType_tower_description">any kind of tower</string>
     <string name="quest_buildingType_bunker">Bunker</string>
+    <string name="quest_buildingType_disused">Disused</string>
+    <string name="quest_buildingType_disused_description">vacant building</string>
     <string name="quest_buildingType_abandoned">Abandoned</string>
-    <string name="quest_buildingType_abandoned_description">unused building whose original function or purpose is unknown</string>
+    <string name="quest_buildingType_abandoned_description">vacant building in serious disrepair</string>
     <string name="quest_buildingType_ruins">Ruins</string>
     <string name="quest_buildingType_ruins_description">derelict, ruined and unidentifiable building</string>
     <string name="quest_buildingType_fire_station">Fire station building</string>
