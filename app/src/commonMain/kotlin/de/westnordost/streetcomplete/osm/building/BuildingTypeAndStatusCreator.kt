@@ -7,16 +7,20 @@ import de.westnordost.streetcomplete.osm.updateCheckDate
 
 fun BuildingTypeAndStatus.applyTo(tags: Tags) {
     // special case for status=CONSTRUCTION, it is tagged like
-    // building=construction + construction=actual_building_value
+    // building=construction (+ construction=actual_building_value)
     if (status == CONSTRUCTION) {
         clearBuildingStatus(tags)
         tags["building"] = "construction"
-        tags["construction"] = type?.osmValue ?: "yes"
+        if (type?.osmValue != null) {
+            tags["construction"] = type.osmValue
+        } else {
+            tags.remove("construction")
+        }
         type?.applyHouseTypeTo(tags)
     } else {
         tags.remove("construction")
         type?.applyTo(tags)
-        status?.applyTo(tags)
+        status.applyTo(tags)
     }
 
     // Update check_date only when neither selection changed the tags.
@@ -43,8 +47,9 @@ private fun BuildingType.applyTo(tags: Tags, postfix: String = "") {
     tags[osmKey + postfix] = osmValue
 }
 
-private fun BuildingStatus.applyTo(tags: Tags) {
+private fun BuildingStatus?.applyTo(tags: Tags) {
     clearBuildingStatus(tags)
+    if (this == null) return
     when (this) {
         is BuildingLifecycle -> tags[osmKey] = "yes"
         is BuildingType -> applyTo(tags, ":use")
