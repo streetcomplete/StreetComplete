@@ -11,8 +11,8 @@ enum class BuildingTypeCategory(
 ) : Group<BuildingType> {
     RESIDENTIAL(
         BuildingType.RESIDENTIAL, listOf(
-        DETACHED, APARTMENTS, SEMI_DETACHED, TERRACE, TERRACED_HOUSE, HOUSE, FARM, HUT, BUNGALOW, STATIC_CARAVAN,
-        DORMITORY, HOUSEBOAT,
+        DETACHED, APARTMENTS, SEMI_DETACHED, TERRACE, TERRACED_HOUSE, HOUSE, FARM, HUT, BUNGALOW,
+        STATIC_CARAVAN, DORMITORY, HOUSEBOAT,
     )),
     COMMERCIAL(
         BuildingType.COMMERCIAL, listOf(
@@ -37,7 +37,7 @@ enum class BuildingTypeCategory(
         FARM, FARM_AUXILIARY, SILO, GREENHOUSE, STORAGE_TANK, SHED,
     )),
     OTHER(null, listOf(
-        ROOF, TOWER, BUNKER, BRIDGE, ABANDONED, RUINS, TOMB
+        ROOF, TOWER, BUNKER, BRIDGE, TOMB
     )),
 }
 operator fun List<BuildingTypeCategory>.minus(

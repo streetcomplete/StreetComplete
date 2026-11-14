@@ -3,18 +3,29 @@ package de.westnordost.streetcomplete.osm.building
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class BuildingType(val osmKey: String?, val osmValue: String?) {
-    UNSUPPORTED     (null, null),
+data class BuildingTypeAndStatus(val type: BuildingType?, val status: BuildingStatus?)
 
-    ABANDONED       ("abandoned", "yes"),
-    RUINS           ("ruins", "yes"),
+@Serializable
+sealed interface BuildingStatus
+
+@Serializable
+enum class BuildingLifecycle(val osmKey: String) : BuildingStatus {
+    CONSTRUCTION("construction"),
+    DISUSED("disused"),
+    ABANDONED("abandoned"),
+    RUINS("ruins")
+}
+
+@Serializable
+enum class BuildingType(val osmKey: String?, val osmValue: String?) : BuildingStatus {
+    UNSUPPORTED     (null, null),
 
     HOUSE           ("building", "house"),
     APARTMENTS      ("building", "apartments"),
     DETACHED        ("building", "detached"),
     SEMI_DETACHED   ("building", "semidetached_house"),
     TERRACE         ("building", "terrace"),
-    TERRACED_HOUSE  ("house", "terraced"),
+    TERRACED_HOUSE  ("building", "house"), // subtype of building=house, but a very common one!
     HOTEL           ("building", "hotel"),
     DORMITORY       ("building", "dormitory"),
     HOUSEBOAT       ("building", "houseboat"),
@@ -80,9 +91,7 @@ enum class BuildingType(val osmKey: String?, val osmValue: String?) {
     RESIDENTIAL     ("building", "residential"),
     COMMERCIAL      ("building", "commercial"),
     CIVIC           ("building", "civic"),
-    RELIGIOUS       ("building", "religious"),
-
-    CONSTRUCTION    ("building", "construction");
+    RELIGIOUS       ("building", "religious");
 
     companion object {
         val topSelectableValues = listOf(DETACHED, APARTMENTS, HOUSE, GARAGE, SHED, HUT)
@@ -158,5 +167,8 @@ enum class BuildingType(val osmKey: String?, val osmValue: String?) {
             ("man_made" to "canopy") to ROOF, // not documented
             ("building" to "gazebo") to ROOF, // not documented
         )
+
+        /** building types that can also be tagged with building=house + house=* subtag */
+        val houses = setOf(HOUSE, DETACHED, TERRACE, TERRACED_HOUSE, SEMI_DETACHED, BUNGALOW)
     }
 }
