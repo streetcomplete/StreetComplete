@@ -61,5 +61,5 @@ internal fun createBuildingTypeFromHouseType(houseType: String?): BuildingType =
     "terraced" ->       TERRACED_HOUSE
     "semi-detached" ->  SEMI_DETACHED
     "bungalow" ->       BUNGALOW
-    else ->             HOUSE
+    else ->             UNSUPPORTED
 }
