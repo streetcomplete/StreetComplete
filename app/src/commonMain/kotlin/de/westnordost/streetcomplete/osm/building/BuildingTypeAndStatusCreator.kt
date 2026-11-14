@@ -66,16 +66,6 @@ private fun BuildingType?.applyHouseTypeTo(tags: Tags) {
     }
 }
 
-private fun BuildingType.getHouseTypeValue(): String? = when (this) {
-    HOUSE -> null
-    DETACHED -> "detached"
-    TERRACE -> "terrace"
-    TERRACED_HOUSE -> "terraced"
-    SEMI_DETACHED -> "semi-detached"
-    BUNGALOW -> "bungalow"
-    else -> null
-}
-
 private fun clearBuildingStatus(tags: Tags) {
     BuildingLifecycle.entries.forEach {
         // 1. the more common disused = yes etc.
