@@ -65,8 +65,10 @@ class CheckExistence(
             )
             and (${lastChecked(6.0)})
           ) or (
-            amenity ~ bicycle_parking|motorcycle_parking|taxi|shelter
-            leisure = bird_hide
+            (
+              amenity ~ bicycle_parking|motorcycle_parking|taxi|shelter
+              or leisure = bird_hide
+            )
             and (${lastChecked(10.0)})
           ) or (
             (
