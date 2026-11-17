@@ -2,6 +2,10 @@ package de.westnordost.streetcomplete.osm.building
 
 import kotlinx.serialization.Serializable
 
+/** The [type] is null when no building type has been specified (`building=yes` or an invalid
+ *  value).
+ *  The [status] is null when there is no status or use (that would differ from the building type).
+ */
 @Serializable
 data class BuildingTypeAndStatus(val type: BuildingType?, val status: BuildingStatus?)
 
@@ -17,8 +21,8 @@ enum class BuildingLifecycle(val osmKey: String) : BuildingStatus {
 }
 
 @Serializable
-enum class BuildingType(val osmKey: String?, val osmValue: String?) : BuildingStatus {
-    UNSUPPORTED     (null, null),
+enum class BuildingType(val osmKey: String, val osmValue: String?) : BuildingStatus {
+    UNSUPPORTED     ("building", null),
 
     HOUSE           ("building", "house"),
     APARTMENTS      ("building", "apartments"),

@@ -7,19 +7,22 @@ import de.westnordost.streetcomplete.osm.updateCheckDate
 
 fun BuildingTypeAndStatus.applyTo(tags: Tags) {
     // special case for status=CONSTRUCTION, it is tagged like
-    // building=construction (+ construction=actual_building_value)
-    if (status == CONSTRUCTION) {
-        clearBuildingStatus(tags)
-        tags["building"] = "construction"
-        if (type?.osmValue != null) {
-            tags["construction"] = type.osmValue
+    // building=construction (+ construction=actual_building_value) but only for building=*
+    if (status == CONSTRUCTION && (type == null || type.osmKey == "building")) {
+        type.applyTo(tags)
+        (null as BuildingStatus?).applyTo(tags)
+        // building=construction + construction=yes is documented as discouraged. If the kind of
+        // building is not known, construction=yes is simply left out.
+        val buildingValue = tags["building"] ?: "yes"
+        if (buildingValue != "yes") {
+            tags["construction"] = buildingValue
         } else {
             tags.remove("construction")
         }
-        type?.applyHouseTypeTo(tags)
+        tags["building"] = "construction"
     } else {
-        tags.remove("construction")
-        type?.applyTo(tags)
+        tags["construction"]?.let { tags["building"] = it }
+        type.applyTo(tags)
         status.applyTo(tags)
     }
 
@@ -29,49 +32,45 @@ fun BuildingTypeAndStatus.applyTo(tags: Tags) {
     }
 }
 
-private fun BuildingType.applyTo(tags: Tags, postfix: String = "") {
-    require(osmKey != null && osmValue != null)
+private fun BuildingType?.applyTo(tags: Tags, postfix: String = "") {
+    // unsupported: don't change anything
+    if (this == UNSUPPORTED) {
+        return
+    }
+    // `null` on the other hand shall set it to building=yes
+    if (this == null) {
+        tags.remove("man_made" + postfix)
+        tags.remove("house")
+        tags["building" + postfix] = "yes"
+        return
+    }
 
     // do not change anything if it is considered an alias! (This could destroy information, e.g.
-    // building=livestock would be changed to building=farm_auxiliary)
+    // building=livestock would be changed to building=farm_auxiliary. We don't want that)
     val alias = BuildingType.aliases.entries.find { tags[it.key.first] == it.key.second }?.value
-    if (alias != null) return
+    if (alias != null && alias == this) return
 
     // Switch between man-made and building.
-    if (osmKey == "man_made") tags.remove("building" + postfix)
-    if (osmKey == "building") tags.remove("man_made" + postfix)
+    if (osmKey != "building") tags.remove("building" + postfix)
+    if (osmKey != "man_made") tags.remove("man_made" + postfix)
 
-    applyHouseTypeTo(tags)
-
-    // Apply the original building classification.
-    tags[osmKey + postfix] = osmValue
-}
-
-private fun BuildingStatus?.applyTo(tags: Tags) {
-    clearBuildingStatus(tags)
-    if (this == null) return
-    when (this) {
-        is BuildingLifecycle -> tags[osmKey] = "yes"
-        is BuildingType -> applyTo(tags, ":use")
-    }
-}
-
-private fun BuildingType?.applyHouseTypeTo(tags: Tags) {
     if (this in BuildingType.houses) {
         if (this == TERRACED_HOUSE) {
             tags["house"] = "terraced"
-        }
-        // like with aliases, preserve building=house + house=* (etc.) tagging
-        else if (tags.containsKey("house")) {
-            val houseType = createBuildingTypeFromHouseType(tags["house"])
-            if (houseType == this) return
+        } else {
+            // like with aliases, preserve building=house + house=* (etc.) tagging.
+            if (this == createBuildingTypeFromHouseType(tags["house"])) return
+            tags.remove("house")
         }
     } else {
         tags.remove("house")
     }
+
+    tags[osmKey + postfix] = osmValue!!
 }
 
-private fun clearBuildingStatus(tags: Tags) {
+private fun BuildingStatus?.applyTo(tags: Tags) {
+    // clear previous status tagging
     BuildingLifecycle.entries.forEach {
         // 1. the more common disused = yes etc.
         tags.remove(it.osmKey)
@@ -80,5 +79,9 @@ private fun clearBuildingStatus(tags: Tags) {
     }
     tags.remove("building:use")
     tags.remove("man_made:use")
+    if (this == null) return
+    when (this) {
+        is BuildingLifecycle -> tags[osmKey] = "yes"
+        is BuildingType -> applyTo(tags, ":use")
+    }
 }
-

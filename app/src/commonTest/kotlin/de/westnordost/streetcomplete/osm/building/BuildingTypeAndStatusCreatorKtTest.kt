@@ -10,113 +10,208 @@ import kotlin.test.assertFails
 
 class BuildingTypeAndStatusCreatorKtTest {
 
-    @Test fun `set building as unsupported not possible`() {
-        assertFails { UNSUPPORTED.appliedTo() }
+    @Test fun `set to unsupported does not change anything`() {
+        // except for the check date, which is set when nothing is changed :-)
+
+        assertEquals(
+            mapOf("check_date" to nowAsCheckDateString()),
+            BuildingTypeAndStatus(UNSUPPORTED, null).appliedTo()
+        )
+        assertEquals(
+            mapOf("building" to "blurb", "check_date" to nowAsCheckDateString()),
+            BuildingTypeAndStatus(UNSUPPORTED, null).appliedTo("building" to "blurb")
+        )
+
+        // additional building-related tags are left as-is
+        assertEquals(
+            mapOf(
+                "building" to "house",
+                "house" to "hobbit_house",
+                "check_date" to nowAsCheckDateString()
+            ),
+            BuildingTypeAndStatus(UNSUPPORTED, null).appliedTo(
+                "building" to "house",
+                "house" to "hobbit_house"
+            )
+        )
+
+        // so in this case, as status = null, the construction info is put back into the
+        // building tag, but without any additional changes
+        assertEquals(
+            mapOf("building" to "blurb"),
+            BuildingTypeAndStatus(UNSUPPORTED, null).appliedTo("construction" to "blurb")
+        )
+    }
+
+    @Test fun `set to generic building`() {
+        assertEquals(
+            mapOf("building" to "yes"),
+            BuildingTypeAndStatus(null, null).appliedTo()
+        )
+        assertEquals(
+            mapOf("building" to "yes"),
+            BuildingTypeAndStatus(null, null).appliedTo("building" to "residential")
+        )
+        assertEquals(
+            mapOf("building" to "yes"),
+            BuildingTypeAndStatus(null, null).appliedTo("construction" to "residential")
+        )
+    }
+
+    @Test fun `set to generic building removes additional building tags`() {
+        assertEquals(
+            mapOf("building" to "yes"),
+            BuildingTypeAndStatus(null, null).appliedTo(
+                "building" to "house",
+                "house" to "detached",
+                "man_made" to "tower",
+            )
+        )
     }
 
     @Test fun `set building`() {
         assertEquals(
             mapOf("building" to "residential"),
-            RESIDENTIAL.appliedTo()
+            BuildingTypeAndStatus(RESIDENTIAL, null).appliedTo()
         )
 
         assertEquals(
             mapOf("building" to "residential"),
-            RESIDENTIAL.appliedTo("building" to "yes")
+            BuildingTypeAndStatus(RESIDENTIAL, null).appliedTo("building" to "yes")
         )
 
         assertEquals(
             mapOf("building" to "residential"),
-            RESIDENTIAL.appliedTo("man_made" to "storage_tank")
+            BuildingTypeAndStatus(RESIDENTIAL, null).appliedTo("man_made" to "storage_tank")
+        )
+    }
+
+    @Test fun `set building removes additional building tags`() {
+        // ah yes, the storage tank re-fitted to be a residential building ;-) …
+        // no actually, they do exist: https://en.wikipedia.org/wiki/Vienna_Gasometers
+        assertEquals(
+            mapOf("building" to "residential"),
+            BuildingTypeAndStatus(RESIDENTIAL, null).appliedTo(
+                "man_made" to "storage_tank",
+                "house" to "something"
+            )
         )
     }
 
     @Test fun `set man-made`() {
         assertEquals(
             mapOf("man_made" to "storage_tank"),
-            STORAGE_TANK.appliedTo()
+            BuildingTypeAndStatus(STORAGE_TANK, null).appliedTo()
         )
 
         assertEquals(
             mapOf("man_made" to "storage_tank"),
-            STORAGE_TANK.appliedTo("man_made" to "silo")
+            BuildingTypeAndStatus(STORAGE_TANK, null).appliedTo("man_made" to "silo")
         )
 
+
+    }
+
+    @Test fun `set man made removes additional building tags`() {
         assertEquals(
             mapOf("man_made" to "storage_tank"),
-            STORAGE_TANK.appliedTo("building" to "roof")
+            BuildingTypeAndStatus(STORAGE_TANK, null).appliedTo(
+                "building" to "house",
+                "house" to "detached"
+            )
         )
     }
 
     @Test fun `don't overwrite aliases`() {
         assertEquals(
             mapOf("building" to "livestock", "check_date" to nowAsCheckDateString()),
-            FARM_AUXILIARY.appliedTo("building" to "livestock")
+            BuildingTypeAndStatus(FARM_AUXILIARY, null).appliedTo("building" to "livestock")
         )
 
         assertEquals(
             mapOf("building" to "residential"),
-            RESIDENTIAL.appliedTo("building" to "livestock")
+            BuildingTypeAndStatus(RESIDENTIAL, null).appliedTo("building" to "livestock")
         )
     }
 
-    @Test fun `preserve house subtag schema`() {
+    @Test fun `don't overwrite house aliases`() {
         assertEquals(
             mapOf("building" to "detached"),
-            DETACHED.appliedTo()
+            BuildingTypeAndStatus(DETACHED, null).appliedTo()
         )
 
         assertEquals(
-            mapOf("building" to "house", "house" to "semi-detached"),
-            SEMI_DETACHED.appliedTo("building" to "house", "house" to "semi-detached")
+            mapOf(
+                "building" to "house",
+                "house" to "semi-detached",
+                "check_date" to nowAsCheckDateString()
+            ),
+            BuildingTypeAndStatus(SEMI_DETACHED, null).appliedTo(
+                "building" to "house",
+                "house" to "semi-detached"
+            )
         )
 
         // but only preserve previous tag, don't adhere to that schema when re-tagging
         assertEquals(
             mapOf("building" to "semidetached_house"),
-            SEMI_DETACHED.appliedTo("building" to "house", "house" to "semi-detached")
+            BuildingTypeAndStatus(SEMI_DETACHED, null).appliedTo(
+                "building" to "house",
+                "house" to "detached"
+            )
         )
     }
 
     @Test fun `set terraced house`() {
         assertEquals(
             mapOf("building" to "house", "house" to "terraced"),
-            TERRACED_HOUSE.appliedTo()
+            BuildingTypeAndStatus(TERRACED_HOUSE, null).appliedTo()
         )
 
         assertEquals(
             mapOf("building" to "house", "house" to "terraced"),
-            TERRACED_HOUSE.appliedTo("building" to "house", "house" to "detached")
+            BuildingTypeAndStatus(TERRACED_HOUSE, null).appliedTo(
+                "building" to "house",
+                "house" to "detached"
+            )
         )
 
         assertEquals(
             mapOf("building" to "house", "house" to "terraced"),
-            TERRACED_HOUSE.appliedTo("building" to "detached")
+            BuildingTypeAndStatus(TERRACED_HOUSE, null).appliedTo("building" to "detached")
         )
     }
-
-    @Test fun `removes house subtag when retagging as not a house`() {
-        assertEquals(
-            mapOf("building" to "apartments"),
-            APARTMENTS.appliedTo("building" to "house", "house" to "detached")
-        )
-    }
-
 
     @Test fun `sets lifecycle`() {
-        assertEquals(mapOf("disused" to "yes"), DISUSED.appliedTo())
-        assertEquals(mapOf("abandoned" to "yes"), ABANDONED.appliedTo())
-        assertEquals(mapOf("ruins" to "yes"), RUINS.appliedTo())
+        assertEquals(
+            mapOf("disused" to "yes"),
+            BuildingTypeAndStatus(UNSUPPORTED, DISUSED).appliedTo()
+        )
+        assertEquals(
+            mapOf("abandoned" to "yes"),
+            BuildingTypeAndStatus(UNSUPPORTED, ABANDONED).appliedTo()
+        )
+        assertEquals(
+            mapOf("ruins" to "yes"),
+            BuildingTypeAndStatus(UNSUPPORTED, RUINS).appliedTo()
+        )
+
+        // construction only for not-buildings because construction-tagging for buildings is special
+        // see `tagging construction on buildings`
+        assertEquals(
+            mapOf("construction" to "yes", "man_made" to "tower"),
+            BuildingTypeAndStatus(TOWER, CONSTRUCTION).appliedTo()
+        )
     }
 
     @Test fun `clears previous lifecycle tags and building use on setting lifecycle`() {
         assertEquals(
             mapOf("disused" to "yes"),
-            DISUSED.appliedTo(
+            BuildingTypeAndStatus(UNSUPPORTED, DISUSED).appliedTo(
                 "disused" to "yes",
                 "abandoned" to "yes",
                 "ruins" to "maybe",
-                "construction" to "house",
+                "construction:building" to "house",
                 "abandoned:building" to "house",
                 "disused:building" to "house",
                 "ruins:building" to "house",
@@ -129,22 +224,18 @@ class BuildingTypeAndStatusCreatorKtTest {
     @Test fun `sets use`() {
         assertEquals(
             mapOf("building:use" to "apartments"),
-            BuildingTypeAndStatus(null, APARTMENTS).appliedTo()
-        )
-        assertEquals(
-            mapOf("man_made:use" to "tower"),
-            BuildingTypeAndStatus(null, TOWER).appliedTo()
+            BuildingTypeAndStatus(UNSUPPORTED, APARTMENTS).appliedTo()
         )
     }
 
     @Test fun `clears previous lifecycle tags and building use on setting use`() {
         assertEquals(
             mapOf("building:use" to "detached"),
-            BuildingTypeAndStatus(null, DETACHED).appliedTo(
+            BuildingTypeAndStatus(UNSUPPORTED, DETACHED).appliedTo(
                 "disused" to "yes",
                 "abandoned" to "yes",
                 "ruins" to "maybe",
-                "construction" to "house",
+                "construction:building" to "house",
                 "abandoned:building" to "house",
                 "disused:building" to "house",
                 "ruins:building" to "house",
@@ -154,19 +245,19 @@ class BuildingTypeAndStatusCreatorKtTest {
         )
     }
 
-    @Test fun `udpate check date`() {
+    @Test fun `udpate check date when nothing was changed`() {
         assertEquals(
             mapOf("building" to "residential", "check_date" to nowAsCheckDateString()),
-            RESIDENTIAL.appliedTo("building" to "residential")
+            BuildingTypeAndStatus(RESIDENTIAL, null).appliedTo("building" to "residential")
         )
 
         assertEquals(
             mapOf("abandoned" to "yes", "check_date" to nowAsCheckDateString()),
-            ABANDONED.appliedTo("abandoned" to "yes")
+            BuildingTypeAndStatus(UNSUPPORTED, ABANDONED).appliedTo("abandoned" to "yes")
         )
     }
 
-    @Test fun `tagging construction`() {
+    @Test fun `tagging construction on buildings`() {
         assertEquals(
             mapOf("building" to "construction"),
             BuildingTypeAndStatus(null, CONSTRUCTION).appliedTo()
@@ -213,14 +304,13 @@ class BuildingTypeAndStatusCreatorKtTest {
         )
         assertEquals(
             mapOf("abandoned" to "yes"),
-            BuildingTypeAndStatus(null, ABANDONED).appliedTo()
+            BuildingTypeAndStatus(UNSUPPORTED, ABANDONED).appliedTo()
         )
         assertEquals(
             mapOf("building" to "retail", "abandoned" to "yes"),
             BuildingTypeAndStatus(RETAIL, ABANDONED).appliedTo()
         )
     }
-
 
     @Test fun `clears construction tags when removing construction`() {
         assertEquals(
@@ -231,20 +321,21 @@ class BuildingTypeAndStatusCreatorKtTest {
             )
         )
         assertEquals(
-            mapOf(),
+            mapOf("building" to "yes"),
             BuildingTypeAndStatus(null, null).appliedTo(
                 "building" to "construction",
                 "construction" to "house"
             )
         )
+        assertEquals(
+            mapOf("building" to "blurb"),
+            BuildingTypeAndStatus(UNSUPPORTED, null).appliedTo(
+                "building" to "construction",
+                "construction" to "blurb"
+            )
+        )
     }
 }
-
-private fun BuildingLifecycle.appliedTo(vararg tags: Pair<String, String>): Map<String, String> =
-    BuildingTypeAndStatus(null, this).appliedTo(*tags)
-
-private fun BuildingType.appliedTo(vararg tags: Pair<String, String>): Map<String, String> =
-    BuildingTypeAndStatus(this, null).appliedTo(*tags)
 
 private fun BuildingTypeAndStatus.appliedTo(vararg tags: Pair<String, String>): Map<String, String> {
     val tags = mapOf(*tags)

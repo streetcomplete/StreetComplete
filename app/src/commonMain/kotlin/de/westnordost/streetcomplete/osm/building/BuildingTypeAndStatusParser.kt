@@ -18,10 +18,16 @@ fun createBuildingTypeAndStatus(tags: Map<String, String>): BuildingTypeAndStatu
 
 private fun createBuildingType(tags: Map<String, String>, postfix: String = ""): BuildingType? {
     val building =
-        BuildingType.entries.find { it.osmKey != null && tags[it.osmKey + postfix] == it.osmValue }
+        BuildingType.entries.find {
+            val value = tags[it.osmKey + postfix]
+            value != null && value == it.osmValue
+        }
         ?: BuildingType.aliases.entries.find { tags[it.key.first + postfix] == it.key.second }?.value
 
-    if (building == HOUSE) return createBuildingTypeFromHouseType(tags["house"])
+    if (building == HOUSE) {
+        val house = createBuildingTypeFromHouseType(tags["house"])
+        if (house != null) return house
+    }
 
     if (building != null) return building
 
@@ -54,8 +60,8 @@ private fun createBuildingStatus(tags: Map<String, String>): BuildingStatus? {
     return createBuildingType(tags, ":use")
 }
 
-internal fun createBuildingTypeFromHouseType(houseType: String?): BuildingType = when (houseType) {
-    null ->             HOUSE
+internal fun createBuildingTypeFromHouseType(houseType: String?): BuildingType? = when (houseType) {
+    null ->             null
     "detached" ->       DETACHED
     "terrace" ->        TERRACE
     "terraced" ->       TERRACED_HOUSE

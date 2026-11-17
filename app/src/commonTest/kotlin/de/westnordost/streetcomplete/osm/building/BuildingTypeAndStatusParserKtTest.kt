@@ -103,8 +103,8 @@ class BuildingTypeAndStatusParserKtTest {
         )
         // for man made: not possible
         assertEquals(
-            BuildingTypeAndStatus(UNSUPPORTED, CONSTRUCTION),
-            parse("building" to "construction", "construction" to "tower")
+            BuildingTypeAndStatus(null, CONSTRUCTION),
+            parse("building" to "construction", "construction" to "storage_tank")
         )
     }
 }
