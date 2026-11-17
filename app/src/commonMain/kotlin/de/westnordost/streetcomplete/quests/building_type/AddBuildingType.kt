@@ -9,12 +9,13 @@ import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.building.BuildingType
+import de.westnordost.streetcomplete.osm.building.BuildingTypeAndStatus
 import de.westnordost.streetcomplete.osm.building.INVALID_BUILDING_TYPES
 import de.westnordost.streetcomplete.osm.building.OTHER_KEYS_POTENTIALLY_DESCRIBING_BUILDING_TYPE
 import de.westnordost.streetcomplete.osm.building.applyTo
 import de.westnordost.streetcomplete.resources.*
 
-class AddBuildingType : OsmFilterQuestType<BuildingType>() {
+class AddBuildingType : OsmFilterQuestType<BuildingTypeAndStatus>() {
 
     override val elementFilter = """
         ways, relations with
@@ -24,6 +25,9 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
           and disused != yes
           and abandoned != yes
           and ruins != yes
+          and !disused:building
+          and !abandoned:building
+          and !ruins:building
     """
     override val changesetComment = "Specify building types"
     override val wikiLink = "Key:building"
@@ -33,11 +37,11 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
     override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
 
     @Composable
-    override fun Form(on: (QuestAction<BuildingType>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<BuildingTypeAndStatus>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddBuildingTypeForm(on)
     }
 
-    override fun applyAnswerTo(answer: BuildingType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: BuildingTypeAndStatus, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags)
     }
 }
