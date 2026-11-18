@@ -1,10 +1,11 @@
 package de.westnordost.streetcomplete.osm
 
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
-import de.westnordost.streetcomplete.osm.things.shouldAddThingCheckDate
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import kotlinx.datetime.LocalDate
@@ -127,3 +128,51 @@ private val OSM_CHECK_DATE_REGEX = Regex("([0-9]{4})-([0-9]{2})(?:-([0-9]{2}))?"
 
 /** OSM key used by StreetComplete to mark that something has been checked */
 const val SURVEY_MARK_KEY = "check_date"
+
+val RESURVEY_FILTERS_2_YEARS = listOf(
+    "amenity ~ atm|telephone|parcel_locker|public_bookcase|give_box|photo_booth",
+    "amenity = vending_machine and vending !~ fuel|parking_tickets|public_transport_tickets",
+    "barrier = log",
+)
+
+val RESURVEY_FILTERS_4_YEARS = listOf(
+    "amenity ~ clock|post_box|bbq|car_sharing|ticket_validator|bicycle_repair_station|vacuum_cleaner",
+    "leisure ~ firepit|fitness_station|picnic_table",
+    "leisure = pitch and sport ~ table_tennis|chess|table_soccer|teqball",
+    "amenity = grit_bin and seasonal = no",
+    "amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets",
+    "tourism = information and information ~ board|terminal|map",
+    "advertising ~ column|board|poster_box",
+    "(highway = emergency_access_point or emergency = access_point) and ref",
+    "highway = hitchhiking",
+    "emergency ~ life_ring|phone",
+    "emergency = defibrillator and (indoor = no or access = yes)",
+    "man_made = surveillance and surveillance:type = camera and surveillance ~ outdoor|public and !highway",
+)
+
+val RESURVEY_FILTERS_6_YEARS = listOf(
+    "amenity ~ bench|lounger|waste_basket|toilets|shower|drinking_water|baby_hatch|luggage_locker|water_point|water_tap|sanitary_dump_station|charging_station",
+    "amenity = recycling and recycling_type = container",
+    "man_made = planter",
+    "water_way ~ sanitary_dump_station|water_point|fuel",
+)
+
+val RESURVEY_FILTERS_10_YEARS = listOf(
+    "amenity ~ bicycle_parking|motorcycle_parking|taxi|shelter",
+    "leisure = bird_hide",
+)
+
+val RESURVEY_FILTERS_14_YEARS = listOf(
+    "traffic_calming ~ bump|mini_bumps|hump|cushion|rumble_strip|dip|double_dip",
+    "traffic_calming = table and !highway and !crossing",
+)
+
+private val ADD_CHECK_DATE_EXPRESSION by lazy {
+    """
+        nodes, ways, relations with
+        ${(RESURVEY_FILTERS_2_YEARS + RESURVEY_FILTERS_4_YEARS + RESURVEY_FILTERS_6_YEARS + RESURVEY_FILTERS_10_YEARS + RESURVEY_FILTERS_14_YEARS).joinToString("\n    or ")}
+    """.toElementFilterExpression()
+}
+
+fun Element.shouldAddThingCheckDate(): Boolean =
+    ADD_CHECK_DATE_EXPRESSION.matches(this)

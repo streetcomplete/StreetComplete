@@ -13,9 +13,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
-import de.westnordost.streetcomplete.osm.LAST_CHECK_DATE_KEYS
-import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.updateCheckDate
+import de.westnordost.streetcomplete.osm.*
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
@@ -30,50 +28,27 @@ class CheckExistence(
         nodes with
           ((
             (
-              amenity ~ atm|telephone|parcel_locker|public_bookcase|give_box|photo_booth
-              or amenity = vending_machine and vending !~ fuel|parking_tickets|public_transport_tickets
-              or barrier = log
+              ${RESURVEY_FILTERS_2_YEARS.joinToString("\n              or ")}
             )
             and (${lastChecked(2.0)})
           ) or (
             (
-              amenity ~ clock|post_box|bbq|car_sharing|ticket_validator|bicycle_repair_station|vacuum_cleaner
-              or leisure ~ firepit|fitness_station|picnic_table
-              or (leisure = pitch and sport ~ table_tennis|chess|table_soccer|teqball)
-              or amenity = grit_bin and seasonal = no
-              or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
-              or tourism = information and information ~ board|terminal|map
-              or advertising ~ column|board|poster_box
-              or (highway = emergency_access_point or emergency = access_point) and ref
-              or highway = hitchhiking
-              or emergency ~ life_ring|phone
-              or emergency = defibrillator and (indoor = no or access = yes)
-              or (
-                man_made = surveillance
-                and surveillance:type = camera
-                and surveillance ~ outdoor|public
-                and !highway
-              )
+              ${RESURVEY_FILTERS_4_YEARS.joinToString("\n              or ")}
             )
             and (${lastChecked(4.0)})
           ) or (
             (
-              amenity ~ bench|lounger|waste_basket|toilets|shower|drinking_water|baby_hatch|luggage_locker|water_point|water_tap|sanitary_dump_station|charging_station
-              or amenity = recycling and recycling_type = container
-              or man_made = planter
-              or water_way ~ sanitary_dump_station|water_point|fuel
+              ${RESURVEY_FILTERS_6_YEARS.joinToString("\n              or ")}
             )
             and (${lastChecked(6.0)})
           ) or (
             (
-              amenity ~ bicycle_parking|motorcycle_parking|taxi|shelter
-              or leisure = bird_hide
+              ${RESURVEY_FILTERS_10_YEARS.joinToString("\n              or ")}
             )
             and (${lastChecked(10.0)})
           ) or (
             (
-              traffic_calming ~ bump|mini_bumps|hump|cushion|rumble_strip|dip|double_dip
-              or traffic_calming = table and !highway and !crossing
+              ${RESURVEY_FILTERS_14_YEARS.joinToString("\n              or ")}
             )
             and (${lastChecked(14.0)})
           ))
