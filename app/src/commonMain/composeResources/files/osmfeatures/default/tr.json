@@ -285,6 +285,13 @@
           "name": "Toplum Merkezi",
           "terms": ["toplum merkezi", "sosyal merkez"]
         },
+        "amenity/community_centre/cultural_centre": {
+          "name": "Kültür Merkezi",
+          "terms": ["kültür merkezi", "kültür sanat merkezi"]
+        },
+        "amenity/community_centre/family_centre": {
+          "name": "Aile Merkezi"
+        },
         "amenity/community_centre/lgbtq": {
           "name": "LGBTQ+ Topluluk Merkezi"
         },
@@ -315,88 +322,125 @@
         },
         "amenity/doctors": {
           "name": "Doktor",
-          "terms": ["doktor"]
+          "terms": ["doktor", "hekim", "muayenehane"]
         },
         "amenity/doctors/allergology": {
           "name": "Allergologist"
         },
         "amenity/doctors/cardiology": {
-          "name": "Cardiologist"
+          "name": "Kardiyolog",
+          "terms": ["kardiyolog", "kalp", "kalp hastalıkları", "kardiyovasküler", "kalp damar"]
         },
         "amenity/doctors/child_psychiatry": {
-          "name": "Child and Adolescent Psychiatrist"
+          "name": "Çocuk ve Ergen Psikiyatristi",
+          "terms": ["çocuk psikiyatristi", "ergen psikiyatristi", "çocuk ve ergen psikiyatristi"]
         },
         "amenity/doctors/dermatology": {
-          "name": "Dermatologist"
+          "name": "Cildiyeci",
+          "terms": ["cildiyeci", "dermatolog", "deri ve zührevi hastalıklar"],
+          "aliases": ["Dermatolog"]
         },
         "amenity/doctors/gastroenterology": {
-          "name": "Gastroenterologist"
+          "name": "Gastroenterolog",
+          "terms": ["gastroenterolog"]
         },
         "amenity/doctors/general": {
-          "name": "Primary Care Physician"
+          "name": "Pratisyen",
+          "terms": ["pratisyen", "düz hekim"],
+          "aliases": ["Düz Hekim"]
+        },
+        "amenity/doctors/gynaecology": {
+          "name": "Jinekolog",
+          "terms": ["jinekolog", "kadın doğum"]
         },
         "amenity/doctors/haematology": {
-          "name": "Hematologist"
+          "name": "Hematolog",
+          "terms": ["hematolog", "kan bilimci"],
+          "aliases": ["Kan Bilimci"]
         },
         "amenity/doctors/internal": {
-          "name": "Internist"
+          "name": "İç Hastalıkları Uzmanı",
+          "terms": ["i̇ç hastalıkları uzmanı", "dahiliyeci", "dahiliye mütehassısı"],
+          "aliases": ["Dahiliyeci"]
         },
         "amenity/doctors/nephrology": {
-          "name": "Nephrologist"
+          "name": "Nefrolog",
+          "terms": ["nefrolog", "böbrek hastalıkları uzmanı"]
         },
         "amenity/doctors/neurology": {
-          "name": "Neurologist"
+          "name": "Nörolog",
+          "terms": ["nörolog", "sinir hastalıkları uzmanı"],
+          "aliases": ["Sinir Hastalıkları Uzmanı"]
         },
         "amenity/doctors/neurosurgery": {
-          "name": "Neurosurgeon"
+          "name": "Beyin ve Sinir Cerrahı",
+          "terms": ["beyin cerrahı", "beyin ve sinir cerrahı", "nöroşirürjiyen"],
+          "aliases": ["Nöroşirürjiyen"]
         },
         "amenity/doctors/oncology": {
-          "name": "Oncologist"
+          "name": "Onkolog",
+          "terms": ["onkolog", "kanser", "tümör", "kemoterapi"]
         },
         "amenity/doctors/ophthalmology": {
-          "name": "Ophthalmologist"
+          "name": "Göz Doktoru",
+          "terms": ["göz doktoru", "göz hastalıkları doktoru", "gözcü", "oftalmolog"],
+          "aliases": ["Göz Hastalıkları Doktoru", "Gözcü"]
         },
         "amenity/doctors/orthopaedics": {
-          "name": "Orthopedic Surgeon"
+          "name": "Ortopedist",
+          "terms": ["ortopedist", "ortopedi ve travmatoloji uzmanı", "ortopedik cerrah"]
         },
         "amenity/doctors/otolaryngology": {
-          "name": "Otolaryngologist"
+          "name": "Kulak Burun Boğaz Hekimi",
+          "terms": ["kulak", "burun", "boğaz", "kulak burun boğaz"],
+          "aliases": ["Kulakçı"]
         },
         "amenity/doctors/paediatrics": {
-          "name": "Pediatrician"
+          "name": "Çocuk Doktoru",
+          "terms": ["çocuk doktoru", "çocuk sağlığı ve hastalıkları doktoru", "çocukçu"]
         },
         "amenity/doctors/pathology": {
-          "name": "Pathologist"
+          "name": "Patolog",
+          "terms": ["patolog"]
         },
         "amenity/doctors/plastic_surgery": {
-          "name": "Plastic Surgeon"
-        },
-        "amenity/doctors/podiatry": {
-          "name": "Podiatrist"
+          "name": "Plastik Cerrah",
+          "terms": ["plastik cerrah", "estetik cerrah", "plastik rekonstrüktif ve estetik cerrah"],
+          "aliases": ["Plastik Rekonstrüktif ve Estetik Cerrah"]
         },
         "amenity/doctors/proctology": {
-          "name": "Colorectal Surgeon"
+          "name": "Kolorektal Cerrah",
+          "terms": ["kolorektal cerrah", "proktolog"],
+          "aliases": ["Proktolog"]
         },
         "amenity/doctors/psychiatrist": {
-          "name": "Psychiatrist"
+          "name": "Psikiyatr",
+          "terms": ["psikiyatr", "psikiyatrist", "akıl doktoru", "ruh doktoru", "ruh hekimi"],
+          "aliases": ["Akıl Doktoru", "Ruh Doktoru"]
         },
         "amenity/doctors/pulmonology": {
-          "name": "Pulmonologist"
+          "name": "Göğüs Hastalıkları Doktoru",
+          "terms": ["göğüs hastalıkları doktoru", "göğüs hastalıkları hekimi"]
         },
         "amenity/doctors/radiology": {
-          "name": "Radiologist"
+          "name": "Radyolog",
+          "terms": ["radyolog", "radyoloji uzmanı", "işın bilimci"]
         },
         "amenity/doctors/rheumatology": {
-          "name": "Rheumatologist"
+          "name": "Romatolog",
+          "terms": ["romatolog", "romatoloji uzmanı"]
         },
         "amenity/doctors/surgery": {
-          "name": "General Surgeon"
+          "name": "Genel Cerrah",
+          "terms": ["cerrah", "genel cerrah"]
         },
         "amenity/doctors/trauma": {
           "name": "Trauma Surgeon"
         },
         "amenity/doctors/urology": {
-          "name": "Urologist"
+          "name": "Ürolog",
+          "terms": ["ürolog", "bevliyeci"],
+          "aliases": ["Bevliyeci"]
         },
         "amenity/dog_toilet": {
           "name": "Köpek Tuvaleti",
@@ -574,6 +618,10 @@
           "name": "Kargo Dolabı",
           "terms": ["kargo dolabı", "kargomat", "gel al", "teslimat dolabı", "paket"]
         },
+        "amenity/parking": {
+          "name": "Otopark",
+          "terms": ["otopark", "araç parkı", "otomobil parkı", "park yeri", "park", "tır parkı", "kamyon parkı"]
+        },
         "amenity/parking/multi-storey": {
           "name": "Çok Katlı Otopark"
         },
@@ -596,6 +644,11 @@
         },
         "amenity/parking_space/disabled": {
           "name": "Erişilebilir Park Alanı"
+        },
+        "amenity/parking_surface": {
+          "name": "Açık Otopark",
+          "terms": ["açık otopark", "üstü açık otopark", "hemzemin otopark", "hemzemin üstü açık otopark"],
+          "aliases": ["Hemzemin Üstü Açık Otopark"]
         },
         "amenity/payment_centre": {
           "name": "Ödeme Merkezi"
@@ -1044,12 +1097,6 @@
         },
         "area": {
           "name": "Alan",
-          "relation": {
-            "role_labels": {
-              "inner": "İç sınır",
-              "outer": "Dış sınır"
-            }
-          },
           "terms": ["alan", "bölge"]
         },
         "area/footway": {
@@ -1189,17 +1236,20 @@
           "terms": ["kapı"]
         },
         "barrier/guard_rail": {
-          "name": "Korkuluk"
+          "name": "Otokorkuluğu",
+          "terms": ["otokorkuluk", "oto korkuluk", "otoyol korkuluğu", "otoyol bariyeri", "yol bariyeri"],
+          "aliases": ["Otoyol Bariyeri"]
         },
         "barrier/hampshire_gate": {
           "name": "Wire Gate"
         },
         "barrier/handrail": {
-          "name": "Handrail"
+          "name": "Merdiven Korkuluğu"
         },
         "barrier/hedge": {
-          "name": "Koruma Duvarı",
-          "terms": ["koruma duvarı"]
+          "name": "Canlı Çit",
+          "terms": ["canlı çit", "sarmaşık çit", "bitkili çit"],
+          "aliases": ["Sarmaşık Çit", "Bitkili Çit"]
         },
         "barrier/height_restrictor": {
           "name": "Yükseklik Kısıtlayıcı",
@@ -1221,17 +1271,20 @@
           "name": "Yükseltilmiş Kaldırım"
         },
         "barrier/kerb/rolled": {
-          "name": "Haddelenmiş Kaldırım"
+          "name": "Yuvarlak Bordür",
+          "terms": ["yuvarlak bordür", "yuvarlatılmış bordür", "yuvarlatılmış kaldırım taşı"]
         },
         "barrier/kissing_gate": {
-          "name": "Sadece İnsanlar İçin Giriş Kapısı",
+          "name": "İnsanların Geçebildiği Hayvanların Geçemediği Bir Tür Çit Kapısı",
           "terms": ["sadece i̇nsanlar i̇çin giriş kapısı"]
         },
         "barrier/lift_gate": {
-          "name": "Kollu Bariyer"
+          "name": "Kollu Bariyer",
+          "terms": ["kollu bariyer", "otomatik bariyer"]
         },
         "barrier/log": {
-          "name": "Fallen Tree Obstruction"
+          "name": "Yola Devrilmiş Ağaç",
+          "terms": ["yola devrilmiş ağaç", "yola devrilmiş kütük"]
         },
         "barrier/motorcycle_barrier": {
           "name": "Motorcycle Barrier"
@@ -1250,7 +1303,8 @@
           "name": "Çıkış Kapısı"
         },
         "barrier/spikes": {
-          "name": "Sivri Uçlu Demir Şerit"
+          "name": "Ters Yön Kapanı",
+          "terms": ["araç kapanı", "araba kapanı", "ters kapan", "ters yön kapanı", "yol kapanı", "kasisli kapan", "kapanlı kasis", "otopark kapanı", "otopark kasis kapanı", "tuzak kapanlı kasis", "lastik kapanı", "lastik patlatan"]
         },
         "barrier/stile": {
           "name": "Çit basamağı",
@@ -1957,7 +2011,8 @@
           "terms": ["bebek merkezi"]
         },
         "healthcare/blood_donation": {
-          "name": "Kan Bağışı Merkezi"
+          "name": "Kan Bağışı Merkezi",
+          "terms": ["kan bağışı", "kan bağışı merkezi", "kan bankası", "kızılay"]
         },
         "healthcare/dentist/orthodontics": {
           "name": "Ortodontist"
@@ -1978,7 +2033,7 @@
           "terms": ["tedavi sorumlusu"]
         },
         "healthcare/optometrist": {
-          "name": "Göz Doktoru",
+          "name": "Optometrist",
           "terms": ["optometri uzmanı"]
         },
         "healthcare/podiatrist": {
@@ -2031,9 +2086,6 @@
         "highway/crossing/informal": {
           "name": "Resmî Olmayan Yaya Geçidi",
           "aliases": ["Resmî Olmayan Geçit"]
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "Crossing With Pedestrian Signals"
         },
         "highway/crossing/uncontrolled": {
           "name": "İşaretli Yaya Geçidi",
@@ -2113,7 +2165,8 @@
           "name": "Informal Foot Path"
         },
         "highway/footway/sidewalk": {
-          "name": "Kaldırım"
+          "name": "Kaldırım",
+          "terms": ["kaldırım", "yaya kaldırımı"]
         },
         "highway/footway/traffic_island": {
           "name": "Dönüş adası"
@@ -2153,7 +2206,8 @@
           "terms": ["patika", "yol"]
         },
         "highway/path/boardwalk": {
-          "name": "Kaldırım"
+          "name": "Yükseltilmiş Yürüyüş Yolu",
+          "terms": ["yükseltilmiş yürüyüş yolu", "ahşap kaldırım"]
         },
         "highway/path/crossing": {
           "name": "Bisiklet ve Yaya Geçidi"
@@ -3022,7 +3076,8 @@
           "name": "Avlu"
         },
         "man_made/crane": {
-          "name": "Vinç"
+          "name": "Vinç",
+          "terms": ["vinç"]
         },
         "man_made/crane/gantry_crane": {
           "name": "Gantry Crane"
@@ -3031,50 +3086,60 @@
           "name": "Portal Crane"
         },
         "man_made/cross": {
-          "name": "Geçit"
+          "name": "Haç",
+          "terms": ["haç", "haç i̇şareti", "çarmıh", "i̇stavroz"]
         },
         "man_made/cutline": {
           "name": "Yangın Durduma Hattı",
           "terms": ["yangın durduma hattı"]
         },
         "man_made/dovecote": {
-          "name": "Güvercinlik"
+          "name": "Güvercinlik",
+          "terms": ["güvercinlik"]
         },
         "man_made/dyke": {
-          "name": "Su seti"
+          "name": "Su seti",
+          "terms": ["su seti"]
         },
         "man_made/embankment": {
-          "name": "Toprak Dolgu"
+          "name": "Toprak Dolgu",
+          "terms": ["dolgu", "toprak dolgu"]
         },
         "man_made/flagpole": {
           "name": "Bayrak Direği",
           "terms": ["bayrak direği"]
         },
         "man_made/fuel_pump": {
-          "name": "Gaz Pompası"
+          "name": "Akaryakıt Pompası",
+          "terms": ["akaryakıt pompası", "yakıt pompası", "benzin", "mazot", "dizel", "gaz", "otogaz"]
         },
         "man_made/gantry": {
           "name": "Gantry"
         },
         "man_made/gasometer": {
           "name": "Gazölçer",
-          "terms": ["gazölçer"]
+          "terms": ["gazölçer", "gazometre", "gaz deposu"],
+          "aliases": ["Gazometre"]
         },
         "man_made/goods_conveyor": {
           "name": "Mal Taşıma Sistemi"
         },
         "man_made/groyne": {
-          "name": "Kemer Pervazı"
+          "name": "Dalgakıran",
+          "terms": ["dalgakıran"]
         },
         "man_made/lighthouse": {
           "name": "Deniz Feneri",
           "terms": ["deniz feneri", "fener"]
         },
         "man_made/manhole": {
-          "name": "Rögar Kapağı"
+          "name": "Rögar Kapağı",
+          "terms": ["rögar", "rögar kapağı", "menhol", "baca", "kanalizasyon"]
         },
         "man_made/manhole/drain": {
-          "name": "Kanalizasyon Izgarası"
+          "name": "Yağmur Suyu Izgarası",
+          "terms": ["yağmur suyu", "yağmur suyu izgarası", "yağmur suyu kapağı", "yağmur suyu rögarı", "drenaj", "baca"],
+          "aliases": ["Yüzey Suyu Izgarası"]
         },
         "man_made/manhole/gas": {
           "name": "Gaz Hizmet Lağım Kapağı"
@@ -3161,6 +3226,10 @@
         "man_made/silo": {
           "name": "Silo",
           "terms": ["silo", "depo"]
+        },
+        "man_made/silo/crop": {
+          "name": "Mahsul Silosu",
+          "terms": ["mahsul silosu", "ürün silosu", "tahıl", "buğday"]
         },
         "man_made/storage_tank": {
           "name": "Depolama Tankı",
@@ -4181,6 +4250,9 @@
         "railway/narrow_gauge": {
           "name": "Dar Demiryolu"
         },
+        "railway/platform_edge": {
+          "name": "Peron Kenarı"
+        },
         "railway/preserved": {
           "name": "Miras Demiryolu Yolu"
         },
@@ -4467,7 +4539,8 @@
           "terms": ["elektronik sigara mağazası"]
         },
         "shop/electrical": {
-          "name": "Elektrikli Ekipman Mağazası"
+          "name": "Elektrik Malzemeleri Dükkanı",
+          "terms": ["elektrikçi", "elektrik malzemeleri", "aydınlatma", "kablo"]
         },
         "shop/electronics": {
           "name": "Elektronik Mağazası",
@@ -4751,10 +4824,12 @@
           "terms": ["dini ürünler mağazası"]
         },
         "shop/rental": {
-          "name": "Kiralık Dükkan"
+          "name": "Kiralama Dükkanı",
+          "terms": ["kiralama dükkanı", "kiralama mağazası"]
         },
         "shop/repair": {
-          "name": "Tamir Dükkanı"
+          "name": "Tamir Dükkanı",
+          "terms": ["tamirci", "tamir bakım", "bakım onarım"]
         },
         "shop/rice": {
           "name": "Pirinç Dükkânı",
@@ -4769,10 +4844,12 @@
           "terms": ["deniz ürünleri mağazası"]
         },
         "shop/second_hand": {
-          "name": "Thrift Store"
+          "name": "İkinci El Eşya Mağazası",
+          "terms": ["i̇kinci el", "i̇kinci el eşya mağazası", "bit pazarı"]
         },
         "shop/sewing": {
-          "name": "Dikiş Malzemeleri Dükkanı"
+          "name": "Dikiş Malzemeleri Dükkanı",
+          "terms": ["dikiş malzemeleri dükkanı"]
         },
         "shop/shoe_repair": {
           "name": "Ayakkabı Tamir Mağazası"
@@ -5119,10 +5196,7 @@
           "name": "İdari Sınır",
           "relation": {
             "role_labels": {
-              "admin_centre": "Yönetim Merkezi",
-              "inner": "İç Sınır",
-              "label": "Etiket",
-              "outer": "Dış Sınır"
+              "label": "Etiket"
             }
           },
           "terms": ["i̇dari sınır"]
@@ -5140,13 +5214,7 @@
           "name": "Hız Sınırı Uygulaması"
         },
         "type/multipolygon": {
-          "name": "Birden Fazla Çokgen",
-          "relation": {
-            "role_labels": {
-              "inner": "İç sınır",
-              "outer": "Dış sınır"
-            }
-          }
+          "name": "Birden Fazla Çokgen"
         },
         "type/public_transport/stop_area_group": {
           "name": "Transit Durak Alanı Grubu"
@@ -5542,6 +5610,10 @@
         "amenity/university": {
           "name": "Üniversite Yerleşkesi",
           "terms": ["üniversite", "yüksekokul", "yerleşke", "kampüs"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Ayak Hastalıkları Uzmanı",
+          "terms": ["podiyatri uzmanı"]
         },
         "amenity/charging_station/charging_station_bicycle_designated": {
           "name": "Bisiklet Şarj İstasyonu"

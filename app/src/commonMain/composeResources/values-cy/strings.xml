@@ -20,6 +20,7 @@
     <string name="quest_leave_new_note_yes">Gadael nodyn</string>
     <string name="quest_leave_new_note_no">Cuddio</string>
     <string name="quest_streetName_title">Beth yw enw'r stryd hon?</string>
+    <string name="quest_streetName_answer_noName_confirmation_description">Weithiau, dim ond ar un pen ffordd y ceir arwydd. Nodwch hefyd efallai na fydd arwyddion ffordd ychwanegol ar gyfer strydoedd ochr sy'n rhan o stryd fwy. Fel arfer, ceir enw ar unrhyw stryd sydd â thai.</string>
     <string name="quest_openingHours_start_time">Amser agor</string>
     <string name="quest_openingHours_end_time">Amser cau</string>
     <string name="quest_openingHours_add_months">Ychwanegu misoedd</string>
@@ -166,7 +167,7 @@ Caiff y wybodaeth rydych chi'n ei rhoi ei hychwanegu at OpenStreetMap o dan eich
     <string name="quest_source_dialog_title">Ydych chi wir wedi gwirio hyn yn bersonol?</string>
     <string name="quest_source_dialog_note">Dim ond gwybodaeth a gadarnhawyd yn bersonol y dylid ei rhoi.</string>
     <string name="quest_bicycleParkingCoveredStatus_title">Ydy'r safle parcio beiciau yma wedi'i cysgodi (wedi'i amddiffyn o'r glaw)?</string>
-    <string name="dialog_session_dont_show_again">Peidiwch â dangos eto am y sesiwn yma</string>
+    <string name="dialog_session_dont_show_again">Peidiwch â dangos eto am y sesiwn hon</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">Mae'r terfyn cyflymder yma'n edrych yn annebygol.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">Ydych chi'n siŵr nad oes terfyn cyflymder wedi'i arddangos?</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">Ydych chi wedi edrych ar ddiwedd y stryd?
@@ -447,6 +448,7 @@ Os nad oes unrhyw arwyddion ar hyd y stryd cyfan sy'n berthnasol i'r adran a aml
     <string name="label_housenumber">rhif y tŷ</string>
     <string name="quest_leave_new_note_photos_are_useful">Bydd ychwanegu llun yn gwneud y nodyn yn llawer mwy defnyddiol.</string>
     <string name="create_new_note_hint">Ysgrifennwch y nodyn yn yr iaith leol, neu yn Saesneg.</string>
+    <string name="quest_leafType_title">Oes dail neu nodwyddau ar y coed yma?</string>
     <string name="quest_leaf_type_needles">Pinwydd</string>
     <string name="quest_leaf_type_broadleaved">Dail</string>
     <string name="quest_leaf_type_mixed">Y ddau</string>
@@ -649,6 +651,7 @@ Cyflawni</string>
     <string name="quest_shop_gone_replaced_answer">Mae yna…</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Dim lôn feicio na thrac beicio o gwbl</string>
     <string name="quest_construction_completed_at_known_date">Bydd yn cael ei orffen ar…</string>
+    <string name="quest_construction_completion_date_title">Pryd fydd yn cael ei orffen?</string>
     <string name="quest_surface_value_clay">Clai</string>
     <string name="quest_surface_value_artificial_turf">Gwair artiffisial</string>
     <string name="quest_bicycle_parking_fee_title">Oes angen talu i barcio beic yma?</string>
@@ -703,6 +706,7 @@ Cyflawni</string>
     <string name="quest_buildingType_grandstand">Eisteddle</string>
     <string name="action_search">Chwilio</string>
     <string name="action_manage_presets">Rheoli rhagosodiadau</string>
+    <string name="team_mode_team_size_label2">Faint o bobl sy'n mapio? Dewiswch yr un rhif ar ffôn pawb.</string>
     <string name="quest_kerb_height_no">Dim cwrb o gwbl</string>
     <string name="no_search_results">Dim canlyniadau</string>
     <string name="quest_selection_hint_title">Oes gormod i'w wneud?</string>
@@ -736,6 +740,7 @@ Os ydych yn teimlo dan bwysau oherwydd nifer y cwestiynau, gallwch fireinio pa g
     <string name="on_floor">ar lawr %1$s</string>
     <string name="select_street_parking_position">Dewiswch leoliad:</string>
     <string name="select_street_parking_no">Oes arwydd neu farciau ffordd yma?</string>
+    <string name="street_parking_parallel">Cyfochrog</string>
     <string name="street_parking_on_street">Ar y stryd</string>
     <string name="street_parking_half_on_kerb">Yn rhannol ar y stryd</string>
     <string name="street_parking_no">Dim parcio yma / Ni chaniateir parcio yma</string>
@@ -801,6 +806,7 @@ Os ydych yn teimlo dan bwysau oherwydd nifer y cwestiynau, gallwch fireinio pa g
     <string name="quest_busStopBin_title2">Oes bin sbwriel gan y safle hwn?</string>
     <string name="quest_busStopLit_title2">Oes goleuadau gan y safle hwn?</string>
     <string name="quest_busStopName_title2">Beth yw enw'r safle hwn?</string>
+    <string name="quest_busStopShelter_title2">Oes cysgod yn y safle hwn?</string>
     <string name="quest_dietType_halal_name_title2">A oes cynhyrchion halal ar gael yma?</string>
     <string name="quest_dietType_kosher_name_title2">A oes cynhyrchion kosher ar gael yma?</string>
     <string name="quest_dietType_vegan_title2">A oes eitemau fegan ar y fwydlen yma?</string>
@@ -859,6 +865,7 @@ Os ydych yn teimlo dan bwysau oherwydd nifer y cwestiynau, gallwch fireinio pa g
     <string name="quest_entrance_reference_select_flat_range_only">Ystod y fflatiau</string>
     <string name="quest_entrance_reference_select_code_only">Label mynedfa</string>
     <string name="quest_entrance_reference_reference_label">Label mynedfa:</string>
+    <string name="quest_entrance_reference_flat_range_label">Ystod fflatiau:</string>
     <string name="quest_entrance_reference_flat_range_to">i</string>
     <string name="quest_camp_drinking_water_title">Oes dŵr yfed ar gael am ddim i westeion yma?</string>
     <string name="quest_camp_shower_title">Oes yna gawodydd yma?</string>

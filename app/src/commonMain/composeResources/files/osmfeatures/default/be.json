@@ -23,9 +23,6 @@
         "highway/crossing": {
           "name": "Пераход"
         },
-        "highway/crossing/traffic_signals": {
-          "name": "Пераход зь сьвятлафорам"
-        },
         "highway/crossing/uncontrolled": {
           "name": "Пазначаны пераход"
         },

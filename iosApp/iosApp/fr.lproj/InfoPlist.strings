@@ -1,0 +1,2 @@
+"NSCameraUsageDescription" = "L’autorisation d’accès à l’appareil photo est nécessaire pour joindre des photos aux notes.";
+"NSLocationWhenInUseUsageDescription" = "L’autorisation « position exacte » est nécessaire pour afficher votre position sur la carte et télécharger les données à proximité.";

@@ -363,6 +363,14 @@
           "name": "Gemeinschaftshaus",
           "terms": ["gemeinschaftshaus", "gemeindesaal", "versammlungshaus", "mehrzweckhalle"]
         },
+        "amenity/community_centre/cultural_centre": {
+          "name": "Kulturzentrum",
+          "terms": ["kulturzentrum", "kulturstätte", "kulturhaus", "kulturinstitut", "kulturforum", "kulturkomplex", "kulturpalast", "kulturgebäude", "kulturtempel", "kulturtreffpunkt", "kulturanlage", "kulturpavillon"]
+        },
+        "amenity/community_centre/family_centre": {
+          "name": "Familienzentrum",
+          "terms": ["familientreffpunkt", "eltern-kind-zentrum", "familienberatungsstelle", "eltern-kind-treff", "familiencafé", "familienhaus", "familientreff", "familienhilfezentrum", "familienberatungszentrum", "familienservicezentrum", "elternzentrum", "familienunterstützungszentrum", "familienbegegnungsstätte", "familienkompetenzzentrum"]
+        },
         "amenity/community_centre/lgbtq": {
           "name": "LGBTQ+ Gemeindezentrum",
           "terms": ["lgbtq+ gemeindezentrum"]
@@ -492,10 +500,6 @@
           "name": "Plastischer Chirurg",
           "terms": ["ästhetische chirurgie", "kosmetische chirurgie", "kraniofaziale chirurgie", "rekonstruktive chirurgie", "plastische chirurgie"],
           "aliases": ["Schönheitschirurg"]
-        },
-        "amenity/doctors/podiatry": {
-          "name": "Podiater (Fußchirurgie)",
-          "terms": ["fußchirurg", "fußchirurgie"]
         },
         "amenity/doctors/proctology": {
           "name": "Proktologe",
@@ -796,12 +800,12 @@
           "terms": ["einfahrt", "ausfahrt", "zufahrt", "parkgarage", "garage", "tiefgarage", "parkhaus", "hochgarage", "rampe"]
         },
         "amenity/parking_space": {
-          "name": "Parkstand",
-          "terms": ["parkstand", "stellplatz", "parkplatz", "parkbox", "parklücke", "parkfeld", "autoabstellplatz", "abstellplatz", "stellfläche"]
+          "name": "Einzelner Stellplatz",
+          "terms": ["parkstand", "stellplatz", "parkplatz", "parkbox", "parklücke", "parkfeld", "autoabstellplatz", "abstellplatz", "stellfläche", "pkw stellplatz", "autostellplatz"]
         },
         "amenity/parking_space/disabled": {
-          "name": "Behindertenparkstand",
-          "terms": ["behindertenparkstand", "behindertenparkplatz", "rollstuhlparkstand", "rollstuhlparkplatz", "rolliparkplatz"]
+          "name": "Barrierefreier Stellplatz",
+          "terms": ["behindertenparkstand", "behindertenparkplatz", "rollstuhlparkstand", "rollstuhlparkplatz", "rolliparkplatz", "behindertenstellplatz"]
         },
         "amenity/parking_surface": {
           "name": "Parkplatz im Freien",
@@ -854,6 +858,10 @@
         "amenity/place_of_worship/jewish": {
           "name": "Jüdische Synagoge",
           "terms": ["jüdische synagoge"]
+        },
+        "amenity/place_of_worship/multifaith": {
+          "name": "Religionsübergreifende Andachtsstätte",
+          "terms": ["religionsübergreifend", "ökumenisch", "ökumene", "überkonfessionell", "multireligiös", "interreligiös", "meditationsraum", "andachtsraum", "gebetsraum", "raum der stille"]
         },
         "amenity/place_of_worship/muslim": {
           "name": "Muslimische Moschee",
@@ -1085,6 +1093,10 @@
         "amenity/shelter/public_transport": {
           "name": "Überdachter Wartebereich",
           "terms": ["überdachter wartebereich"]
+        },
+        "amenity/shelter/sun_shelter": {
+          "name": "Sonnenschutz",
+          "terms": ["sonne", "schatten"]
         },
         "amenity/shower": {
           "name": "Dusche",
@@ -2551,7 +2563,7 @@
         },
         "highway/crossing/traffic_signals": {
           "name": "Überweg mit Ampelregelung",
-          "terms": ["fußgängerampel", "fußgängerübergang", "radübergang"]
+          "terms": ["fahrradüberweg (ampel)", "radübergang", "fußgängerampel (ampel) fußgängerüberweg (ampel)", "fußgängerüberquerung (ampel)", "fußgängerübergang", "fußgängerampel", "fußgängerampelsignale"]
         },
         "highway/crossing/uncontrolled": {
           "name": "Gehweg-Querung mit Fahrbahnmarkierung",
@@ -5288,6 +5300,10 @@
           "name": "Schmalspurbahngleis",
           "terms": ["schmalspurbahn"]
         },
+        "railway/platform_edge": {
+          "name": "Bahnsteigkante",
+          "terms": ["bahnsteigkante", "bahnsteigseite", "platformkante", "platformseite", "plattformkante", "plattformseite", "perronkante"]
+        },
         "railway/preserved": {
           "name": "Museumsbahn",
           "terms": ["historischer zug", "erhaltenen schienen", "dampfzug", "touristenzug", "erlebniszug", "museumszug"]
@@ -6393,15 +6409,21 @@
         },
         "type/boundary": {
           "name": "Grenze",
-          "terms": ["grenze"]
+          "terms": ["grenze"],
+          "relation": {
+            "role_labels": {
+              "inner": "Innenring",
+              "outer": "Außenring"
+            }
+          }
         },
         "type/boundary/administrative": {
           "name": "Administrative Grenze",
           "relation": {
             "role_labels": {
               "admin_centre": "Verwaltungszentrum",
-              "inner": "Innenring",
               "label": "Beschriftung",
+              "inner": "Innenring",
               "outer": "Außenring"
             }
           },
@@ -6417,6 +6439,14 @@
         },
         "type/destination_sign": {
           "name": "Wegweiser an oder vor Kreuzungen",
+          "relation": {
+            "role_labels": {
+              "intersection": "Kreuzung",
+              "sign": "Schild",
+              "from": "Von",
+              "to": "Nach"
+            }
+          },
           "terms": ["ausfahrtsschild"]
         },
         "type/enforcement": {
@@ -6443,39 +6473,122 @@
         },
         "type/restriction": {
           "name": "Sonstige Abbiegevorschrift",
+          "relation": {
+            "role_labels": {
+              "from": "Von",
+              "to": "Nach",
+              "via": "Via"
+            }
+          },
           "terms": ["abbiegebeschränkung", "beschränkung", "einschränkung"]
+        },
+        "type/restriction/no_entry": {
+          "name": "Keine Einfahrt",
+          "relation": {
+            "role_labels": {
+              "from": "Von",
+              "to": "Nach",
+              "via": "Via"
+            }
+          }
+        },
+        "type/restriction/no_exit": {
+          "name": "Keine Ausfahrt",
+          "relation": {
+            "role_labels": {
+              "from": "Von",
+              "to": "Nach",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_left_turn": {
           "name": "Kein Linksabbiegen",
-          "terms": ["linksabbiegeverbot", "linksabbiegen verboten", "kein linksabbiegen", "kein abbiegen nach links"]
+          "terms": ["linksabbiegeverbot", "linksabbiegen verboten", "kein linksabbiegen", "kein abbiegen nach links"],
+          "relation": {
+            "role_labels": {
+              "from": "Von",
+              "to": "Nach",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_right_turn": {
           "name": "Kein Rechtsabbiegen",
-          "terms": ["rechtsabbiegeverbot", "rechtsabbiegen verboten", "kein rechtsabbiegen", "kein abbiegen nach rechts"]
+          "terms": ["rechtsabbiegeverbot", "rechtsabbiegen verboten", "kein rechtsabbiegen", "kein abbiegen nach rechts"],
+          "relation": {
+            "role_labels": {
+              "from": "Von",
+              "to": "Nach",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_straight_on": {
           "name": "Geradeausfahrverbot",
-          "terms": ["geradeausfahrverbot", "geradeausfahren verboten", "geradeaus fahren nicht erlaubt"]
+          "terms": ["geradeausfahrverbot", "geradeausfahren verboten", "geradeaus fahren nicht erlaubt"],
+          "relation": {
+            "role_labels": {
+              "from": "Von",
+              "to": "Nach",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_u_turn": {
           "name": "Kehrtwendeverbot",
-          "terms": ["kehrtwendeverbot", "kehrtwende verboten", "umkehren verboten", "umdrehen verboten", "keine kehrtwende", "kein umdrehen", "keine umkehren"]
+          "terms": ["kehrtwendeverbot", "kehrtwende verboten", "umkehren verboten", "umdrehen verboten", "keine kehrtwende", "kein umdrehen", "keine umkehren"],
+          "relation": {
+            "role_labels": {
+              "from": "Von",
+              "to": "Nach",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_left_turn": {
           "name": "Nur Linksabbiegen",
-          "terms": ["nur linksabbiegen", "linksabbiegegebot", "nur abbiegen nach links"]
+          "terms": ["nur linksabbiegen", "linksabbiegegebot", "nur abbiegen nach links"],
+          "relation": {
+            "role_labels": {
+              "from": "Von",
+              "to": "Nach",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_right_turn": {
           "name": "Nur Rechtsabbiegen",
-          "terms": ["nur rechtsabbiegen", "rechtsabbiegegebot", "nur abbiegen nach rechts"]
+          "terms": ["nur rechtsabbiegen", "rechtsabbiegegebot", "nur abbiegen nach rechts"],
+          "relation": {
+            "role_labels": {
+              "from": "Von",
+              "to": "Nach",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_straight_on": {
           "name": "Nur geradeaus",
-          "terms": ["nur geradeaus"]
+          "terms": ["nur geradeaus"],
+          "relation": {
+            "role_labels": {
+              "from": "Von",
+              "to": "Nach",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_u_turn": {
           "name": "Nur Kehrtwende",
-          "terms": ["nur kehrtwende", "kehrtwendegebot", "nur umkehren", "umkehrgebot"]
+          "terms": ["nur kehrtwende", "kehrtwendegebot", "nur umkehren", "umkehrgebot"],
+          "relation": {
+            "role_labels": {
+              "from": "Von",
+              "to": "Nach",
+              "via": "Via"
+            }
+          }
         },
         "type/route": {
           "name": "Route",
@@ -6579,6 +6692,14 @@
         },
         "type/waterway": {
           "name": "Wasserstraße",
+          "relation": {
+            "role_labels": {
+              "main_stream": "Hauptarm",
+              "mouth": " Mündungsarm",
+              "side_stream": "Nebenarm",
+              "spring": "Quelle"
+            }
+          },
           "terms": ["strom", "fluss", "bach", "graben", "damm", "wehr"]
         },
         "waterway": {
@@ -6911,6 +7032,10 @@
         "amenity/university": {
           "name": "Universitätsgelände",
           "terms": ["uni", "universitätsgelände", "universitätscampus", "hochschule", "hochschulgelände", "hochschulcampus", "campus"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Podologe",
+          "terms": ["podologe", "fußheiler", "fußpflege", "podologie", "fußnagel", "zehnagel"]
         },
         "amenity/charging_station/charging_station_bicycle_designated": {
           "name": "Fahrrad-Ladestation",

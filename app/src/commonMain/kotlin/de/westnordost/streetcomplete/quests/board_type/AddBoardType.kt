@@ -32,7 +32,7 @@ class AddBoardType : OsmFilterQuestType<BoardTypeAnswer>() {
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("""
             nodes with
-              tourism = information and information = board
+              tourism = information and information ~ board|map
         """)
 
     @Composable

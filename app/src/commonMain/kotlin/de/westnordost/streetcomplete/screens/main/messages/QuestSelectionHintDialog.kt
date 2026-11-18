@@ -35,7 +35,6 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.stringResource
 
 /** Dialog that tells the user that he can turn off some boring quests in the setting. */
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun QuestSelectionHintDialog(
     onDismissRequest: () -> Unit,

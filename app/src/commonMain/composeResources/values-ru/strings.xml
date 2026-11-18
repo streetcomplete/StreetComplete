@@ -1451,6 +1451,8 @@
     <string name="quest_openingHours_from">из %1$s</string>
     <string name="quest_openingHours_until_late">%1$s до позднего вечера</string>
     <string name="quest_collectionTimes_answer_time_points">В определённое время</string>
+    <string name="calendar_new_event_title">Новое мероприятие OSM в вашем регионе!</string>
+    <string name="pref_title_message_calendar">Новые мероприятия OSM в вашем регионе</string>
     <string name="dialog_dont_notify_again2">Отписаться</string>
     <string name="quest_leave_new_note_photo_delete">Удалить</string>
 </resources>

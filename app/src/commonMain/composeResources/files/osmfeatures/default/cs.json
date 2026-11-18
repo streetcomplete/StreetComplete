@@ -200,7 +200,8 @@
         },
         "amenity/bicycle_parking": {
           "name": "Parkování kol",
-          "terms": ["kolo", "parkoviště kol", "cyklistika"]
+          "terms": ["kolo", "parkoviště kol", "cyklistika"],
+          "aliases": ["Stojan na kola", "Stojany na kola", "Držák na kola", "Kolostav", "Cyklobox"]
         },
         "amenity/bicycle_parking/building": {
           "name": "Garáž pro kola",
@@ -338,6 +339,14 @@
           "name": "Společenský sál",
           "terms": ["spolecensky sal", "komunitní sál", "komunitni sal"]
         },
+        "amenity/community_centre/cultural_centre": {
+          "name": "Kulturní centrum",
+          "terms": ["kulturni centrum", "kulturní středisko", "kulturni stredisko", "centrum kultury", "kulturní sál", "kulturni sal", "kulturák", "centrum pro kulturu"]
+        },
+        "amenity/community_centre/family_centre": {
+          "name": "Rodinné centrum",
+          "terms": ["centrum pro rodinu", "rodinné středisko"]
+        },
         "amenity/community_centre/lgbtq": {
           "name": "Komunitní centrum LGBTQ+",
           "terms": ["lgbtq událost", "lgbtq hala", "lgbt událost", "lgbt hala", "lgb událost", "lgb hala'"]
@@ -461,10 +470,6 @@
         "amenity/doctors/plastic_surgery": {
           "name": "Plastický chirurg",
           "terms": ["estetická chirurgie", "kosmetická chirurgie", "plastika", "rekonstrukční chirurgie", "plastická chirurgie"]
-        },
-        "amenity/doctors/podiatry": {
-          "name": "Podiatr",
-          "terms": ["kotník", "nohy", "noha", "chodidlo", "chodidla", "podiatrie"]
         },
         "amenity/doctors/proctology": {
           "name": "Kolorektální chirurg",
@@ -737,6 +742,10 @@
           "name": "Schránka na zásilky",
           "terms": ["schranka na zasilky", "zásilka", "zasilka", "balík", "balik", "vyzvednutí", "balíkomat", "balikomat", "výdejní box", "vydejni box"]
         },
+        "amenity/parking": {
+          "name": "Parkoviště",
+          "terms": ["parkování", "zaparkovat", "parkovací", "parkovat", "stání aut", "zastavit auto", "odstavení"]
+        },
         "amenity/parking/multi-storey": {
           "name": "Vícepatrové garáže",
           "terms": ["auto", "kryté parkoviště", "vícepodlažní parkoviště", "parkáda", "parkovací budova", "parkovací plošina", "parkovací garáž", "parkovací rampa", "parkovací struktura"]
@@ -816,6 +825,10 @@
         "amenity/place_of_worship/jewish": {
           "name": "Židovská synagoga",
           "terms": ["židovská"]
+        },
+        "amenity/place_of_worship/multifaith": {
+          "name": "Modlitebna pro více náboženství",
+          "terms": ["mnohonáboženské místo", "náboženské obřady", "místo pro různá náboženství", "uctívání", "modlitby", "modlení", "kostel", "modlitebna", "místo modlitby pro více náboženství", "víra", "svatyně", "svatostánek", "svaté místo"]
         },
         "amenity/place_of_worship/muslim": {
           "name": "Islámská mešita",
@@ -1033,8 +1046,8 @@
           "terms": ["přístřešek pro dobytek", "přístřešek na poli", "zemědělský přístřešek", "střecha na poli", "přístřešek na plodiny", "kryt na seno", "seník"]
         },
         "amenity/shelter/gazebo": {
-          "name": "Altánek",
-          "terms": ["altanek", "altán", "altan", "besídka", "besidka", "přístřešek", "střecha", "dřevěná stavba"]
+          "name": "Altán",
+          "terms": ["altanek", "besídka", "besidka", "přístřešek", "pristresek"]
         },
         "amenity/shelter/lean_to": {
           "name": "Otevřený přístřešek",
@@ -1047,6 +1060,10 @@
         "amenity/shelter/public_transport": {
           "name": "Přístřešek veřejné dopravy",
           "terms": ["autobusová zastávka", "zastávka metra", "zastavka", "pristresek verejne dopravy", "přístřešek hromadné dopravy", "pristresek hromadne dopravy", "přístřešek mhd", "přístřešek tramvajové zastávky", "čekání"]
+        },
+        "amenity/shelter/sun_shelter": {
+          "name": "Stínicí přístřeší",
+          "terms": ["sluneční clona", "sluneční přístřešek", "krytí proti slunci", "úkryt před sluncem", "stínění", "ochrana před sluncem", "přístřešek pro turisty"]
         },
         "amenity/shower": {
           "name": "Sprchy",
@@ -1149,8 +1166,8 @@
           "terms": ["otevřený", "venkovní", "řecký", "amfitéatr"]
         },
         "amenity/ticket_validator": {
-          "name": "Ověřovač vstupenek",
-          "terms": ["lístek", "ověřovač", "děrovač"]
+          "name": "Označovač jízdenek",
+          "terms": ["oznacovac jizdenek", "validátor", "validator"]
         },
         "amenity/toilets": {
           "name": "Toaleta",
@@ -1348,8 +1365,8 @@
           "name": "Plocha",
           "relation": {
             "role_labels": {
-              "inner": "Vnitřní",
-              "outer": "Vnější"
+              "inner": "Vnitřní okraj",
+              "outer": "Vnější okraj"
             }
           },
           "terms": ["polygon"]
@@ -1414,8 +1431,8 @@
           "terms": ["zábavní park", "atrakce", "labyrint"]
         },
         "attraction/pirate_ship": {
-          "name": "Houpačka ve tvaru pirátské lodi",
-          "terms": ["zábavní park", "karnevalová jízda", "zábavní jízda"]
+          "name": "Kyvadlová pirátská loď",
+          "terms": ["kyvadlova piratska lod", "piratska lod"]
         },
         "attraction/river_rafting": {
           "name": "Jízda na divoké řece",
@@ -1944,7 +1961,7 @@
         },
         "craft/brewery": {
           "name": "Minipivovar",
-          "terms": ["alkohol", "pivo", "nápoj", "pivko", "chlast", "mošt"]
+          "terms": ["řemeslný pivovar", "remeslny pivovar", "pivovar"]
         },
         "craft/carpenter": {
           "name": "Tesař",
@@ -2496,8 +2513,8 @@
           "name": "Neformální přechod"
         },
         "highway/crossing/traffic_signals": {
-          "name": "Přechod pro chodce se semaforem",
-          "terms": ["přechod pro cyklisty (semafor)", "přechod (semafor)", "přechod pro chodce (semafor)", "semafor pro chodce", "světelná signalizace pro chodce"]
+          "name": "Přechod se semafory",
+          "terms": ["přejezd cyklostezky", "přechod cyklostezky", "přejezd pro cyklisty", "přechod silnice", "řízený přechod pro chodce", "semafor pro chodce", "světelný přechod", "přechod pro chodce se semafory"]
         },
         "highway/crossing/uncontrolled": {
           "name": "Označený přechod",
@@ -2830,7 +2847,7 @@
           "terms": ["místní komunikace", "místní cesta", "místní silnice", "neklasifikovaná silnice", "ulice", "neznačená silnice", "neznačená cesta"]
         },
         "historic": {
-          "name": "Památné místo",
+          "name": "Historický prvek",
           "terms": ["historické místo", "hrad", "pevnost", "zámeček", "zámek", "ruina", "hradiště", "archeologické místo", "archeologické naleziště"]
         },
         "historic/aircraft": {
@@ -2858,8 +2875,8 @@
           "terms": ["hradiště", "zámek", "král", "sídlo", "ruina", "zřícenina"]
         },
         "historic/castle/fortress": {
-          "name": "Historická pevnost",
-          "terms": ["citadela", "vojenský"]
+          "name": "Historická pevnost (sídlo)",
+          "terms": ["citadela", "pevnost"]
         },
         "historic/castle/palace": {
           "name": "Palác",
@@ -2875,7 +2892,7 @@
         },
         "historic/fort": {
           "name": "Historická pevnost",
-          "terms": ["vojenský"]
+          "terms": ["pevnost"]
         },
         "historic/manor": {
           "name": "Panský dům",
@@ -3362,8 +3379,8 @@
           "terms": ["lavice", "šachovnice", "šachy", "dáma", "šach", "hrací stůl"]
         },
         "leisure/pitch": {
-          "name": "Hřiště",
-          "terms": ["hriste", "sportovní kurt", "dvorec", "kurt"]
+          "name": "Sportovní hřiště / kurt",
+          "terms": ["hřiště", "hriste", "sportovni hriste", "sportovní kurt", "dvorec", "kurt"]
         },
         "leisure/pitch/american_football": {
           "name": "Hřiště pro americký fotbal",
@@ -3473,8 +3490,8 @@
           "terms": ["minifotbal", "malý fotbal"]
         },
         "leisure/pitch/gaga": {
-          "name": "Gaga jáma",
-          "terms": ["gaga míč"]
+          "name": "Hřiště pro hru gaga",
+          "terms": ["gaga", "ga-ga"]
         },
         "leisure/pitch/handball": {
           "name": "Hřiště pro týmovou házenou",
@@ -3550,7 +3567,7 @@
         },
         "leisure/playground": {
           "name": "Dětské hřiště",
-          "terms": ["hřiště", "dětské hřiště", "prolézačky", "prolézačka", "pískoviště", "houpačky", "houpačka", "skluzavky", "skluzavka"]
+          "terms": ["detske hriste", "hřiště", "hriste"]
         },
         "leisure/playground/indoor": {
           "name": "Vnitřní dětské hřiště",
@@ -3982,7 +3999,7 @@
           "terms": ["automatizace řízení dopravy"]
         },
         "man_made/street_cabinet/waste": {
-          "name": "Soukromá skříň na sběr odpadu",
+          "name": "Soukromá skříň na odpadové nádoby",
           "terms": ["sběr odpadu", "odpad", "skříň"]
         },
         "man_made/surveillance": {
@@ -4067,7 +4084,7 @@
         },
         "man_made/water_tap": {
           "name": "Vodovodní kohoutek",
-          "terms": ["pitná voda", "vodovodní kohoutek", "vodní bod", "zdroj vody", "vodovodní uzávěr"]
+          "terms": ["pitná voda", "vodovodní kohoutek", "zdroj vody", "vodovodní uzávěr"]
         },
         "man_made/water_tower": {
           "name": "Vodárenská věž",
@@ -4098,8 +4115,8 @@
           "terms": ["tovarna", "výroba", "vyroba", "výrobce", "vyrobce", "závod", "zavod", "zpracování", "podnik"]
         },
         "man_made/works/brewery": {
-          "name": "Pivovar",
-          "terms": ["alkohol", "pivo", "pivko", "chlast", "mošt"]
+          "name": "Průmyslový pivovar",
+          "terms": ["prumyslovy pivovar", "pivovar"]
         },
         "man_made/yes": {
           "name": "Prvek vytvořený člověkem (nespecifikovaný druh)"
@@ -4249,7 +4266,7 @@
         },
         "natural/spring": {
           "name": "Pramen",
-          "terms": ["pramen", "vodní pramen", "studánka", "studna"]
+          "terms": ["vodní pramen", "vodni pramen", "studánka", "studanka"]
         },
         "natural/stone": {
           "name": "Samostatný kámen/balvan",
@@ -4399,7 +4416,7 @@
         },
         "noexit/yes": {
           "name": "Konec cesty",
-          "terms": ["slepá ulice", "konec ulice", "konec silnice", "slepá silnice"]
+          "terms": ["slepá ulice", "konec ulice", "konec silnice", "slepá silnice", "exit"]
         },
         "office": {
           "name": "Kancelář",
@@ -4823,8 +4840,8 @@
           "terms": ["houpačka", "pružina", "houpačka na pružině", "koník na pružině", "hřiště", "děti", "dětské hřiště", "herní prvek"]
         },
         "playground/structure": {
-          "name": "Prolézačka / větší objekt",
-          "terms": ["prolézačky"]
+          "name": "Sestava (větší objekt)",
+          "terms": ["prolézačky", "prolezacka", "houpačka", "houpacka", "hrací prvek", "hraci prvek", "skluzavka"]
         },
         "playground/swing": {
           "name": "Závěsná houpačka",
@@ -5213,6 +5230,10 @@
           "name": "Kolej úzkorozchodné dráhy",
           "terms": ["úzkorozchodná dráha", "úzkokolejná dráha", "úzkokolejka", "úzkokolejná trať", "železnice", "vlak", "dráha", "hromadná doprava", "železniční", "úzkorozchodka", "jhmd", "úzká kolej", "místní dráha", "vlečka"]
         },
+        "railway/platform_edge": {
+          "name": "Hrana nástupiště",
+          "terms": ["nástupní hrana", "hrana nástupiště", "okraj nástupiště", "hrana", "okraj"]
+        },
         "railway/preserved": {
           "name": "Historická železnice",
           "terms": ["zachovalá železnice", "železnice", "dráha", "železniční dráha", "turistická dráha", "turistická železnice", "historická dráha"]
@@ -5234,7 +5255,7 @@
           "terms": ["semafor", "světlo"]
         },
         "railway/signal_box": {
-          "name": "Návěstidlo",
+          "name": "Stavědlo",
           "terms": ["staniční zabezpečovací zařízení", "stavědlo", "železniční zabezpečovací zařízení", "návěst", "budova stavědla"]
         },
         "railway/subway": {
@@ -5318,6 +5339,11 @@
         "seamark/mooring": {
           "name": "Kotvení",
           "terms": ["kotveni"]
+        },
+        "seamark/offshore_platform": {
+          "name": "Pobřežní plošina",
+          "terms": ["mořská plošina", "vrtná plošina", "ropa", "plyn", "těžba ropy", "těžba plynu", "těžařská plošina", "námořní plošina", "plošina", "vrtná věž"],
+          "aliases": ["Mořská plošina"]
         },
         "shop": {
           "name": "Obchod",
@@ -6313,16 +6339,22 @@
         },
         "type/boundary": {
           "name": "Hranice",
-          "terms": ["hranice", "hraniční", "čára"]
+          "terms": ["hranice", "hraniční", "čára"],
+          "relation": {
+            "role_labels": {
+              "inner": "Vnitřní okraj",
+              "outer": "Vnější okraj"
+            }
+          }
         },
         "type/boundary/administrative": {
           "name": "Administrativní hranice",
           "relation": {
             "role_labels": {
-              "admin_centre": "Administrativní centrum",
-              "inner": "Vnitřní",
+              "admin_centre": "Správní město / správní sídlo",
               "label": "Popiska",
-              "outer": "Vnější"
+              "inner": "Vnitřní okraj",
+              "outer": "Vnější okraj"
             }
           },
           "terms": ["administrativní hranice", "správní hranice", "hranice správní oblasti", "hranice kraje", "hranice oblasti", "hranice regionu"]
@@ -6337,6 +6369,14 @@
         },
         "type/destination_sign": {
           "name": "Směrová tabule",
+          "relation": {
+            "role_labels": {
+              "intersection": "Průsečík",
+              "sign": "Fyzický příznak",
+              "from": "Od",
+              "to": "Do"
+            }
+          },
           "terms": ["směrová tabule", "směrová značka", "značka směru", "značka cíle", "cedule se směrem", "směrová cedule", "směr výjezdu", "označení exitu", "směr", "šipka"]
         },
         "type/enforcement": {
@@ -6352,8 +6392,8 @@
           "terms": ["multipolygon", "polygon", "mnohoúhelník"],
           "relation": {
             "role_labels": {
-              "inner": "Vnitřní",
-              "outer": "Vnější"
+              "inner": "Vnitřní okraj",
+              "outer": "Vnější okraj"
             }
           }
         },
@@ -6363,39 +6403,122 @@
         },
         "type/restriction": {
           "name": "Omezení",
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Do",
+              "via": "Přes"
+            }
+          },
           "terms": ["omezení", "dopravní omezení"]
+        },
+        "type/restriction/no_entry": {
+          "name": "Zákazaný vjezd",
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Do",
+              "via": "Přes"
+            }
+          }
+        },
+        "type/restriction/no_exit": {
+          "name": "Zakázaný výjezd",
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Do",
+              "via": "Přes"
+            }
+          }
         },
         "type/restriction/no_left_turn": {
           "name": "Zákaz odbočování vlevo",
-          "terms": ["odbočování vlevo", "odbočení vlevo", "odbočit vlevo", "zatočení vlevo", "zatočit vlevo"]
+          "terms": ["odbočování vlevo", "odbočení vlevo", "odbočit vlevo", "zatočení vlevo", "zatočit vlevo"],
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Do",
+              "via": "Přes"
+            }
+          }
         },
         "type/restriction/no_right_turn": {
           "name": "Zákaz odbočování vpravo",
-          "terms": ["odbočování vpravo", "odbočit vpravo", "odbočení vpravo", "zatočit vpravo", "zatočení vpravo"]
+          "terms": ["odbočování vpravo", "odbočit vpravo", "odbočení vpravo", "zatočit vpravo", "zatočení vpravo"],
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Do",
+              "via": "Přes"
+            }
+          }
         },
         "type/restriction/no_straight_on": {
           "name": "Zákaz jízdy vpřed",
-          "terms": ["zákaz jízdy rovně", "zákaz jízdy přímo", "zakázáno jet rovně", "zakázáno jet přímo", "přikázaný směr jízdy vlevo a vpravo", "přikázaný směr jízdy vpravo a vlevo", "přikázáno odbočit", "přikázáno odbočení"]
+          "terms": ["zákaz jízdy rovně", "zákaz jízdy přímo", "zakázáno jet rovně", "zakázáno jet přímo", "přikázaný směr jízdy vlevo a vpravo", "přikázaný směr jízdy vpravo a vlevo", "přikázáno odbočit", "přikázáno odbočení"],
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Do",
+              "via": "Přes"
+            }
+          }
         },
         "type/restriction/no_u_turn": {
           "name": "Zákaz otáčení",
-          "terms": ["zákaz otáčení", "zakázáno otáčení", "zákaz otočení", "zakázáno otočení", "otáčení zakázáno", "otočení zakázáno", "neotáčet se"]
+          "terms": ["zákaz otáčení", "zakázáno otáčení", "zákaz otočení", "zakázáno otočení", "otáčení zakázáno", "otočení zakázáno", "neotáčet se"],
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Do",
+              "via": "Přes"
+            }
+          }
         },
         "type/restriction/only_left_turn": {
           "name": "Pouze odbočení doleva",
-          "terms": ["přikázaný směr jízdy doleva", "přikázaný směr jízdy vlevo", "příkaz jet doleva", "jen vlevo", "jen doleva", "pouze vlevo", "pouze doleva"]
+          "terms": ["přikázaný směr jízdy doleva", "přikázaný směr jízdy vlevo", "příkaz jet doleva", "jen vlevo", "jen doleva", "pouze vlevo", "pouze doleva"],
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Do",
+              "via": "Přes"
+            }
+          }
         },
         "type/restriction/only_right_turn": {
           "name": "Pouze odbočování doprava",
-          "terms": ["přikázaný směr jízdy doprava", "přikázaný směr jízdy vpravo", "příkaz jet doprava", "jen vpravo", "jen doprava", "pouze vpravo", "pouze doprava"]
+          "terms": ["přikázaný směr jízdy doprava", "přikázaný směr jízdy vpravo", "příkaz jet doprava", "jen vpravo", "jen doprava", "pouze vpravo", "pouze doprava"],
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Do",
+              "via": "Přes"
+            }
+          }
         },
         "type/restriction/only_straight_on": {
           "name": "Pouze jízda vpřed",
-          "terms": ["přikázaný směr jízdy rovně", "přikázaný směr jízdy přímo", "příkaz jet rovně", "jen přímo", "jen rovně", "pouze přímo", "pouze rovně"]
+          "terms": ["přikázaný směr jízdy rovně", "přikázaný směr jízdy přímo", "příkaz jet rovně", "jen přímo", "jen rovně", "pouze přímo", "pouze rovně"],
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Do",
+              "via": "Přes"
+            }
+          }
         },
         "type/restriction/only_u_turn": {
           "name": "Pouze otáčení",
-          "terms": ["pouze otáčení", "jen otáčení", "pouze otočit", "jen otočení", "povoleno pouze otočení", "pouze otočení o 180°"]
+          "terms": ["pouze otáčení", "jen otáčení", "pouze otočit", "jen otočení", "povoleno pouze otočení", "pouze otočení o 180°"],
+          "relation": {
+            "role_labels": {
+              "from": "Od",
+              "to": "Do",
+              "via": "Přes"
+            }
+          }
         },
         "type/route": {
           "name": "Trasa",
@@ -6499,6 +6622,14 @@
         },
         "type/waterway": {
           "name": "Vodní tok",
+          "relation": {
+            "role_labels": {
+              "main_stream": "Hlavní proud",
+              "mouth": "Ústí",
+              "side_stream": "Boční proud",
+              "spring": "Pramen"
+            }
+          },
           "terms": ["vodní tok", "řeka", "potok", "kanál", "tok"]
         },
         "waterway": {
@@ -6653,8 +6784,8 @@
           "terms": ["letectvo", "armáda", "základna", "výbuch", "bomba", "exploze", "výbušný", "síla", "stráž", "námořní", "mina", "námořnictvo", "vojska", "válka"]
         },
         "landuse/industrial/brewery": {
-          "name": "Pivovar",
-          "terms": ["alkohol", "pivo", "pivko", "chlast", "mošt"]
+          "name": "Průmyslový pivovar",
+          "terms": ["prumyslovy pivovar", "pivovar"]
         },
         "landuse/industrial/industrial_point": {
           "name": "Průmyslová oblast",
@@ -6824,6 +6955,10 @@
         "amenity/university": {
           "name": "Areál univerzity",
           "terms": ["prostor univerzity", "území univerzity", "kolej", "koleje", "aula"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Podiatr",
+          "terms": ["noha", "nohy", "chodidla", "kotník", "kotnik", "podiatrie"]
         },
         "amenity/charging_station/charging_station_bicycle_designated": {
           "name": "Nabíječka elektrokol",

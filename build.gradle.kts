@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.android.multiplatformLibrary) apply false
     alias(libs.plugins.compose.multiplatform) apply false
+    alias(libs.plugins.nucleus) apply false
 }
 
 val poEditorProjectId = "97843"
@@ -88,6 +89,7 @@ tasks.register("updateStreetCompleteData") {
         "app:updateTranslations",
         "app:updateTranslationCompleteness",
         "app:updateIosTranslations",
+        "app:updateMacosTranslations",
         "app:updateChangelog",
         "app:generateMetadataByCountry",
         "app:updateTranslatorCredits",

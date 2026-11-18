@@ -20,7 +20,7 @@ class StatisticsParserTest {
             "questTypes": {
                 "TestQuestTypeA": "11",
                 "TestQuestTypeB": "4",
-                "TestQuestTypeCAlias": "45"
+                "TestQuestTypeC": "45"
             },
             "countries": {
                 "DE": "8",
@@ -34,7 +34,7 @@ class StatisticsParserTest {
             "currentWeekQuestTypes": {
                 "TestQuestTypeA": "9",
                 "TestQuestTypeB": "99",
-                "TestQuestTypeCAlias": "999"
+                "TestQuestTypeC": "999"
             },
             "currentWeekCountries": {
                 "IT": 4,
@@ -80,6 +80,6 @@ class StatisticsParserTest {
             lastUpdate = Instant.parse("2007-12-03T10:15:30+01:00").toEpochMilliseconds(),
             isAnalyzing = false
         ),
-        StatisticsParser(listOf("TestQuestTypeCAlias" to "TestQuestTypeC")).parse(buffer))
+        StatisticsParser().parse(buffer))
     }
 }

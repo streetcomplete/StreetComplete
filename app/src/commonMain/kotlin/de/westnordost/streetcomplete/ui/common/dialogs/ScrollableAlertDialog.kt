@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.ui.common.dialogs
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -31,7 +30,6 @@ import androidx.compose.ui.window.DialogProperties
 
 /** AlertDialog that can have scrollable content without bugging out and separates the scrollable
  *  content with a divider at the top and bottom. */
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ScrollableAlertDialog(
     onDismissRequest: () -> Unit,
@@ -62,7 +60,6 @@ fun ScrollableAlertDialog(
     }
 }
 
-@OptIn(ExperimentalLayoutApi::class)
 @Preview
 @Composable
 private fun PreviewScrollableAlertDialog() {

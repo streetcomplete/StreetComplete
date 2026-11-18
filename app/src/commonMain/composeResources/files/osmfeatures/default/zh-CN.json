@@ -93,7 +93,7 @@
           "terms": ["索道", "滑索", "飞索", "绳索", "滑缆", "拖拽", "飞人", "空中", "高空", "滑翔"]
         },
         "aeroway": {
-          "name": "航空航天要素"
+          "name": "机场要素"
         },
         "aeroway/aerodrome": {
           "name": "机场",
@@ -236,7 +236,7 @@
         },
         "amenity/boat_rental": {
           "name": "船舶租赁处",
-          "terms": ["船舶租赁处"]
+          "terms": ["船租赁处", "船舶出租点", "租赁", "出租", "船舶"]
         },
         "amenity/boat_storage": {
           "name": "存船处",
@@ -461,10 +461,6 @@
         "amenity/doctors/plastic_surgery": {
           "name": "整形科诊室",
           "terms": ["整形科", "整形外科", "整形"]
-        },
-        "amenity/doctors/podiatry": {
-          "name": "足踝科诊室",
-          "terms": ["足", "脚", "脚趾", "足踝", "脚踝", "踝关节", "足病", "治疗", "诊所", "医院", "医学", "医疗", "疗法", "卫生"]
         },
         "amenity/doctors/proctology": {
           "name": "结直肠外科诊室",
@@ -736,6 +732,10 @@
         "amenity/parcel_locker": {
           "name": "快递柜",
           "terms": ["快递柜", "包裹", "柜"]
+        },
+        "amenity/parking": {
+          "name": "停车场",
+          "terms": ["停车场", "停车", "rv"]
         },
         "amenity/parking/multi-storey": {
           "name": "多层停车场",
@@ -1048,6 +1048,10 @@
           "name": "候车亭",
           "terms": ["候车亭", "候车厅", "候车", "等车", "等候", "棚", "公交站", "地铁站", "公共交通", "庇护所", "站台", "月台", "车站", "站点"]
         },
+        "amenity/shelter/sun_shelter": {
+          "name": "遮阳棚",
+          "terms": ["遮阳棚", "亭"]
+        },
         "amenity/shower": {
           "name": "淋浴间",
           "terms": ["公共", "浴室", "淋浴", "浴池", "澡堂", "洗澡", "冲澡", "冲凉", "洗浴", "搓澡", "清洁", "搓背", "修脚", "温泉", "足浴", "雨"]
@@ -1348,8 +1352,8 @@
           "name": "区域",
           "relation": {
             "role_labels": {
-              "inner": "内部的",
-              "outer": "外部的"
+              "inner": "内部边界",
+              "outer": "外部边界"
             }
           },
           "terms": ["区域", "面"]
@@ -1635,7 +1639,7 @@
         },
         "building": {
           "name": "建筑物",
-          "terms": ["建筑物，屋宇"]
+          "terms": ["建筑物", "屋宇"]
         },
         "building/allotment_house": {
           "name": "农具棚",
@@ -1655,7 +1659,7 @@
         },
         "building/boathouse": {
           "name": "船库",
-          "terms": ["船", "船库", "船坞", "船屋", "停船", "仓库", "码头", "避风塘"]
+          "terms": ["船", "船库", "船屋", "停船", "仓库", "码头", "避风塘"]
         },
         "building/bungalow": {
           "name": "平房",
@@ -2138,7 +2142,7 @@
           "terms": ["飞盘", "高尔夫", "球座"]
         },
         "disused/aeroway": {
-          "name": "废弃航空航天要素"
+          "name": "废弃机场要素"
         },
         "disused/amenity": {
           "name": "废弃设施"
@@ -2494,10 +2498,6 @@
         },
         "highway/crossing/informal": {
           "name": "非正式行人过街点"
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "有交通信号人行横道",
-          "terms": ["交通信号", "人行横道", "斑马线", "红绿灯"]
         },
         "highway/crossing/uncontrolled": {
           "name": "有标线人行横道",
@@ -3710,8 +3710,8 @@
           "terms": ["槽", "堆料", "储料", "贮料", "储存", "堆场", "场地", "储场"]
         },
         "man_made/cairn": {
-          "name": "石墩/玛尼石",
-          "terms": ["玛尼石", "石碓", "垒石", "石头堆", "石墩"]
+          "name": "石堆",
+          "terms": ["玛尼堆", "石碓", "垒石", "石头堆"]
         },
         "man_made/carpet_hanger": {
           "name": "地毯挂架",
@@ -3957,8 +3957,8 @@
           "terms": ["储罐", "储油罐", "储气罐"]
         },
         "man_made/storage_tank/water": {
-          "name": "储液罐",
-          "terms": ["储水槽", "水塔"]
+          "name": "储水罐",
+          "terms": ["储罐", "水罐"]
         },
         "man_made/street_cabinet": {
           "name": "户外机柜",
@@ -5185,7 +5185,7 @@
           "terms": ["缆索铁道", "上坡轨道", "下坡轨道", "缆车", "山顶缆车", "悬崖轨道"]
         },
         "railway/level_crossing": {
-          "name": "铁路道路交叉口",
+          "name": "铁路-道路交叉口",
           "terms": ["平交道口"]
         },
         "railway/light_rail": {
@@ -5212,6 +5212,10 @@
           "name": "窄轨铁路轨道",
           "terms": ["窄轨铁路", "铁路", "轨道", "火车"]
         },
+        "railway/platform_edge": {
+          "name": "火车站台边线",
+          "terms": ["列车", "火车", "动车", "高铁", "铁路", "车站", "站台", "站台面", "月台", "公共交通", "交通"]
+        },
         "railway/preserved": {
           "name": "历史铁路轨道",
           "terms": ["遗产铁路", "遗留铁路", "蒸汽火车", "历史火车", "旅游火车"]
@@ -5233,7 +5237,7 @@
           "terms": ["色灯", "信号机", "信号", "灯", "信号灯", "红绿灯", "表示器", "轨道", "股道", "铁轨", "铁路", "路轨", "火车", "列车", "调车", "进站", "出站"]
         },
         "railway/signal_box": {
-          "name": "铁路信号楼/信号箱",
+          "name": "铁路信号控制机/信号楼",
           "terms": ["信号所", "信号箱", "信号", "信号控制", "联锁设备", "联锁控制", "联锁系统"]
         },
         "railway/subway": {
@@ -5317,6 +5321,10 @@
         "seamark/mooring": {
           "name": "系泊设备",
           "terms": ["泊位"]
+        },
+        "seamark/offshore_platform": {
+          "name": "离岸海上平台",
+          "terms": ["钻井", "平台", "海上"]
         },
         "shop": {
           "name": "商店",
@@ -6312,16 +6320,22 @@
         },
         "type/boundary": {
           "name": "边界",
-          "terms": ["边界"]
+          "terms": ["边界"],
+          "relation": {
+            "role_labels": {
+              "inner": "内部边界",
+              "outer": "外部边界"
+            }
+          }
         },
         "type/boundary/administrative": {
           "name": "行政区边界",
           "relation": {
             "role_labels": {
-              "admin_centre": "政府驻地",
-              "inner": "内部的",
+              "admin_centre": "治所",
               "label": "标签",
-              "outer": "外部的"
+              "inner": "内部边界",
+              "outer": "外部边界"
             }
           },
           "terms": ["行政边界"]
@@ -6336,7 +6350,13 @@
         },
         "type/destination_sign": {
           "name": "目的地标识",
-          "terms": ["目的地标识", "目的地标志", "出口目的地标识", "出口目的地标志"]
+          "terms": ["目的地标识", "目的地标志", "出口目的地标识", "出口目的地标志"],
+          "relation": {
+            "role_labels": {
+              "from": "起点",
+              "to": "终点"
+            }
+          }
         },
         "type/enforcement": {
           "name": "执行措施",
@@ -6351,8 +6371,8 @@
           "terms": ["多个面"],
           "relation": {
             "role_labels": {
-              "inner": "内部的",
-              "outer": "外部的"
+              "inner": "内部边界",
+              "outer": "外部边界"
             }
           }
         },
@@ -6362,39 +6382,122 @@
         },
         "type/restriction": {
           "name": "限制",
+          "relation": {
+            "role_labels": {
+              "from": "起点",
+              "to": "终点",
+              "via": "经由"
+            }
+          },
           "terms": ["限制"]
+        },
+        "type/restriction/no_entry": {
+          "name": "禁止驶入",
+          "relation": {
+            "role_labels": {
+              "from": "起点",
+              "to": "终点",
+              "via": "经由"
+            }
+          }
+        },
+        "type/restriction/no_exit": {
+          "name": "禁止驶出",
+          "relation": {
+            "role_labels": {
+              "from": "起点",
+              "to": "终点",
+              "via": "经由"
+            }
+          }
         },
         "type/restriction/no_left_turn": {
           "name": "禁止左转",
-          "terms": ["左转", "禁止左转", "不许左转", "允许右转", "允许直行", "允许掉头"]
+          "terms": ["左转", "禁止左转", "不许左转", "允许右转", "允许直行", "允许掉头"],
+          "relation": {
+            "role_labels": {
+              "from": "起点",
+              "to": "终点",
+              "via": "经由"
+            }
+          }
         },
         "type/restriction/no_right_turn": {
           "name": "禁止右转",
-          "terms": ["右转", "禁止右转", "不许右转", "允许左转", "允许直行", "允许掉头"]
+          "terms": ["右转", "禁止右转", "不许右转", "允许左转", "允许直行", "允许掉头"],
+          "relation": {
+            "role_labels": {
+              "from": "起点",
+              "to": "终点",
+              "via": "经由"
+            }
+          }
         },
         "type/restriction/no_straight_on": {
           "name": "禁止直行",
-          "terms": ["直行", "禁止直行", "不许直行", "允许左转", "允许掉头", "允许右转"]
+          "terms": ["直行", "禁止直行", "不许直行", "允许左转", "允许掉头", "允许右转"],
+          "relation": {
+            "role_labels": {
+              "from": "起点",
+              "to": "终点",
+              "via": "经由"
+            }
+          }
         },
         "type/restriction/no_u_turn": {
           "name": "禁止掉头",
-          "terms": ["掉头", "禁止掉头", "不许掉头", "允许左转", "允许直行", "允许右转"]
+          "terms": ["掉头", "禁止掉头", "不许掉头", "允许左转", "允许直行", "允许右转"],
+          "relation": {
+            "role_labels": {
+              "from": "起点",
+              "to": "终点",
+              "via": "经由"
+            }
+          }
         },
         "type/restriction/only_left_turn": {
           "name": "仅限左转",
-          "terms": ["左转", "仅左转", "大转", "禁止右转", "禁止直行", "禁止掉头"]
+          "terms": ["左转", "仅左转", "大转", "禁止右转", "禁止直行", "禁止掉头"],
+          "relation": {
+            "role_labels": {
+              "from": "起点",
+              "to": "终点",
+              "via": "经由"
+            }
+          }
         },
         "type/restriction/only_right_turn": {
           "name": "仅限右转",
-          "terms": ["右转", "仅右转", "小转", "禁止左转", "禁止直行", "禁止掉头"]
+          "terms": ["右转", "仅右转", "小转", "禁止左转", "禁止直行", "禁止掉头"],
+          "relation": {
+            "role_labels": {
+              "from": "起点",
+              "to": "终点",
+              "via": "经由"
+            }
+          }
         },
         "type/restriction/only_straight_on": {
           "name": "仅限直行",
-          "terms": ["直行", "仅直行", "禁止左转", "禁止右转", "禁止掉头"]
+          "terms": ["直行", "仅直行", "禁止左转", "禁止右转", "禁止掉头"],
+          "relation": {
+            "role_labels": {
+              "from": "起点",
+              "to": "终点",
+              "via": "经由"
+            }
+          }
         },
         "type/restriction/only_u_turn": {
           "name": "仅限掉头",
-          "terms": ["掉头", "仅掉头", "禁止左转", "禁止直行", "禁止右转"]
+          "terms": ["掉头", "仅掉头", "禁止左转", "禁止直行", "禁止右转"],
+          "relation": {
+            "role_labels": {
+              "from": "起点",
+              "to": "终点",
+              "via": "经由"
+            }
+          }
         },
         "type/route": {
           "name": "线路",
@@ -6529,7 +6632,7 @@
         },
         "waterway/dock": {
           "name": "干船坞/湿船坞",
-          "terms": ["干船坞", "湿船坞", "干坞", "湿坞"]
+          "terms": ["干船坞", "湿船坞", "干坞", "湿坞", "修船", "造船", "船舶维修", "船坞"]
         },
         "waterway/drain": {
           "name": "排水道",
@@ -6589,7 +6692,7 @@
         },
         "building_point": {
           "name": "建筑物",
-          "terms": ["建筑物，屋宇"]
+          "terms": ["建筑物", "屋宇"]
         },
         "ford_line": {
           "name": "过水路面",
@@ -6823,6 +6926,10 @@
         "amenity/university": {
           "name": "大学",
           "terms": ["大学", "学院", "院校", "校园", "学校", "学习"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "足疗师",
+          "terms": ["足", "脚", "脚趾", "脚臭", "指甲", "足疗", "足病", "治疗", "诊所", "医院", "医学", "医疗", "疗法", "卫生"]
         },
         "amenity/charging_station/charging_station_bicycle_designated": {
           "name": "电动自行车充电站",

@@ -82,8 +82,8 @@ internal fun MainMapContent(
     onClickElement: (ElementKey) -> Unit,
 ) {
     val mapState = checkNotNull(LocalMapState.current)
-    val showPinsAtZoom by remember(mapState) { derivedStateOf { mapState.cameraPosition.zoom >= 13 } }
-    val showOverlayAtZoom by remember(mapState) { derivedStateOf { mapState.cameraPosition.zoom >= 14 } }
+    val showPinsAtZoom by remember { derivedStateOf { mapState.cameraPosition.zoom >= 13 } }
+    val showOverlayAtZoom by remember { derivedStateOf { mapState.cameraPosition.zoom >= 14 } }
 
     val pins: Collection<Pin> = if (!showPinsAtZoom) emptyList() else when (pinsMode) {
         PinsMode.Quests -> viewModel.questPins.collectAsStateWithLifecycle().value

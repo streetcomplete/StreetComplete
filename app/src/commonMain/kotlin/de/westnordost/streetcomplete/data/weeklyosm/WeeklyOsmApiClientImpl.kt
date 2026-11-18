@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.weeklyosm
 
 import io.ktor.client.HttpClient
+import io.ktor.client.plugins.expectSuccess
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsChannel
 import io.ktor.utils.io.asSource
@@ -12,7 +13,7 @@ class WeeklyOsmApiClientImpl(
     private val parser: WeeklyOsmRssFeedParser,
 ) : WeeklyOsmApiClient {
     override suspend fun getLastPublishDate(): Instant? {
-        val response = httpClient.get("https://weeklyosm.eu/feed")
+        val response = httpClient.get("https://weeklyosm.eu/feed") { expectSuccess = true }
         val source = response.bodyAsChannel().asSource().buffered()
         return parser.parseLastPublishDate(source)
     }

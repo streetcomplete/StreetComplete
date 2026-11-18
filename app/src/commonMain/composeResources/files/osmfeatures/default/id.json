@@ -49,6 +49,13 @@
         "amenity": {
           "name": "Fasilitas"
         },
+        "amenity/animal_boarding": {
+          "name": "Fasilitas Penitipan Hewan"
+        },
+        "amenity/animal_breeding": {
+          "name": "Fasilitas Pembiakan Hewan",
+          "terms": ["breeding"]
+        },
         "amenity/animal_shelter": {
           "name": "Penampungan Hewan",
           "terms": ["penampungan kucing", "penampungan anjing"]
@@ -103,11 +110,11 @@
         },
         "amenity/cafe": {
           "name": "Kafe / Warkop / Angkringan",
-          "terms": ["warung kopi", "bistro", "teh", "thai", "kopi", "kafe", "cafe", "warkop", "jamu"]
+          "terms": ["warung kopi", "bistro", "teh", "thai", "kopi", "kafe", "cafe", "warkop", "jamu", "angkringan", "tongkrongan"]
         },
         "amenity/cafe/bubble_tea": {
           "name": "Teh Boba",
-          "terms": ["boba", "bubble milk tea", "pearl milk tea", "taiwanese tea drink", "tapioca", "pearl tea", "boba drink"]
+          "terms": ["boba", "bubble milk tea", "pearl milk tea", "taiwanese tea drink", "tapioca", "pearl tea", "boba drink", "teh"]
         },
         "amenity/cafe/coffee_shop": {
           "name": "Kedai Kopi"
@@ -174,8 +181,8 @@
           "name": "Dokter",
           "terms": ["ahli", "praktik", "gigi", "bidan"]
         },
-        "amenity/doctors/podiatry": {
-          "name": "Spesialis Kaki"
+        "amenity/doctors/general": {
+          "name": "Praktik Dokter Umum"
         },
         "amenity/dojo": {
           "name": "Sasana Bela Diri"
@@ -295,8 +302,7 @@
           "name": "Lahan Parkir"
         },
         "amenity/pharmacy": {
-          "name": "Apotek",
-          "terms": ["toko obat"]
+          "name": "Apotek"
         },
         "amenity/place_of_worship": {
           "name": "Fasilitas Ibadah",
@@ -512,7 +518,8 @@
           "name": "Daya Tarik Wisata"
         },
         "attraction/animal": {
-          "name": "Kandang Hewan"
+          "name": "Kandang Kebun Binatang",
+          "terms": ["animal enclosure"]
         },
         "attraction/big_wheel": {
           "name": "Wahana Bianglala"
@@ -1061,10 +1068,6 @@
         "highway/crossing": {
           "name": "Penyebrangan"
         },
-        "highway/crossing/traffic_signals": {
-          "name": "Tempat Penyebrangan dengan Lalin",
-          "terms": ["zebra cross", "pelican cross"]
-        },
         "highway/crossing/uncontrolled": {
           "name": "Tempat Penyebrangan / Zebra Kros"
         },
@@ -1203,7 +1206,7 @@
           "terms": ["gang", "jalan tikus"]
         },
         "highway/service/drive-through": {
-          "name": "Layanan Tanpa Turun / Lantatur",
+          "name": "Layanan Tanpa-Turun/Lantatur",
           "terms": ["layanan tanpa turun", "pelayanan mobil", "pelayanan kendaraan"]
         },
         "highway/service/driveway": {
@@ -1314,7 +1317,7 @@
           "name": "Batu Sandungan"
         },
         "historic/monument": {
-          "name": "Monumen",
+          "name": "Tugu Monumen",
           "terms": ["monumen"]
         },
         "historic/ruins": {
@@ -1382,6 +1385,10 @@
           "name": "Budidaya Air",
           "terms": ["tambak", "kolam", "tiram", "bandeng", "udang", "lobster", "kepiting", "ikan laut", "peternakan laut", "krustasea", "alga", "aquafarming", "mussel", "marikultur", "algaculture"]
         },
+        "landuse/brownfield": {
+          "name": "Lahan Terbengkalai",
+          "terms": ["mangkrak"]
+        },
         "landuse/cemetery": {
           "name": "Taman Pemakaman",
           "terms": ["kuburan", "makam", "tpu", "tempat pemakaman umum"]
@@ -1410,6 +1417,10 @@
         "landuse/grass": {
           "name": "Rerumputan",
           "terms": ["rerumputan"]
+        },
+        "landuse/greenfield": {
+          "name": "Lahan Belum Terbangun",
+          "terms": ["land bank", "landbank", "lahan kosong", "tanah kosong", "bank tanah", "bank lahan"]
         },
         "landuse/harbour": {
           "name": "Pelabuhan"
@@ -2498,7 +2509,7 @@
           "name": "Toko Tas/Koper"
         },
         "shop/bakery": {
-          "name": "Toko Roti"
+          "name": "Toko Kue / Roti"
         },
         "shop/bathroom_furnishing": {
           "name": "Toko Perlengkapan Kamar Mandi"
@@ -2529,7 +2540,8 @@
           "name": "Toko Buku"
         },
         "shop/butcher": {
-          "name": "Penjagalan"
+          "name": "Toko Daging",
+          "terms": ["potong", "cincang", "ayam", "sapi", "babi", "bebek", "domba", "kambing"]
         },
         "shop/camera": {
           "name": "Toko Kamera"
@@ -2558,16 +2570,19 @@
           "name": "Toko Keju"
         },
         "shop/chemist": {
-          "name": "Toko Obat"
+          "name": "Toko Kimia",
+          "terms": ["sabun", "pasta gigi", "odol", "cairan lantai", "cairan pembersih", "toilet"]
         },
         "shop/chocolate": {
           "name": "Toko Cokelat"
         },
         "shop/clothes": {
-          "name": "Toko Baju"
+          "name": "Toko Pakaian",
+          "terms": ["toko baju"]
         },
         "shop/clothes/second_hand": {
-          "name": "Toko Pakaian Bekas"
+          "name": "Toko Pakaian Bekas",
+          "terms": ["toko baju bekas"]
         },
         "shop/clothes/suits": {
           "name": "Toko Setelan Jas"
@@ -2621,7 +2636,7 @@
           "name": "Pasar Swalayan"
         },
         "shop/doityourself": {
-          "name": "Toko Swakriya",
+          "name": "Toko Material / DIY",
           "terms": ["lakukan sendiri", "diy"]
         },
         "shop/doors": {
@@ -2650,7 +2665,8 @@
           "name": "Toko Mode"
         },
         "shop/fashion_accessories": {
-          "name": "Toko Pelengkap Busana"
+          "name": "Toko Pelengkap Busana",
+          "terms": ["aksesoris", "busana", "baju", "tas", "topi", "kacamata", "dompet"]
         },
         "shop/fishing": {
           "name": "Toko Ikan"
@@ -2744,7 +2760,8 @@
           "aliases": ["Kios"]
         },
         "shop/kitchen": {
-          "name": "Toko Desain Interior Dapur"
+          "name": "Toko Alat Dapur",
+          "terms": ["perabot", "parabot"]
         },
         "shop/laundry": {
           "name": "Penatu / Laundri",
@@ -2779,7 +2796,8 @@
           "terms": ["hp", "smartphone", "ponsel"]
         },
         "shop/mobile_phone_accessories": {
-          "name": "Toko Aksesoris Ponsel"
+          "name": "Toko Aksesoris Ponsel / Konter",
+          "terms": ["konter", "cell", "pulsa", "hp"]
         },
         "shop/model": {
           "name": "Toko Diecast / Model"
@@ -2821,7 +2839,7 @@
           "name": "Toko Alat Pesta / Sewa Dekorasi"
         },
         "shop/pastry": {
-          "name": "Toko Kue"
+          "name": "Toko Kue Kering / Pastri"
         },
         "shop/pawnbroker": {
           "name": "Pegadaian"
@@ -3240,6 +3258,10 @@
         "ford_line": {
           "name": "Arung sebidang dengan air"
         },
+        "type/restriction/no_straight_on": {},
+        "type/restriction/only_left_turn": {},
+        "type/restriction/only_right_turn": {},
+        "type/restriction/only_straight_on": {},
         "traffic_sign/maxspeed-US-CA-LR": {
           "name": "Rambu Batas Kecepatan"
         },
@@ -3395,6 +3417,9 @@
         },
         "amenity/university": {
           "name": "Lingkungan Universitas"
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Spesialis Kaki"
         },
         "@templates/contact": {
           "name": "Titik"

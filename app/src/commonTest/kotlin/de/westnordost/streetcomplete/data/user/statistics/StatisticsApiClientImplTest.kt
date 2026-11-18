@@ -13,7 +13,7 @@ import kotlin.test.assertFailsWith
 import kotlin.time.Instant
 
 class StatisticsApiClientImplTest {
-    private val statisticsParser = StatisticsParser(emptyList())
+    private val statisticsParser = StatisticsParser()
 
     private val validResponseMockEngine = MockEngine { respondOk("""
         {

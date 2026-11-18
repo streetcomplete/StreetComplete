@@ -48,6 +48,9 @@ class AddKerbHeight : OsmElementQuestType<KerbHeight> {
             null
         }
 
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.findAllKerbNodes().filter { it.tags["kerb"] != "no" }.asSequence()
+
     @Composable
     override fun Form(on: (QuestAction<KerbHeight>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(

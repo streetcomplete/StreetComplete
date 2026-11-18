@@ -62,6 +62,26 @@
           "name": "Amphitheatre",
           "terms": ["ampi", "greek", "open air", "outdoor", "amphitheater"]
         },
+        "barrier/kerb": {
+          "name": "Kerb",
+          "terms": ["curb"]
+        },
+        "barrier/kerb/flush": {
+          "name": "Flush Kerb",
+          "terms": ["even curb", "level curb", "tactile curb", "flush curb"]
+        },
+        "barrier/kerb/lowered": {
+          "name": "Lowered Kerb",
+          "terms": ["curb cut", "curb ramp", "dropped kerb", "kerb ramp", "pram ramp", "lowered curb"]
+        },
+        "barrier/kerb/raised": {
+          "name": "Raised Kerb",
+          "terms": ["step", "raised curb"]
+        },
+        "barrier/kerb/rolled": {
+          "name": "Rolled Kerb",
+          "terms": ["gutter", "rolled curb"]
+        },
         "healthcare/birthing_center": {
           "name": "Birthing Centre",
           "terms": ["baby", "childbirth", "delivery", "labor", "labour", "midwive", "pregnancy", "pregnant", "birthing center"]
@@ -150,9 +170,17 @@
           "name": "Neighbourhood",
           "terms": ["neighborhood"]
         },
+        "shop/confectionery": {
+          "name": "Sweet Shop",
+          "terms": ["fudge", "lollipop", "sugar", "sweet", "candy shop", "confectionery store", "candy store"]
+        },
         "shop/garden_centre": {
           "name": "Garden Centre",
           "terms": ["landscape", "mulch", "nursery", "plant nursery", "retail plant nursery", "shrub", "tree", "garden center"]
+        },
+        "shop/window_blind": {
+          "name": "Window Blind Shop",
+          "terms": ["window blind store"]
         },
         "shop/yes": {
           "name": "Shop (Unspecified Type)"
@@ -406,10 +434,7 @@
           "name": "Administrative Boundary",
           "relation": {
             "role_labels": {
-              "admin_centre": "Admin Centre",
-              "inner": "Inner",
-              "label": "Label",
-              "outer": "Outer"
+              "label": "Label"
             }
           }
         },

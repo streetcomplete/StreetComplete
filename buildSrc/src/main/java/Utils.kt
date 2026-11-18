@@ -12,6 +12,13 @@ fun Locale.toAndroidResCode(): String {
     }
 }
 
+/** Android resource codes of this locale and of all the locales in [fallbackLanguages] that fall
+ *  back to it */
+fun Locale.toAndroidResCodes(fallbackLanguages: Map<String, String>): List<String> =
+    listOf(toAndroidResCode()) + fallbackLanguages
+        .filterValues { Locale.forLanguageTag(it) == this }
+        .keys.map { Locale.forLanguageTag(it).toAndroidResCode() }
+
 fun URL.readText() = openConnection().getInputStream().bufferedReader().readText()
 
 fun String.escapeXml(): String =

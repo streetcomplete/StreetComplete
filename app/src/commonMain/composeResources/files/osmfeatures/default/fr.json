@@ -337,6 +337,12 @@
           "name": "Salle polyvalente",
           "terms": ["salle communale", "salle des fêtes", "centre communal"]
         },
+        "amenity/community_centre/cultural_centre": {
+          "name": "Centre culturel"
+        },
+        "amenity/community_centre/family_centre": {
+          "name": "Centre familial"
+        },
         "amenity/community_centre/lgbtq": {
           "name": "Centre communataire LGBTQ+",
           "terms": ["salle des fêtes", "salle festive", "centre communautaire", "maison de quartier", "maison des associations", "salle des associations", "centre d'animation", "salle des fetes", "salle des fètes", "salle polyvalente", "community centre", "gay", "lesbien", "lgbtq"]
@@ -461,10 +467,6 @@
         "amenity/doctors/plastic_surgery": {
           "name": "Chirurgien plastique",
           "terms": ["chirurgien plasticien", "plasticien", "chirurgie plastique"]
-        },
-        "amenity/doctors/podiatry": {
-          "name": "Podologue",
-          "terms": ["pédicure-podologue", "podologue"]
         },
         "amenity/doctors/proctology": {
           "name": "Proctologue",
@@ -736,6 +738,9 @@
           "name": "Casier à colis",
           "terms": ["casier", "boîte", "colis", "paquets"]
         },
+        "amenity/parking": {
+          "name": "Parking"
+        },
         "amenity/parking/multi-storey": {
           "name": "Parking multi-niveau",
           "terms": ["parking", "zone de stationnement", "stationnement"]
@@ -813,6 +818,9 @@
         "amenity/place_of_worship/jewish": {
           "name": "Synagogue",
           "terms": ["synagogue", "lieu de culte", "juif", "judaïsme"]
+        },
+        "amenity/place_of_worship/multifaith": {
+          "name": "Lieu de culte interreligieux"
         },
         "amenity/place_of_worship/muslim": {
           "name": "Mosquée",
@@ -1043,6 +1051,9 @@
         "amenity/shelter/public_transport": {
           "name": "Abri de transport en commun",
           "terms": ["abri de transport en commun", "zone d'attente abritée voyageur"]
+        },
+        "amenity/shelter/sun_shelter": {
+          "name": "Abri de soleil"
         },
         "amenity/shower": {
           "name": "Douche",
@@ -1338,8 +1349,8 @@
           "name": "Zone",
           "relation": {
             "role_labels": {
-              "inner": "Intérieur",
-              "outer": "Extérieur"
+              "inner": "Bord intérieur",
+              "outer": "Bord extérieur"
             }
           },
           "terms": ["polygone", "zone", "surface polygonale", "aire", "surface", "contour", "rectangle", "carré", "cercle", "triangle", "région", "étendue", "espace", "secteur", "lieu", "terrain", "territoire", "superficie", "chemin fermé", "area", "closed way"],
@@ -2479,8 +2490,7 @@
           "name": "Passage piéton informel"
         },
         "highway/crossing/traffic_signals": {
-          "name": "Passage piéton avec feux de signalisation",
-          "terms": ["passage", "traversée", "piéton", "signalisation", "feux", "protégé"]
+          "name": "Passage avec feux de signalisation"
         },
         "highway/crossing/uncontrolled": {
           "name": "Passage piéton non protégé",
@@ -3215,8 +3225,8 @@
           "terms": ["salle de yoga"]
         },
         "leisure/fitness_station": {
-          "name": "Parcours de santé",
-          "terms": ["équipements de fitness en extérieur", "atelier", "parcours de santé"]
+          "name": "Équipement de fitness en extérieur",
+          "terms": ["atelier sportif", "exercice sportif", "parcours de santé"]
         },
         "leisure/fitness_station/balance_beam": {
           "name": "Poutre (parcours de santé)",
@@ -6259,16 +6269,22 @@
         },
         "type/boundary": {
           "name": "Frontière",
-          "terms": ["frontière"]
+          "terms": ["frontière"],
+          "relation": {
+            "role_labels": {
+              "inner": "Bord intérieur",
+              "outer": "Bord extérieur"
+            }
+          }
         },
         "type/boundary/administrative": {
           "name": "Frontière administrative",
           "relation": {
             "role_labels": {
-              "admin_centre": "Centre administratif",
-              "inner": "Intérieur",
+              "admin_centre": "Capitale / Siège",
               "label": "Étiquette",
-              "outer": "Extérieur"
+              "inner": "Bord intérieur",
+              "outer": "Bord extérieur"
             }
           },
           "terms": ["frontières administratives", "frontière administrative"]
@@ -6282,6 +6298,13 @@
         },
         "type/destination_sign": {
           "name": "Panneau de destination",
+          "relation": {
+            "role_labels": {
+              "intersection": "Intersection",
+              "from": "De",
+              "to": "Vers"
+            }
+          },
           "terms": ["panneau de destination", "trajet à destination de"]
         },
         "type/enforcement": {
@@ -6297,8 +6320,8 @@
           "terms": ["multipolygone", "surface complexe"],
           "relation": {
             "role_labels": {
-              "inner": "Intérieur",
-              "outer": "Extérieur"
+              "inner": "Bord intérieur",
+              "outer": "Bord extérieur"
             }
           }
         },
@@ -6308,39 +6331,122 @@
         },
         "type/restriction": {
           "name": "Restriction",
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Vers",
+              "via": "Via"
+            }
+          },
           "terms": ["restriction"]
+        },
+        "type/restriction/no_entry": {
+          "name": "Pas d'entrée",
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Vers",
+              "via": "Via"
+            }
+          }
+        },
+        "type/restriction/no_exit": {
+          "name": "Sans issue",
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Vers",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_left_turn": {
           "name": "Interdiction de tourner à gauche",
-          "terms": ["interdiction de tourner à gauche"]
+          "terms": ["interdiction de tourner à gauche"],
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Vers",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_right_turn": {
           "name": "Interdiction de tourner à droite",
-          "terms": ["interdiction de tourner à droite"]
+          "terms": ["interdiction de tourner à droite"],
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Vers",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_straight_on": {
           "name": "Interdiction d'aller tout droit",
-          "terms": ["interdiction de continuer tout droit", "obligation de tourner"]
+          "terms": ["interdiction de continuer tout droit", "obligation de tourner"],
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Vers",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_u_turn": {
           "name": "Interdiction de faire demi-tour",
-          "terms": ["demi-tour interdit"]
+          "terms": ["demi-tour interdit"],
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Vers",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_left_turn": {
           "name": "Obligation de tourner à gauche",
-          "terms": ["obligation de tourner à gauche"]
+          "terms": ["obligation de tourner à gauche"],
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Vers",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_right_turn": {
           "name": "Obligation de tourner à droite",
-          "terms": ["obligation de tourner à droite"]
+          "terms": ["obligation de tourner à droite"],
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Vers",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_straight_on": {
           "name": "Obligation d'aller tout droit",
-          "terms": ["interdiction de bifurquer", "obligation de continuer tout droit"]
+          "terms": ["interdiction de bifurquer", "obligation de continuer tout droit"],
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Vers",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_u_turn": {
           "name": "Obligation de faire demi-tour",
-          "terms": ["demi-tour obligatoire"]
+          "terms": ["demi-tour obligatoire"],
+          "relation": {
+            "role_labels": {
+              "from": "De",
+              "to": "Vers",
+              "via": "Via"
+            }
+          }
         },
         "type/route": {
           "name": "Itinéraire",
@@ -6440,6 +6546,11 @@
         },
         "type/waterway": {
           "name": "Cours d'eau",
+          "relation": {
+            "role_labels": {
+              "spring": "Source"
+            }
+          },
           "terms": ["canal", "rivière", "cours d'eau"]
         },
         "waterway": {
@@ -6756,6 +6867,10 @@
         },
         "amenity/university": {
           "name": "Université, établissement d'enseignement supérieur, campus (terrain)"
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Podologue",
+          "terms": ["pédicure-podologue", "podologue"]
         },
         "amenity/charging_station/charging_station_bicycle_designated": {
           "name": "Station de recharge pour vélos"

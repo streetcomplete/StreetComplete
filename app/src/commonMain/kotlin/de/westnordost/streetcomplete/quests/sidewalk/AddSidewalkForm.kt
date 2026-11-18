@@ -51,7 +51,7 @@ fun AddSidewalkForm(
             ?: Sides<Sidewalk>(null, null)
     }
 
-    var sidewalks by rememberSerializable { mutableStateOf(Sides<Sidewalk>(null, null)) }
+    var sidewalks by rememberSerializable { mutableStateOf(originalSidewalks) }
 
     QuestForm(
         on = on,

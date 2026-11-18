@@ -148,6 +148,9 @@
         "amenity/internet_cafe": {
           "name": "Internet kafetegi"
         },
+        "amenity/karaoke_box": {
+          "name": "Kanta-barra"
+        },
         "amenity/library": {
           "name": "Liburutegi"
         },
@@ -208,7 +211,11 @@
           "name": "Espetxea"
         },
         "amenity/pub": {
-          "name": "Pub"
+          "name": "Taberna",
+          "terms": ["txiriboga", "edaritegia", "ostatua", "bar"]
+        },
+        "amenity/pub/irish": {
+          "name": "Taberna irlandarra"
         },
         "amenity/public_bath": {
           "name": "Komun publikoak"

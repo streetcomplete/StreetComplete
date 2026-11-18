@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.streetcomplete.ApplicationConstants.MAX_OSM_TAG_VALUE_LENGTH
+import de.westnordost.streetcomplete.util.ktx.isCodePointCountSmallerOrEqualThan
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -14,8 +15,8 @@ sealed class Element {
 
     protected fun checkValidity() {
         for ((key, value) in tags) {
-            require(key.length <= MAX_OSM_TAG_VALUE_LENGTH)
-            require(value.length <= MAX_OSM_TAG_VALUE_LENGTH)
+            require(key.isCodePointCountSmallerOrEqualThan(MAX_OSM_TAG_VALUE_LENGTH))
+            require(value.isCodePointCountSmallerOrEqualThan(MAX_OSM_TAG_VALUE_LENGTH))
         }
     }
 }

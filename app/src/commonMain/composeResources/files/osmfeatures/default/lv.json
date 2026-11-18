@@ -825,9 +825,6 @@
         "highway/corridor": {
           "name": "Iekštelpu koridors"
         },
-        "highway/crossing/traffic_signals": {
-          "name": "Šķērsošanas vieta ar gājēju signālu"
-        },
         "highway/crossing/uncontrolled": {
           "name": "Marķēta šķērsošanas vieta"
         },
@@ -2015,6 +2012,11 @@
           "name": "Brasls"
         },
         "type/multipolygon": {},
+        "type/restriction/no_left_turn": {},
+        "type/restriction/no_right_turn": {},
+        "type/restriction/no_straight_on": {},
+        "type/restriction/only_left_turn": {},
+        "type/restriction/only_right_turn": {},
         "shop/ice_cream": {
           "name": "Saldējuma Veikals",
           "terms": ["sorbejs", "saldēts"]

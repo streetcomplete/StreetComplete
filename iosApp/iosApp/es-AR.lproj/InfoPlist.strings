@@ -1,0 +1,2 @@
+"NSCameraUsageDescription" = "Se necesita el permiso de la cámara para adjuntar fotos a las notas del mapa.";
+"NSLocationWhenInUseUsageDescription" = "Se necesita el permiso de ubicación precisa para mostrar tu posición en el mapa y descargar datos cercanos.";

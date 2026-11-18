@@ -321,10 +321,6 @@
           "name": "Cirugià plàstic",
           "terms": ["cirugia estètica", "cirugia cosmètica", "cirugia cranifacial", "cirugia craneofacial", "cirugia plàstica", "cirugia reconstructiva"]
         },
-        "amenity/doctors/podiatry": {
-          "name": "Podòleg",
-          "terms": ["peu", "peus", "cama", "cames", "podologia", "taló", "turmell"]
-        },
         "amenity/doctors/proctology": {
           "name": "Cirugià Colorectal",
           "terms": ["cul", "coló", "cólon", "colorectal", "recte", "cirugia rectal"]
@@ -491,6 +487,10 @@
         "amenity/parcel_locker": {
           "name": "Bústia intel·ligent",
           "terms": ["parcel locker", "locker", "parcel", "paquets", "bústia", "comerç", "comerç en línia", "comerç online", "bústia intel·ligent", "casiller"]
+        },
+        "amenity/parking": {
+          "name": "Aparcament",
+          "terms": ["parking", "estacionament", "lloc per a aparcar", "estacionar"]
         },
         "amenity/parking/multi-storey": {
           "name": "Aparcament multinivell"
@@ -1503,6 +1503,9 @@
         "demolished/building": {
           "name": "Edifici recentment demolit"
         },
+        "disused/amenity": {
+          "name": "Instal·lació en desús"
+        },
         "disused/railway": {
           "name": "Element ferroviari en desús"
         },
@@ -1727,9 +1730,6 @@
         },
         "highway/crossing/informal": {
           "name": "Camí informal"
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "Pas de vianants controlat per semàfors"
         },
         "highway/crossing/uncontrolled": {
           "name": "Pas de vianants senyalitzat"
@@ -3508,8 +3508,8 @@
           "name": "Pas a nivell ferroviari"
         },
         "railway/disused": {
-          "name": "Via fèrria fora d'ús",
-          "terms": ["via fèrria abandonada", "via de tren fora d'ús", "via de tren abandonada"]
+          "name": "Via fèrria en desús",
+          "terms": ["via fèrria abandonada", "via de tren fora d'ús", "via de tren abandonada", "via fèrria fora d'ús"]
         },
         "railway/funicular": {
           "name": "Pista de funicular"
@@ -4018,8 +4018,8 @@
           "terms": ["tenda de submarinisme", "mar", "aigua", "snorkel", "buceig", "submarinisme"]
         },
         "shop/seafood": {
-          "name": "Botiga de Mariscos",
-          "terms": ["marisqueria", "pòsit", "llotja", "tenda de mariscos"]
+          "name": "Peixateria",
+          "terms": ["marisqueria", "pòsit", "llotja", "tenda de mariscos", "pescateria", "botiga de mariscos", "botiga de peix", "tenda de peix"]
         },
         "shop/second_hand": {
           "name": "Botiga de segona mà"
@@ -4731,6 +4731,10 @@
         },
         "amenity/university": {
           "name": "Campus universitari"
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Podòleg",
+          "terms": ["peu", "peus", "cama", "cames", "podologia", "taló", "turmell"]
         },
         "aerialway/station": {
           "name": "Estació de transport per cable"

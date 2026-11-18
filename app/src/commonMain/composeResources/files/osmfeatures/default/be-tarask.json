@@ -513,9 +513,6 @@
         "highway/crossing": {
           "name": "Пераход"
         },
-        "highway/crossing/traffic_signals": {
-          "name": "Пераход зь сьвятлафорам"
-        },
         "highway/cycleway/crossing/traffic_signals": {
           "name": "Роварны пераезд зь сьвятлафорам"
         },
@@ -1214,6 +1211,12 @@
         "ford_line": {
           "name": "Брод"
         },
+        "type/restriction/no_left_turn": {},
+        "type/restriction/no_right_turn": {},
+        "type/restriction/no_straight_on": {},
+        "type/restriction/only_left_turn": {},
+        "type/restriction/only_right_turn": {},
+        "type/restriction/only_straight_on": {},
         "landuse/basin": {
           "name": "Тэхнічны басэйн"
         },
@@ -1231,6 +1234,9 @@
         },
         "amenity/embassy": {
           "name": "Амбасада"
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Падаляґ"
         },
         "@templates/contact": {
           "name": "Пункт"

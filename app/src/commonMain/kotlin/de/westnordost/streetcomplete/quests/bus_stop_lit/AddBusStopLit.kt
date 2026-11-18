@@ -23,7 +23,7 @@ class AddBusStopLit : OsmFilterQuestType<Boolean>() {
             public_transport = platform
             or (highway = bus_stop and public_transport != stop_position)
           )
-          and physically_present != no and naptan:BusStopType != HAR
+          and physically_present != no and naptan:BusStopType !~ HAR|CUS
           and access !~ no|private
           and location !~ underground|indoor
           and indoor != yes

@@ -90,7 +90,6 @@ private data class ErrorResponseJson(
  *
  * See https://www.rfc-editor.org/rfc/rfc7636
  */
-@OptIn(ExperimentalEncodingApi::class)
 private fun createPKCE_S256CodeChallenge(codeVerifier: String): String {
     // this encodes in UTF-8, but as the code verifier is only A-Z, a-z, 0-9, that's fine because
     // UTF-8 is a superset of ASCII

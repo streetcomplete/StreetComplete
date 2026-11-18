@@ -379,10 +379,6 @@
           "name": "מנתח פלסטי",
           "terms": ["כירורג פלסטי"]
         },
-        "amenity/doctors/podiatry": {
-          "name": "פודיאטר",
-          "terms": ["פודיאטורית"]
-        },
         "amenity/doctors/proctology": {
           "name": "מנתח המעי הגס"
         },
@@ -2117,9 +2113,6 @@
         },
         "highway/crossing": {
           "name": "מעבר"
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "מעבר עם סימנים להולכי רגל"
         },
         "highway/crossing/uncontrolled": {
           "name": "מעבר מסומן"
@@ -5776,6 +5769,10 @@
         "amenity/nursing_home": {
           "name": "בית אבות",
           "terms": ["בית אבות סיעודי"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "פודיאטר",
+          "terms": ["פודיאטורית"]
         },
         "aerialway/station": {
           "name": "תחנת רכבל",

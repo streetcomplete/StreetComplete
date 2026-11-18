@@ -2,6 +2,7 @@
 atmOperators: [Banco Popular, BitcoinRD, Popular, Banreservas, BanReservas, BHD leon, BHD, Scotiabank, Banco BHD Leon, Banco de Reservas, Banco BHD León, Banco BHD, Banca Popular, BPD]
 centerLineStyle: yellow
 chargingStationOperators: [Evergo]
+chargingStationSocketTypes: [nacs, type1, type1_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: true
 domesticSocketTypes: [typeb, typea]
 mobileCountryCode: 370

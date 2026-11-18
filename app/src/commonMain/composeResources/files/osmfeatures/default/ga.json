@@ -118,9 +118,6 @@
         "amenity/doctors/pathology": {
           "name": "Paiteolaí"
         },
-        "amenity/doctors/podiatry": {
-          "name": "Coslia"
-        },
         "amenity/doctors/pulmonology": {
           "name": "Scamhógeolaí",
           "aliases": ["Saineolaí scamhóg"]
@@ -613,9 +610,6 @@
         },
         "highway/crossing/informal": {
           "name": "Crosaire Neamhfhoirmiúil"
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "Crosaire le soilse coisithe"
         },
         "highway/crossing/uncontrolled": {
           "name": "Crosaire Marcáilte"
@@ -1260,6 +1254,12 @@
         "ford_line": {
           "name": "Áth"
         },
+        "type/restriction/no_left_turn": {},
+        "type/restriction/no_right_turn": {},
+        "type/restriction/no_straight_on": {},
+        "type/restriction/only_left_turn": {},
+        "type/restriction/only_right_turn": {},
+        "type/restriction/only_straight_on": {},
         "traffic_sign/maxspeed-US-CA-LR": {
           "name": "Comhartha Teorainn Luais"
         },
@@ -1336,6 +1336,9 @@
         },
         "amenity/embassy": {
           "name": "Ambasáid"
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Coslia"
         },
         "@templates/contact": {
           "name": "Pointe"

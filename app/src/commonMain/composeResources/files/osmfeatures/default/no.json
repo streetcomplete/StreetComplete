@@ -1340,9 +1340,6 @@
         "highway/crossing": {
           "name": "Overgang"
         },
-        "highway/crossing/traffic_signals": {
-          "name": "Fotgjengerovergang med fotgjengersignal"
-        },
         "highway/crossing/uncontrolled": {
           "name": "Gangfelt"
         },

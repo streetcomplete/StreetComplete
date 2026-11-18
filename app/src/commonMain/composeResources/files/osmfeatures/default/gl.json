@@ -308,9 +308,6 @@
           "name": "Doutor",
           "terms": ["doutor", "médico", "clínica", "saúde", "clinica", "saude"]
         },
-        "amenity/doctors/podiatry": {
-          "name": "Podólogo"
-        },
         "amenity/dojo": {
           "name": "Dojo/academia de artes marciais",
           "terms": ["dojo", "academia", "artes marciais", "karate", "judo", "taekwondo", "kendo", "ninjutsu", "kung fu"]
@@ -1598,10 +1595,6 @@
         "highway/crossing": {
           "name": "Paso de peóns",
           "terms": ["paso peonil", "paso peatonal", "paso de cebra"]
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "Paso de peóns con semáforo",
-          "terms": ["paso peonil con semáforo", "paso con semáforos para peóns"]
         },
         "highway/crossing/uncontrolled": {
           "name": "Paso de peóns marcado"
@@ -4311,6 +4304,10 @@
           "name": "Vao",
           "terms": ["vao", "vado", "paso", "cruce", "cruzamento", "gual"]
         },
+        "type/restriction/no_straight_on": {},
+        "type/restriction/only_left_turn": {},
+        "type/restriction/only_right_turn": {},
+        "type/restriction/only_straight_on": {},
         "traffic_sign/maxspeed-US-CA-LR": {
           "name": "Sinal de límite da velocidade"
         },
@@ -4451,6 +4448,9 @@
         "amenity/nursing_home": {
           "name": "Residencia de Anciáns",
           "terms": ["xeriátrico", "asilo", "residencia de maiores", "centro de coidados"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Podólogo"
         },
         "aerialway/station": {
           "name": "Estación de vía aérea"

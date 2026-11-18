@@ -32,6 +32,7 @@ import de.westnordost.streetcomplete.ui.ktx.tryOpenUri
 import de.westnordost.streetcomplete.ui.theme.headlineSmall
 import de.westnordost.streetcomplete.util.ktx.displayRegion
 import de.westnordost.streetcomplete.util.ktx.getDisplayRegion
+import io.ktor.http.encodeURLPathPart
 import org.jetbrains.compose.resources.stringResource
 
 /** Shows the details for a certain country as a dialog. */
@@ -118,7 +119,8 @@ private fun CountryInfoDetails(
             onClick = {
                 val britishCountryName = countryLocale.getDisplayRegion(Locale("en-GB"))
                 if (britishCountryName != null) {
-                    uriHandler.tryOpenUri("https://wiki.openstreetmap.org/wiki/$britishCountryName")
+                    val britishCountryNameEncoded = britishCountryName.encodeURLPathPart()
+                    uriHandler.tryOpenUri("https://wiki.openstreetmap.org/wiki/$britishCountryNameEncoded")
                 }
             }
         ) {

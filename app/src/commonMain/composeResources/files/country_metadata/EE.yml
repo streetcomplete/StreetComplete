@@ -2,7 +2,7 @@
 additionalStreetsignLanguages: [ru]
 atmOperators: [Swedbank, SEB, LHV, LHV | Luminor, Luminor | LHV, LHV;Luminor, LHV; Luminor, Luminor, LHV / Luminor, Euronet, Sampo/Nordea, LHV/Luminor, LHV | Luminor]
 chargingStationOperators: [Enefit, Alexela, Enefit Volt, ABB, eTerminal, Eleport, Eesti Energia AS, Elektrum, VOOL, Lidl Eesti OÜ, Ignitis, Circle K, Enefit VOLT, Elmo, eleport, Liff, Elelevi, Tesla, Ionity, Ignitis ON, Europark, ELMO, Bolt]
-chargingStationSocketTypes: [type2_cable, type2, type2_combo]
+chargingStationSocketTypes: [type2_cable, type2, type2_combo, chademo]
 clothesContainerOperators: [TVO, Tallinna Jäätmekeskus, MTÜ Riidepunkt, Riidepunkt MTÜ, TJT, Riidepunkt]
 defaultSpeedLimitHasUrbanOrRural: true
 domesticSocketTypes: [typef, typec]

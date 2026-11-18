@@ -6,8 +6,8 @@ import org.jetbrains.kotlin.gradle.targets.native.tasks.KotlinNativeSimulatorTes
 import java.io.FileWriter
 
 
-/** App version name, code and flavor */
-val appVersionName = "64.0-beta2"
+/** App version name */
+val appVersionName = "64.1"
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
@@ -19,9 +19,22 @@ val bcp47ExportLanguages = setOf(
     "zh-Hans", "zh-Hant"
 )
 
+/** Script-less locales mapped to the exported language whose resources should be copied for them.
+ *  Compose resources does not infer the script of a locale like "zh-CN" and crashes when it would
+ *  have to choose between several script variants, see
+ *  TODO compose https://youtrack.jetbrains.com/issue/CMP-10996/ */
+val bcp47FallbackLanguages = mapOf(
+    "zh" to "zh-Hans",
+    "zh-TW" to "zh-Hant",
+    "zh-HK" to "zh-Hant",
+    "zh-MO" to "zh-Hant",
+    "sr" to "sr-Cyrl",
+    "sr-ME" to "sr-Latn",
+)
+
 /** Version of the iD presets to use
  *  see https://github.com/openstreetmap/id-tagging-schema/releases for latest version */
-val presetsVersion = "v7.2.0"
+val presetsVersion = "v7.3.0"
 
 /** Version of the Name Suggestion Index to use
  *  see https://github.com/osmlab/name-suggestion-index/tags for latest version (without leading "v"
@@ -225,11 +238,10 @@ kotlin {
 
                 // taking a photo (, picking an image from gallery, ...)
                 implementation(libs.filekit.dialogsCompose)
+
+                // multiplatform webview (for login via OAuth)
+                implementation(libs.compose.webview)
             }
-        }
-        mobileMain.dependencies {
-            // multiplatform webview (for login via OAuth)
-            implementation(libs.compose.webview)
         }
         androidMain {
             dependsOn(jvmAndroidMain)
@@ -271,11 +283,13 @@ kotlin {
             dependsOn(jvmAndroidMain)
             dependsOn(nonAndroidMain)
             dependencies {
-                // Kotlin
-                implementation(libs.kotlinx.coroutines.swing)
-
                 // HTTP client
                 implementation(libs.ktor.client.cio)
+
+                // OS integration
+                implementation(libs.nucleus.systemInfo)
+                implementation(libs.nucleus.share)
+                implementation(libs.nucleus.application)
             }
         }
         commonTest {
@@ -395,6 +409,7 @@ tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons
 tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     group = "streetcomplete"
     languageCodes = bcp47ExportLanguages
+    fallbackLanguages = bcp47FallbackLanguages
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
     targetFiles = { projectDir.resolve("src/commonMain/composeResources/values-$it/strings.xml") }
@@ -403,21 +418,34 @@ tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
 tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleteness") {
     group = "streetcomplete"
     languageCodes = bcp47ExportLanguages
+    fallbackLanguages = bcp47FallbackLanguages
     mustIncludeLanguagePercentage = 90
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
     targetFiles = { projectDir.resolve("src/commonMain/composeResources/values-$it/translation_info.xml") }
 }
 
-tasks.register<UpdateIosAppTranslationsTask>("updateIosTranslations") {
+tasks.register<UpdateInfoPlistTranslationsTask>("updateIosTranslations") {
     group = "streetcomplete"
     projectId = poEditorProjectId
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
-    targetFile = projectDir.resolve("../iosApp/iosApp/InfoPlist.xcstrings")
+    targetDir = projectDir.resolve("../iosApp/iosApp")
     languageCodes = bcp47ExportLanguages
     strings = mapOf(
         "NSCameraUsageDescription" to "camera_permission_description",
         "NSLocationWhenInUseUsageDescription" to "no_location_permission_warning",
+    )
+}
+
+tasks.register<UpdateInfoPlistTranslationsTask>("updateMacosTranslations") {
+    group = "streetcomplete"
+    projectId = poEditorProjectId
+    apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
+    targetDir = projectDir.resolve("../desktopApp/macosLocalizations")
+    languageCodes = bcp47ExportLanguages
+    strings = mapOf(
+        "NSLocationWhenInUseUsageDescription" to "no_location_permission_warning",
+        "NSLocationUsageDescription" to "no_location_permission_warning",
     )
 }
 

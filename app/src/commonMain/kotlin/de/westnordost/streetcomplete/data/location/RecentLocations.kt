@@ -17,14 +17,15 @@ class RecentLocations(
     private val locations = ArrayDeque<Location>()
 
     /** returns a sequence of recent locations, most recent locations first */
-    fun getAll(): Sequence<Location> = lock.withLock {
-        sequence<Location> {
+    fun getAll(): Sequence<Location> {
+        val snapshot = lock.withLock { locations.toList() }
+        return sequence<Location> {
             var previous: Location? = null
-            for (location in locations) {
+            for (location in snapshot) {
                 if (previous != null && (
-                    previous.measuredAt - location.measuredAt < minTimeDifference ||
-                    location.position.flatDistanceTo(previous.position) < minDistanceMeters
-                )) continue
+                        previous.measuredAt - location.measuredAt < minTimeDifference ||
+                            location.position.flatDistanceTo(previous.position) < minDistanceMeters
+                        )) continue
 
                 yield(location)
                 previous = location

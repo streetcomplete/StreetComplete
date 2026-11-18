@@ -366,6 +366,9 @@
         "amenity/doctors/haematology": {
           "name": "Hæmatolog"
         },
+        "amenity/doctors/nephrology": {
+          "name": "Nefrolog"
+        },
         "amenity/doctors/neurology": {
           "name": "Neurolog"
         },
@@ -386,10 +389,6 @@
         },
         "amenity/doctors/plastic_surgery": {
           "name": "Plastikkirurg"
-        },
-        "amenity/doctors/podiatry": {
-          "name": "Fodlæge",
-          "terms": ["fodlæge", "fodterapeut"]
         },
         "amenity/doctors/psychiatrist": {
           "name": "Psykiater"
@@ -676,6 +675,9 @@
         "amenity/place_of_worship/jewish": {
           "name": "Jødisk synagoge"
         },
+        "amenity/place_of_worship/multifaith": {
+          "name": "Multireligiøst sted for tilbedelse"
+        },
         "amenity/place_of_worship/muslim": {
           "name": "Muslimsk moské"
         },
@@ -779,6 +781,9 @@
         "amenity/restaurant/french": {
           "name": "Fransk restaurant"
         },
+        "amenity/restaurant/georgian": {
+          "name": "Georgisk restaurant"
+        },
         "amenity/restaurant/german": {
           "name": "Tysk restaurant"
         },
@@ -860,6 +865,10 @@
           "name": "Venteskur",
           "terms": ["venteskur", "busskur", "tog", "transport", "offentlig", "vente", "læskur", "læ", "ly", "halvtag"]
         },
+        "amenity/shelter/sun_shelter": {
+          "name": "Skyggely",
+          "terms": ["skyggely", "solafskærmning", "skygge", "solsejl", "solskærm"]
+        },
         "amenity/shower": {
           "name": "Brusebad",
           "terms": ["bruser", "styrtebad"]
@@ -921,6 +930,9 @@
         },
         "amenity/studio/video": {
           "name": "Filmstudie"
+        },
+        "amenity/swingerclub": {
+          "name": "Swingerklub"
         },
         "amenity/taxi": {
           "name": "Taxiholdeplads"
@@ -1102,8 +1114,8 @@
           "name": "Område",
           "relation": {
             "role_labels": {
-              "inner": "Indre",
-              "outer": "Ydre"
+              "inner": "Indre kant",
+              "outer": "Ydre kant"
             }
           },
           "terms": ["område"]
@@ -1328,7 +1340,7 @@
         },
         "barrier/wicket_gate": {
           "name": "Portlåge",
-          "terms": ["portlåge", "portled", "låge", "port"]
+          "terms": ["portlåge", "portled", "låge", "port", "klaplåge"]
         },
         "barrier/yes": {
           "name": "Barriere (uspecificeret type)"
@@ -2084,7 +2096,8 @@
           "name": "Uformel krydsning"
         },
         "highway/crossing/traffic_signals": {
-          "name": "Fodgængerovergang med lyssignal"
+          "name": "Kryds med trafiklys",
+          "terms": ["kryds med trafiklys", "lyskryds", "gadekryds", "vejkryds", "lyskurv"]
         },
         "highway/crossing/uncontrolled": {
           "name": "Markeret fodgængerovergang",
@@ -2185,8 +2198,8 @@
           "terms": ["vigepligtsmarkering", "vigepligtstavle", "hajtænder", "advarselsskilt", "stopskilt", "vigepligt", "ubetinget vigepligt"]
         },
         "highway/hitchhiking": {
-          "name": "Skiltet sted for blaffere",
-          "terms": ["skiltet sted for blaffere", "blaffere", "samkørsel", "blaffersted", "blafferspot"]
+          "name": "Blafferstoppested",
+          "terms": ["blafferstoppested", "skiltet sted for blaffere", "blaffere", "samkørsel", "blaffersted", "blafferspot"]
         },
         "highway/ladder": {
           "name": "Stige"
@@ -2316,7 +2329,7 @@
         },
         "highway/speed_camera": {
           "name": "Fartkontrolkamera",
-          "terms": ["fartkontrolkamera", "stærekasse", "hastighedskontrol", "kamerafælde", "atk-stander", "trafikkontrol", "fotofælde"]
+          "terms": ["fartkontrolkamera", "stærekasse", "hastighedskontrol", "kamerafælde", "atk-stander", "trafikkontrol", "fotofælde", "rødlyskamera"]
         },
         "highway/steps": {
           "name": "Trappe",
@@ -2375,6 +2388,9 @@
         "historic": {
           "name": "Historisk sted",
           "terms": ["historisk sted"]
+        },
+        "historic/aircraft": {
+          "name": "Historisk fly"
         },
         "historic/archaeological_site": {
           "name": "Arkæologisk sted",
@@ -2538,6 +2554,9 @@
         "landuse/forest": {
           "name": "Forvaltet skov",
           "terms": ["forvaltet skov", "plantage", "skovbrug", "produktionsskov"]
+        },
+        "landuse/garages": {
+          "name": "Garage-område"
         },
         "landuse/grass": {
           "name": "Græs",
@@ -2714,6 +2733,9 @@
           "name": "Hundeskov",
           "terms": ["hundeskov", "hundepark", "hundehegn", "fritløbsområde"]
         },
+        "leisure/escape_game": {
+          "name": "Escape Room"
+        },
         "leisure/firepit": {
           "name": "Bålsted",
           "terms": ["lejrbål", "bål", "ild", "ildsted"]
@@ -2838,6 +2860,9 @@
           "name": "Amerikansk fodboldbane",
           "terms": ["rugby", "fodbold", "amerikansk", "amerika", "football"]
         },
+        "leisure/pitch/american_handball": {
+          "name": "Amerikansk håndboldbane"
+        },
         "leisure/pitch/archery": {
           "name": "Bueskydningsbane"
         },
@@ -2900,6 +2925,9 @@
         "leisure/pitch/horseshoes": {
           "name": "Hesteskokastefelt",
           "terms": ["hesteskokastefelt", "kastefelt", "hestesko"]
+        },
+        "leisure/pitch/netball": {
+          "name": "Netballbane"
         },
         "leisure/pitch/padel": {
           "name": "Padelbane",
@@ -3019,6 +3047,9 @@
         "leisure/track/athletics": {
           "name": "Løbebane til atletik"
         },
+        "leisure/track/athletics/pole_vault": {
+          "name": "Tilløbsbane til stangspring"
+        },
         "leisure/track/cycling": {
           "name": "Cykelbane",
           "terms": ["cykling", "cyklist", "løb", "bane"]
@@ -3078,6 +3109,9 @@
         "man_made/carpet_hanger": {
           "name": "Tæppeophæng",
           "terms": ["tæppeophæng", "tæppebøjle"]
+        },
+        "man_made/ceremonial_gate": {
+          "name": "Ceremoniel port"
         },
         "man_made/charge_point": {
           "name": "Ladestander til elkøretøjer",
@@ -3385,6 +3419,9 @@
         "marker": {
           "name": "Markør"
         },
+        "marker/utility": {
+          "name": "Forsyningsmarkør"
+        },
         "military/bunker": {
           "name": "Militærbunker",
           "terms": ["militærbunker", "bunker"]
@@ -3598,27 +3635,32 @@
           "terms": ["vådområde"]
         },
         "natural/wetland/bog": {
-          "name": "Mose"
+          "name": "Højmose",
+          "terms": ["højmose", "mose", "kærmose", "vældmose", "kær", "sump", "lavmose"]
         },
         "natural/wetland/fen": {
-          "name": "Lavmose"
+          "name": "Mose",
+          "terms": ["mose", "lavmose", "kærmose", "vældmose", "kær", "sump"]
         },
         "natural/wetland/marsh": {
-          "name": "Marsk"
+          "name": "Lysåben sump",
+          "terms": ["lysåben sump", "marsk", "mose", "sump", "kær", "eng"]
         },
         "natural/wetland/reedbed": {
           "name": "Rørsump",
-          "terms": ["rørsump", "rørskov", "lavmose"]
+          "terms": ["rørsump", "rørskov", "lavmose", "kærmose"]
         },
         "natural/wetland/saltmarsh": {
           "name": "Strandeng",
           "terms": ["strandeng", "marsk", "saltvandsmarsk"]
         },
         "natural/wetland/swamp": {
-          "name": "Sump"
+          "name": "Skovsump",
+          "terms": ["skovsump", "sump", "kær", "mose", "vådområde", "vandmættet"]
         },
         "natural/wetland/tidalflat": {
-          "name": "Tidevandsområde"
+          "name": "Tidevandsområde",
+          "terms": ["tidevandsområde", "vade", "marsk", "strandeng", "lagune", "vadehav"]
         },
         "natural/wetland/wet_meadow": {
           "name": "Våd eng",
@@ -4036,6 +4078,9 @@
         "power/plant/source/solar": {
           "name": "Solenergianlæg"
         },
+        "power/plant/source/solar/photovoltaic": {
+          "name": "Solcellepark"
+        },
         "power/plant/source/waste": {
           "name": "Affaldskraft­varmeværk",
           "terms": ["affaldskraft­varmeværk", "affaldsforbrænding", "kraftvarmeværk"]
@@ -4187,6 +4232,9 @@
         },
         "railway/milestone": {
           "name": "Jernbanemilepæl"
+        },
+        "railway/platform_edge": {
+          "name": "Platformkant"
         },
         "railway/preserved": {
           "name": "Historisk jernbanespor",
@@ -4932,6 +4980,9 @@
           "name": "Buste",
           "terms": ["skulptur", "hoved"]
         },
+        "tourism/artwork/graffiti": {
+          "name": "Graffiti"
+        },
         "tourism/artwork/installation": {
           "name": "Kunstinstallation"
         },
@@ -5128,15 +5179,22 @@
         },
         "type/boundary": {
           "name": "Afgrænsning",
-          "terms": ["grænse"]
+          "terms": ["grænse"],
+          "relation": {
+            "role_labels": {
+              "inner": "Indre kant",
+              "outer": "Ydre kant"
+            }
+          }
         },
         "type/boundary/administrative": {
           "name": "Administrativ grænse",
           "relation": {
             "role_labels": {
-              "inner": "Indre",
+              "admin_centre": "Hovedstad",
               "label": "Etiket",
-              "outer": "Ydre"
+              "inner": "Indre kant",
+              "outer": "Ydre kant"
             }
           },
           "terms": ["administrativ grænse"]
@@ -5147,6 +5205,14 @@
         },
         "type/destination_sign": {
           "name": "Destinationsskilt",
+          "relation": {
+            "role_labels": {
+              "intersection": "Kryds",
+              "sign": "Fysisk skilt",
+              "from": "Fra",
+              "to": "Til"
+            }
+          },
           "terms": ["destinationsskilt", "endepunktskilt"]
         },
         "type/enforcement": {
@@ -5161,43 +5227,126 @@
           "terms": ["multipolygon"],
           "relation": {
             "role_labels": {
-              "inner": "Indre",
-              "outer": "Ydre"
+              "inner": "Indre kant",
+              "outer": "Ydre kant"
             }
           }
         },
         "type/restriction": {
           "name": "Restriktion",
+          "relation": {
+            "role_labels": {
+              "from": "Fra",
+              "to": "Til",
+              "via": "Via"
+            }
+          },
           "terms": ["restriktion"]
+        },
+        "type/restriction/no_entry": {
+          "name": "Ingen indkørsel",
+          "relation": {
+            "role_labels": {
+              "from": "Fra",
+              "to": "Til",
+              "via": "Via"
+            }
+          }
+        },
+        "type/restriction/no_exit": {
+          "name": "Ingen udkørsel",
+          "relation": {
+            "role_labels": {
+              "from": "Fra",
+              "to": "Til",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_left_turn": {
           "name": "Ingen venstresving",
-          "terms": ["ingen venstresving"]
+          "terms": ["ingen venstresving"],
+          "relation": {
+            "role_labels": {
+              "from": "Fra",
+              "to": "Til",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_right_turn": {
           "name": "Ingen højresving",
-          "terms": ["ingen højresving"]
+          "terms": ["ingen højresving"],
+          "relation": {
+            "role_labels": {
+              "from": "Fra",
+              "to": "Til",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_straight_on": {
-          "name": "Ingen ligeud"
+          "name": "Ingen ligeud",
+          "relation": {
+            "role_labels": {
+              "from": "Fra",
+              "to": "Til",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_u_turn": {
-          "name": "Ingen U-vending"
+          "name": "Ingen U-vending",
+          "relation": {
+            "role_labels": {
+              "from": "Fra",
+              "to": "Til",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_left_turn": {
           "name": "Kun venstresving",
-          "terms": ["venstre"]
+          "terms": ["venstre"],
+          "relation": {
+            "role_labels": {
+              "from": "Fra",
+              "to": "Til",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_right_turn": {
           "name": "Kun højresving",
-          "terms": ["højre"]
+          "terms": ["højre"],
+          "relation": {
+            "role_labels": {
+              "from": "Fra",
+              "to": "Til",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_straight_on": {
           "name": "Kun ligeud",
-          "terms": ["ligefrem", "frem"]
+          "terms": ["ligefrem", "frem"],
+          "relation": {
+            "role_labels": {
+              "from": "Fra",
+              "to": "Til",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_u_turn": {
-          "name": "Kun u-vending"
+          "name": "Kun u-vending",
+          "relation": {
+            "role_labels": {
+              "from": "Fra",
+              "to": "Til",
+              "via": "Via"
+            }
+          }
         },
         "type/route": {
           "name": "Rute",
@@ -5268,6 +5417,14 @@
         },
         "type/waterway": {
           "name": "Vandvej",
+          "relation": {
+            "role_labels": {
+              "main_stream": "Hovedløb",
+              "mouth": "Udmunding",
+              "side_stream": "Sideløb",
+              "spring": "Udspring"
+            }
+          },
           "terms": ["vandvej"]
         },
         "waterway/access_point": {
@@ -5555,6 +5712,10 @@
         },
         "amenity/university": {
           "name": "Universitetsområde"
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Fodterapeut",
+          "terms": ["fod", "fødder", "negle"]
         },
         "amenity/charging_station/charging_station_bicycle_designated": {
           "name": "Cykelladestation",

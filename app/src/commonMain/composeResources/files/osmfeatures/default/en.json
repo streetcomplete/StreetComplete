@@ -84,8 +84,8 @@
           "terms": ["polygon"],
           "relation": {
             "role_labels": {
-              "inner": "Inner",
-              "outer": "Outer"
+              "inner": "Inner Edge",
+              "outer": "Outer Edge"
             }
           }
         },
@@ -246,14 +246,28 @@
           "name": "Associated Street"
         },
         "type/boundary": {
-          "name": "Boundary"
+          "name": "Boundary",
+          "relation": {
+            "role_labels": {
+              "inner": "Inner Edge",
+              "outer": "Outer Edge"
+            }
+          }
         },
         "type/connectivity": {
           "name": "Lane Connectivity"
         },
         "type/destination_sign": {
           "name": "Destination Sign",
-          "terms": ["exit sign"]
+          "terms": ["exit sign"],
+          "relation": {
+            "role_labels": {
+              "intersection": "Intersection",
+              "sign": "Physical Sign",
+              "from": "From",
+              "to": "To"
+            }
+          }
         },
         "type/enforcement": {
           "name": "Enforcement"
@@ -262,13 +276,20 @@
           "name": "Multipolygon",
           "relation": {
             "role_labels": {
-              "inner": "Inner",
-              "outer": "Outer"
+              "inner": "Inner Edge",
+              "outer": "Outer Edge"
             }
           }
         },
         "type/restriction": {
-          "name": "Restriction"
+          "name": "Restriction",
+          "relation": {
+            "role_labels": {
+              "from": "From",
+              "to": "To",
+              "via": "Via"
+            }
+          }
         },
         "type/route": {
           "name": "Route"
@@ -280,15 +301,34 @@
           "name": "Site"
         },
         "type/waterway": {
-          "name": "Waterway"
+          "name": "Waterway",
+          "relation": {
+            "role_labels": {
+              "": "",
+              "main_stream": "Main Stream",
+              "side_stream": "Side Stream",
+              "mouth": "Mouth",
+              "spring": "Spring"
+            }
+          }
         },
         "type/site/climbing/area": {
           "name": "Climbing Area",
-          "aliases": ["Climbing Region"]
+          "aliases": ["Climbing Region"],
+          "relation": {
+            "role_labels": {
+              "": ""
+            }
+          }
         },
         "type/site/climbing/crag": {
           "name": "Climbing Crag",
-          "aliases": ["Climbing Cliff"]
+          "aliases": ["Climbing Cliff"],
+          "relation": {
+            "role_labels": {
+              "": ""
+            }
+          }
         },
         "type/route/aerialway": {
           "name": "Aerial Route",
@@ -356,29 +396,105 @@
         "type/route/trolleybus": {
           "name": "Trolleybus Route"
         },
+        "type/restriction/no_entry": {
+          "name": "No Entry",
+          "relation": {
+            "role_labels": {
+              "from": "From",
+              "to": "To",
+              "via": "Via"
+            }
+          }
+        },
+        "type/restriction/no_exit": {
+          "name": "No Exit",
+          "relation": {
+            "role_labels": {
+              "from": "From",
+              "to": "To",
+              "via": "Via"
+            }
+          }
+        },
         "type/restriction/no_left_turn": {
-          "name": "No Left Turn"
+          "name": "No Left Turn",
+          "relation": {
+            "role_labels": {
+              "from": "From",
+              "to": "To",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_right_turn": {
-          "name": "No Right Turn"
+          "name": "No Right Turn",
+          "relation": {
+            "role_labels": {
+              "from": "From",
+              "to": "To",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_straight_on": {
-          "name": "No Straight Ahead"
+          "name": "No Straight Ahead",
+          "relation": {
+            "role_labels": {
+              "from": "From",
+              "to": "To",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_u_turn": {
-          "name": "No U-Turn"
+          "name": "No U-Turn",
+          "relation": {
+            "role_labels": {
+              "from": "From",
+              "to": "To",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_left_turn": {
-          "name": "Left Turn Only"
+          "name": "Left Turn Only",
+          "relation": {
+            "role_labels": {
+              "from": "From",
+              "to": "To",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_right_turn": {
-          "name": "Right Turn Only"
+          "name": "Right Turn Only",
+          "relation": {
+            "role_labels": {
+              "from": "From",
+              "to": "To",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_straight_on": {
-          "name": "Straight Ahead Only"
+          "name": "Straight Ahead Only",
+          "relation": {
+            "role_labels": {
+              "from": "From",
+              "to": "To",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_u_turn": {
-          "name": "U-Turn Only"
+          "name": "U-Turn Only",
+          "relation": {
+            "role_labels": {
+              "from": "From",
+              "to": "To",
+              "via": "Via"
+            }
+          }
         },
         "type/public_transport/stop_area_group": {
           "name": "Transit Stop Area Group"
@@ -391,10 +507,10 @@
           "name": "Administrative Boundary",
           "relation": {
             "role_labels": {
-              "inner": "Inner",
-              "outer": "Outer",
               "label": "Label",
-              "admin_centre": "Admin Center"
+              "admin_centre": "Capital / Seat",
+              "inner": "Inner Edge",
+              "outer": "Outer Edge"
             }
           }
         },
@@ -1489,6 +1605,9 @@
         "railway/narrow_gauge": {
           "name": "Narrow Gauge Track",
           "terms": ["narrow gauge railroad", "narrow gauge railway"]
+        },
+        "railway/platform_edge": {
+          "name": "Platform Edge"
         },
         "railway/preserved": {
           "name": "Heritage Railway Track",
@@ -3943,6 +4062,7 @@
         },
         "highway/residential": {
           "name": "Residential Road",
+          "aliases": ["Residential Street"],
           "terms": ["road", "street"]
         },
         "highway/rest_area": {
@@ -4043,6 +4163,7 @@
         },
         "highway/unclassified": {
           "name": "Minor / Unclassified Road",
+          "aliases": ["Minor Street", "Unclassified Street"],
           "terms": ["road", "street"]
         },
         "highway/steps/conveying": {
@@ -4213,7 +4334,7 @@
           "terms": ["crosswalk", "marked crosswalk", "marked foot path crossing", "marked pedestrian crosswalk", "zebra crossing"]
         },
         "highway/crossing/traffic_signals": {
-          "name": "Crossing With Pedestrian Signals",
+          "name": "Crossing With Traffic Signals",
           "terms": ["bicycle crossing (lights)", "crosswalk (lights)", "pedestrian crossing (lights)", "pedestrian traffic lights", "pedestrian traffic signals"]
         },
         "highway/crossing/uncontrolled": {
@@ -4274,7 +4395,8 @@
         },
         "healthcare/podiatrist": {
           "name": "Podiatrist",
-          "terms": ["feet", "foot", "nails"]
+          "aliases": ["Chiropodist", "Podiatric Surgeon"],
+          "terms": ["ankle", "feet", "foot", "leg", "legs", "nails", "podiatry"]
         },
         "healthcare/psychotherapist": {
           "name": "Psychotherapist",
@@ -4794,7 +4916,7 @@
         },
         "building/carport": {
           "name": "Carport",
-          "terms": ["car", "covered parking space", "garage", "porch"]
+          "terms": ["car", "car roof", "covered parking space", "garage", "porch", "roof"]
         },
         "building/cathedral": {
           "name": "Cathedral Building"
@@ -5355,7 +5477,7 @@
         },
         "amenity/bicycle_parking": {
           "name": "Bicycle Parking",
-          "terms": ["bike", "bike parking", "bike rack", "bike stands", "cycle parking", "cycling"]
+          "terms": ["bicycle stand", "bike", "bike parking", "bike rack", "bike stands", "cycle parking", "cycling"]
         },
         "amenity/bicycle_rental": {
           "name": "Bicycle Rental",
@@ -5643,7 +5765,7 @@
         },
         "amenity/parking": {
           "name": "Parking",
-          "terms": ["automobile parking", "car lot", "car parking", "rv parking", "surface parking", "truck parking", "vehicle parking"]
+          "terms": ["automobile parking", "car parking", "rv parking", "truck parking", "vehicle parking"]
         },
         "amenity/parking_entrance": {
           "name": "Parking Garage Entrance / Exit"
@@ -5654,7 +5776,7 @@
         },
         "amenity/parking_surface": {
           "name": "Surface Parking Lot",
-          "terms": ["at-grade parking", "car park", "ground level parking", "open air parking", "parking lot", "surface lot", "surface parking"]
+          "terms": ["at-grade parking", "automobile parking", "car lot", "car park", "car parking", "ground level parking", "open air parking", "parking lot", "rv parking", "surface lot", "surface parking", "truck parking", "vehicle parking"]
         },
         "amenity/payment_centre": {
           "name": "Payment Center",
@@ -6064,6 +6186,10 @@
           "name": "Transit Shelter",
           "terms": ["bus stop", "metro stop", "public transit shelter", "public transport shelter", "tram stop shelter", "waiting"]
         },
+        "amenity/shelter/sun_shelter": {
+          "name": "Sun Shelter",
+          "terms": ["shade", "shade shelter", "sun"]
+        },
         "amenity/restaurant/american": {
           "name": "American Restaurant",
           "terms": ["bar", "breakfast", "cafe", "café", "canteen", "coffee", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch", "table"]
@@ -6202,6 +6328,11 @@
         "amenity/place_of_worship/jewish": {
           "name": "Jewish Synagogue",
           "terms": ["jewish", "religion", "religious"]
+        },
+        "amenity/place_of_worship/multifaith": {
+          "name": "Multifaith Place of Worship",
+          "aliases": ["Multifaith Space", "Multifaith Centre", "Multifaith Prayer Room"],
+          "terms": ["ecumenic"]
         },
         "amenity/place_of_worship/muslim": {
           "name": "Muslim Mosque",
@@ -6413,7 +6544,7 @@
         "amenity/doctors/podiatry": {
           "name": "Podiatrist",
           "aliases": ["Chiropodist", "Podiatric Surgeon"],
-          "terms": ["ankle", "feet", "foot", "leg", "legs", "podiatry"]
+          "terms": ["ankle", "feet", "foot", "leg", "legs", "nails", "podiatry"]
         },
         "amenity/doctors/proctology": {
           "name": "Colorectal Surgeon",

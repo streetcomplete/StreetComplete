@@ -244,7 +244,7 @@
           "name": "Theehuisje"
         },
         "amenity/car_pooling": {
-          "name": "Carpoolparking",
+          "name": "Carpoolplaats",
           "terms": ["autodelen", "carpoolen"]
         },
         "amenity/car_rental": {
@@ -426,10 +426,6 @@
         "amenity/doctors/plastic_surgery": {
           "name": "Plastisch chirurg",
           "terms": ["plastisch chirurg", "plastische chirurgie"]
-        },
-        "amenity/doctors/podiatry": {
-          "name": "Podoloog",
-          "terms": ["voeten", "nagels", "voetheelkunde", "podologie", "podiatrie", "podiatrist"]
         },
         "amenity/doctors/proctology": {
           "name": "Darmchirurg",
@@ -690,6 +686,10 @@
           "name": "Pakketkluis",
           "terms": ["verzenden", "ophalen", "pakket", "kluis", "pakketautomaat"]
         },
+        "amenity/parking": {
+          "name": "Parkeerplaats",
+          "terms": ["parkeren", "parkeer"]
+        },
         "amenity/parking/multi-storey": {
           "name": "Parkeergarage met meerdere niveaus",
           "terms": ["parkeertoren", "parking met meerdere verdiepingen"]
@@ -715,6 +715,9 @@
         },
         "amenity/parking_space/disabled": {
           "name": "Gehandicaptenparkeerplaats"
+        },
+        "amenity/parking_surface": {
+          "name": "Oppervlakte parkeerplaats"
         },
         "amenity/payment_centre": {
           "name": "Betalingscentrum",
@@ -1118,6 +1121,9 @@
           "name": "Spelotheek",
           "terms": ["spel", "bibliotheek", "uitleendienst"]
         },
+        "amenity/traffic_park": {
+          "name": "Verkeerspark"
+        },
         "amenity/trolley_bay": {
           "name": "Winkelwagenstalling",
           "terms": ["opstelplaats", "winkelwagen", "karretjes", "winkelkar", "overkapping", "terugbrengen"]
@@ -1182,6 +1188,9 @@
           "name": "Menstruatieproductautomaat",
           "terms": ["maandverbandautomaat", "tamponautomaat", "menstruatie", "vrouwelijke hygiëne", "vrouwencondooms"]
         },
+        "amenity/vending_machine/flowers": {
+          "name": "Bloemenautomaat"
+        },
         "amenity/vending_machine/food": {
           "name": "Voedselautomaat",
           "terms": ["etenautomaat", "automaat met eten", "voedingsautomaat"]
@@ -1226,6 +1235,9 @@
           "name": "Snoepautomaat",
           "terms": ["snoep", "snoepjes", "kauwgom"]
         },
+        "amenity/vending_machine/water": {
+          "name": "Drinkwaterautomaat"
+        },
         "amenity/veterinary": {
           "name": "Dierenarts",
           "terms": ["veearts", "dierendokter"]
@@ -1263,6 +1275,12 @@
         },
         "area": {
           "name": "Vlak",
+          "relation": {
+            "role_labels": {
+              "inner": "Binnenrand",
+              "outer": "Buitenrand"
+            }
+          },
           "terms": ["gebied"]
         },
         "area/footway": {
@@ -1464,6 +1482,9 @@
         "barrier/kissing_gate": {
           "name": "Voetgangershek",
           "terms": ["veehek", "kushek", "kusjeshek", "kissing gate"]
+        },
+        "barrier/lift_gate": {
+          "name": "Slagboom"
         },
         "barrier/log": {
           "name": "Blokkade door omgevallen boom",
@@ -2325,10 +2346,6 @@
         },
         "highway/crossing/informal": {
           "name": "Informele oversteekplaats"
-        },
-        "highway/crossing/traffic_signals": {
-          "name": "Oversteekplaats met voetgangersverkeerslichten",
-          "terms": ["verkeerslichten", "zebra", "oversteekplaats", "zebrapad", "stoplicht"]
         },
         "highway/crossing/uncontrolled": {
           "name": "Gemarkeerde oversteekplaats",
@@ -4733,6 +4750,9 @@
           "name": "Smalspoor",
           "terms": ["smalspoor"]
         },
+        "railway/platform_edge": {
+          "name": "Perronrand"
+        },
         "railway/preserved": {
           "name": "Erfgoed spoorweg",
           "terms": ["historische spoorweg"]
@@ -4864,6 +4884,9 @@
           "name": "Babyartikelenwinkel",
           "terms": ["kledijwinkel", "fopspeenwinkel", "tutters", "knuffels", "babyspullenwinkel", "babykledijwinkel"]
         },
+        "shop/bag": {
+          "name": "Tas-/Reiskofferwinkel"
+        },
         "shop/bakery": {
           "name": "Bakkerij",
           "terms": ["banketbakkerij", "patisserie"]
@@ -4886,6 +4909,9 @@
         "shop/beauty/tanning": {
           "name": "Zonnebank",
           "terms": ["zonnecentrum", "bruinen", "zonnebankcentrum"]
+        },
+        "shop/bed": {
+          "name": "Bed-/Matrassenwinkel"
         },
         "shop/beverages": {
           "name": "Drankenwinkel",
@@ -5077,6 +5103,9 @@
           "name": "LGBTQ+ erotische winkel",
           "terms": ["lgbt erotische winkel"]
         },
+        "shop/esoteric": {
+          "name": "Esoteriewinkel"
+        },
         "shop/fabric": {
           "name": "Stofwinkel",
           "terms": ["kledij", "naaien", "textiel"]
@@ -5156,6 +5185,9 @@
         "shop/greengrocer": {
           "name": "Groenteboer",
           "terms": ["groenten en fruit", "groentezaak", "groentewinkel", "fruitzaak", "fruitwinkel", "versmarkt"]
+        },
+        "shop/groundskeeping": {
+          "name": "Winkel voor grasveld- en tuinbenodigdheden"
         },
         "shop/hairdresser": {
           "name": "Kapper",
@@ -5267,6 +5299,9 @@
         "shop/mobile_phone": {
           "name": "Mobieletelefoonwinkel",
           "terms": ["gsm-winkel", "telefoonwinkel", "telefoonzaak", "gsm-zaak", "mobieltjeswinkel", "mobieltjeszaak"]
+        },
+        "shop/mobile_phone_accessories": {
+          "name": "Winkel voor mobiele telefoonaccessoires"
         },
         "shop/model": {
           "name": "Modelwinkel",
@@ -5657,6 +5692,9 @@
           "name": "Kaart",
           "terms": ["plan", "plattegrond", "informatie"]
         },
+        "tourism/information/office": {
+          "name": "Touristeninformatiekantoor"
+        },
         "tourism/information/route_marker": {
           "name": "Routemarkering",
           "terms": ["routebordje"]
@@ -5664,6 +5702,9 @@
         "tourism/information/terminal": {
           "name": "Informatieterminal",
           "terms": ["informatietoestel"]
+        },
+        "tourism/information/visitor_centre": {
+          "name": "Bezoekerscentrum"
         },
         "tourism/motel": {
           "name": "Motel",
@@ -5776,13 +5817,33 @@
           "name": "Dynamisch tekstbord",
           "terms": ["variabel", "dynamisch", "gynamisch route informatiepaneel", "drip"]
         },
+        "type/associatedStreet": {
+          "name": "Geassocieerde straat"
+        },
         "type/boundary": {
           "name": "Grens",
-          "terms": ["grens"]
+          "terms": ["grens"],
+          "relation": {
+            "role_labels": {
+              "inner": "Binnenrand",
+              "outer": "Buitenrand"
+            }
+          }
         },
         "type/boundary/administrative": {
           "name": "Bestuurlijke grens",
+          "relation": {
+            "role_labels": {
+              "admin_centre": "Hoofdstad",
+              "label": "Label",
+              "inner": "Binnenrand",
+              "outer": "Buitenrand"
+            }
+          },
           "terms": ["administratieve grens"]
+        },
+        "type/boundary/protected_area": {
+          "name": "Beschermd gebied"
         },
         "type/connectivity": {
           "name": "Rijstrookverbinding",
@@ -5790,7 +5851,13 @@
         },
         "type/destination_sign": {
           "name": "Bewegwijzeringsbord",
-          "terms": ["bestemmingsbord", "wegwijzer", "voorwegwijzer", "bewegwijzer op afstand"]
+          "terms": ["bestemmingsbord", "wegwijzer", "voorwegwijzer", "bewegwijzer op afstand"],
+          "relation": {
+            "role_labels": {
+              "from": "Van",
+              "to": "Naar"
+            }
+          }
         },
         "type/enforcement": {
           "name": "Controle",
@@ -5802,7 +5869,13 @@
         },
         "type/multipolygon": {
           "name": "Multipolygoon",
-          "terms": ["multipoligoon"]
+          "terms": ["multipoligoon"],
+          "relation": {
+            "role_labels": {
+              "inner": "Binnenrand",
+              "outer": "Buitenrand"
+            }
+          }
         },
         "type/public_transport/stop_area_group": {
           "name": "Groep van een haltecomplex",
@@ -5810,39 +5883,122 @@
         },
         "type/restriction": {
           "name": "Beperking",
+          "relation": {
+            "role_labels": {
+              "from": "Van",
+              "to": "Naar",
+              "via": "Via"
+            }
+          },
           "terms": ["verbod"]
+        },
+        "type/restriction/no_entry": {
+          "name": "Geen ingang",
+          "relation": {
+            "role_labels": {
+              "from": "Van",
+              "to": "Naar",
+              "via": "Via"
+            }
+          }
+        },
+        "type/restriction/no_exit": {
+          "name": "Geen uitgang",
+          "relation": {
+            "role_labels": {
+              "from": "Van",
+              "to": "Naar",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_left_turn": {
           "name": "Niet links afslaan",
-          "terms": ["links afslaan verboden", "links inslaan verboden", "niet links inslaan", "niet naar links"]
+          "terms": ["links afslaan verboden", "links inslaan verboden", "niet links inslaan", "niet naar links"],
+          "relation": {
+            "role_labels": {
+              "from": "Van",
+              "to": "Naar",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_right_turn": {
           "name": "Niet rechts afslaan",
-          "terms": ["rechts afslaan verboden", "rechts inslaan verboden", "niet rechts inslaan", "niet naar rechts"]
+          "terms": ["rechts afslaan verboden", "rechts inslaan verboden", "niet rechts inslaan", "niet naar rechts"],
+          "relation": {
+            "role_labels": {
+              "from": "Van",
+              "to": "Naar",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_straight_on": {
           "name": "Niet rechtdoor",
-          "terms": ["rechtdoor verboden", "rechtdoor gaan verboden", "niet rechtdoorgaan", "afslaan verplicht"]
+          "terms": ["rechtdoor verboden", "rechtdoor gaan verboden", "niet rechtdoorgaan", "afslaan verplicht"],
+          "relation": {
+            "role_labels": {
+              "from": "Van",
+              "to": "Naar",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/no_u_turn": {
           "name": "Niet omkeren",
-          "terms": ["geen u-bocht", "u-bocht verboden", "omkeren verboden", "omdraaien verboden", "verboden om te draaien", "verboden om te keren", "niet omdraaien", "niet keren", "verboden te keren", "keren verboden", "niet draaien"]
+          "terms": ["geen u-bocht", "u-bocht verboden", "omkeren verboden", "omdraaien verboden", "verboden om te draaien", "verboden om te keren", "niet omdraaien", "niet keren", "verboden te keren", "keren verboden", "niet draaien"],
+          "relation": {
+            "role_labels": {
+              "from": "Van",
+              "to": "Naar",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_left_turn": {
           "name": "Alleen links afslaan",
-          "terms": ["enkel links afslaan", "verplicht links afslaan", "links afslaan verplicht", "enkel links inslaan", "alleen links inslaan", "verplicht links inslaan", "links inslaan verplicht"]
+          "terms": ["enkel links afslaan", "verplicht links afslaan", "links afslaan verplicht", "enkel links inslaan", "alleen links inslaan", "verplicht links inslaan", "links inslaan verplicht"],
+          "relation": {
+            "role_labels": {
+              "from": "Van",
+              "to": "Naar",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_right_turn": {
           "name": "Alleen rechts afslaan",
-          "terms": ["enkel rechts afslaan", "verplicht rechts afslaan", "rechts afslaan verplicht", "enkel rechts inslaan", "alleen rechts inslaan", "verplicht rechts inslaan", "rechts inslaan verplicht"]
+          "terms": ["enkel rechts afslaan", "verplicht rechts afslaan", "rechts afslaan verplicht", "enkel rechts inslaan", "alleen rechts inslaan", "verplicht rechts inslaan", "rechts inslaan verplicht"],
+          "relation": {
+            "role_labels": {
+              "from": "Van",
+              "to": "Naar",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_straight_on": {
           "name": "Alleen rechtdoor",
-          "terms": ["enkel rechtdoor", "rechtdoor", "niet draaien", "niet afslaan", "niet inslaan", "draaien verboden", "afslaan verboden"]
+          "terms": ["enkel rechtdoor", "rechtdoor", "niet draaien", "niet afslaan", "niet inslaan", "draaien verboden", "afslaan verboden"],
+          "relation": {
+            "role_labels": {
+              "from": "Van",
+              "to": "Naar",
+              "via": "Via"
+            }
+          }
         },
         "type/restriction/only_u_turn": {
           "name": "Alleen omkeren",
-          "terms": ["u-bocht", "haarspeldbocht", "afslagbeperking", "beperking", "enkel"]
+          "terms": ["u-bocht", "haarspeldbocht", "afslagbeperking", "beperking", "enkel"],
+          "relation": {
+            "role_labels": {
+              "from": "Van",
+              "to": "Naar",
+              "via": "Via"
+            }
+          }
         },
         "type/route": {
           "name": "Route",
@@ -5859,6 +6015,9 @@
         "type/route/bus": {
           "name": "Bustraject",
           "terms": ["busroute", "buslijn", "lijn"]
+        },
+        "type/route/climbing": {
+          "name": "Klimroute"
         },
         "type/route/detour": {
           "name": "Permanente omleiding",
@@ -5895,6 +6054,9 @@
         "type/route/pipeline": {
           "name": "Pijpleidingstraject",
           "terms": ["pijplijnroute", "pijplijntraject", "pijpleidingsroute"]
+        },
+        "type/route/piste": {
+          "name": "Piste"
         },
         "type/route/railway": {
           "name": "Spoorwegroute",
@@ -6157,6 +6319,9 @@
           "name": "Kleermaker",
           "terms": ["maatwerk", "kleren", "kledij", "kostuum"]
         },
+        "climbing/route": {
+          "name": "Klimroute"
+        },
         "building/entrance": {
           "name": "Ingang/Uitgang",
           "terms": ["ingang", "uitgang", "deur"]
@@ -6222,6 +6387,10 @@
         },
         "amenity/university": {
           "name": "Gebied van universiteit of hogeschool"
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Podoloog",
+          "terms": ["voeten", "nagels", "voetheelkunde", "podologie", "podiatrie", "podiatrist"]
         },
         "aerialway/station": {
           "name": "Kabelbaanstation",

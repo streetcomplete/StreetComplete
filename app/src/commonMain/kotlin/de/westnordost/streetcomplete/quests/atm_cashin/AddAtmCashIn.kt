@@ -19,6 +19,7 @@ class AddAtmCashIn : OsmFilterQuestType<Boolean>() {
     override val elementFilter = """
         nodes with
           amenity = atm and !cash_in
+          and access !~ private|no
     """
     override val changesetComment = "Determine whether ATM allows depositing cash"
     override val wikiLink = "Key:cash_in"

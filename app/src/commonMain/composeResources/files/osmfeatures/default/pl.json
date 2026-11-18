@@ -475,11 +475,6 @@
           "name": "Chirurg plastyczny",
           "terms": ["chirurg plastyczny", "chirurgia plastyczna"]
         },
-        "amenity/doctors/podiatry": {
-          "name": "Podolog",
-          "terms": ["podolog", "podiatra", "podologia", "podiatria"],
-          "aliases": ["Podiatra"]
-        },
         "amenity/doctors/proctology": {
           "name": "Proktolog",
           "terms": ["proktolog", "proktologia"]
@@ -840,6 +835,10 @@
           "name": "Synagoga",
           "terms": ["synagoga"]
         },
+        "amenity/place_of_worship/multifaith": {
+          "name": "Wielowyznaniowe miejsce modlitwy",
+          "terms": ["wielowyznaniowe miejsce modlitwy", "świątynia wielowyznaniowa", "kaplica ekumeniczna", "pokój modlitwy"]
+        },
         "amenity/place_of_worship/muslim": {
           "name": "Meczet",
           "terms": ["meczet", "świątynia muzułmańska", "islam"]
@@ -1071,6 +1070,10 @@
         "amenity/shelter/public_transport": {
           "name": "Wiata przystankowa",
           "terms": ["wiata przystankowa"]
+        },
+        "amenity/shelter/sun_shelter": {
+          "name": "Zadaszenie przeciwsłoneczne",
+          "terms": ["zadaszenie przeciwsłoneczne", "osłona przeciwsłoneczna", "schronienie przed słońcem", "cień"]
         },
         "amenity/shower": {
           "name": "Prysznic",
@@ -1375,8 +1378,8 @@
           "name": "Obszar",
           "relation": {
             "role_labels": {
-              "inner": "Wewnętrzna",
-              "outer": "Zewnętrzna"
+              "inner": "Krawędź wewnętrzna",
+              "outer": "Krawędź zewnętrzna"
             }
           },
           "terms": ["obszar", "obręb", "powierzchnia"]
@@ -1511,7 +1514,7 @@
           "terms": ["łańcuch", "bariera"]
         },
         "barrier/city_wall": {
-          "name": "Mury miejskie",
+          "name": "Mur miejski",
           "terms": ["mury miejskie", "mur", "ściana", "bariera"]
         },
         "barrier/cycle_barrier": {
@@ -1960,8 +1963,8 @@
           "terms": ["mechanik maszyn rolniczych", "maszyny rolnicze", "rolnictwo", "rzemiosło", "rzemieślnik", "rzemieślnicy"]
         },
         "craft/basket_maker": {
-          "name": "Wikliniarz",
-          "terms": ["koszykarz", "koszykarstwo", "wikliniarz", "wikliniarstwo", "koszyki", "wiklina", "rzemiosło", "rzemieślnik", "rzemieślnicy"]
+          "name": "Wikliniarz czy szerzej plecionkarz/koszykarz",
+          "terms": ["koszykarz", "koszykarstwo", "wikliniarz", "wikliniarstwo", "koszyki", "wiklina", "rzemiosło", "rzemieślnik", "rzemieślnicy", "plecionkarz", "plecionkarka"]
         },
         "craft/beekeeper": {
           "name": "Pszczelarz",
@@ -2030,7 +2033,7 @@
         },
         "craft/floorer": {
           "name": "Posadzkarz",
-          "terms": ["posadzkarz", "posadzkarstwo", "kładzenie posadzek", "posadzki", "podłogi", "parkiety", "rzemiosło", "rzemieślnik", "rzemieślnicy"]
+          "terms": ["posadzkarz", "posadzkarstwo", "kładzenie posadzek", "kładzenie podłóg", "posadzki", "podłogi", "parkiety", "rzemiosło", "rzemieślnik", "rzemieślnicy"]
         },
         "craft/gardener": {
           "name": "Ogrodnik",
@@ -2906,7 +2909,7 @@
           "terms": ["armata", "działo"]
         },
         "historic/castle": {
-          "name": "Zamek",
+          "name": "Zamek / Warownia / Pałac",
           "terms": ["zamek", "gród"]
         },
         "historic/castle/fortress": {
@@ -3116,7 +3119,7 @@
         },
         "landuse/meadow": {
           "name": "Łąka/pastwisko",
-          "terms": ["łąka", "pastwisko", "rozłóg", "wygon", "nieużytki", "polana", "pole", "zieleń"]
+          "terms": ["łąka", "pastwisko", "rozłóg", "wygon", "użytki zielone", "polana", "pole", "zieleń"]
         },
         "landuse/meadow_orchard/meadow": {
           "name": "Łąka z drzewami owocowymi",
@@ -4260,7 +4263,7 @@
         },
         "natural/grassland": {
           "name": "Łąka/sawanna/step/preria",
-          "terms": ["łąka", "sawanna", "step", "preria", "teren trawiasty", "zieleń"]
+          "terms": ["łąka", "sawanna", "step", "preria", "teren trawiasty", "zieleń", "nieużytki"]
         },
         "natural/heath": {
           "name": "Wrzosowisko",
@@ -5295,6 +5298,10 @@
           "name": "Tor kolei wąskotorowej",
           "terms": ["tor kolei wąskotorowej", "tory kolei wąskotorowej", "tor kolejowy", "tory kolejowe", "torowisko", "pociąg", "kolej wąskotorowa"]
         },
+        "railway/platform_edge": {
+          "name": "Krawędź peronowa",
+          "terms": ["krawędź peronowa", "krawędź peronu"]
+        },
         "railway/preserved": {
           "name": "Tor kolei historycznej",
           "terms": ["tor kolei historycznej", "tory kolei historycznej", "tor kolejowy", "tory kolejowe", "torowisko", "pociąg", "kolej historyczna", "kolej turystyczna"]
@@ -6045,8 +6052,8 @@
           "terms": ["sklep z akcesoriami do basenów", "akcesoria do basenów", "materiały do basenów", "baseny"]
         },
         "shop/tailor": {
-          "name": "Krawiec (usługi krawieckie)",
-          "terms": ["krawiec", "krawcowa", "szycie na miarę", "odzież na miarę", "rzemiosło", "rzemieślnik", "rzemieślnicy"]
+          "name": "Krawiec",
+          "terms": ["krawiec", "krawcowa", "poprawki krawieckie", "szycie na miarę", "odzież na miarę", "rzemiosło", "rzemieślnik", "rzemieślnicy"]
         },
         "shop/tattoo": {
           "name": "Studio tatuażu",
@@ -6402,16 +6409,22 @@
         },
         "type/boundary": {
           "name": "Granica",
-          "terms": ["granica"]
+          "terms": ["granica"],
+          "relation": {
+            "role_labels": {
+              "inner": "Krawędź wewnętrzna",
+              "outer": "Krawędź zewnętrzna"
+            }
+          }
         },
         "type/boundary/administrative": {
           "name": "Granica administracyjna",
           "relation": {
             "role_labels": {
-              "admin_centre": "Ośrodek administracyjny",
-              "inner": "Wewnętrzna",
+              "admin_centre": "Stolica / Siedziba władz",
               "label": "Etykieta",
-              "outer": "Zewnętrzna"
+              "inner": "Krawędź wewnętrzna",
+              "outer": "Krawędź zewnętrzna"
             }
           },
           "terms": ["granica administracyjna"]
@@ -6426,6 +6439,14 @@
         },
         "type/destination_sign": {
           "name": "Tablica kierunku i miejscowości",
+          "relation": {
+            "role_labels": {
+              "intersection": "Skrzyżowanie",
+              "sign": "Znak",
+              "from": "Z",
+              "to": "Do"
+            }
+          },
           "terms": ["tablica kierunku i miejscowości", "znak kierunku i miejscowości", "tablica kierunkowa", "tablica szlaku drogowego", "tablica przeddrogowskazowa", "drogowskaz tablicowy", "znak drogowy"]
         },
         "type/enforcement": {
@@ -6441,8 +6462,8 @@
           "terms": ["wielokąt złożony", "multipoligon"],
           "relation": {
             "role_labels": {
-              "inner": "Wewnętrzna",
-              "outer": "Zewnętrzna"
+              "inner": "Krawędź wewnętrzna",
+              "outer": "Krawędź zewnętrzna"
             }
           }
         },
@@ -6452,39 +6473,122 @@
         },
         "type/restriction": {
           "name": "Nakaz / zakaz",
+          "relation": {
+            "role_labels": {
+              "from": "Z",
+              "to": "Do",
+              "via": "Przez"
+            }
+          },
           "terms": ["nakaz", "zakaz", "ograniczenie", "restrykcja"]
+        },
+        "type/restriction/no_entry": {
+          "name": "Zakaz wjazdu",
+          "relation": {
+            "role_labels": {
+              "from": "Z",
+              "to": "Do",
+              "via": "Przez"
+            }
+          }
+        },
+        "type/restriction/no_exit": {
+          "name": "Zakaz wyjazdu",
+          "relation": {
+            "role_labels": {
+              "from": "Z",
+              "to": "Do",
+              "via": "Przez"
+            }
+          }
         },
         "type/restriction/no_left_turn": {
           "name": "Zakaz skrętu w lewo",
-          "terms": ["zakaz skrętu w lewo", "lewoskręt"]
+          "terms": ["zakaz skrętu w lewo", "lewoskręt"],
+          "relation": {
+            "role_labels": {
+              "from": "Z",
+              "to": "Do",
+              "via": "Przez"
+            }
+          }
         },
         "type/restriction/no_right_turn": {
           "name": "Zakaz skrętu w prawo",
-          "terms": ["zakaz skrętu w prawo", "prawoskręt"]
+          "terms": ["zakaz skrętu w prawo", "prawoskręt"],
+          "relation": {
+            "role_labels": {
+              "from": "Z",
+              "to": "Do",
+              "via": "Przez"
+            }
+          }
         },
         "type/restriction/no_straight_on": {
           "name": "Zakaz jazdy prosto",
-          "terms": ["zakaz jazdy prosto"]
+          "terms": ["zakaz jazdy prosto"],
+          "relation": {
+            "role_labels": {
+              "from": "Z",
+              "to": "Do",
+              "via": "Przez"
+            }
+          }
         },
         "type/restriction/no_u_turn": {
           "name": "Zakaz zawracania",
-          "terms": ["zakaz zawracania"]
+          "terms": ["zakaz zawracania"],
+          "relation": {
+            "role_labels": {
+              "from": "Z",
+              "to": "Do",
+              "via": "Przez"
+            }
+          }
         },
         "type/restriction/only_left_turn": {
           "name": "Nakaz skrętu w lewo",
-          "terms": ["nakaz skrętu w lewo"]
+          "terms": ["nakaz skrętu w lewo"],
+          "relation": {
+            "role_labels": {
+              "from": "Z",
+              "to": "Do",
+              "via": "Przez"
+            }
+          }
         },
         "type/restriction/only_right_turn": {
           "name": "Nakaz skrętu w prawo",
-          "terms": ["nakaz skrętu w prawo"]
+          "terms": ["nakaz skrętu w prawo"],
+          "relation": {
+            "role_labels": {
+              "from": "Z",
+              "to": "Do",
+              "via": "Przez"
+            }
+          }
         },
         "type/restriction/only_straight_on": {
           "name": "Nakaz jazdy prosto",
-          "terms": ["nakaz jazdy prosto"]
+          "terms": ["nakaz jazdy prosto"],
+          "relation": {
+            "role_labels": {
+              "from": "Z",
+              "to": "Do",
+              "via": "Przez"
+            }
+          }
         },
         "type/restriction/only_u_turn": {
           "name": "Nakaz zawracania",
-          "terms": ["nakaz zawracania", "tylko zawracanie"]
+          "terms": ["nakaz zawracania", "tylko zawracanie"],
+          "relation": {
+            "role_labels": {
+              "from": "Z",
+              "to": "Do",
+              "via": "Przez"
+            }
+          }
         },
         "type/route": {
           "name": "Trasa / linia / relacja",
@@ -6588,6 +6692,14 @@
         },
         "type/waterway": {
           "name": "Ciek",
+          "relation": {
+            "role_labels": {
+              "main_stream": "Główny bieg",
+              "mouth": "Ujście",
+              "side_stream": "Ramię boczne",
+              "spring": "Źródło"
+            }
+          },
           "terms": ["ciek", "droga wodna", "szlak wodny", "rzeka", "strumień", "struga", "potok", "wody śródlądowe"]
         },
         "waterway": {
@@ -6825,8 +6937,8 @@
           "terms": ["dorabianie kluczy", "ślusarz", "klucze", "zamki", "kłódki", "rzemiosło", "rzemieślnik", "rzemieślnicy"]
         },
         "craft/tailor": {
-          "name": "Krawiec (usługi krawieckie)",
-          "terms": ["krawiec", "krawcowa", "szycie na miarę", "odzież na miarę", "rzemiosło", "rzemieślnik", "rzemieślnicy"]
+          "name": "Krawiec",
+          "terms": ["krawiec", "krawcowa", "poprawki krawieckie", "szycie na miarę", "odzież na miarę", "rzemiosło", "rzemieślnik", "rzemieślnicy"]
         },
         "climbing/crag": {
           "name": "Sektor wspinaczkowy",
@@ -6915,6 +7027,10 @@
         "amenity/university": {
           "name": "Teren uczelni",
           "terms": ["teren uczelni", "teren uniwersytetu", "teren politechniki", "teren akademii", "uniwersytet", "politechnika", "akademia"]
+        },
+        "amenity/doctors/podiatry": {
+          "name": "Podolog",
+          "terms": ["podolog", "podiatra"]
         },
         "amenity/charging_station/charging_station_bicycle_designated": {
           "name": "Stacja ładowania rowerów elektrycznych",

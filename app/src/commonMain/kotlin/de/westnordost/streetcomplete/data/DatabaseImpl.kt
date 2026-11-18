@@ -87,7 +87,7 @@ class DatabaseImpl(private val connection: SQLiteConnection) : Database {
                     require(values.size == columnNames.size)
                     statement.bindAll(values)
                     val rowId = statement.executeInsert()
-                    result.add(rowId)
+                    if (rowId != -1L) result.add(rowId)
                     statement.clearBindings()
                     statement.reset()
                 }
