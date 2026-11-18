@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.building.BuildingStatus
 import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.BuildingTypeAndStatus
 import de.westnordost.streetcomplete.osm.building.INVALID_BUILDING_TYPES
@@ -15,7 +16,7 @@ import de.westnordost.streetcomplete.osm.building.OTHER_KEYS_POTENTIALLY_DESCRIB
 import de.westnordost.streetcomplete.osm.building.applyTo
 import de.westnordost.streetcomplete.resources.*
 
-class AddBuildingType : OsmFilterQuestType<BuildingTypeAndStatus>() {
+class AddBuildingType : OsmFilterQuestType<BuildingStatus>() {
 
     override val elementFilter = """
         ways, relations with
@@ -37,11 +38,18 @@ class AddBuildingType : OsmFilterQuestType<BuildingTypeAndStatus>() {
     override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
 
     @Composable
-    override fun Form(on: (QuestAction<BuildingTypeAndStatus>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<BuildingStatus>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddBuildingTypeForm(on)
     }
 
-    override fun applyAnswerTo(answer: BuildingTypeAndStatus, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        answer.applyTo(tags)
+    override fun applyAnswerTo(answer: BuildingStatus, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        // we tag the status if a status was selected and otherwise the building type
+        val buildingTypeAndStatus = if (answer is BuildingType) {
+            BuildingTypeAndStatus(answer, null)
+        } else {
+            BuildingTypeAndStatus(null, answer)
+        }
+
+        buildingTypeAndStatus.applyTo(tags)
     }
 }

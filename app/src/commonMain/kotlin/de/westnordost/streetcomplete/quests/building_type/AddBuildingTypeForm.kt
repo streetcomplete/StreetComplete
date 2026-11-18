@@ -10,7 +10,9 @@ import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
+import de.westnordost.streetcomplete.osm.building.BuildingStatus
 import de.westnordost.streetcomplete.osm.building.BuildingType
+import de.westnordost.streetcomplete.osm.building.BuildingTypeAndStatus
 import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory
 import de.westnordost.streetcomplete.osm.building.description
 import de.westnordost.streetcomplete.osm.building.icon
@@ -25,19 +27,19 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddBuildingTypeForm(
-    on: (QuestAction<BuildingType>) -> Unit
+    on: (QuestAction<BuildingStatus>) -> Unit
 ) {
     var showMultipleTypesHint by remember { mutableStateOf(false) }
 
     GroupedItemSelectQuestForm(
         on = on,
-        groups = BuildingTypeCategory.entries,
+        groups = BuildingTypeCategory.statusGroups,
         topItems = BuildingType.topSelectableValues,
         groupContent = { group ->
             ImageWithDescription(
-                painter = painterResource(group.icon),
-                title = stringResource(group.title),
-                description = group.description?.let { stringResource(it) },
+                painter = painterResource(group.category.icon),
+                title = stringResource(group.category.title),
+                description = group.category.description?.let { stringResource(it) },
                 imageSize = DpSize(48.dp, 48.dp)
             )
         },
@@ -54,9 +56,6 @@ fun AddBuildingTypeForm(
             AnswerItem(stringResource(Res.string.quest_buildingType_answer_multiple_types)) {
                 showMultipleTypesHint = true
             },
-            AnswerItem(stringResource(Res.string.quest_buildingType_answer_construction_site)) {
-                on(Answer(BuildingType.CONSTRUCTION))
-            }
         ) }
     )
 
