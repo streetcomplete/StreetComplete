@@ -114,7 +114,11 @@ fun updateMetadataResurvey(changeBuilder: StringMapChangesBuilder) {
         version = 1,
         timestampEdited = 1
     )
-    if (dummy.isPlaceOrDisusedPlace() || dummy.shouldAddThingCheckDate()) {
+    // Update / set check_date if:
+    // a) check_date is already set
+    // b) the object is a place
+    // c) the object is a thing which gets resurveyed by CheckExistence
+    if (changeBuilder["check_date"] != null || dummy.isPlaceOrDisusedPlace() || dummy.shouldAddThingCheckDate()) {
         changeBuilder.updateCheckDate()
     }
     if (dummy.tags["fixme"] == "resurvey") {
