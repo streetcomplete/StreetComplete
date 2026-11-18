@@ -964,6 +964,8 @@
     <string name="quest_buildingType_greenhouse">Greenhouse</string>
     <string name="quest_buildingType_other">Other</string>
     <string name="quest_buildingType_other_description">a specific building that is not selectable in this app</string>
+    <string name="quest_buildingType_status">Status</string>
+    <string name="quest_buildingType_status_description">the building is currently not used</string>
     <string name="quest_buildingType_shed">Shed</string>
     <string name="quest_buildingType_boathouse">Boathouse</string>
     <string name="quest_buildingType_container">Container</string>
@@ -1831,8 +1833,8 @@
     <string name="overlay_addresses_no_entrance">It’s not an entrance…</string>
 
     <string name="overlay_buildings">Buildings</string>
-    <string name="overlay_buildings_different_current_use">Something else now</string>
-    <string name="overlay_buildings_original_use">Originally…</string>
+    <string name="overlay_buildings_different_current_use2">Current use differs from original use</string>
+    <string name="overlay_buildings_original_use">Constructed as…</string>
     <string name="overlay_buildings_current_use">Now…</string>
 
     <string name="overlay_places">Places</string>

@@ -33,16 +33,23 @@ import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.koin.compose.koinInject
 
 /** Similar to [GroupedItemSelectOverlayForm], but there is actually a pair of Items. */
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
-inline fun <reified G: Group<I>, reified I> GroupedItemPairSelectOverlayForm (
+inline fun <C, reified I1, reified I2> GroupedItemPairSelectOverlayForm (
     noinline on: (Action) -> Unit,
-    groupsPair: Pair<List<G>, List<G>>,
-    initialSelectedItemPair: Pair<I?, I?>,
-    noinline groupContent: @Composable (group: G) -> Unit,
-    noinline itemContent: @Composable (item: I) -> Unit,
-    crossinline onClickOk: (Pair<I, I>) -> Unit,
-    labels: Pair<String, String>,
+
+    label1: String,
+    groups1: List<Group<C, I1>>,
+    initialSelectedItem1: I1?,
+    noinline groupContent1: @Composable (group: Group<C, I1>) -> Unit,
+    noinline itemContent1: @Composable (item: I1) -> Unit,
+
+    label2: String,
+    groups2: List<Group<C, I2>>,
+    initialSelectedItem2: I2?,
+    noinline groupContent2: @Composable (group: Group<C, I2>) -> Unit,
+    noinline itemContent2: @Composable (item: I2) -> Unit,
+    crossinline onClickOk: (Pair<I1, I2>) -> Unit,
+
     modifier: Modifier = Modifier,
     isComplete: Boolean = true,
     featureDictionary: FeatureDictionary = koinInject(),
@@ -51,16 +58,14 @@ inline fun <reified G: Group<I>, reified I> GroupedItemPairSelectOverlayForm (
     },
     noinline otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
 ) {
-    var selectedItemPair by rememberSerializable(initialSelectedItemPair) {
-        mutableStateOf(initialSelectedItemPair)
-    }
-    var expandedIndex by remember { mutableIntStateOf(-1) }
+    var selectedItem1 by rememberSerializable(initialSelectedItem1) { mutableStateOf(initialSelectedItem1) }
+    var selectedItem2 by rememberSerializable(initialSelectedItem2) { mutableStateOf(initialSelectedItem2) }
 
     OverlayForm(
         on = on,
-        isComplete = isComplete && selectedItemPair.first != null && selectedItemPair.second != null,
-        hasChanges = selectedItemPair != initialSelectedItemPair,
-        onClickOk = { onClickOk(Pair(selectedItemPair.first!!, selectedItemPair.second!!)) },
+        isComplete = isComplete && selectedItem1 != null && selectedItem2 != null,
+        hasChanges = selectedItem1 != initialSelectedItem1 || selectedItem2 != initialSelectedItem2,
+        onClickOk = { onClickOk(Pair(selectedItem1!!, selectedItem2!!)) },
         modifier = modifier,
         label = label,
         otherAnswers = otherAnswers,
@@ -70,45 +75,67 @@ inline fun <reified G: Group<I>, reified I> GroupedItemPairSelectOverlayForm (
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            val labelList = labels.toList()
-            selectedItemPair.toList().forEachIndexed { index, selectedItem ->
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .defaultMinSize(minHeight = 96.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    Text(
-                        text = labelList[index],
-                        color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
-                        style = MaterialTheme.typography.caption,
-                    )
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier.align(Alignment.CenterHorizontally)
-                    ) {
-                        ItemCard(
-                            item = selectedItem,
-                            expanded = expandedIndex == index,
-                            onExpandChange = { expandedIndex = if (it) index else -1 },
-                            content = itemContent,
-                        )
-                    }
-                }
-            }
+            GroupedItemPairSelectItem(
+                label = label1,
+                item = selectedItem1,
+                groups = groups1,
+                itemContent = itemContent1,
+                groupContent = groupContent1,
+                onSelected = { selectedItem1 = it },
+            )
+            GroupedItemPairSelectItem(
+                label = label2,
+                item = selectedItem2,
+                groups = groups2,
+                itemContent = itemContent2,
+                groupContent = groupContent2,
+                onSelected = { selectedItem2 = it },
+            )
+        }
+    }
+}
+
+@Composable
+fun <C, I> GroupedItemPairSelectItem(
+    label: String,
+    item: I?,
+    groups: List<Group<C, I>>,
+    groupContent: @Composable (group: Group<C, I>) -> Unit,
+    itemContent: @Composable (item: I) -> Unit,
+    onSelected: (I) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    var expanded by remember { mutableStateOf(false) }
+
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .defaultMinSize(minHeight = 96.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        Text(
+            text = label,
+            color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
+            style = MaterialTheme.typography.caption,
+        )
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier.align(Alignment.CenterHorizontally)
+        ) {
+            ItemCard(
+                item = item,
+                expanded = expanded,
+                onExpandChange = { expanded = it },
+                content = itemContent,
+            )
         }
     }
 
-    if (expandedIndex != -1) {
+    if (expanded) {
         GroupedItemSelectDialog(
-            onDismissRequest = { expandedIndex = -1 },
-            groups = if (expandedIndex == 0) groupsPair.first else groupsPair.second,
-            onSelected = {
-                selectedItemPair = Pair(
-                    first = if (expandedIndex == 0) it else selectedItemPair.first,
-                    second = if (expandedIndex == 1) it else selectedItemPair.second,
-                )
-            },
+            onDismissRequest = { expanded = false },
+            groups = groups,
+            onSelected = onSelected,
             groupContent = groupContent,
             itemContent = itemContent
         )

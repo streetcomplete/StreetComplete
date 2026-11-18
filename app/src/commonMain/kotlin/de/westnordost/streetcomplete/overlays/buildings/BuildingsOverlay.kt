@@ -76,7 +76,7 @@ class BuildingsOverlay : Overlay {
             element to OverlayStyle.Polygon(
                 color = color,
                 outline = outlineColor,
-                icon = building?.icon,
+                icon = status?.icon ?: building?.icon,
                 height = height,
                 minHeight = minHeight
             )
