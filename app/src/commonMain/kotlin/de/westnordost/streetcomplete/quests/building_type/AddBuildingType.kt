@@ -29,6 +29,7 @@ class AddBuildingType : OsmFilterQuestType<BuildingStatus>() {
           and !disused:building
           and !abandoned:building
           and !ruins:building
+          and !construction:building
     """
     override val changesetComment = "Specify building types"
     override val wikiLink = "Key:building"
