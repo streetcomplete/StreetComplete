@@ -17,17 +17,18 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.overlays.Edit
 import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.osm.building.BuildingStatus
 import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
+import de.westnordost.streetcomplete.osm.building.BuildingTypeAndStatus
 import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory
 import de.westnordost.streetcomplete.osm.building.applyTo
-import de.westnordost.streetcomplete.osm.building.createBuildingType
-import de.westnordost.streetcomplete.osm.building.createBuildingUseType
+import de.westnordost.streetcomplete.osm.building.createBuildingTypeAndStatus
 import de.westnordost.streetcomplete.osm.building.description
 import de.westnordost.streetcomplete.osm.building.icon
-import de.westnordost.streetcomplete.osm.building.minus
 import de.westnordost.streetcomplete.osm.building.title
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.item_select.Group
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import de.westnordost.streetcomplete.ui.common.overlay.GroupedItemPairSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.overlay.GroupedItemSelectOverlayForm
@@ -44,20 +45,9 @@ fun BuildingsOverlayForm(
     element: Element,
     preferences: Preferences = koinInject()
 ) {
-    val originalBuilding = remember(element) {
-        createBuildingType(element.tags - setOf("ruins", "abandoned"))
-    }
-    val originalBuildingUse = remember(element) { createBuildingUseType(element.tags) }
-
-    val groupsPair = remember {
-        Pair(
-            // building: no building is constructed as ruins, abandoned or construction
-            BuildingTypeCategory.entries - setOf(UNSUPPORTED, RUINS, ABANDONED, CONSTRUCTION),
-            // building use: either current building use or current lifecycle
-            BuildingTypeCategory.entries - setOf(UNSUPPORTED, CONSTRUCTION)
-        )
-    }
-
+    val originalBuildingAndStatus = remember(element) { createBuildingTypeAndStatus(element.tags) }
+    val originalShowPairLayout =
+        originalBuildingAndStatus.status != null && originalBuildingAndStatus.type != null
     var switchToPairLayout by remember { mutableStateOf(false) }
 
     // always show house number, never show feature name (because type of building
@@ -65,36 +55,41 @@ fun BuildingsOverlayForm(
     val label = nameAndLocationLabel(element, featureDictionary = null, showHouseNumber = true)
 
     AnimatedContent(
-        targetState = originalBuildingUse != null || switchToPairLayout,
+        targetState = originalShowPairLayout || switchToPairLayout,
         transitionSpec = ReplaceBottomSheetTransitionSpec,
     ) { pairLayout ->
         if (pairLayout) {
             GroupedItemPairSelectOverlayForm(
                 on = on,
-                groupsPair = groupsPair,
-                initialSelectedItemPair = Pair(originalBuilding, originalBuildingUse),
-                groupContent = {  BuildingTypeCategoryItem(it.category) },
-                itemContent = { BuildingTypeItem(it) },
-                onClickOk = { (selectedBuilding, selectedBuildingUse) ->
+
+                label1 = stringResource(Res.string.overlay_buildings_original_use),
+                groups1 = BuildingTypeCategory.buildingGroups,
+                initialSelectedItem1 = originalBuildingAndStatus.type,
+                groupContent1 = { BuildingTypeCategoryItem(it) },
+                itemContent1 = { BuildingStatusItem(it) },
+
+                label2 = stringResource(Res.string.overlay_buildings_current_use),
+                groups2 = BuildingTypeCategory.statusGroups,
+                initialSelectedItem2 = originalBuildingAndStatus.status,
+                groupContent2 = { BuildingTypeCategoryItem(it) },
+                itemContent2 = { BuildingStatusItem(it) },
+
+                onClickOk = { (type, status) ->
                     val tagChanges = StringMapChangesBuilder(element.tags)
-                    selectedBuilding.applyTo(tagChanges, selectedBuildingUse)
+                    BuildingTypeAndStatus(type, status).applyTo(tagChanges)
                     on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
                 },
-                labels = Pair(
-                    stringResource(Res.string.overlay_buildings_original_use),
-                    stringResource(Res.string.overlay_buildings_current_use),
-                ),
                 label = label,
             )
         }
         else {
             GroupedItemSelectOverlayForm(
                 on = on,
-                groups = BuildingTypeCategory.entries,
+                groups = BuildingTypeCategory.statusGroups,
                 topSelectableItems = BuildingType.topSelectableValues,
-                initialSelectedItem = originalBuilding,
+                initialSelectedItem = originalBuildingAndStatus.status ?: originalBuildingAndStatus.type,
                 groupContent = { BuildingTypeCategoryItem(it) },
-                itemContent = { BuildingTypeItem(it) },
+                itemContent = { BuildingStatusItem(it) },
                 lastPickedItemContent = { item ->
                     Image(
                         painter = painterResource(item.icon),
@@ -102,9 +97,16 @@ fun BuildingsOverlayForm(
                         modifier = Modifier.height(24.dp)
                     )
                 },
-                onClickOk = { selectedBuilding ->
+                onClickOk = { selectedItem ->
+                    // in single-item select, we tag the status if a status was selected and
+                    // otherwise the building type
+                    val buildingTypeAndStatus = if (selectedItem is BuildingType) {
+                        BuildingTypeAndStatus(selectedItem, null)
+                    } else {
+                        BuildingTypeAndStatus(null, selectedItem)
+                    }
                     val tagChanges = StringMapChangesBuilder(element.tags)
-                    selectedBuilding.applyTo(tagChanges)
+                    buildingTypeAndStatus.applyTo(tagChanges)
                     on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
                 },
                 prefs = preferences,
@@ -112,7 +114,7 @@ fun BuildingsOverlayForm(
                 label = label,
                 otherAnswers = { listOf(
                     AnswerItem(
-                        text = stringResource(Res.string.overlay_buildings_different_current_use),
+                        text = stringResource(Res.string.overlay_buildings_different_current_use2),
                         action = { switchToPairLayout = true }
                     )
                 ) }
@@ -122,7 +124,7 @@ fun BuildingsOverlayForm(
 }
 
 @Composable
-private fun BuildingTypeItem(item: BuildingType, modifier: Modifier = Modifier) {
+private fun BuildingStatusItem(item: BuildingStatus, modifier: Modifier = Modifier) {
     ImageWithDescription(
         painter = painterResource(item.icon),
         title = stringResource(item.title),
@@ -133,11 +135,11 @@ private fun BuildingTypeItem(item: BuildingType, modifier: Modifier = Modifier) 
 }
 
 @Composable
-private fun BuildingTypeCategoryItem(item: BuildingTypeCategory, modifier: Modifier = Modifier) {
+private fun <I> BuildingTypeCategoryItem(item: Group<BuildingTypeCategory, I>, modifier: Modifier = Modifier) {
     ImageWithDescription(
-        painter = painterResource(item.icon),
-        title = stringResource(item.title),
-        description = item.description?.let { stringResource(it) },
+        painter = painterResource(item.category.icon),
+        title = stringResource(item.category.title),
+        description = item.category.description?.let { stringResource(it) },
         imageSize = DpSize(48.dp, 48.dp),
         modifier = modifier,
     )
