@@ -20,6 +20,9 @@ import kotlin.reflect.KClass
 
 @Mockable
 class Preferences(private val prefs: ObservableSettings) {
+    // we use this here to be able to serialize data structures like BuildingTypeAndStatus
+    // which is not possible to serialize with the default method how serialization is handled
+    // with polymorphism
     private val json = Json { useArrayPolymorphism = true }
 
     // application settings
