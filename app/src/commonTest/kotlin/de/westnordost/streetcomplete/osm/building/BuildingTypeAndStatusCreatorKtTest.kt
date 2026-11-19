@@ -108,8 +108,6 @@ class BuildingTypeAndStatusCreatorKtTest {
             mapOf("man_made" to "storage_tank"),
             BuildingTypeAndStatus(STORAGE_TANK, null).appliedTo("man_made" to "silo")
         )
-
-
     }
 
     @Test fun `set man made removes additional building tags`() {
