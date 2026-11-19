@@ -112,6 +112,10 @@ class AddPlaceName(
             "landuse" to arrayOf(
                 "cemetery", "allotments"
             ),
+            "man_made" to arrayOf(
+                // Name only
+                "wastewater_plant", "water_works",
+            ),
             "military" to arrayOf(
                 "airfield", "barracks", "training_area", "base",
             ),
