@@ -43,7 +43,7 @@ class AddCyclewayDirection : OsmFilterQuestType<OnewayAnswer>() {
     override val title = Res.string.quest_cycleway_direction_title
     override val achievements = listOf(BICYCLIST)
     override val hint = Res.string.quest_arrow_tutorial
-    override val defaultDisabledMessage = Res.string.default_disabled_msg_cycleway
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_sign_at_next_intersection
 
     override val enabledInCountries = NoCountriesExcept(
         "DE", // StVO § 2(4): left-hand cycle paths without signs 237, 240 or 241 require the supplementary sign "Radverkehr frei".
