@@ -11,7 +11,6 @@ fun Element.isThingOrDisusedThing(): Boolean =
 fun Element.isThing(): Boolean =
     IS_THING_EXPRESSION.matches(this)
 
-
 fun Element.isDisusedThing(): Boolean =
     this.asIfItWasnt("disused")?.let { IS_THING_EXPRESSION.matches(it) } == true
 
@@ -309,5 +308,3 @@ val POPULAR_THING_FEATURE_IDS = listOf(
     // "information/guidepost",       // 0.6M
     // "tourism/information/board",   // 0.3M
 )
-
-
