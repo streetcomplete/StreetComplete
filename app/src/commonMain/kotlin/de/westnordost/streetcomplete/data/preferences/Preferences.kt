@@ -20,6 +20,11 @@ import kotlin.reflect.KClass
 
 @Mockable
 class Preferences(private val prefs: ObservableSettings) {
+    // we use this here to be able to serialize data structures like BuildingTypeAndStatus
+    // which is not possible to serialize with the default method how serialization is handled
+    // with polymorphism
+    private val json = Json { useArrayPolymorphism = true }
+
     // application settings
     var locale: Locale?
         set(value) { prefs.putStringOrNull(LANGUAGE_SELECT, value?.toLanguageTag()) }
@@ -175,7 +180,7 @@ class Preferences(private val prefs: ObservableSettings) {
 
     fun <T> getLastPicked(serializer: KSerializer<List<T>>, key: String): List<T> =
         try {
-            prefs.getStringOrNull(LAST_PICKED_PREFIX + key)?.let { Json.decodeFromString(serializer, it) } ?: emptyList()
+            prefs.getStringOrNull(LAST_PICKED_PREFIX + key)?.let { json.decodeFromString(serializer, it) } ?: emptyList()
         } catch (_: Exception) { emptyList() }
 
     fun <T> addLastPicked(serializer: KSerializer<List<T>>, key: String, value: T, maxValueCount: Int = 100) {
@@ -188,7 +193,7 @@ class Preferences(private val prefs: ObservableSettings) {
     }
 
     fun <T> setLastPicked(serializer: KSerializer<List<T>>, key: String, values: List<T>) {
-        prefs.putString(LAST_PICKED_PREFIX + key, Json.encodeToString(serializer, values))
+        prefs.putString(LAST_PICKED_PREFIX + key, json.encodeToString(serializer, values))
     }
 
     /** The "languages" here are not necessarily IETF language tags, they are essentially what comes

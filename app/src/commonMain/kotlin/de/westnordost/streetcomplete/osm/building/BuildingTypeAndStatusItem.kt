@@ -1,9 +1,34 @@
 package de.westnordost.streetcomplete.osm.building
 
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
+import de.westnordost.streetcomplete.osm.building.BuildingLifecycle.*
 import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
+
+val BuildingStatus.title: StringResource get() = when (this) {
+    is BuildingType -> title
+    CONSTRUCTION -> Res.string.quest_buildingType_under_construction
+    DISUSED -> Res.string.quest_buildingType_disused
+    ABANDONED -> Res.string.quest_buildingType_abandoned
+    RUINS -> Res.string.quest_buildingType_ruins
+}
+
+val BuildingStatus.description: StringResource? get() = when (this) {
+    is BuildingType -> description
+    CONSTRUCTION -> null
+    DISUSED -> Res.string.quest_buildingType_disused_description
+    ABANDONED -> Res.string.quest_buildingType_abandoned_description
+    RUINS -> Res.string.quest_buildingType_ruins_description
+}
+
+val BuildingStatus.icon: DrawableResource get() = when (this) {
+    is BuildingType -> icon
+    CONSTRUCTION -> Res.drawable.building_construction
+    DISUSED -> Res.drawable.building_disused
+    ABANDONED -> Res.drawable.building_abandoned
+    RUINS -> Res.drawable.building_ruins
+}
 
 val BuildingType.title: StringResource get() = when (this) {
     UNSUPPORTED ->     Res.string.quest_buildingType_other
@@ -67,15 +92,11 @@ val BuildingType.title: StringResource get() = when (this) {
     OUTBUILDING ->     Res.string.quest_buildingType_outbuilding
     TENT ->            Res.string.quest_buildingType_tent
     TOMB ->            Res.string.quest_buildingType_tomb
-    HISTORIC ->        Res.string.quest_buildingType_historic
-    ABANDONED ->       Res.string.quest_buildingType_abandoned
-    RUINS ->           Res.string.quest_buildingType_ruins
     RESIDENTIAL ->     Res.string.quest_buildingType_residential
     COMMERCIAL ->      Res.string.quest_buildingType_commercial
     CIVIC ->           Res.string.quest_buildingType_civic
     RELIGIOUS ->       Res.string.quest_buildingType_religious
     GUARDHOUSE ->      Res.string.quest_buildingType_guardhouse
-    CONSTRUCTION ->    Res.string.quest_buildingType_under_construction
 }
 
 val BuildingType.description: StringResource? get() = when (this) {
@@ -98,9 +119,6 @@ val BuildingType.description: StringResource? get() = when (this) {
     SERVICE ->         Res.string.quest_buildingType_service_description
     HANGAR ->          Res.string.quest_buildingType_hangar_description
     TOWER ->           Res.string.quest_buildingType_tower_description
-    HISTORIC ->        Res.string.quest_buildingType_historic_description
-    ABANDONED ->       Res.string.quest_buildingType_abandoned_description
-    RUINS ->           Res.string.quest_buildingType_ruins_description
     RESIDENTIAL ->     Res.string.quest_buildingType_residential_description
     COMMERCIAL ->      Res.string.quest_buildingType_commercial_generic_description
     CIVIC ->           Res.string.quest_buildingType_civic_description
@@ -169,13 +187,9 @@ val BuildingType.icon: DrawableResource get() = when (this) {
     CONTAINER ->       Res.drawable.building_container
     TENT ->            Res.drawable.building_tent
     TOMB ->            Res.drawable.building_tomb
-    HISTORIC ->        Res.drawable.building_historic
-    ABANDONED ->       Res.drawable.building_abandoned
-    RUINS ->           Res.drawable.building_ruins
     RESIDENTIAL ->     Res.drawable.building_apartments
     COMMERCIAL ->      Res.drawable.building_office
     CIVIC ->           Res.drawable.building_civic
     RELIGIOUS ->       Res.drawable.building_temple
     GUARDHOUSE ->      Res.drawable.building_guardhouse
-    CONSTRUCTION ->    Res.drawable.building_construction
 }

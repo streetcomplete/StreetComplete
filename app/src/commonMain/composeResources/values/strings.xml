@@ -895,7 +895,6 @@
     <string name="quest_generic_item_invalid_value">Please select a more specific value.</string>
     <string name="quest_buildingType_answer_multiple_types">It has multiple purposes</string>
     <string name="quest_buildingType_answer_multiple_types_description">Simply select the main purpose of this building. E.g. if there is a shop on the ground floor with apartments above it, it is still mainly an apartment building.</string>
-    <string name="quest_buildingType_answer_construction_site">It is still being constructed</string>
     <string name="quest_buildingType_residential">Residential</string>
     <string name="quest_buildingType_residential_description">building where people live</string>
     <string name="quest_buildingType_house">House</string>
@@ -964,6 +963,8 @@
     <string name="quest_buildingType_greenhouse">Greenhouse</string>
     <string name="quest_buildingType_other">Other</string>
     <string name="quest_buildingType_other_description">a specific building that is not selectable in this app</string>
+    <string name="quest_buildingType_status">Status</string>
+    <string name="quest_buildingType_status_description">the building is currently not used</string>
     <string name="quest_buildingType_shed">Shed</string>
     <string name="quest_buildingType_boathouse">Boathouse</string>
     <string name="quest_buildingType_container">Container</string>
@@ -983,10 +984,10 @@
     <string name="quest_buildingType_tower">Tower</string>
     <string name="quest_buildingType_tower_description">any kind of tower</string>
     <string name="quest_buildingType_bunker">Bunker</string>
-    <string name="quest_buildingType_historic">Historic</string>
-    <string name="quest_buildingType_historic_description">building of historic value, constructed for an unknown or unclear purpose</string>
+    <string name="quest_buildingType_disused">Disused</string>
+    <string name="quest_buildingType_disused_description">vacant building</string>
     <string name="quest_buildingType_abandoned">Abandoned</string>
-    <string name="quest_buildingType_abandoned_description">unused building whose original function or purpose is unknown</string>
+    <string name="quest_buildingType_abandoned_description">vacant building in serious disrepair</string>
     <string name="quest_buildingType_ruins">Ruins</string>
     <string name="quest_buildingType_ruins_description">derelict, ruined and unidentifiable building</string>
     <string name="quest_buildingType_fire_station">Fire station building</string>
@@ -1831,6 +1832,9 @@
     <string name="overlay_addresses_no_entrance">It’s not an entrance…</string>
 
     <string name="overlay_buildings">Buildings</string>
+    <string name="overlay_buildings_different_current_use2">Current use differs from original use</string>
+    <string name="overlay_buildings_original_use">Constructed as…</string>
+    <string name="overlay_buildings_current_use">Now…</string>
 
     <string name="overlay_places">Places</string>
     <string name="name_label">Name:</string>

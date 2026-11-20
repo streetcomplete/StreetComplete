@@ -20,13 +20,13 @@ import org.jetbrains.compose.resources.painterResource
 
 /** List of grouped items where one item can be selected */
 @Composable
-fun <I, G : Group<I>> GroupedItemSelectColumn(
-    groups: List<G>,
+fun <C, I> GroupedItemSelectColumn(
+    groups: List<Group<C, I>>,
     topItems: List<I>,
-    selectedGroup: G?,
+    selectedGroup: Group<C, I>?,
     selectedItem: I?,
-    onSelect: (group: G?, item: I?) -> Unit,
-    groupContent: @Composable (group: G) -> Unit,
+    onSelect: (group: Group<C, I>?, item: I?) -> Unit,
+    groupContent: @Composable (group: Group<C, I>) -> Unit,
     itemContent: @Composable (item: I) -> Unit,
     modifier: Modifier = Modifier,
 ) {

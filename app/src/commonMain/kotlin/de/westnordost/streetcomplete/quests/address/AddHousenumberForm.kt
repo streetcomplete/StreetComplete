@@ -18,8 +18,8 @@ import de.westnordost.streetcomplete.osm.address.BlockAndHouseNumber
 import de.westnordost.streetcomplete.osm.address.HouseNumber
 import de.westnordost.streetcomplete.osm.address.looksInvalid
 import de.westnordost.streetcomplete.osm.address.streetHouseNumber
-import de.westnordost.streetcomplete.osm.building.BuildingType
-import de.westnordost.streetcomplete.osm.building.createBuildingType
+import de.westnordost.streetcomplete.osm.building.BuildingTypeAndStatus
+import de.westnordost.streetcomplete.osm.building.createBuildingTypeAndStatus
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
@@ -39,14 +39,14 @@ fun AddHousenumberForm(
         mutableStateOf(AddressNumberAndName(number, null))
     }
 
-    var showNoHouseNumberDialogForBuildingType by remember { mutableStateOf<BuildingType?>(null) }
+    var showNoHouseNumberDialogForBuildingTypeAndStatus by remember { mutableStateOf<BuildingTypeAndStatus?>(null) }
     var showMultipleNumbersHint by remember { mutableStateOf(false) }
     var confirmUnusualHouseNumber by remember { mutableStateOf(false) }
 
     fun onNoHouseNumber() {
-        val buildingType = createBuildingType(element.tags)
-        if (buildingType != null) {
-            showNoHouseNumberDialogForBuildingType = buildingType
+        val buildingTypeAndStatus = createBuildingTypeAndStatus(element.tags)
+        if (buildingTypeAndStatus.type != null || buildingTypeAndStatus.status != null) {
+            showNoHouseNumberDialogForBuildingTypeAndStatus = buildingTypeAndStatus
         } else {
             // fallback in case the type of building is known by Housenumber quest but not by
             // building type quest
@@ -120,12 +120,12 @@ fun AddHousenumberForm(
         )
     }
 
-    showNoHouseNumberDialogForBuildingType?.let { buildingType ->
+    showNoHouseNumberDialogForBuildingTypeAndStatus?.let { buildingTypeAndStatus ->
         NoHouseNumberDialog(
-            onDismissRequest = { showNoHouseNumberDialogForBuildingType = null },
+            onDismissRequest = { showNoHouseNumberDialogForBuildingTypeAndStatus = null },
             onNoHouseNumber = { on(Answer(AddressNumberAndName(null, null))) },
             onWrongBuildingType = { on(Answer(HouseNumberAnswer.WrongBuildingType)) },
-            buildingType = buildingType
+            buildingTypeAndStatus = buildingTypeAndStatus
         )
     }
 
