@@ -17,7 +17,6 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Switch
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
-import androidx.compose.material.TriStateCheckbox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -25,7 +24,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
@@ -79,6 +77,7 @@ fun SettingsScreen(
     var showThemeSelect by remember { mutableStateOf(false) }
     var showAutosyncSelect by remember { mutableStateOf(false) }
     var showResurveyIntervalsSelect by remember { mutableStateOf(false) }
+    var showZoomButtonsSelect by remember { mutableStateOf(false) }
 
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
@@ -204,18 +203,17 @@ fun SettingsScreen(
 
                 Preference(
                     name = stringResource(Res.string.pref_title_zoom_buttons),
-                    onClick = {
-                        viewModel.setShowZoomButtons(if (showZoomButtons == true) false else true)
-                    },
+                    onClick = { showZoomButtonsSelect = true },
                 ) {
-                    TriStateCheckbox(
-                        state = when (showZoomButtons) {
-                            true -> ToggleableState.On
-                            false -> ToggleableState.Off
-                            null -> ToggleableState.Indeterminate
-                        },
-                        onClick = null
-                    )
+                    Select(
+                        items = listOf(null, true, false),
+                        selectedItem = showZoomButtons,
+                        onSelected = { viewModel.setShowZoomButtons(it) },
+                        expanded = showZoomButtonsSelect,
+                        onDismissRequest = { showZoomButtonsSelect = false }
+                    ) {
+                        Text(stringResource(getShowZoomButtonsTitle(it)))
+                    }
                 }
 
                 Preference(
@@ -286,6 +284,12 @@ fun SettingsScreen(
             },
         )
     }
+}
+
+private fun getShowZoomButtonsTitle(showZoomButtons: Boolean?) = when (showZoomButtons) {
+    null -> Res.string.zoom_buttons_show_default
+    true -> Res.string.zoom_buttons_show_always
+    false -> Res.string.zoom_buttons_show_never
 }
 
 private val Autosync.title: StringResource get() = when (this) {

@@ -51,7 +51,7 @@ abstract class SettingsViewModel : ViewModel() {
     abstract fun setAutosync(value: Autosync)
     abstract fun setTheme(value: Theme)
     abstract fun setKeepScreenOn(value: Boolean)
-    abstract fun setShowZoomButtons(value: Boolean)
+    abstract fun setShowZoomButtons(value: Boolean?)
 }
 
 data class QuestTypeCount(val total: Int, val enabled: Int)
@@ -143,7 +143,7 @@ class SettingsViewModelImpl(
     override fun setAutosync(value: Autosync) { prefs.autosync = value }
     override fun setTheme(value: Theme) { prefs.theme = value }
     override fun setKeepScreenOn(value: Boolean) { prefs.keepScreenOn = value }
-    override fun setShowZoomButtons(value: Boolean) { prefs.showZoomButtons = value }
+    override fun setShowZoomButtons(value: Boolean?) { prefs.showZoomButtons = value }
 
     override fun unhideQuests() {
         launch(Dispatchers.IO) {
