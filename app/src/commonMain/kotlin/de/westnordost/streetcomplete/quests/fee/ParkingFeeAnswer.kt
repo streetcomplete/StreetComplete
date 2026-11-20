@@ -19,6 +19,13 @@ sealed interface ParkingFeeAnswer {
         override fun isEmpty(): Boolean = maxstay.isEmpty()
         override fun isTooLong(): Boolean = maxstay.isTooLong()
     }
+
+    @Serializable
+    data object FeeForNonCustomers : ParkingFeeAnswer {
+        override fun isComplete() = true
+        override fun isEmpty() = false
+        override fun isTooLong() = false
+    }
 }
 
 @Serializable
@@ -34,6 +41,11 @@ fun ParkingFeeAnswer.applyTo(tags: Tags) {
         is ParkingFeeAnswer.NoFeeButMaxStay -> {
             Fee.No.applyTo(tags)
             maxstay.applyTo(tags)
+        }
+        is ParkingFeeAnswer.FeeForNonCustomers -> {
+            tags["access"] = "yes"
+            tags["fee"] = "yes"
+            tags["fee:conditional"] = "no @ customers"
         }
     }
 }

@@ -77,11 +77,17 @@ class AddGeneralFee : OsmFilterQuestType<FeeAnswer>() {
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(Fee(false))) },
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(Fee(true))) },
             ),
-            otherAnswers = { listOf(
-                AnswerItem(stringResource(Res.string.quest_toiletsFee_fee_for_non_customers)) {
-                    on(Answer(FeeForNonCustomers))
-                },
-            ) }
+            otherAnswers = {
+                if (element.tags["amenity"] != null) {
+                    listOf(
+                        AnswerItem(stringResource(Res.string.quest_toiletsFee_fee_for_non_customers)) {
+                            on(Answer(FeeForNonCustomers))
+                        },
+                    )
+                }
+                else
+                    listOf()
+            }
         )
     }
 
