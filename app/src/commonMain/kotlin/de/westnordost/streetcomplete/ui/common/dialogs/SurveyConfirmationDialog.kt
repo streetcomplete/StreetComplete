@@ -21,14 +21,13 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun SurveyConfirmationDialog(
     onDismissRequest: () -> Unit,
-    onConfirmed: () -> Unit,
-    onToggleDontShowAgain: (Boolean) -> Unit,
+    onConfirmed: (dontShowAgain: Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     var dontShowAgain by remember { mutableStateOf(false) }
     ConfirmationDialog(
         onDismissRequest = onDismissRequest,
-        onConfirmed = onConfirmed,
+        onConfirmed = { onConfirmed(dontShowAgain) },
         title = { Text(stringResource(Res.string.quest_source_dialog_title)) },
         text = {
             Column(
@@ -38,10 +37,7 @@ fun SurveyConfirmationDialog(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Switch(
                         checked = dontShowAgain,
-                        onCheckedChange = {
-                            dontShowAgain = it
-                            onToggleDontShowAgain(it)
-                        },
+                        onCheckedChange = { dontShowAgain = it },
                     )
                     Text(
                         text = stringResource(Res.string.dialog_session_dont_show_again),

@@ -147,8 +147,10 @@
 
     <string name="quest_leave_new_note_title">Leave a note instead?</string>
     <string name="quest_leave_new_note_description">You can leave a public note for other mappers to resolve at this location, or hide this quest for yourself only</string>
+    <string name="quest_leave_new_note_description_disable">Alternatively, you can disable all quests of this type. This can be changed again in the settings.</string>
     <string name="quest_leave_new_note_yes">Leave note</string>
     <string name="quest_leave_new_note_no">Hide</string>
+    <string name="quest_leave_new_note_disable_quest">Disable all</string>
     <string name="quest_leave_new_note_as_answer">In this case, you need to leave a note in which you explain the situation.</string>
 
 
@@ -185,6 +187,7 @@
 
     <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
     <string name="quest_source_dialog_note">Only information that was verified in-person should be entered.</string>
+    <string name="quest_disable_confirmation_title">Are you sure you want to disable all quests of this type?</string>
     <string name="dialog_session_dont_show_again">Don’t show again for this session</string>
 
     <string name="dialog_dont_notify_again2">Unsubscribe</string>
@@ -563,6 +566,9 @@
     <string name="pref_title_keep_screen_on">Keep screen on</string>
 
     <string name="pref_title_zoom_buttons">Show map zoom buttons</string>
+    <string name="zoom_buttons_show_default">On large screens</string>
+    <string name="zoom_buttons_show_always">Always</string>
+    <string name="zoom_buttons_show_never">Never</string>
 
     <string name="pref_title_sync2">Upload answers automatically</string>
     <string name="autosync_on">On</string>
@@ -1081,6 +1087,7 @@
     <string name="quest_crossing_hint">An informal trail crossing a road:</string>
 
     <string name="quest_cycleway_title2">Is there a bicycle lane or path here? What type?</string>
+    <string name="quest_cycleway_direction_title">Does a sign indicate two-way cycling here? If not, which direction do cyclists go?</string>
     <string name="quest_cycleway_value_track">protected bicycle lane or bicycle path</string>
     <string name="quest_cycleway_value_lane">bicycle lane</string>
     <string name="quest_cycleway_value_none">none</string>
@@ -1105,6 +1112,8 @@
     <string name="quest_cyclewayPartSurface_title">What’s the surface of the bicycle path here?</string>
 
     <string name="quest_cycleway_width_title">How wide is the bicycle path here?</string>
+
+    <string name="default_disabled_msg_sign_at_next_intersection">This quest type is disabled by default because the user potentially needs to walk to the next intersection to see that sign, and that may be a little far.</string>
 
     <string name="quest_dietType_glutenfree_name_title">Are gluten-free products offered here?</string>
     <string name="quest_dietType_explanation_glutenfree">Preparing gluten-free products requires knowledge, as common spices and sauces may contain gluten. Gluten-free food would be explicitly labeled as such.</string>
@@ -1232,6 +1241,7 @@
 
     <string name="quest_level_title2">On which level number is this place located?</string>
     <string name="quest_level_thing_title">On which level number is this thing located?</string>
+    <string name="quest_level_hint">Places on the same level are highlighted, compare them to your surroundings to find the correct level. Flick through a few levels and you’ll get it.</string>
 
     <string name="quest_lit_title">Is it lit here?</string>
 
