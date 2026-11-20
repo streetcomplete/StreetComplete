@@ -1,11 +1,23 @@
 # Changelog
 
-## v64.2
+## v65.0
+
+### New Quests
+
+- _"Does a sign indicate two-way cycling here? If not, which direction do cyclists go?"_ (#7268, #6817), by @Amaanprobably, @wielandb, @mcliquid
+
+### Quest improvements
 
 - Level of POIs: Asked in more places, such as public buildings or generally indoor-mapped places  (#7235), by @paulklie
 - Bus stops: Don't ask anything for unmarked bus stops (#7370)
-- Other minor improvements (#7364, #7369, #7376), thanks @paulklie
+- Ask some quests for more types of places (#7376, #7401, #7389), by @paulklie
+- Other minor improvements (#7364, #7369, #7301), thanks @paulklie
 - Other minor fixes (#7381, …)
+
+### General improvements
+
+- Add disabling a quest type in "Can't Say" dialog (#7266, #6765), by @Amaanprobably, thanks @VeryUsual
+- Zoom buttons by default show on large screens (#7282)
 
 ## v64.1
 
@@ -19,6 +31,7 @@
 - Fix auto-sync stopped working under certain conditions (#7312)
 - Fix gracefully treat connection problems on download (#7324)
 - Other minor fixes (#1553, #7344, …)
+
 
 ### Improvements
 
