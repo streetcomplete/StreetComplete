@@ -164,6 +164,7 @@ import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.quests.smoking.AddSmoking
 import de.westnordost.streetcomplete.quests.smoothness.AddPathSmoothness
 import de.westnordost.streetcomplete.quests.smoothness.AddRoadSmoothness
+import de.westnordost.streetcomplete.quests.socket.AddBicycleChargingStationSocket
 import de.westnordost.streetcomplete.quests.sport.AddSport
 import de.westnordost.streetcomplete.quests.step_count.AddStepCount
 import de.westnordost.streetcomplete.quests.step_count.AddStepCountStile
@@ -426,6 +427,7 @@ fun questTypeRegistry(
     201 to AddChargingStationMotorcar(),
     186 to AddChargingStationBicycles(),
     198 to AddChargingStationSocket(),
+    205 to AddBicycleChargingStationSocket(),
     88 to AddChargingStationOperator(),
 
     194 to AddVendingMachineType(), // May take some time to find the machine in building with multiple levels
