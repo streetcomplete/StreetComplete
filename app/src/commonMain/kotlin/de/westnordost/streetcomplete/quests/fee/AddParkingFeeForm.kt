@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.parking_fee
+package de.westnordost.streetcomplete.quests.fee
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

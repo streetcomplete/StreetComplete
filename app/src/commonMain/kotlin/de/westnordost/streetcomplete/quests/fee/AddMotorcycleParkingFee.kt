@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.parking_fee
+package de.westnordost.streetcomplete.quests.fee
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
@@ -8,32 +8,26 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddBikeParkingFee : OsmFilterQuestType<ParkingFeeAnswer>() {
+class AddMotorcycleParkingFee : OsmFilterQuestType<ParkingFeeAnswer>() {
 
-    // element selection logic by @DerDings in #2507
     override val elementFilter = """
         nodes, ways, relations with
-          amenity = bicycle_parking
+          amenity = motorcycle_parking
           and access ~ yes|customers|public
-          and (
-            name
-            or bicycle_parking ~ building|lockers|shed
-            or capacity >= 100
-          )
           and (
             !fee and !fee:conditional
             or fee older today -8 years
           )
     """
-    override val changesetComment = "Specify bicycle parking fees"
-    override val wikiLink = "Tag:amenity=bicycle_parking"
-    override val icon = Res.drawable.quest_bicycle_parking_fee
-    override val title = Res.string.quest_bicycle_parking_fee_title
-    override val achievements = listOf(BICYCLIST)
+    override val changesetComment = "Specify motorcycle parking fees"
+    override val wikiLink = "Tag:amenity=motorcycle_parking"
+    override val icon = Res.drawable.quest_motorcycle_parking_fee
+    override val title = Res.string.quest_parking_fee_title
+    override val achievements = listOf(CAR)
 
     @Composable
     override fun Form(on: (QuestAction<ParkingFeeAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
@@ -45,5 +39,5 @@ class AddBikeParkingFee : OsmFilterQuestType<ParkingFeeAnswer>() {
     }
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways, relations with amenity = bicycle_parking")
+        mapData.filter("nodes, ways, relations with amenity = motorcycle_parking")
 }

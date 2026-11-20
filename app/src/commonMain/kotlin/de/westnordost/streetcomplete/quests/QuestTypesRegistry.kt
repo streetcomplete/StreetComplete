@@ -100,7 +100,7 @@ import de.westnordost.streetcomplete.quests.firewood.AddFirewood
 import de.westnordost.streetcomplete.quests.first_aid_kit.AddFirstAidKitLocation
 import de.westnordost.streetcomplete.quests.fuel_service.AddFuelSelfService
 import de.westnordost.streetcomplete.quests.general_access.AddGeneralAccess
-import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
+import de.westnordost.streetcomplete.quests.fee.AddGeneralFee
 import de.westnordost.streetcomplete.quests.grit_bin_seasonal.AddGritBinSeasonal
 import de.westnordost.streetcomplete.quests.hairdresser.AddHairdresserCustomers
 import de.westnordost.streetcomplete.quests.handrail.AddHandrail
@@ -132,9 +132,9 @@ import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
 import de.westnordost.streetcomplete.quests.parcel_locker_brand.AddParcelLockerBrand
 import de.westnordost.streetcomplete.quests.parking_access.AddBikeParkingAccess
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
-import de.westnordost.streetcomplete.quests.parking_fee.AddBikeParkingFee
-import de.westnordost.streetcomplete.quests.parking_fee.AddMotorcycleParkingFee
-import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
+import de.westnordost.streetcomplete.quests.fee.AddBikeParkingFee
+import de.westnordost.streetcomplete.quests.fee.AddMotorcycleParkingFee
+import de.westnordost.streetcomplete.quests.fee.AddParkingFee
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType
 import de.westnordost.streetcomplete.quests.pitch_lit.AddPitchLit
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
@@ -183,7 +183,7 @@ import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCross
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingKerb
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingSteps
 import de.westnordost.streetcomplete.quests.toilet_availability.AddToiletAvailability
-import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee
+import de.westnordost.streetcomplete.quests.fee.AddToiletsFee
 import de.westnordost.streetcomplete.quests.tourism_information.AddInformationToTourism
 import de.westnordost.streetcomplete.quests.tracktype.AddTracktype
 import de.westnordost.streetcomplete.quests.traffic_calming_type.AddTrafficCalmingType

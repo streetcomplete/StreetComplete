@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.parking_fee
+package de.westnordost.streetcomplete.quests.fee
 
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.fee.Fee
