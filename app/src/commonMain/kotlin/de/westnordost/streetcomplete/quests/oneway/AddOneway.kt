@@ -13,9 +13,6 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.estimateUsableRoadwayWidth
-import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.BACKWARD
-import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.FORWARD
-import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.NO_ONEWAY
 import de.westnordost.streetcomplete.resources.*
 
 class AddOneway : OsmElementQuestType<OnewayAnswer> {
@@ -91,10 +88,6 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
     }
 
     override fun applyAnswerTo(answer: OnewayAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["oneway"] = when (answer) {
-            FORWARD -> "yes"
-            BACKWARD -> "-1"
-            NO_ONEWAY -> "no"
-        }
+        tags["oneway"] = answer.osmValue
     }
 }
