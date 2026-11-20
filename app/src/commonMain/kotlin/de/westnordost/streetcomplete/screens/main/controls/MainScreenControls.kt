@@ -181,7 +181,7 @@ fun MainScreenControls(
                                 rotation = { -mapRotation() },
                                 tilt = mapTilt,
                             )
-                            if (showZoomButtons) {
+                            AnimatedVisibility(showZoomButtons) {
                                 ZoomButtons(
                                     onZoomIn = onClickZoomIn,
                                     onZoomOut = onClickZoomOut,

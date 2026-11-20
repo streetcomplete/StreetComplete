@@ -164,7 +164,9 @@ fun MainScreen(
     val lastDownloadError by viewModel.lastDownloadError.collectAsState()
     val lastUploadError by viewModel.lastUploadError.collectAsState()
 
-    val showZoomButtons by viewModel.showZoomButtons.collectAsState()
+    val showZoomButtonsPref by viewModel.showZoomButtons.collectAsState()
+    val showZoomButtons = showZoomButtonsPref ?:
+        LocalWindowInfo.current.containerDpSize.let { it.width >= 500.dp && it.height >= 500.dp }
 
     val isRequestingLogin by viewModel.isRequestingLogin.collectAsState()
 
