@@ -9,6 +9,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.fee.Fee
+import de.westnordost.streetcomplete.quests.parking_fee.ParkingFeeAnswer
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
@@ -74,14 +76,15 @@ class AddGeneralFee : OsmFilterQuestType<FeeAnswer>() {
                 }
             ),
             answers = listOf(
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(Fee(false))) },
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(Fee(true))) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(
+                    FeeAnswer.NO)) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(FeeAnswer.YES)) },
             ),
             otherAnswers = {
                 if (element.tags["amenity"] != null) {
                     listOf(
                         AnswerItem(stringResource(Res.string.quest_toiletsFee_fee_for_non_customers)) {
-                            on(Answer(FeeForNonCustomers))
+                            on(Answer(FeeAnswer.ONLY_FOR_NON_CUSTOMERS))
                         },
                     )
                 }
@@ -94,11 +97,16 @@ class AddGeneralFee : OsmFilterQuestType<FeeAnswer>() {
     override fun applyAnswerTo(answer: FeeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long)  {
         tags.remove("fee:conditional")
         when (answer) {
-            is Fee -> tags["fee"] = answer.fee.toYesNo()
-            is FeeForNonCustomers -> {
+            FeeAnswer.ONLY_FOR_NON_CUSTOMERS -> {
                 tags["access"] = "yes"
                 tags["fee"] = "yes"
                 tags["fee:conditional"] = "no @ customers"
+            }
+            FeeAnswer.YES -> {
+                tags["fee"] = "yes"
+            }
+            FeeAnswer.NO -> {
+                tags["fee"] = "no"
             }
         }
     }

@@ -41,12 +41,13 @@ class AddToiletsFee : OsmFilterQuestType<FeeAnswer>() {
         QuestForm(
             on = on,
             answers = listOf(
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(Fee(false))) },
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(Fee(true))) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(FeeAnswer.NO)) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(
+                    FeeAnswer.YES)) },
             ),
             otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_toiletsFee_fee_for_non_customers)) {
-                    on(Answer(FeeForNonCustomers))
+                    on(Answer(FeeAnswer.ONLY_FOR_NON_CUSTOMERS))
                 },
             ) }
         )
@@ -55,11 +56,16 @@ class AddToiletsFee : OsmFilterQuestType<FeeAnswer>() {
     override fun applyAnswerTo(answer: FeeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.remove("fee:conditional")
         when (answer) {
-            is Fee -> tags["fee"] = answer.fee.toYesNo()
-            is FeeForNonCustomers -> {
+            FeeAnswer.ONLY_FOR_NON_CUSTOMERS -> {
                 tags["access"] = "yes"
                 tags["fee"] = "yes"
                 tags["fee:conditional"] = "no @ customers"
+            }
+            FeeAnswer.YES -> {
+                tags["fee"] = "yes"
+            }
+            FeeAnswer.NO -> {
+                tags["fee"] = "no"
             }
         }
     }

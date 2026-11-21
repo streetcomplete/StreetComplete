@@ -1,29 +1,31 @@
-package de.westnordost.streetcomplete.quests.fee
+package de.westnordost.streetcomplete.quests.parking_fee
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddParkingFee : OsmFilterQuestType<ParkingFeeAnswer>() {
+class AddMotorcycleParkingFee : OsmFilterQuestType<ParkingFeeAnswer>() {
 
     override val elementFilter = """
         nodes, ways, relations with
-          amenity = parking
-          and access ~ yes|public
+          amenity = motorcycle_parking
+          and access ~ yes|customers|public
           and (
             !fee and !fee:conditional
             or fee older today -8 years
           )
     """
-    override val changesetComment = "Specify whether parking requires a fee"
-    override val wikiLink = "Tag:amenity=parking"
-    override val icon = Res.drawable.quest_parking_fee
+    override val changesetComment = "Specify motorcycle parking fees"
+    override val wikiLink = "Tag:amenity=motorcycle_parking"
+    override val icon = Res.drawable.quest_motorcycle_parking_fee
     override val title = Res.string.quest_parking_fee_title
     override val achievements = listOf(CAR)
 
@@ -35,4 +37,7 @@ class AddParkingFee : OsmFilterQuestType<ParkingFeeAnswer>() {
     override fun applyAnswerTo(answer: ParkingFeeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags)
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways, relations with amenity = motorcycle_parking")
 }
