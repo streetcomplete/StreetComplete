@@ -52,6 +52,9 @@ fun AddParkingFeeForm(
                 AnswerItem(stringResource(Res.string.quest_fee_answer_no_but_maxstay)) {
                     answer = ParkingFeeAnswer.NoFeeButMaxStay(MaxStay(null, null))
                 },
+                AnswerItem(stringResource(Res.string.quest_toiletsFee_fee_for_non_customers)) {
+                    on(Answer(ParkingFeeAnswer.FeeForNonCustomers))
+                },
             ) }
         )
     } else {
