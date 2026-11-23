@@ -70,11 +70,17 @@ class LitStatusKtTest {
 
     @Test fun `apply does overwrite unsupported value if not 'yes'`() {
         assertEquals(
-            setOf(StringMapEntryModify("lit", "limited", "no")),
+            setOf(
+                StringMapEntryModify("lit", "limited", "no"),
+                StringMapEntryAdd("check_date:lit", nowAsCheckDateString()),
+            ),
             NO.appliedTo(mapOf("lit" to "limited"))
         )
         assertEquals(
-            setOf(StringMapEntryModify("lit", "22:00-05:00", "automatic")),
+            setOf(
+                StringMapEntryModify("lit", "22:00-05:00", "automatic"),
+                StringMapEntryAdd("check_date:lit", nowAsCheckDateString()),
+            ),
             AUTOMATIC.appliedTo(mapOf("lit" to "22:00-05:00"))
         )
     }

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.postbox_collection_times
 
 import de.westnordost.osm_opening_hours.model.ClockTime
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.Months
 import de.westnordost.streetcomplete.osm.opening_hours.Times
@@ -23,7 +24,10 @@ class AddPostboxCollectionTimesTest {
 
     @Test fun `apply times answer`() {
         assertEquals(
-            setOf(StringMapEntryAdd("collection_times", "10:00")),
+            setOf(
+                StringMapEntryAdd("collection_times", "10:00"),
+                StringMapEntryAdd("check_date:collection_times", nowAsCheckDateString()),
+            ),
             questType.answerApplied(CollectionTimes(HierarchicOpeningHours(listOf(
                 Months(emptyList(), listOf(
                     Weekdays(listOf(), emptyList(),

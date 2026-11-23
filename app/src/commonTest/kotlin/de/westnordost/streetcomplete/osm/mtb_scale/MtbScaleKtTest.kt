@@ -35,23 +35,25 @@ class MtbScaleKtTest {
 
     @Test fun `applyTo normally`() {
         assertEquals(
-            setOf(StringMapEntryAdd("mtb:scale", "6")),
+            setOf(
+                StringMapEntryAdd("mtb:scale", "6"),
+                StringMapEntryAdd("check_date:mtb:scale", nowAsCheckDateString()),
+            ),
             MtbScale(SIX).appliedTo(mapOf())
         )
         assertEquals(
-            setOf(StringMapEntryAdd("mtb:scale", "3+")),
+            setOf(
+                StringMapEntryAdd("mtb:scale", "3+"),
+                StringMapEntryAdd("check_date:mtb:scale", nowAsCheckDateString()),
+            ),
             MtbScale(THREE, MtbScale.Mod.PLUS).appliedTo(mapOf())
         )
         assertEquals(
-            setOf(StringMapEntryModify("mtb:scale", "grade2", "2")),
-            MtbScale(TWO).appliedTo(mapOf("mtb:scale" to "grade2"))
-        )
-        assertEquals(
             setOf(
-                StringMapEntryModify("mtb:scale", "2", "2"),
-                StringMapEntryAdd("check_date:mtb:scale", nowAsCheckDateString())
+                StringMapEntryModify("mtb:scale", "grade2", "2"),
+                StringMapEntryAdd("check_date:mtb:scale", nowAsCheckDateString()),
             ),
-            MtbScale(TWO).appliedTo(mapOf("mtb:scale" to "2"))
+            MtbScale(TWO).appliedTo(mapOf("mtb:scale" to "grade2"))
         )
     }
 
@@ -67,7 +69,10 @@ class MtbScaleKtTest {
 
     @Test fun `applyTo with specified modifier overwrites modifier`() {
         assertEquals(
-            setOf(StringMapEntryModify("mtb:scale", "2+", "2")),
+            setOf(
+                StringMapEntryModify("mtb:scale", "2+", "2"),
+                StringMapEntryAdd("check_date:mtb:scale", nowAsCheckDateString()),
+            ),
             MtbScale(TWO, MtbScale.Mod.NONE).appliedTo(mapOf("mtb:scale" to "2+"))
         )
     }

@@ -25,7 +25,8 @@ class ResurveyUtilsTest {
         val changes = builder.create().changes
 
         assertEquals(setOf(
-            StringMapEntryAdd("new key", "tag")
+            StringMapEntryAdd("new key", "tag"),
+            StringMapEntryAdd("check_date:new key", nowAsCheckDateString()),
         ), changes)
     }
 
@@ -49,7 +50,8 @@ class ResurveyUtilsTest {
         val changes = builder.create().changes
 
         assertEquals(setOf(
-            StringMapEntryModify("old key", "old value", "new value")
+            StringMapEntryModify("old key", "old value", "new value"),
+            StringMapEntryAdd("check_date:old key", nowAsCheckDateString()),
         ), changes)
     }
 
