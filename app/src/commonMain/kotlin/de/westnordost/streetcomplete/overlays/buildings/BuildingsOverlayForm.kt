@@ -17,9 +17,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.overlays.Edit
 import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.osm.building.BuildingLifecycle
 import de.westnordost.streetcomplete.osm.building.BuildingStatus
 import de.westnordost.streetcomplete.osm.building.BuildingType
-import de.westnordost.streetcomplete.osm.building.BuildingType.*
 import de.westnordost.streetcomplete.osm.building.BuildingTypeAndStatus
 import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory
 import de.westnordost.streetcomplete.osm.building.applyTo
@@ -98,12 +98,11 @@ fun BuildingsOverlayForm(
                     )
                 },
                 onClickOk = { selectedItem ->
-                    // in single-item select, we tag the status if a status was selected and
-                    // otherwise the building type
-                    val buildingTypeAndStatus = if (selectedItem is BuildingType) {
-                        BuildingTypeAndStatus(selectedItem, null)
-                    } else {
-                        BuildingTypeAndStatus(null, selectedItem)
+                    // in single-item select, a building type replaces the current tagging, while a lifecycle
+                    // status is added on top of the existing building type
+                    val buildingTypeAndStatus = when (selectedItem) {
+                        is BuildingType -> BuildingTypeAndStatus(selectedItem, null)
+                        is BuildingLifecycle -> BuildingTypeAndStatus(originalBuildingAndStatus.type, selectedItem)
                     }
                     val tagChanges = StringMapChangesBuilder(element.tags)
                     buildingTypeAndStatus.applyTo(tagChanges)
