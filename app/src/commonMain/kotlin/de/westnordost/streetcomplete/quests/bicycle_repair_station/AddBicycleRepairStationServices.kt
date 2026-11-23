@@ -2,43 +2,51 @@ package de.westnordost.streetcomplete.quests.bicycle_repair_station
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
+import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateCheckDate
-import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.osm.updateCheckDateForKey
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_bicycle_repair_amenity
+import de.westnordost.streetcomplete.resources.quest_bicycle_repair_station_services_title
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.quest.ItemsSelectQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStationService>>() {
+class AddBicycleRepairStationServices : OsmElementQuestType<Set<BicycleRepairStationService>> {
 
-    override val elementFilter = """
+    private val filter by lazy { """
         nodes, ways with
           amenity = bicycle_repair_station
-          and (
-            !service:bicycle:pump
-            or !service:bicycle:stand
-            or !service:bicycle:tools
-            or !service:bicycle:chain_tool
-            or older today -2 years
-          )
           and access !~ private|no
-    """
+    """.toElementFilterExpression() }
 
     override val changesetComment = "Specify features of bicycle repair stations"
     override val wikiLink = "Tag:amenity=bicycle_repair_station"
     override val icon = Res.drawable.quest_bicycle_repair_amenity
     override val title = Res.string.quest_bicycle_repair_station_services_title
     override val achievements = listOf(BICYCLIST)
+
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
+        mapData.filter { isApplicableTo(it) }
+
+    override fun isApplicableTo(element: Element): Boolean =
+        filter.matches(element) && (
+            !element.hasAnySupportedBicycleServices()
+            || bicycleServicesOlderThan2Years.matches(element)
+    )
 
     @Composable
     override fun Form(on: (QuestAction<Set<BicycleRepairStationService>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
@@ -64,6 +72,12 @@ class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStat
         for (entry in BicycleRepairStationService.entries) {
             tags["service:bicycle:${entry.value}"] = (entry in answer).toYesNo()
         }
-        tags.updateCheckDate()
+        tags.updateCheckDateForKey("service:bicycle")
     }
 }
+
+private val bicycleServicesOlderThan2Years =
+    TagOlderThan("service:bicycle", RelativeDate(-(365 * 2).toFloat()))
+
+private fun Element.hasAnySupportedBicycleServices(): Boolean =
+    BicycleRepairStationService.entries.any { tags.containsKey(it.value) }
