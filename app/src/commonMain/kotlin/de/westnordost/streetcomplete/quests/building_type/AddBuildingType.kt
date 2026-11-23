@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.osm.building.BuildingTypeAndStatus
 import de.westnordost.streetcomplete.osm.building.INVALID_BUILDING_TYPES
 import de.westnordost.streetcomplete.osm.building.OTHER_KEYS_POTENTIALLY_DESCRIBING_BUILDING_TYPE
 import de.westnordost.streetcomplete.osm.building.applyTo
+import de.westnordost.streetcomplete.osm.building.createBuildingTypeAndStatus
 import de.westnordost.streetcomplete.resources.*
 
 class AddBuildingType : OsmFilterQuestType<BuildingStatus>() {
@@ -45,12 +46,11 @@ class AddBuildingType : OsmFilterQuestType<BuildingStatus>() {
 
     override fun applyAnswerTo(answer: BuildingStatus, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         // we tag the status if a status was selected and otherwise the building type
-        val buildingTypeAndStatus = if (answer is BuildingType) {
-            BuildingTypeAndStatus(answer, null)
-        } else {
-            BuildingTypeAndStatus(null, answer)
+        val buildingTypeAndStatus = when (answer) {
+            is BuildingType -> BuildingTypeAndStatus(answer, null)
+            // unsupported because unsupported means "change nothing" (while null means "unspecified")
+            is BuildingStatus -> BuildingTypeAndStatus(BuildingType.UNSUPPORTED, answer)
         }
-
         buildingTypeAndStatus.applyTo(tags)
     }
 }

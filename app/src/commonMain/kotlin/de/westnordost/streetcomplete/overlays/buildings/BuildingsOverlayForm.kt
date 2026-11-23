@@ -98,11 +98,11 @@ fun BuildingsOverlayForm(
                     )
                 },
                 onClickOk = { selectedItem ->
-                    // in single-item select, a building type replaces the current tagging, while a lifecycle
-                    // status is added on top of the existing building type
+                    // we tag the status if a status was selected and otherwise the building type
                     val buildingTypeAndStatus = when (selectedItem) {
                         is BuildingType -> BuildingTypeAndStatus(selectedItem, null)
-                        is BuildingLifecycle -> BuildingTypeAndStatus(originalBuildingAndStatus.type, selectedItem)
+                        // unsupported because unsupported means "change nothing" (while null means "unspecified")
+                        is BuildingLifecycle -> BuildingTypeAndStatus(BuildingType.UNSUPPORTED, selectedItem)
                     }
                     val tagChanges = StringMapChangesBuilder(element.tags)
                     buildingTypeAndStatus.applyTo(tagChanges)
