@@ -25,22 +25,16 @@ class MaxStayTest {
     @Test fun `apply max stay duration`() {
         assertEquals(
             setOf(
-                StringMapEntryAdd("maxstay", oneHourStr)
+                StringMapEntryAdd("maxstay", oneHourStr),
+                StringMapEntryAdd("check_date:maxstay", nowAsCheckDateString())
             ),
             MaxStay(oneHour).appliedTo(mapOf())
         )
 
         assertEquals(
             setOf(
-                StringMapEntryModify("maxstay", oneHourStr, oneHourStr),
-                StringMapEntryAdd("check_date:maxstay", nowAsCheckDateString())
-            ),
-            MaxStay(oneHour).appliedTo(mapOf("maxstay" to oneHourStr))
-        )
-
-        assertEquals(
-            setOf(
                 StringMapEntryAdd("maxstay", oneHourStr),
+                StringMapEntryAdd("check_date:maxstay", nowAsCheckDateString()),
                 StringMapEntryDelete("maxstay:conditional", "no @ (24/7)")
             ),
             MaxStay(oneHour).appliedTo(mapOf("maxstay:conditional" to "no @ (24/7)"))
@@ -54,20 +48,9 @@ class MaxStayTest {
             setOf(
                 StringMapEntryAdd("maxstay", "no"),
                 StringMapEntryAdd("maxstay:conditional", "$oneHourStr @ ($ohStr)"),
-            ),
-            maxstayAtHours.appliedTo(mapOf())
-        )
-
-        assertEquals(
-            setOf(
-                StringMapEntryModify("maxstay", "no", "no"),
-                StringMapEntryModify("maxstay:conditional", "$oneHourStr @ ($ohStr)", "$oneHourStr @ ($ohStr)"),
                 StringMapEntryAdd("check_date:maxstay", nowAsCheckDateString())
             ),
-            maxstayAtHours.appliedTo(mapOf(
-                "maxstay" to "no",
-                "maxstay:conditional" to "$oneHourStr @ ($ohStr)"
-            ))
+            maxstayAtHours.appliedTo(mapOf())
         )
     }
 
@@ -78,20 +61,9 @@ class MaxStayTest {
             setOf(
                 StringMapEntryAdd("maxstay", oneHourStr),
                 StringMapEntryAdd("maxstay:conditional", "no @ ($ohStr)"),
-            ),
-            maxstayExceptAtHours.appliedTo(mapOf())
-        )
-
-        assertEquals(
-            setOf(
-                StringMapEntryModify("maxstay", oneHourStr, oneHourStr),
-                StringMapEntryModify("maxstay:conditional", "no @ ($ohStr)", "no @ ($ohStr)"),
                 StringMapEntryAdd("check_date:maxstay", nowAsCheckDateString())
             ),
-            maxstayExceptAtHours.appliedTo(mapOf(
-                "maxstay" to oneHourStr,
-                "maxstay:conditional" to "no @ ($ohStr)"
-            ))
+            maxstayExceptAtHours.appliedTo(mapOf())
         )
     }
 }

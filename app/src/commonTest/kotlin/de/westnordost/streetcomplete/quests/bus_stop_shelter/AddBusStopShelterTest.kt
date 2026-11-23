@@ -15,35 +15,21 @@ class AddBusStopShelterTest {
 
     @Test fun `apply shelter yes answer`() {
         assertEquals(
-            setOf(StringMapEntryAdd("shelter", "yes")),
-            questType.answerApplied(BusStopShelterAnswer.SHELTER)
-        )
-    }
-
-    @Test fun `apply shelter yes again answer`() {
-        assertEquals(
             setOf(
-                StringMapEntryModify("shelter", "yes", "yes"),
+                StringMapEntryAdd("shelter", "yes"),
                 StringMapEntryAdd("check_date:shelter", nowAsCheckDateString())
             ),
-            questType.answerAppliedTo(BusStopShelterAnswer.SHELTER, mapOf("shelter" to "yes"))
+            questType.answerApplied(BusStopShelterAnswer.SHELTER)
         )
     }
 
     @Test fun `apply shelter no answer`() {
         assertEquals(
-            setOf(StringMapEntryAdd("shelter", "no")),
-            questType.answerApplied(BusStopShelterAnswer.NO_SHELTER)
-        )
-    }
-
-    @Test fun `apply shelter no again answer`() {
-        assertEquals(
             setOf(
-                StringMapEntryModify("shelter", "no", "no"),
+                StringMapEntryAdd("shelter", "no"),
                 StringMapEntryAdd("check_date:shelter", nowAsCheckDateString())
             ),
-            questType.answerAppliedTo(BusStopShelterAnswer.NO_SHELTER, mapOf("shelter" to "no"))
+            questType.answerApplied(BusStopShelterAnswer.NO_SHELTER)
         )
     }
 

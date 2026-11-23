@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.payment
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.testutils.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.node
@@ -15,6 +16,8 @@ class AddAcceptsCardsTest {
             setOf(
                 StringMapEntryAdd("payment:debit_cards", "yes"),
                 StringMapEntryAdd("payment:credit_cards", "yes"),
+                StringMapEntryAdd("check_date:payment:debit_cards", nowAsCheckDateString()),
+                StringMapEntryAdd("check_date:payment:credit_cards", nowAsCheckDateString()),
             ),
             questType.answerApplied(CardAcceptance.DEBIT_AND_CREDIT)
         )
@@ -22,6 +25,8 @@ class AddAcceptsCardsTest {
             setOf(
                 StringMapEntryAdd("payment:debit_cards", "yes"),
                 StringMapEntryAdd("payment:credit_cards", "no"),
+                StringMapEntryAdd("check_date:payment:debit_cards", nowAsCheckDateString()),
+                StringMapEntryAdd("check_date:payment:credit_cards", nowAsCheckDateString()),
             ),
             questType.answerApplied(CardAcceptance.DEBIT_CARDS_ONLY)
         )

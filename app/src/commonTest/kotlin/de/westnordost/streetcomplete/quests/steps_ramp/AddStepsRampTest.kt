@@ -17,7 +17,8 @@ class AddStepsRampTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("ramp", "yes"),
-                StringMapEntryAdd("ramp:bicycle", "yes")
+                StringMapEntryAdd("ramp:bicycle", "yes"),
+                StringMapEntryAdd("check_date:ramp", nowAsCheckDateString()),
             ),
             questType.answerApplied(
                 StepsRampAnswer(
@@ -33,7 +34,8 @@ class AddStepsRampTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("ramp", "no", "yes"),
-                StringMapEntryAdd("ramp:stroller", "yes")
+                StringMapEntryAdd("ramp:stroller", "yes"),
+                StringMapEntryAdd("check_date:ramp", nowAsCheckDateString()),
             ),
             questType.answerAppliedTo(
                 StepsRampAnswer(
@@ -71,6 +73,7 @@ class AddStepsRampTest {
                 StringMapEntryAdd("ramp:stroller", "yes"),
                 StringMapEntryAdd("ramp:bicycle", "yes"),
                 StringMapEntryAdd("ramp:wheelchair", "yes"),
+                StringMapEntryAdd("check_date:ramp", nowAsCheckDateString()),
             ),
             questType.answerApplied(
                 StepsRampAnswer(
@@ -113,6 +116,7 @@ class AddStepsRampTest {
                 StringMapEntryModify("ramp", "yes", "no"),
                 StringMapEntryDelete("ramp:bicycle", "yes"),
                 StringMapEntryDelete("ramp:wheelchair", "separate"),
+                StringMapEntryAdd("check_date:ramp", nowAsCheckDateString()),
             ),
             questType.answerAppliedTo(
                 StepsRampAnswer(
@@ -157,7 +161,8 @@ class AddStepsRampTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("ramp", "separate"),
-                StringMapEntryAdd("ramp:wheelchair", "separate")
+                StringMapEntryAdd("ramp:wheelchair", "separate"),
+                StringMapEntryAdd("check_date:ramp", nowAsCheckDateString()),
             ),
             questType.answerApplied(
                 StepsRampAnswer(
@@ -170,45 +175,49 @@ class AddStepsRampTest {
     }
 
     @Test fun `apply wheelchair separate answer deletes previous ramp values`() {
-        questType.answerAppliedTo(
-            StepsRampAnswer(
-                bicycleRamp = false,
-                strollerRamp = false,
-                wheelchairRamp = WheelchairRampStatus.SEPARATE
+        assertEquals(
+            setOf(
+                StringMapEntryModify("ramp", "yes", "separate"),
+                StringMapEntryAdd("ramp:wheelchair", "separate"),
+                StringMapEntryDelete("ramp:bicycle", "yes"),
+                StringMapEntryDelete("ramp:stroller", "yes"),
+                StringMapEntryAdd("check_date:ramp", nowAsCheckDateString()),
             ),
-            mapOf(
-                "ramp" to "yes",
-                "ramp:bicycle" to "yes",
-                "ramp:stroller" to "yes",
+            questType.answerAppliedTo(
+                StepsRampAnswer(
+                    bicycleRamp = false,
+                    strollerRamp = false,
+                    wheelchairRamp = WheelchairRampStatus.SEPARATE
+                ),
+                mapOf(
+                    "ramp" to "yes",
+                    "ramp:bicycle" to "yes",
+                    "ramp:stroller" to "yes",
+                )
             )
-        )
-
-        setOf(
-            StringMapEntryModify("ramp", "yes", "separate"),
-            StringMapEntryAdd("ramp:wheelchair", "separate"),
-            StringMapEntryDelete("ramp:bicycle", "yes"),
-            StringMapEntryDelete("ramp:stroller", "yes")
         )
     }
 
     @Test fun `apply wheelchair separate answer with other ramps`() {
-        questType.answerAppliedTo(
-            StepsRampAnswer(
-                bicycleRamp = true,
-                strollerRamp = true,
-                wheelchairRamp = WheelchairRampStatus.SEPARATE
+        assertEquals(
+            setOf(
+                StringMapEntryModify("ramp", "no", "yes"),
+                StringMapEntryAdd("ramp:wheelchair", "separate"),
+                StringMapEntryAdd("ramp:bicycle", "yes"),
+                StringMapEntryModify("ramp:stroller", "yes", "yes"),
+                StringMapEntryAdd("check_date:ramp", nowAsCheckDateString()),
             ),
-            mapOf(
-                "ramp" to "no",
-                "ramp:stroller" to "yes",
+            questType.answerAppliedTo(
+                StepsRampAnswer(
+                    bicycleRamp = true,
+                    strollerRamp = true,
+                    wheelchairRamp = WheelchairRampStatus.SEPARATE
+                ),
+                mapOf(
+                    "ramp" to "no",
+                    "ramp:stroller" to "yes",
+                )
             )
-        )
-
-        setOf(
-            StringMapEntryModify("ramp", "no", "yes"),
-            StringMapEntryAdd("ramp:wheelchair", "separate"),
-            StringMapEntryAdd("ramp:bicycle", "yes"),
-            StringMapEntryModify("ramp:stroller", "yes", "yes")
         )
     }
 }

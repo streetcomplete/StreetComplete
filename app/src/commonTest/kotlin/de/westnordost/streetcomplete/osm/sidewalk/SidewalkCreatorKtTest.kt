@@ -21,17 +21,24 @@ class SidewalkCreatorKtTest {
 
     @Test fun `apply simple values`() {
         assertEquals(
-            setOf(StringMapEntryAdd("sidewalk:both", "yes")),
+            setOf(
+                StringMapEntryAdd("sidewalk:both", "yes"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
+            ),
             Sides(Sidewalk.YES, Sidewalk.YES).appliedTo(mapOf()),
         )
         assertEquals(
-            setOf(StringMapEntryAdd("sidewalk:both", "no")),
+            setOf(
+                StringMapEntryAdd("sidewalk:both", "no"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
+            ),
             Sides(Sidewalk.NO, Sidewalk.NO).appliedTo(mapOf()),
         )
         assertEquals(
             setOf(
                 StringMapEntryAdd("sidewalk:left", "yes"),
                 StringMapEntryAdd("sidewalk:right", "no"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             Sides(Sidewalk.YES, Sidewalk.NO).appliedTo(mapOf()),
         )
@@ -39,6 +46,7 @@ class SidewalkCreatorKtTest {
             setOf(
                 StringMapEntryAdd("sidewalk:left", "no"),
                 StringMapEntryAdd("sidewalk:right", "yes"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             Sides(Sidewalk.NO, Sidewalk.YES).appliedTo(mapOf()),
         )
@@ -48,14 +56,16 @@ class SidewalkCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("sidewalk:left", "yes"),
-                StringMapEntryAdd("sidewalk:right", "separate")
+                StringMapEntryAdd("sidewalk:right", "separate"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             Sides(Sidewalk.YES, Sidewalk.SEPARATE).appliedTo(mapOf()),
         )
         assertEquals(
             setOf(
                 StringMapEntryAdd("sidewalk:left", "separate"),
-                StringMapEntryAdd("sidewalk:right", "no")
+                StringMapEntryAdd("sidewalk:right", "no"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             Sides(Sidewalk.SEPARATE, Sidewalk.NO).appliedTo(mapOf()),
         )
@@ -68,6 +78,7 @@ class SidewalkCreatorKtTest {
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "separate"),
                 StringMapEntryDelete("sidewalk", "different"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             Sides(Sidewalk.SEPARATE, Sidewalk.SEPARATE).appliedTo(mapOf(
                 "sidewalk" to "different",
@@ -85,6 +96,7 @@ class SidewalkCreatorKtTest {
                 StringMapEntryAdd("sidewalk:right", "yes"),
                 StringMapEntryDelete("sidewalk", "both"),
                 StringMapEntryDelete("sidewalk:both", "yes"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             Sides(Sidewalk.SEPARATE, Sidewalk.YES).appliedTo(mapOf(
                 "sidewalk" to "both",
@@ -93,39 +105,18 @@ class SidewalkCreatorKtTest {
         )
     }
 
-    @Test fun `updates check date`() {
-        assertEquals(
-            setOf(
-                StringMapEntryModify("sidewalk:both", "yes", "yes"),
-                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString())
-            ),
-            Sides(Sidewalk.YES, Sidewalk.YES).appliedTo(mapOf(
-                "sidewalk:both" to "yes"
-            ))
-        )
-        assertEquals(
-            setOf(
-                StringMapEntryModify("sidewalk:left", "separate", "separate"),
-                StringMapEntryModify("sidewalk:right", "no", "no"),
-                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString())
-            ),
-            Sides(Sidewalk.SEPARATE, Sidewalk.NO).appliedTo(mapOf(
-                "sidewalk:left" to "separate",
-                "sidewalk:right" to "no"
-            ))
-        )
-    }
-
     @Test fun `apply value only for one side`() {
         assertEquals(
             setOf(
-                StringMapEntryAdd("sidewalk:left", "yes")
+                StringMapEntryAdd("sidewalk:left", "yes"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             Sides(Sidewalk.YES, null).appliedTo(mapOf())
         )
         assertEquals(
             setOf(
-                StringMapEntryAdd("sidewalk:right", "no")
+                StringMapEntryAdd("sidewalk:right", "no"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             Sides(null, Sidewalk.NO).appliedTo(mapOf())
         )
@@ -134,7 +125,8 @@ class SidewalkCreatorKtTest {
     @Test fun `apply for one side does not touch the other side`() {
         assertEquals(
             setOf(
-                StringMapEntryAdd("sidewalk:right", "yes")
+                StringMapEntryAdd("sidewalk:right", "yes"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             Sides(null, Sidewalk.YES).appliedTo(mapOf(
                 "sidewalk:left" to "separate"
@@ -145,6 +137,7 @@ class SidewalkCreatorKtTest {
                 StringMapEntryDelete("sidewalk", "right"),
                 StringMapEntryAdd("sidewalk:left", "no"),
                 StringMapEntryAdd("sidewalk:right", "yes"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             Sides(Sidewalk.NO, null).appliedTo(mapOf(
                 "sidewalk" to "right"
@@ -155,7 +148,8 @@ class SidewalkCreatorKtTest {
     @Test fun `apply for one side does not touch the other side even if it is invalid`() {
         assertEquals(
             setOf(
-                StringMapEntryAdd("sidewalk:right", "yes")
+                StringMapEntryAdd("sidewalk:right", "yes"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             Sides(null, Sidewalk.YES).appliedTo(mapOf(
                 "sidewalk:left" to "some invalid value"
@@ -163,7 +157,8 @@ class SidewalkCreatorKtTest {
         )
         assertEquals(
             setOf(
-                StringMapEntryAdd("sidewalk:left", "no")
+                StringMapEntryAdd("sidewalk:left", "no"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             Sides(Sidewalk.NO, null).appliedTo(mapOf(
                 "sidewalk:right" to "another invalid value"
@@ -177,6 +172,7 @@ class SidewalkCreatorKtTest {
                 StringMapEntryAdd("sidewalk:right", "yes"),
                 StringMapEntryDelete("sidewalk:both", "some invalid value"),
                 StringMapEntryAdd("sidewalk:left", "some invalid value"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             Sides(null, Sidewalk.YES).appliedTo(mapOf(
                 "sidewalk:both" to "some invalid value"
@@ -187,6 +183,7 @@ class SidewalkCreatorKtTest {
                 StringMapEntryAdd("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:both", "some invalid value"),
                 StringMapEntryAdd("sidewalk:right", "some invalid value"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             Sides(Sidewalk.YES, null).appliedTo(mapOf(
                 "sidewalk:both" to "some invalid value"
@@ -200,6 +197,7 @@ class SidewalkCreatorKtTest {
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "yes"),
                 StringMapEntryAdd("sidewalk:both", "yes"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             Sides(Sidewalk.YES, null).appliedTo(mapOf(
                 "sidewalk:left" to "yes",
@@ -211,6 +209,7 @@ class SidewalkCreatorKtTest {
                 StringMapEntryAdd("sidewalk:right", "no"),
                 StringMapEntryAdd("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk", "left"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             Sides(Sidewalk.YES, null).appliedTo(mapOf(
                 "sidewalk" to "left",
@@ -221,6 +220,7 @@ class SidewalkCreatorKtTest {
                 StringMapEntryAdd("sidewalk:right", "yes"),
                 StringMapEntryAdd("sidewalk:left", "no"),
                 StringMapEntryDelete("sidewalk", "right"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             Sides(Sidewalk.NO, null).appliedTo(mapOf(
                 "sidewalk" to "right",
@@ -230,6 +230,7 @@ class SidewalkCreatorKtTest {
             setOf(
                 StringMapEntryDelete("sidewalk:right", "no"),
                 StringMapEntryAdd("sidewalk:both", "no"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             Sides(Sidewalk.NO, null).appliedTo(mapOf(
                 "sidewalk:right" to "no",
@@ -242,6 +243,7 @@ class SidewalkCreatorKtTest {
             setOf(
                 StringMapEntryDelete("sidewalk:right", "separate"),
                 StringMapEntryAdd("sidewalk:both", "separate"),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             Sides(Sidewalk.SEPARATE, null).appliedTo(mapOf(
                 "sidewalk:right" to "separate",

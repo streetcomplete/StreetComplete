@@ -13,48 +13,40 @@ import kotlin.test.assertFailsWith
 class LitStatusKtTest {
 
     @Test fun `apply normally`() {
-        assertEquals(setOf(StringMapEntryAdd("lit", "yes")), YES.appliedTo(mapOf()))
-        assertEquals(setOf(StringMapEntryAdd("lit", "no")), NO.appliedTo(mapOf()))
-        assertEquals(setOf(StringMapEntryAdd("lit", "automatic")), AUTOMATIC.appliedTo(mapOf()))
-        assertEquals(setOf(StringMapEntryAdd("lit", "24/7")), NIGHT_AND_DAY.appliedTo(mapOf()))
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("lit", "yes"),
+                StringMapEntryAdd("check_date:lit", nowAsCheckDateString())
+            ),
+            YES.appliedTo(mapOf())
+        )
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("lit", "no"),
+                StringMapEntryAdd("check_date:lit", nowAsCheckDateString())
+            ),
+            NO.appliedTo(mapOf())
+        )
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("lit", "automatic"),
+                StringMapEntryAdd("check_date:lit", nowAsCheckDateString())
+            ),
+            AUTOMATIC.appliedTo(mapOf())
+        )
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("lit", "24/7"),
+                StringMapEntryAdd("check_date:lit", nowAsCheckDateString())
+            ),
+            NIGHT_AND_DAY.appliedTo(mapOf())
+        )
     }
 
     @Test fun `applying invalid throws exception`() {
         assertFailsWith<IllegalArgumentException> {
             UNSUPPORTED.applyTo(StringMapChangesBuilder(mapOf()))
         }
-    }
-
-    @Test fun `apply updates check date`() {
-        val today = nowAsCheckDateString()
-        assertEquals(
-            setOf(
-                StringMapEntryModify("lit", "yes", "yes"),
-                StringMapEntryAdd("check_date:lit", today)
-            ),
-            YES.appliedTo(mapOf("lit" to "yes"))
-        )
-        assertEquals(
-            setOf(
-                StringMapEntryModify("lit", "no", "no"),
-                StringMapEntryAdd("check_date:lit", today)
-            ),
-            NO.appliedTo(mapOf("lit" to "no"))
-        )
-        assertEquals(
-            setOf(
-                StringMapEntryModify("lit", "automatic", "automatic"),
-                StringMapEntryAdd("check_date:lit", today)
-            ),
-            AUTOMATIC.appliedTo(mapOf("lit" to "automatic"))
-        )
-        assertEquals(
-            setOf(
-                StringMapEntryModify("lit", "24/7", "24/7"),
-                StringMapEntryAdd("check_date:lit", today)
-            ),
-            NIGHT_AND_DAY.appliedTo(mapOf("lit" to "24/7"))
-        )
     }
 
     @Test fun `apply does not overwrite unsupported value if 'yes'`() {

@@ -13,7 +13,11 @@ class SmoothnessAnswerKtTest {
 
     @Test fun `apply smoothness answer`() {
         assertEquals(
-            setOf(StringMapEntryAdd("smoothness", "excellent")),
+            setOf(
+                StringMapEntryAdd("smoothness", "excellent"),
+                StringMapEntryAdd("check_date:smoothness", nowAsCheckDateString()),
+                StringMapEntryAdd("check_date:surface", nowAsCheckDateString()),
+            ),
             SmoothnessValueAnswer(Smoothness.EXCELLENT).appliedTo(mapOf())
         )
     }
@@ -22,6 +26,7 @@ class SmoothnessAnswerKtTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("smoothness", "excellent"),
+                StringMapEntryAdd("check_date:smoothness", nowAsCheckDateString()),
                 StringMapEntryModify("check_date:surface", "2000-10-10", nowAsCheckDateString()),
             ),
             SmoothnessValueAnswer(Smoothness.EXCELLENT).appliedTo(mapOf(
@@ -37,7 +42,8 @@ class SmoothnessAnswerKtTest {
                 StringMapEntryModify("smoothness", "excellent", "excellent"),
                 StringMapEntryDelete("smoothness:date", "2000-10-10"),
                 StringMapEntryDelete("surface:grade", "1"),
-                StringMapEntryAdd("check_date:smoothness", nowAsCheckDateString())
+                StringMapEntryAdd("check_date:smoothness", nowAsCheckDateString()),
+                StringMapEntryAdd("check_date:surface", nowAsCheckDateString()),
             ),
             SmoothnessValueAnswer(Smoothness.EXCELLENT).appliedTo(mapOf(
                 "smoothness" to "excellent",
