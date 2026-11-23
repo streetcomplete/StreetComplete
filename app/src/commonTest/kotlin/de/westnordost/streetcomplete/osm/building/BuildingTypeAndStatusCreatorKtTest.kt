@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.osm.building.BuildingLifecycle.*
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertFails
 
 class BuildingTypeAndStatusCreatorKtTest {
 
@@ -243,7 +242,7 @@ class BuildingTypeAndStatusCreatorKtTest {
         )
     }
 
-    @Test fun `udpate check date when nothing was changed`() {
+    @Test fun `update check date when nothing was changed`() {
         assertEquals(
             mapOf("building" to "residential", "check_date" to nowAsCheckDateString()),
             BuildingTypeAndStatus(RESIDENTIAL, null).appliedTo("building" to "residential")
@@ -330,6 +329,31 @@ class BuildingTypeAndStatusCreatorKtTest {
             BuildingTypeAndStatus(UNSUPPORTED, null).appliedTo(
                 "building" to "construction",
                 "construction" to "blurb"
+            )
+        )
+    }
+
+    @Test fun `don't tag use if same as building type`() {
+        assertEquals(
+            mapOf("building" to "residential"),
+            BuildingTypeAndStatus(RESIDENTIAL, RESIDENTIAL).appliedTo()
+        )
+    }
+
+    @Test fun `don't change unsupported use`() {
+        assertEquals(
+            mapOf("building" to "apartments", "building:use" to "something else"),
+            BuildingTypeAndStatus(APARTMENTS, UNSUPPORTED).appliedTo("building:use" to "something else")
+        )
+    }
+
+    @Test fun `construction value doesn't overwrite building if not tagged as building=construction`() {
+        assertEquals(
+            mapOf("building" to "house", "house" to "detached", "abandoned" to "yes"),
+            BuildingTypeAndStatus(DETACHED, ABANDONED).appliedTo(
+                "building" to "house",
+                "house" to "detached",
+                "construction" to "yes"
             )
         )
     }
