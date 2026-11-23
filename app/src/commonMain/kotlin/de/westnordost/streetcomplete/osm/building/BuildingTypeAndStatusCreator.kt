@@ -23,7 +23,8 @@ fun BuildingTypeAndStatus.applyTo(tags: Tags) {
     } else {
         tags["construction"]?.let { tags["building"] = it }
         type.applyTo(tags)
-        status.applyTo(tags)
+        // current use same as building type is redundant
+        status.takeIf { it != type }.applyTo(tags)
     }
 
     // Update check_date only when neither selection changed the tags.
