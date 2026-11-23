@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
+import de.westnordost.streetcomplete.osm.removeWithCheckDate
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
@@ -37,8 +38,7 @@ fun Surface.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: Boolean
     // category of surface changed -> likely that tracktype is not correct anymore
     // if tracktype and surface don't match at all, also delete tracktype
     if (prefix == null && (hasChangedSurfaceCategory || invalidTracktype)) {
-        tags.remove("tracktype")
-        tags.removeCheckDatesForKey("tracktype")
+        tags.removeWithCheckDate("tracktype")
     }
 
     if (hasChanged) {

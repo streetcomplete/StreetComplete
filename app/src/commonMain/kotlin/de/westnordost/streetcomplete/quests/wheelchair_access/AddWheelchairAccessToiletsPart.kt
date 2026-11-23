@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
+import de.westnordost.streetcomplete.osm.removeWithCheckDate
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.LIMITED
 import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.NO
@@ -83,8 +84,7 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToilet
             }
             WheelchairAccessToiletsPartAnswer.NoToilet -> {
                 tags["toilets"] = "no"
-                tags.remove("toilets:wheelchair")
-                tags.removeCheckDatesForKey("toilets:wheelchair")
+                tags.removeWithCheckDate("toilets:wheelchair")
             }
         }
     }

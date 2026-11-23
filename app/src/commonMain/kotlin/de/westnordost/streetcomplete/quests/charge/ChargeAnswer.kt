@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.charge
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.duration.DurationUnit
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
+import de.westnordost.streetcomplete.osm.removeWithCheckDate
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
@@ -34,8 +35,7 @@ fun ChargeAnswer.applyTo(tags: Tags) {
         ChargeAnswer.NoCharge -> {
             tags.updateWithCheckDate("fee", "no")
             tags.remove("fee:conditional")
-            tags.remove("charge")
-            tags.removeCheckDatesForKey("charge")
+            tags.removeWithCheckDate("charge")
         }
     }
 }

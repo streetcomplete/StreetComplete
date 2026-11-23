@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
+import de.westnordost.streetcomplete.osm.removeWithCheckDate
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer.COVERED
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer.NO_SHELTER
@@ -67,8 +68,7 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
             SHELTER -> tags.updateWithCheckDate("shelter", "yes")
             NO_SHELTER -> tags.updateWithCheckDate("shelter", "no")
             COVERED -> {
-                tags.remove("shelter")
-                tags.removeCheckDatesForKey("shelter")
+                tags.removeWithCheckDate("shelter")
                 tags["covered"] = "yes"
             }
         }

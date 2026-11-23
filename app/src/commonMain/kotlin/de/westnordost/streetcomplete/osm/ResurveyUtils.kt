@@ -66,6 +66,12 @@ fun Tags.setCheckDateForKey(key: String, date: LocalDate) {
 fun Tags.hasCheckDateForKey(key: String): Boolean =
     getLastCheckDateKeys(key).any { get(it) != null }
 
+/** Delete [key] and associated check date(s) */
+fun Tags.removeWithCheckDate(key: String) {
+    remove(key)
+    removeCheckDatesForKey(key)
+}
+
 /** Delete any check date keys for the given [key] */
 fun Tags.removeCheckDatesForKey(key: String) {
     getLastCheckDateKeys(key).forEach { remove(it) }

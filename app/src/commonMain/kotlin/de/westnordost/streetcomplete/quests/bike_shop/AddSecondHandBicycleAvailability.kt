@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
+import de.westnordost.streetcomplete.osm.removeWithCheckDate
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
@@ -55,8 +56,7 @@ class AddSecondHandBicycleAvailability : OsmFilterQuestType<SecondHandBicycleAva
     override fun applyAnswerTo(answer: SecondHandBicycleAvailability, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer.osmValue == null) {
             tags.updateWithCheckDate("service:bicycle:retail", "no")
-            tags.remove("service:bicycle:second_hand")
-            tags.removeCheckDatesForKey("service:bicycle:second_hand")
+            tags.removeWithCheckDate("service:bicycle:second_hand")
         } else {
             tags.updateWithCheckDate("service:bicycle:retail", "yes")
             tags.updateWithCheckDate("service:bicycle:second_hand", answer.osmValue)

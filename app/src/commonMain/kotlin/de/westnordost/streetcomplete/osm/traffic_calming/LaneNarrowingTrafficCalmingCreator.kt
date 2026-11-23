@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.osm.traffic_calming
 
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
+import de.westnordost.streetcomplete.osm.removeWithCheckDate
 import de.westnordost.streetcomplete.osm.traffic_calming.LaneNarrowingTrafficCalming.*
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.util.ktx.toYesNo
@@ -34,8 +35,7 @@ fun LaneNarrowingTrafficCalming?.applyTo(tags: Tags) {
     }
 
     if (values.isEmpty()) {
-        tags.remove("traffic_calming")
-        tags.removeCheckDatesForKey("traffic_calming")
+        tags.removeWithCheckDate("traffic_calming")
     } else {
         // prefer semicolon-tagging over conjoined tags (i.e. prefer choker;island over choked_island)
         tags.updateWithCheckDate("traffic_calming", values.joinToString(";"))
