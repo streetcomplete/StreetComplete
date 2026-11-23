@@ -338,6 +338,24 @@ class BuildingTypeAndStatusCreatorKtTest {
             mapOf("building" to "residential"),
             BuildingTypeAndStatus(RESIDENTIAL, RESIDENTIAL).appliedTo()
         )
+        assertEquals(
+            mapOf("building" to "residential"),
+            BuildingTypeAndStatus(RESIDENTIAL, RESIDENTIAL).appliedTo(
+                "building" to "residential",
+                "building:use" to "residential",
+            )
+        )
+        assertEquals(
+            mapOf(
+                "building" to "something unsupported",
+                "building:use" to "something also unsupported",
+                "check_date" to nowAsCheckDateString(),
+            ),
+            BuildingTypeAndStatus(UNSUPPORTED, UNSUPPORTED).appliedTo(
+                "building" to "something unsupported",
+                "building:use" to "something also unsupported",
+            )
+        )
     }
 
     @Test fun `don't change unsupported use`() {
