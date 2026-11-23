@@ -33,9 +33,7 @@ fun Sides<StreetParking>.applyTo(tags: Tags) {
     tags.mergeSides("parking", "markings")
     tags.mergeSides("parking", "staggered")
 
-    if (!tags.hasChanges || tags.hasCheckDateForKey("parking")) {
-        tags.updateCheckDateForKey("parking")
-    }
+    tags.updateCheckDateForKey("parking")
 
     for (side in listOf(":left", ":right", ":both", "")) {
         tags.remove("parking:lane$side")

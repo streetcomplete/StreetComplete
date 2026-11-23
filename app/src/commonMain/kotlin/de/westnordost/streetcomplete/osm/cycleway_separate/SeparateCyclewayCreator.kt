@@ -104,10 +104,7 @@ fun SeparateCycleway.applyTo(tags: Tags) {
         }
     }
 
-    // update check date
-    if (!tags.hasChanges || tags.hasCheckDateForKey("bicycle")) {
-        tags.updateCheckDateForKey("bicycle")
-    }
+    tags.updateCheckDateForKey("bicycle")
 }
 
 private val noCycling = setOf(

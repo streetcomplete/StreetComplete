@@ -36,9 +36,7 @@ fun Sides<Sidewalk>.applyTo(tags: Tags) {
     // that, maybe 🤷. In any case, let's not play ping-pong with iD)
     tags.mergeSides("sidewalk")
 
-    if (!tags.hasChanges || tags.hasCheckDateForKey("sidewalk")) {
-        tags.updateCheckDateForKey("sidewalk")
-    }
+    tags.updateCheckDateForKey("sidewalk")
 }
 
 /** converts sidewalk=both to sidewalk:left=yes + sidewalk:right=yes etc. */

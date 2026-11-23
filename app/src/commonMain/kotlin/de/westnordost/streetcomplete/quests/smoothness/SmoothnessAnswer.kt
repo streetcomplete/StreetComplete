@@ -22,9 +22,7 @@ fun SmoothnessAnswer.applyTo(tags: Tags) {
     when (this) {
         is SmoothnessValueAnswer -> {
             tags.updateWithCheckDate("smoothness", value.osmValue)
-            if (tags.hasCheckDateForKey("surface")) {
-                tags.updateCheckDateForKey("surface")
-            }
+            tags.updateCheckDateForKey("surface")
         }
         is WrongSurfaceAnswer -> {
             tags.remove("surface")

@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.VEG
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
+import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
 
@@ -56,6 +57,7 @@ class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>() {
                 // Thus we remove the vegetarian tag in this case to prevent invalid data
                 if (answer == DietAvailability.ONLY && tags["diet:vegetarian"] != "only") {
                     tags.remove("diet:vegetarian")
+                    tags.removeCheckDatesForKey("diet:vegetarian")
                 }
             }
             DietAvailabilityAnswer.NoFood -> tags["food"] = "no"

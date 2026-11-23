@@ -28,10 +28,8 @@ fun ChargeAnswer.applyTo(tags: Tags) {
         is Charge -> {
             val unit = timeUnit.toOsmValue(false)
             // Format: "1.05 EUR/hour"
-            tags["charge"] = "$amount $currencyCode/$unit"
-            // just like with opening hours we *always* update the check date, because it is such
-            // a volatile information
-            tags.updateCheckDateForKey("charge")
+            tags.updateWithCheckDate("charge", "$amount $currencyCode/$unit")
+            tags.updateCheckDateForKey("fee")
         }
         ChargeAnswer.NoCharge -> {
             tags.updateWithCheckDate("fee", "no")

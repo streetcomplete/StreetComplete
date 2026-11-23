@@ -41,18 +41,10 @@ fun String.toCheckDate(): LocalDate? {
     }
 }
 
-/** adds or modifies the given tag. If the updated tag is the same as before, sets the check date
- *  tag to today instead. */
+/** adds or modifies the given tag and adds the check date tag to today. */
 fun Tags.updateWithCheckDate(key: String, value: String) {
-    val previousValue = get(key)
     set(key, value)
-    /* if the value is changed, set the check date only if it has been set before. Behavior
-     * before v32.0 was to delete the check date. However, this destroys data that was
-     * previously collected by another surveyor - we don't want to destroy other people's data.
-     */
-    if (previousValue == value || hasCheckDateForKey(key) || hasCheckDate()) {
-        updateCheckDateForKey(key)
-    }
+    updateCheckDateForKey(key)
 }
 
 /** Set/update solely the check date to today for the given [key], this also removes other less

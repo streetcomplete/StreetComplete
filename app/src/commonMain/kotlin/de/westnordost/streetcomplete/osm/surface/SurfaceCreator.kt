@@ -49,16 +49,7 @@ fun Surface.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: Boolean
     val osmValueOrAlias = if (previousWasAliasOfThis) previousOsmValue else osmValue
     // update surface + check date
     if (updateCheckDate) {
-        val isGeneric = this == Surface.PAVED || this == Surface.UNPAVED
-        if (isGeneric) {
-            // if a generic surface has been selected, always add the check date as a marker
-            // that the selection has been deliberate and is not an artifact of prior coarse
-            // satellite-imagery-based mapping ("oh, road is grey, must be *something* paved")
-            tags.updateCheckDateForKey(key)
-            tags[key] = osmValueOrAlias
-        } else {
-            tags.updateWithCheckDate(key, osmValueOrAlias)
-        }
+        tags.updateWithCheckDate(key, osmValueOrAlias)
     } else {
         tags[key] = osmValueOrAlias
     }
