@@ -21,7 +21,13 @@ fun BuildingTypeAndStatus.applyTo(tags: Tags) {
         }
         tags["building"] = "construction"
     } else {
-        tags["construction"]?.let { tags["building"] = it }
+        // only restore from construction=* if building=* is missing or "construction", otherwise
+        // e.g. construction=yes would overwrite building=*, which isn't always re-set below
+        // (aliases, house=* preservation and unsupported types return early)
+        val building = tags["building"]
+        if (building == null || building == "construction") {
+            tags["construction"]?.let { tags["building"] = it }
+        }
         type.applyTo(tags)
         // current use same as building type is redundant
         status.takeIf { it == UNSUPPORTED || it != type }.applyTo(tags)
