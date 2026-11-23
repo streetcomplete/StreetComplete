@@ -13,8 +13,8 @@ import de.westnordost.streetcomplete.resources.allDrawableResources
 import org.jetbrains.compose.resources.DrawableResource
 
 /** Apply this feature to the given [tags], optionally removing a [previousFeature] first, i.e.
- *  replacing it. */
-fun Feature.applyTo(tags: Tags, previousFeature: Feature? = null) {
+ *  replacing it. By default, sets the check date, set [updateCheckDate] when this is not desired */
+fun Feature.applyTo(tags: Tags, previousFeature: Feature? = null, updateCheckDate: Boolean = true) {
     if (previousFeature != null) {
         for ((key, value) in previousFeature.removeTags) {
             if (tags[key] == value) tags.remove(key)
@@ -27,6 +27,9 @@ fun Feature.applyTo(tags: Tags, previousFeature: Feature? = null) {
         if (key !in tags || preserveTags.none { it.containsMatchIn(key) }) {
             tags[key] = value
         }
+    }
+    if (updateCheckDate) {
+        tags.updateCheckDate()
     }
 }
 

@@ -79,7 +79,8 @@ class CheckShopTypeTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("a", "b"),
-                StringMapEntryAdd("c", "d")
+                StringMapEntryAdd("c", "d"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString()),
             ),
             questType.answerApplied(ShopType(
                 feature = feature(tags = mapOf("a" to "b", "c" to "d"))
