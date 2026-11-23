@@ -24,7 +24,7 @@ fun BuildingTypeAndStatus.applyTo(tags: Tags) {
         tags["construction"]?.let { tags["building"] = it }
         type.applyTo(tags)
         // current use same as building type is redundant
-        status.takeIf { it != type }.applyTo(tags)
+        status.takeIf { it == UNSUPPORTED || it != type }.applyTo(tags)
     }
 
     // Update check_date only when neither selection changed the tags.
@@ -71,6 +71,10 @@ private fun BuildingType?.applyTo(tags: Tags, postfix: String = "") {
 }
 
 private fun BuildingStatus?.applyTo(tags: Tags) {
+    // unsupported: don't change anything
+    if (this == UNSUPPORTED) {
+        return
+    }
     // clear previous status tagging
     BuildingLifecycle.entries.forEach {
         // 1. the more common disused = yes etc.
