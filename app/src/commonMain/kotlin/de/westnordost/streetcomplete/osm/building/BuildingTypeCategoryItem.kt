@@ -13,6 +13,7 @@ val BuildingTypeCategory.title: StringResource get() = when (this) {
     OUTBUILDING ->  Res.string.quest_buildingType_outbuilding
     FOR_FARMS ->    Res.string.quest_buildingType_farm
     OTHER ->        Res.string.quest_buildingType_other
+    STATUS ->       Res.string.quest_buildingType_status
 }
 
 val BuildingTypeCategory.description: StringResource? get() = when (this) {
@@ -20,6 +21,7 @@ val BuildingTypeCategory.description: StringResource? get() = when (this) {
     COMMERCIAL ->  Res.string.quest_buildingType_commercial_generic_description
     CIVIC ->       Res.string.quest_buildingType_civic_description
     OUTBUILDING -> Res.string.quest_buildingType_outbuilding_description
+    STATUS ->      Res.string.quest_buildingType_status_description
     else ->        null
 }
 
@@ -31,4 +33,5 @@ val BuildingTypeCategory.icon: DrawableResource get() = when (this) {
     OUTBUILDING ->  Res.drawable.building_shed
     FOR_FARMS ->    Res.drawable.building_farm
     OTHER ->        Res.drawable.building_other
+    STATUS ->       Res.drawable.building_construction
 }

@@ -11,10 +11,12 @@ import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
+import de.westnordost.streetcomplete.osm.building.BuildingStatus
 import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
+import de.westnordost.streetcomplete.osm.building.BuildingLifecycle.*
 import de.westnordost.streetcomplete.osm.building.OTHER_KEYS_POTENTIALLY_DESCRIBING_BUILDING_TYPE
-import de.westnordost.streetcomplete.osm.building.createBuildingType
+import de.westnordost.streetcomplete.osm.building.createBuildingTypeAndStatus
 import de.westnordost.streetcomplete.osm.building.icon
 import de.westnordost.streetcomplete.osm.estimateBuildingHeight
 import de.westnordost.streetcomplete.osm.estimateMinBuildingHeight
@@ -30,7 +32,6 @@ class BuildingsOverlay : Overlay {
     override val achievements = listOf(BUILDING)
     override val hidesQuestTypes = setOf(AddBuildingType::class.simpleName!!)
 
-    // building:use not supported, so don't offer to change it -> exclude from the overlay
     override fun getStyledElements(mapData: MapDataWithGeometry) = mapData.filter(
         """
             ways, relations with
@@ -55,20 +56,27 @@ class BuildingsOverlay : Overlay {
                   "windmill",
                 ).joinToString("|")}
               )
-              and !building:use
         """)
         .map { element ->
-            val building = createBuildingType(element.tags)
+            val buildingAndStatus = createBuildingTypeAndStatus(element.tags)
+            val building = buildingAndStatus.type
+            val status = buildingAndStatus.status
 
-            val color = building?.color
+            // main (fill) color should be building's current use
+            val color = status?.color
+                ?: building?.color
                 ?: if (isBuildingTypeMissing(element.tags)) OverlayColor.Red else OverlayColor.Invisible
 
             val height = estimateBuildingHeight(element.tags)
             val minHeight = if (height != null) estimateMinBuildingHeight(element.tags) else null
+            // optional outline color should be the building's original use (reflecting the facade
+            // of the building)
+            val outlineColor = if (status != null) building?.color else null
 
             element to OverlayStyle.Polygon(
                 color = color,
-                icon = building?.icon,
+                outline = outlineColor,
+                icon = status?.icon ?: building?.icon,
                 height = height,
                 minHeight = minHeight
             )
@@ -119,9 +127,14 @@ class BuildingsOverlay : Overlay {
             OverlayColor.Orange
 
         // other/special
-        HISTORIC, ABANDONED, RUINS, CONSTRUCTION, BUNKER, TOMB, TOWER,
+        BUNKER, TOMB, TOWER,
         UNSUPPORTED ->
             OverlayColor.Purple
+    }
+
+    private val BuildingStatus.color get() = when (this) {
+        CONSTRUCTION, DISUSED, ABANDONED, RUINS -> OverlayColor.Purple
+        is BuildingType -> color
     }
 
     private fun isBuildingTypeMissing(tags: Map<String, String>): Boolean =

@@ -36,11 +36,11 @@ import org.koin.compose.koinInject
  *  If [favoriteKey] is not null, the last picked items saved for that key supplant the [topItems],
  *  i.e. are only padded by them. */
 @Composable
-inline fun <reified G : Group<I>, reified I> GroupedItemSelectQuestForm(
+inline fun <reified C, reified I> GroupedItemSelectQuestForm(
     noinline on: (QuestAction<I>) -> Unit,
-    groups: List<G>,
+    groups: List<Group<C, I>>,
     topItems: List<I>,
-    noinline groupContent: @Composable (group: G) -> Unit,
+    noinline groupContent: @Composable (group: Group<C, I>) -> Unit,
     noinline itemContent: @Composable (item: I) -> Unit,
     modifier: Modifier = Modifier,
     favoriteKey: String? = null,
@@ -55,7 +55,7 @@ inline fun <reified G : Group<I>, reified I> GroupedItemSelectQuestForm(
             topItems
         }
     }
-    var selectedGroup by rememberSerializable { mutableStateOf<G?>(null) }
+    var selectedGroup by rememberSerializable { mutableStateOf<Group<C, I>?>(null) }
     var selectedItem by rememberSerializable { mutableStateOf<I?>(null) }
 
     var confirmSelectionOfGroupItem by remember { mutableStateOf<I?>(null) }

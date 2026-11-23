@@ -26,11 +26,11 @@ import org.jetbrains.compose.resources.stringResource
 /** Grouped item select dialog, somewhat similar to ItemSelectDialog only that we have a have a
  *  grouping of values. */
 @Composable
-fun <I, G : Group<I>> GroupedItemSelectDialog(
+fun <C, I> GroupedItemSelectDialog(
     onDismissRequest: () -> Unit,
-    groups: List<G>,
+    groups: List<Group<C, I>>,
     onSelected: (item: I) -> Unit,
-    groupContent: @Composable (group: G) -> Unit,
+    groupContent: @Composable (group: Group<C, I>) -> Unit,
     itemContent: @Composable (item: I) -> Unit,
     modifier: Modifier = Modifier,
     shape: Shape = MaterialTheme.shapes.medium,
@@ -38,7 +38,7 @@ fun <I, G : Group<I>> GroupedItemSelectDialog(
     contentColor: Color = contentColorFor(backgroundColor),
     properties: DialogProperties = DialogProperties(),
 ) {
-    var selectedGroup by remember { mutableStateOf<G?>(null) }
+    var selectedGroup by remember { mutableStateOf<Group<C, I>?>(null) }
     var selectedItem by remember { mutableStateOf<I?>(null) }
     val selected = selectedItem ?: selectedGroup?.item
 
