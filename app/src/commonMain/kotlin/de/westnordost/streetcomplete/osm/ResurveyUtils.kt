@@ -171,12 +171,10 @@ val RESURVEY_FILTERS_14_YEARS = listOf(
     "traffic_calming = table and !highway and !crossing",
 )
 
-private val ADD_CHECK_DATE_EXPRESSION by lazy {
-    """
-        nodes, ways, relations with
-        ${(RESURVEY_FILTERS_2_YEARS + RESURVEY_FILTERS_4_YEARS + RESURVEY_FILTERS_6_YEARS + RESURVEY_FILTERS_10_YEARS + RESURVEY_FILTERS_14_YEARS).joinToString("\n    or ")}
-    """.toElementFilterExpression()
-}
+private val ADD_CHECK_DATE_EXPRESSION by lazy { """
+    nodes, ways, relations with
+      ${(RESURVEY_FILTERS_2_YEARS + RESURVEY_FILTERS_4_YEARS + RESURVEY_FILTERS_6_YEARS + RESURVEY_FILTERS_10_YEARS + RESURVEY_FILTERS_14_YEARS).joinToString("\n    or ")}
+""".toElementFilterExpression() }
 
 fun Element.shouldAddThingCheckDate(): Boolean =
     ADD_CHECK_DATE_EXPRESSION.matches(this)
