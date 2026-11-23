@@ -38,10 +38,7 @@ fun DrinkingWaterType.applyTo(tags: Tags) {
             if (tags["disused:amenity"] != "drinking_water") {
                 tags["disused:amenity"] = "drinking_water"
             }
-            if (!tags.hasChanges || tags.hasCheckDate()) {
-                // may happen if it was disused and now is still disused
-                tags.updateCheckDate()
-            }
+            tags.updateCheckDate()
         }
     }
 
@@ -51,5 +48,6 @@ fun DrinkingWaterType.applyTo(tags: Tags) {
         if (tags["amenity"] != "drinking_water") {
             tags["amenity"] = "drinking_water"
         }
+        tags.updateCheckDate()
     }
 }

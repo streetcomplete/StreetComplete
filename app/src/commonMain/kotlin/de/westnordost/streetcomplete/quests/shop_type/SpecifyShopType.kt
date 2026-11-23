@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.osm.places.applyReplacePlaceTo
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.places.removePlaceRelatedTags
 import de.westnordost.streetcomplete.osm.removeCheckDates
+import de.westnordost.streetcomplete.osm.updateCheckDate
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.getNameLabel
 
@@ -52,12 +53,12 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
     }
 
     override fun applyAnswerTo(answer: ShopTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags.removeCheckDates()
         when (answer) {
             is ShopTypeAnswer.IsShopVacant -> {
                 val shopTag = tags["shop"]
                 removePlaceRelatedTags(tags)
                 tags["disused:shop"] = shopTag ?: "yes"
+                tags.updateCheckDate()
             }
             is ShopType -> {
                 // if the shop has **some** name (that is displayed to the user), we just want to
