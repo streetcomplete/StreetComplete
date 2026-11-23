@@ -227,6 +227,9 @@ kotlin {
                 // when that API is not experimental anymore
                 implementation(libs.compose.grid)
 
+                // scrollbar
+                implementation(libs.compose.fast.scrollbar)
+
                 // reorderable lists (raw Compose API is pretty complicated)
                 implementation(libs.reorderable)
 
