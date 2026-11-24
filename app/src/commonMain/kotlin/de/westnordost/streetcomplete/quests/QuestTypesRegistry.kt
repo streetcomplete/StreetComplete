@@ -157,6 +157,7 @@ import de.westnordost.streetcomplete.quests.seating.AddSeating
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
 import de.westnordost.streetcomplete.quests.shelter_capacity.AddShelterCapacity
+import de.westnordost.streetcomplete.quests.shelter_type.AddShelterType
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopExistence
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
@@ -504,6 +505,7 @@ fun questTypeRegistry(
 
     192 to AddHotWater(),
 
+    206 to AddShelterType(),
     177 to AddShelterCapacity(),
 
     // toilets
