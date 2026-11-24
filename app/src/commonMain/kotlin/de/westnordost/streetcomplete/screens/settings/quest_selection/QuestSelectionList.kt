@@ -33,8 +33,7 @@ import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusSt
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.theme.titleMedium
-import io.github.amaanprobably.scrollbar.ScrollbarDefaults
-import io.github.amaanprobably.scrollbar.scrollbar
+import de.westnordost.streetcomplete.ui.ktx.scrollbar
 import org.jetbrains.compose.resources.stringResource
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
@@ -54,16 +53,6 @@ fun QuestSelectionList(
     var reorderableItems by remember(items) { mutableStateOf(items) }
 
     var dragItem by remember { mutableStateOf<Pair<QuestType, QuestType>?>(null) }
-
-    val accent = MaterialTheme.colors.secondary
-    val onSurface = MaterialTheme.colors.onSurface
-    val scrollbarStyle = remember(accent, onSurface) {
-        ScrollbarDefaults.style(
-            thumbColor = onSurface.copy(alpha = 0.5f),
-            pressedThumbColor = accent,
-            capsuleColor = onSurface.copy(alpha = 0.12f)
-        )
-    }
 
     val listState = rememberLazyListState()
     val dragDropState = rememberReorderableLazyListState(listState) { from, to ->
@@ -101,7 +90,6 @@ fun QuestSelectionList(
             modifier = Modifier.scrollbar(
                 listState,
                 contentPadding = listPadding,
-                style = scrollbarStyle
             )
         ) {
             itemsIndexed(
@@ -139,7 +127,7 @@ fun QuestSelectionList(
                                     }
                                 },
                                 displayCountry = displayCountry,
-                                modifier = Modifier.padding(vertical = 8.dp)
+                                modifier = Modifier.padding(vertical = 8.dp).padding(end = 8.dp)
                             )
                         }
                     }
