@@ -54,7 +54,7 @@ class AddShelterType : OsmFilterQuestType<ShelterType>() {
                             question = "Is there a picknick table inside?",
                             yes= TreeNode(ShelterType.PICNIC_SHELTER),
                             no = TreeNode(
-                                question= "Is it intended for animals?",
+                                question= "Is it intended for livestock?",
                                 yes=TreeNode(ShelterType.FIELD_SHELTER),
                                 no = TreeNode(
                                     question= "Is it for recreation?",

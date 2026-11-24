@@ -84,7 +84,14 @@ private fun <T> getTreeSteps(root: TreeNode<T>, answers: List<Boolean>): Pair<Li
     return Pair(steps, finalValue)
 }
 
-/** Quest form that guides the user through a binary decision tree of yes/no questions to reach a final answer. */
+/**
+ * Quest form that guides the user through a binary decision tree of yes/no questions to determine a final answer.
+ *
+ * Questions are presented sequentially. Once a question is answered, it collapses into a summary row
+ * displaying the selected choice, which can be tapped to expand and change the answer. Reaching a leaf
+ * node displays the final answer item and allows submitting the form. If a branch has no next node,
+ * the user is prompted to leave a note instead.
+ */
 @Composable
 fun <T> TreeQuestForm(
     on: (QuestAction<T>) -> Unit,
