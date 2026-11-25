@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.resources.*
 
 class AddParkingCharge : OsmFilterQuestType<ChargeAnswer>() {
     override val elementFilter = """
-        nodes, ways, relations with amenity = parking
+        nodes, ways, relations with amenity ~ parking|motorcycle_parking
           and access ~ yes|customers|public
           and (fee = yes or fee:conditional ~ "yes.*")
           and !charge:conditional
