@@ -1429,9 +1429,11 @@
     <string name="quest_fee_answer_yes_but">Yes,…</string>
     <string name="quest_fee_answer_no_but_maxstay">No, but there is a max duration…</string>
     <string name="quest_fee_add_times">Add times</string>
+    <string name="unit_months">months</string>
     <string name="unit_days">days</string>
     <string name="unit_hours">hours</string>
     <string name="unit_minutes">minutes</string>
+    <string name="unit_month">month</string>
     <string name="unit_day">day</string>
     <string name="unit_hour">hour</string>
     <string name="unit_minute">minute</string>

@@ -452,6 +452,8 @@ quest/
     oneway.svg
     opening_hours.svg
     opening_hours_signed.svg
+    parking_charge.svg               Marek Krug
+    parking_charge_bicycle.svg       Marek Krug
     parcel_locker_brand.svg          Arthur-GYT, parts from Google Noto Color Emoji: U+1F4E6
     parcel_locker_deposit.svg        Arthur-GYT, parts from Google Noto Color Emoji: U+1F4E6
     parcel_locker_pickup.svg         Arthur-GYT, parts from Google Noto Color Emoji: U+1F4E6

@@ -30,4 +30,5 @@ private fun DurationUnit.getText(useSingular: Boolean): StringResource = when (t
     DurationUnit.MINUTES -> if (useSingular) Res.string.unit_minute else Res.string.unit_minutes
     DurationUnit.HOURS -> if (useSingular) Res.string.unit_hour else Res.string.unit_hours
     DurationUnit.DAYS -> if (useSingular) Res.string.unit_day else Res.string.unit_days
+    DurationUnit.MONTHS -> if (useSingular) Res.string.unit_month else Res.string.unit_months
 }

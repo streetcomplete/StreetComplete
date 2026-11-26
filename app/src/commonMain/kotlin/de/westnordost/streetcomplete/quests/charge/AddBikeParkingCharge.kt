@@ -1,0 +1,41 @@
+package de.westnordost.streetcomplete.quests.charge
+
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
+
+class AddBikeParkingCharge : OsmFilterQuestType<ChargeAnswer>() {
+    override val elementFilter = """
+        nodes, ways, relations with amenity = bicycle_parking
+          and access ~ yes|customers|public
+          and (fee = yes or fee:conditional ~ "yes.*")
+          and !charge:conditional
+          and (!charge or charge older today -18 months)
+    """
+    override val changesetComment = "Add parking charges"
+    override val wikiLink = "Key:charge"
+    override val icon = Res.drawable.quest_parking_charge_bicycle
+    override val achievements = listOf(BICYCLIST)
+    override val title = Res.string.quest_parking_charge_title
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways, relations with amenity = bicycle_parking".toElementFilterExpression())
+
+    @Composable
+    override fun Form(on: (QuestAction<ChargeAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddChargeForm(on, countryInfo)
+    }
+
+    override fun applyAnswerTo(answer: ChargeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        answer.applyTo(tags)
+    }
+}
