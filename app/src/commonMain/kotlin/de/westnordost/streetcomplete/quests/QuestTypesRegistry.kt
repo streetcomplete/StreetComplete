@@ -63,6 +63,7 @@ import de.westnordost.streetcomplete.quests.camping.AddCampShower
 import de.westnordost.streetcomplete.quests.camping.AddCaravans
 import de.westnordost.streetcomplete.quests.camping.AddTents
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
+import de.westnordost.streetcomplete.quests.charge.AddBikeParkingCharge
 import de.westnordost.streetcomplete.quests.charge.AddParkingCharge
 import de.westnordost.streetcomplete.quests.charging_station_access.AddChargingStationBicycles
 import de.westnordost.streetcomplete.quests.charging_station_access.AddChargingStationMotorcar
@@ -392,6 +393,7 @@ fun questTypeRegistry(
     70 to AddBikeParkingType(), // used by OsmAnd
     71 to AddBikeParkingAccess(),
     72 to AddBikeParkingFee(),
+    207 to AddBikeParkingCharge(),
     73 to AddBikeRentalCapacity(), // less ambiguous than bike parking
     74 to AddBikeParkingCapacity(), // used by cycle map layer on osm.org, OsmAnd
 

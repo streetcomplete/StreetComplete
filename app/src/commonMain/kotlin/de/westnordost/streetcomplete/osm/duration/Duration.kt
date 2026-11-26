@@ -12,6 +12,7 @@ data class Duration(val value: Double, val unit: DurationUnit) {
             MINUTES -> if (value != 1.0) "minutes" else "minute"
             HOURS -> if (value != 1.0) "hours" else "hour"
             DAYS -> if (value != 1.0) "days" else "day"
+            MONTHS -> if (value != 1.0) "months" else "month"
         }
 }
 
@@ -19,11 +20,13 @@ data class Duration(val value: Double, val unit: DurationUnit) {
 enum class DurationUnit {
     MINUTES,
     HOURS,
-    DAYS;
+    DAYS,
+    MONTHS;
 
     fun toOsmValue(usePlural: Boolean = false): String = when (this) {
         MINUTES -> if (usePlural) "minutes" else "minute"
         HOURS -> if (usePlural) "hours" else "hour"
         DAYS -> if (usePlural) "days" else "day"
+        MONTHS -> if (usePlural) "months" else "month"
     }
 }
