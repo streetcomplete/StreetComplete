@@ -8,7 +8,7 @@ import platform.Foundation.NSNumberFormatterCurrencyStyle
 actual class CurrencyFormatter actual constructor(locale: Locale?) {
 
     private val formatter = NSNumberFormatter().also {
-        it.locale = formatterLocale(locale)
+        it.locale = formatterLocale(locale?.let { overrideCurrencyLocale(it) })
         it.numberStyle = NSNumberFormatterCurrencyStyle
     }
 

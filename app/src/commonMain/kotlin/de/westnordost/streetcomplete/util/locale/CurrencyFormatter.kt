@@ -19,3 +19,12 @@ expect class CurrencyFormatter(locale: Locale? = null) {
     /** ISO 4217 currency code */
     val currencyCode: String?
 }
+
+/** hardcoded overrides in order to format and identify a country's currency correctly even if the
+ *  CLDR data available on this device is outdated. See #7414 */
+internal fun overrideCurrencyLocale(locale: Locale): Locale =
+    when (locale.region) {
+        "BG" -> Locale("bg-DE") // Bulgaria introduced Euro in 2026, formatted like in e.g. Germany
+        "HR" -> Locale("hr-DE") // Croatia introduced Euro in 2023, formatted like in e.g. Germany
+        else -> locale
+    }
