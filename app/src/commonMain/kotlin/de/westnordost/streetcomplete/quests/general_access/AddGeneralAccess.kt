@@ -20,11 +20,12 @@ class AddGeneralAccess : OsmFilterQuestType<GeneralAccess>() {
           (
             amenity ~ bbq|bicycle_wash|charging_station|compressed_air|dog_toilet|kitchen|sanitary_dump_station|shower|toilets|toy_library|water_point
             or leisure ~ bird_hide|playground|sauna|wildlife_hide
+            or historic ~ fort|castle|ship
             or (
                 man_made = tower
                 and (
                     tower:type = observation
-                    or tower:type = watchtower and historic=yes
+                    or tower:type ~ watchtower|defensive and historic=yes
                 )
                 and disused != yes
                 and !military
@@ -59,7 +60,9 @@ class AddGeneralAccess : OsmFilterQuestType<GeneralAccess>() {
                     Res.string.quest_generalAccess_title2
                 }
             ),
-            items = GeneralAccess.entries,
+            items = GeneralAccess.entries.filter { it != GeneralAccess.NO
+                || element.tags["historic"] != null
+                || element.tags["man_made"] != null  },
             itemContent = { Text(stringResource(it.text)) },
         )
     }

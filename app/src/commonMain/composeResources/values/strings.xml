@@ -1422,6 +1422,7 @@
     <string name="quest_access_yes">Any member of the general public</string>
     <string name="quest_access_customers">Any person visiting a specific place (e.g. customers only)</string>
     <string name="quest_access_private">Only individuals with permission</string>
+    <string name="quest_access_no">No one. Entry is impossible</string>
     <string name="quest_access_permit">Holders of permits (generally obtainable)</string>
 
     <string name="quest_parking_fee_title">Do you have to pay to park here?</string>
