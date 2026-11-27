@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.resources.*
 
 class AddParkingCharge : OsmFilterQuestType<ChargeAnswer>() {
     override val elementFilter = """
-        nodes, ways, relations with amenity = parking
+        nodes, ways, relations with amenity ~ parking|motorcycle_parking
           and access ~ yes|customers|public
           and (fee = yes or fee:conditional ~ "yes.*")
           and !charge:conditional
@@ -28,7 +28,7 @@ class AddParkingCharge : OsmFilterQuestType<ChargeAnswer>() {
     override val title = Res.string.quest_parking_charge_title
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways, relations with amenity = parking".toElementFilterExpression())
+        mapData.filter("nodes, ways, relations with amenity ~ parking|motorcycle_parking".toElementFilterExpression())
 
     @Composable
     override fun Form(on: (QuestAction<ChargeAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
