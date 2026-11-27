@@ -20,14 +20,23 @@ fun AddChargingStationSocketForm(
     on: (QuestAction<Map<ChargingStationSocket, Int>>) -> Unit,
     element: Element,
     countryInfo: CountryInfo,
+    domesticOnly: Boolean = false
 ) {
-    val commonSockets = remember(countryInfo) {
-        countryInfo.chargingStationSocketTypes.mapNotNull { ChargingStationSocket.of(it) } +
-        ChargingStationSocket.DOMESTIC // domestic socket is always common
+    val commonSockets = remember(countryInfo, domesticOnly) {
+        if (!domesticOnly) {
+            countryInfo.chargingStationSocketTypes.mapNotNull { ChargingStationSocket.of(it) } +
+                ChargingStationSocket.DOMESTIC // domestic socket is always common
+        } else {
+            countryInfo.domesticSocketTypes.mapNotNull { ChargingStationSocket.of(it) }
+        }
     }
-    val domesticSocketIcon = remember(countryInfo) {
-        countryInfo.domesticSocketTypes.firstNotNullOfOrNull {
-            Res.allDrawableResources["socket_domestic_"+it]
+    val domesticSocketIcon = remember(countryInfo, domesticOnly) {
+        if (!domesticOnly) {
+            countryInfo.domesticSocketTypes.firstNotNullOfOrNull {
+                Res.allDrawableResources["socket_domestic_" + it]
+            }
+        } else {
+            null
         }
     }
     val showEuLabels = remember(countryInfo) { countryInfo.isInEu }
@@ -53,7 +62,9 @@ fun AddChargingStationSocketForm(
             onSocketsChanged = { sockets = it },
             commonSockets = commonSockets,
             domesticSocketIcon = domesticSocketIcon,
-            showEuLabels = showEuLabels
+            selectableSockets = remember(sockets.keys) {
+                ChargingStationSocket.entries.filter { it.vehicles.contains(Vehicle.CAR) }.toSet() - sockets.keys
+            }
         )
     }
 }
