@@ -24,15 +24,24 @@ class StreetParkingCreatorKtTest {
 
     @Test fun `apply no parking`() {
         assertEquals(
-            setOf(StringMapEntryAdd("parking:both", "no")),
+            setOf(
+                StringMapEntryAdd("parking:both", "no"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
+            ),
             Sides<StreetParking>(StreetParking.None, StreetParking.None).appliedTo(mapOf()),
         )
         assertEquals(
-            setOf(StringMapEntryAdd("parking:left", "no")),
+            setOf(
+                StringMapEntryAdd("parking:left", "no"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
+            ),
             Sides<StreetParking>(StreetParking.None, null).appliedTo(mapOf()),
         )
         assertEquals(
-            setOf(StringMapEntryAdd("parking:right", "no")),
+            setOf(
+                StringMapEntryAdd("parking:right", "no"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
+            ),
             Sides<StreetParking>(null, StreetParking.None).appliedTo(mapOf())
         )
     }
@@ -59,7 +68,8 @@ class StreetParkingCreatorKtTest {
                 assertEquals(
                     setOf(
                         StringMapEntryAdd("parking:both", positionStr),
-                        StringMapEntryAdd("parking:both:orientation", orientationStr)
+                        StringMapEntryAdd("parking:both:orientation", orientationStr),
+                        StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
                     ),
                     Sides<StreetParking>(parking, parking).appliedTo(mapOf())
                 )
@@ -67,7 +77,8 @@ class StreetParkingCreatorKtTest {
                 assertEquals(
                     setOf(
                         StringMapEntryAdd("parking:left", positionStr),
-                        StringMapEntryAdd("parking:left:orientation", orientationStr)
+                        StringMapEntryAdd("parking:left:orientation", orientationStr),
+                        StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
                     ),
                     Sides<StreetParking>(parking, null).appliedTo(mapOf<String, String>())
                 )
@@ -75,7 +86,8 @@ class StreetParkingCreatorKtTest {
                 assertEquals(
                     setOf(
                         StringMapEntryAdd("parking:right", positionStr),
-                        StringMapEntryAdd("parking:right:orientation", orientationStr)
+                        StringMapEntryAdd("parking:right:orientation", orientationStr),
+                        StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
                     ),
                     Sides<StreetParking>(null, parking).appliedTo(mapOf())
                 )
@@ -86,7 +98,8 @@ class StreetParkingCreatorKtTest {
                         StringMapEntryAdd("parking:both", positionStr),
                         StringMapEntryAdd("parking:both:orientation", orientationStr),
                         StringMapEntryDelete("parking:right", positionStr),
-                        StringMapEntryDelete("parking:right:orientation", orientationStr)
+                        StringMapEntryDelete("parking:right:orientation", orientationStr),
+                        StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
                     ),
                     Sides<StreetParking>(parking, null).appliedTo(mapOf(
                         "parking:right" to positionStr,
@@ -99,7 +112,8 @@ class StreetParkingCreatorKtTest {
                         StringMapEntryAdd("parking:both", positionStr),
                         StringMapEntryAdd("parking:both:orientation", orientationStr),
                         StringMapEntryDelete("parking:left", positionStr),
-                        StringMapEntryDelete("parking:left:orientation", orientationStr)
+                        StringMapEntryDelete("parking:left:orientation", orientationStr),
+                        StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
                     ),
                     Sides<StreetParking>(null, parking).appliedTo(mapOf(
                         "parking:left" to positionStr,
@@ -112,15 +126,24 @@ class StreetParkingCreatorKtTest {
 
     @Test fun `apply separate parking`() {
         assertEquals(
-            setOf(StringMapEntryAdd("parking:both", "separate")),
+            setOf(
+                StringMapEntryAdd("parking:both", "separate"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
+            ),
             Sides<StreetParking>(StreetParking.Separate, StreetParking.Separate).appliedTo(mapOf()),
         )
         assertEquals(
-            setOf(StringMapEntryAdd("parking:left", "separate")),
+            setOf(
+                StringMapEntryAdd("parking:left", "separate"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
+            ),
             Sides<StreetParking>(StreetParking.Separate, null).appliedTo(mapOf()),
         )
         assertEquals(
-            setOf(StringMapEntryAdd("parking:right", "separate")),
+            setOf(
+                StringMapEntryAdd("parking:right", "separate"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
+            ),
             Sides<StreetParking>(null, StreetParking.Separate).appliedTo(mapOf()),
         )
     }
@@ -133,6 +156,7 @@ class StreetParkingCreatorKtTest {
                 StringMapEntryAdd("parking:both:orientation", "parallel"),
                 StringMapEntryAdd("parking:both:markings", "yes"),
                 StringMapEntryAdd("parking:both:staggered", "yes"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(parking, parking).appliedTo(mapOf())
         )
@@ -142,6 +166,7 @@ class StreetParkingCreatorKtTest {
                 StringMapEntryAdd("parking:left:orientation", "parallel"),
                 StringMapEntryAdd("parking:left:markings", "yes"),
                 StringMapEntryAdd("parking:left:staggered", "yes"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(parking, null).appliedTo(mapOf())
         )
@@ -151,6 +176,7 @@ class StreetParkingCreatorKtTest {
                 StringMapEntryAdd("parking:right:orientation", "parallel"),
                 StringMapEntryAdd("parking:right:markings", "yes"),
                 StringMapEntryAdd("parking:right:staggered", "yes"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(null, parking).appliedTo(mapOf())
         )
@@ -163,6 +189,7 @@ class StreetParkingCreatorKtTest {
             setOf(
                 StringMapEntryModify("parking:both", "shoulder", "shoulder"),
                 StringMapEntryAdd("parking:both:orientation", "parallel"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(parking, parking).appliedTo(mapOf(
                 "parking:both" to "shoulder"
@@ -172,6 +199,7 @@ class StreetParkingCreatorKtTest {
             setOf(
                 StringMapEntryModify("parking:left", "shoulder", "shoulder"),
                 StringMapEntryAdd("parking:left:orientation", "parallel"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(parking, null).appliedTo(mapOf(
                 "parking:left" to "shoulder"
@@ -181,6 +209,7 @@ class StreetParkingCreatorKtTest {
             setOf(
                 StringMapEntryModify("parking:right", "shoulder", "shoulder"),
                 StringMapEntryAdd("parking:right:orientation", "parallel"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(null, parking).appliedTo(mapOf(
                 "parking:right" to "shoulder"
@@ -201,6 +230,7 @@ class StreetParkingCreatorKtTest {
                     StringMapEntryAdd("parking:both", positionStr),
                     StringMapEntryAdd("parking:both:orientation", "parallel"),
                     StringMapEntryAdd("parking:both:staggered", "yes"),
+                    StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
                 ),
                 Sides<StreetParking>(parking, parking).appliedTo(mapOf())
             )
@@ -209,6 +239,7 @@ class StreetParkingCreatorKtTest {
                     StringMapEntryAdd("parking:left", positionStr),
                     StringMapEntryAdd("parking:left:orientation", "parallel"),
                     StringMapEntryAdd("parking:left:staggered", "yes"),
+                    StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
                 ),
                 Sides<StreetParking>(parking, null).appliedTo(mapOf())
             )
@@ -217,6 +248,7 @@ class StreetParkingCreatorKtTest {
                     StringMapEntryAdd("parking:right", positionStr),
                     StringMapEntryAdd("parking:right:orientation", "parallel"),
                     StringMapEntryAdd("parking:right:staggered", "yes"),
+                    StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
                 ),
                 Sides<StreetParking>(null, parking).appliedTo(mapOf())
             )
@@ -228,6 +260,7 @@ class StreetParkingCreatorKtTest {
             setOf(
                 StringMapEntryAdd("parking:both", "half_on_kerb"),
                 StringMapEntryAdd("parking:both:orientation", "parallel"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(
                 StreetParking.PositionAndOrientation(PARALLEL, HALF_ON_STREET),
@@ -242,6 +275,7 @@ class StreetParkingCreatorKtTest {
                 StringMapEntryAdd("parking:both:orientation", "parallel"),
                 StringMapEntryAdd("parking:left", "lane"),
                 StringMapEntryAdd("parking:right", "half_on_kerb"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(
                 StreetParking.PositionAndOrientation(PARALLEL, ON_STREET),
@@ -256,6 +290,7 @@ class StreetParkingCreatorKtTest {
                 StringMapEntryAdd("parking:both", "street_side"),
                 StringMapEntryAdd("parking:left:orientation", "perpendicular"),
                 StringMapEntryAdd("parking:right:orientation", "parallel"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(
                 StreetParking.PositionAndOrientation(PERPENDICULAR, STREET_SIDE),
@@ -271,6 +306,7 @@ class StreetParkingCreatorKtTest {
                 StringMapEntryAdd("parking:left:orientation", "diagonal"),
                 StringMapEntryAdd("parking:right", "on_kerb"),
                 StringMapEntryAdd("parking:right:orientation", "perpendicular"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(
                 StreetParking.PositionAndOrientation(DIAGONAL, STREET_SIDE),
@@ -284,6 +320,7 @@ class StreetParkingCreatorKtTest {
             setOf(
                 StringMapEntryAdd("parking:both", "separate"),
                 StringMapEntryDelete("parking:left", "separate"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(null, StreetParking.Separate).appliedTo(mapOf(
                 "parking:left" to "separate"
@@ -293,6 +330,7 @@ class StreetParkingCreatorKtTest {
             setOf(
                 StringMapEntryAdd("parking:both", "separate"),
                 StringMapEntryDelete("parking:right", "separate"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(StreetParking.Separate, null).appliedTo(mapOf(
                 "parking:right" to "separate"
@@ -303,7 +341,8 @@ class StreetParkingCreatorKtTest {
     @Test fun `apply for one side does not touch the other side`() {
         assertEquals(
             setOf(
-                StringMapEntryAdd("parking:right", "no")
+                StringMapEntryAdd("parking:right", "no"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(null, StreetParking.None).appliedTo(mapOf(
                 "parking:left" to "separate"
@@ -311,7 +350,8 @@ class StreetParkingCreatorKtTest {
         )
         assertEquals(
             setOf(
-                StringMapEntryAdd("parking:left", "separate")
+                StringMapEntryAdd("parking:left", "separate"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(StreetParking.Separate, null).appliedTo(mapOf(
                 "parking:right" to "no"
@@ -322,7 +362,8 @@ class StreetParkingCreatorKtTest {
     @Test fun `apply for one side does not touch the other side even if it is invalid`() {
         assertEquals(
             setOf(
-                StringMapEntryAdd("parking:right", "no")
+                StringMapEntryAdd("parking:right", "no"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(null, StreetParking.None).appliedTo(mapOf(
                 "parking:left" to "narrow"
@@ -330,7 +371,8 @@ class StreetParkingCreatorKtTest {
         )
         assertEquals(
             setOf(
-                StringMapEntryAdd("parking:left", "separate")
+                StringMapEntryAdd("parking:left", "separate"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(StreetParking.Separate, null).appliedTo(
                 mapOf("parking:right" to "narrow")
@@ -346,38 +388,11 @@ class StreetParkingCreatorKtTest {
                 StringMapEntryDelete("parking:both:orientation", "hexagonal"),
                 StringMapEntryAdd("parking:left", "on_kerb"),
                 StringMapEntryAdd("parking:left:orientation", "hexagonal"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(null, StreetParking.None).appliedTo(mapOf(
                 "parking:both" to "on_kerb",
                 "parking:both:orientation" to "hexagonal",
-            ))
-        )
-    }
-
-    @Test fun `updates check date`() {
-        assertEquals(
-            setOf(
-                StringMapEntryModify("parking:both", "no", "no"),
-                StringMapEntryAdd("check_date:parking", nowAsCheckDateString())
-            ),
-            Sides<StreetParking>(StreetParking.None, StreetParking.None).appliedTo(mapOf(
-                "parking:both" to "no"
-            ))
-        )
-        assertEquals(
-            setOf(
-                StringMapEntryModify("parking:both:orientation", "parallel", "parallel"),
-                StringMapEntryModify("parking:left", "half_on_kerb", "half_on_kerb"),
-                StringMapEntryModify("parking:right", "on_kerb", "on_kerb"),
-                StringMapEntryAdd("check_date:parking", nowAsCheckDateString())
-            ),
-            Sides<StreetParking>(
-                StreetParking.PositionAndOrientation(PARALLEL, HALF_ON_STREET),
-                StreetParking.PositionAndOrientation(PARALLEL, OFF_STREET)
-            ).appliedTo(mapOf(
-                "parking:both:orientation" to "parallel",
-                "parking:left" to "half_on_kerb",
-                "parking:right" to "on_kerb",
             ))
         )
     }
@@ -391,6 +406,7 @@ class StreetParkingCreatorKtTest {
                 StringMapEntryDelete("parking:left", "half_on_kerb"),
                 StringMapEntryDelete("parking:right", "on_kerb"),
                 StringMapEntryAdd("parking:both", "lane"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(
                 StreetParking.PositionAndOrientation(PARALLEL, ON_STREET),
@@ -408,6 +424,7 @@ class StreetParkingCreatorKtTest {
             setOf(
                 StringMapEntryDelete("parking:both:orientation", "parallel"),
                 StringMapEntryModify("parking:both", "half_on_kerb", "no"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(StreetParking.None, StreetParking.None).appliedTo(mapOf(
                 "parking:both:orientation" to "parallel",
@@ -422,6 +439,7 @@ class StreetParkingCreatorKtTest {
                 StringMapEntryDelete("parking:both:orientation", "parallel"),
                 StringMapEntryDelete("parking:both:markings", "yes"),
                 StringMapEntryModify("parking:both", "half_on_kerb", "no"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(StreetParking.None, StreetParking.None).appliedTo(mapOf(
                 "parking:both:orientation" to "parallel",
@@ -438,6 +456,7 @@ class StreetParkingCreatorKtTest {
                 StringMapEntryModify("parking:both:orientation", "parallel", "parallel"),
                 StringMapEntryModify("parking:both", "half_on_kerb", "half_on_kerb"),
                 StringMapEntryDelete("parking:both:staggered", "yes"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(parking, parking).appliedTo(mapOf(
                 "parking:both:orientation" to "parallel",
@@ -473,6 +492,7 @@ class StreetParkingCreatorKtTest {
                 StringMapEntryDelete("parking:lane:lastcheck", "123"),
                 StringMapEntryDelete("last_checked:parking:lane", "123"),
                 StringMapEntryDelete("parking:lane:last_checked", "123"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(null, StreetParking.None).appliedTo(mapOf(
                 "parking:lane" to "parallel",
@@ -505,7 +525,8 @@ class StreetParkingCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("parking:right", "lane"),
-                StringMapEntryAdd("parking:right:orientation", "diagonal")
+                StringMapEntryAdd("parking:right:orientation", "diagonal"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(
                 null,
@@ -516,7 +537,8 @@ class StreetParkingCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("parking:left", "lane"),
-                StringMapEntryAdd("parking:left:orientation", "diagonal")
+                StringMapEntryAdd("parking:left:orientation", "diagonal"),
+                StringMapEntryAdd("check_date:parking", nowAsCheckDateString()),
             ),
             Sides<StreetParking>(
                 StreetParking.PositionAndOrientation(DIAGONAL, ON_STREET),

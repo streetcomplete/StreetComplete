@@ -104,7 +104,10 @@ class AddFootwayPartSurfaceTest {
 
     @Test fun `apply asphalt surface`() {
         assertEquals(
-            setOf(StringMapEntryAdd("footway:surface", "asphalt")),
+            setOf(
+                StringMapEntryAdd("footway:surface", "asphalt"),
+                StringMapEntryAdd("check_date:footway:surface", nowAsCheckDateString())
+            ),
             questType.answerApplied(Surface.ASPHALT)
         )
     }
@@ -113,7 +116,9 @@ class AddFootwayPartSurfaceTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("footway:surface", "paving_stones", "concrete"),
-                StringMapEntryModify("surface", "paving_stones", "concrete")
+                StringMapEntryModify("surface", "paving_stones", "concrete"),
+                StringMapEntryAdd("check_date:footway:surface", nowAsCheckDateString()),
+                StringMapEntryAdd("check_date:surface", nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
                 Surface.CONCRETE,

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.railway_crossing
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.answerAppliedTo
 import de.westnordost.streetcomplete.testutils.TestMapDataWithGeometry
@@ -60,6 +61,7 @@ class AddRailwayCrossingBarrierTest {
             setOf(
                 StringMapEntryAdd("crossing:barrier", "no"),
                 StringMapEntryAdd("crossing:chicane", "yes"),
+                StringMapEntryAdd("check_date:crossing:barrier", nowAsCheckDateString()),
             ),
             questType.answerApplied(RailwayCrossingBarrier.CHICANE)
         )
@@ -69,6 +71,7 @@ class AddRailwayCrossingBarrierTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("crossing:barrier", "full"),
+                StringMapEntryAdd("check_date:crossing:barrier", nowAsCheckDateString()),
                 StringMapEntryDelete("crossing:chicane", "yes")
             ),
             questType.answerAppliedTo(

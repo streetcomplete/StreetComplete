@@ -17,7 +17,8 @@ class SeparateCyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("bicycle", "no"),
                 StringMapEntryAdd("bicycle:signed", "yes"),
-                StringMapEntryModify("highway", "cycleway", "path")
+                StringMapEntryModify("highway", "cycleway", "path"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             NOT_ALLOWED.appliedTo(mapOf("highway" to "cycleway"))
         )
@@ -27,7 +28,8 @@ class SeparateCyclewayCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("bicycle:signed", "yes"),
-                StringMapEntryModify("highway", "cycleway", "path")
+                StringMapEntryModify("highway", "cycleway", "path"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             NOT_ALLOWED.appliedTo(mapOf(
                 "highway" to "cycleway",
@@ -42,7 +44,8 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryAdd("bicycle", "no"),
                 StringMapEntryAdd("bicycle:signed", "yes"),
                 StringMapEntryModify("highway", "cycleway", "path"),
-                StringMapEntryModify("foot", "no", "yes")
+                StringMapEntryModify("foot", "no", "yes"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             NOT_ALLOWED.appliedTo(mapOf(
                 "highway" to "cycleway",
@@ -56,7 +59,8 @@ class SeparateCyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("bicycle", "no"),
                 StringMapEntryAdd("bicycle:signed", "yes"),
-                StringMapEntryModify("highway", "cycleway", "footway")
+                StringMapEntryModify("highway", "cycleway", "footway"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             NOT_ALLOWED.appliedTo(mapOf(
                 "highway" to "cycleway",
@@ -114,7 +118,8 @@ class SeparateCyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("bicycle", "yes"),
                 StringMapEntryAdd("bicycle:signed", "yes"),
-                StringMapEntryModify("highway", "footway", "footway")
+                StringMapEntryModify("highway", "footway", "footway"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             ALLOWED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "footway"
@@ -124,7 +129,8 @@ class SeparateCyclewayCreatorKtTest {
             setOf(
                 StringMapEntryModify("bicycle", "no", "yes"),
                 StringMapEntryAdd("bicycle:signed", "yes"),
-                StringMapEntryModify("highway", "footway", "footway")
+                StringMapEntryModify("highway", "footway", "footway"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             ALLOWED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "footway",
@@ -245,6 +251,7 @@ class SeparateCyclewayCreatorKtTest {
             setOf(
                 StringMapEntryDelete("bicycle", "designated"),
                 StringMapEntryModify("highway", "footway", "footway"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             NON_DESIGNATED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "footway",
@@ -277,7 +284,8 @@ class SeparateCyclewayCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("highway", "cycleway", "footway"),
-                StringMapEntryModify("foot", "no", "designated")
+                StringMapEntryModify("foot", "no", "designated"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             NON_DESIGNATED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "cycleway",
@@ -291,6 +299,7 @@ class SeparateCyclewayCreatorKtTest {
             setOf(
                 StringMapEntryModify("highway", "cycleway", "footway"),
                 StringMapEntryModify("foot", "designated", "designated"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             NON_DESIGNATED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "cycleway",
@@ -305,6 +314,7 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryModify("highway", "footway", "footway"),
                 StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk", "both"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             NON_DESIGNATED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "footway",
@@ -318,6 +328,7 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "yes"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             NON_DESIGNATED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "footway",
@@ -331,6 +342,7 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryModify("highway", "footway", "footway"),
                 StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk:both", "yes"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             NON_DESIGNATED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "footway",
@@ -345,6 +357,7 @@ class SeparateCyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("bicycle", "designated"),
                 StringMapEntryAdd("segregated", "no"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             NON_SEGREGATED.appliedTo(mapOf("highway" to "footway"))
         )
@@ -352,7 +365,8 @@ class SeparateCyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("bicycle", "designated"),
                 StringMapEntryAdd("segregated", "no"),
-                StringMapEntryModify("foot", "yes", "designated")
+                StringMapEntryModify("foot", "yes", "designated"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             NON_SEGREGATED.appliedTo(mapOf(
                 "highway" to "footway",
@@ -363,6 +377,7 @@ class SeparateCyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("foot", "designated"),
                 StringMapEntryAdd("segregated", "no"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             NON_SEGREGATED.appliedTo(mapOf("highway" to "cycleway"))
         )
@@ -371,6 +386,7 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryModify("bicycle", "yes", "designated"),
                 StringMapEntryAdd("foot", "designated"),
                 StringMapEntryAdd("segregated", "no"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             NON_SEGREGATED.appliedTo(mapOf(
                 "highway" to "cycleway",
@@ -385,6 +401,7 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryAdd("bicycle", "designated"),
                 StringMapEntryAdd("segregated", "no"),
                 StringMapEntryDelete("sidewalk", "both"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             NON_SEGREGATED.appliedTo(mapOf(
                 "highway" to "footway",
@@ -396,6 +413,7 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryAdd("bicycle", "designated"),
                 StringMapEntryAdd("segregated", "no"),
                 StringMapEntryDelete("sidewalk:both", "yes"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             NON_SEGREGATED.appliedTo(mapOf(
                 "highway" to "footway",
@@ -408,6 +426,7 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryAdd("segregated", "no"),
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "yes"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             NON_SEGREGATED.appliedTo(mapOf(
                 "highway" to "footway",
@@ -422,6 +441,7 @@ class SeparateCyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("bicycle", "designated"),
                 StringMapEntryAdd("segregated", "yes"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             SEGREGATED.appliedTo(mapOf("highway" to "footway"))
         )
@@ -429,6 +449,7 @@ class SeparateCyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("foot", "designated"),
                 StringMapEntryAdd("segregated", "yes"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             SEGREGATED.appliedTo(mapOf("highway" to "cycleway"))
         )
@@ -437,6 +458,7 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryModify("bicycle", "yes", "designated"),
                 StringMapEntryAdd("foot", "designated"),
                 StringMapEntryAdd("segregated", "yes"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             SEGREGATED.appliedTo(mapOf("highway" to "cycleway", "bicycle" to "yes"))
         )
@@ -448,6 +470,7 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryAdd("bicycle", "designated"),
                 StringMapEntryAdd("segregated", "yes"),
                 StringMapEntryDelete("sidewalk", "both"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             SEGREGATED.appliedTo(mapOf(
                 "highway" to "footway",
@@ -459,6 +482,7 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryAdd("bicycle", "designated"),
                 StringMapEntryAdd("segregated", "yes"),
                 StringMapEntryDelete("sidewalk:both", "yes"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             SEGREGATED.appliedTo(mapOf(
                 "highway" to "footway",
@@ -471,6 +495,7 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryAdd("segregated", "yes"),
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "yes"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             SEGREGATED.appliedTo(mapOf(
                 "highway" to "footway",
@@ -489,17 +514,24 @@ class SeparateCyclewayCreatorKtTest {
             EXCLUSIVE.appliedTo(mapOf("highway" to "cycleway"))
         )
         assertEquals(
-            setOf(StringMapEntryModify("highway", "footway", "cycleway")),
+            setOf(
+                StringMapEntryModify("highway", "footway", "cycleway"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
+            ),
             EXCLUSIVE.appliedTo(mapOf("highway" to "footway"))
         )
         assertEquals(
-            setOf(StringMapEntryModify("highway", "path", "cycleway"),),
+            setOf(
+                StringMapEntryModify("highway", "path", "cycleway"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
+            ),
             EXCLUSIVE.appliedTo(mapOf("highway" to "path"))
         )
         assertEquals(
             setOf(
                 StringMapEntryDelete("foot", "designated"),
                 StringMapEntryModify("highway", "path", "cycleway"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             EXCLUSIVE.appliedTo(mapOf(
                 "highway" to "path",
@@ -510,6 +542,7 @@ class SeparateCyclewayCreatorKtTest {
             setOf(
                 StringMapEntryModify("bicycle", "yes", "designated"),
                 StringMapEntryModify("highway", "cycleway", "cycleway"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             EXCLUSIVE.appliedTo(mapOf(
                 "highway" to "cycleway",
@@ -524,6 +557,7 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryModify("highway", "cycleway", "cycleway"),
                 StringMapEntryDelete("sidewalk", "both"),
                 StringMapEntryDelete("segregated", "yes"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             EXCLUSIVE.appliedTo(mapOf(
                 "highway" to "cycleway",
@@ -536,6 +570,7 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryModify("highway", "cycleway", "cycleway"),
                 StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk:both", "yes"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             EXCLUSIVE.appliedTo(mapOf(
                 "highway" to "cycleway",
@@ -549,6 +584,7 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "yes"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             EXCLUSIVE.appliedTo(mapOf(
                 "highway" to "cycleway",
@@ -564,6 +600,7 @@ class SeparateCyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("sidewalk", "yes"),
                 StringMapEntryModify("highway", "cycleway", "cycleway"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             EXCLUSIVE_WITH_SIDEWALK.appliedTo(mapOf("highway" to "cycleway"))
         )
@@ -572,6 +609,7 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryAdd("sidewalk", "yes"),
                 StringMapEntryDelete("foot", "yes"),
                 StringMapEntryModify("highway", "cycleway", "cycleway"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             EXCLUSIVE_WITH_SIDEWALK.appliedTo(mapOf(
                 "highway" to "cycleway",
@@ -582,6 +620,7 @@ class SeparateCyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("sidewalk", "yes"),
                 StringMapEntryModify("highway", "footway", "cycleway"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             EXCLUSIVE_WITH_SIDEWALK.appliedTo(mapOf("highway" to "footway"))
         )
@@ -589,6 +628,7 @@ class SeparateCyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("sidewalk", "yes"),
                 StringMapEntryModify("highway", "path", "cycleway"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             EXCLUSIVE_WITH_SIDEWALK.appliedTo(mapOf("highway" to "path"))
         )
@@ -597,6 +637,7 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryAdd("sidewalk", "yes"),
                 StringMapEntryModify("bicycle", "yes", "designated"),
                 StringMapEntryModify("highway", "path", "cycleway"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             EXCLUSIVE_WITH_SIDEWALK.appliedTo(mapOf(
                 "highway" to "path",
@@ -633,6 +674,7 @@ class SeparateCyclewayCreatorKtTest {
             setOf(
                 StringMapEntryModify("highway", "cycleway", "cycleway"),
                 StringMapEntryDelete("segregated", "yes"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             EXCLUSIVE_WITH_SIDEWALK.appliedTo(mapOf(
                 "highway" to "cycleway",
@@ -644,7 +686,10 @@ class SeparateCyclewayCreatorKtTest {
 
     @Test fun `apply path changes highway tag`() {
         assertEquals(
-            setOf(StringMapEntryModify("highway", "cycleway", "path")),
+            setOf(
+                StringMapEntryModify("highway", "cycleway", "path"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
+            ),
             PATH.appliedTo(mapOf("highway" to "cycleway")),
         )
     }
@@ -655,6 +700,7 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryModify("highway", "cycleway", "path"),
                 StringMapEntryModify("foot", "designated", "yes"),
                 StringMapEntryModify("bicycle", "no", "yes"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             PATH.appliedTo(mapOf(
                 "highway" to "cycleway",
@@ -666,7 +712,10 @@ class SeparateCyclewayCreatorKtTest {
 
     @Test fun `apply path sets foot and bicycle only if not a value like permissive or private etc is set`() {
         assertEquals(
-            setOf(StringMapEntryModify("highway", "cycleway", "path")),
+            setOf(
+                StringMapEntryModify("highway", "cycleway", "path"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
+            ),
             PATH.appliedTo(mapOf(
                 "highway" to "cycleway",
                 "foot" to "private",
@@ -674,7 +723,10 @@ class SeparateCyclewayCreatorKtTest {
             ))
         )
         assertEquals(
-            setOf(StringMapEntryModify("highway", "cycleway", "path")),
+            setOf(
+                StringMapEntryModify("highway", "cycleway", "path"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
+            ),
             PATH.appliedTo(mapOf(
                 "highway" to "cycleway",
                 "foot" to "destination",
@@ -689,6 +741,7 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryModify("highway", "cycleway", "path"),
                 StringMapEntryDelete("sidewalk", "both"),
                 StringMapEntryDelete("segregated", "yes"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             PATH.appliedTo(mapOf(
                 "highway" to "cycleway",
@@ -701,6 +754,7 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryModify("highway", "cycleway", "path"),
                 StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk:both", "yes"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             PATH.appliedTo(mapOf(
                 "highway" to "cycleway",
@@ -714,6 +768,7 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "yes"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
             ),
             PATH.appliedTo(mapOf(
                 "highway" to "cycleway",

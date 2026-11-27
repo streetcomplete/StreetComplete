@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.shop_type
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.answerAppliedTo
 import de.westnordost.streetcomplete.testutils.node
@@ -35,7 +36,8 @@ class SpecifyShopTypeTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("disused:shop", "supermarket"),
-                StringMapEntryDelete("shop", "supermarket")
+                StringMapEntryDelete("shop", "supermarket"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString()),
             ),
             questType.answerAppliedTo(
                 ShopTypeAnswer.IsShopVacant,
@@ -45,6 +47,7 @@ class SpecifyShopTypeTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("disused:shop", "yes"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString())
             ),
             questType.answerApplied(ShopTypeAnswer.IsShopVacant)
         )
@@ -55,6 +58,7 @@ class SpecifyShopTypeTest {
             setOf(
                 StringMapEntryAdd("disused:shop", "yes"),
                 StringMapEntryDelete("opening_hours", "24/7"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString()),
             ),
             questType.answerAppliedTo(
                 ShopTypeAnswer.IsShopVacant,

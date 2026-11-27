@@ -94,13 +94,25 @@ class FeatureKtTest {
             )
         )
     }
+
+    @Test
+    fun `updates check date`() {
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("a", "b"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString()),
+            ),
+            feature(addTags = mapOf("a" to "b")).appliedTo(mapOf(), updateCheckDate = true)
+        )
+    }
 }
 
 private fun Feature.appliedTo(
     tags: Map<String, String>,
-    previousFeature: Feature? = null
+    previousFeature: Feature? = null,
+    updateCheckDate: Boolean = false,
 ): Set<StringMapEntryChange> {
     val cb = StringMapChangesBuilder(tags)
-    applyTo(cb, previousFeature)
+    applyTo(cb, previousFeature, updateCheckDate)
     return cb.create().changes
 }

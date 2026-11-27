@@ -27,7 +27,10 @@ class AddOpeningHoursTest {
 
     @Test fun `apply description answer`() {
         assertEquals(
-            setOf(StringMapEntryAdd("opening_hours", "\"my cool opening hours\"")),
+            setOf(
+                StringMapEntryAdd("opening_hours", "\"my cool opening hours\""),
+                StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString())
+            ),
             questType.answerApplied(DescribeOpeningHours("my cool \"opening\" hours"))
         )
     }
@@ -35,24 +38,12 @@ class AddOpeningHoursTest {
     @Test fun `apply description answer when it already had an opening hours`() {
         assertEquals(
             setOf(
-                StringMapEntryModify("opening_hours", "X", "\"my cool opening hours\"")
+                StringMapEntryModify("opening_hours", "X", "\"my cool opening hours\""),
+                StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
                 DescribeOpeningHours("my cool \"opening\" hours"),
                 mapOf("opening_hours" to "X")
-            )
-        )
-    }
-
-    @Test fun `apply same description answer again`() {
-        assertEquals(
-            setOf(
-                StringMapEntryModify("opening_hours", "\"oh\"", "\"oh\""),
-                StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString())
-            ),
-            questType.answerAppliedTo(
-                DescribeOpeningHours("oh"),
-                mapOf("opening_hours" to "\"oh\"")
             )
         )
     }
@@ -67,82 +58,41 @@ class AddOpeningHoursTest {
         )
     }
 
-    @Test fun `apply no opening hours sign answer when there was an answer before`() {
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("opening_hours:signed", "no"),
-                StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString())
-            ),
-            questType.answerAppliedTo(
-                NoOpeningHoursSign,
-                mapOf("opening_hours" to "oh")
-            )
-        )
-    }
-
-    @Test fun `apply no opening hours sign answer when there was an always open answer before`() {
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("opening_hours:signed", "no"),
-                StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString())
-            ),
-            questType.answerAppliedTo(NoOpeningHoursSign, mapOf("opening_hours" to "24/7"))
-        )
-    }
-
     @Test fun `apply always open answer`() {
         assertEquals(
-            setOf(StringMapEntryAdd("opening_hours", "24/7")),
+            setOf(
+                StringMapEntryAdd("opening_hours", "24/7"),
+                StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString())
+            ),
             questType.answerApplied(AlwaysOpen)
         )
     }
 
     @Test fun `apply always open answer when there was a different answer before`() {
         assertEquals(
-            setOf(StringMapEntryModify("opening_hours", "34/3", "24/7")),
-            questType.answerAppliedTo(AlwaysOpen, mapOf("opening_hours" to "34/3"))
-        )
-    }
-
-    @Test fun `apply always open answer when it was the same answer before`() {
-        assertEquals(
             setOf(
-                StringMapEntryModify("opening_hours", "24/7", "24/7"),
+                StringMapEntryModify("opening_hours", "34/3", "24/7"),
                 StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString())
             ),
-            questType.answerAppliedTo(AlwaysOpen, mapOf("opening_hours" to "24/7"))
+            questType.answerAppliedTo(AlwaysOpen, mapOf("opening_hours" to "34/3"))
         )
     }
 
     @Test fun `apply always open answer when it was explicitly signed before`() {
         assertEquals(
             setOf(
-                StringMapEntryAdd("opening_hours", "24/7")
-            ),
-            questType.answerAppliedTo(AlwaysOpen, mapOf("opening_hours:signed" to "yes"))
-        )
-    }
-
-    @Test fun `apply always open answer when it was explicitly signed and present before`() {
-        assertEquals(
-            setOf(
-                StringMapEntryModify("opening_hours", "24/7", "24/7"),
+                StringMapEntryAdd("opening_hours", "24/7"),
                 StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString())
             ),
-            questType.answerAppliedTo(
-                AlwaysOpen,
-                mapOf(
-                    "opening_hours" to "24/7",
-                    "opening_hours:signed" to "yes"
-                )
-            )
+            questType.answerAppliedTo(AlwaysOpen, mapOf("opening_hours:signed" to "yes"))
         )
     }
 
     @Test fun `apply always open answer when it was explicitly signed but there was a different answer before`() {
         assertEquals(
             setOf(
-                StringMapEntryModify("opening_hours", "34/3", "24/7")
+                StringMapEntryModify("opening_hours", "34/3", "24/7"),
+                StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
                 AlwaysOpen,
@@ -156,7 +106,10 @@ class AddOpeningHoursTest {
 
     @Test fun `apply opening hours answer`() {
         assertEquals(
-            setOf(StringMapEntryAdd("opening_hours", "Mo 10:00-12:00")),
+            setOf(
+                StringMapEntryAdd("opening_hours", "Mo 10:00-12:00"),
+                StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString())
+            ),
             questType.answerApplied(
                 RegularOpeningHours(HierarchicOpeningHours(listOf(
                     Months(emptyList(), listOf(
@@ -171,24 +124,8 @@ class AddOpeningHoursTest {
 
     @Test fun `apply opening hours answer when there was a different one before`() {
         assertEquals(
-            setOf(StringMapEntryModify("opening_hours", "hohoho", "Mo 10:00-12:00")),
-            questType.answerAppliedTo(
-                RegularOpeningHours(HierarchicOpeningHours(listOf(
-                    Months(emptyList(), listOf(
-                        Weekdays(listOf(Weekday.Monday), emptyList(),
-                            Times(listOf(TimeSpan(ClockTime(10), ClockTime(12))))
-                        )
-                    ))
-                ))),
-                mapOf("opening_hours" to "hohoho")
-            )
-        )
-    }
-
-    @Test fun `apply opening hours answer when there was the same one before`() {
-        assertEquals(
             setOf(
-                StringMapEntryModify("opening_hours", "Mo 10:00-12:00", "Mo 10:00-12:00"),
+                StringMapEntryModify("opening_hours", "hohoho", "Mo 10:00-12:00"),
                 StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
@@ -199,7 +136,7 @@ class AddOpeningHoursTest {
                         )
                     ))
                 ))),
-                mapOf("opening_hours" to "Mo 10:00-12:00")
+                mapOf("opening_hours" to "hohoho")
             )
         )
     }

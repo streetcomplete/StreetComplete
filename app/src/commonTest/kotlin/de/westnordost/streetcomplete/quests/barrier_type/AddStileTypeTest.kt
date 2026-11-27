@@ -14,25 +14,11 @@ class AddStileTypeTest {
     @Test
     fun `set stile as squeezer`() {
         assertEquals(
-            setOf(StringMapEntryAdd("stile", "squeezer")),
-            questType.answerAppliedTo(StileType.SQUEEZER, mapOf("barrier" to "stile"))
-        )
-    }
-
-    @Test
-    fun `set stile as still squeezer`() {
-        assertEquals(
             setOf(
-                StringMapEntryAdd("check_date", nowAsCheckDateString()),
-                StringMapEntryModify("stile", "squeezer", "squeezer"),
+                StringMapEntryAdd("stile", "squeezer"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString())
             ),
-            questType.answerAppliedTo(
-                StileType.SQUEEZER,
-                mapOf(
-                    "barrier" to "stile",
-                    "stile" to "squeezer",
-                )
-            )
+            questType.answerAppliedTo(StileType.SQUEEZER, mapOf("barrier" to "stile"))
         )
     }
 
@@ -43,6 +29,7 @@ class AddStileTypeTest {
                 StringMapEntryDelete("steps", "5"),
                 StringMapEntryModify("material", "wood", "stone"),
                 StringMapEntryModify("stile", "stepover", "stepover"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
                 StileType.STEPOVER_STONE,
@@ -64,6 +51,7 @@ class AddStileTypeTest {
                 StringMapEntryModify("stile", "stepover", "squeezer"),
                 StringMapEntryDelete("steps", "5"),
                 StringMapEntryDelete("material", "wood"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
                 StileType.SQUEEZER,
@@ -81,7 +69,10 @@ class AddStileTypeTest {
     @Test
     fun `don't reset tags when adding a stile type tag to an existing enhanced metadata stile`() {
         assertEquals(
-            setOf(StringMapEntryAdd("stile", "squeezer")),
+            setOf(
+                StringMapEntryAdd("stile", "squeezer"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString())
+            ),
             questType.answerAppliedTo(
                 StileType.SQUEEZER,
                 mapOf(
@@ -98,7 +89,8 @@ class AddStileTypeTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("stile", "stepover"),
-                StringMapEntryModify("material", "wood", "wood")
+                StringMapEntryModify("material", "wood", "wood"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
                 StileType.STEPOVER_WOODEN,
@@ -114,7 +106,10 @@ class AddStileTypeTest {
     @Test
     fun `handle adding stile tag where other values are present`() {
         assertEquals(
-            setOf(StringMapEntryAdd("stile", "squeezer")),
+            setOf(
+                StringMapEntryAdd("stile", "squeezer"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString())
+            ),
             questType.answerAppliedTo(
                 StileType.SQUEEZER,
                 mapOf(
@@ -128,32 +123,12 @@ class AddStileTypeTest {
     }
 
     @Test
-    fun `handle unmodified well tagged stepover`() {
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("check_date", nowAsCheckDateString()),
-                StringMapEntryModify("stile", "stepover", "stepover"),
-                StringMapEntryModify("material", "wood", "wood"),
-            ),
-            questType.answerAppliedTo(
-                StileType.STEPOVER_WOODEN,
-                mapOf(
-                    "barrier" to "stile",
-                    "stile" to "stepover",
-                    "material" to "wood",
-                    "steps" to "5",
-                    "tag_not_in_list_for_removal" to "dummy_value",
-                )
-            )
-        )
-    }
-
-    @Test
     fun `on stepover add material if everything else is tagged`() {
         assertEquals(
             setOf(
                 StringMapEntryAdd("material", "wood"),
                 StringMapEntryModify("stile", "stepover", "stepover"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
                 StileType.STEPOVER_WOODEN,
@@ -170,6 +145,7 @@ class AddStileTypeTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("barrier", "stile", "kissing_gate"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
                 StileType.KISSING_GATE,
@@ -185,6 +161,7 @@ class AddStileTypeTest {
                 StringMapEntryModify("barrier", "stile", "kissing_gate"),
                 StringMapEntryDelete("stile", "something"),
                 StringMapEntryDelete("material", "something else"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
                 StileType.KISSING_GATE,
@@ -206,6 +183,7 @@ class AddStileTypeTest {
                 StringMapEntryDelete("material", "wood"),
                 StringMapEntryDelete("stile", "stepover"),
                 StringMapEntryModify("barrier", "stile", "entrance"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
                 StileType.PASSAGE,

@@ -100,10 +100,7 @@ class AddStileType : OsmElementQuestType<StileType> {
                 STILE_PROPERTIES.forEach { tags.remove(it) }
             }
         }
-        // policy is to not remove a check date if one is already there but update it instead
-        if (!tags.hasChanges || tags.hasCheckDate()) {
-            tags.updateCheckDate()
-        }
+        tags.updateCheckDate()
     }
 
     companion object {

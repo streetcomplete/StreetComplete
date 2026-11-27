@@ -13,19 +13,31 @@ import kotlin.test.assertEquals
 class LaneNarrowingTrafficCalmingCreatorKtTest {
     @Test fun `set traffic_calming`() {
         assertEquals(
-            setOf(StringMapEntryAdd("traffic_calming", "choker")),
+            setOf(
+                StringMapEntryAdd("traffic_calming", "choker"),
+                StringMapEntryAdd("check_date:traffic_calming", nowAsCheckDateString()),
+            ),
             CHOKER.appliedTo(mapOf())
         )
         assertEquals(
-            setOf(StringMapEntryAdd("traffic_calming", "chicane")),
+            setOf(
+                StringMapEntryAdd("traffic_calming", "chicane"),
+                StringMapEntryAdd("check_date:traffic_calming", nowAsCheckDateString()),
+            ),
             CHICANE.appliedTo(mapOf())
         )
         assertEquals(
-            setOf(StringMapEntryAdd("traffic_calming", "island")),
+            setOf(
+                StringMapEntryAdd("traffic_calming", "island"),
+                StringMapEntryAdd("check_date:traffic_calming", nowAsCheckDateString()),
+            ),
             ISLAND.appliedTo(mapOf())
         )
         assertEquals(
-            setOf(StringMapEntryAdd("traffic_calming", "choker;island")),
+            setOf(
+                StringMapEntryAdd("traffic_calming", "choker;island"),
+                StringMapEntryAdd("check_date:traffic_calming", nowAsCheckDateString()),
+            ),
             CHOKED_ISLAND.appliedTo(mapOf())
         )
 
@@ -40,63 +52,48 @@ class LaneNarrowingTrafficCalmingCreatorKtTest {
                 "check_date:traffic_calming" to "2000-10-10"
             ))
         )
-
-        // nothing changed
-        assertEquals(
-            setOf(
-                StringMapEntryModify("traffic_calming", "island", "island"),
-                StringMapEntryAdd("check_date:traffic_calming", nowAsCheckDateString()),
-            ),
-            ISLAND.appliedTo(mapOf("traffic_calming" to "island"))
-        )
-
-        // something changed & check date set
-        assertEquals(
-            setOf(
-                StringMapEntryModify("traffic_calming", "choker", "island"),
-                StringMapEntryModify("check_date:traffic_calming", "2000-10-10", nowAsCheckDateString()),
-            ),
-            ISLAND.appliedTo(mapOf(
-                "traffic_calming" to "choker",
-                "check_date:traffic_calming" to "2000-10-10"
-            ))
-        )
     }
 
     @Test fun `merge with current traffic_calming`() {
         assertEquals(
             setOf(
-                StringMapEntryModify("traffic_calming", "rumble_strip", "choker;rumble_strip")
+                StringMapEntryModify("traffic_calming", "rumble_strip", "choker;rumble_strip"),
+                StringMapEntryAdd("check_date:traffic_calming", nowAsCheckDateString()),
             ),
             CHOKER.appliedTo(mapOf("traffic_calming" to "rumble_strip"))
         )
         assertEquals(
             setOf(
-                StringMapEntryModify("traffic_calming", "cows", "choker;island;cows")
+                StringMapEntryModify("traffic_calming", "cows", "choker;island;cows"),
+                StringMapEntryAdd("check_date:traffic_calming", nowAsCheckDateString()),
             ),
             CHOKED_ISLAND.appliedTo(mapOf("traffic_calming" to "cows"))
         )
         assertEquals(
             setOf(
-                StringMapEntryModify("traffic_calming", "cows;choker", "choker;island;cows")
+                StringMapEntryModify("traffic_calming", "cows;choker", "choker;island;cows"),
+                StringMapEntryAdd("check_date:traffic_calming", nowAsCheckDateString()),
             ),
             CHOKED_ISLAND.appliedTo(mapOf("traffic_calming" to "cows;choker"))
         )
         assertEquals(
             setOf(
-                StringMapEntryModify("traffic_calming", "choker", "chicane")
+                StringMapEntryModify("traffic_calming", "choker", "chicane"),
+                StringMapEntryAdd("check_date:traffic_calming", nowAsCheckDateString()),
             ),
             CHICANE.appliedTo(mapOf("traffic_calming" to "choker"))
         )
         assertEquals(
             setOf(
-                StringMapEntryModify("traffic_calming", "cows;choker", "chicane;cows")
+                StringMapEntryModify("traffic_calming", "cows;choker", "chicane;cows"),
+                StringMapEntryAdd("check_date:traffic_calming", nowAsCheckDateString()),
             ),
             CHICANE.appliedTo(mapOf("traffic_calming" to "cows;choker"))
         )
         assertEquals(
             setOf(
-                StringMapEntryModify("traffic_calming", "choked_table", "choker;table")
+                StringMapEntryModify("traffic_calming", "choked_table", "choker;table"),
+                StringMapEntryAdd("check_date:traffic_calming", nowAsCheckDateString()),
             ),
             CHOKER.appliedTo(mapOf("traffic_calming" to "choked_table"))
         )
@@ -104,32 +101,12 @@ class LaneNarrowingTrafficCalmingCreatorKtTest {
         // nothing
         assertEquals(
             setOf(
-                StringMapEntryModify("traffic_calming", "choker;cows;island", "cows")
+                StringMapEntryModify("traffic_calming", "choker;cows;island", "cows"),
+                StringMapEntryAdd("check_date:traffic_calming", nowAsCheckDateString()),
             ),
             (null as LaneNarrowingTrafficCalming?).appliedTo(mapOf(
                 "traffic_calming" to "choker;cows;island"
             )),
-        )
-
-        // nothing changed
-        assertEquals(
-            setOf(
-                StringMapEntryModify("traffic_calming", "choker;cows", "choker;cows"),
-                StringMapEntryAdd("check_date:traffic_calming", nowAsCheckDateString()),
-            ),
-            CHOKER.appliedTo(mapOf("traffic_calming" to "choker;cows"))
-        )
-
-        // something changed & check date set
-        assertEquals(
-            setOf(
-                StringMapEntryModify("traffic_calming", "choker;cows", "island;cows"),
-                StringMapEntryModify("check_date:traffic_calming", "2000-10-10", nowAsCheckDateString()),
-            ),
-            ISLAND.appliedTo(mapOf(
-                "traffic_calming" to "choker;cows",
-                "check_date:traffic_calming" to "2000-10-10"
-            ))
         )
     }
 
@@ -138,7 +115,8 @@ class LaneNarrowingTrafficCalmingCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("crossing:island", "yes"),
-                StringMapEntryAdd("traffic_calming", "island")
+                StringMapEntryAdd("traffic_calming", "island"),
+                StringMapEntryAdd("check_date:traffic_calming", nowAsCheckDateString()),
             ),
             ISLAND.appliedTo(mapOf("highway" to "crossing"))
         )
@@ -147,7 +125,8 @@ class LaneNarrowingTrafficCalmingCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("crossing:island", "no", "yes"),
-                StringMapEntryAdd("traffic_calming", "island")
+                StringMapEntryAdd("traffic_calming", "island"),
+                StringMapEntryAdd("check_date:traffic_calming", nowAsCheckDateString()),
             ),
             ISLAND.appliedTo(mapOf(
                 "highway" to "crossing",
@@ -160,6 +139,7 @@ class LaneNarrowingTrafficCalmingCreatorKtTest {
             setOf(
                 StringMapEntryAdd("crossing:island", "no"),
                 StringMapEntryAdd("traffic_calming", "choker"),
+                StringMapEntryAdd("check_date:traffic_calming", nowAsCheckDateString()),
             ),
             CHOKER.appliedTo(mapOf("highway" to "crossing"))
         )
@@ -169,39 +149,11 @@ class LaneNarrowingTrafficCalmingCreatorKtTest {
             setOf(
                 StringMapEntryModify("crossing:island", "yes", "no"),
                 StringMapEntryAdd("traffic_calming", "choker"),
+                StringMapEntryAdd("check_date:traffic_calming", nowAsCheckDateString()),
             ),
             CHOKER.appliedTo(mapOf(
                 "highway" to "crossing",
                 "crossing:island" to "yes"
-            ))
-        )
-
-        // nothing changed
-        assertEquals(
-            setOf(
-                StringMapEntryModify("crossing:island", "yes", "yes"),
-                StringMapEntryModify("traffic_calming", "island", "island"),
-                StringMapEntryAdd("check_date:traffic_calming", nowAsCheckDateString()),
-            ),
-            ISLAND.appliedTo(mapOf(
-                "highway" to "crossing",
-                "crossing:island" to "yes",
-                "traffic_calming" to "island"
-            ))
-        )
-
-        // something changed & check date set
-        assertEquals(
-            setOf(
-                StringMapEntryModify("crossing:island", "no", "yes"),
-                StringMapEntryModify("traffic_calming", "island", "island"),
-                StringMapEntryModify("check_date:traffic_calming", "2000-10-10", nowAsCheckDateString()),
-            ),
-            ISLAND.appliedTo(mapOf(
-                "highway" to "crossing",
-                "crossing:island" to "no",
-                "traffic_calming" to "island",
-                "check_date:traffic_calming" to "2000-10-10"
             ))
         )
     }
@@ -211,7 +163,8 @@ class LaneNarrowingTrafficCalmingCreatorKtTest {
             setOf(
                 StringMapEntryAdd("crossing:island", "yes"),
                 StringMapEntryDelete("crossing", "island"),
-                StringMapEntryAdd("traffic_calming", "island")
+                StringMapEntryAdd("traffic_calming", "island"),
+                StringMapEntryAdd("check_date:traffic_calming", nowAsCheckDateString()),
             ),
             ISLAND.appliedTo(mapOf(
                 "highway" to "crossing",
@@ -223,6 +176,7 @@ class LaneNarrowingTrafficCalmingCreatorKtTest {
                 StringMapEntryAdd("crossing:island", "no"),
                 StringMapEntryDelete("crossing", "island"),
                 StringMapEntryAdd("traffic_calming", "choker"),
+                StringMapEntryAdd("check_date:traffic_calming", nowAsCheckDateString()),
             ),
             CHOKER.appliedTo(mapOf(
                 "highway" to "crossing",

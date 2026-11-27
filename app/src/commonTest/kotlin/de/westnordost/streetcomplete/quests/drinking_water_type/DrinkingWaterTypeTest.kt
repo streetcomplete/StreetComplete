@@ -12,28 +12,40 @@ import kotlin.test.assertEquals
 class DrinkingWaterTypeTest {
     @Test fun `set drinking water as spring`() {
         assertEquals(
-            setOf(StringMapEntryAdd("natural", "spring")),
+            setOf(
+                StringMapEntryAdd("natural", "spring"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString())
+            ),
             DrinkingWaterType.SPRING.appliedTo(mapOf("amenity" to "drinking_water"))
         )
     }
 
     @Test fun `set drinking water as water tap`() {
         assertEquals(
-            setOf(StringMapEntryAdd("man_made", "water_tap")),
+            setOf(
+                StringMapEntryAdd("man_made", "water_tap"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString())
+            ),
             DrinkingWaterType.WATER_TAP.appliedTo(mapOf("amenity" to "drinking_water"))
         )
     }
 
     @Test fun `set drinking water as bubbler fountain`() {
         assertEquals(
-            setOf(StringMapEntryAdd("fountain", "bubbler")),
+            setOf(
+                StringMapEntryAdd("fountain", "bubbler"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString())
+            ),
             DrinkingWaterType.WATER_FOUNTAIN_JET.appliedTo(mapOf("amenity" to "drinking_water"))
         )
     }
 
     @Test fun `set drinking water as bottle refill`() {
         assertEquals(
-            setOf(StringMapEntryAdd("fountain", "bottle_refill")),
+            setOf(
+                StringMapEntryAdd("fountain", "bottle_refill"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString())
+            ),
             DrinkingWaterType.WATER_FOUNTAIN_BOTTLE_REFILL_ONLY.appliedTo(mapOf(
                 "amenity" to "drinking_water"
             ))
@@ -42,7 +54,10 @@ class DrinkingWaterTypeTest {
 
     @Test fun `set drinking water as fountain`() {
         assertEquals(
-            setOf(StringMapEntryAdd("fountain", "drinking")),
+            setOf(
+                StringMapEntryAdd("fountain", "drinking"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString())
+            ),
             DrinkingWaterType.WATER_FOUNTAIN_GENERIC.appliedTo(mapOf(
                 "amenity" to "drinking_water"
             ))
@@ -54,6 +69,7 @@ class DrinkingWaterTypeTest {
             setOf(
                 StringMapEntryAdd("man_made", "water_well"),
                 StringMapEntryAdd("pump", "manual"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString())
             ),
             DrinkingWaterType.HAND_PUMP.appliedTo(mapOf("amenity" to "drinking_water"))
         )
@@ -61,6 +77,7 @@ class DrinkingWaterTypeTest {
             setOf(
                 StringMapEntryAdd("man_made", "water_well"),
                 StringMapEntryAdd("pump", "no"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString())
             ),
             DrinkingWaterType.WATER_WELL_WITHOUT_PUMP.appliedTo(mapOf(
                 "amenity" to "drinking_water"
@@ -74,6 +91,7 @@ class DrinkingWaterTypeTest {
                 StringMapEntryAdd("man_made", "water_tap"),
                 StringMapEntryAdd("amenity", "drinking_water"),
                 StringMapEntryDelete("disused:amenity", "drinking_water"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString())
             ),
             DrinkingWaterType.WATER_TAP.appliedTo(mapOf("disused:amenity" to "drinking_water"))
         )
@@ -84,6 +102,7 @@ class DrinkingWaterTypeTest {
             setOf(
                 StringMapEntryDelete("amenity", "drinking_water"),
                 StringMapEntryAdd("disused:amenity", "drinking_water"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString())
             ),
             DrinkingWaterType.DISUSED_DRINKING_WATER.appliedTo(mapOf("amenity" to "drinking_water"))
         )

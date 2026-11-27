@@ -46,10 +46,7 @@ fun Sides<CyclewayAndDirection>.applyTo(tags: Tags, isLeftHandTraffic: Boolean) 
     tags.mergeSides("sidewalk", "bicycle:signed")
     tags.mergeSides("sidewalk", "oneway:bicycle")
 
-    // update check date
-    if (!tags.hasChanges || tags.hasCheckDateForKey("cycleway")) {
-        tags.updateCheckDateForKey("cycleway")
-    }
+    tags.updateCheckDateForKey("cycleway")
 
     // tag sidewalk after setting the check date because we want to primarily set the check date
     // of the cycleway, not of the sidewalk, if there are no changes

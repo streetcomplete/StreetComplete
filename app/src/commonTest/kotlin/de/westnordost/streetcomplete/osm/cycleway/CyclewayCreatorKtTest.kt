@@ -31,7 +31,8 @@ class CyclewayCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("cycleway:both", "lane"),
-                StringMapEntryAdd("cycleway:both:lane", "exclusive")
+                StringMapEntryAdd("cycleway:both:lane", "exclusive"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(EXCLUSIVE_LANE, EXCLUSIVE_LANE).appliedTo(mapOf())
         )
@@ -41,7 +42,8 @@ class CyclewayCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("cycleway:both", "lane"),
-                StringMapEntryAdd("cycleway:both:lane", "advisory")
+                StringMapEntryAdd("cycleway:both:lane", "advisory"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(ADVISORY_LANE, ADVISORY_LANE).appliedTo(mapOf())
         )
@@ -50,7 +52,8 @@ class CyclewayCreatorKtTest {
     @Test fun `apply cycleway track answer`() {
         assertEquals(
             setOf(
-                StringMapEntryAdd("cycleway:both", "track")
+                StringMapEntryAdd("cycleway:both", "track"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(TRACK, TRACK).appliedTo(mapOf())
         )
@@ -59,7 +62,8 @@ class CyclewayCreatorKtTest {
     @Test fun `apply unspecified cycle lane answer`() {
         assertEquals(
             setOf(
-                StringMapEntryAdd("cycleway:both", "lane")
+                StringMapEntryAdd("cycleway:both", "lane"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(UNSPECIFIED_LANE, UNSPECIFIED_LANE).appliedTo(mapOf())
         )
@@ -70,6 +74,7 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("cycleway:both", "lane"),
                 StringMapEntryDelete("cycleway:both:lane", "exclusive"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(UNSPECIFIED_LANE, UNSPECIFIED_LANE).appliedTo(mapOf(
                 "cycleway:both:lane" to "exclusive"
@@ -80,7 +85,8 @@ class CyclewayCreatorKtTest {
     @Test fun `apply bus lane answer`() {
         assertEquals(
             setOf(
-                StringMapEntryAdd("cycleway:both", "share_busway")
+                StringMapEntryAdd("cycleway:both", "share_busway"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(BUSWAY, BUSWAY).appliedTo(mapOf())
         )
@@ -90,7 +96,8 @@ class CyclewayCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("cycleway:both", "shared_lane"),
-                StringMapEntryAdd("cycleway:both:lane", "pictogram")
+                StringMapEntryAdd("cycleway:both:lane", "pictogram"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(PICTOGRAMS, PICTOGRAMS).appliedTo(mapOf())
         )
@@ -100,7 +107,8 @@ class CyclewayCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("cycleway:both", "shared_lane"),
-                StringMapEntryAdd("cycleway:both:lane", "advisory")
+                StringMapEntryAdd("cycleway:both:lane", "advisory"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(SUGGESTION_LANE, SUGGESTION_LANE).appliedTo(mapOf())
         )
@@ -109,7 +117,8 @@ class CyclewayCreatorKtTest {
     @Test fun `apply no cycleway answer`() {
         assertEquals(
             setOf(
-                StringMapEntryAdd("cycleway:both", "no")
+                StringMapEntryAdd("cycleway:both", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(NONE, NONE).appliedTo(mapOf())
         )
@@ -121,6 +130,8 @@ class CyclewayCreatorKtTest {
                 StringMapEntryAdd("cycleway:both", "track"),
                 StringMapEntryAdd("cycleway:both:segregated", "no"),
                 StringMapEntryAdd("sidewalk:both", "yes"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             cycleway(SIDEWALK_EXPLICIT, SIDEWALK_EXPLICIT).appliedTo(mapOf())
         )
@@ -132,6 +143,8 @@ class CyclewayCreatorKtTest {
                 StringMapEntryAdd("cycleway:right", "track"),
                 StringMapEntryAdd("cycleway:right:segregated", "no"),
                 StringMapEntryAdd("sidewalk:right", "yes"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             cycleway(null, SIDEWALK_EXPLICIT).appliedTo(mapOf())
         )
@@ -141,6 +154,8 @@ class CyclewayCreatorKtTest {
                 StringMapEntryAdd("cycleway:left:segregated", "no"),
                 StringMapEntryDelete("sidewalk", "right"),
                 StringMapEntryAdd("sidewalk:both", "yes"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             cycleway(SIDEWALK_EXPLICIT, null).appliedTo(mapOf("sidewalk" to "right"))
         )
@@ -149,7 +164,8 @@ class CyclewayCreatorKtTest {
     @Test fun `apply separate cycleway answer`() {
         assertEquals(
             setOf(
-                StringMapEntryAdd("cycleway:both", "separate")
+                StringMapEntryAdd("cycleway:both", "separate"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(SEPARATE, SEPARATE).appliedTo(mapOf())
         )
@@ -160,7 +176,8 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("cycleway:right", "no"),
                 StringMapEntryAdd("sidewalk:right:bicycle", "yes"),
-                StringMapEntryAdd("sidewalk:right:bicycle:signed", "yes")
+                StringMapEntryAdd("sidewalk:right:bicycle:signed", "yes"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(null, SIDEWALK_OK).appliedTo(mapOf())
         )
@@ -168,7 +185,8 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("cycleway:left", "no"),
                 StringMapEntryAdd("sidewalk:left:bicycle", "yes"),
-                StringMapEntryAdd("sidewalk:left:bicycle:signed", "yes")
+                StringMapEntryAdd("sidewalk:left:bicycle:signed", "yes"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(SIDEWALK_OK, null).appliedTo(mapOf())
         )
@@ -179,7 +197,8 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("cycleway:both", "no"),
                 StringMapEntryAdd("sidewalk:both:bicycle", "yes"),
-                StringMapEntryAdd("sidewalk:both:bicycle:signed", "yes")
+                StringMapEntryAdd("sidewalk:both:bicycle:signed", "yes"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(SIDEWALK_OK, SIDEWALK_OK).appliedTo(mapOf())
         )
@@ -190,7 +209,8 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryModify("cycleway:right", "no", "no"),
                 StringMapEntryDelete("sidewalk:right:bicycle", "yes"),
-                StringMapEntryDelete("sidewalk:right:bicycle:signed", "yes")
+                StringMapEntryDelete("sidewalk:right:bicycle:signed", "yes"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(null, NONE).appliedTo(mapOf(
                 "cycleway:right" to "no",
@@ -205,6 +225,7 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryModify("cycleway:right", "no", "no"),
                 StringMapEntryDelete("sidewalk:right:bicycle", "designated"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(null, NONE).appliedTo(mapOf(
                 "cycleway:right" to "no",
@@ -217,7 +238,8 @@ class CyclewayCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("cycleway:both", "track"),
-                StringMapEntryAdd("cycleway:both:oneway", "no")
+                StringMapEntryAdd("cycleway:both:oneway", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(TRACK to BOTH, TRACK to BOTH).appliedTo(mapOf())
         )
@@ -229,6 +251,7 @@ class CyclewayCreatorKtTest {
                 StringMapEntryAdd("cycleway:both", "track"),
                 StringMapEntryAdd("cycleway:both:oneway", "no"),
                 StringMapEntryAdd("oneway:bicycle", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(TRACK to BOTH, TRACK to BOTH).appliedTo(mapOf("oneway" to "yes"))
         )
@@ -239,7 +262,8 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("cycleway:both", "lane"),
                 StringMapEntryAdd("cycleway:both:oneway", "no"),
-                StringMapEntryAdd("cycleway:both:lane", "exclusive")
+                StringMapEntryAdd("cycleway:both:lane", "exclusive"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(EXCLUSIVE_LANE to BOTH, EXCLUSIVE_LANE to BOTH).appliedTo(mapOf())
         )
@@ -252,6 +276,7 @@ class CyclewayCreatorKtTest {
                 StringMapEntryAdd("cycleway:both:oneway", "no"),
                 StringMapEntryAdd("cycleway:both:lane", "exclusive"),
                 StringMapEntryAdd("oneway:bicycle", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(EXCLUSIVE_LANE to BOTH, EXCLUSIVE_LANE to BOTH).appliedTo(mapOf(
                 "oneway" to "yes"
@@ -263,7 +288,8 @@ class CyclewayCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("cycleway:left", "track"),
-                StringMapEntryAdd("cycleway:right", "no")
+                StringMapEntryAdd("cycleway:right", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(TRACK, NONE).appliedTo(mapOf())
         )
@@ -274,7 +300,8 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("cycleway:both", "track"),
                 StringMapEntryAdd("cycleway:left:oneway", "-1"),
-                StringMapEntryAdd("oneway:bicycle", "no")
+                StringMapEntryAdd("oneway:bicycle", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(TRACK, TRACK).appliedTo(mapOf("oneway" to "yes"))
         )
@@ -283,7 +310,8 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("cycleway:both", "track"),
                 StringMapEntryAdd("cycleway:right:oneway", "-1"),
-                StringMapEntryAdd("oneway:bicycle", "no")
+                StringMapEntryAdd("oneway:bicycle", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(TRACK, TRACK, true).appliedTo(mapOf("oneway" to "yes"), true)
         )
@@ -294,7 +322,8 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("cycleway:both", "track"),
                 StringMapEntryAdd("cycleway:right:oneway", "yes"),
-                StringMapEntryAdd("oneway:bicycle", "no")
+                StringMapEntryAdd("oneway:bicycle", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(TRACK, TRACK).appliedTo(mapOf("oneway" to "-1"))
         )
@@ -303,7 +332,8 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("cycleway:both", "track"),
                 StringMapEntryAdd("cycleway:left:oneway", "yes"),
-                StringMapEntryAdd("oneway:bicycle", "no")
+                StringMapEntryAdd("oneway:bicycle", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(TRACK, TRACK, true).appliedTo(mapOf("oneway" to "-1"), true)
         )
@@ -313,7 +343,8 @@ class CyclewayCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("cycleway:both:segregated", "no", "yes"),
-                StringMapEntryModify("cycleway:both", "no", "track")
+                StringMapEntryModify("cycleway:both", "no", "track"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(TRACK, TRACK).appliedTo(mapOf(
                 "cycleway:both:segregated" to "no",
@@ -339,6 +370,7 @@ class CyclewayCreatorKtTest {
                 StringMapEntryModify("cycleway:left:oneway", "yes", "-1"),
                 StringMapEntryModify("cycleway:right:oneway", "yes", "yes"),
                 StringMapEntryAdd("cycleway:both:segregated", "yes"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(TRACK, TRACK).appliedTo(mapOf(
                 "cycleway:left" to "lane",
@@ -370,6 +402,7 @@ class CyclewayCreatorKtTest {
                 StringMapEntryDelete("cycleway:segregated", "yes"),
                 StringMapEntryAdd("cycleway:left:oneway", "-1"),
                 StringMapEntryAdd("cycleway:left:segregated", "yes"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(TRACK, NONE).appliedTo(mapOf(
                 "cycleway:both" to "shared_lane",
@@ -386,7 +419,8 @@ class CyclewayCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("cycleway:both", "lane", "track"),
-                StringMapEntryDelete("cycleway:both:lane", "exclusive")
+                StringMapEntryDelete("cycleway:both:lane", "exclusive"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(TRACK, TRACK).appliedTo(mapOf(
                 "cycleway:both" to "lane",
@@ -399,7 +433,8 @@ class CyclewayCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("cycleway:both", "shared_lane", "track"),
-                StringMapEntryDelete("cycleway:both:lane", "pictogram")
+                StringMapEntryDelete("cycleway:both:lane", "pictogram"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(TRACK, TRACK).appliedTo(mapOf(
                 "cycleway:both" to "shared_lane",
@@ -416,6 +451,7 @@ class CyclewayCreatorKtTest {
                 StringMapEntryDelete("cycleway:both:oneway", "no"),
                 StringMapEntryAdd("cycleway:left:oneway", "-1"),
                 StringMapEntryAdd("cycleway:right:oneway", "yes"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(EXCLUSIVE_LANE, EXCLUSIVE_LANE).appliedTo(mapOf(
                 "cycleway:both" to "lane",
@@ -429,7 +465,8 @@ class CyclewayCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("cycleway:both", "shared_lane", "shared_lane"),
-                StringMapEntryModify("cycleway:both:lane", "pictogram", "advisory")
+                StringMapEntryModify("cycleway:both:lane", "pictogram", "advisory"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(SUGGESTION_LANE, SUGGESTION_LANE).appliedTo(mapOf(
                 "cycleway:both" to "shared_lane",
@@ -445,6 +482,7 @@ class CyclewayCreatorKtTest {
                 StringMapEntryDelete("cycleway:both:oneway", "no"),
                 StringMapEntryAdd("cycleway:left:oneway", "-1"),
                 StringMapEntryAdd("cycleway:right:oneway", "yes"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(TRACK, TRACK).appliedTo(mapOf(
                 "cycleway:both" to "track",
@@ -457,6 +495,7 @@ class CyclewayCreatorKtTest {
                 StringMapEntryDelete("cycleway:both:oneway", "no"),
                 StringMapEntryAdd("cycleway:left:oneway", "yes"),
                 StringMapEntryAdd("cycleway:right:oneway", "-1"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(TRACK, TRACK, true).appliedTo(mapOf(
                 "cycleway:both" to "track",
@@ -469,7 +508,8 @@ class CyclewayCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("cycleway:both", "track", "track"),
-                StringMapEntryModify("cycleway:both:segregated", "no", "yes")
+                StringMapEntryModify("cycleway:both:segregated", "no", "yes"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(TRACK, TRACK).appliedTo(mapOf(
                 "cycleway:both" to "track",
@@ -484,7 +524,9 @@ class CyclewayCreatorKtTest {
                 StringMapEntryDelete("sidewalk", "both"),
                 StringMapEntryAdd("sidewalk:both", "yes"),
                 StringMapEntryModify("cycleway:both", "track", "track"),
-                StringMapEntryModify("cycleway:both:segregated", "yes", "no")
+                StringMapEntryModify("cycleway:both:segregated", "yes", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString()),
             ),
             cycleway(SIDEWALK_EXPLICIT, SIDEWALK_EXPLICIT).appliedTo(mapOf(
                 "sidewalk" to "both",
@@ -498,7 +540,8 @@ class CyclewayCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("cycleway:both", "track", "share_busway"),
-                StringMapEntryDelete("cycleway:both:segregated", "no")
+                StringMapEntryDelete("cycleway:both:segregated", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(BUSWAY, BUSWAY).appliedTo(mapOf(
                 "cycleway:both" to "track",
@@ -507,34 +550,12 @@ class CyclewayCreatorKtTest {
         )
     }
 
-    @Test fun `sets check date if nothing changed`() {
-        assertEquals(
-            setOf(
-                StringMapEntryModify("cycleway:both", "track", "track"),
-                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString())
-            ),
-            cycleway(TRACK, TRACK).appliedTo(mapOf("cycleway:both" to "track"))
-        )
-    }
-
-    @Test fun `updates check date if nothing changed`() {
-        assertEquals(
-            setOf(
-                StringMapEntryModify("cycleway:both", "track", "track"),
-                StringMapEntryModify("check_date:cycleway", "2000-11-11", nowAsCheckDateString())
-            ),
-            cycleway(TRACK, TRACK).appliedTo(mapOf(
-                "cycleway:both" to "track",
-                "check_date:cycleway" to "2000-11-11"
-            ))
-        )
-    }
-
     @Test fun `remove oneway bicycle no tag if road is also a oneway for bicycles now`() {
         assertEquals(
             setOf(
                 StringMapEntryModify("cycleway:both", "no", "no"),
-                StringMapEntryDelete("oneway:bicycle", "no")
+                StringMapEntryDelete("oneway:bicycle", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(NONE, NONE).appliedTo(mapOf(
                 "cycleway:both" to "no",
@@ -546,33 +567,51 @@ class CyclewayCreatorKtTest {
 
     @Test fun `apply value only for one side`() {
         assertEquals(
-            setOf(StringMapEntryAdd("cycleway:left", "track")),
+            setOf(
+                StringMapEntryAdd("cycleway:left", "track"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
+            ),
             cycleway(TRACK, null).appliedTo(mapOf())
         )
         assertEquals(
-            setOf(StringMapEntryAdd("cycleway:right", "track")),
+            setOf(
+                StringMapEntryAdd("cycleway:right", "track"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
+            ),
             cycleway(null, TRACK).appliedTo(mapOf())
         )
     }
 
     @Test fun `apply for one side does not touch the other side`() {
         assertEquals(
-            setOf(StringMapEntryAdd("cycleway:left", "track")),
+            setOf(
+                StringMapEntryAdd("cycleway:left", "track"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
+            ),
             cycleway(TRACK, null).appliedTo(mapOf("cycleway:right" to "no"))
         )
         assertEquals(
-            setOf(StringMapEntryAdd("cycleway:right", "track")),
+            setOf(
+                StringMapEntryAdd("cycleway:right", "track"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
+            ),
             cycleway(null, TRACK).appliedTo(mapOf("cycleway:left" to "no"))
         )
     }
 
     @Test fun `apply for one side does not touch the other side even if it is invalid`() {
         assertEquals(
-            setOf(StringMapEntryAdd("cycleway:left", "track")),
+            setOf(
+                StringMapEntryAdd("cycleway:left", "track"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
+            ),
             cycleway(TRACK, null).appliedTo(mapOf("cycleway:right" to "invalid"))
         )
         assertEquals(
-            setOf(StringMapEntryAdd("cycleway:right", "track")),
+            setOf(
+                StringMapEntryAdd("cycleway:right", "track"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
+            ),
             cycleway(null, TRACK).appliedTo(mapOf("cycleway:left" to "invalid"))
         )
     }
@@ -583,6 +622,7 @@ class CyclewayCreatorKtTest {
                 StringMapEntryAdd("cycleway:left", "track"),
                 StringMapEntryAdd("cycleway:right", "invalid"),
                 StringMapEntryDelete("cycleway:both", "invalid"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(TRACK, null).appliedTo(mapOf("cycleway:both" to "invalid"))
         )
@@ -591,6 +631,7 @@ class CyclewayCreatorKtTest {
                 StringMapEntryAdd("cycleway:left", "invalid"),
                 StringMapEntryAdd("cycleway:right", "track"),
                 StringMapEntryDelete("cycleway:both", "invalid"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(null, TRACK).appliedTo(mapOf("cycleway:both" to "invalid"))
         )
@@ -602,6 +643,7 @@ class CyclewayCreatorKtTest {
                 StringMapEntryAdd("cycleway:both", "no"),
                 StringMapEntryDelete("cycleway:left", "no"),
                 StringMapEntryDelete("cycleway:right", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(NONE, null).appliedTo(mapOf(
                 "cycleway:left" to "no",
@@ -616,6 +658,7 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("cycleway:left", "no"),
                 StringMapEntryModify("oneway:bicycle", "no", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(NONE_NO_ONEWAY, null).appliedTo(mapOf(
                 "oneway:bicycle" to "no",
@@ -628,6 +671,7 @@ class CyclewayCreatorKtTest {
                 StringMapEntryAdd("cycleway:right", "track"),
                 StringMapEntryAdd("cycleway:right:oneway", "no"),
                 StringMapEntryModify("oneway:bicycle", "no", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(null, TRACK to BOTH).appliedTo(mapOf(
                 "oneway:bicycle" to "no",
@@ -639,6 +683,7 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("cycleway:left", "no"),
                 StringMapEntryDelete("oneway:bicycle", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(NONE, null).appliedTo(mapOf(
                 "oneway:bicycle" to "no",
@@ -650,6 +695,7 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("cycleway:both", "no"),
                 StringMapEntryDelete("oneway:bicycle", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(NONE, NONE).appliedTo(mapOf(
                 "oneway:bicycle" to "no",
@@ -665,6 +711,7 @@ class CyclewayCreatorKtTest {
                 StringMapEntryDelete("cycleway:both", "track"),
                 StringMapEntryModify("cycleway:right:oneway", "no", "no"),
                 StringMapEntryModify("oneway:bicycle", "no", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(NONE to FORWARD, TRACK to BOTH).appliedTo(mapOf(
                 "oneway:bicycle" to "no",
@@ -679,6 +726,7 @@ class CyclewayCreatorKtTest {
                 StringMapEntryModify("cycleway:left", "no", "no"),
                 StringMapEntryDelete("oneway:bicycle", "no"),
                 StringMapEntryModify("cycleway:right", "track", "track"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(NONE, TRACK).appliedTo(mapOf(
                 "oneway:bicycle" to "no",
@@ -694,6 +742,7 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("cycleway:left", "no"),
                 StringMapEntryDelete("cycleway:left:oneway", "-1"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(NONE, null).appliedTo(mapOf(
                 "cycleway:left:oneway" to "-1"
@@ -704,6 +753,7 @@ class CyclewayCreatorKtTest {
                 StringMapEntryAdd("cycleway:left", "no"),
                 StringMapEntryDelete("cycleway:left:oneway", "-1"),
                 StringMapEntryAdd("oneway:bicycle", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(NONE_NO_ONEWAY, null).appliedTo(mapOf(
                 "cycleway:left:oneway" to "-1",
@@ -714,6 +764,7 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("cycleway:left", "separate"),
                 StringMapEntryDelete("cycleway:left:oneway", "-1"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(SEPARATE, null).appliedTo(mapOf(
                 "cycleway:left:oneway" to "-1"
@@ -726,6 +777,7 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("cycleway:left", "track"),
                 StringMapEntryAdd("cycleway:left:oneway", "yes"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(TRACK to FORWARD, null).appliedTo(mapOf())
         )
@@ -737,6 +789,7 @@ class CyclewayCreatorKtTest {
                 StringMapEntryAdd("cycleway:left", "track"),
                 StringMapEntryAdd("cycleway:left:oneway", "-1"),
                 StringMapEntryAdd("oneway:bicycle", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(TRACK, null).appliedTo(mapOf("oneway" to "yes"))
         )
@@ -746,7 +799,8 @@ class CyclewayCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryDelete("cycleway", "track"),
-                StringMapEntryAdd("cycleway:right", "no")
+                StringMapEntryAdd("cycleway:right", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(null, NONE).appliedTo(mapOf("oneway" to "yes", "cycleway" to "track"))
         )
@@ -755,7 +809,8 @@ class CyclewayCreatorKtTest {
                 StringMapEntryDelete("cycleway", "opposite"),
                 StringMapEntryAdd("cycleway:right", "no"),
                 StringMapEntryAdd("cycleway:left", "track"),
-                StringMapEntryAdd("oneway:bicycle", "no")
+                StringMapEntryAdd("oneway:bicycle", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(TRACK, null).appliedTo(mapOf(
                 "oneway" to "-1",
@@ -769,7 +824,8 @@ class CyclewayCreatorKtTest {
                 StringMapEntryAdd("cycleway:left", "track"),
                 StringMapEntryAdd("cycleway:left:segregated", "yes"),
                 StringMapEntryAdd("cycleway:right", "no"),
-                StringMapEntryAdd("oneway:bicycle", "no")
+                StringMapEntryAdd("oneway:bicycle", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(null, NONE).appliedTo(mapOf(
                 "oneway" to "yes",
@@ -784,7 +840,8 @@ class CyclewayCreatorKtTest {
                 StringMapEntryAdd("cycleway:left", "lane"),
                 StringMapEntryAdd("cycleway:left:lane", "advisory"),
                 StringMapEntryAdd("cycleway:right", "no"),
-                StringMapEntryAdd("oneway:bicycle", "no")
+                StringMapEntryAdd("oneway:bicycle", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(null, NONE).appliedTo(mapOf(
                 "oneway" to "yes",
@@ -798,7 +855,8 @@ class CyclewayCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryDelete("cycleway", "track"),
-                StringMapEntryAdd("cycleway:left", "no")
+                StringMapEntryAdd("cycleway:left", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(NONE, null).appliedTo(mapOf(
                 "oneway" to "yes",
@@ -826,7 +884,8 @@ class CyclewayCreatorKtTest {
                 StringMapEntryAdd("cycleway:right", "no"),
                 StringMapEntryAdd("sidewalk:right:bicycle", "yes"),
                 StringMapEntryAdd("sidewalk:right:bicycle:signed", "yes"),
-                StringMapEntryAdd("sidewalk:right:oneway:bicycle", "no")
+                StringMapEntryAdd("sidewalk:right:oneway:bicycle", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(
                 null,
@@ -841,7 +900,8 @@ class CyclewayCreatorKtTest {
                 StringMapEntryAdd("cycleway:left", "no"),
                 StringMapEntryAdd("sidewalk:left:bicycle", "yes"),
                 StringMapEntryAdd("sidewalk:left:bicycle:signed", "yes"),
-                StringMapEntryAdd("sidewalk:left:oneway:bicycle", "no")
+                StringMapEntryAdd("sidewalk:left:oneway:bicycle", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(
                 SIDEWALK_OK to BOTH,
@@ -856,7 +916,8 @@ class CyclewayCreatorKtTest {
                 StringMapEntryAdd("cycleway:both", "no"),
                 StringMapEntryAdd("sidewalk:both:bicycle", "yes"),
                 StringMapEntryAdd("sidewalk:both:bicycle:signed", "yes"),
-                StringMapEntryAdd("sidewalk:both:oneway:bicycle", "no")
+                StringMapEntryAdd("sidewalk:both:oneway:bicycle", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(
                 SIDEWALK_OK to BOTH,
@@ -871,7 +932,8 @@ class CyclewayCreatorKtTest {
                 StringMapEntryModify("cycleway:right", "no", "no"),
                 StringMapEntryModify("sidewalk:right:bicycle", "yes", "yes"),
                 StringMapEntryModify("sidewalk:right:bicycle:signed", "yes", "yes"),
-                StringMapEntryAdd("sidewalk:right:oneway:bicycle", "no")
+                StringMapEntryAdd("sidewalk:right:oneway:bicycle", "no"),
+                StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString()),
             ),
             cycleway(
                 null,

@@ -82,10 +82,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
             tags["recycling:${material.value}"] = "yes"
         }
 
-        // only set the check date if nothing was changed
-        if (!tags.hasChanges || tags.hasCheckDateForKey("recycling")) {
-            tags.updateCheckDateForKey("recycling")
-        }
+        tags.updateCheckDateForKey("recycling")
     }
 
     private fun applyWasteContainerAnswer(tags: Tags) {

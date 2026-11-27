@@ -4,6 +4,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.testutils.feature
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -14,11 +16,11 @@ class PlacesKtTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("a", "b"),
-                StringMapEntryDelete("check_date", "1"),
                 StringMapEntryDelete("lastcheck", "a"),
                 StringMapEntryDelete("last_checked", "b"),
                 StringMapEntryDelete("survey:date", "c"),
                 StringMapEntryDelete("survey_date", "d"),
+                StringMapEntryModify("check_date", "1", nowAsCheckDateString()),
             ),
             replacePlaceApplied(
                 newTags = mapOf("a" to "b"),
@@ -46,6 +48,7 @@ class PlacesKtTest {
                 StringMapEntryDelete("office", "it"),
                 StringMapEntryDelete("tourism", "information"),
                 StringMapEntryDelete("information", "office"),
+                StringMapEntryAdd("check_date", nowAsCheckDateString()),
             ),
             replacePlaceApplied(
                 newTags = mapOf("shop" to "ice_cream"),

@@ -14,29 +14,25 @@ class SurfaceCreatorKtTest {
 
     @Test fun `apply surface`() {
         assertEquals(
-            setOf(StringMapEntryAdd("surface", "asphalt")),
+            setOf(
+                StringMapEntryAdd("surface", "asphalt"),
+                StringMapEntryAdd("check_date:surface", nowAsCheckDateString())
+            ),
             ASPHALT.appliedTo(mapOf()),
         )
     }
 
     @Test fun `apply surface with prefix`() {
         assertEquals(
-            setOf(StringMapEntryAdd("footway:surface", "asphalt")),
+            setOf(
+                StringMapEntryAdd("footway:surface", "asphalt"),
+                StringMapEntryAdd("check_date:footway:surface", nowAsCheckDateString())
+            ),
             ASPHALT.appliedTo(mapOf(), "footway"),
         )
     }
 
-    @Test fun `apply non-changed surface updates check date`() {
-        assertEquals(
-            setOf(
-                StringMapEntryModify("surface", "asphalt", "asphalt"),
-                StringMapEntryAdd("check_date:surface", nowAsCheckDateString())
-            ),
-            ASPHALT.appliedTo(mapOf("surface" to "asphalt"))
-        )
-    }
-
-    @Test fun `apply surface that was previously an alias of this only updates check date`() {
+    @Test fun `apply surface that was previously an alias of this`() {
         assertEquals(
             setOf(
                 StringMapEntryModify("surface", "earth", "earth"),
@@ -46,39 +42,13 @@ class SurfaceCreatorKtTest {
         )
     }
 
-    @Test fun `apply non-changed surface with prefix updates check date`() {
-        assertEquals(
-            setOf(
-                StringMapEntryModify("footway:surface", "asphalt", "asphalt"),
-                StringMapEntryAdd("check_date:footway:surface", nowAsCheckDateString())
-            ),
-            ASPHALT.appliedTo(mapOf("footway:surface" to "asphalt"), "footway")
-        )
-    }
-
-    @Test fun `apply generic surface always adds check date`() {
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("surface", "paved"),
-                StringMapEntryAdd("check_date:surface", nowAsCheckDateString())
-            ),
-            PAVED.appliedTo(mapOf())
-        )
-        assertEquals(
-            setOf(
-                StringMapEntryModify("surface", "asphalt", "unpaved"),
-                StringMapEntryAdd("check_date:surface", nowAsCheckDateString())
-            ),
-            UNPAVED.appliedTo(mapOf("surface" to "asphalt"))
-        )
-    }
-
     @Test fun `remove tracktype when surface category changed`() {
         assertEquals(
             setOf(
                 StringMapEntryModify("surface", "compacted", "asphalt"),
                 StringMapEntryDelete("tracktype", "grade5"),
                 StringMapEntryDelete("check_date:tracktype", "2011-11-11"),
+                StringMapEntryAdd("check_date:surface", nowAsCheckDateString())
             ),
             ASPHALT.appliedTo(mapOf(
                 "surface" to "compacted",
@@ -90,14 +60,20 @@ class SurfaceCreatorKtTest {
 
     @Test fun `don't remove tracktype when surface was added`() {
         assertEquals(
-            setOf(StringMapEntryAdd("surface", "asphalt")),
+            setOf(
+                StringMapEntryAdd("surface", "asphalt"),
+                StringMapEntryAdd("check_date:surface", nowAsCheckDateString())
+            ),
             ASPHALT.appliedTo(mapOf("tracktype" to "grade2"))
         )
     }
 
     @Test fun `don't remove tracktype when surface category didn't change`() {
         assertEquals(
-            setOf(StringMapEntryModify("surface", "concrete", "asphalt")),
+            setOf(
+                StringMapEntryModify("surface", "concrete", "asphalt"),
+                StringMapEntryAdd("check_date:surface", nowAsCheckDateString())
+            ),
             ASPHALT.appliedTo(mapOf(
                 "surface" to "concrete",
                 "tracktype" to "grade2",
@@ -109,7 +85,8 @@ class SurfaceCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("surface", "asphalt"),
-                StringMapEntryDelete("tracktype", "grade3")
+                StringMapEntryDelete("tracktype", "grade3"),
+                StringMapEntryAdd("check_date:surface", nowAsCheckDateString())
             ),
             ASPHALT.appliedTo(mapOf("tracktype" to "grade3"))
         )
@@ -117,7 +94,10 @@ class SurfaceCreatorKtTest {
 
     @Test fun `remove mismatching tracktype not done with prefix`() {
         assertEquals(
-            setOf(StringMapEntryModify("footway:surface", "compacted", "asphalt")),
+            setOf(
+                StringMapEntryModify("footway:surface", "compacted", "asphalt"),
+                StringMapEntryAdd("check_date:footway:surface", nowAsCheckDateString())
+            ),
             ASPHALT.appliedTo(mapOf(
                 "footway:surface" to "compacted",
                 "tracktype" to "grade5",
@@ -137,6 +117,7 @@ class SurfaceCreatorKtTest {
                 StringMapEntryDelete("smoothness:date", "2011-11-11"),
                 StringMapEntryDelete("check_date:smoothness", "2011-11-11"),
                 StringMapEntryDelete("tracktype", "grade5"),
+                StringMapEntryAdd("check_date:surface", nowAsCheckDateString())
             ),
             ASPHALT.appliedTo(mapOf(
                 "surface" to "compacted",
@@ -154,7 +135,8 @@ class SurfaceCreatorKtTest {
     @Test fun `do not remove associated tags of main surface when surface with prefix changed`() {
         assertEquals(
             setOf(
-                StringMapEntryAdd("footway:surface", "asphalt")
+                StringMapEntryAdd("footway:surface", "asphalt"),
+                StringMapEntryAdd("check_date:footway:surface", nowAsCheckDateString())
             ),
             ASPHALT.appliedTo(mapOf(
                 "surface" to "compacted",
@@ -179,6 +161,7 @@ class SurfaceCreatorKtTest {
                 StringMapEntryDelete("footway:smoothness", "well"),
                 StringMapEntryDelete("footway:smoothness:date", "2011-11-11"),
                 StringMapEntryDelete("check_date:footway:smoothness", "2011-11-11"),
+                StringMapEntryAdd("check_date:footway:surface", nowAsCheckDateString())
             ),
             ASPHALT.appliedTo(mapOf(
                 "footway:surface" to "compacted",
@@ -234,6 +217,7 @@ class SurfaceCreatorKtTest {
             setOf(
                 StringMapEntryAdd("surface", "asphalt"),
                 StringMapEntryDelete("source:surface", "bing"),
+                StringMapEntryAdd("check_date:surface", nowAsCheckDateString())
             ),
             ASPHALT.appliedTo(mapOf(
                 "highway" to "residential",
@@ -246,6 +230,7 @@ class SurfaceCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("surface", "asphalt"),
+                StringMapEntryAdd("check_date:surface", nowAsCheckDateString())
             ),
             ASPHALT.appliedTo(mapOf(
                 "highway" to "tertiary",

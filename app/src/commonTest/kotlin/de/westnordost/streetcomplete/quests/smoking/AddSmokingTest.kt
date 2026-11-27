@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.smoking
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.testutils.node
 import kotlin.test.Test
@@ -177,7 +178,10 @@ class AddSmokingTest {
 
     @Test fun `outside answer sets correct answer`() {
         assertEquals(
-            setOf(StringMapEntryAdd("smoking", "outside")),
+            setOf(
+                StringMapEntryAdd("smoking", "outside"),
+                StringMapEntryAdd("check_date:smoking", nowAsCheckDateString())
+            ),
             questType.answerApplied(SmokingAllowed.OUTSIDE)
         )
     }
