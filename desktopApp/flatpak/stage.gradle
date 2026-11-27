@@ -1,0 +1,52 @@
+// Optional cross-platform staging for a Linux Flatpak; run with -I, see README.md.
+gradle.projectsEvaluated {
+    def desktop = rootProject.findProject(':desktopApp')
+    if (desktop == null) return
+
+    def arch = desktop.findProperty('flatpakArch') ?: 'arm64'
+    if (!(arch in ['arm64', 'x64'])) {
+        throw new GradleException('flatpakArch must be arm64 or x64')
+    }
+    def flatpakArch = arch == 'arm64' ? 'aarch64' : 'x86_64'
+    def catalog = desktop.extensions.getByType(org.gradle.api.artifacts.VersionCatalogsExtension).named('libs')
+    def runtime = desktop.configurations.runtimeClasspath
+    def mapRuntime = "maplibre-compose-runtime-opengl-linux-$arch"
+
+    // Compilation runs on the host, but the staged native libraries must match Linux.
+    ['macos-arm64', 'macos-x64', 'windows-arm64', 'windows-x64', 'linux-arm64', 'linux-x64'].each { platform ->
+        if (platform != "linux-$arch") {
+            runtime.exclude(group: 'org.jetbrains.skiko', module: "skiko-awt-runtime-$platform")
+        }
+        ['metal', 'vulkan', 'opengl'].each { backend ->
+            def module = "maplibre-compose-runtime-$backend-$platform"
+            if (module != mapRuntime) {
+                runtime.exclude(group: 'org.maplibre.compose', module: module)
+            }
+        }
+    }
+    desktop.dependencies.add('runtimeOnly', "org.jetbrains.compose.desktop:desktop-jvm-linux-$arch:${catalog.findVersion('compose').get()}")
+    desktop.dependencies.add('runtimeOnly', "org.maplibre.compose:$mapRuntime:${catalog.findVersion('maplibre').get()}")
+
+    desktop.tasks.register('stageFlatpak', Sync) {
+        group = 'distribution'
+        description = 'Stages the Linux Flatpak files, excluding the separately supplied Java runtime.'
+        dependsOn(desktop.tasks.named('jar'), runtime)
+        into(desktop.layout.buildDirectory.dir('flatpak/app'))
+        from(desktop.file('flatpak/files')) { into('files') }
+        from(desktop.file('flatpak/metadata.in')) {
+            rename { 'metadata' }
+            filter { line -> line.replace('@ARCH@', flatpakArch) }
+        }
+        from(desktop.tasks.named('jar')) { into('files/lib/app') }
+        runtime.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            from(artifact.file) { into("files/lib/${artifact.moduleVersion.id.group}") }
+        }
+        from(rootProject.file('app/src/commonMain/composeResources/files')) {
+            into('files/share/streetcomplete')
+        }
+        from(rootProject.file('metadata/en/images/icon.png')) {
+            into('files/share/icons/hicolor/192x192/apps')
+            rename { 'de.westnordost.streetcomplete.desktop.png' }
+        }
+    }
+}

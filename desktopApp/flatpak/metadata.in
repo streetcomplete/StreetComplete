@@ -1,0 +1,13 @@
+[Application]
+name=de.westnordost.streetcomplete.desktop
+runtime=org.freedesktop.Platform/@ARCH@/25.08
+sdk=org.freedesktop.Sdk/@ARCH@/25.08
+command=streetcomplete
+
+[Context]
+shared=network;ipc;
+sockets=wayland;x11;pulseaudio;
+devices=dri;
+
+[Environment]
+GDK_BACKEND=wayland
