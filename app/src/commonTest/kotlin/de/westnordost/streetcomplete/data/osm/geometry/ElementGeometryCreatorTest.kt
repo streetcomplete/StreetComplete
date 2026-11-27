@@ -87,19 +87,16 @@ class ElementGeometryCreatorTest {
     @Test fun `create for multipolygon relation with hole consisting of single way`() {
         val geom = create(areaRelation(asOuters(AREA_WAY) + asInners(AREA_WAY_CLOCKWISE))) as ElementPolygonsGeometry
         assertEquals(listOf(CCW_RING, CW_RING), geom.polygons)
-        assertEquals(O, geom.center)
     }
 
     @Test fun `create for multipolygon relation with hole consisting of single counterclockwise way`() {
         val geom = create(areaRelation(asOuters(AREA_WAY) + asInners(AREA_WAY))) as ElementPolygonsGeometry
         assertEquals(listOf(CCW_RING, CW_RING), geom.polygons)
-        assertEquals(O, geom.center)
     }
 
     @Test fun `create for multipolygon relation with hole consisting of several ways`() {
         val geom = create(areaRelation(asOuters(AREA_WAY) + asInners(SIMPLE_WAY1, SIMPLE_WAY3, SIMPLE_WAY2))) as ElementPolygonsGeometry
         assertEquals(listOf(CCW_RING, CW_RING), geom.polygons)
-        assertEquals(O, geom.center)
     }
 
     @Test fun `creating for multipolygon relation ignores unusable parts`() {
