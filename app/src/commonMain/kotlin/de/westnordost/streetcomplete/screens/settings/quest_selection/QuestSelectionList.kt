@@ -33,6 +33,7 @@ import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusSt
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.theme.titleMedium
+import de.westnordost.streetcomplete.ui.ktx.scrollbar
 import org.jetbrains.compose.resources.stringResource
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
@@ -77,16 +78,16 @@ fun QuestSelectionList(
             top = contentPadding.calculateTopPadding(),
             end = contentPadding.calculateEndPadding(layoutDirection)
         ))
-        // TODO Compose: scrollbars would be nice here (not supported yet by compose)
-        //      When they are available: Check other places too, don't want to add a todo in every
-        //      single place that could have a scrollbar
+
+        val listPadding = PaddingValues(
+            start = contentPadding.calculateStartPadding(layoutDirection),
+            end = contentPadding.calculateEndPadding(layoutDirection),
+            bottom = contentPadding.calculateBottomPadding()
+        )
         LazyColumn(
             state = listState,
-            contentPadding = PaddingValues(
-                start = contentPadding.calculateStartPadding(layoutDirection),
-                end = contentPadding.calculateEndPadding(layoutDirection),
-                bottom = contentPadding.calculateBottomPadding()
-            ),
+            contentPadding = listPadding,
+            modifier = Modifier.scrollbar(listState, contentPadding = listPadding)
         ) {
             itemsIndexed(
                 reorderableItems,
@@ -123,7 +124,7 @@ fun QuestSelectionList(
                                     }
                                 },
                                 displayCountry = displayCountry,
-                                modifier = Modifier.padding(vertical = 8.dp)
+                                modifier = Modifier.padding(vertical = 8.dp).padding(end = 8.dp)
                             )
                         }
                     }

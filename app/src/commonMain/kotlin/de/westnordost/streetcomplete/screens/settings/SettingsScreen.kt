@@ -39,6 +39,7 @@ import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.settings.Preference
 import de.westnordost.streetcomplete.ui.common.settings.PreferenceCategory
 import de.westnordost.streetcomplete.ui.common.settings.Select
+import de.westnordost.streetcomplete.ui.ktx.scrollbar
 import de.westnordost.streetcomplete.util.ktx.getDisplayName
 import de.westnordost.streetcomplete.util.locale.NumberFormatter
 import org.jetbrains.compose.resources.StringResource
@@ -79,6 +80,8 @@ fun SettingsScreen(
     var showResurveyIntervalsSelect by remember { mutableStateOf(false) }
     var showZoomButtonsSelect by remember { mutableStateOf(false) }
 
+    val scrollState = rememberScrollState()
+
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
             title = { Text(stringResource(Res.string.action_settings)) },
@@ -86,10 +89,11 @@ fun SettingsScreen(
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
         Column(Modifier
-            .verticalScroll(rememberScrollState())
             .windowInsetsPadding(WindowInsets.safeDrawing.only(
                 WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
             ))
+            .scrollbar(scrollState)
+            .verticalScroll(scrollState)
         ) {
             PreferenceCategory(stringResource(Res.string.pref_category_quests)) {
 

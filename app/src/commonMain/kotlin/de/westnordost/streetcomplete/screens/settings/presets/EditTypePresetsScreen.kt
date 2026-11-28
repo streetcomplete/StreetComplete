@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.Divider
 import androidx.compose.material.FloatingActionButton
@@ -40,6 +41,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.TextInputDialog
 import de.westnordost.streetcomplete.ui.ktx.plus
+import de.westnordost.streetcomplete.ui.ktx.scrollbar
 import de.westnordost.streetcomplete.ui.theme.titleMedium
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -104,6 +106,8 @@ private fun EditTypePresetsList(
 ) {
     val presets by viewModel.presets.collectAsState()
 
+    val listState = rememberLazyListState()
+
     Column(modifier) {
         val layoutDirection = LocalLayoutDirection.current
         EditTypePresetsHeader(Modifier.padding(
@@ -111,12 +115,16 @@ private fun EditTypePresetsList(
             top = contentPadding.calculateTopPadding(),
             end = contentPadding.calculateEndPadding(layoutDirection)
         ))
+
+        val listPadding = PaddingValues(
+            start = contentPadding.calculateStartPadding(layoutDirection),
+            end = contentPadding.calculateEndPadding(layoutDirection),
+            bottom = contentPadding.calculateBottomPadding()
+        )
         LazyColumn(
-            contentPadding = PaddingValues(
-                start = contentPadding.calculateStartPadding(layoutDirection),
-                end = contentPadding.calculateEndPadding(layoutDirection),
-                bottom = contentPadding.calculateBottomPadding()
-            ),
+            state = listState,
+            contentPadding = listPadding,
+            modifier = Modifier.scrollbar(listState, contentPadding = listPadding)
         ) {
             itemsIndexed(presets, key = { _, it -> it.id }) { index, item ->
                 Column {
@@ -128,7 +136,7 @@ private fun EditTypePresetsList(
                         onDuplicate = { viewModel.duplicate(item.id, it) },
                         onShare = { viewModel.queryUrlConfig(item.id) },
                         onDelete = { viewModel.delete(item.id) },
-                        modifier = Modifier.padding(vertical = 4.dp)
+                        modifier = Modifier.padding(vertical = 4.dp).padding(end = 8.dp)
                     )
                 }
             }
