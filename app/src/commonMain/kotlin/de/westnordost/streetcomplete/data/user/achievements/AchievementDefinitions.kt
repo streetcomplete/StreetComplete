@@ -146,7 +146,7 @@ val links = listOf(
     ),
     Link(
         "notesreview",
-        "https://ent8r.github.io/NotesReview/",
+        "https://notesreview.org/",
         "NotesReview",
         LinkCategory.EDITORS,
         Res.drawable.link_notesreview,
