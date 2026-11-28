@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -42,6 +43,7 @@ import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.ExpandableSearchField
 import de.westnordost.streetcomplete.ui.common.SearchIcon
 import de.westnordost.streetcomplete.ui.common.TopAppBarWithContent
+import de.westnordost.streetcomplete.ui.ktx.scrollbar
 import de.westnordost.streetcomplete.util.ktx.getDisplayName
 import org.jetbrains.compose.resources.stringResource
 
@@ -132,9 +134,12 @@ private fun LocaleSelectionList(
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues.Zero,
 ) {
+    val listState = rememberLazyListState()
+
     LazyColumn(
-        modifier = modifier,
-        contentPadding = contentPadding
+        state = listState,
+        contentPadding = contentPadding,
+        modifier = modifier.scrollbar(listState, contentPadding = contentPadding),
     ) {
         items(locales, key = { it?.toLanguageTag().orEmpty() }) { locale ->
             val isSelected = selectedLocale == locale
@@ -145,7 +150,7 @@ private fun LocaleSelectionList(
                     .background(MaterialTheme.colors.surface)
                     .animateItem()
                     .selectable(isSelected) { onSelect(locale) }
-                    .padding(horizontal = 24.dp)
+                    .padding(horizontal = 24.dp).padding(end = 8.dp)
                     .defaultMinSize(minHeight = 48.dp)
             ) {
                 Box(modifier = Modifier.weight(1f)) {

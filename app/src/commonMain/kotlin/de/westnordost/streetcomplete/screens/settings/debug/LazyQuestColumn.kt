@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -19,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.ui.ktx.scrollbar
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -29,9 +31,11 @@ fun LazyQuestColumn(
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(0.dp),
 ) {
+    val listState = rememberLazyListState()
     LazyColumn(
-        modifier = modifier,
+        state = listState,
         contentPadding = contentPadding,
+        modifier = modifier.scrollbar(listState, contentPadding = contentPadding),
     ) {
         items(items, key = { it -> it.name }) { item ->
             Column(Modifier

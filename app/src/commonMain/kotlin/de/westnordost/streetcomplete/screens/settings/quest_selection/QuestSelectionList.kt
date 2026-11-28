@@ -87,10 +87,7 @@ fun QuestSelectionList(
         LazyColumn(
             state = listState,
             contentPadding = listPadding,
-            modifier = Modifier.scrollbar(
-                listState,
-                contentPadding = listPadding,
-            )
+            modifier = Modifier.scrollbar(listState, contentPadding = listPadding)
         ) {
             itemsIndexed(
                 reorderableItems,

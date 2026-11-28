@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.only
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
@@ -18,10 +19,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.settings.Preference
+import de.westnordost.streetcomplete.ui.ktx.scrollbar
 import org.jetbrains.compose.resources.stringResource
 
 /** Screen in which to select which message types should be shown to the user / which are suppressed
@@ -33,6 +36,8 @@ fun MessageSelectionScreen(
 ) {
     val disabledMessageTypes by viewModel.disabledMessageTypes.collectAsState()
 
+    val scrollState = rememberScrollState()
+
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
             title = { Text(stringResource(Res.string.pref_title_messages)) },
@@ -41,10 +46,12 @@ fun MessageSelectionScreen(
         )
 
         Column(Modifier
-            .verticalScroll(rememberScrollState())
             .windowInsetsPadding(WindowInsets.safeDrawing.only(
                 WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
             ))
+            .scrollbar(scrollState)
+            .verticalScroll(scrollState)
+            .padding(end = 8.dp)
         ) {
             val showNewAchievements = Message.NewAchievement::class !in disabledMessageTypes
             Preference(

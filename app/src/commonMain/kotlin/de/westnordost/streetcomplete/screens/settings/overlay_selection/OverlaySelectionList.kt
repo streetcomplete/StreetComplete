@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -27,6 +28,7 @@ import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverla
 import de.westnordost.streetcomplete.overlays.surface.SurfaceOverlay
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
+import de.westnordost.streetcomplete.ui.ktx.scrollbar
 import de.westnordost.streetcomplete.ui.theme.titleMedium
 import org.jetbrains.compose.resources.stringResource
 
@@ -40,6 +42,8 @@ fun OverlaySelectionList(
 ) {
     var showEnableOverlayDialog by remember { mutableStateOf<Overlay?>(null) }
 
+    val listState = rememberLazyListState()
+
     Column(modifier) {
         val layoutDirection = LocalLayoutDirection.current
         OverlaySelectionHeader(Modifier.padding(
@@ -47,12 +51,17 @@ fun OverlaySelectionList(
             top = contentPadding.calculateTopPadding(),
             end = contentPadding.calculateEndPadding(layoutDirection)
         ))
+
+        val listPadding = PaddingValues(
+            start = contentPadding.calculateStartPadding(layoutDirection),
+            end = contentPadding.calculateEndPadding(layoutDirection),
+            bottom = contentPadding.calculateBottomPadding()
+        )
+
         LazyColumn(
-            contentPadding = PaddingValues(
-                start = contentPadding.calculateStartPadding(layoutDirection),
-                end = contentPadding.calculateEndPadding(layoutDirection),
-                bottom = contentPadding.calculateBottomPadding()
-            ),
+            state = listState,
+            contentPadding = listPadding,
+            modifier = Modifier.scrollbar(listState, contentPadding = listPadding)
         ) {
             itemsIndexed(items) { index, item ->
                 Column {
@@ -67,7 +76,7 @@ fun OverlaySelectionList(
                                 onSelect(item.overlay, isSelected)
                             }
                         },
-                        modifier = Modifier.padding(vertical = 8.dp)
+                        modifier = Modifier.padding(vertical = 8.dp).padding(end = 8.dp)
                     )
                 }
             }
