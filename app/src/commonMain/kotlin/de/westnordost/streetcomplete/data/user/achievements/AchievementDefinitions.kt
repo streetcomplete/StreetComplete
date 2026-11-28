@@ -634,7 +634,7 @@ val achievements = listOf(
             2 to links("figuregrounder"),
             3 to links("prettymapp"),
             4 to links("terraink"),
-            4 to links("openinframap"),
+            5 to links("openinframap"),
         )
     ),
 
